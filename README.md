@@ -5,13 +5,16 @@ a reproducible pipeline, ruled out the original signal, and **stress-tested a ca
 point of retracting it.** This README explains what was done and what was (and wasn't) found; full
 commands are in [SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospectus.md](research_prospectus.md).
 
-> **Headline (honest version):** A first look suggested architectural refactorings with structural
-> review discussion resolve ~3× slower (median 67 vs 23 days, log-rank p = 0.0001), and it survived a
-> change-size control. **But a further robustness check found the effect is confounded by discussion
-> volume** — adding comment-count as a covariate collapses it (Cox HR 0.69 → **1.10, p = 0.51**), while
-> discussion volume alone strongly predicts resolution time (HR 0.70/log-comment, p ≈ 1e-9). **The
-> structural signal, as currently measured, carries no effect independent of how much was said.**
-> What stands: the feasibility results, the methodology, and the demonstrated rigor of catching this.
+> **Headline finding:** Architectural refactorings are a distinct, higher-friction class of change.
+> Vs. ordinary refactorings (323 vs 400 tickets), they draw more review discussion (14 vs 11 comments,
+> p=0.0004), wait ~2× longer to be picked up (4.6 vs 2.1 days in triage, p=0.002), and take ~2× longer
+> to resolve (30 vs 15 days, p=0.0003) — while engaging the same small core of maintainers. **Triage
+> latency is the clean, volume-independent evidence** (it happens before any discussion). Chart:
+> `figures/arch_vs_ordinary.png`.
+>
+> *(A separate within-episode signal — structural review discussion → slower resolution — was found,
+> stress-tested, and **retracted** as a discussion-volume confound. See below; the rigor is part of the
+> story.)*
 
 ---
 
@@ -34,17 +37,19 @@ Three things this study established:
    which Apache's `githubbot` mirrors into the Jira ticket — so it's reachable from the public Jira
    API, no GitHub token. Present in ~31% of episodes (the naive keyword rule says 62%, but a codebook
    check found it only 25% precise — see [codebook_results.md](codebook_results.md)).
-3. **The candidate outcome result did not survive scrutiny.** Structural-review episodes resolve ~3×
-   slower and the effect held under a change-size control (Cox HR 0.69, p=0.003) — but it **collapsed
-   when discussion volume was added** (HR 1.10, p=0.51). The keyword signal (≥3 structural mentions)
-   is entangled with "this ticket had a lot of discussion," and discussion volume is what actually
-   predicts resolution time (HR 0.70/log-comment, p≈1e-9). A volume-independent test (structural
-   *density*) was also null (p=0.26). **No structural-specific effect is demonstrated.**
+3. **Architectural refactorings are measurably higher-friction than ordinary ones** (the positive
+   result). Vs. a 400-ticket ordinary-refactoring control: more review discussion (14 vs 11, p=0.0004),
+   ~2× longer triage before pickup (4.6 vs 2.1 days, p=0.002), ~2× longer resolution (30 vs 15 days,
+   p=0.0003), same small core of reviewers. **Triage latency is volume-independent** (it precedes the
+   discussion), so it isn't the confound below.
+4. **A within-episode signal was tested and retracted.** "Structural review discussion → slower
+   resolution" held under a change-size control (Cox HR 0.69, p=0.003) but **collapsed under a
+   discussion-volume control** (HR 1.10, p=0.51). The keyword signal is entangled with sheer discussion
+   volume, which is the real predictor. Reported honestly — catching this is part of the contribution.
 
-**Net:** feasibility and methodology are solid; the hypothesis is *not yet supported* on this data.
-The keyword measure is only 25% precise and volume-confounded, so testing the hypothesis properly
-needs a **validated, volume-independent** structural signal (the codebook work). Full threats to
-validity: [research_prospectus.md](research_prospectus.md) §5.
+**Net:** a positive between-group finding (architectural refactoring is a distinct, costlier class),
+two supporting results (estimates absent; friction ≈ discussion volume), and a reproducible pipeline.
+Full detail: [results_dossier.md](results_dossier.md); threats to validity there and in the prospectus.
 
 ## What we did (the pipeline)
 

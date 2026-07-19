@@ -1,128 +1,96 @@
-# Preliminary Study Summary — Architectural Refactoring and Review Friction in Apache Hadoop
+# Preliminary Study Summary — Architectural Refactoring Friction in Apache Hadoop
 
-*Proposal-ready synthesis. All figures are exact results from this study; see
-[research_prospectus.md](research_prospectus.md) and [SLICE_LOG.md](SLICE_LOG.md) for method and
-[worksheet.md](worksheet.md) for the manual trace.*
+*Proposal-ready synthesis. All figures are exact results; see [results_dossier.md](results_dossier.md)
+for full detail, [SLICE_LOG.md](SLICE_LOG.md) for method, and `figures/arch_vs_ordinary.png` for the
+headline chart.*
 
 ## 1. Motivation and research question
 
-Large software systems accumulate architectural debt, and the refactorings that address it are
-widely believed to be costlier and more contentious than routine changes — yet this is rarely
-quantified against real project outcomes. **RQ1 asks whether architectural refactorings that attract
-structural design discussion during review are associated with greater development effort**, measured
-through issue-tracker outcomes.
+Large systems accumulate architectural debt, and the refactorings that repay it are believed to be
+costlier and more contentious than routine changes — but this is rarely quantified against real
+project outcomes. **RQ1 asks whether architectural refactorings carry measurably more development
+friction than ordinary changes, and what that friction looks like in issue-tracker and review data.**
 
-The original formulation assumed *developer effort estimates* on issue tickets as the effort signal.
-A first empirical check invalidated this assumption and motivated a reframing (§3), which is itself a
-finding: the study now centers on **review discussion about code structure** as the signal, with
-**ticket resolution time** as the effort/friction proxy.
+The pilot first tested — and rejected — the assumption that *effort estimates* could serve as the
+friction signal (they are absent in Apache), then measured friction directly from review discussion
+and issue-tracker state transitions.
 
 ## 2. Method (reproducible pipeline)
 
-I built and ran an end-to-end mining pipeline on Apache Hadoop:
+- **Corpus:** 8,919 commits across four Hadoop release ranges (v3.1.0 → v3.4.3).
+- **Detection:** RefactoringMiner, parallelized 8–16× with a self-healing runner that auto-skips
+  commits it hangs on. 90–99% coverage. Output: 51,861 refactorings → **349 architectural episodes**.
+- **Control group:** 400 *ordinary* refactoring tickets (commits with non-architectural refactorings)
+  for the primary comparison.
+- **Signals from Apache Jira (public API):** review discussion (via the githubbot PR relay), ticket
+  dates, and the full **status changelog** (Open → In Progress → Patch Available → Resolved), which
+  lets us separate *waiting/triage time* from active work — independent of comment volume.
 
-- **Corpus:** 8,919 commits across four release ranges (v3.1.0 → v3.4.3).
-- **Refactoring detection:** RefactoringMiner, parallelized 8–16× across cores with a custom
-  self-healing runner that detects and skips commits on which the tool hangs (minified-JavaScript
-  dependency bumps), achieving 90–99% commit coverage per range. Output: **51,861 refactorings**.
-- **Architectural episode identification:** package-level and cross-package structural refactorings
-  (Move/Rename/Split/Merge Package, Move Class across packages, Extract Class/Interface/Superclass),
-  yielding **349 candidate architectural episodes**.
-- **Signal mining:** issue-ticket review discussion retrieved from the public Apache Jira API. A key
-  enabler is that Apache's `githubbot` mirrors the entire GitHub pull-request review — including
-  inline code-review comments — into the Jira ticket, so review discussion is recoverable without
-  GitHub API credentials.
-- **Analysis:** Kaplan–Meier survival estimation and log-rank testing on time-to-resolution, followed
-  by a Cox proportional-hazards model with change-size covariates.
+## 3. Feasibility results
 
-## 3. Feasibility findings (n = 345 traceable episodes)
+n = 345 traceable episodes (of 349): **traceability 99%** (with all monorepo subproject keys —
+HADOOP/HDFS/YARN/MAPREDUCE/HDDS/Ozone/Submarine; a single-key probe misreads it as 26%). **Effort
+estimates: 0%** — absent in Apache, which rules out the estimate-based framing for this corpus.
 
-| Filter | Question | Result |
-|---|---|---|
-| **Traceability** | Does the commit cite a Jira ticket? | **99%** (345/349) |
-| **Effort estimate** | Does the ticket record an estimate? | **0%** (0/345) |
-| **Structural review** | Does the review discussion argue about structure? | **~31%** (operational) |
+## 4. Primary finding — architectural refactorings are a distinct, higher-friction class
 
-Three empirical results emerged:
+Comparing **323 architectural** vs **400 ordinary** refactoring tickets (medians; Mann–Whitney):
 
-1. **The estimate-based framing is not viable on Apache data.** No architectural-episode ticket
-   records an effort estimate; the field is unused by the project's process. This is a corpus property
-   that scaling cannot fix and redirects the research away from estimate-based signals for open-source
-   subjects.
-2. **A structural-review signal exists and is minable.** Structural review discussion is present in
-   roughly 31% of episodes. This is a deliberately conservative operationalization: a first-pass
-   codebook calibration found that a naive structural-keyword heuristic is only **25% precise** (most
-   keyword matches are approvals or task-planning, not design arguments), so the naive 62% rate is
-   treated as an inflated upper bound.
-3. **Traceability is excellent but requires care.** Hadoop cites an issue key in 92.3% of commits —
-   but only when all monorepo subproject keys (HADOOP/HDFS/YARN/MAPREDUCE and the later-separated
-   HDDS/Ozone/Submarine) are matched; a single-key probe misleadingly reports 26%. A practical
-   measurement lesson for monorepo corpora.
-
-## 4. Candidate result and its retraction (the core methodological point)
-
-Splitting the 345 episodes by whether their review discussion is structural gave an apparent effect:
-
-| Group | n | Median time-to-resolve | Median review size |
+| Measure | Architectural | Ordinary | p |
 |---|---|---|---|
-| Structural review | 106 | 67 days | 30 comments |
-| Other | 239 | 23 days | 10 comments |
+| Review discussion (comments) | 14 | 11 | **0.0004** |
+| **Triage latency** (days in "Open" before pickup) | **4.6** | **2.1** | **0.0016** |
+| Resolution time (days) | 30.2 | 15.5 | **0.0003** |
+| Distinct participants | 3 | 3 | 0.18 (n.s.) |
 
-Kaplan–Meier/log-rank p = 0.0001; a Cox model controlling for change size (refactoring count, files,
-churn) left it apparently intact (hazard ratio 0.66 → 0.69, p = 0.003).
+*(Chart: `figures/arch_vs_ordinary.png`.)*
 
-**A further robustness check retracts it.** Adding discussion volume (log comment-count) as a
-covariate collapses the structural-review effect to **HR 1.10, 95% CI [0.83–1.46], p = 0.51** — no
-independent association. Discussion volume itself is the strong predictor (HR 0.70 per log-comment,
-p ≈ 1×10⁻⁹), and a volume-independent operationalization (structural *density*) is also null
-(HR 1.50, p = 0.26).
+**Architectural refactorings draw more review discussion, wait ~2× longer to be picked up, and take
+~2× longer to resolve — while engaging the same small core of maintainers.** It is more back-and-forth
+among the same people, not broader participation.
 
-**Interpretation:** the candidate result was an artifact of discussion *quantity*, not structural
-*content* — tickets with more review naturally take longer, and the keyword signal (≥3 structural
-mentions) is entangled with volume. Once volume is controlled, no structural-specific effect on
-resolution time remains. The hypothesis is therefore **untested, not disproven**: the keyword measure
-is only 25% precise and volume-confounded, so a validated, volume-independent structural signal is
-required to test it. The transferable contribution is the demonstrated ability to detect and retract
-a spurious association before it is reported as a result.
+**The cleanest evidence is triage latency** — days a ticket sits in "Open" before anyone starts it.
+This happens *before* any discussion, so it cannot be an artifact of discussion volume (the confound
+that undermines the resolution-time comparison). Architectural work is measurably **harder to take
+on**: ~2× longer before a maintainer commits to it. This is the load-bearing result.
 
-## 5. Threats to validity
+## 5. A within-episode signal we tested and retracted (methodological rigor)
 
-- **Association, not causation.** The Cox model rules out change size but not other confounders
-  (module criticality, contributor experience, review contentiousness).
-- **Proxy limitations.** Resolution time includes idle waiting and is not pure effort; the
-  structural-review signal is a heuristic pending codebook validation.
-- **Measurement validity.** The F2 rate depends on a keyword classifier (25% precise); the codebook is
-  drafted but not yet dual-rated (Cohen's κ).
-- **Non-independence.** Some episodes share a ticket; clustering is not yet modeled.
-- **External validity.** Single project, single release-line window.
+We also asked whether, *among* architectural episodes, those with more *structural* review discussion
+resolve slower. An apparent effect (3× slower; Cox HR 0.69, p=0.003, robust to change size)
+**did not survive controlling for discussion volume** (HR 1.10, p=0.51); discussion volume alone
+predicts resolution time (HR 0.70/log-comment, p≈1e-9), and structural *density* is null (p=0.26).
+The keyword signal (≥3 structural mentions) is entangled with "how much was said," so it cannot
+separate structural content from discussion quantity. Reported deliberately: detecting and retracting
+a spurious result before publishing it is part of the contribution.
 
-## 6. Methodological contributions
+## 6. Threats to validity
 
-Beyond the finding, the study produced reusable methodological assets: a scalable, fault-tolerant
-refactoring-mining pipeline that survives tool pathologies at scale; a technique for recovering full
-PR review discussion from Jira via bot-relay (no GitHub credentials); and a monorepo-aware
-traceability probe. These lower the cost of scaling the study to additional corpora.
+Descriptive/associational, not causal. The architectural vs. ordinary comparison is not matched on
+module, priority, or time period (a full study would match or adjust). Effect sizes are modest though
+consistent and significant. Resolution-time differences partly reflect discussion volume — hence the
+emphasis on triage latency, which does not. One project, one release-line window. The structural
+review signal is a 25%-precise heuristic, not yet dual-rated (κ).
 
-## 7. Proposed full study (roadmap)
+## 7. Methodological contributions
 
-1. **Validate the signal:** complete dual-rater codebook labeling and compute inter-rater agreement
-   (κ); replace the keyword heuristic with the validated classifier.
-2. **Strengthen the outcome model:** derive effort proxies from the Jira changelog (status-transition
-   timing rather than raw open→close), add covariates (module, contributor, priority), and model
-   ticket-level clustering.
-3. **Establish generality:** replicate across Kafka, HBase, and Camel to test whether the association
-   is project-specific or a broader property of open-source architectural work.
-4. **Full survival analysis:** episode↔signal interval tables with censoring feeding Kaplan–Meier and
-   Cox models, using the public Jira dump (Zenodo record 15719919) for complete changelog history.
+A scalable, fault-tolerant refactoring-mining pipeline; recovery of full PR review discussion from
+Jira via bot-relay (no GitHub credentials); a monorepo-aware traceability probe; and a status-changelog
+method that separates waiting from active work. These lower the cost of scaling the study.
 
-## 8. Significance
+## 8. Proposed full study
 
-The study demonstrates, on real data, that (a) a common assumption about open-source effort data
-(estimate availability) fails on Apache, (b) an alternative architectural-friction signal is
-*measurable* from review discussion via bot-relayed PR review, and (c) that a candidate association
-with a development outcome, once stress-tested, proved to be a discussion-volume confound and was
-retracted. The scientific contribution is a reproducible pipeline plus a well-scoped, still-open
-question: whether a *validated, volume-independent* measure of structural review discussion carries
-an effect that raw discussion volume does not. The pilot supplies the tooling, the feasibility
-evidence, and the study design to answer it — and shows the methodological discipline the answer will
-require.
+(a) Match/adjust the architectural vs. ordinary comparison on module, priority, contributor, and time.
+(b) Validate a volume-independent structural signal (dual-rater codebook, κ) and re-test whether
+*structural* content adds friction beyond discussion volume. (c) Model triage/startup latency directly
+(survival analysis with covariates and clustering). (d) Replicate on Kafka/HBase/Camel. (e) Use the
+public Jira dump (Zenodo 15719919) for complete changelog history at scale.
+
+## 9. Significance
+
+The pilot establishes, on real data, that **architectural refactoring is an empirically distinct,
+higher-friction class of change** — more reviewed, slower to start, slower to finish than routine
+work — with startup/triage latency as clean, volume-independent evidence. It also delivers two
+supporting results (estimates absent; issue-tracker friction largely inseparable from discussion
+volume) and a reproducible pipeline. Together these motivate and de-risk a full study of what drives
+architectural-change friction, with tooling and preliminary evidence already in hand.

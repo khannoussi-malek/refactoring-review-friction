@@ -12,9 +12,11 @@ _rm_unzip/
 refminer*.json
 rm_chunks/
 
-# ── Jira caches (re-fetch with pr_review_signal.py / the metadata fetch) ──
+# ── Jira caches (re-fetch with pr_review_signal.py / the metadata + changelog fetches) ──
 .jira_cache/
 .jira_meta/
+.jira_changelog/
+.jira_control/
 
 # ── Local config (may hold project-specific choices) ──
 config.env

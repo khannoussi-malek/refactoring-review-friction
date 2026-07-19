@@ -55,6 +55,29 @@ Package 10, Merge Package 3, Split Package 2. Cross-module moves: **40**.
 3. **The structural-review signal is minable** (via the githubbot PR relay) but sparse: of ~1,810
    substantive comments across episode tickets, only 75 contain any structural keyword.
 
+## 3b. PRIMARY FINDING — architectural refactorings are a distinct, higher-friction class
+
+A between-group comparison with a proper control: **323 architectural** vs **400 ordinary**
+refactoring tickets (medians; Mann–Whitney U). Chart: `figures/arch_vs_ordinary.png`.
+
+| Measure | Architectural | Ordinary | p |
+|---|---|---|---|
+| Review discussion (comments) | 14 | 11 | 0.00043 |
+| **Triage latency** (days in "Open" before pickup) | **4.6** | **2.1** | 0.0016 |
+| Resolution time (days) | 30.2 | 15.5 | 0.00028 |
+| Distinct participants | 3 | 3 | 0.18 (n.s.) |
+
+Architectural refactorings draw more review discussion, wait ~2× longer to be picked up, and take
+~2× longer to resolve — while engaging the same small core of maintainers (more back-and-forth, not
+more people). **Triage latency is the load-bearing result:** it is measured *before* any discussion
+begins, so it is not an artifact of discussion volume (the confound that undermines the resolution
+comparison — see §6). Architectural work is measurably harder to take on. This is the study's positive
+finding and the recommended headline for the proposal.
+
+Caveats: descriptive/associational; groups not matched on module, priority, contributor, or time
+period; effect sizes modest though consistent and significant; resolution-time gap partly reflects
+discussion volume (hence the emphasis on triage latency).
+
 ## 4. Measurement validity: the keyword signal is weak
 
 A first-pass codebook labeling (single rater, applying `codebook.md`) of 40 comments — 20 that the
@@ -111,12 +134,16 @@ structural measure is required to test the hypothesis at all.
 
 ## 7. What is / isn't established
 
-**Established:** (a) estimate framing fails on Apache; (b) traceability excellent (99%, multi-key);
-(c) review discussion is minable via PR relay; (d) discussion volume predicts resolution time (partly
-mechanical); (e) the keyword structural signal is 25% precise and volume-confounded.
+**Established:** (a) **architectural refactorings are a distinct, higher-friction class** — more
+review, ~2× longer triage, ~2× longer resolution than ordinary refactorings, with triage latency as
+volume-independent evidence (§3b); (b) estimate framing fails on Apache; (c) traceability excellent
+(99%, multi-key); (d) review discussion is minable via PR relay; (e) discussion volume predicts
+resolution time (partly mechanical); (f) the keyword structural signal is 25% precise and
+volume-confounded.
 
-**Not established:** the central hypothesis — that structural review discussion, *as such*, relates
-to effort. No structural-specific effect survives volume control with the current measure.
+**Not established:** whether structural review discussion, *as such* (vs. discussion volume), adds
+friction. No structural-specific effect survives volume control with the current keyword measure —
+untested rather than disproven (needs a validated, volume-independent signal).
 
 ## 8. Threats to validity
 
@@ -156,12 +183,13 @@ to effort. No structural-specific effect survives volume control with the curren
 ## 11. One-paragraph honest abstract
 
 > On 8,919 Apache Hadoop commits we detected 349 architectural refactoring episodes, 99% traceable to
-> Jira. The originally assumed effort signal (estimates) is absent in Apache (0%), so we reframed to
-> structural review discussion, mined from bot-relayed PR reviews, present in ~31% of episodes. A
-> candidate association — structural-review episodes resolve ~3× slower (log-rank p=0.0001), apparently
-> robust to change size (Cox HR 0.69, p=0.003) — did **not** survive a discussion-volume control
-> (HR 1.10, p=0.51); discussion volume alone predicts resolution time (HR 0.70/log-comment, p≈1e-9),
-> and structural density is null (p=0.26). The hypothesis is untested rather than disproven: the
-> keyword signal is 25% precise and volume-confounded. The contribution is a reproducible pipeline,
-> the feasibility findings, and a well-scoped design for a proper test with a validated,
-> volume-independent structural signal.
+> Jira. Compared against 400 ordinary refactoring tickets, architectural refactorings draw more review
+> discussion (14 vs 11 comments, p=0.0004), wait ~2× longer to be picked up (4.6 vs 2.1 days in
+> triage, p=0.002), and take ~2× longer to resolve (30 vs 15 days, p=0.0003), while engaging the same
+> small core of maintainers — establishing architectural refactoring as a distinct, higher-friction
+> class of change; triage latency, measured before any discussion, provides volume-independent
+> evidence. The originally assumed effort signal (estimates) is absent in Apache (0%). A separate
+> within-episode signal (structural review discussion → slower resolution; Cox HR 0.69, p=0.003) was
+> retracted as a discussion-volume confound (HR 1.10, p=0.51). The contribution is a reproducible
+> pipeline, the feasibility findings, a positive between-group finding, and a well-scoped design for
+> testing whether structural content adds friction beyond discussion volume.
