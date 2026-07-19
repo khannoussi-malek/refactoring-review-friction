@@ -333,10 +333,29 @@ Kaplan-Meier log-rank test:  p = 0.0001
 ```
 
 **Cox regression controlling for change size** (log refactorings, files, churn):
-`F2 hazard ratio 0.66 (alone) → 0.69 (adjusted), p=0.003` — the effect survives. Structural-review
-episodes take ~31% longer to resolve *independent of change size*. The "it's just big changes"
-objection is ruled out. Exploratory (association, one project, heuristic signal) — see
-`research_prospectus.md` §5 for threats to validity.
+`F2 hazard ratio 0.66 (alone) → 0.69 (adjusted), p=0.003` — appeared to survive size.
+
+### Step 10b · The result does NOT survive discussion-volume control (retracted)
+
+Ran the obvious next robustness check — add discussion volume (log comment-count) as a covariate,
+since structural episodes also have far more comments (median 30 vs 10; corr(F2, log-comments)=0.52):
+
+```
+Model                          F2 HR    95% CI          p
+A. F2 alone                    0.66     [0.52, 0.84]    0.0006
+B. + change size               0.69     [0.55, 0.88]    0.0029
+C. + DISCUSSION VOLUME         1.10     [0.83, 1.46]    0.51    <- collapses
+   discussion volume (in C):   0.70 per log-comment,    p≈1e-9  <- the real predictor
+   structural DENSITY test:    struct_ratio HR 1.50,    p=0.26  <- also null
+```
+
+**The structural-review effect is confounded by discussion volume and does not stand.** The keyword
+signal (≥3 structural mentions) is entangled with "this ticket had a lot of discussion"; once volume
+is controlled, no structural-specific effect remains, and structural *density* is null too. What is
+robust is that discussion volume predicts resolution time (partly mechanical). The hypothesis is
+**untested, not disproven** — the 25%-precise keyword measure can't separate structural *content*
+from discussion *quantity*; a validated, volume-independent codebook signal is required. Reported
+deliberately: catching this before pitching is the point of the check.
 
 ### Artifacts added (Step 10)
 ```

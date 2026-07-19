@@ -1,13 +1,17 @@
 # RQ1 feasibility study — architectural refactoring & review friction in Apache Hadoop
 
-This started as a week-1 "thin slice" starter kit. It grew into a real feasibility study with a
-**stress-tested preliminary finding**. This README explains what was done and what was found; the
-full commands are in [SLICE_LOG.md](SLICE_LOG.md) and the write-up is in
-[research_prospectus.md](research_prospectus.md).
+This started as a week-1 "thin slice" starter kit. It grew into a feasibility study that established
+a reproducible pipeline, ruled out the original signal, and **stress-tested a candidate result to the
+point of retracting it.** This README explains what was done and what was (and wasn't) found; full
+commands are in [SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospectus.md](research_prospectus.md).
 
-> **One-line finding:** architectural refactorings that attract *structural review discussion* take
-> **~3× longer to resolve** (median 67 vs 23 days, log-rank **p = 0.0001**), and the effect
-> **survives controlling for change size** (Cox HR 0.69, **p = 0.003**).
+> **Headline (honest version):** A first look suggested architectural refactorings with structural
+> review discussion resolve ~3× slower (median 67 vs 23 days, log-rank p = 0.0001), and it survived a
+> change-size control. **But a further robustness check found the effect is confounded by discussion
+> volume** — adding comment-count as a covariate collapses it (Cox HR 0.69 → **1.10, p = 0.51**), while
+> discussion volume alone strongly predicts resolution time (HR 0.70/log-comment, p ≈ 1e-9). **The
+> structural signal, as currently measured, carries no effect independent of how much was said.**
+> What stands: the feasibility results, the methodology, and the demonstrated rigor of catching this.
 
 ---
 
@@ -30,12 +34,17 @@ Three things this study established:
    which Apache's `githubbot` mirrors into the Jira ticket — so it's reachable from the public Jira
    API, no GitHub token. Present in ~31% of episodes (the naive keyword rule says 62%, but a codebook
    check found it only 25% precise — see [codebook_results.md](codebook_results.md)).
-3. **The signal predicts an outcome.** Episodes with structural review resolve ~3× slower, and it
-   **isn't just that they're bigger changes** — a Cox model controlling for refactoring count, files
-   touched, and churn leaves the effect essentially unchanged (HR 0.66 → 0.69).
+3. **The candidate outcome result did not survive scrutiny.** Structural-review episodes resolve ~3×
+   slower and the effect held under a change-size control (Cox HR 0.69, p=0.003) — but it **collapsed
+   when discussion volume was added** (HR 1.10, p=0.51). The keyword signal (≥3 structural mentions)
+   is entangled with "this ticket had a lot of discussion," and discussion volume is what actually
+   predicts resolution time (HR 0.70/log-comment, p≈1e-9). A volume-independent test (structural
+   *density*) was also null (p=0.26). **No structural-specific effect is demonstrated.**
 
-This is **exploratory** (one project, heuristic signal, association not causation) — enough to justify
-a full study, not to conclude one. Threats to validity: [research_prospectus.md](research_prospectus.md) §5.
+**Net:** feasibility and methodology are solid; the hypothesis is *not yet supported* on this data.
+The keyword measure is only 25% precise and volume-confounded, so testing the hypothesis properly
+needs a **validated, volume-independent** structural signal (the codebook work). Full threats to
+validity: [research_prospectus.md](research_prospectus.md) §5.
 
 ## What we did (the pipeline)
 

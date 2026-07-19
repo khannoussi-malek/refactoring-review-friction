@@ -1,9 +1,10 @@
-# RQ1 — a feasibility study with a preliminary result
+# RQ1 — a feasibility study, a retracted candidate result, and a sharpened question
 ### Do architectural refactorings that attract structural review discussion take longer to resolve?
 
 **Author:** (independent pre-PhD study) · **Date:** 2026-07-19 · **Corpus:** Apache Hadoop
-**Status:** exploratory — one project, one release-line window, heuristic signal. Findings are
-associational and meant to justify a full study, not to conclude one.
+**Status:** feasibility established; a candidate association was found and then **retracted** as a
+discussion-volume confound (§4). No structural-specific effect is currently demonstrated. The
+contribution is the pipeline, the feasibility results, and the design for a proper test.
 
 ---
 
@@ -43,22 +44,27 @@ The F2 rate is set at **31%** deliberately. A first-pass codebook labeling (`cod
 found the naive keyword rule is only **25% precise** — most "refactor" mentions are approvals or
 task-planning — so the naive 62% is an inflated upper bound. Honest range: **25–35%**.
 
-## 4. Preliminary finding
+## 4. Candidate finding — and why it was retracted
 
 Splitting the 345 episodes by whether their review discussion is structural:
 
 | Group | n | Median time-to-resolve | Median review size |
 |---|---|---|---|
-| **Structural review** | 106 | **67 days** | 30 comments |
-| Other | 239 | **23 days** | 10 comments |
+| **Structural review** | 106 | 67 days | 30 comments |
+| Other | 239 | 23 days | 10 comments |
 
-- **Kaplan–Meier / log-rank: p = 0.0001.** The resolution-time curves differ significantly.
-- **Cox regression controlling for change size** (refactoring count, files touched, churn):
-  F2 hazard ratio **0.66 → 0.69** (p = 0.003) — the effect is **robust to change size**. Episodes
-  with structural review discussion take ~31% longer to resolve *even at comparable change size*.
+- Kaplan–Meier / log-rank: p = 0.0001; Cox controlling for change size (refactoring count, files,
+  churn): F2 hazard ratio 0.66 → 0.69, p = 0.003 — the effect *appeared* robust to size.
+- **But a discussion-volume control retracts it.** Adding log(comment-count) as a covariate collapses
+  the F2 effect to **HR 1.10, 95% CI [0.83–1.46], p = 0.51** — no independent effect. Discussion
+  volume itself is the strong predictor (HR 0.70 per log-comment, p ≈ 1e-9). A volume-independent
+  operationalization (structural *density* = structural comments ÷ total comments) is also null
+  (HR 1.50, p = 0.26).
 
-**In one line:** architectural refactorings that trigger structural review discussion take
-significantly longer to resolve, and this is not merely because they are larger changes.
+**In one line:** the structural signal as currently measured is confounded with *how much was said*;
+once discussion volume is accounted for, no structural-specific association with resolution time
+remains. The result does not stand. This is reported deliberately — the value here is the
+demonstrated ability to detect and retract a spurious result before publishing it.
 
 ## 5. Threats to validity (honest)
 
@@ -72,9 +78,12 @@ significantly longer to resolve, and this is not merely because they are larger 
 
 ## 6. Why this is worth a full study
 
-The feasibility gate is passed on a real corpus, and the *first* real analysis already shows a
-significant, size-robust association between an architectural-refactoring review signal and an
-outcome. The full RQ1 would: (a) validate the codebook (dual-rater κ), (b) replace cycle-time with
+The feasibility gate is passed on a real corpus, and the pilot analysis demonstrated the full method
+end to end — including the discipline to *retract* a candidate result once a confound was found. The
+hypothesis is untested, not disproven: the keyword signal is only 25% precise and inseparable from
+discussion volume, so a validated, volume-independent structural measure is exactly what a proper
+test needs. The full RQ1 would: (a) validate the codebook (dual-rater κ) to get a quality-based,
+volume-independent signal, (b) replace cycle-time with
 better effort proxies from the changelog, (c) add covariates and a proper survival model with
 clustering, (d) replicate across Kafka/HBase/Camel for generality.
 

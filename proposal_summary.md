@@ -59,26 +59,31 @@ Three empirical results emerged:
    HDDS/Ozone/Submarine) are matched; a single-key probe misleadingly reports 26%. A practical
    measurement lesson for monorepo corpora.
 
-## 4. Preliminary result (the core contribution)
+## 4. Candidate result and its retraction (the core methodological point)
 
-Splitting the 345 episodes by whether their review discussion is structural:
+Splitting the 345 episodes by whether their review discussion is structural gave an apparent effect:
 
 | Group | n | Median time-to-resolve | Median review size |
 |---|---|---|---|
-| **Structural review** | 106 | **67 days** | 30 comments |
-| Other | 239 | **23 days** | 10 comments |
+| Structural review | 106 | 67 days | 30 comments |
+| Other | 239 | 23 days | 10 comments |
 
-- **Kaplan–Meier / log-rank test: p = 0.0001** — the two groups' resolution-time distributions differ
-  significantly.
-- **Cox proportional-hazards model controlling for change size** (log refactoring count, files
-  touched, and code churn): the structural-review hazard ratio is **0.66 unadjusted → 0.69 adjusted
-  (p = 0.003)**. The effect is essentially unchanged after controlling for size.
+Kaplan–Meier/log-rank p = 0.0001; a Cox model controlling for change size (refactoring count, files,
+churn) left it apparently intact (hazard ratio 0.66 → 0.69, p = 0.003).
 
-**Interpretation:** architectural refactorings that trigger structural review discussion resolve
-roughly three times more slowly, and this is **not** explained by such changes simply being larger —
-the association holds among changes of comparable size. This provides quantitative, size-robust
-evidence that structural-change friction is measurable through review-and-issue data, supporting the
-case for a full study.
+**A further robustness check retracts it.** Adding discussion volume (log comment-count) as a
+covariate collapses the structural-review effect to **HR 1.10, 95% CI [0.83–1.46], p = 0.51** — no
+independent association. Discussion volume itself is the strong predictor (HR 0.70 per log-comment,
+p ≈ 1×10⁻⁹), and a volume-independent operationalization (structural *density*) is also null
+(HR 1.50, p = 0.26).
+
+**Interpretation:** the candidate result was an artifact of discussion *quantity*, not structural
+*content* — tickets with more review naturally take longer, and the keyword signal (≥3 structural
+mentions) is entangled with volume. Once volume is controlled, no structural-specific effect on
+resolution time remains. The hypothesis is therefore **untested, not disproven**: the keyword measure
+is only 25% precise and volume-confounded, so a validated, volume-independent structural signal is
+required to test it. The transferable contribution is the demonstrated ability to detect and retract
+a spurious association before it is reported as a result.
 
 ## 5. Threats to validity
 
@@ -113,8 +118,11 @@ traceability probe. These lower the cost of scaling the study to additional corp
 ## 8. Significance
 
 The study demonstrates, on real data, that (a) a common assumption about open-source effort data
-(estimate availability) fails, (b) an alternative architectural-friction signal is measurable from
-review discussion, and (c) that signal is significantly and robustly associated with a development
-outcome. Together these justify a full empirical investigation of architectural refactoring cost
-through review-and-issue data — with a working pipeline and a positive preliminary result already in
-hand.
+(estimate availability) fails on Apache, (b) an alternative architectural-friction signal is
+*measurable* from review discussion via bot-relayed PR review, and (c) that a candidate association
+with a development outcome, once stress-tested, proved to be a discussion-volume confound and was
+retracted. The scientific contribution is a reproducible pipeline plus a well-scoped, still-open
+question: whether a *validated, volume-independent* measure of structural review discussion carries
+an effect that raw discussion volume does not. The pilot supplies the tooling, the feasibility
+evidence, and the study design to answer it — and shows the methodological discipline the answer will
+require.
