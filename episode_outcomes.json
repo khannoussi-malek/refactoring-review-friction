@@ -1,0 +1,2762 @@
+[
+ {
+  "key": "YARN-10189",
+  "dur": 48,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 15,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-16959",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HADOOP-16916",
+  "dur": 62,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 20,
+  "arch": "Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "YARN-9606",
+  "dur": 840,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 58,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-15322",
+  "dur": 20,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 3,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-15168",
+  "dur": 185,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 12,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HDFS-15346",
+  "dur": 40,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 40,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move And Rename Class,Move Package"
+ },
+ {
+  "key": "YARN-9460",
+  "dur": 439,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 28,
+  "arch": "Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "HDFS-13934",
+  "dur": 966,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Move Class,Move Class,Move Class,Extract Superclass,Extract Interface,Extract Subclass"
+ },
+ {
+  "key": "HDFS-15481",
+  "dur": 11,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-17475",
+  "dur": 17,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "YARN-10412",
+  "dur": 195,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 4,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "MAPREDUCE-7322",
+  "dur": 24,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 24,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-15940",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-15989",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-9279",
+  "dur": 837,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Move Class,Move Class,Rename Package,Move Class"
+ },
+ {
+  "key": "HADOOP-17511",
+  "dur": 111,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HDFS-15973",
+  "dur": 45,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 36,
+  "arch": "Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HDFS-15973",
+  "dur": 45,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 36,
+  "arch": "Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HADOOP-17139",
+  "dur": 380,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HDFS-16174",
+  "dur": 3,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "YARN-10913",
+  "dur": 20,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10911",
+  "dur": 21,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10897",
+  "dur": 27,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HADOOP-17922",
+  "dur": 15,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10960",
+  "dur": 10,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-16265",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-10942",
+  "dur": 35,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10916",
+  "dur": 51,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move And Rename Class,Extract Class"
+ },
+ {
+  "key": "YARN-10904",
+  "dur": 58,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-10005",
+  "dur": 1080,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-18457",
+  "dur": 72,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 29,
+  "arch": "Move Class,Extract Interface"
+ },
+ {
+  "key": "HADOOP-18526",
+  "dur": 35,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 22,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-16689",
+  "dur": 149,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 42,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "MAPREDUCE-7431",
+  "dur": 32,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 10,
+  "arch": "Move Class,Move Class,Move And Rename Class,Extract Superclass,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18631",
+  "dur": 30,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 57,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-11469",
+  "dur": 177,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 13,
+  "arch": "Move Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18671",
+  "dur": 43,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 23,
+  "arch": "Extract Interface,Extract Interface"
+ },
+ {
+  "key": "YARN-11079",
+  "dur": 436,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 7,
+  "arch": "Move Class,Extract Superclass"
+ },
+ {
+  "key": "HADOOP-18207",
+  "dur": 1554,
+  "resolved": false,
+  "f2": false,
+  "ncomments": 41,
+  "arch": "Move Class,Move Class,Move Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18207",
+  "dur": 1554,
+  "resolved": false,
+  "f2": false,
+  "ncomments": 41,
+  "arch": "Move Class,Move Class,Move Class,Split Package"
+ },
+ {
+  "key": "MAPREDUCE-7435",
+  "dur": 76,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 33,
+  "arch": "Move Class,Extract Interface"
+ },
+ {
+  "key": "YARN-11511",
+  "dur": 8,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18291",
+  "dur": 394,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 57,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-11153",
+  "dur": 452,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 27,
+  "arch": "Extract Superclass,Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "HADOOP-18073",
+  "dur": 611,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 60,
+  "arch": "Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18487",
+  "dur": 688,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 41,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18919",
+  "dur": 21,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-18872",
+  "dur": 75,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-18956",
+  "dur": 30,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-17912",
+  "dur": 838,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 78,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18830",
+  "dur": 187,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 18,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-13230",
+  "dur": 1535,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 15,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-10399",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-10408",
+  "dur": 2,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 3,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-17023",
+  "dur": 144,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "YARN-10425",
+  "dur": 68,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 26,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-17244",
+  "dur": 74,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "YARN-10278",
+  "dur": 197,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 44,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-17450",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-17271",
+  "dur": 104,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Move Package,Move Class,Extract Superclass,Extract Interface,Extract Interface,Extract Interface,Extract Interface,Extract Interface,Extract Interface,Extract Superclass"
+ },
+ {
+  "key": "HDFS-15748",
+  "dur": 12,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 17,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "YARN-10553",
+  "dur": 11,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Extract Subclass,Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "YARN-10525",
+  "dur": 35,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 12,
+  "arch": "Move And Rename Class,Move And Rename Class,Extract Superclass"
+ },
+ {
+  "key": "YARN-10519",
+  "dur": 44,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Move And Rename Class,Extract Superclass,Extract Class"
+ },
+ {
+  "key": "HADOOP-17998",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-11005",
+  "dur": 26,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-11024",
+  "dur": 12,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Move Class,Move Class,Extract Superclass"
+ },
+ {
+  "key": "YARN-10907",
+  "dur": 105,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10963",
+  "dur": 87,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-10951",
+  "dur": 93,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10547",
+  "dur": 452,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 24,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10552",
+  "dur": 452,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 16,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-10548",
+  "dur": 454,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10549",
+  "dur": 457,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10550",
+  "dur": 459,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-16202",
+  "dur": 1131,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18168",
+  "dur": 42,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-18168",
+  "dur": 42,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-16582",
+  "dur": 2,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HADOOP-17833",
+  "dur": 321,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Move Class,Move Class,Move And Rename Class,Extract Interface,Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-11182",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Move Class,Move Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18106",
+  "dur": 139,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-16591",
+  "dur": 36,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 0,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-16640",
+  "dur": 29,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-18302",
+  "dur": 86,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 23,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "YARN-8732",
+  "dur": 35,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 21,
+  "arch": "Move Class,Move Class,Extract Subclass,Extract Class"
+ },
+ {
+  "key": "HDFS-13958",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-7644",
+  "dur": 301,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 32,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-5742",
+  "dur": 724,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 36,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-14445",
+  "dur": 521,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 190,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HADOOP-14445",
+  "dur": 521,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 190,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-657",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Merge Package,Merge Package,Move And Rename Class,Move And Rename Class"
+ },
+ {
+  "key": "HDDS-662",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-9560",
+  "dur": 43,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 69,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDDS-1731",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-1717",
+  "dur": 17,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1778",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Rename Package,Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-12979",
+  "dur": 638,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 58,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-1856",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Superclass,Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "YARN-9092",
+  "dur": 244,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-14625",
+  "dur": 42,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 22,
+  "arch": "Move Class,Extract Subclass"
+ },
+ {
+  "key": "YARN-8586",
+  "dur": 385,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 15,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-9217",
+  "dur": 211,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 29,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-1927",
+  "dur": 20,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-2008",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1827",
+  "dur": 35,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-738",
+  "dur": 307,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-16430",
+  "dur": 59,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 13,
+  "arch": "Move And Rename Class,Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HADOOP-16371",
+  "dur": 95,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 16,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-2143",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDDS-2067",
+  "dur": 23,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Move Class,Move Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-9859",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Subclass"
+ },
+ {
+  "key": "HDDS-2073",
+  "dur": 30,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-2162",
+  "dur": 11,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-16599",
+  "dur": 8,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "HADOOP-16207",
+  "dur": 192,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 12,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-16520",
+  "dur": 52,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-9677",
+  "dur": 116,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-5106",
+  "dur": 1301,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 65,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-9781",
+  "dur": 103,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 18,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-14854",
+  "dur": 83,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 67,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-9923",
+  "dur": 55,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 38,
+  "arch": "Move Class,Move Class,Move Class,Move And Rename Class,Extract Interface,Extract Superclass,Extract Class,Extract Superclass"
+ },
+ {
+  "key": "HDFS-14997",
+  "dur": 667,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 56,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-10026",
+  "dur": 30,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Move And Rename Class,Extract Interface,Extract Class"
+ },
+ {
+  "key": "HADOOP-16697",
+  "dur": 62,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Extract Interface,Extract Class"
+ },
+ {
+  "key": "YARN-9970",
+  "dur": 65,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 31,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-15117",
+  "dur": 10,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 26,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-16794",
+  "dur": 104,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-16898",
+  "dur": 7,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 3,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "YARN-10002",
+  "dur": 138,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 19,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-9879",
+  "dur": 168,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 67,
+  "arch": "Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-16959",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-10189",
+  "dur": 48,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 15,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-9567",
+  "dur": 1989,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 29,
+  "arch": "Extract Subclass"
+ },
+ {
+  "key": "HDDS-749",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-809",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "MAPREDUCE-7148",
+  "dur": 33,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 45,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDDS-801",
+  "dur": 12,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 14,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-8953",
+  "dur": 21,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 17,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-692",
+  "dur": 33,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 23,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-748",
+  "dur": 33,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 17,
+  "arch": "Extract Subclass"
+ },
+ {
+  "key": "YARN-9051",
+  "dur": 18,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-925",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 4,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "YARN-8925",
+  "dur": 60,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 43,
+  "arch": "Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HDFS-13749",
+  "dur": 63,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 39,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-13961",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HDDS-896",
+  "dur": 32,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HADOOP-14556",
+  "dur": 573,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 109,
+  "arch": "Extract Superclass,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDDS-947",
+  "dur": 21,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 17,
+  "arch": "Extract Superclass,Extract Class"
+ },
+ {
+  "key": "HDDS-947",
+  "dur": 21,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 17,
+  "arch": "Extract Superclass,Extract Class,Extract Superclass"
+ },
+ {
+  "key": "HADOOP-14556",
+  "dur": 573,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 109,
+  "arch": "Extract Superclass,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDDS-548",
+  "dur": 3,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 21,
+  "arch": "Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDDS-9",
+  "dur": 207,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 18,
+  "arch": "Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDDS-696",
+  "dur": 40,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 16,
+  "arch": "Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDDS-804",
+  "dur": 23,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 15,
+  "arch": "Move Class,Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "HDDS-805",
+  "dur": 44,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 26,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-102",
+  "dur": 214,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 12,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-955",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "HDDS-943",
+  "dur": 30,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDDS-906",
+  "dur": 49,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HDDS-793",
+  "dur": 83,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-9086",
+  "dur": 53,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-14178",
+  "dur": 687,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 115,
+  "arch": "Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HADOOP-15229",
+  "dur": 356,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 82,
+  "arch": "Extract Superclass,Extract Class"
+ },
+ {
+  "key": "HDDS-922",
+  "dur": 56,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "SUBMARINE-1",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Move Class,Move Package,Move Class"
+ },
+ {
+  "key": "HDDS-1109",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-8821",
+  "dur": 152,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Move And Rename Class,Move Package"
+ },
+ {
+  "key": "HADOOP-16125",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-16093",
+  "dur": 21,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 16,
+  "arch": "Move Class,Move And Rename Class"
+ },
+ {
+  "key": "YARN-9322",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 34,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1072",
+  "dur": 25,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 31,
+  "arch": "Move Class,Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1183",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 3,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1183",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 3,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1072",
+  "dur": 25,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 31,
+  "arch": "Move Class,Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1183",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 3,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1072",
+  "dur": 25,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 31,
+  "arch": "Move Class,Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1175",
+  "dur": 9,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 15,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1196",
+  "dur": 7,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1173",
+  "dur": 14,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 18,
+  "arch": "Extract Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDDS-761",
+  "dur": 136,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-14354",
+  "dur": 3,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 13,
+  "arch": "Extract Class,Extract Subclass"
+ },
+ {
+  "key": "HDDS-1250",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 18,
+  "arch": "Extract Interface,Extract Interface"
+ },
+ {
+  "key": "HDDS-1233",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 20,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-16058",
+  "dur": 69,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 17,
+  "arch": "Extract Superclass,Extract Class,Extract Subclass,Extract Subclass,Extract Superclass"
+ },
+ {
+  "key": "HDDS-1234",
+  "dur": 18,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 26,
+  "arch": "Move Class,Extract Superclass"
+ },
+ {
+  "key": "HDFS-14393",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Move Class,Move Class,Move Class,Extract Class"
+ },
+ {
+  "key": "HDDS-1357",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Extract Subclass"
+ },
+ {
+  "key": "HDDS-1207",
+  "dur": 34,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDDS-1333",
+  "dur": 11,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HDDS-1348",
+  "dur": 14,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 8,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-16118",
+  "dur": 105,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 18,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1363",
+  "dur": 10,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-1198",
+  "dur": 43,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Rename Package,Rename Package,Move Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class"
+ },
+ {
+  "key": "SUBMARINE-54",
+  "dur": 14,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 48,
+  "arch": "Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDDS-1468",
+  "dur": 7,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-16059",
+  "dur": 102,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 27,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-9440",
+  "dur": 32,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 16,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HDDS-1395",
+  "dur": 32,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-1395",
+  "dur": 32,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "SUBMARINE-52",
+  "dur": 29,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 43,
+  "arch": "Move Class,Move Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Extract Interface,Extract Superclass,Extract Class,Extract Superclass,Extract Subclass,Extract Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-16050",
+  "dur": 118,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1501",
+  "dur": 16,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 2,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDDS-1604",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 3,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-1551",
+  "dur": 14,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Move Class,Extract Subclass"
+ },
+ {
+  "key": "HDDS-1540",
+  "dur": 16,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HDDS-1624",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-16050",
+  "dur": 118,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1458",
+  "dur": 43,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 104,
+  "arch": "Move Class,Move Class,Rename Package,Move Class"
+ },
+ {
+  "key": "HDDS-1496",
+  "dur": 30,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDDS-1620",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 1,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "YARN-8499",
+  "dur": 343,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 26,
+  "arch": "Move And Rename Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-14203",
+  "dur": 152,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 12,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-16279",
+  "dur": 47,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 22,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-15183",
+  "dur": 516,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 22,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HDFS-14508",
+  "dur": 12,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 38,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "YARN-8002",
+  "dur": 13,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 18,
+  "arch": "Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-13215",
+  "dur": 18,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 73,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-9627",
+  "dur": 2,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 12,
+  "arch": "Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-10454",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Move Class"
+ },
+ {
+  "key": "YARN-8299",
+  "dur": 184,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 39,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-199",
+  "dur": 25,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 48,
+  "arch": "Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "YARN-8331",
+  "dur": 80,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDFS-10884",
+  "dur": 34,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11029",
+  "dur": 22,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11695",
+  "dur": 29,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 29,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-12570",
+  "dur": 12,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 15,
+  "arch": "Move Class,Move And Rename Class"
+ },
+ {
+  "key": "HDFS-12790",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-12955",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-12982",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Move Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-12911",
+  "dur": 41,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 27,
+  "arch": "Move Class,Move Class,Move And Rename Class,Extract Interface"
+ },
+ {
+  "key": "HDFS-13033",
+  "dur": 5,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 15,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-13097",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-13165",
+  "dur": 69,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 26,
+  "arch": "Move Class,Extract Subclass"
+ },
+ {
+  "key": "HDFS-13381",
+  "dur": 92,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 14,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-13076",
+  "dur": 175,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 18,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-179",
+  "dur": 58,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 34,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-13790",
+  "dur": 55,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 38,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-8298",
+  "dur": 195,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 32,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-265",
+  "dur": 33,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 25,
+  "arch": "Extract Subclass"
+ },
+ {
+  "key": "YARN-8705",
+  "dur": 3,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 7,
+  "arch": "Move Class,Move Class,Extract Class"
+ },
+ {
+  "key": "HDDS-379",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HDDS-398",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Extract Class"
+ },
+ {
+  "key": "HDDS-424",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "YARN-7757",
+  "dur": 19,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 30,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-6858",
+  "dur": 215,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 39,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-7988",
+  "dur": 28,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 26,
+  "arch": "Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "YARN-7892",
+  "dur": 97,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 39,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-8103",
+  "dur": 87,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 31,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-399",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 23,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-15560",
+  "dur": 7,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Move And Rename Class,Move And Rename Class"
+ },
+ {
+  "key": "HADOOP-15446",
+  "dur": 6,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 22,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HADOOP-15659",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HADOOP-15692",
+  "dur": 5,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 11,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-15663",
+  "dur": 21,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 13,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDDS-366",
+  "dur": 28,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-476",
+  "dur": 3,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Move Class,Move And Rename Class,Extract Superclass,Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HDDS-460",
+  "dur": 5,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-15726",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 25,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-8665",
+  "dur": 105,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 20,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDDS-391",
+  "dur": 27,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "YARN-8468",
+  "dur": 110,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 93,
+  "arch": "Move Class,Extract Superclass"
+ },
+ {
+  "key": "YARN-8621",
+  "dur": 59,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "YARN-7644",
+  "dur": 301,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 32,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "YARN-5742",
+  "dur": 724,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 36,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-14445",
+  "dur": 521,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 190,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HADOOP-14445",
+  "dur": 521,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 190,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-11106",
+  "dur": 122,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 10,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-10796",
+  "dur": 106,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-11106",
+  "dur": 122,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 10,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Extract Class"
+ },
+ {
+  "key": "HDFS-13291",
+  "dur": 11,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 29,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "YARN-7574",
+  "dur": 132,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 31,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-13328",
+  "dur": 19,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 18,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-14445",
+  "dur": 521,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 190,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-13056",
+  "dur": 77,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 62,
+  "arch": "Extract Subclass"
+ },
+ {
+  "key": "YARN-8060",
+  "dur": 25,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 23,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDFS-10180",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Package,Move Class"
+ },
+ {
+  "key": "HDFS-10195",
+  "dur": 3,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 20,
+  "arch": "Move Class,Move And Rename Class"
+ },
+ {
+  "key": "HDFS-10995",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Package,Move Class"
+ },
+ {
+  "key": "HDFS-11004",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-11081",
+  "dur": 15,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 20,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11154",
+  "dur": 5,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 24,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-11184",
+  "dur": 90,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 26,
+  "arch": "Rename Package,Move Class"
+ },
+ {
+  "key": "HDFS-11414",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 15,
+  "arch": "Move Class,Move Class,Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-10928",
+  "dur": 160,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HDFS-11513",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 7,
+  "arch": "Extract Interface,Extract Interface"
+ },
+ {
+  "key": "HDFS-11548",
+  "dur": 9,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HDFS-11564",
+  "dur": 11,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Extract Superclass,Extract Superclass,Extract Superclass"
+ },
+ {
+  "key": "HDFS-11666",
+  "dur": 1,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 13,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-11694",
+  "dur": 22,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11769",
+  "dur": 6,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 27,
+  "arch": "Extract Superclass"
+ },
+ {
+  "key": "HDFS-11775",
+  "dur": 9,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 35,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11843",
+  "dur": 2,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11859",
+  "dur": 3,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11822",
+  "dur": 21,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-11926",
+  "dur": 1,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 23,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-11880",
+  "dur": 14,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-12123",
+  "dur": 3,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 10,
+  "arch": "Extract Subclass,Extract Class"
+ },
+ {
+  "key": "HDFS-12069",
+  "dur": 16,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 33,
+  "arch": "Move And Rename Class,Extract Interface"
+ },
+ {
+  "key": "HDFS-11920",
+  "dur": 59,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 31,
+  "arch": "Extract Class,Extract Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-12259",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 18,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move And Rename Class,Move And Rename Class"
+ },
+ {
+  "key": "HDFS-12274",
+  "dur": 1,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 14,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-12313",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 12,
+  "arch": "Move Class,Move Package,Move Class,Move Package,Move Class"
+ },
+ {
+  "key": "HDFS-12159",
+  "dur": 30,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 29,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-12333",
+  "dur": 8,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 12,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HDFS-12513",
+  "dur": 13,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 22,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-12387",
+  "dur": 32,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 30,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-12443",
+  "dur": 53,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 24,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-12774",
+  "dur": 2,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 6,
+  "arch": "Move Class,Move Class"
+ },
+ {
+  "key": "HDFS-12756",
+  "dur": 8,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 16,
+  "arch": "Move Class,Extract Subclass"
+ },
+ {
+  "key": "HDFS-12522",
+  "dur": 131,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "HDFS-13116",
+  "dur": 2,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 13,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-13149",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 8,
+  "arch": "Move And Rename Class,Move And Rename Class"
+ },
+ {
+  "key": "HDFS-13258",
+  "dur": 5,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 14,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Rename Package,Move Class,Move And Rename Class,Rename Package,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HDFS-13341",
+  "dur": 10,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 11,
+  "arch": "Move Class,Move Class,Move Package,Move Class,Move And Rename Class,Move And Rename Class,Move Package"
+ },
+ {
+  "key": "HDFS-13320",
+  "dur": 14,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 19,
+  "arch": "Move Class,Move Class,Move Class,Rename Package,Move Class,Move And Rename Class"
+ },
+ {
+  "key": "HDFS-13405",
+  "dur": 0,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 7,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Move And Rename Class,Rename Package,Split Package,Merge Package"
+ },
+ {
+  "key": "HDFS-13324",
+  "dur": 20,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-13423",
+  "dur": 2,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 14,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDFS-13424",
+  "dur": 5,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 12,
+  "arch": "Move Class,Extract Subclass"
+ },
+ {
+  "key": "HDFS-13444",
+  "dur": 4,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 13,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-13",
+  "dur": 0,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 5,
+  "arch": "Move Class,Move Class,Move Class,Move Class,Extract Class,Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-14445",
+  "dur": 521,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 190,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HDDS-18",
+  "dur": 28,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 24,
+  "arch": "Move And Rename Class"
+ },
+ {
+  "key": "YARN-7900",
+  "dur": 103,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 26,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-15450",
+  "dur": 14,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 13,
+  "arch": "Move Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-18830",
+  "dur": 187,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 18,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-19047",
+  "dur": 67,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 40,
+  "arch": "Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "HADOOP-19098",
+  "dur": 39,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 20,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-19102",
+  "dur": 48,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 42,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HADOOP-18679",
+  "dur": 431,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 53,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HADOOP-19205",
+  "dur": 20,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 5,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-19120",
+  "dur": 123,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 143,
+  "arch": "Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "HADOOP-19221",
+  "dur": 69,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 33,
+  "arch": "Move Class,Move And Rename Class"
+ },
+ {
+  "key": "HADOOP-19164",
+  "dur": 140,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 4,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-17381",
+  "dur": 885,
+  "resolved": false,
+  "f2": true,
+  "ncomments": 19,
+  "arch": "Extract Interface"
+ },
+ {
+  "key": "HADOOP-19187",
+  "dur": 85,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 49,
+  "arch": "Extract Subclass"
+ },
+ {
+  "key": "HADOOP-19207",
+  "dur": 190,
+  "resolved": true,
+  "f2": false,
+  "ncomments": 9,
+  "arch": "Extract Subclass,Extract Subclass,Extract Subclass,Extract Subclass"
+ },
+ {
+  "key": "HADOOP-19232",
+  "dur": 209,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 117,
+  "arch": "Extract Class,Extract Class"
+ },
+ {
+  "key": "HADOOP-19354",
+  "dur": 78,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 30,
+  "arch": "Move Class,Move And Rename Class,Extract Superclass,Extract Class,Extract Class,Extract Class,Extract Superclass"
+ },
+ {
+  "key": "HADOOP-19311",
+  "dur": 131,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 39,
+  "arch": "Move Class,Extract Superclass,Extract Class"
+ },
+ {
+  "key": "HADOOP-19474",
+  "dur": 41,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 50,
+  "arch": "Move Class"
+ },
+ {
+  "key": "HADOOP-19522",
+  "dur": 18,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 22,
+  "arch": "Extract Class"
+ },
+ {
+  "key": "HDFS-17874",
+  "dur": 35,
+  "resolved": true,
+  "f2": true,
+  "ncomments": 27,
+  "arch": "Move Package,Move Class"
+ }
+]

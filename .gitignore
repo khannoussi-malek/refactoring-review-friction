@@ -1,0 +1,27 @@
+# ── External upstream repo — NOT committed. Clone it yourself (see README):
+#     git clone https://github.com/apache/hadoop.git
+hadoop/
+
+# ── Regenerable via scripts/setup.sh ──
+.venv/
+RefactoringMiner/
+RefactoringMiner-src/
+_rm_unzip/
+
+# ── Large / intermediate RefactoringMiner output (re-detect with run_rm_safe.sh) ──
+refminer*.json
+rm_chunks/
+
+# ── Jira caches (re-fetch with pr_review_signal.py / the metadata fetch) ──
+.jira_cache/
+.jira_meta/
+
+# ── Local config (may hold project-specific choices) ──
+config.env
+
+# ── OS / misc ──
+.DS_Store
+*.log
+
+# NOTE: the SMALL derived results ARE committed on purpose — they are the findings:
+#   architectural_episodes*.json  review_signal*.json  episode_outcomes.json  cox_dataset.json

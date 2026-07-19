@@ -1,0 +1,87 @@
+[
+  {
+    "sha1": "91ba4848b36d0a479975679e8a0bc22d0a74a7c5",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "649213bc6d48648371d3e0c4f5ab0484330e4cd1",
+    "arch_types": [
+      "Extract Superclass"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "f2ea733732f1aa50e81df8ab013aa21ab36053b8",
+    "arch_types": [
+      "Extract Subclass",
+      "Extract Subclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "33bbcfa4b042d0677e659569c9ca6fd730707ea2",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "1bd88a80dbadf6a43cd6370d9aa6bf5bb8842dd1",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "2428368a7475f12499af031657e0914c54a6344b",
+    "arch_types": [
+      "Extract Interface"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "b7630e2b36b95cc4ea118f0961ad61e95018a05c",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "071440c9242543ed5a7a59ac988ff24080ad52c3",
+    "arch_types": [
+      "Extract Subclass",
+      "Extract Subclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "bb379f8f4840647af75067b451575ee2f924987a",
+    "arch_types": [
+      "Move Class",
+      "Move And Rename Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": null
+  }
+]

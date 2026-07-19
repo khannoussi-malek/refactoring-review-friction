@@ -1,0 +1,90 @@
+{
+  "HADOOP-18830": {
+    "summary": "S3A: Cut S3 Select",
+    "n_review": 16,
+    "n_human": 2,
+    "n_ci": 14,
+    "n_opened": 2,
+    "n_other": 2,
+    "n_discussion": 18,
+    "struct_hits": 3,
+    "f2_structural_review": true
+  },
+  "HADOOP-19047": {
+    "summary": "Support InMemory Tracking Of S3A Magic Commits",
+    "n_review": 37,
+    "n_human": 3,
+    "n_ci": 7,
+    "n_opened": 1,
+    "n_other": 1,
+    "n_discussion": 40,
+    "struct_hits": 6,
+    "f2_structural_review": true
+  },
+  "HADOOP-19098": {
+    "summary": "Vector IO: consistent specified rejection of overlapping ranges",
+    "n_review": 18,
+    "n_human": 2,
+    "n_ci": 19,
+    "n_opened": 5,
+    "n_other": 5,
+    "n_discussion": 20,
+    "struct_hits": 1,
+    "f2_structural_review": true
+  },
+  "HADOOP-19102": {
+    "summary": "[ABFS]: FooterReadBufferSize should not be greater than readBufferSize",
+    "n_review": 40,
+    "n_human": 2,
+    "n_ci": 18,
+    "n_opened": 2,
+    "n_other": 2,
+    "n_discussion": 42,
+    "struct_hits": 18,
+    "f2_structural_review": true
+  },
+  "HADOOP-18679": {
+    "summary": "Add BulkDelete API for paged delete of files and objects",
+    "n_review": 48,
+    "n_human": 5,
+    "n_ci": 21,
+    "n_opened": 4,
+    "n_other": 5,
+    "n_discussion": 53,
+    "struct_hits": 19,
+    "f2_structural_review": true
+  },
+  "HADOOP-19205": {
+    "summary": "S3A initialization/close slower than with v1 SDK",
+    "n_review": 4,
+    "n_human": 1,
+    "n_ci": 2,
+    "n_opened": 1,
+    "n_other": 1,
+    "n_discussion": 5,
+    "struct_hits": 3,
+    "f2_structural_review": true
+  },
+  "HADOOP-19120": {
+    "summary": "[ABFS]: ApacheHttpClient adaptation as network library",
+    "n_review": 141,
+    "n_human": 2,
+    "n_ci": 45,
+    "n_opened": 1,
+    "n_other": 2,
+    "n_discussion": 143,
+    "struct_hits": 29,
+    "f2_structural_review": true
+  },
+  "HADOOP-19221": {
+    "summary": "S3A: Unable to recover from failure of multipart block upload attempt \"Status Code: 400; Error Code: RequestTimeout\"",
+    "n_review": 28,
+    "n_human": 5,
+    "n_ci": 19,
+    "n_opened": 1,
+    "n_other": 2,
+    "n_discussion": 33,
+    "struct_hits": 7,
+    "f2_structural_review": true
+  }
+}

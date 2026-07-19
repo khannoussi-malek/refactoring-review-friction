@@ -1,0 +1,905 @@
+[
+  {
+    "sha1": "76900b4f5b7ad8d11baf505abc43f7b24d364071",
+    "arch_types": [
+      "Move Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "YARN-10189"
+  },
+  {
+    "sha1": "82ff7bc9abc8f3ad549db898953d98ef142ab02d",
+    "arch_types": [
+      "Extract Superclass"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-16959"
+  },
+  {
+    "sha1": "b214bbd2d92a0c02b71d352dba85f3b87317933c",
+    "arch_types": [
+      "Extract Subclass",
+      "Extract Subclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-16916"
+  },
+  {
+    "sha1": "8f78aeb2500011e568929b585ed5b0987355f88d",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": null
+  },
+  {
+    "sha1": "cef0756929458f65c4f6731fe21d659100bcc8ea",
+    "arch_types": [
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "YARN-9606"
+  },
+  {
+    "sha1": "4734c77b4b64b7c6432da4cc32881aba85f94ea1",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-15322"
+  },
+  {
+    "sha1": "b2200a33a6cbb43998833d902578143f93bb192a",
+    "arch_types": [
+      "Extract Interface"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-15168"
+  },
+  {
+    "sha1": "9cbd76cc775b58dfedb943f971b3307ec5702f13",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move And Rename Class",
+      "Move Package"
+    ],
+    "n_arch": 13,
+    "cross_module": true,
+    "issue_key": "HDFS-15346"
+  },
+  {
+    "sha1": "b2facc84a1b48b9dcbe0816e120778d2100b320e",
+    "arch_types": [
+      "Extract Subclass",
+      "Extract Subclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "YARN-9460"
+  },
+  {
+    "sha1": "b9fa5e0182c19adc4ff4cd2d9265a36ce9913178",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Extract Superclass",
+      "Extract Interface",
+      "Extract Subclass"
+    ],
+    "n_arch": 6,
+    "cross_module": false,
+    "issue_key": "HDFS-13934"
+  },
+  {
+    "sha1": "05b3337a4605dcb6904cb3fe2a58e4dc424ef015",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-15481"
+  },
+  {
+    "sha1": "5f34271bb1449d98629e2581fc691226276995e1",
+    "arch_types": [
+      "Extract Interface"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-17475"
+  },
+  {
+    "sha1": "5db4c0bf702b91ee73910eb9d4f51ac7fa5054fa",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 18,
+    "cross_module": false,
+    "issue_key": "YARN-10412"
+  },
+  {
+    "sha1": "299b8062f133f93f0fcd069cca169d63c37c177c",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": true,
+    "issue_key": "MAPREDUCE-7322"
+  },
+  {
+    "sha1": "de05cefbae61f8cb89726c78e6633738e08960b5",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-15940"
+  },
+  {
+    "sha1": "acb49f2fc3b00f3b008d3a92388a3baed40341e6",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-15989"
+  },
+  {
+    "sha1": "c8073811b2a7cce9283dbbe0337368eb44267279",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Rename Package",
+      "Move Class"
+    ],
+    "n_arch": 4,
+    "cross_module": false,
+    "issue_key": "YARN-9279"
+  },
+  {
+    "sha1": "832a3c6a8918c73fa85518d5223df65b48f706e9",
+    "arch_types": [
+      "Move Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-17511"
+  },
+  {
+    "sha1": "b7f69467c19f6114b931ca2377b0ed7a8ada609e",
+    "arch_types": [
+      "Extract Superclass",
+      "Extract Superclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HDFS-15973"
+  },
+  {
+    "sha1": "e90c41af34ada9d7b61e4d5a8b88c2f62c7fea25",
+    "arch_types": [
+      "Extract Superclass",
+      "Extract Superclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HDFS-15973"
+  },
+  {
+    "sha1": "a218038960e905e6c9eae80e118575a7743cae7a",
+    "arch_types": [
+      "Extract Superclass",
+      "Extract Superclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-17139"
+  },
+  {
+    "sha1": "409878ef80973e491f9c52e78a631d174dc847ef",
+    "arch_types": [
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 2,
+    "cross_module": true,
+    "issue_key": "HDFS-16174"
+  },
+  {
+    "sha1": "aa74a303ed30a057893c6d2d9fb1e07e7d1f4a7d",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10913"
+  },
+  {
+    "sha1": "4df4389325254465b52557d6fa99bcd470d64409",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10911"
+  },
+  {
+    "sha1": "9f6430c9ed2bca5696e77bfe9eda5d4f10b0d280",
+    "arch_types": [
+      "Move And Rename Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10897"
+  },
+  {
+    "sha1": "d609f44aa0979a2c7c853b1a22e379616a1255d2",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-17922"
+  },
+  {
+    "sha1": "3c9e3d5321134720afe1d7f280ed16dd3ac04b99",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-10960"
+  },
+  {
+    "sha1": "4f3dfb7c1cce2543f7c6eba786779425c14dd7c4",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": true,
+    "issue_key": "HDFS-16265"
+  },
+  {
+    "sha1": "025f97c8c2d6ecf4d87b084f17ab0b8966fa2875",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10942"
+  },
+  {
+    "sha1": "20aeb5ecc33f6786f96fb50df22c55aa987fbfc9",
+    "arch_types": [
+      "Move And Rename Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "YARN-10916"
+  },
+  {
+    "sha1": "d59890404611629d364c39537e6a0a53808403e1",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-10904"
+  },
+  {
+    "sha1": "22c9f28f4d85a92d23024b03c9094edb8e56f369",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10005"
+  },
+  {
+    "sha1": "7786600744101f5d135ddf083655c88d9f7267a0",
+    "arch_types": [
+      "Move Class",
+      "Extract Interface"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-18457"
+  },
+  {
+    "sha1": "aaf92fe1839b8bc732582445e9bbf019c17f3ef0",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18526"
+  },
+  {
+    "sha1": "15b52fb6a4c9901ba3491bff6ee43312023c9932",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-16689"
+  },
+  {
+    "sha1": "151b71d7affbbaadab5af7943f824f6ae6a6f47b",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move And Rename Class",
+      "Extract Superclass",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 6,
+    "cross_module": false,
+    "issue_key": "MAPREDUCE-7431"
+  },
+  {
+    "sha1": "a90238c0b8b767a39b106b7a40f294e5f2bb2410",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18631"
+  },
+  {
+    "sha1": "5ed7e912dcf563e0d6fb92cfa531812bf18a6ac7",
+    "arch_types": [
+      "Move Class",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-11469"
+  },
+  {
+    "sha1": "0e46388474f52cd38578d946c26ba762be05ef1f",
+    "arch_types": [
+      "Extract Interface",
+      "Extract Interface"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-18671"
+  },
+  {
+    "sha1": "c7699d3dcd4f8feaf2c5ae5943b8a4cec738e95d",
+    "arch_types": [
+      "Move Class",
+      "Extract Superclass"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "YARN-11079"
+  },
+  {
+    "sha1": "03a499821c9676da0896ca864074dfb8fbdefd6e",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Extract Class"
+    ],
+    "n_arch": 4,
+    "cross_module": true,
+    "issue_key": "HADOOP-18207"
+  },
+  {
+    "sha1": "1d0c9ab4330e87c73e8473bee9c1d4b6db2fd5fd",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class",
+      "Split Package"
+    ],
+    "n_arch": 4,
+    "cross_module": true,
+    "issue_key": "HADOOP-18207"
+  },
+  {
+    "sha1": "7a45ef41647455e8a3f3c6909f0ffa6c8bb5ec7b",
+    "arch_types": [
+      "Move Class",
+      "Extract Interface"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "MAPREDUCE-7435"
+  },
+  {
+    "sha1": "3f4de919bd8ebec1373a69f4656266f690fb2132",
+    "arch_types": [
+      "Move Class",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-11511"
+  },
+  {
+    "sha1": "e7d74f3d594b4774b95011099d58e0340cb87dda",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18291"
+  },
+  {
+    "sha1": "59f3a168199d47bf28777cb6eead6a5de8d073ae",
+    "arch_types": [
+      "Extract Superclass",
+      "Extract Subclass",
+      "Extract Subclass"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-11153"
+  },
+  {
+    "sha1": "81d90fd65b3c0c7ac66ebae78e22dcb240a0547b",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class",
+      "Extract Class",
+      "Extract Class",
+      "Extract Class",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 7,
+    "cross_module": false,
+    "issue_key": "HADOOP-18073"
+  },
+  {
+    "sha1": "9bc159f4ac3cbc3d3aa253c2e591dec17cd81648",
+    "arch_types": [
+      "Move Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-18487"
+  },
+  {
+    "sha1": "4c04818d3da5d136a6e332b66b1268d8c46f4d35",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": true,
+    "issue_key": "HADOOP-18919"
+  },
+  {
+    "sha1": "000a39ba2d2131ac158e23b35eae8c1329681bff",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18872"
+  },
+  {
+    "sha1": "7a55442297228dbc2e24b6c0fb9a513e93c8435c",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18956"
+  },
+  {
+    "sha1": "0b43026cabdff3304201aa219b7a291d84fed257",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-17912"
+  },
+  {
+    "sha1": "fbea6a6d103e75d77ff9b18b9fdc1e76eba80618",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18830"
+  },
+  {
+    "sha1": "5092ea62ecbac840d56978a31bb11cfc14c6fe83",
+    "arch_types": [
+      "Extract Superclass"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-13230"
+  },
+  {
+    "sha1": "9b9f7ea16a299911fc75738401cb5a0f8713ead7",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10399"
+  },
+  {
+    "sha1": "44542863f417c26475979c7b68554e4d247302a4",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10408"
+  },
+  {
+    "sha1": "83c7c2b4c48fe2e9606057ab35cafb0af4528eca",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "HADOOP-17023"
+  },
+  {
+    "sha1": "cd0490e8c6dd502c639de2d26980556b78eeeb06",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10425"
+  },
+  {
+    "sha1": "e3c08f285a6ac02f51ddf0007db76fc3da7ec372",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "HADOOP-17244"
+  },
+  {
+    "sha1": "fa773a832652ac6f2a24f93fc2bfc2ae251bfe1d",
+    "arch_types": [
+      "Move Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "YARN-10278"
+  },
+  {
+    "sha1": "99d08a19ba5d0464da1619a83db90c2f4b84a74b",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-17450"
+  },
+  {
+    "sha1": "617af28e80774249b0a52006ca70a4bf0b14451b",
+    "arch_types": [
+      "Move Class",
+      "Move Package",
+      "Move Class",
+      "Extract Superclass",
+      "Extract Interface",
+      "Extract Interface",
+      "Extract Interface",
+      "Extract Interface",
+      "Extract Interface",
+      "Extract Interface",
+      "Extract Superclass"
+    ],
+    "n_arch": 11,
+    "cross_module": false,
+    "issue_key": "HADOOP-17271"
+  },
+  {
+    "sha1": "77299ae992b16066dd61e4fec9ff63b863ae2e21",
+    "arch_types": [
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 2,
+    "cross_module": true,
+    "issue_key": "HDFS-15748"
+  },
+  {
+    "sha1": "890f2da624465473a5f401a3bcfc4bbd068289a1",
+    "arch_types": [
+      "Extract Subclass",
+      "Extract Subclass",
+      "Extract Subclass"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-10553"
+  },
+  {
+    "sha1": "836c6304304b5c23a627e6a9459335e462fa5639",
+    "arch_types": [
+      "Move And Rename Class",
+      "Move And Rename Class",
+      "Extract Superclass"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-10525"
+  },
+  {
+    "sha1": "8bc2dfbf36bddd57de3496bece88ddb86529426b",
+    "arch_types": [
+      "Move And Rename Class",
+      "Extract Superclass",
+      "Extract Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-10519"
+  },
+  {
+    "sha1": "63018dc73f4d29632e93be08d035ab9a7e73531c",
+    "arch_types": [
+      "Extract Superclass"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-17998"
+  },
+  {
+    "sha1": "ffee92bbf1a69c4d5fc5e0f46486e26a38bf766c",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-11005"
+  },
+  {
+    "sha1": "898055e204acfe54ab5a8cffb8f9769aab6fe7a7",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Extract Superclass"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-11024"
+  },
+  {
+    "sha1": "a5bcf4c792e4d74c3c30cf89585a8cdf0e59d26f",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10907"
+  },
+  {
+    "sha1": "aec9cdb467d81f99ca74a4cf3e076d9e1abec728",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "YARN-10963"
+  },
+  {
+    "sha1": "8d214cb785724cb930c4938df1bb247a61d33710",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10951"
+  },
+  {
+    "sha1": "077c6c62d6c1ed89e209449a5f9c5849b05e7dff",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10547"
+  },
+  {
+    "sha1": "526142447abdee02b86820d884b577b23b769663",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "YARN-10552"
+  },
+  {
+    "sha1": "08a77a765ba635da1cc44f36b103116605a517ee",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10548"
+  },
+  {
+    "sha1": "e386d6a6617450b827745ee6a0a856166d37d450",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10549"
+  },
+  {
+    "sha1": "ab8c36062047e5c4c76ab0399162af9765988690",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "YARN-10550"
+  },
+  {
+    "sha1": "e0cd0a82e032b926774dcea69edd4fa20aae2603",
+    "arch_types": [
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-16202"
+  },
+  {
+    "sha1": "6ab7b72cd61a16f7bcf0d7cae15d1d13b04e1eb1",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18168"
+  },
+  {
+    "sha1": "4230162a766555403f69b3b8e84433fd855d4963",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HADOOP-18168"
+  },
+  {
+    "sha1": "93a13202d72687a9785b951343bf37acae746778",
+    "arch_types": [
+      "Move And Rename Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-16582"
+  },
+  {
+    "sha1": "e199da3fae1c82e87f88c8c50f6a96c6515e2edd",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move And Rename Class",
+      "Extract Interface",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 6,
+    "cross_module": false,
+    "issue_key": "HADOOP-17833"
+  },
+  {
+    "sha1": "5d08ffa769d9dd2ac533e1e9d249788f70191555",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Extract Class",
+      "Extract Class",
+      "Extract Class"
+    ],
+    "n_arch": 5,
+    "cross_module": false,
+    "issue_key": "YARN-11182"
+  },
+  {
+    "sha1": "4d1f6f9b995cbf65fc8a00cb6c8fabe70d3b5474",
+    "arch_types": [
+      "Move Class",
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 3,
+    "cross_module": false,
+    "issue_key": "HADOOP-18106"
+  },
+  {
+    "sha1": "cf33164857530a38aa3edc99a9051a47aae9dede",
+    "arch_types": [
+      "Move Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-16591"
+  },
+  {
+    "sha1": "08a940d5dd10f66c14f7374b9f6b947799bbd76f",
+    "arch_types": [
+      "Extract Class"
+    ],
+    "n_arch": 1,
+    "cross_module": false,
+    "issue_key": "HDFS-16640"
+  },
+  {
+    "sha1": "cde1f3af21b84a65fb27a5822b308413ea6296c5",
+    "arch_types": [
+      "Move Class",
+      "Move Class"
+    ],
+    "n_arch": 2,
+    "cross_module": false,
+    "issue_key": "HADOOP-18302"
+  }
+]
