@@ -62,12 +62,33 @@ discussion-volume artifact.
   within sub-tasks). Volume-independent — a second friction dimension.
 - **Quality is a null:** reopen rate ~7% across all groups (p=0.97). Abstraction is slower but *not
   buggier* — the friction is time, not error-proneness.
-- **Blast radius:** friction concentrates in the foundational module.
+- **Module hotspots:** triage latency varies ~40× across modules.
 
 ![module hotspots](figures/module_hotspots.png)
 
-Architectural work in `hadoop-common` (the shared core every module depends on) stalls ~40× longer
-than in HDFS — the more depended-upon the module, the more hesitation before touching its structure.
+## 6a. A mechanism we proposed, tested, and killed
+
+The obvious reading of that ~40× spread is **blast radius**: touching a module that many others depend
+on invites hesitation. We tested it properly — building Hadoop's Maven dependency graph (117 modules,
+513 internal edges) so that centrality is measured *independently of the tickets*, then mapping each
+architectural refactoring to a module by its file paths (259 episodes → 242 tickets).
+
+![blast radius](figures/blast_radius.png)
+
+**It fails.** Centrality does not predict time-to-pickup (OLS coef +0.09, **p = 0.33**; Spearman
+excluding connectors rho = −0.03, p = 0.65), and the raw association even runs *negative* — the most
+depended-upon modules are picked up **fastest**. The ~40× spread is real but had two flaws as
+evidence: `HADOOP-*` is a Jira prefix, not a module, and **62% of those "hadoop-common" tickets are
+actually cloud connectors**. `hadoop-common` alone is 24.8 days, not 39.
+
+**What is actually there** is the opposite finding: the structurally **peripheral** vendor
+cloud-connector tier (`hadoop-aws`, `hadoop-azure`; blast radius ~2) waits **43.6 days vs 3.1**
+elsewhere — **~14×, p = 3e-07**, stable across eras. Nothing depends on these modules, so hesitation
+cannot be the story; **one maintainer owns 33%** of their tickets (vs 9% elsewhere).
+
+**Friction tracks where community attention is thinnest, not where technical risk is highest.** That
+is hard evidence for the reframing in §9 below. And §4 survives it: abstraction still predicts triage
+with tier and era controlled (coef +0.67, **p = 0.010**) — a fifth control passed.
 
 ## 7. Between-group primary comparison (context for §4)
 
@@ -89,16 +110,21 @@ entangled with sheer discussion quantity. Reported deliberately.
 
 Much of the timing friction reflects **how open-source coordinates work**: triage latency ≈ "time
 until a volunteer opts in," not individual hesitation; estimates absent = Apache culture; the
-experience effect = committer gatekeeping. Abstraction-as-commitment and blast-radius are more likely
-intrinsic. Generalization beyond OSS is untested — the strongest future step is a commercial-codebase
-contrast. This also suggests a reframing: RQ1 may be *"how does a volunteer community ration attention
-across high-stakes structural change?"*
+experience effect = committer gatekeeping. §6a turns this from a caveat into a **result**: the
+friction hotspot is the module tier with the thinnest, most concentrated maintainership, not the one
+with the greatest technical reach. Abstraction-as-commitment remains the more likely *intrinsic*
+effect. Generalization beyond OSS is untested — the strongest future step is a commercial-codebase
+contrast. Hence the reframing: RQ1 may be *"how does a volunteer community ration attention across
+high-stakes structural change?"*
 
 ## 10. Contribution and full-study plan
 
 **Contribution:** a reproducible fault-tolerant pipeline; a defended, mechanism-level preliminary
-finding (abstraction-creation is the locus of refactoring friction — robust to four controls, time-not-
-quality, foundation-concentrated); honest negatives (estimates absent, retracted signal); and a
-well-scoped design. **Full study:** blast-radius model (module dependency → hesitation); a validated,
-dual-rated (κ) structural signal; better changelog effort proxies; a commercial contrast to separate
-intrinsic from OSS effects; and replication on Kafka/HBase/Camel.
+finding (abstraction-creation is the locus of refactoring friction — robust to five controls,
+time-not-quality); **two mechanisms tested and killed by our own analysis** (the structural-discussion
+signal, §8; the blast-radius model, §6a), each replaced by what the data actually supports; and a
+well-scoped design. **Full study:** an **attention-rationing model** (maintainer concentration / review
+pool, not code centrality — the §6a lead); a validated, dual-rated (κ) structural signal; better
+changelog effort proxies; a commercial contrast to separate intrinsic from OSS effects; and
+replication on Kafka/HBase/Camel, now carrying a **pre-registered prediction** from §6a — peripheral
+vendor-integration modules should stall more than core ones.

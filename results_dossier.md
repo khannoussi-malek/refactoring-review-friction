@@ -2,9 +2,10 @@
 
 *Complete, honest hand-off of everything the preliminary study found. All numbers are exact. This
 supersedes earlier partial versions. For an AI agent improving the proposal: the **refined finding
-(§5)** is the recommended headline; the **retraction (§10)** and **open-source caveat (§12)** are
-central, not footnotes — do NOT resurrect the retracted result or oversell beyond what each number
-supports.*
+(§5)** is the recommended headline; the **retraction (§10)**, the **refuted blast-radius mechanism
+(§9a)** and the **open-source caveat (§12)** are central, not footnotes — do NOT resurrect the
+retracted result, do NOT restate §9's original "the foundation stalls" reading (§9a corrects it),
+and do not oversell beyond what each number supports.*
 
 Repo: `khannoussi-malek/refactoring-review-friction` (private). Corpus: Apache Hadoop. Independent
 pre-PhD pilot to establish feasibility and demonstrate method.
@@ -103,23 +104,84 @@ review rounds 0.97 / 1.04 / 1.39 (p=0.79). **Abstraction work is slower but not 
 friction is time/effort, not error-proneness. (Note: our sample is survivorship-biased toward changes
 that landed, so *abandonment* is not measurable here.)
 
-## 9. Module hotspots — friction concentrates in the foundation
+## 9. Module hotspots — large variation, but NOT where we first thought
 
-Median triage latency by top-level project (architectural tickets):
+Median triage latency by top-level Jira project (architectural tickets):
 
 ![module hotspots](figures/module_hotspots.png)
 
-| Module | Arch tickets | % abstraction | Median triage |
+| Jira project | Arch tickets | % abstraction | Median triage |
 |---|---|---|---|
 | HDFS | 96 | 56% | **1.0 day** |
 | HDDS (Ozone) | 72 | 60% | 3.8 days |
 | YARN | 75 | 77% | 7.1 days |
-| **HADOOP (common)** | 73 | 68% | **39.1 days** |
+| **HADOOP** | 73 | 68% | **39.1 days** |
 
-**~40× variation.** Architectural work in `hadoop-common` — the shared foundation everything depends
-on — stalls ~39 days vs ~1 day in HDFS. Interpretation: **blast radius** — the more depended-upon the
-module, the more hesitation before touching its structure. (Small modules MAPREDUCE/SUBMARINE omitted
-as noisy.)
+**~40× variation** — this part stands. Our original interpretation of it (**blast radius**: the more
+depended-upon a module, the more hesitation before touching its structure) was **tested in §9a and
+does not survive.** Two things were wrong with reading the table above as a blast-radius result:
+
+1. `HADOOP-*` is a **Jira project prefix, not a module.** It bundles `hadoop-common` with every
+   cloud-connector ticket (`hadoop-aws`, `hadoop-azure`, …), which live under `hadoop-tools/`.
+2. Those connectors, not the foundation, are what makes the row slow.
+
+## 9a. Testing the blast-radius mechanism — it fails, and the effect runs the other way
+
+We measured module centrality **independently of the tickets**, from Hadoop's Maven dependency graph:
+117 in-tree modules, 513 internal edges; a module's **blast radius** = how many modules transitively
+depend on it (range 0–90; `hadoop-common` = 86, `hadoop-aws`/`hadoop-azure` = 2). Architectural
+episodes were mapped to modules via the *file paths of the architectural refactorings themselves*
+(from RefactoringMiner, not the whole commit diff). **259/349 episodes → 242 tickets with triage.**
+
+![blast radius](figures/blast_radius.png)
+
+**The mechanism is refuted:**
+
+| Test | Result |
+|---|---|
+| Blast radius vs triage, ticket level (n=242) | rho = **−0.19**, p = 0.003 — *negative*: more central = picked up **faster** |
+| Blast radius vs median triage, module level (n=11) | rho = −0.18, p = 0.59 (n.s.) |
+| OLS + connector-tier control | coef **+0.09, p = 0.33 — null** |
+| Spearman excluding connectors (n=196) | rho = **−0.03, p = 0.65 — null** |
+
+Once the cloud-connector tier is controlled for, blast radius carries **no signal at all**. The
+apparent negative correlation was entirely the connectors (peripheral *and* slow) pulling the line.
+
+**The real hotspot is the peripheral vendor tier:**
+
+| Group | n | Median triage | Median blast radius |
+|---|---|---|---|
+| Cloud connectors (`hadoop-aws`, `hadoop-azure`, …) | 46 | **43.6 days** | 2 |
+| Everything else (incl. `hadoop-common`, HDFS, YARN) | 196 | **3.1 days** | 65 |
+
+**~14× slower, p = 2.7e-07.** It is not an era artifact — connectors are slower in every period
+(≤2018: 15.2 vs 2.2 d; 2019–21: 25.7 vs 2.9 d; 2022+: 72.5 vs 20.7 d), and the tier survives a
+year control (coef +1.67, p = 0.0001).
+
+**Correcting §9's headline number:** the 39.1-day `HADOOP-*` median reproduces exactly, but **45 of
+those 73 tickets (62%) are cloud connectors, not `hadoop-common`.** `hadoop-common` on its own is
+**n = 25, median 24.8 days** — still elevated, but the "foundation stalls ~40× longer than HDFS"
+claim was inflated by a project-prefix aggregation.
+
+**Why are connectors slow?** Not a thinner volunteer pool — tickets per assignee is the same
+(2.56 vs 2.36). It is **concentration**: one maintainer owns **33%** of connector tickets versus 9%
+for the top maintainer elsewhere. Work waits on a specific person, not on collective nerve.
+
+**What this means (feeds §12).** Friction does *not* track where technical risk is highest; it tracks
+where **community attention is thinnest**. Vendor-specific connectors are structurally safe to change
+and still wait ~6 weeks, while the module 86 others depend on is picked up in days. That is attention
+rationing, not blast-radius hesitation — direct empirical support for the §12 reframing.
+
+**§5 survives this, strengthened:** with connector tier and era both controlled, abstraction still
+predicts triage (coef **+0.67, p = 0.010**), and it holds even with connectors excluded entirely
+(coef +0.59, p = 0.041). The headline finding is now robust to a fifth control.
+
+*Caveats.* (a) **90 episodes (26%) could not be attributed** — 78 are HDDS/Ozone and 2 Submarine,
+subprojects since split out of the Hadoop repo, so their poms no longer exist in-tree; this analysis
+covers the surviving monorepo only. (b) The dependency graph is a **present-day snapshot** applied to
+episodes spanning 2016–2026. (c) Module-level n = 11 is small. (d) The connector tier was **found by
+inspecting the module table, not hypothesized in advance** — it needs confirmation on a held-out
+project before being treated as a claim rather than a lead.
 
 ## 10. Retracted result — a within-episode signal that was a volume confound
 
@@ -160,36 +222,50 @@ with a **commercial/industrial codebase** (all-OSS replication tests OSS-general
 
 **Established:** (a) architectural refactorings are a distinct, higher-friction class (§4); (b) the
 friction is specifically in **abstraction-creation, not relocation** (§5), surviving size/volume/
-experience controls; (c) architectural tickets are ~2× more **entangled** (§7); (d) friction is
-**time, not quality** (§8); (e) it concentrates in **foundational modules** (§9); (f) estimates absent;
-traceability excellent.
+experience/tier/era controls; (c) architectural tickets are ~2× more **entangled** (§7); (d) friction
+is **time, not quality** (§8); (e) friction varies ~40× across modules (§9) but is **concentrated in
+the peripheral vendor tier, not the foundation** (§9a); (f) estimates absent; traceability excellent.
+
+**Refuted by our own test:** the **blast-radius mechanism** (§9a) — module dependency centrality does
+not predict triage latency (p = 0.33 with tier controlled), and the raw association runs *negative*.
 
 **Not established:** whether *structural review discussion as such* adds friction beyond volume (§10 —
-untested, not disproven, needs validated signal); whether any of this generalizes **beyond
-open-source** (§12); causal direction.
+untested, not disproven, needs validated signal); whether the **maintainer-concentration** explanation
+for the connector tier is causal (§9a — post-hoc, needs a held-out project); whether any of this
+generalizes **beyond open-source** (§12); causal direction.
 
 ## 14. Threats to validity
 
 Descriptive/associational; single project (Hadoop), single release-line window; groups not fully
 matched (module/time); triage-within-sub-tasks borderline (p=0.051); keyword signal 25% precise, no κ;
-survivorship bias toward landed changes; and the **open-source coordination confound (§12)** pervades
-the timing measures.
+survivorship bias toward landed changes; the **open-source coordination confound (§12)** pervades
+the timing measures; and for §9a specifically, **26% episode attrition** (Ozone/Submarine left the
+repo), a present-day dependency snapshot applied to a decade of history, and a **post-hoc** connector
+tier.
 
 ## 15. Open questions / directions
 
-1. **Blast-radius model:** does a module's dependency centrality predict architectural-change triage?
+1. ~~**Blast-radius model:** does a module's dependency centrality predict architectural-change
+   triage?~~ **Answered in §9a: no.** Replaced by → **attention-rationing model:** does maintainer
+   concentration (or bus factor / review-pool size) predict triage better than any structural
+   property? The §9a connector result says test *social* centrality, not *code* centrality.
 2. **Validated structural signal** (dual-rater κ), then re-test §10.
 3. **Commercial contrast** to separate intrinsic vs OSS-coordination effects (§12).
 4. **Better effort proxies** from the changelog (active vs waiting time) and rework/reverts.
-5. **Replicate** on Kafka/HBase/Camel (tests OSS-generality).
-6. Human-factors (RQ2): who takes on architectural work and why the core stalls.
+5. **Replicate** on Kafka/HBase/Camel — now with a **specific pre-registered prediction** from §9a:
+   peripheral/vendor-integration modules should show longer triage than core modules.
+6. Human-factors (RQ2): who takes on architectural work, and why *peripheral* work stalls.
+7. **Recover the Ozone/Submarine episodes** (§9a caveat a) by resolving their split-out repos.
 
 ## 16. Reusable assets
 
 Fault-tolerant parallel refactoring-mining pipeline (`scripts/run_rm_safe.sh`); PR-review recovery
 from Jira via bot-relay (no GitHub token); monorepo-aware traceability probe; status-changelog method
-separating waiting from active work; committed data artifacts (`*_all.json`, `cox_dataset.json`,
-`episode_outcomes.json`, `arch_vs_ordinary.json`) and the comparison chart.
+separating waiting from active work; **Maven blast-radius graph builder** (`scripts/module_graph.py`)
+and **refactoring→module attribution + mechanism test** (`scripts/episode_files.py`,
+`scripts/blast_radius_model.py`, which reruns the §5 replication gate before reporting anything);
+committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.json`,
+`arch_vs_ordinary.json`, `module_blast_radius.json`, `blast_radius_results.json`) and the charts.
 
 ## 17. Honest abstract
 
@@ -198,10 +274,15 @@ separating waiting from active work; committed data artifacts (`*_all.json`, `co
 > and take ~2× longer to start and resolve. The friction is specifically in **abstraction-creating**
 > refactorings (extract interface/superclass/class): ~2.5× longer triage than code relocation
 > (p=0.004), surviving controls for change size, discussion volume, and contributor experience; simple
-> relocation is no harder than ordinary work. The effect is **time, not quality** (no extra rework) and
-> **concentrates in the foundational `hadoop-common` module** (~40× the triage latency of HDFS),
-> consistent with a *blast-radius/hesitation* mechanism. Effort estimates are absent in Apache (0%). A
-> within-episode "structural discussion" signal was found and **retracted** as a discussion-volume
-> confound. Major caveat: much of the timing friction reflects **open-source volunteer coordination**
-> (triage ≈ time-to-volunteer), so generalization beyond OSS is untested. Contribution: a reproducible
-> pipeline, a defended and mechanism-level preliminary finding, and a well-scoped study design.
+> relocation is no harder than ordinary work. The effect is **time, not quality** (no extra rework).
+> Triage latency varies ~40× across modules, and we tested the obvious mechanism — *blast radius*,
+> that touching a heavily depended-upon module invites hesitation — against Hadoop's Maven dependency
+> graph (117 modules). **It fails:** centrality does not predict triage (p = 0.33) and the raw
+> association is *negative*. The friction concentrates instead in the structurally **peripheral**
+> vendor cloud-connector tier (43.6 vs 3.1 days, p = 3e-07), where one maintainer owns a third of the
+> work — friction tracks where **community attention is thinnest**, not where technical risk is
+> highest. Effort estimates are absent in Apache (0%). A within-episode "structural discussion" signal
+> was found and **retracted** as a discussion-volume confound. Major caveat: much of the timing
+> friction reflects **open-source volunteer coordination** (triage ≈ time-to-volunteer), so
+> generalization beyond OSS is untested. Contribution: a reproducible pipeline, a defended
+> mechanism-level finding, two mechanisms killed by our own tests, and a well-scoped study design.

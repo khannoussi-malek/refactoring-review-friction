@@ -1,0 +1,1311 @@
+{
+  "modules": {
+    "hadoop-aliyun": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-mapreduce-examples",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-annotations": {
+      "blast_radius": 90,
+      "direct_dependents": 36,
+      "depends_on": []
+    },
+    "hadoop-archive-logs": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-archives",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-api",
+        "hadoop-yarn-applications-distributedshell",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-archives": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-assemblies": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-auth": {
+      "blast_radius": 88,
+      "direct_dependents": 17,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-minikdc"
+      ]
+    },
+    "hadoop-auth-examples": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-auth"
+      ]
+    },
+    "hadoop-aws": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-hdfs",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-mapreduce-examples",
+        "hadoop-minikdc",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-azure": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-mapreduce-examples",
+        "hadoop-minikdc",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-azure-datalake": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-mapreduce-client-jobclient"
+      ]
+    },
+    "hadoop-benchmark": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-common"
+      ]
+    },
+    "hadoop-bos": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-mapreduce-client-core"
+      ]
+    },
+    "hadoop-build-tools": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-client": {
+      "blast_radius": 12,
+      "direct_dependents": 6,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-api"
+      ]
+    },
+    "hadoop-client-api": {
+      "blast_radius": 5,
+      "direct_dependents": 4,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-client"
+      ]
+    },
+    "hadoop-client-check-invariants": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-client-api",
+        "hadoop-client-runtime"
+      ]
+    },
+    "hadoop-client-check-test-invariants": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-client-api",
+        "hadoop-client-minicluster",
+        "hadoop-client-runtime"
+      ]
+    },
+    "hadoop-client-integration-tests": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": []
+    },
+    "hadoop-client-minicluster": {
+      "blast_radius": 2,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-client-api",
+        "hadoop-client-runtime",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-minicluster",
+        "hadoop-yarn-server-nodemanager",
+        "hadoop-yarn-server-timelineservice",
+        "hadoop-yarn-server-web-proxy"
+      ]
+    },
+    "hadoop-client-modules": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-client-runtime": {
+      "blast_radius": 4,
+      "direct_dependents": 3,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-client",
+        "hadoop-client-api"
+      ]
+    },
+    "hadoop-cloud-storage": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-aliyun",
+        "hadoop-annotations",
+        "hadoop-aws",
+        "hadoop-azure",
+        "hadoop-azure-datalake",
+        "hadoop-bos",
+        "hadoop-common",
+        "hadoop-cos",
+        "hadoop-gcp",
+        "hadoop-huaweicloud",
+        "hadoop-tos"
+      ]
+    },
+    "hadoop-cloud-storage-dist": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-aws",
+        "hadoop-azure",
+        "hadoop-azure-datalake",
+        "hadoop-bos",
+        "hadoop-common",
+        "hadoop-cos",
+        "hadoop-gcp",
+        "hadoop-huaweicloud",
+        "hadoop-tos"
+      ]
+    },
+    "hadoop-cloud-storage-project": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-common": {
+      "blast_radius": 86,
+      "direct_dependents": 67,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-minikdc"
+      ]
+    },
+    "hadoop-common-project": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-compat-bench": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client"
+      ]
+    },
+    "hadoop-cos": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-datajoin": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-dist": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-client-check-invariants",
+        "hadoop-client-check-test-invariants",
+        "hadoop-client-integration-tests",
+        "hadoop-common",
+        "hadoop-hdfs-client",
+        "hadoop-hdfs-native-client",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-nativetask",
+        "hadoop-yarn-api"
+      ]
+    },
+    "hadoop-distcp": {
+      "blast_radius": 13,
+      "direct_dependents": 11,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient"
+      ]
+    },
+    "hadoop-dynamometer": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-dynamometer-blockgen": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-client",
+        "hadoop-minicluster"
+      ]
+    },
+    "hadoop-dynamometer-dist": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-dynamometer-blockgen",
+        "hadoop-dynamometer-infra",
+        "hadoop-dynamometer-workload"
+      ]
+    },
+    "hadoop-dynamometer-infra": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-client",
+        "hadoop-common",
+        "hadoop-dynamometer-workload",
+        "hadoop-hdfs",
+        "hadoop-minicluster",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-dynamometer-workload": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-client",
+        "hadoop-minicluster"
+      ]
+    },
+    "hadoop-extras": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-federation-balance": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-minicluster"
+      ]
+    },
+    "hadoop-gcp": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common"
+      ]
+    },
+    "hadoop-gridmix": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-rumen",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-hdfs": {
+      "blast_radius": 65,
+      "direct_dependents": 31,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-hdfs-client",
+        "hadoop-kms",
+        "hadoop-minikdc"
+      ]
+    },
+    "hadoop-hdfs-client": {
+      "blast_radius": 76,
+      "direct_dependents": 28,
+      "depends_on": [
+        "hadoop-common"
+      ]
+    },
+    "hadoop-hdfs-httpfs": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client"
+      ]
+    },
+    "hadoop-hdfs-native-client": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client"
+      ]
+    },
+    "hadoop-hdfs-nfs": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-nfs"
+      ]
+    },
+    "hadoop-hdfs-project": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-hdfs-rbf": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-federation-balance",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-minikdc"
+      ]
+    },
+    "hadoop-huaweicloud": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-mapreduce-examples",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-kafka": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common"
+      ]
+    },
+    "hadoop-kms": {
+      "blast_radius": 66,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minikdc"
+      ]
+    },
+    "hadoop-main": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-mapreduce": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-common",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-hs-plugins",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-mapreduce-client-nativetask",
+        "hadoop-mapreduce-client-shuffle",
+        "hadoop-mapreduce-examples"
+      ]
+    },
+    "hadoop-mapreduce-client": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client"
+      ]
+    },
+    "hadoop-mapreduce-client-app": {
+      "blast_radius": 43,
+      "direct_dependents": 12,
+      "depends_on": [
+        "hadoop-hdfs",
+        "hadoop-mapreduce-client-common",
+        "hadoop-mapreduce-client-shuffle",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-nodemanager",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-tests",
+        "hadoop-yarn-server-web-proxy"
+      ]
+    },
+    "hadoop-mapreduce-client-common": {
+      "blast_radius": 47,
+      "direct_dependents": 7,
+      "depends_on": [
+        "hadoop-mapreduce-client-core",
+        "hadoop-yarn-common"
+      ]
+    },
+    "hadoop-mapreduce-client-core": {
+      "blast_radius": 48,
+      "direct_dependents": 19,
+      "depends_on": [
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-yarn-common"
+      ]
+    },
+    "hadoop-mapreduce-client-hs": {
+      "blast_radius": 42,
+      "direct_dependents": 15,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-common",
+        "hadoop-yarn-common"
+      ]
+    },
+    "hadoop-mapreduce-client-hs-plugins": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-mapreduce-client-common",
+        "hadoop-yarn-common"
+      ]
+    },
+    "hadoop-mapreduce-client-jobclient": {
+      "blast_radius": 41,
+      "direct_dependents": 20,
+      "depends_on": [
+        "hadoop-hdfs",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-common",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-nodemanager",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-tests",
+        "hadoop-yarn-server-timelineservice"
+      ]
+    },
+    "hadoop-mapreduce-client-nativetask": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-mapreduce-client-common",
+        "hadoop-mapreduce-client-core"
+      ]
+    },
+    "hadoop-mapreduce-client-shuffle": {
+      "blast_radius": 44,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-mapreduce-client-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-nodemanager"
+      ]
+    },
+    "hadoop-mapreduce-client-uploader": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client"
+      ]
+    },
+    "hadoop-mapreduce-examples": {
+      "blast_radius": 8,
+      "direct_dependents": 6,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-maven-plugins": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-minicluster": {
+      "blast_radius": 19,
+      "direct_dependents": 9,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-api",
+        "hadoop-yarn-server-tests",
+        "hadoop-yarn-server-web-proxy"
+      ]
+    },
+    "hadoop-minikdc": {
+      "blast_radius": 89,
+      "direct_dependents": 16,
+      "depends_on": []
+    },
+    "hadoop-nfs": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common"
+      ]
+    },
+    "hadoop-openstack": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-pipes": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": []
+    },
+    "hadoop-project": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-project-dist": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-annotations"
+      ]
+    },
+    "hadoop-registry": {
+      "blast_radius": 64,
+      "direct_dependents": 5,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minikdc"
+      ]
+    },
+    "hadoop-resourceestimator": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-resourcemanager"
+      ]
+    },
+    "hadoop-rumen": {
+      "blast_radius": 3,
+      "direct_dependents": 3,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-sls": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-client",
+        "hadoop-minicluster",
+        "hadoop-rumen"
+      ]
+    },
+    "hadoop-streaming": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-mapreduce-client-app",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-client-hs",
+        "hadoop-mapreduce-client-jobclient",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-tools": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-tools-dist": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-archive-logs",
+        "hadoop-archives",
+        "hadoop-datajoin",
+        "hadoop-distcp",
+        "hadoop-extras",
+        "hadoop-federation-balance",
+        "hadoop-gridmix",
+        "hadoop-kafka",
+        "hadoop-pipes",
+        "hadoop-resourceestimator",
+        "hadoop-rumen",
+        "hadoop-sls",
+        "hadoop-streaming"
+      ]
+    },
+    "hadoop-tos": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-distcp",
+        "hadoop-mapreduce-client-core",
+        "hadoop-mapreduce-examples",
+        "hadoop-minicluster"
+      ]
+    },
+    "hadoop-yarn": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-api": {
+      "blast_radius": 69,
+      "direct_dependents": 26,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common"
+      ]
+    },
+    "hadoop-yarn-applications": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-applications-catalog": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-applications-catalog-docker": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-yarn-applications-catalog-webapp"
+      ]
+    },
+    "hadoop-yarn-applications-catalog-webapp": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-yarn-common",
+        "hadoop-yarn-services-api",
+        "hadoop-yarn-services-core"
+      ]
+    },
+    "hadoop-yarn-applications-distributedshell": {
+      "blast_radius": 3,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-applicationhistoryservice",
+        "hadoop-yarn-server-nodemanager",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-tests",
+        "hadoop-yarn-server-timeline-pluginstorage",
+        "hadoop-yarn-server-timelineservice"
+      ]
+    },
+    "hadoop-yarn-applications-mawo": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-applications-mawo-core": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-common"
+      ]
+    },
+    "hadoop-yarn-applications-unmanaged-am-launcher": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-tests"
+      ]
+    },
+    "hadoop-yarn-capacity-scheduler-ui": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": []
+    },
+    "hadoop-yarn-common": {
+      "blast_radius": 68,
+      "direct_dependents": 27,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-hdfs-client",
+        "hadoop-yarn-api"
+      ]
+    },
+    "hadoop-yarn-csi": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common"
+      ]
+    },
+    "hadoop-yarn-project": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-yarn-api",
+        "hadoop-yarn-applications-catalog-webapp",
+        "hadoop-yarn-applications-distributedshell",
+        "hadoop-yarn-applications-unmanaged-am-launcher",
+        "hadoop-yarn-capacity-scheduler-ui",
+        "hadoop-yarn-common",
+        "hadoop-yarn-csi",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-globalpolicygenerator",
+        "hadoop-yarn-server-nodemanager",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-router",
+        "hadoop-yarn-server-tests",
+        "hadoop-yarn-server-timelineservice-documentstore",
+        "hadoop-yarn-server-timelineservice-hbase-client",
+        "hadoop-yarn-server-timelineservice-hbase-server-2",
+        "hadoop-yarn-server-timelineservice-hbase-tests",
+        "hadoop-yarn-server-web-proxy",
+        "hadoop-yarn-services-core",
+        "hadoop-yarn-ui"
+      ]
+    },
+    "hadoop-yarn-registry": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": [
+        "hadoop-registry"
+      ]
+    },
+    "hadoop-yarn-server": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-server-applicationhistoryservice": {
+      "blast_radius": 58,
+      "direct_dependents": 6,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minikdc",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common"
+      ]
+    },
+    "hadoop-yarn-server-common": {
+      "blast_radius": 62,
+      "direct_dependents": 15,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-registry",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common"
+      ]
+    },
+    "hadoop-yarn-server-globalpolicygenerator": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minikdc",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-timelineservice"
+      ]
+    },
+    "hadoop-yarn-server-nodemanager": {
+      "blast_radius": 49,
+      "direct_dependents": 8,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-minikdc",
+        "hadoop-registry",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common"
+      ]
+    },
+    "hadoop-yarn-server-resourcemanager": {
+      "blast_radius": 50,
+      "direct_dependents": 9,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-minikdc",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-applicationhistoryservice",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-timelineservice",
+        "hadoop-yarn-server-web-proxy"
+      ]
+    },
+    "hadoop-yarn-server-router": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minikdc",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-nodemanager",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-tests",
+        "hadoop-yarn-server-timelineservice"
+      ]
+    },
+    "hadoop-yarn-server-tests": {
+      "blast_radius": 47,
+      "direct_dependents": 21,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minikdc",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-nodemanager",
+        "hadoop-yarn-server-resourcemanager",
+        "hadoop-yarn-server-timelineservice"
+      ]
+    },
+    "hadoop-yarn-server-timeline-pluginstorage": {
+      "blast_radius": 4,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-applicationhistoryservice"
+      ]
+    },
+    "hadoop-yarn-server-timelineservice": {
+      "blast_radius": 56,
+      "direct_dependents": 11,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-applicationhistoryservice",
+        "hadoop-yarn-server-common"
+      ]
+    },
+    "hadoop-yarn-server-timelineservice-documentstore": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-common",
+        "hadoop-yarn-server-timelineservice"
+      ]
+    },
+    "hadoop-yarn-server-timelineservice-hbase": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-server-timelineservice-hbase-client": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-server-timelineservice",
+        "hadoop-yarn-server-timelineservice-hbase-common"
+      ]
+    },
+    "hadoop-yarn-server-timelineservice-hbase-common": {
+      "blast_radius": 4,
+      "direct_dependents": 3,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-yarn-api",
+        "hadoop-yarn-server-applicationhistoryservice",
+        "hadoop-yarn-server-timelineservice"
+      ]
+    },
+    "hadoop-yarn-server-timelineservice-hbase-server": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-server-timelineservice-hbase-server-2": {
+      "blast_radius": 2,
+      "direct_dependents": 2,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-yarn-api",
+        "hadoop-yarn-server-timelineservice-hbase-common"
+      ]
+    },
+    "hadoop-yarn-server-timelineservice-hbase-tests": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-applicationhistoryservice",
+        "hadoop-yarn-server-timelineservice",
+        "hadoop-yarn-server-timelineservice-hbase-client",
+        "hadoop-yarn-server-timelineservice-hbase-common",
+        "hadoop-yarn-server-timelineservice-hbase-server-2"
+      ]
+    },
+    "hadoop-yarn-server-web-proxy": {
+      "blast_radius": 51,
+      "direct_dependents": 5,
+      "depends_on": [
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minikdc",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common"
+      ]
+    },
+    "hadoop-yarn-services": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-services-api": {
+      "blast_radius": 3,
+      "direct_dependents": 1,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-auth",
+        "hadoop-common",
+        "hadoop-minicluster",
+        "hadoop-minikdc",
+        "hadoop-registry",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common",
+        "hadoop-yarn-services-core"
+      ]
+    },
+    "hadoop-yarn-services-core": {
+      "blast_radius": 4,
+      "direct_dependents": 3,
+      "depends_on": [
+        "hadoop-annotations",
+        "hadoop-common",
+        "hadoop-hdfs",
+        "hadoop-hdfs-client",
+        "hadoop-minicluster",
+        "hadoop-registry",
+        "hadoop-yarn-api",
+        "hadoop-yarn-common",
+        "hadoop-yarn-server-common"
+      ]
+    },
+    "hadoop-yarn-site": {
+      "blast_radius": 0,
+      "direct_dependents": 0,
+      "depends_on": []
+    },
+    "hadoop-yarn-ui": {
+      "blast_radius": 1,
+      "direct_dependents": 1,
+      "depends_on": []
+    }
+  },
+  "dir_to_artifact": {
+    ".": "hadoop-main",
+    "hadoop-yarn-project": "hadoop-yarn-project",
+    "hadoop-yarn-project/hadoop-yarn": "hadoop-yarn",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications": "hadoop-yarn-applications",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell": "hadoop-yarn-applications-distributedshell",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-unmanaged-am-launcher": "hadoop-yarn-applications-unmanaged-am-launcher",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-services": "hadoop-yarn-services",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-services/hadoop-yarn-services-core": "hadoop-yarn-services-core",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-services/hadoop-yarn-services-api": "hadoop-yarn-services-api",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-mawo": "hadoop-yarn-applications-mawo",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-mawo/hadoop-yarn-applications-mawo-core": "hadoop-yarn-applications-mawo-core",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-catalog": "hadoop-yarn-applications-catalog",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-catalog/hadoop-yarn-applications-catalog-docker": "hadoop-yarn-applications-catalog-docker",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-catalog/hadoop-yarn-applications-catalog-webapp": "hadoop-yarn-applications-catalog-webapp",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-capacity-scheduler-ui": "hadoop-yarn-capacity-scheduler-ui",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api": "hadoop-yarn-api",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server": "hadoop-yarn-server",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timeline-pluginstorage": "hadoop-yarn-server-timeline-pluginstorage",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice": "hadoop-yarn-server-timelineservice",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice-documentstore": "hadoop-yarn-server-timelineservice-documentstore",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager": "hadoop-yarn-server-resourcemanager",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-globalpolicygenerator": "hadoop-yarn-server-globalpolicygenerator",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice-hbase-tests": "hadoop-yarn-server-timelineservice-hbase-tests",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice-hbase": "hadoop-yarn-server-timelineservice-hbase",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice-hbase/hadoop-yarn-server-timelineservice-hbase-client": "hadoop-yarn-server-timelineservice-hbase-client",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice-hbase/hadoop-yarn-server-timelineservice-hbase-common": "hadoop-yarn-server-timelineservice-hbase-common",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice-hbase/hadoop-yarn-server-timelineservice-hbase-server": "hadoop-yarn-server-timelineservice-hbase-server",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-timelineservice-hbase/hadoop-yarn-server-timelineservice-hbase-server/hadoop-yarn-server-timelineservice-hbase-server-2": "hadoop-yarn-server-timelineservice-hbase-server-2",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-common": "hadoop-yarn-server-common",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-web-proxy": "hadoop-yarn-server-web-proxy",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-nodemanager": "hadoop-yarn-server-nodemanager",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-tests": "hadoop-yarn-server-tests",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-router": "hadoop-yarn-server-router",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-applicationhistoryservice": "hadoop-yarn-server-applicationhistoryservice",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-ui": "hadoop-yarn-ui",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common": "hadoop-yarn-common",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-site": "hadoop-yarn-site",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-csi": "hadoop-yarn-csi",
+    "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-registry": "hadoop-yarn-registry",
+    "hadoop-assemblies": "hadoop-assemblies",
+    "hadoop-project": "hadoop-project",
+    "hadoop-common-project": "hadoop-common-project",
+    "hadoop-common-project/hadoop-auth": "hadoop-auth",
+    "hadoop-common-project/hadoop-auth-examples": "hadoop-auth-examples",
+    "hadoop-common-project/hadoop-registry": "hadoop-registry",
+    "hadoop-common-project/hadoop-annotations": "hadoop-annotations",
+    "hadoop-common-project/hadoop-common": "hadoop-common",
+    "hadoop-common-project/hadoop-nfs": "hadoop-nfs",
+    "hadoop-common-project/hadoop-minikdc": "hadoop-minikdc",
+    "hadoop-common-project/hadoop-kms": "hadoop-kms",
+    "hadoop-cloud-storage-project": "hadoop-cloud-storage-project",
+    "hadoop-cloud-storage-project/hadoop-cloud-storage-dist": "hadoop-cloud-storage-dist",
+    "hadoop-cloud-storage-project/hadoop-bos": "hadoop-bos",
+    "hadoop-cloud-storage-project/hadoop-tos": "hadoop-tos",
+    "hadoop-cloud-storage-project/hadoop-cloud-storage": "hadoop-cloud-storage",
+    "hadoop-cloud-storage-project/hadoop-gcp": "hadoop-gcp",
+    "hadoop-cloud-storage-project/hadoop-cos": "hadoop-cos",
+    "hadoop-cloud-storage-project/hadoop-huaweicloud": "hadoop-huaweicloud",
+    "hadoop-project-dist": "hadoop-project-dist",
+    "hadoop-maven-plugins": "hadoop-maven-plugins",
+    "hadoop-dist": "hadoop-dist",
+    "hadoop-minicluster": "hadoop-minicluster",
+    "hadoop-mapreduce-project": "hadoop-mapreduce",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client": "hadoop-mapreduce-client",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-uploader": "hadoop-mapreduce-client-uploader",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-common": "hadoop-mapreduce-client-common",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs-plugins": "hadoop-mapreduce-client-hs-plugins",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core": "hadoop-mapreduce-client-core",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-app": "hadoop-mapreduce-client-app",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-nativetask": "hadoop-mapreduce-client-nativetask",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-shuffle": "hadoop-mapreduce-client-shuffle",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-hs": "hadoop-mapreduce-client-hs",
+    "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-jobclient": "hadoop-mapreduce-client-jobclient",
+    "hadoop-mapreduce-project/hadoop-mapreduce-examples": "hadoop-mapreduce-examples",
+    "hadoop-tools": "hadoop-tools",
+    "hadoop-tools/hadoop-pipes": "hadoop-pipes",
+    "hadoop-tools/hadoop-streaming": "hadoop-streaming",
+    "hadoop-tools/hadoop-kafka": "hadoop-kafka",
+    "hadoop-tools/hadoop-aws": "hadoop-aws",
+    "hadoop-tools/hadoop-sls": "hadoop-sls",
+    "hadoop-tools/hadoop-datajoin": "hadoop-datajoin",
+    "hadoop-tools/hadoop-aliyun": "hadoop-aliyun",
+    "hadoop-tools/hadoop-gridmix": "hadoop-gridmix",
+    "hadoop-tools/hadoop-benchmark": "hadoop-benchmark",
+    "hadoop-tools/hadoop-tools-dist": "hadoop-tools-dist",
+    "hadoop-tools/hadoop-openstack": "hadoop-openstack",
+    "hadoop-tools/hadoop-distcp": "hadoop-distcp",
+    "hadoop-tools/hadoop-extras": "hadoop-extras",
+    "hadoop-tools/hadoop-compat-bench": "hadoop-compat-bench",
+    "hadoop-tools/hadoop-azure": "hadoop-azure",
+    "hadoop-tools/hadoop-resourceestimator": "hadoop-resourceestimator",
+    "hadoop-tools/hadoop-archive-logs": "hadoop-archive-logs",
+    "hadoop-tools/hadoop-azure-datalake": "hadoop-azure-datalake",
+    "hadoop-tools/hadoop-archives": "hadoop-archives",
+    "hadoop-tools/hadoop-rumen": "hadoop-rumen",
+    "hadoop-tools/hadoop-dynamometer": "hadoop-dynamometer",
+    "hadoop-tools/hadoop-dynamometer/hadoop-dynamometer-infra": "hadoop-dynamometer-infra",
+    "hadoop-tools/hadoop-dynamometer/hadoop-dynamometer-workload": "hadoop-dynamometer-workload",
+    "hadoop-tools/hadoop-dynamometer/hadoop-dynamometer-dist": "hadoop-dynamometer-dist",
+    "hadoop-tools/hadoop-dynamometer/hadoop-dynamometer-blockgen": "hadoop-dynamometer-blockgen",
+    "hadoop-tools/hadoop-federation-balance": "hadoop-federation-balance",
+    "hadoop-hdfs-project": "hadoop-hdfs-project",
+    "hadoop-hdfs-project/hadoop-hdfs-native-client": "hadoop-hdfs-native-client",
+    "hadoop-hdfs-project/hadoop-hdfs-httpfs": "hadoop-hdfs-httpfs",
+    "hadoop-hdfs-project/hadoop-hdfs-client": "hadoop-hdfs-client",
+    "hadoop-hdfs-project/hadoop-hdfs-nfs": "hadoop-hdfs-nfs",
+    "hadoop-hdfs-project/hadoop-hdfs": "hadoop-hdfs",
+    "hadoop-hdfs-project/hadoop-hdfs-rbf": "hadoop-hdfs-rbf",
+    "hadoop-client-modules": "hadoop-client-modules",
+    "hadoop-client-modules/hadoop-client-check-invariants": "hadoop-client-check-invariants",
+    "hadoop-client-modules/hadoop-client-runtime": "hadoop-client-runtime",
+    "hadoop-client-modules/hadoop-client": "hadoop-client",
+    "hadoop-client-modules/hadoop-client-integration-tests": "hadoop-client-integration-tests",
+    "hadoop-client-modules/hadoop-client-api": "hadoop-client-api",
+    "hadoop-client-modules/hadoop-client-check-test-invariants": "hadoop-client-check-test-invariants",
+    "hadoop-client-modules/hadoop-client-minicluster": "hadoop-client-minicluster",
+    "hadoop-build-tools": "hadoop-build-tools"
+  }
+}

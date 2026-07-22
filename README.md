@@ -45,22 +45,28 @@ Three things this study established:
    in *abstraction*.** Vs. a 400-ticket ordinary control, architectural work draws more review and is
    ~2× slower to start and resolve. Splitting it: *relocation* (move/rename) ≈ ordinary work, but
    *abstraction* (extract interface/superclass/class) is ~2.5× slower to be picked up (7.2 vs 2.8 days,
-   p=0.004) — surviving controls for size, volume, and contributor experience. It's **time, not
-   quality** (reopen rate is equal, ~7%), and it concentrates in the foundational `hadoop-common`
-   module (~40× HDFS's triage — a *blast-radius* effect):
+   p=0.004) — surviving controls for size, volume, contributor experience, module tier and era. It's
+   **time, not quality** (reopen rate is equal, ~7%). Triage latency also varies ~40× across modules:
 
    ![module hotspots](figures/module_hotspots.png)
 
    Architectural tickets are also **~2× more entangled** (issue-links, p=0.001) — a second,
    volume-independent signal.
-4. **A within-episode signal was tested and retracted.** "Structural review discussion → slower
-   resolution" held under a change-size control (Cox HR 0.69, p=0.003) but **collapsed under a
-   discussion-volume control** (HR 1.10, p=0.51) — it was discussion volume in disguise. Reported
-   honestly; catching it is part of the contribution.
+4. **Two mechanisms were tested and killed.**
+   - *Structural review discussion → slower resolution* held under a change-size control (Cox HR 0.69,
+     p=0.003) but **collapsed under a discussion-volume control** (HR 1.10, p=0.51).
+   - *Blast radius* — the natural reading of the ~40× module spread, that touching a heavily
+     depended-upon module invites hesitation — **fails against Hadoop's own Maven dependency graph**
+     (117 modules): centrality does not predict triage (p=0.33), and the raw association runs
+     *negative*. What is really there is the **opposite**: the structurally peripheral cloud-connector
+     tier waits **43.6 vs 3.1 days** (~14×, p=3e-07), with one maintainer owning 33% of its tickets.
+
+   ![blast radius](figures/blast_radius.png)
 
 **Net:** a defended, mechanism-level finding (abstraction is the locus of refactoring friction),
-supporting results (estimates absent; friction ≈ volume; quality unchanged), an open-source caveat
-(triage ≈ time-to-volunteer), and a reproducible pipeline. Full detail: [results_dossier.md](results_dossier.md).
+supporting results (estimates absent; friction ≈ volume; quality unchanged), two self-refuted
+mechanisms, an open-source caveat sharpened into a result (friction tracks thin *attention*, not high
+*risk*), and a reproducible pipeline. Full detail: [results_dossier.md](results_dossier.md).
 
 ## More figures
 
@@ -123,6 +129,11 @@ python3 scripts/filter_architectural.py --rm refminer_wide.json --repo hadoop \
 
 # 5    mine the F2 review signal per episode (public Apache Jira, cached)
 python3 scripts/pr_review_signal.py --episodes architectural_episodes.json --out review_signal.json
+
+# 6    test the blast-radius mechanism (needs the Jira caches from step 5)
+python3 scripts/module_graph.py --repo hadoop        # Maven graph → blast radius per module
+python3 scripts/episode_files.py                     # episode → the files its refactorings touched
+python3 scripts/blast_radius_model.py                # the mechanism test + figure
 ```
 
 ## Key documents
@@ -147,11 +158,16 @@ scripts/
   rm_skip_range.sh          RM over a range excluding specific commits
   filter_architectural.py   RM output → candidate architectural episodes (multi-key, --all branches)
   pr_review_signal.py       episode → F2 review signal, mined from githubbot's PR relay in Jira
+  module_graph.py           Maven poms → module dependency graph + blast radius (117 modules)
+  episode_files.py          episode → file paths its architectural refactorings touched
+  blast_radius_model.py     the mechanism test (replicates §5 as a gate before reporting anything)
 
 data (generated)
   refminer_all.json               51,861 refactorings, 8,919 commits (4 ranges merged)
   architectural_episodes_all.json 349 episodes, 345 traceable
   review_signal_all.json          F2 signal per ticket
+  module_blast_radius.json        blast radius + deps per Maven module
+  blast_radius_results.json       mechanism test: models, connector tier, §9 decomposition
   episode_outcomes.json           per-episode cycle-time + F2 + resolved flag
   cox_dataset.json                the survival-model table
   .jira_cache/ .jira_meta/        cached Jira responses (comments; dates/status)
