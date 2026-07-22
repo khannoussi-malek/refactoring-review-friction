@@ -14,34 +14,55 @@
 
 ## The headline
 
-**Architectural changes cost more iteration and more review attention — but not more calendar
-time — and this survives matching on change size.**
+**One effect survives every control: architectural changes attract more reviewer attention at
+equal change size. Nothing else does.**
 
-Matching each architectural PR to a non-refactoring PR of near-identical size (801 vs 802 lines
-median, p=0.97):
+Matching each architectural PR to a non-refactoring PR of near-identical size:
 
-| size-matched, n=28 pairs | architectural | control | p |
+| size-matched, n=28 pairs | architectural | control | p | |
+|---|---|---|---|---|
+| **PRs with ≥1 review thread** | **61%** | **29%** | **0.023** | McNemar, paired |
+| review threads (count) | 1.5 | 0.0 | 0.0049 | survives BH FDR (q=0.014) |
+| merge latency | 3.20 d | 1.22 d | 0.058 | not significant |
+| ~~commits per PR (rework)~~ | ~~4.0~~ | ~~2.0~~ | ~~0.014~~ | **RETRACTED — see below** |
+
+### Retraction: the rework finding does not stand
+
+An earlier version of this document reported that architectural PRs need more revision cycles
+(4.0 vs 2.0 commits, p=0.014). **That result is withdrawn.**
+
+"Commits per PR" is not a rework measure. It correlates with PR size (rho=+0.56) and with how long
+the PR stayed open (rho=+0.48, p=2e-24) — a PR left open accrues commits whether or not anything
+was reworked. Re-measured as *commits pushed after the first review comment*, which is what rework
+actually means, the effect vanishes:
+
+| size-matched, n=27 pairs | architectural | control | p |
 |---|---|---|---|
-| **commits per PR** (rework) | **4.0** | **1.5** | **0.016** * |
-| **review threads** | **1.5** | **0.0** | **0.0058** ** |
-| merge latency | 3.25 d | 1.91 d | 0.21 — **dies** |
+| total commits (the old, confounded measure) | 4.0 | 2.0 | 0.0053 ** |
+| **commits after first review** | 1.0 | 0.0 | **0.150** |
+| fraction of commits after review | 0.29 | 0.00 | 0.549 |
 
-Raw, unmatched, the same measures give p=2e-05 and p=6e-05 — so size explains much of the effect,
-but not all of it. What remains after the control is *iteration* and *attention*, not *time*.
+Architectural PRs accumulate more commits because they are larger and stay open longer, not
+because reviewers send them back. The rework claim was an artefact of a bad proxy.
 
-### Why this is interesting against the Hadoop result
+### What the surviving finding means
 
-Hadoop found friction in **time** — architectural work waited. It also found that the CI-rework
-effect **died** under a change-size control (p=0.07): architectural patches needed more attempts
-only because they were bigger.
+Reviewers *look harder* at architectural change — they open more inline threads on it — but that
+extra scrutiny does not translate into more revision, and does not delay the merge. Attention
+without consequence.
 
-Here the opposite pattern holds. Time shows nothing once size is controlled; rework and review
-attention survive. A plausible reading — untested — is that the difference is queueing. Apache
-volunteers queue, so difficulty surfaces as waiting. A paid team does not queue, so the same
-difficulty surfaces as more revision cycles and more reviewer attention instead.
+This is a narrower claim than the one it replaces, and it is the only one the data supports.
 
-If that holds up, it is a statement about *how difficulty manifests under different labour
-models*, which is a more portable claim than either study alone.
+### Against the Hadoop result
+
+Hadoop found friction in **time** — architectural work waited. Here, once size is controlled,
+time shows nothing (p=0.058) and neither does rework. Only review attention differs.
+
+The tempting reading is that Apache volunteers queue so difficulty surfaces as waiting, whereas a
+paid team does not queue so it surfaces elsewhere. **The data no longer supports the second half
+of that story** — with rework retracted, there is no measured "elsewhere" beyond reviewer
+attention. The queueing hypothesis remains interesting and untested; it should not be presented as
+a finding.
 
 ### Adversarial robustness checks (`scripts/sui/robustness.py`)
 
