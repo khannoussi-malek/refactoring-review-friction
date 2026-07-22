@@ -5,16 +5,20 @@ a reproducible pipeline, ruled out the original signal, and **stress-tested a ca
 point of retracting it.** This README explains what was done and what was (and wasn't) found; full
 commands are in [SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospectus.md](research_prospectus.md).
 
-> **Headline finding:** Architectural refactorings are a distinct, higher-friction class of change.
-> Vs. ordinary refactorings (323 vs 400 tickets), they draw more review discussion (14 vs 11 comments,
-> p=0.0004), wait ~2× longer to be picked up (4.6 vs 2.1 days in triage, p=0.002), and take ~2× longer
-> to resolve (30 vs 15 days, p=0.0003) — while engaging the same small core of maintainers. **Triage
-> latency is the clean, volume-independent evidence** (it happens before any discussion). Chart:
-> `figures/arch_vs_ordinary.png`.
->
+> **Headline finding:** The friction in architectural refactoring is specifically in **creating
+> abstractions**, not relocating code. Extracting interfaces/superclasses/classes is **~2.5× slower to
+> be picked up** (7.2 vs 2.8 days, p=0.004) and ~2× slower to resolve than moving/renaming code — which
+> is itself no harder than ordinary work. The effect **survives controlling for change size, discussion
+> volume, and contributor experience**, and concentrates in the foundational `hadoop-common` module
+> (~40× the triage latency of HDFS). Mechanism: abstraction = bigger commitment → developers hesitate
+> to start.
+
+![abstraction gradient](figures/abstraction_gradient.png)
+
 > *(A separate within-episode signal — structural review discussion → slower resolution — was found,
-> stress-tested, and **retracted** as a discussion-volume confound. See below; the rigor is part of the
-> story.)*
+> stress-tested, and **retracted** as a discussion-volume confound. And a caveat: much of this timing
+> friction reflects how open-source coordinates work — triage latency ≈ "time until a volunteer opts
+> in." Both are part of the honest story; see below.)*
 
 ---
 
@@ -37,19 +41,44 @@ Three things this study established:
    which Apache's `githubbot` mirrors into the Jira ticket — so it's reachable from the public Jira
    API, no GitHub token. Present in ~31% of episodes (the naive keyword rule says 62%, but a codebook
    check found it only 25% precise — see [codebook_results.md](codebook_results.md)).
-3. **Architectural refactorings are measurably higher-friction than ordinary ones** (the positive
-   result). Vs. a 400-ticket ordinary-refactoring control: more review discussion (14 vs 11, p=0.0004),
-   ~2× longer triage before pickup (4.6 vs 2.1 days, p=0.002), ~2× longer resolution (30 vs 15 days,
-   p=0.0003), same small core of reviewers. **Triage latency is volume-independent** (it precedes the
-   discussion), so it isn't the confound below.
+3. **Architectural refactorings are measurably higher-friction than ordinary ones, and the friction is
+   in *abstraction*.** Vs. a 400-ticket ordinary control, architectural work draws more review and is
+   ~2× slower to start and resolve. Splitting it: *relocation* (move/rename) ≈ ordinary work, but
+   *abstraction* (extract interface/superclass/class) is ~2.5× slower to be picked up (7.2 vs 2.8 days,
+   p=0.004) — surviving controls for size, volume, and contributor experience. It's **time, not
+   quality** (reopen rate is equal, ~7%), and it concentrates in the foundational `hadoop-common`
+   module (~40× HDFS's triage — a *blast-radius* effect):
+
+   ![module hotspots](figures/module_hotspots.png)
+
+   Architectural tickets are also **~2× more entangled** (issue-links, p=0.001) — a second,
+   volume-independent signal.
 4. **A within-episode signal was tested and retracted.** "Structural review discussion → slower
    resolution" held under a change-size control (Cox HR 0.69, p=0.003) but **collapsed under a
-   discussion-volume control** (HR 1.10, p=0.51). The keyword signal is entangled with sheer discussion
-   volume, which is the real predictor. Reported honestly — catching this is part of the contribution.
+   discussion-volume control** (HR 1.10, p=0.51) — it was discussion volume in disguise. Reported
+   honestly; catching it is part of the contribution.
 
-**Net:** a positive between-group finding (architectural refactoring is a distinct, costlier class),
-two supporting results (estimates absent; friction ≈ discussion volume), and a reproducible pipeline.
-Full detail: [results_dossier.md](results_dossier.md); threats to validity there and in the prospectus.
+**Net:** a defended, mechanism-level finding (abstraction is the locus of refactoring friction),
+supporting results (estimates absent; friction ≈ volume; quality unchanged), an open-source caveat
+(triage ≈ time-to-volunteer), and a reproducible pipeline. Full detail: [results_dossier.md](results_dossier.md).
+
+## More figures
+
+(The headline *abstraction gradient* and *module hotspots* charts are shown above; all live in
+[figures/](figures/).)
+
+**Scale** — architectural refactoring is rare (349 of 51,861 refactorings):
+
+![funnel](figures/study_funnel.png)
+
+**Primary comparison** — architectural vs. ordinary refactorings across four measures:
+
+![compare](figures/arch_vs_ordinary.png)
+
+**Rigor** — the retracted finding: significant until discussion volume is controlled, then it crosses
+the "no-effect" line:
+
+![retraction](figures/retraction.png)
 
 ## What we did (the pipeline)
 
