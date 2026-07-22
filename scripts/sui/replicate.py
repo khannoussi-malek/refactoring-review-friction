@@ -150,14 +150,33 @@ def main():
         line, _ = mw([r[k] for r in A], [r[k] for r in N], lab, u)
         print(line)
 
-    pairs = match_on_size(A, N)
-    print(f"\n  SIZE-MATCHED  ({len(pairs)} pairs)  <-- the actual test")
-    results = {}
-    for k, lab, u in (("size", "PR size (match check)", "loc"),
-                      ("merge", "merge latency", "d"),
+    # Match SEPARATELY per outcome, restricted to rows where that outcome
+    # exists on both sides. Matching first and filtering afterwards leaves an
+    # unbalanced control set (never-merged PRs have no latency) and inflates
+    # significance -- this bug produced a spurious p=0.03 on merge latency
+    # where the correct restricted test gives p=0.21.
+    print(f"\n  SIZE-MATCHED  <-- the actual test")
+    results, npairs = {}, {}
+    for k, lab, u in (("merge", "merge latency", "d"),
                       ("commits", "commits per PR (rework)", ""),
                       ("threads", "review threads", "")):
-        line, p = mw([x[k] for x, _ in pairs], [y[k] for _, y in pairs], lab, u)
+        av = [r for r in A if r.get(k) is not None]
+        nv = [r for r in N if r.get(k) is not None]
+        if k == "commits" and not any(r["commits"] for r in av + nv):
+            print(f"    {lab:30} FIELD ABSENT in this PR dump -- refetch with "
+                  f"fetch_prs.py")
+            results[k] = None
+            continue
+        pr = match_on_size(av, nv)
+        npairs[k] = len(pr)
+        if len(pr) < 5:
+            print(f"    {lab:30} too few matched pairs ({len(pr)})")
+            results[k] = None
+            continue
+        chk, _ = mw([x["size"] for x, _ in pr], [y["size"] for _, y in pr],
+                    f"[{k}] size check", "loc")
+        print(chk)
+        line, p = mw([x[k] for x, _ in pr], [y[k] for _, y in pr], lab, u)
         print(line)
         results[k] = p
 
