@@ -46,7 +46,18 @@ Three things this study established:
    ~2× slower to start and resolve. Splitting it: *relocation* (move/rename) ≈ ordinary work, but
    *abstraction* (extract interface/superclass/class) is ~2.5× slower to be picked up (7.2 vs 2.8 days,
    p=0.004) — surviving controls for size, volume, contributor experience, module tier and era. It's
-   **time, not quality** (reopen rate is equal, ~7%). Triage latency also varies ~40× across modules:
+   **time, not quality** (reopen rate is equal, ~7%).
+
+   **And the friction is in *building*, not merging.** Splitting the Jira status changelog into phases:
+   architectural work takes ~4× longer to produce a patch (3.86 vs 1.00 days) and ~4× longer in logged
+   **active coding time** (4.87 vs 1.13 days, p=0.037), yet is merged as fast as ordinary work
+   (8.5 vs 8.4 days, n.s.). Active coding time cannot be volunteer queueing — so the effect is largely
+   **intrinsic difficulty**, which bounds the open-source caveat instead of just conceding it.
+   Abstraction is the one category that pays twice: ~4.5× to build *and* ~2× in review (p=0.0003).
+
+   ![friction phases](figures/friction_phases.png)
+
+   Triage latency also varies ~40× across modules:
 
    ![module hotspots](figures/module_hotspots.png)
 
@@ -134,6 +145,9 @@ python3 scripts/pr_review_signal.py --episodes architectural_episodes.json --out
 python3 scripts/module_graph.py --repo hadoop        # Maven graph → blast radius per module
 python3 scripts/episode_files.py                     # episode → the files its refactorings touched
 python3 scripts/blast_radius_model.py                # the mechanism test + figure
+
+# 7    split friction into building vs merging time (status changelog)
+python3 scripts/friction_decomposition.py
 ```
 
 ## Key documents
@@ -161,6 +175,7 @@ scripts/
   module_graph.py           Maven poms → module dependency graph + blast radius (117 modules)
   episode_files.py          episode → file paths its architectural refactorings touched
   blast_radius_model.py     the mechanism test (replicates §5 as a gate before reporting anything)
+  friction_decomposition.py status changelog → building vs merging vs active time, per group
 
 data (generated)
   refminer_all.json               51,861 refactorings, 8,919 commits (4 ranges merged)
@@ -168,6 +183,7 @@ data (generated)
   review_signal_all.json          F2 signal per ticket
   module_blast_radius.json        blast radius + deps per Maven module
   blast_radius_results.json       mechanism test: models, connector tier, §9 decomposition
+  friction_decomposition.json     phase split, workflow-comparability check, self-assignment
   episode_outcomes.json           per-episode cycle-time + F2 + resolved flag
   cox_dataset.json                the survival-model table
   .jira_cache/ .jira_meta/        cached Jira responses (comments; dates/status)

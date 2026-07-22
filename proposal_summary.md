@@ -45,6 +45,37 @@ boundary is not what makes work hard; the abstraction is.)
 **Triage latency is the anchor** because it is measured *before* any discussion, so it cannot be a
 discussion-volume artifact.
 
+## 4a. Where the friction lives — and why it is *not* just volunteers being slow
+
+The single strongest objection to §4 is that Apache timing measures capture volunteer queueing rather
+than software difficulty. The Jira status changelog answers it. Apache's workflow separates *doing the
+work* (`created → Patch Available`, i.e. until working code exists) from *getting it accepted* (time
+sitting in `Patch Available`, waiting on a committer).
+
+![friction phases](figures/friction_phases.png)
+
+| Phase | Architectural | Ordinary | p |
+|---|---|---|---|
+| Days to first patch | **3.86** | **1.00** | **0.002** |
+| Days in review | 8.52 | 8.37 | 0.52 (n.s.) |
+| **Active coding time** (`In Progress`) | **4.87** | **1.13** | **0.037** |
+
+**Architectural work is ~4× slower to build and ~4× longer in logged active coding — but is merged
+just as fast as ordinary work.** Reviewers are not the bottleneck; construction is. Time logged as
+`In Progress` is time someone is *working*, which cannot be volunteer queueing — so the core effect is
+**intrinsic difficulty** and should be expected to replicate in industry.
+
+**Abstraction is the one category that pays twice** (full-workflow sub-corpus, n=251): 4.95 vs 1.11
+days to build (p=0.009) *and* 12.15 vs 5.46 days in review (p=0.0003). Creating a shared abstraction
+is both harder to do and harder to get others to agree to.
+
+**A caveat we found and corrected for.** Different parts of Hadoop drive different Jira workflows —
+the cloud connectors reach `Patch Available` only 28% of the time vs 86% elsewhere, because a
+committer who owns a module commits directly and leaves the status field untouched. Status-derived
+timings are therefore **not comparable across tiers**, which qualifies §6a's connector result (it is a
+lifetime, not a measured queue) and is a reusable warning for anyone mining Apache Jira. Every number
+above is reported on the full-workflow sub-corpus.
+
 ## 5. Alternatives ruled out
 
 - **Priority:** similar (82% vs 75% Major) — not the cause.
@@ -108,22 +139,32 @@ entangled with sheer discussion quantity. Reported deliberately.
 
 ## 9. Open-source caveat (important)
 
-Much of the timing friction reflects **how open-source coordinates work**: triage latency ≈ "time
-until a volunteer opts in," not individual hesitation; estimates absent = Apache culture; the
-experience effect = committer gatekeeping. §6a turns this from a caveat into a **result**: the
-friction hotspot is the module tier with the thinnest, most concentrated maintainership, not the one
-with the greatest technical reach. Abstraction-as-commitment remains the more likely *intrinsic*
-effect. Generalization beyond OSS is untested — the strongest future step is a commercial-codebase
-contrast. Hence the reframing: RQ1 may be *"how does a volunteer community ration attention across
-high-stakes structural change?"*
+*Substantially narrowed by §4a — this is now a bounded caveat rather than an open-ended one.*
+
+**No longer a threat:** the central effect survives the strongest available test. Architectural work
+takes ~4× longer in *logged active coding time*, which is time someone is demonstrably working, not
+time in a queue. That half of the finding should generalize beyond open source.
+
+**Still open-source-specific:** (i) *who picks the work up* — self-assignment predicts speed
+enormously (2.05 vs 31.66 days to patch), and a firm with assigned owners has no equivalent;
+(ii) the *review* half of the abstraction cost (12.15 vs 5.46 days), which is a social cost of getting
+agreement; (iii) absent estimates (Apache culture) and committer gatekeeping.
+
+So the honest split is: **abstraction-as-difficulty is intrinsic; abstraction-as-hard-to-agree-on is
+social; who-volunteers is purely OSS.** A commercial contrast is still the strongest next step, but it
+now tests a *specific, pre-stated* prediction rather than the whole result. The reframing stands as a
+complement, not a retreat: *"how does a volunteer community ration attention across high-stakes
+structural change?"*
 
 ## 10. Contribution and full-study plan
 
 **Contribution:** a reproducible fault-tolerant pipeline; a defended, mechanism-level preliminary
-finding (abstraction-creation is the locus of refactoring friction — robust to five controls,
-time-not-quality); **two mechanisms tested and killed by our own analysis** (the structural-discussion
-signal, §8; the blast-radius model, §6a), each replaced by what the data actually supports; and a
-well-scoped design. **Full study:** an **attention-rationing model** (maintainer concentration / review
+finding, now **localised to a specific development phase** (abstraction-creation is the locus of
+refactoring friction, and the cost is in *building* — robust to five controls, time-not-quality, and
+demonstrably not a volunteer-queueing artifact); **two mechanisms tested and killed by our own
+analysis** (the structural-discussion signal, §8; the blast-radius model, §6a); a **measurement caveat
+for Apache-Jira mining generally** (status-derived timings are not comparable across module tiers that
+drive different workflows, §4a); and a well-scoped design. **Full study:** an **attention-rationing model** (maintainer concentration / review
 pool, not code centrality — the §6a lead); a validated, dual-rated (κ) structural signal; better
 changelog effort proxies; a commercial contrast to separate intrinsic from OSS effects; and
 replication on Kafka/HBase/Camel, now carrying a **pre-registered prediction** from §6a — peripheral

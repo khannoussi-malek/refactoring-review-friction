@@ -76,6 +76,80 @@ This also explains an **inverted cross-module result**: cross-module moves (whic
 are actually the *fastest* (triage 1.0 day) — so crossing a module boundary is not what makes work
 hard; the abstraction is.
 
+## 5a. Phase decomposition — the friction is in BUILDING the change, and it is largely intrinsic
+
+§12's caveat says our timing measures may just be measuring volunteers being slow. The status
+changelog settles most of it. Apache's workflow (derived from the corpus, not assumed) is
+`Open/Reopened → In Progress → Patch Available → Resolved`, where **Patch Available means working code
+exists and is waiting on a committer**. That gives two cleanly separable phases:
+
+- **`t_to_patch`** (created → first Patch Available) = time until working code exists → *doing the work*
+- **`t_review`** (total time in Patch Available) = time waiting on a reviewer → *getting it accepted*
+
+![friction phases](figures/friction_phases.png)
+
+**Architectural vs ordinary — the friction is in building, not merging:**
+
+| Phase | Architectural | Ordinary | p |
+|---|---|---|---|
+| Days to first patch | **3.86** | **1.00** | **0.0020** |
+| Days in review | 8.52 | 8.37 | 0.52 (n.s.) |
+| Days to first comment | 1.21 | 0.44 | 0.0046 |
+| **Active coding time** (In Progress) | **4.87** | **1.13** | **0.037** |
+
+Architectural changes are **~4× slower to produce a patch** and take **~4× longer in logged active
+coding time**, but once a patch exists they are **merged just as fast as ordinary work**. Reviewers are
+not the bottleneck — building the thing is.
+
+**Abstraction pays twice.** Within architectural work (full-workflow sub-corpus, n=251):
+
+| Phase | Abstraction | Relocation | p |
+|---|---|---|---|
+| Days to first patch | 4.95 | 1.11 | 0.0087 |
+| Days in review | **12.15** | **5.46** | **0.0003** |
+| Total lifetime | 30.11 | 13.83 | 0.0017 |
+
+Abstraction is the one category that is slower in **both** phases — ~4.5× slower to build *and* ~2×
+slower to get merged (OLS on the clean sub-corpus, connector-controlled: `t_to_patch` +0.51 p=0.032,
+`t_review` +0.57 p=0.0025, total +0.63 p=0.0032). Creating a shared abstraction is both harder to do
+and harder to get others to accept.
+
+**Why this matters more than any other result here:** active coding time and time-to-build-a-patch are
+**not volunteer-queueing artifacts**. A ticket in `In Progress` has someone working on it. So the core
+finding is substantially **intrinsic difficulty**, not open-source coordination — which is exactly what
+§12 said we could not yet claim. The OSS confound is now **bounded, not merely acknowledged**.
+
+**Self-assignment (a strong effect, but read it carefully).** Whether the reporter ends up doing the
+work themselves does *not* differ between groups (79.8% architectural vs 78.0% ordinary, p=0.62) — but
+it is the largest single predictor of speed we have found: **2.05 days to patch when self-assigned vs
+31.66 when not (p < 1e-4)**. This is partly **endogenous** — a ticket that waits for someone else to
+take it has, by construction, waited — so it is a description of the mechanism, not a causal estimate.
+It says the decisive event in this community is *someone deciding to own the work*.
+
+## 5b. A measurement threat this uncovered — status-derived timings are not comparable across tiers
+
+Decomposing by phase exposed something the aggregate measures hid: **different parts of Hadoop drive
+different Jira workflows.**
+
+| Group | Reached `Patch Available` | Used `In Progress` |
+|---|---|---|
+| Cloud connectors | **28.3%** | 37.0% |
+| Everything else | **86.2%** | 27.2% |
+
+A committer who owns a module commits directly and never moves the ticket through `Patch Available`;
+the status field simply goes unmaintained while the work happens on a GitHub PR. **This qualifies
+§9a:** the connector tier's "43.6-day triage" is closer to a *lifetime* than a measured queue, because
+for 72% of those tickets the first status change **is** resolution. Connectors are still genuinely
+slower end-to-end (75.2 vs 25.9 days total lifetime, p<1e-4, and 78.9 vs 38.1 days even among tickets
+that never reach Patch Available), so the *finding* survives — but the **"waiting for attention"
+reading of it does not, and should not be asserted.** Among the 13 connector tickets that do use the
+full workflow, review time is 32.2 vs 8.5 days (p=0.19 — directionally 4×, badly underpowered).
+
+**Consequence for the whole study:** every status-derived timing measure — including the triage
+latency used in §4, §5 and §9a — must be reported against the **full-workflow sub-corpus**, where the
+headline results hold cleanly (tables in §5a). This is a generalisable methodological caveat for
+anyone mining Apache Jira, and worth stating as such.
+
 ## 6. Alternative explanations ruled out
 
 - **Priority:** similar in both groups (Major 82% arch vs 75% ordinary) — not the cause.
@@ -203,15 +277,28 @@ review" rate is inflated; a validated, dual-rated (κ) classifier is needed to u
 
 ## 12. Open-source context — threat to validity AND a reframing (IMPORTANT)
 
-Much of the measured "friction" reflects **how open-source coordinates work**, not universal software
-behavior:
-- **Triage latency** in OSS is largely *"how long until a volunteer opts in,"* not individual
-  hesitation. The 39-day `hadoop-common` wait may be "no volunteer would risk the core."
+*Substantially revised after §5a: the phase decomposition converts much of this from "unbounded
+threat" to "measured and bounded."*
+
+Some of the measured "friction" still reflects **how open-source coordinates work**:
 - **Estimates absent** is an Apache-culture artifact (no managerial planning), not a property of
   software.
 - **Experience finding** reflects OSS **committer gatekeeping** (trust/permission), not just skill.
-- **More likely intrinsic:** abstraction being a larger design commitment; high-dependency modules
-  being riskier everywhere. "Slow to finish" is more intrinsic than "slow to start."
+- **Self-assignment** (§5a) is the clearest OSS-specific mechanism: the decisive event is someone
+  choosing to own the work (2.05 vs 31.66 days to patch). A firm with assigned owners has no
+  equivalent.
+- **§9a's connector tier** cannot be read as an attention effect, because those tickets do not drive
+  the workflow that would make "waiting" measurable (§5b).
+
+**But the core finding is now demonstrably NOT a coordination artifact.** §5a shows architectural work
+takes ~4× longer in **logged active coding time** (4.87 vs 1.13 days) and ~4× longer to **produce a
+patch**, while being merged just as fast as ordinary work. Time spent `In Progress` is time somebody is
+working — it cannot be volunteer queueing. Abstraction additionally costs ~2× in review (12.15 vs 5.46
+days, p=0.0003), which *is* a social cost, but it sits on top of a real construction cost rather than
+substituting for one.
+
+So the honest split is: **abstraction-as-difficulty is intrinsic and should replicate in industry;
+abstraction-as-hard-to-agree-on is social and may be OSS-flavoured; who-picks-it-up is purely OSS.**
 
 **Reframing opportunity:** RQ1 may be less "do individuals hesitate?" and more **"how does a
 volunteer community ration attention across high-stakes structural change?"** — a novel, legitimate
@@ -222,26 +309,38 @@ with a **commercial/industrial codebase** (all-OSS replication tests OSS-general
 
 **Established:** (a) architectural refactorings are a distinct, higher-friction class (§4); (b) the
 friction is specifically in **abstraction-creation, not relocation** (§5), surviving size/volume/
-experience/tier/era controls; (c) architectural tickets are ~2× more **entangled** (§7); (d) friction
-is **time, not quality** (§8); (e) friction varies ~40× across modules (§9) but is **concentrated in
-the peripheral vendor tier, not the foundation** (§9a); (f) estimates absent; traceability excellent.
+experience/tier/era controls and the full-workflow restriction; (c) **the friction is in building the
+change, not in getting it merged** — ~4× longer active coding time — so it is largely **intrinsic
+difficulty, not volunteer queueing** (§5a); (d) **abstraction uniquely pays twice**, ~4.5× to build
+*and* ~2× in review (§5a); (e) architectural tickets are ~2× more **entangled** (§7); (f) friction is
+**time, not quality** (§8); (g) friction varies ~40× across modules (§9), concentrated in the
+peripheral vendor tier rather than the foundation (§9a); (h) estimates absent; traceability excellent.
 
-**Refuted by our own test:** the **blast-radius mechanism** (§9a) — module dependency centrality does
+**Refuted by our own tests:** the **blast-radius mechanism** (§9a) — module dependency centrality does
 not predict triage latency (p = 0.33 with tier controlled), and the raw association runs *negative*.
+
+**Qualified by our own tests:** §9a's connector tier is slower end-to-end but its "waiting for
+attention" interpretation is not supported — those tickets do not drive the Jira workflow that would
+make waiting measurable (§5b).
 
 **Not established:** whether *structural review discussion as such* adds friction beyond volume (§10 —
 untested, not disproven, needs validated signal); whether the **maintainer-concentration** explanation
-for the connector tier is causal (§9a — post-hoc, needs a held-out project); whether any of this
-generalizes **beyond open-source** (§12); causal direction.
+for the connector tier is causal (§9a — post-hoc, needs a held-out project); whether the
+**self-assignment** effect is causal rather than definitional (§5a — endogenous); whether the
+*review-phase* half of the abstraction cost generalizes **beyond open-source** (§12 — the
+*build-phase* half now plausibly does); causal direction.
 
 ## 14. Threats to validity
 
 Descriptive/associational; single project (Hadoop), single release-line window; groups not fully
 matched (module/time); triage-within-sub-tasks borderline (p=0.051); keyword signal 25% precise, no κ;
-survivorship bias toward landed changes; the **open-source coordination confound (§12)** pervades
-the timing measures; and for §9a specifically, **26% episode attrition** (Ozone/Submarine left the
-repo), a present-day dependency snapshot applied to a decade of history, and a **post-hoc** connector
-tier.
+survivorship bias toward landed changes; the **open-source coordination confound (§12)**, now bounded
+by §5a rather than open-ended; **status-derived timings are not comparable across module tiers that
+drive different workflows (§5b)** — results should be read on the full-workflow sub-corpus; the
+self-assignment effect is **endogenous** (§5a); `In Progress` is logged by only ~25% of tickets, so
+active-time results rest on that sub-corpus; and for §9a specifically, **26% episode attrition**
+(Ozone/Submarine left the repo), a present-day dependency snapshot applied to a decade of history, and
+a **post-hoc** connector tier.
 
 ## 15. Open questions / directions
 
@@ -251,7 +350,10 @@ tier.
    property? The §9a connector result says test *social* centrality, not *code* centrality.
 2. **Validated structural signal** (dual-rater κ), then re-test §10.
 3. **Commercial contrast** to separate intrinsic vs OSS-coordination effects (§12).
-4. **Better effort proxies** from the changelog (active vs waiting time) and rework/reverts.
+4. ~~**Better effort proxies** from the changelog (active vs waiting time)~~ **Done in §5a.** Follow-on:
+   rework/reverts, and recovering active time for the ~75% of tickets that never log `In Progress`
+   (GitHub PR timestamps via the githubbot relay would give a workflow-independent clock — and would
+   also repair the §5b comparability problem).
 5. **Replicate** on Kafka/HBase/Camel — now with a **specific pre-registered prediction** from §9a:
    peripheral/vendor-integration modules should show longer triage than core modules.
 6. Human-factors (RQ2): who takes on architectural work, and why *peripheral* work stalls.
@@ -264,8 +366,11 @@ from Jira via bot-relay (no GitHub token); monorepo-aware traceability probe; st
 separating waiting from active work; **Maven blast-radius graph builder** (`scripts/module_graph.py`)
 and **refactoring→module attribution + mechanism test** (`scripts/episode_files.py`,
 `scripts/blast_radius_model.py`, which reruns the §5 replication gate before reporting anything);
-committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.json`,
-`arch_vs_ordinary.json`, `module_blast_radius.json`, `blast_radius_results.json`) and the charts.
+**status-changelog phase decomposition** (`scripts/friction_decomposition.py`) separating *building*
+from *merging* time, with a built-in workflow-comparability check (§5b) that other Apache-Jira studies
+would need; committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.json`,
+`arch_vs_ordinary.json`, `module_blast_radius.json`, `blast_radius_results.json`,
+`friction_decomposition.json`) and the charts.
 
 ## 17. Honest abstract
 
@@ -275,6 +380,11 @@ committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.js
 > refactorings (extract interface/superclass/class): ~2.5× longer triage than code relocation
 > (p=0.004), surviving controls for change size, discussion volume, and contributor experience; simple
 > relocation is no harder than ordinary work. The effect is **time, not quality** (no extra rework).
+> Decomposing the status changelog into phases localises it: architectural work takes **~4× longer in
+> logged active coding time** (4.87 vs 1.13 days) and ~4× longer to produce a patch, but is **merged as
+> fast as ordinary work** — so the friction is largely **intrinsic construction difficulty, not
+> volunteer queueing**, bounding the open-source confound rather than merely conceding it. Abstraction
+> uniquely pays twice: ~4.5× to build *and* ~2× in review (12.2 vs 5.5 days, p=0.0003).
 > Triage latency varies ~40× across modules, and we tested the obvious mechanism — *blast radius*,
 > that touching a heavily depended-upon module invites hesitation — against Hadoop's Maven dependency
 > graph (117 modules). **It fails:** centrality does not predict triage (p = 0.33) and the raw
@@ -282,7 +392,9 @@ committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.js
 > vendor cloud-connector tier (43.6 vs 3.1 days, p = 3e-07), where one maintainer owns a third of the
 > work — friction tracks where **community attention is thinnest**, not where technical risk is
 > highest. Effort estimates are absent in Apache (0%). A within-episode "structural discussion" signal
-> was found and **retracted** as a discussion-volume confound. Major caveat: much of the timing
-> friction reflects **open-source volunteer coordination** (triage ≈ time-to-volunteer), so
-> generalization beyond OSS is untested. Contribution: a reproducible pipeline, a defended
-> mechanism-level finding, two mechanisms killed by our own tests, and a well-scoped study design.
+> was found and **retracted** as a discussion-volume confound. Remaining caveats: the *review* half of
+> the abstraction cost and the question of who picks work up are open-source-specific, and
+> status-derived timings are not comparable across module tiers that drive different Jira workflows —
+> a methodological caveat we surface and correct for. Contribution: a reproducible pipeline, a defended
+> mechanism-level finding localised to a specific development phase, two mechanisms killed by our own
+> tests, and a well-scoped study design.
