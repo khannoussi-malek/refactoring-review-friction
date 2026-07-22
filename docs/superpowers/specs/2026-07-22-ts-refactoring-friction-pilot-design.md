@@ -336,11 +336,41 @@ it surfaced in the first hour of looking at data. It is the argument for §6 in 
 **Finding 3 — abstraction is present but scarce.** 29 abstraction events vs 219 relocation. Small
 on the abstraction arm; sufficient to validate the operationalisation, which is the pilot's job.
 
+**Finding 4 — the RM→React decoding is deterministic, because the codebase is 100% function
+components.** With no class components anywhere, RefactoringMiner synthesises a pseudo-class per
+module and marks it explicitly: every class-level identifier carries a `__module__` suffix
+(`addons.__module__`, `FieldInput.__module__`). Method-level entities then decode by React's own
+naming rules, which are enforced by the framework and its linter rather than being convention:
+hooks must begin with `use`, components must be capitalized to be treated as components in JSX.
+
+| RM reports | Actually is | n | Share |
+|---|---|---|---|
+| `Class` | ES module / file | — | `__module__` suffix on all |
+| `Method`, capitalized | React function component | 82 | 50% |
+| `Method`, lowercase | plain function | 62 | 38% |
+| `Method`, `use[A-Z]` | custom hook | 19 | 12% |
+
+163 of 166 method-level refactorings decode unambiguously (**98%**). Three consequences:
+
+- The mapping table is evidence-backed rather than asserted, which turns a write-up caveat into a
+  defended methodological contribution.
+- `Move Method` (32) splits into acts that are not equivalent: relocating a shared hook is
+  architectural, relocating a private lowercase helper generally is not. The filter must
+  distinguish them.
+- It **independently corroborates Finding 2**. A codebase with no classes cannot contain 160 real
+  "interface to class" conversions. Finding 2 was reached by tracing a single file; this reaches it
+  from the language model of the codebase. Two independent routes to the same conclusion.
+
+**Free consistency check.** Server-side code contains no React components. Any entity the tier
+classifier assigns to the server tier while the name test identifies it as a component indicates a
+bug in the classifier or the parse. This invariant costs nothing and runs on every commit.
+
 **Known instrument caveats:**
-- Java-shaped vocabulary: a React component is reported as a `method`, a module as a `Class`. The
-  write-up needs an explicit mapping table.
 - Unchunked runs over long ranges hang; chunking is mandatory.
 - 88% coverage; report honestly per range.
+- The `__module__` decoding is verified on a function-component codebase. Repos mixing in legacy
+  class components need the check re-run, since `Class` would then be ambiguous between a real
+  class and a module pseudo-class.
 
 ---
 
