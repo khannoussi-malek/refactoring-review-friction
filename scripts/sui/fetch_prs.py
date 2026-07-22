@@ -58,12 +58,27 @@ def main():
             time.sleep(min(2 ** fails, 30))
             continue
 
+        # Validate the SHAPE, do not assume data/errors are the only outcomes.
+        # GitHub also returns bare {"message": ...} bodies (rate limit, abuse
+        # detection, transient 502s) which have neither key.
         if "errors" in j:
             print(f"GraphQL error (keeping {len(nodes)} PRs): {j['errors'][:1]}",
                   file=sys.stderr)
             break
+        d = (j.get("data") or {}).get("repository")
+        if not d or "pullRequests" not in d:
+            fails += 1
+            body = json.dumps(j)[:200]
+            if fails > 12:
+                print(f"giving up after {fails} unusable responses; keeping "
+                      f"{len(nodes)} PRs. last body: {body}", file=sys.stderr)
+                break
+            print(f"  unusable response {fails} ({body}), retrying",
+                  file=sys.stderr)
+            time.sleep(min(2 ** fails, 30))
+            continue
         fails = 0
-        d = j["data"]["repository"]["pullRequests"]
+        d = d["pullRequests"]
         nodes += d["nodes"]
         pages += 1
         if pages % 5 == 0:
