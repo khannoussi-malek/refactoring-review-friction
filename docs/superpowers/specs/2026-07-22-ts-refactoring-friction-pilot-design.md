@@ -8,10 +8,16 @@
 
 ## 1. What this is
 
-The Hadoop study established a pipeline, a defended finding (abstraction is the locus of
-refactoring friction, and the cost is in *building*), three self-rejected mechanisms and one
-self-corrected claim. Its stated weakness is external validity: one project, one language,
-one governance model.
+The Hadoop study established a pipeline and a defended, mechanism-level finding: abstraction is the
+locus of refactoring friction, the cost is in *building* it, and it is the one category that did
+**not** get cheaper across the decade (difference-in-differences interaction +0.20, p=0.003, on a
+workflow-independent git clock). Quality is unchanged even under a stronger rework test — CI
+attempts are higher for architectural work (5 vs 3) but the effect dies under a change-size
+control. Alongside these: three self-rejected mechanisms, one self-corrected claim, and a systemic
+caveat that three independent Apache measurement channels all decay at the 2019–20 GitHub
+migration.
+
+Its stated weakness is external validity: one project, one language, one governance model.
 
 This design extends it to **full-stack TypeScript**. It is not a second Hadoop study. It is a
 **three-tier programme** whose first tier — the pilot — exists to validate the instrument, not
@@ -63,6 +69,15 @@ Committed and hashed before any tier-3 repo is cloned.
 - **H3 (new, TS-specific).** Friction increases monotonically across an ordinal boundary variable:
   `tier-internal < cross-tier < contract-crossing`. Tested as a single ordinal term, not three
   pairwise comparisons.
+- **H5 (ported).** Architectural refactoring does not share in the project's speedup over time:
+  ordinary refactoring gets faster across the corpus window while architectural work stays flat.
+  *Hadoop: rho=−0.21 (p=3e-05) vs rho=+0.04 (p=0.45); DiD interaction +0.20, p=0.003.*
+
+  H5 is unusually well-suited to this corpus. start-ui-web spans 2019–2026 — essentially the same
+  window as the Hadoop decade analysis — and cal.diy and Twenty cover comparable spans. It also
+  travels better than H1 and H2: a *within-repo trend over time* is far less sensitive to the
+  governance confound in §3a than a cross-corpus level comparison, because each repo serves as its
+  own control. If governance sinks the cross-language claim, H5 survives it.
 
 ### Exploratory (no direction committed)
 
@@ -330,11 +345,27 @@ Non-negotiable, because this is exactly what retracted the Hadoop result:
 | `t_merge` | PR opened → merged | H2 merge phase |
 | `survive` | commits until the refactoring is undone | **E2** |
 | `reverted` | binary, ever undone | H4 |
+| `rework` | CI check-run attempts on the PR | ports `ci_rework.py`; quality-vs-time |
+
+`rework` ports the Hadoop CI-rework test directly. Hadoop used pre-commit CI runs as a proxy for
+patch revisions; GitHub Actions check runs are the same instrument, and the pilot has two workflows
+(`code-quality`, `e2e-tests`) exposing them through the checks API. The Hadoop result is that
+architectural work needs more attempts but **not per unit of code** — the effect dies under a
+change-size control. That control is therefore mandatory here too, not optional.
 
 `t_build` and `t_merge` are derived from git and GitHub timestamps rather than Jira status
 transitions. This **removes** a measurement caveat the Hadoop study had to carry: status-derived
 timings were not comparable across module tiers that drive different workflows. Timestamps mean
 the same thing in every repository.
+
+The Hadoop decade analysis reached the same instrument choice independently and for a different
+reason — Jira status hygiene collapsed from 93% to 16% at the 2019–20 GitHub migration, forcing a
+workflow-independent git clock. Two independent routes to the same decision.
+
+The corresponding TypeScript risk is **not** absent, merely different: CI providers, workflow files
+and review tooling change over a repo's life, so any check-run-derived measure (`rework`) must be
+tested for coverage decay across the window before it is trusted, exactly as the Hadoop study
+tested its three decaying channels.
 
 `survive` and `reverted` exist only because of state reconstruction. They are durability measures,
 immune to the volunteer-queueing critique that dogged the cycle-time results — idle waiting cannot
