@@ -43,6 +43,58 @@ difficulty surfaces as more revision cycles and more reviewer attention instead.
 If that holds up, it is a statement about *how difficulty manifests under different labour
 models*, which is a more portable claim than either study alone.
 
+### Adversarial robustness checks (`scripts/sui/robustness.py`)
+
+Five attempts to kill the two surviving effects. Two held, one weakened them, two supported them.
+
+**1 · Multiple comparisons — both survive FDR.** 28 tests were run on this corpus. Under
+Benjamini–Hochberg:
+
+| test | raw p | BH q | |
+|---|---|---|---|
+| independent reviewers | 0.0002 | 0.0007 | survives **Bonferroni** |
+| review threads (matched) | 0.0049 | 0.0137 | survives FDR |
+| rework (matched) | 0.0140 | 0.0327 | survives FDR |
+| merge latency (matched) | 0.0584 | 0.0887 | fails — consistent with the null |
+| abstraction vs relocation threads | 0.0426 | 0.0751 | fails — **do not report** |
+
+Only *independent reviewers* clears the Bonferroni threshold (0.00179). The two headline effects
+clear FDR but not Bonferroni; at n=28 that is the honest ceiling.
+
+**2 · Matching is stable.** 500 bootstrapped greedy-matching orders give an identical p every
+time. This is not a bug: with 28 treated PRs against ~370 controls, near-ideal matches are always
+available, so collisions never force a worse pairing and order cannot matter.
+
+**3 · The review-thread effect is not an artefact of zero-inflation.** Threads are mostly 0, so a
+rank test could mislead. Re-tested as a proportion it holds, and it holds under the stricter
+*paired* test:
+
+| | with ≥1 review thread |
+|---|---|
+| architectural PRs | 17/28 (**61%**) |
+| size-matched controls | 8/28 (**29%**) |
+
+Fisher exact p=0.031; **McNemar paired p=0.023** (11 vs 2 discordant pairs). This is now the
+best-supported result in the study.
+
+**4 · The rework measure is confounded — this weakens the finding.** "Commits per PR" correlates
+with PR size (rho=+0.56) *and* with how long the PR stayed open (rho=+0.44, p=1e-22). A PR that is
+open longer accrues commits regardless of whether anything was reworked. Since architectural PRs
+are open longer, part of the rework effect may be duration, not revision.
+
+**The rework result should be treated as provisional until re-measured with a duration-independent
+proxy** — commits *after the first review comment*, force-push count, or explicit review rounds.
+Recorded as a known weakness rather than quietly retained.
+
+**5 · Control-group contamination biases toward the null.** Only **32%** of commits link to a PR,
+and only **30 of 96** architectural commits (31%) are visible at PR level. The other 66 land inside
+PRs classified as "none", contaminating the control group with the very thing being tested. That
+dilution can only *shrink* the measured difference — so the reported effects are conservative.
+
+It also costs power, and introduces a selection question worth pursuing: unlinked commits are
+largely direct pushes, so PR-visible architectural work may be systematically different from the
+work the owner pushes straight to main.
+
 ---
 
 ## Secondary findings
