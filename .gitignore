@@ -18,8 +18,10 @@ rm_chunks/
 # ── Git-derived caches (regenerable; gitignore has no trailing comments, keep bare) ──
 # module_commit_log.json   : social_centrality.py, ~6 MB
 # ticket_first_commit.json : temporal_trend.py
+# ticket_change_size.json  : ci_rework.py
 module_commit_log.json
 ticket_first_commit.json
+ticket_change_size.json
 
 # ── Local config (may hold project-specific choices) ──
 config.env

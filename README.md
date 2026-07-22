@@ -54,7 +54,12 @@ Three things this study established:
    ~2× slower to start and resolve. Splitting it: *relocation* (move/rename) ≈ ordinary work, but
    *abstraction* (extract interface/superclass/class) is ~2.5× slower to be picked up (7.2 vs 2.8 days,
    p=0.004) — surviving controls for size, volume, contributor experience, module tier and era. It's
-   **time, not quality** (reopen rate is equal, ~7%).
+   **time, not quality** — and that null now survives a far stronger test than the reopen rate:
+   using Hadoop's pre-commit CI (runs ≈ patch revisions), architectural tickets need more attempts
+   (5 vs 3, p<1e-4), but the effect dies under a change-size control (p=0.07) because those patches
+   are simply bigger (1,178 vs 213 java lines churned). Not more error-prone *per unit of code*.
+
+   ![CI rework](figures/ci_rework.png)
 
    **And the friction is in *building*, not merging.** Splitting the Jira status changelog into phases:
    architectural work takes ~4× longer to produce a patch (3.86 vs 1.00 days) and ~4× longer in logged
@@ -94,12 +99,14 @@ Three things this study established:
 
    ![blast radius](figures/blast_radius.png)
 
-**Net:** a defended, mechanism-level finding (abstraction is the locus of refactoring friction, and the
-cost is in *building* it), supporting results (estimates absent; friction ≈ volume; quality unchanged),
-**three self-rejected mechanisms and one self-corrected claim**, a reusable measurement caveat for
-Apache-Jira mining (status-derived timings are not comparable across module tiers that drive different
-workflows), and a reproducible pipeline. The surviving claim is small, specific and defended.
-Full detail: [results_dossier.md](results_dossier.md).
+**Net:** a defended, mechanism-level finding (abstraction is the locus of refactoring friction, the
+cost is in *building* it, and it is the one category not getting cheaper over time), supporting
+results (estimates absent; quality unchanged even under a stronger rework test), **three self-rejected
+mechanisms and one self-corrected claim**, and a reproducible pipeline. Plus a systemic caveat for
+anyone mining Apache Jira: **three independent measurement channels — status comparability, status
+hygiene, and CI visibility — all decay at the 2019–20 GitHub migration**, which is why the
+decade-spanning claims here are built on git-derived instruments instead. The surviving claim is
+small, specific and defended. Full detail: [results_dossier.md](results_dossier.md).
 
 ## More figures
 
@@ -176,6 +183,9 @@ python3 scripts/social_centrality.py
 
 # 9    decade trajectory: did architectural work share in the project's speedup? (it did not)
 python3 scripts/temporal_trend.py
+
+# 10   rework: does architectural work need more patch revisions? (yes, but only because it is bigger)
+python3 scripts/ci_rework.py
 ```
 
 ## Key documents
@@ -206,6 +216,7 @@ scripts/
   friction_decomposition.py status changelog → building vs merging vs active time, per group
   social_centrality.py      git → bus factor / concentration (prior-window) + size-confound check
   temporal_trend.py         decade trajectory on a workflow-independent git clock (DiD vs control)
+  ci_rework.py              CI runs ≈ patch revisions, with git change-size as the decisive control
 
 data (generated)
   refminer_all.json               51,861 refactorings, 8,919 commits (4 ranges merged)
@@ -216,6 +227,7 @@ data (generated)
   friction_decomposition.json     phase split, workflow-comparability check, self-assignment
   social_centrality.json          social measures, size collinearity, the failed replacement test
   temporal_trend.json             decade divergence, workflow-drift + truncation threat checks
+  ci_rework.json                  rework counts, size control, the unusable failure-rate measure
   episode_outcomes.json           per-episode cycle-time + F2 + resolved flag
   cox_dataset.json                the survival-model table
   .jira_cache/ .jira_meta/        cached Jira responses (comments; dates/status)

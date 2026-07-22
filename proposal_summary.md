@@ -111,6 +111,12 @@ architectural work is slow, but that it is **the one category not getting better
 the ordinary control thins to <5 tickets after 2023; and "days to first commit" is a total, mixing
 queueing with building.
 
+**A systemic caveat worth stating once.** Three independent measurement channels — Jira status
+comparability, status hygiene over time, and CI verdict visibility — all decay at the same 2019–20
+GitHub migration. That is not three coincidences; it is one structural fact about mining Apache Jira,
+and it is why this study builds git-derived instruments (commit clock, change size, authorship)
+wherever a claim has to span the decade.
+
 ## 5. Alternatives ruled out
 
 - **Priority:** similar (82% vs 75% Major) — not the cause.
@@ -126,8 +132,14 @@ queueing with building.
 
 - **Entanglement:** architectural tickets link to ~2× more other issues (1.53 vs 0.76, p=0.001, holds
   within sub-tasks). Volume-independent — a second friction dimension.
-- **Quality is a null:** reopen rate ~7% across all groups (p=0.97). Abstraction is slower but *not
-  buggier* — the friction is time, not error-proneness.
+- **Quality is a null, and it holds under a much stronger test.** The reopen rate is equal (~7%,
+  p=0.97), but that is a blunt instrument. Hadoop's pre-commit CI gives a real rework measure —
+  **CI runs ≈ patch revisions**. Architectural tickets do need more (median 5 vs 3, p<1e-4), and that
+  survives a discussion-volume control (the §8 trap). It does **not** survive a *change-size* control
+  (p → 0.07): architectural patches are simply far bigger (**1,178 vs 213 java lines churned**).
+  So the refined claim is: architectural work is **not more error-prone per unit of code changed** —
+  it just involves more code. `-1`-rate was tested as a volume-free alternative and discarded: it
+  fires on any warning, so 87% of all runs "fail" and the measure is pinned at its ceiling.
 - **Module hotspots:** triage latency varies ~40× across modules.
 
 ![module hotspots](figures/module_hotspots.png)

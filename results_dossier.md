@@ -234,6 +234,49 @@ review rounds 0.97 / 1.04 / 1.39 (p=0.79). **Abstraction work is slower but not 
 friction is time/effort, not error-proneness. (Note: our sample is survivorship-biased toward changes
 that landed, so *abandonment* is not measurable here.)
 
+## 8a. Re-testing "time, not quality" with CI rework — §8 survives a much stronger test
+
+§8's null rests on the **reopen rate** (~7%, p=0.97), which is a blunt instrument: reopening is rare,
+happens long after the fact, and says nothing about how much a change had to be *fixed before it
+landed*. Hadoop's pre-commit CI gives a far better measure — every posted patch triggers a Hadoop QA
+run, so **number of CI runs ≈ number of patch revisions**. Median 5 runs per ticket, max 45.
+
+![CI rework](figures/ci_rework.png)
+
+| | Ordinary | Relocation | Abstraction |
+|---|---|---|---|
+| Median CI runs | 3 | 4 | **6** |
+| Median java lines churned | 213 | 766 | **1294** |
+
+Architectural tickets need **more CI attempts (5 vs 3, p<1e-4)**, and unlike §10 that is **not**
+discussion volume in disguise — it survives a human-comment-count control (+0.181, p<0.001).
+
+**But it does not survive change size.** Architectural changes are simply far bigger — **1,178 vs 213
+java lines churned (p=5e-28)**, 20 vs 8 files — and a bigger patch trips more checkers:
+
+| Model | `arch` coefficient | p |
+|---|---|---|
+| Raw | +0.250 | <0.001 |
+| + human comment volume | +0.181 | <0.001 |
+| **+ change size (files, churn)** | **+0.092** | **0.072** |
+| + change size + era | +0.100 | 0.051 |
+
+**Verdict: §8 substantially survives.** The extra rework is mostly *bigger patches*, not
+architectural-ness as such — the residual is borderline (p≈0.05–0.07), consistent in direction but not
+established. The honest refinement of §8 is: architectural work is not more error-prone *per unit of
+code changed*; it simply involves more code.
+
+**A measure that did not work, recorded so it is not retried.** The failure *rate* (failed runs ÷ total
+runs) looked like the ideal volume-independent metric, but `-1 overall` fires on **any** warning —
+checkstyle, javadoc, one flaky unrelated test — so **86.7% of all runs "fail"** and both group medians
+sit at 100%. It is pinned against its ceiling and carries no usable signal.
+
+*Caveat — a third decaying instrument.* CI verdicts stop appearing in Jira after the GitHub migration:
+**84.6% of pre-2019 tickets carry them, 0% after 2022.** This analysis is therefore about the
+pre-2022 era only. That is now three independent measurement channels (Jira status §5b, status
+hygiene over time §5c, CI visibility here) that decay at the same migration — a systemic caveat for
+Apache-Jira mining, not three coincidences.
+
 ## 9. Module hotspots — large variation, but NOT where we first thought
 
 Median triage latency by top-level Jira project (architectural tickets):
@@ -417,7 +460,9 @@ experience/tier/era controls and the full-workflow restriction; (c) **the fricti
 change, not in getting it merged** — ~4× longer active coding time — so it is largely **intrinsic
 difficulty, not volunteer queueing** (§5a); (d) **abstraction uniquely pays twice**, ~4.5× to build
 *and* ~2× in review (§5a); (e) architectural tickets are ~2× more **entangled** (§7); (f) friction is
-**time, not quality** (§8); (g) friction varies ~40× across modules (§9), concentrated in the
+**time, not quality** (§8) — and this now survives a far stronger rework test than the reopen rate:
+architectural work needs more CI attempts only because it is bigger, not because it is more
+error-prone per unit of code (§8a); (g) friction varies ~40× across modules (§9), concentrated in the
 peripheral vendor tier rather than the foundation (§9a); (h) **architectural refactoring did not share
 in a decade of process improvement that made ordinary refactoring faster** — a widening divergence
 robust to composition controls and every truncation window (§5c); (i) estimates absent; traceability
@@ -445,7 +490,10 @@ connector tier holds (§9a/§9b — still post-hoc, needs a held-out project); w
 
 Descriptive/associational; single project (Hadoop), single release-line window; groups not fully
 matched (module/time); triage-within-sub-tasks borderline (p=0.051); keyword signal 25% precise, no κ;
-survivorship bias toward landed changes; the **open-source coordination confound (§12)**, now bounded
+survivorship bias toward landed changes; **three independent measurement channels decay at the
+2019–20 GitHub migration** (Jira status comparability §5b, status hygiene over time §5c, CI verdict
+visibility §8a) — so several results are necessarily era-bounded; the **open-source coordination
+confound (§12)**, now bounded
 by §5a rather than open-ended; **status-derived timings are not comparable across module tiers that
 drive different workflows (§5b)** — results should be read on the full-workflow sub-corpus; the
 self-assignment effect is **endogenous** (§5a); `In Progress` is logged by only ~25% of tickets, so
@@ -461,8 +509,10 @@ a **post-hoc** connector tier.
    multi-project corpus can tell them apart. This is now the precondition for any attention claim.
 2. **Validated structural signal** (dual-rater κ), then re-test §10.
 3. **Commercial contrast** to separate intrinsic vs OSS-coordination effects (§12).
-4. ~~**Better effort proxies** from the changelog (active vs waiting time)~~ **Done in §5a.** Follow-on:
-   rework/reverts, and recovering active time for the ~75% of tickets that never log `In Progress`
+4. ~~**Better effort proxies** from the changelog (active vs waiting time)~~ **Done in §5a**;
+   ~~rework~~ **done in §8a via CI runs.** Follow-on: reverts and follow-up-fix commits (the one
+   rework channel that does *not* decay at the GitHub migration, since it lives in git), and
+   recovering active time for the ~75% of tickets that never log `In Progress`
    (GitHub PR timestamps via the githubbot relay would give a workflow-independent clock — and would
    also repair the §5b comparability problem).
 5. **Replicate** on Kafka/HBase/Camel — now with a **specific pre-registered prediction** from §9a
@@ -478,6 +528,8 @@ from Jira via bot-relay (no GitHub token); monorepo-aware traceability probe; st
 separating waiting from active work; **Maven blast-radius graph builder** (`scripts/module_graph.py`)
 and **refactoring→module attribution + mechanism test** (`scripts/episode_files.py`,
 `scripts/blast_radius_model.py`, which reruns the §5 replication gate before reporting anything);
+**CI-rework mining** (`scripts/ci_rework.py` — patch-revision counts from pre-commit bot verdicts,
+with per-ticket change size recovered from git as the decisive control);
 **workflow-independent timing clock** (`scripts/temporal_trend.py` — ticket→first-citing-commit from
 git, which survives the 2019–20 collapse in Jira status hygiene that breaks every status-derived
 duration, plus the drift/composition/truncation threat checks around it);
