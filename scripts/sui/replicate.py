@@ -134,6 +134,36 @@ def main():
     print(f"  commits analysed by RM   {len(rmj['commits'])}")
     print(f"  refactorings (ex-suspect) {len(refs)}")
     print(f"  commits linked to a PR    {linked}")
+
+    # COVERAGE CLUSTERING. Chunked RefactoringMiner runs lose whole chunks to
+    # the stall watchdog, and chunks are contiguous commit ranges -- so loss is
+    # never random. On start-ui-web an 88% aggregate coverage concealed a year
+    # that was 93% missing, which silently produced "no architectural work in
+    # 2024". Aggregate coverage is not enough; report the worst year.
+    have = {c["sha1"] for c in rmj["commits"]}
+    years = collections.Counter()
+    missing = collections.Counter()
+    for line in sh(a.repo, "log", "--all", "--format=%H %at").strip().split("\n"):
+        if " " not in line:
+            continue
+        h, t = line.split()
+        y = dt.datetime.fromtimestamp(int(t)).year
+        years[y] += 1
+        if h not in have:
+            missing[y] += 1
+    cov = 100 * (1 - sum(missing.values()) / max(sum(years.values()), 1))
+    print(f"\n  COVERAGE  {cov:.0f}% overall")
+    worst = None
+    for y in sorted(years):
+        pct = 100 * missing[y] / years[y]
+        flag = "  <-- HOLE" if pct > 30 and years[y] >= 20 else ""
+        if flag:
+            worst = y
+        if pct > 5:
+            print(f"    {y}: {missing[y]:5}/{years[y]:5} missing ({pct:3.0f}%){flag}")
+    if worst:
+        print(f"    !! coverage loss is CLUSTERED (worst: {worst}). Re-run that")
+        print(f"       range before trusting any temporal or rate result.")
     counts = collections.Counter(r["cls"] for r in rows)
     for k in ("architectural", "other-refactoring", "none"):
         print(f"    PRs {k:20} {counts[k]}")
