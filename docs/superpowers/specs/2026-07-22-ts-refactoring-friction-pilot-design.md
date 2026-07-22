@@ -107,6 +107,76 @@ the single most architectural signal in the corpus (`packages/lib-ui/src → src
 
 ---
 
+## 3a. Corpus provenance — governance, motivation, and what they threaten
+
+The pilot corpus is not a community project. **BearStudio is a company**, `start-ui-web` is a
+product they publish for public use *and* consume internally on client work. Every tier-2 and
+tier-3 candidate is the same shape: cal.diy, Twenty and Documenso are all company-owned,
+VC-backed open source. Apache Hadoop is foundation-governed, multi-vendor and volunteer-staffed.
+This difference is structural, not incidental, and it has three consequences.
+
+### Threat 1 — governance confounds the cross-language comparison
+
+If every TypeScript repo in the corpus is company-owned and the Java comparator is
+foundation-governed, then **any Hadoop-versus-TypeScript difference is equally explainable by
+governance as by language.** The design cannot currently separate them. This is the same class of
+error as the connector-tier result in the Hadoop study: a variable that looks like the thing of
+interest but is collinear with something else.
+
+Two honest responses, and the design takes both:
+
+1. **State it as a bound.** The comparison is "Apache-governed Java" versus "company-governed
+   TypeScript", and no claim may attribute a difference to language alone.
+2. **Add a governance-matched repo.** At least one foundation-governed JS/TypeScript project
+   (OpenJS Foundation: Node.js, Electron, webpack, ESLint) enters tier 3 so that governance varies
+   *within* the TypeScript arm. Without it, language and governance are perfectly confounded and
+   the cross-language claim is not recoverable.
+
+### Threat 2 — the decisions happen off-repo
+
+In a company-owned project, architectural decisions are made in meetings, Slack and internal
+planning. The repository records the *outcome*, not the deliberation. Apache's norm of
+"if it didn't happen on the mailing list, it didn't happen" is precisely what made the Hadoop
+mining viable.
+
+This systematically **suppresses observable friction** and can manufacture a false null: a
+change that took three weeks of internal argument appears in git as one clean PR merged in an
+hour. Twenty-five percent of pilot PRs merge within the hour and the dominant author frequently
+merges his own work — consistent with deliberation that happened elsewhere.
+
+Consequence: `t_merge` and review-based measures are weak instruments in company-owned repos.
+This is an additional reason the design leans on `t_build`, `survive` and `reverted`, which record
+work actually done rather than discussion actually logged.
+
+### Threat 3 — migration-driven change is a different phenomenon
+
+A starter template's product *is* tracking the current frontend stack. The pilot history shows
+continuous re-platforming: a V3 rewrite, Next.js app-directory migration, TanStack Start adoption,
+Chakra → shadcn → base-ui, radix repackaging, ESLint → oxlint, prettier → oxfmt, MirageJS removal.
+
+Moving a component because `base-ui` replaced `radix-ui` is **not** the phenomenon this study is
+about. Hadoop has no analogue — Hadoop *is* the platform; it does not chase one.
+
+**Operationalisation.** A refactoring co-occurring with a change to `package.json`,
+`pnpm-lock.yaml` or `pnpm-workspace.yaml` is coded `migration_driven`. Measured on the pilot:
+
+| | n | share |
+|---|---|---|
+| architectural-refactoring commits | 81 | |
+| ...co-occurring with a dependency change | 19 | **23%** |
+| ...internally motivated | 62 | 77% |
+
+This is a **lower bound**: a migration spanning several commits trips the test only on the one
+touching the manifest. `migration_driven` becomes a covariate in every model and a reported
+stratum, not a filter — migration-driven refactoring is interesting, it is simply a different
+question.
+
+This threat generalises beyond the pilot. Fast-moving-ecosystem repos in general mix
+externally-forced churn with internally-motivated design work; any TypeScript refactoring study
+that ignores the distinction is measuring npm's release cadence.
+
+---
+
 ## 4. Architecture
 
 ```
@@ -246,6 +316,10 @@ Non-negotiable, because this is exactly what retracted the Hadoop result:
   and the dominant author frequently merges his own work. A PR that was never independently
   reviewed and one that survived three rounds are not the same observation.
 - `author_tenure`, `is_bot` (12% of PRs), `is_pair` (156 co-authored-by commits)
+- `migration_driven` (§3a) — refactoring co-occurring with a dependency-manifest change. 23% of
+  architectural commits in the pilot, and that is a lower bound.
+- `governance` — foundation vs company, recorded per repo, constant within a repo and therefore
+  usable only in cross-repo models.
 
 ### Outcome variables
 
@@ -398,11 +472,20 @@ precision/recall characterisation of RefactoringMiner's TypeScript mode.
 **Cannot:** anything about friction from the pilot corpus alone. start-ui-web has no meaningful
 outcome variance. Every friction claim rests on tiers 2 and 3.
 
+**Cannot, specifically because of corpus provenance (§3a):** attribute any Hadoop-versus-TypeScript
+difference to *language* unless a governance-matched TypeScript repo is in the corpus. Without one,
+language and governance are perfectly confounded.
+
 **Known risks:**
 - RM's TS support is new; §7 already found one false-positive class and there may be others.
 - The abstraction arm is thin (n=29 in the pilot) and may remain thin in TS generally — if so,
   that is itself a reportable ecosystem difference rather than a failure.
-- cal.diy's monorepo structure may break the one-file portability contract.
-- Single-vendor governance in TS repos differs from Apache's; the volunteer-queueing dynamics that
-  shaped the Hadoop interpretation may not transfer, which is precisely why `survive` was added as
-  a queueing-immune outcome.
+- cal.diy's monorepo structure may break the one-file portability contract. It is also old enough
+  to contain legacy class components, which would make the `__module__` decoding (§7, Finding 4)
+  ambiguous; re-verify there before use.
+- **Off-repo deliberation** (§3a) suppresses observable friction in company-owned repos and can
+  manufacture a false null. `t_merge` and review-volume measures are weak instruments there; the
+  design leans on `t_build`, `survive` and `reverted` in response.
+- **Migration-driven churn** (§3a) mixes externally-forced re-platforming with internally-motivated
+  design work. Measured at ≥23% of architectural commits in the pilot, controlled as a covariate,
+  never silently filtered.
