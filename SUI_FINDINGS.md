@@ -258,6 +258,29 @@ and keep the infrastructure.
 
 ## Threats and corrections
 
+**Chunk loss is clustered in time but NOT biased by commit size — hypothesis tested and rejected.**
+The stall watchdog kills chunks containing slow commits, so the natural worry is that it
+preferentially destroys large, complex commits — precisely where architectural refactorings live.
+That would bias the study against its own subject.
+
+Tested within RefactoringMiner's actual scope (`root..HEAD`, 1,198 commits; 1,057 analysed, 141
+lost):
+
+| | analysed | lost | p |
+|---|---|---|---|
+| churn | 32 lines | **14 lines** | 0.0022 |
+| top-decile-churn share | 9.6% | 12.8% | 0.23 (n.s.) |
+
+Lost commits are *smaller*, and there is no enrichment for the largest ones. The mechanism is
+structural: the watchdog kills a whole **chunk**, so ~30 commits die because one of them hung,
+regardless of their own size. Loss is a temporal accident, not a complexity effect.
+
+*A first attempt at this test was wrong and is recorded as a caution: it compared against
+`git log --all`, so the "missing" set was contaminated with 930 commits on other branches that
+were never in scope, and it produced the opposite (spurious) conclusion that lost commits were
+larger. The comparison set for a coverage-bias test must be exactly the range the tool was asked
+to analyse.*
+
 **A 93%-missing year, found and repaired.** The first RefactoringMiner run lost 3 chunks to hangs,
 and the loss was *clustered*, not random: 75 of 81 commits in 2024 (93%) were absent, against 2–8%
 in every other year. Every temporal result from the first pass was therefore invalid — including
