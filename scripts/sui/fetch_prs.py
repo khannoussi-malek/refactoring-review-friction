@@ -38,29 +38,45 @@ def main():
         if cur:
             cmd += ["-F", "c=" + cur]
         r = subprocess.run(cmd, capture_output=True, text=True)
-        if not r.stdout.strip():
+
+        # A transient failure can be EMPTY stdout or MALFORMED stdout (gh emits
+        # non-JSON on some rate-limit and proxy errors). Treating only the empty
+        # case as retryable crashes the run and loses every page fetched so far.
+        j = None
+        if r.stdout.strip():
+            try:
+                j = json.loads(r.stdout)
+            except json.JSONDecodeError:
+                j = None
+        if j is None:
             fails += 1
             if fails > 12:
-                print(f"giving up after {fails} failures: {r.stderr[:200]}",
-                      file=sys.stderr)
+                print(f"giving up after {fails} failures; keeping {len(nodes)} "
+                      f"PRs. last stderr: {r.stderr[:200]}", file=sys.stderr)
                 break
+            print(f"  transient failure {fails}, retrying", file=sys.stderr)
             time.sleep(min(2 ** fails, 30))
             continue
-        fails = 0
-        j = json.loads(r.stdout)
+
         if "errors" in j:
-            print(f"GraphQL error: {j['errors'][:1]}", file=sys.stderr)
+            print(f"GraphQL error (keeping {len(nodes)} PRs): {j['errors'][:1]}",
+                  file=sys.stderr)
             break
+        fails = 0
         d = j["data"]["repository"]["pullRequests"]
         nodes += d["nodes"]
         pages += 1
-        print(f"  ...{len(nodes)} PRs", file=sys.stderr)
+        if pages % 5 == 0:
+            print(f"  ...{len(nodes)} PRs", file=sys.stderr)
         if not d["pageInfo"]["hasNextPage"]:
             break
         cur = d["pageInfo"]["endCursor"]
 
+    # Always emit what we have. A partial fetch is usable; a crash is not.
     json.dump(nodes, sys.stdout)
-    print(f"fetched {len(nodes)} PRs from {a.repo}", file=sys.stderr)
+    print(f"fetched {len(nodes)} PRs from {a.repo}"
+          f"{' (PARTIAL)' if pages >= a.max_pages or fails > 12 else ''}",
+          file=sys.stderr)
 
 
 if __name__ == "__main__":
