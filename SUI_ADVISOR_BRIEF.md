@@ -109,7 +109,21 @@ These do not depend on the corpus size and are usable independently.
   This suppresses observable friction and can manufacture a false null.
 - **Only 31% of architectural commits are visible at PR level**, so control PRs are contaminated
   with unlabelled architectural work. This biases *toward* the null — the reported effect is
-  conservative — but it costs power and raises a selection question about direct-push work.
+  conservative — but it costs power.
+- **PR routing is not arbitrary, which bounds the claim.** Architectural work routed through a PR
+  is 5× larger (777 vs 152 lines, p=0.004) and 4× more abstraction-heavy (37% vs 9%, p=0.003) than
+  work pushed straight to main. The matched comparison stays internally valid — architectural PRs
+  are compared to same-size non-architectural PRs within the PR population — but the finding
+  **cannot generalise past reviewed work**. It says *among changes routed through review,
+  architectural ones draw more threads*, and is silent on the rest.
+- **69% of architectural work here never passes through code review at all.** This may be the more
+  substantive observation: in a company-owned project, structural change is largely pushed to main,
+  so any PR-based friction study is measuring the minority that someone chose to expose.
+- **Author identity aliasing was corrupting the social variables.** The same developer appears as
+  both `ivan@dalmet.fr` (0% via PR) and `ivan-dalmet@users.noreply.github` (100% via PR) — one
+  person, two workflows, counted as two people in earlier author statistics. Aliasing must be
+  resolved by GitHub login before any ownership or centrality variable is computed. Relevant to the
+  Hadoop study too, where `social_centrality.py` computes author concentration from git identities.
 - **Migration-driven churn.** A starter template's product is tracking the frontend stack.
   Architectural commits co-occurring with a dependency change are 13× larger. Controlled as a
   covariate, never silently filtered.

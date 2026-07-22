@@ -112,9 +112,40 @@ and only **30 of 96** architectural commits (31%) are visible at PR level. The o
 PRs classified as "none", contaminating the control group with the very thing being tested. That
 dilution can only *shrink* the measured difference — so the reported effects are conservative.
 
-It also costs power, and introduces a selection question worth pursuing: unlinked commits are
-largely direct pushes, so PR-visible architectural work may be systematically different from the
-work the owner pushes straight to main.
+**6 · But PR routing is NOT arbitrary — this bounds what the finding can claim.**
+(`scripts/sui/selection_bias.py`)
+
+| architectural commits | PR-routed (n=30) | direct-push (n=66) | p |
+|---|---|---|---|
+| churn | 777 lines | 151 lines | 0.0037 ** |
+| files touched | 22 | 9 | 0.0038 ** |
+| **abstraction share** | **37%** | **9%** | 0.0027 (Fisher) |
+
+Work that goes through a PR is five times larger and four times more abstraction-heavy than work
+pushed straight to main. The matched comparison remains internally valid — architectural PRs are
+still compared to same-size non-architectural PRs *within* the PR population — but the finding
+**cannot generalise beyond reviewed work**. It says: *among changes routed through review,
+architectural ones draw more threads.* It is silent on the majority that never gets reviewed.
+
+### The substantive finding hiding inside the bias
+
+**69% of architectural work in this repository never passes through code review at all.**
+
+That is arguably more interesting than the review-thread result. In a company-owned project, the
+structural changes are largely made by pushing to main. Any friction study restricted to PR data
+is, in this setting, measuring the minority of architectural work that someone chose to expose.
+
+### Author identity aliasing — a data-quality error I was making
+
+The author table shows `ivan@dalmet.fr` routing through PRs **0%** of the time (59 commits) and
+`ivan-dalmet@users.noreply.github` **100%** of the time (16 commits). These are the **same person**:
+`ivan-dalmet` is the GitHub username, `dalmet.fr` his own domain, and the `noreply` form is what
+GitHub attributes to commits made through its web flow.
+
+One human, two identities, two different workflows — and every earlier author-level statistic in
+this document treated them as two people. Author aliasing must be resolved (by GitHub login, not
+email) before any social or ownership variable is computed. This also explains the apparent
+"bimodal routing habit", which is a workflow artefact rather than a person-level preference.
 
 ---
 
