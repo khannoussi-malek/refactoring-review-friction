@@ -13,6 +13,11 @@ commands are in [SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospect
 > localises it: the cost is in **building** the change (~4× longer in logged active coding time), not
 > in getting it merged — so it is largely **intrinsic difficulty, not volunteer queueing**. Abstraction
 > is the one category that pays twice: harder to build *and* ~2× slower in review (p=0.0003).
+>
+> **And it is not getting better.** Across the decade, ordinary refactoring got steadily faster while
+> architectural refactoring did not improve at all (difference-in-differences interaction **+0.20,
+> p=0.003**). A decade of CI and review tooling made routine change cheaper and left structural change
+> exactly where it was — architectural debt compounding relative to everything else.
 
 ![abstraction gradient](figures/abstraction_gradient.png)
 
@@ -59,6 +64,14 @@ Three things this study established:
    Abstraction is the one category that pays twice: ~4.5× to build *and* ~2× in review (p=0.0003).
 
    ![friction phases](figures/friction_phases.png)
+
+   **And across the decade, architectural work is the one category that did not get cheaper.** Using a
+   workflow-independent clock (ticket → first citing commit — Jira status hygiene collapsed 93%→16%
+   when Hadoop moved to GitHub PRs), ordinary refactoring got steadily faster (rho=−0.21, p=3e-05)
+   while architectural refactoring stayed flat (rho=+0.04, p=0.45). Difference-in-differences
+   interaction **+0.20, p=0.003**, composition-controlled and stable across truncation windows.
+
+   ![temporal trend](figures/temporal_trend.png)
 
    Triage latency also varies ~40× across modules:
 
@@ -160,6 +173,9 @@ python3 scripts/friction_decomposition.py
 
 # 8    social centrality: can a measured variable replace the post-hoc tier? (it cannot)
 python3 scripts/social_centrality.py
+
+# 9    decade trajectory: did architectural work share in the project's speedup? (it did not)
+python3 scripts/temporal_trend.py
 ```
 
 ## Key documents
@@ -189,6 +205,7 @@ scripts/
   blast_radius_model.py     the mechanism test (replicates §5 as a gate before reporting anything)
   friction_decomposition.py status changelog → building vs merging vs active time, per group
   social_centrality.py      git → bus factor / concentration (prior-window) + size-confound check
+  temporal_trend.py         decade trajectory on a workflow-independent git clock (DiD vs control)
 
 data (generated)
   refminer_all.json               51,861 refactorings, 8,919 commits (4 ranges merged)
@@ -198,6 +215,7 @@ data (generated)
   blast_radius_results.json       mechanism test: models, connector tier, §9 decomposition
   friction_decomposition.json     phase split, workflow-comparability check, self-assignment
   social_centrality.json          social measures, size collinearity, the failed replacement test
+  temporal_trend.json             decade divergence, workflow-drift + truncation threat checks
   episode_outcomes.json           per-episode cycle-time + F2 + resolved flag
   cox_dataset.json                the survival-model table
   .jira_cache/ .jira_meta/        cached Jira responses (comments; dates/status)

@@ -15,8 +15,11 @@ rm_chunks/
 # ── Jira caches (re-fetchable) — all .jira_* dirs ──
 .jira_*/
 
-# ── Per-module git authorship cache (regenerable by social_centrality.py, ~6 MB) ──
+# ── Git-derived caches (regenerable; gitignore has no trailing comments, keep bare) ──
+# module_commit_log.json   : social_centrality.py, ~6 MB
+# ticket_first_commit.json : temporal_trend.py
 module_commit_log.json
+ticket_first_commit.json
 
 # ── Local config (may hold project-specific choices) ──
 config.env

@@ -76,6 +76,41 @@ timings are therefore **not comparable across tiers**, which qualifies §6a's co
 lifetime, not a measured queue) and is a reusable warning for anyone mining Apache Jira. Every number
 above is reported on the full-workflow sub-corpus.
 
+## 4b. The trajectory — the one kind of work that a decade of tooling did not make cheaper
+
+Everything above is a snapshot. Tracked year by year, it becomes a trajectory, and the trajectory is
+the strongest thesis statement in the study.
+
+This required fixing the instrument first: Hadoop moved to GitHub PRs around 2019–20 and Jira status
+hygiene collapsed with it (**93.5% → 15.5%** of tickets reaching `Patch Available`), so status-derived
+durations change meaning mid-corpus. The raw signal is therefore mostly measurement drift and is *not*
+reported. Instead we use a workflow-independent clock — ticket creation → **the first commit citing
+it**, from git — which means the same thing in 2016 and 2025 and covers **714/714 tickets**.
+
+![temporal trend](figures/temporal_trend.png)
+
+| | Architectural | Ordinary (control) |
+|---|---|---|
+| Year vs days-to-first-commit | rho = +0.04, p = 0.45 (**flat**) | rho = **−0.21**, p = 3e-05 (**improving**) |
+
+**Ordinary refactoring got faster across the decade. Architectural refactoring did not.** The
+difference-in-differences interaction is **+0.20, p = 0.003** with abstraction and connector-tier
+composition controlled, and stable at +0.19 under every truncation window. The gap widens from ~1.6×
+to ~10×.
+
+The ordinary-refactoring control is what makes this interpretable: a shrinking or ageing community
+would slow *both* groups. Only structural work is left behind.
+
+**Why it matters.** A decade of process investment — CI, PR review, Yetus automation — made routine
+change substantially cheaper and left structural change untouched. That is architectural debt
+behaving exactly as theory predicts: its cost does not fall with ordinary productivity, so it
+**compounds relative to everything else**. It reframes RQ1's stakes — the problem is not that
+architectural work is slow, but that it is **the one category not getting better**.
+
+*Honest limits:* right-censoring biases recent years toward fast, making the divergence conservative;
+the ordinary control thins to <5 tickets after 2023; and "days to first commit" is a total, mixing
+queueing with building.
+
 ## 5. Alternatives ruled out
 
 - **Priority:** similar (82% vs 75% Major) — not the cause.

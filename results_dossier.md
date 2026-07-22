@@ -150,6 +150,62 @@ latency used in §4, §5 and §9a — must be reported against the **full-workfl
 headline results hold cleanly (tables in §5a). This is a generalisable methodological caveat for
 anyone mining Apache Jira, and worth stating as such.
 
+## 5c. Temporal divergence — Hadoop improved at ordinary refactoring, but not at architectural
+
+Every analysis above pools 2016–2026. Splitting by year turns the study from a snapshot into a
+trajectory, and the trajectory is the most thesis-shaped result we have.
+
+**The measurement problem had to be solved first.** Hadoop migrated to GitHub pull requests around
+2019–2020 and Jira status hygiene collapsed with it: **93.5%** of tickets reached `Patch Available`
+before 2019, only **15.5%** after 2022. Every status-derived duration therefore changes meaning
+mid-corpus, so the raw "architectural triage is rising" signal (rho=+0.22, p=7e-05) is **substantially
+measurement drift and is not reported as a finding.** Restricting to full-workflow tickets does not
+rescue it either — that conditions on a variable whose prevalence fell 93%→16%, and leaves only **2.8%**
+of the sub-corpus after 2022.
+
+**The fix is a workflow-independent clock:** ticket creation → **the first commit citing it**, read
+from git. It means the same thing in 2016 and 2025, and it matches **714/714 tickets (100%)**.
+
+![temporal trend](figures/temporal_trend.png)
+
+| | Architectural | Ordinary (control) |
+|---|---|---|
+| Year vs days-to-first-commit | rho = +0.042, p = 0.45 (**flat**) | rho = **−0.209**, p = 3e-05 (**improving**) |
+
+**Difference-in-differences** (the ordinary group is the control — a shrinking or ageing community
+would slow *both*):
+
+| Model | Interaction (arch × year) | p |
+|---|---|---|
+| Plain | +0.278 | <0.001 |
+| **+ abstraction & connector composition controls** | **+0.202** | **0.003** |
+
+**Ordinary refactoring got measurably faster over the decade; architectural refactoring did not
+benefit at all.** Median days-to-first-commit for ordinary work drifts from ~21 (2018) to ~7–13
+(2022–23), while architectural work moves the other way (~34 → ~79). The gap widens from ~1.6× to
+~10×.
+
+**Robustness.** The interaction is stable under every truncation window — **+0.202 (2016+), +0.190
+(2018+), +0.192 (2019+)**, p<0.05 throughout. The *year main effect* weakens (−0.227 → −0.095 n.s.),
+so **"ordinary got absolutely faster" is partly an artifact** of pre-2018 tickets being left-truncated
+by our commit corpus (which starts at release 3.1.0, March 2018). **The defensible claim is the
+divergence, not the absolute speedup.** The status-based secondary analysis, despite its selection
+problem, agrees independently (interaction +0.308, p=0.011).
+
+**Interpretation.** A decade of process investment — CI, GitHub PR review, Yetus automation — made
+routine refactoring substantially cheaper and left structural change untouched. That is architectural
+debt behaving exactly as the theory says it should: the cost of restructuring does not fall with
+ordinary productivity, so it **compounds relative to everything else**. It also reframes RQ1's stakes:
+the problem is not that architectural work is slow, but that it is **the one category not getting
+better.**
+
+*Caveats.* (a) Right-censoring: tickets that never received a commit are absent, which biases recent
+years toward *fast* and therefore makes the divergence **conservative**. (b) The ordinary control has
+<5 tickets after 2023, so the last two years rest on the architectural side alone. (c) Days-to-first-
+commit is a *total* — it conflates queueing and building, unlike §5a's phase split. (d) Connector share
+rises over time (rho=+0.29, p<0.001) and is controlled, but composition and era remain partly
+entangled.
+
 ## 6. Alternative explanations ruled out
 
 - **Priority:** similar in both groups (Major 82% arch vs 75% ordinary) — not the cause.
@@ -362,7 +418,10 @@ change, not in getting it merged** — ~4× longer active coding time — so it 
 difficulty, not volunteer queueing** (§5a); (d) **abstraction uniquely pays twice**, ~4.5× to build
 *and* ~2× in review (§5a); (e) architectural tickets are ~2× more **entangled** (§7); (f) friction is
 **time, not quality** (§8); (g) friction varies ~40× across modules (§9), concentrated in the
-peripheral vendor tier rather than the foundation (§9a); (h) estimates absent; traceability excellent.
+peripheral vendor tier rather than the foundation (§9a); (h) **architectural refactoring did not share
+in a decade of process improvement that made ordinary refactoring faster** — a widening divergence
+robust to composition controls and every truncation window (§5c); (i) estimates absent; traceability
+excellent.
 
 **Refuted by our own tests:** the **blast-radius mechanism** (§9a) — module dependency centrality does
 not predict triage latency (p = 0.33 with tier controlled), and the raw association runs *negative*.
@@ -419,6 +478,9 @@ from Jira via bot-relay (no GitHub token); monorepo-aware traceability probe; st
 separating waiting from active work; **Maven blast-radius graph builder** (`scripts/module_graph.py`)
 and **refactoring→module attribution + mechanism test** (`scripts/episode_files.py`,
 `scripts/blast_radius_model.py`, which reruns the §5 replication gate before reporting anything);
+**workflow-independent timing clock** (`scripts/temporal_trend.py` — ticket→first-citing-commit from
+git, which survives the 2019–20 collapse in Jira status hygiene that breaks every status-derived
+duration, plus the drift/composition/truncation threat checks around it);
 **status-changelog phase decomposition** (`scripts/friction_decomposition.py`) separating *building*
 from *merging* time, with a built-in workflow-comparability check (§5b) that other Apache-Jira studies
 would need; **prior-window social-centrality measures** (`scripts/social_centrality.py` — bus factor,
@@ -440,6 +502,11 @@ collinearity check that decides whether they mean anything); committed data arti
 > fast as ordinary work** — so the friction is largely **intrinsic construction difficulty, not
 > volunteer queueing**, bounding the open-source confound rather than merely conceding it. Abstraction
 > uniquely pays twice: ~4.5× to build *and* ~2× in review (12.2 vs 5.5 days, p=0.0003).
+> Tracked across a decade with a workflow-independent clock (ticket → first citing commit, since Jira
+> status hygiene collapsed 93%→16% mid-corpus), **ordinary refactoring got steadily faster while
+> architectural refactoring did not improve at all** — a widening divergence (difference-in-differences
+> interaction +0.20, p=0.003, composition-controlled and stable across truncation windows). The one
+> category of work that a decade of tooling did not make cheaper is the structural one.
 > Triage latency varies ~40× across modules, and we tested the obvious mechanism — *blast radius*,
 > that touching a heavily depended-upon module invites hesitation — against Hadoop's Maven dependency
 > graph (117 modules). **It fails:** centrality does not predict triage (p = 0.33) and the raw
