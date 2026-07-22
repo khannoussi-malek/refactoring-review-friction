@@ -119,11 +119,20 @@ These do not depend on the corpus size and are usable independently.
 - **69% of architectural work here never passes through code review at all.** This may be the more
   substantive observation: in a company-owned project, structural change is largely pushed to main,
   so any PR-based friction study is measuring the minority that someone chose to expose.
-- **Author identity aliasing was corrupting the social variables.** The same developer appears as
-  both `ivan@dalmet.fr` (0% via PR) and `ivan-dalmet@users.noreply.github` (100% via PR) — one
-  person, two workflows, counted as two people in earlier author statistics. Aliasing must be
-  resolved by GitHub login before any ownership or centrality variable is computed. Relevant to the
-  Hadoop study too, where `social_centrality.py` computes author concentration from git identities.
+- **Author identity aliasing was corrupting the social variables — here, but not in Hadoop.** The
+  same developer appears as both `ivan@dalmet.fr` (0% via PR) and
+  `ivan-dalmet@users.noreply.github` (100% via PR) — one person, two workflows, counted as two.
+  Resolving aliases moves top-author concentration from **58.1% to 67.2%**.
+
+  Hadoop was checked and **does not need correcting**. Its raw aliasing is larger (1,035 emails →
+  797 identities; 96 emails span multiple author names across 35% of commits), but recomputing
+  concentration for all 112 modules by name versus by email is statistically indistinguishable
+  (mean `top1_share` 0.1545 vs 0.1495, paired Wilcoxon **p=0.37**). `social_centrality.py` stands.
+
+  The generalisable point: **aliasing severity scales inversely with contributor count.** Splitting
+  one person in two is decisive in a 53-author repo dominated by one developer and negligible in an
+  800-author repo where the top contributor holds 3.6%. Aliasing must be *measured* per corpus, not
+  assumed. See `scripts/sui/ALIASING_NOTE.md`.
 - **Migration-driven churn.** A starter template's product is tracking the frontend stack.
   Architectural commits co-occurring with a dependency change are 13× larger. Controlled as a
   covariate, never silently filtered.
