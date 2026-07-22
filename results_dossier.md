@@ -52,7 +52,11 @@ proved unusable — see §3.)
 | Distinct participants | 3 | 3 | 0.18 (n.s.) |
 
 More discussion, ~2× longer to start, ~2× longer to resolve — same small core of maintainers.
-**Triage latency is the anchor** (measured before discussion → not a discussion-volume artifact).
+**Triage latency is the anchor against the volume confound** — it is measured *before* any discussion
+exists, so it cannot be a discussion-volume artifact (the failure mode that killed §10). That is the
+only thing it anchors: §5b and §5c later show triage is *not* trustworthy across module tiers or
+across eras, because the Jira status field it derives from is unmaintained for some tiers and
+collapsed project-wide at the 2019–20 GitHub migration. Read it as volume-proof, not era-proof.
 
 ![architectural vs ordinary](figures/arch_vs_ordinary.png)
 
@@ -347,7 +351,8 @@ rationing, not blast-radius hesitation — direct empirical support for the §12
 
 **§5 survives this, strengthened:** with connector tier and era both controlled, abstraction still
 predicts triage (coef **+0.67, p = 0.010**), and it holds even with connectors excluded entirely
-(coef +0.59, p = 0.041). The headline finding is now robust to a fifth control.
+(coef +0.59, p = 0.041). The headline finding now holds under all five controls: change size,
+discussion volume, contributor experience, module tier, and era.
 
 *Caveats.* (a) **90 episodes (26%) could not be attributed** — 78 are HDDS/Ozone and 2 Submarine,
 subprojects since split out of the Hadoop repo, so their poms no longer exist in-tree; this analysis

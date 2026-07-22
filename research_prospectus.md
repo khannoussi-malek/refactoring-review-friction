@@ -2,9 +2,9 @@
 ### Architectural refactorings are harder to *build*, not harder to merge — and they are the one class of work a decade of tooling did not make cheaper
 
 **Author:** (independent pre-PhD study) · **Date:** 2026-07-22 · **Corpus:** Apache Hadoop
-**Status:** feasibility established; a mechanism-level finding demonstrated and defended against six
-controls; three competing explanations tested and rejected; one earlier claim corrected and one
-retracted. Full detail in `results_dossier.md`; every command in `SLICE_LOG.md`.
+**Status:** feasibility established; a mechanism-level finding demonstrated and defended against five
+controls plus a phase decomposition; three competing explanations tested and rejected; one earlier
+claim corrected and one retracted. Full detail in `results_dossier.md`; every command in `SLICE_LOG.md`.
 
 ---
 
@@ -118,7 +118,8 @@ Four candidate explanations were constructed and then failed against our own dat
 | **Maintainer concentration** explains the slow module tier | Prior-window authorship from git | **Failed to establish** — collinear with module size (rho=−0.86); dies under a size control |
 | Friction concentrates in foundational `hadoop-common` | Decomposed the Jira-prefix aggregate | **Corrected** — 62% of those tickets are cloud connectors; `hadoop-common` alone is 24.8 days, not 39.1 |
 
-This is the asymmetry the study rests on: the abstraction finding has survived six controls and a
+This is the asymmetry the study rests on: the abstraction finding has survived five controls (change
+size, discussion volume, contributor experience, module tier, era), the full-workflow restriction, and a
 phase decomposition, while **every competing explanation we could construct died.** That is harder to
 attack than a study in which everything happened to work.
 

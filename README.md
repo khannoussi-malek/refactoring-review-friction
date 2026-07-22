@@ -1,9 +1,10 @@
 # RQ1 feasibility study — architectural refactoring & review friction in Apache Hadoop
 
-This started as a week-1 "thin slice" starter kit. It grew into a feasibility study that established
-a reproducible pipeline, ruled out the original signal, and **stress-tested a candidate result to the
-point of retracting it.** This README explains what was done and what was (and wasn't) found; full
-commands are in [SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospectus.md](research_prospectus.md).
+This started as a week-1 "thin slice" starter kit. It grew into a study that established a
+reproducible pipeline, ruled out the original signal, produced a defended mechanism-level finding —
+and **rejected three competing explanations and corrected one of its own claims along the way.** This
+README explains what was done and what was (and wasn't) found; full commands are in
+[SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospectus.md](research_prospectus.md).
 
 > **Headline finding:** The friction in architectural refactoring is specifically in **creating
 > abstractions**, not relocating code. Extracting interfaces/superclasses/classes is **~2.5× slower to
@@ -40,7 +41,7 @@ Measured on **8,919 Hadoop commits** (4 release ranges, 3.1.0 → 3.4.3), **349 
 | **F1** effort estimate | ticket carries an estimate? | **0/345 = 0%** | ❌ absent in Apache |
 | **F2** structural review | review argues about structure? | **31%** (operational) | ⚠️ present, selective |
 
-Three things this study established:
+Four things this study established:
 
 1. **The original framing was wrong.** RQ1 assumed *effort estimates* as the signal. Apache records
    **none** — the field is empty on all 345 tickets ("*no actual time allocated to implement it*").
@@ -84,7 +85,9 @@ Three things this study established:
 
    Architectural tickets are also **~2× more entangled** (issue-links, p=0.001) — a second,
    volume-independent signal.
-4. **Three mechanisms were tested and rejected.**
+4. **Three candidate mechanisms were tested and rejected.** (A fourth claim — that friction
+   concentrates in the foundational module — was *corrected* rather than rejected; see the note under
+   the headline. The prospectus tabulates all four together.)
    - *Structural review discussion → slower resolution* held under a change-size control (Cox HR 0.69,
      p=0.003) but **collapsed under a discussion-volume control** (HR 1.10, p=0.51).
    - *Blast radius* — the natural reading of the ~40× module spread, that touching a heavily

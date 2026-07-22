@@ -42,8 +42,10 @@ Mechanism: creating a shared abstraction is a larger design commitment → devel
 (Cross-module moves — which are relocations — are actually the *fastest*, confirming that crossing a
 boundary is not what makes work hard; the abstraction is.)
 
-**Triage latency is the anchor** because it is measured *before* any discussion, so it cannot be a
-discussion-volume artifact.
+**Triage latency anchors this against the volume confound** — it is measured *before* any discussion
+exists, so it cannot be a discussion-volume artifact (the failure mode that killed §8). It is *not*
+comparable across module tiers or across eras, though: see §4a and §4b, where the Jira status field it
+derives from turns out to be unmaintained for one tier and to collapse project-wide in 2019–20.
 
 ## 4a. Where the friction lives — and why it is *not* just volunteers being slow
 
@@ -165,7 +167,8 @@ elsewhere — **~14×, p = 3e-07**, stable across eras. Nothing depends on these
 cannot be the story; **one maintainer owns 33%** of their tickets (vs 9% elsewhere).
 
 And §4 survives it: abstraction still predicts triage with tier and era controlled (coef +0.67,
-**p = 0.010**) — a fifth control passed.
+**p = 0.010**) — so the finding now holds under all five controls: change size, discussion
+volume, contributor experience, module tier, and era.
 
 **We then tried to promote this from observation to mechanism, and could not.** The connector tier was
 hand-drawn from module names in a table, so we tried replacing it with a measured variable —
@@ -219,7 +222,8 @@ structural change?"*
 
 **Contribution:** a reproducible fault-tolerant pipeline; a defended, mechanism-level preliminary
 finding, now **localised to a specific development phase** (abstraction-creation is the locus of
-refactoring friction, and the cost is in *building* — robust to five controls, time-not-quality, and
+refactoring friction, and the cost is in *building* — robust to five controls plus the
+full-workflow restriction, time-not-quality, and
 demonstrably not a volunteer-queueing artifact); **three mechanisms tested and rejected by our own
 analysis** (the structural-discussion signal §8; the blast-radius model §6a; maintainer concentration
 §6a) — each reported rather than buried; a **measurement caveat for Apache-Jira mining generally**

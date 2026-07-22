@@ -58,7 +58,8 @@ Four candidate explanations were built and then failed against our own data:
 - **"Friction concentrates in `hadoop-common`"**: that 39.1-day figure was a Jira-*prefix* aggregate,
   62% of it cloud-connector tickets. `hadoop-common` alone is 24.8 days. **Corrected.**
 
-The abstraction finding survived six controls and a phase decomposition while every competing
+The abstraction finding survived five controls (change size, discussion volume, contributor
+experience, module tier, era), the full-workflow restriction, and a phase decomposition while every competing
 explanation died. That asymmetry is the argument, and it is the part most worth attacking in the
 meeting.
 
