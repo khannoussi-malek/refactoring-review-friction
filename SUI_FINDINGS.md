@@ -53,6 +53,28 @@ without consequence.
 
 This is a narrower claim than the one it replaces, and it is the only one the data supports.
 
+### Second leg: review does not measurably protect the work either
+
+Because 69% of architectural work here bypasses PRs entirely, the corpus offers a natural
+experiment — do reviewed architectural changes survive better than unreviewed ones?
+(`scripts/sui/review_value.py`; 180-day horizon, right-censored commits excluded, matched on
+number of files touched.)
+
+| size-matched, 24 pairs | reviewed | unreviewed | p |
+|---|---|---|---|
+| fraction of files deleted | 0.050 | 0.211 | 0.109 |
+| fraction re-refactored | 0.333 | 0.528 | 0.233 |
+| any file deleted | 58% | 79% | 0.212 |
+| any file re-refactored | 75% | 83% | 0.724 |
+
+**Null on all four**, raw and matched. Review attention buys neither revision nor durability.
+
+Two honest caveats in opposite directions. All four measures lean the same way — reviewed work
+survives somewhat better — which is suggestive; but they are two outcomes measured two ways, not
+four independent tests, so the agreement is weaker evidence than it appears. And at n=24 pairs the
+test is underpowered: a real effect of this size would not be detectable here. **This is "no
+evidence of an effect", not "evidence of no effect".**
+
 ### Against the Hadoop result
 
 Hadoop found friction in **time** — architectural work waited. Here, once size is controlled,
