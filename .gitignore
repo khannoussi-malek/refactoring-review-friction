@@ -32,3 +32,6 @@ config.env
 
 # NOTE: the SMALL derived results ARE committed on purpose — they are the findings:
 #   architectural_episodes*.json  review_signal*.json  episode_outcomes.json  cox_dataset.json
+refminer_sui*.json
+prs_all.json
+pr_review_detail.json
