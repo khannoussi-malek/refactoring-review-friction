@@ -8,17 +8,20 @@ commands are in [SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospect
 > **Headline finding:** The friction in architectural refactoring is specifically in **creating
 > abstractions**, not relocating code. Extracting interfaces/superclasses/classes is **~2.5× slower to
 > be picked up** (7.2 vs 2.8 days, p=0.004) and ~2× slower to resolve than moving/renaming code — which
-> is itself no harder than ordinary work. The effect **survives controlling for change size, discussion
-> volume, and contributor experience**, and concentrates in the foundational `hadoop-common` module
-> (~40× the triage latency of HDFS). Mechanism: abstraction = bigger commitment → developers hesitate
-> to start.
+> is itself no harder than ordinary work. The effect **survives controls for change size, discussion
+> volume, contributor experience, module tier and era**. Decomposing the Jira status changelog
+> localises it: the cost is in **building** the change (~4× longer in logged active coding time), not
+> in getting it merged — so it is largely **intrinsic difficulty, not volunteer queueing**. Abstraction
+> is the one category that pays twice: harder to build *and* ~2× slower in review (p=0.0003).
 
 ![abstraction gradient](figures/abstraction_gradient.png)
 
-> *(A separate within-episode signal — structural review discussion → slower resolution — was found,
-> stress-tested, and **retracted** as a discussion-volume confound. And a caveat: much of this timing
-> friction reflects how open-source coordinates work — triage latency ≈ "time until a volunteer opts
-> in." Both are part of the honest story; see below.)*
+> *(Three candidate mechanisms were tested and **rejected**: a structural-review-discussion signal
+> (a discussion-volume confound), the **blast-radius** model (module centrality does not predict
+> triage — the association even runs negative), and **maintainer concentration** (collinear with module
+> size). An earlier reading of §9 — "friction concentrates in the foundational `hadoop-common`
+> module" — was **corrected**: that number was a Jira-prefix aggregate, 62% of it cloud-connector
+> tickets. All of this is part of the honest story; see below.)*
 
 ---
 
@@ -63,7 +66,7 @@ Three things this study established:
 
    Architectural tickets are also **~2× more entangled** (issue-links, p=0.001) — a second,
    volume-independent signal.
-4. **Two mechanisms were tested and killed.**
+4. **Three mechanisms were tested and rejected.**
    - *Structural review discussion → slower resolution* held under a change-size control (Cox HR 0.69,
      p=0.003) but **collapsed under a discussion-volume control** (HR 1.10, p=0.51).
    - *Blast radius* — the natural reading of the ~40× module spread, that touching a heavily
@@ -71,13 +74,19 @@ Three things this study established:
      (117 modules): centrality does not predict triage (p=0.33), and the raw association runs
      *negative*. What is really there is the **opposite**: the structurally peripheral cloud-connector
      tier waits **43.6 vs 3.1 days** (~14×, p=3e-07), with one maintainer owning 33% of its tickets.
+   - *Maintainer concentration* — the attempt to replace that hand-drawn tier with a measured social
+     variable from git — corroborates it (top author owns 39% of connector commits vs 9%, p=4e-21)
+     but **explains nothing**: it is collinear with module size (rho=−0.86) and dies under a size
+     control. In one project, "peripheral" is a single variable; separating it needs many projects.
 
    ![blast radius](figures/blast_radius.png)
 
-**Net:** a defended, mechanism-level finding (abstraction is the locus of refactoring friction),
-supporting results (estimates absent; friction ≈ volume; quality unchanged), two self-refuted
-mechanisms, an open-source caveat sharpened into a result (friction tracks thin *attention*, not high
-*risk*), and a reproducible pipeline. Full detail: [results_dossier.md](results_dossier.md).
+**Net:** a defended, mechanism-level finding (abstraction is the locus of refactoring friction, and the
+cost is in *building* it), supporting results (estimates absent; friction ≈ volume; quality unchanged),
+**three self-rejected mechanisms and one self-corrected claim**, a reusable measurement caveat for
+Apache-Jira mining (status-derived timings are not comparable across module tiers that drive different
+workflows), and a reproducible pipeline. The surviving claim is small, specific and defended.
+Full detail: [results_dossier.md](results_dossier.md).
 
 ## More figures
 
@@ -148,6 +157,9 @@ python3 scripts/blast_radius_model.py                # the mechanism test + figu
 
 # 7    split friction into building vs merging time (status changelog)
 python3 scripts/friction_decomposition.py
+
+# 8    social centrality: can a measured variable replace the post-hoc tier? (it cannot)
+python3 scripts/social_centrality.py
 ```
 
 ## Key documents
@@ -176,6 +188,7 @@ scripts/
   episode_files.py          episode → file paths its architectural refactorings touched
   blast_radius_model.py     the mechanism test (replicates §5 as a gate before reporting anything)
   friction_decomposition.py status changelog → building vs merging vs active time, per group
+  social_centrality.py      git → bus factor / concentration (prior-window) + size-confound check
 
 data (generated)
   refminer_all.json               51,861 refactorings, 8,919 commits (4 ranges merged)
@@ -184,6 +197,7 @@ data (generated)
   module_blast_radius.json        blast radius + deps per Maven module
   blast_radius_results.json       mechanism test: models, connector tier, §9 decomposition
   friction_decomposition.json     phase split, workflow-comparability check, self-assignment
+  social_centrality.json          social measures, size collinearity, the failed replacement test
   episode_outcomes.json           per-episode cycle-time + F2 + resolved flag
   cox_dataset.json                the survival-model table
   .jira_cache/ .jira_meta/        cached Jira responses (comments; dates/status)

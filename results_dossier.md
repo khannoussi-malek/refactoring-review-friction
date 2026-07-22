@@ -257,6 +257,54 @@ episodes spanning 2016–2026. (c) Module-level n = 11 is small. (d) The connect
 inspecting the module table, not hypothesized in advance** — it needs confirmation on a held-out
 project before being treated as a claim rather than a lead.
 
+## 9b. Social centrality — corroborates the tier, but fails to explain it
+
+§9a's weakest point was its own admission: the connector tier was **hand-drawn from seven module names
+spotted in a table**. §5b then showed its timing numbers are partly a workflow artifact. So we tried to
+replace the post-hoc dummy with a continuous, independently measured variable — **maintainer
+concentration**, computed from **git** (a different data source from the Jira assignee figures) over
+commits **strictly before each ticket was filed**, so the ticket's own work cannot inflate the
+predictor.
+
+![social centrality](figures/social_centrality.png)
+
+**What worked — independent corroboration of the tier's character:**
+
+| Measure (median) | Connectors | Rest | p |
+|---|---|---|---|
+| Top author's share of prior commits | **39%** | 9% | 4e-21 |
+| Bus factor (authors covering 50% of commits) | **3** | 10 | 2e-19 |
+| Distinct authors | 76 | 124 | 9e-11 |
+| Reviewer pool (commenters on the module's other tickets) | 26 | 39 | 1e-04 |
+
+Git independently confirms what Jira assignees suggested: these modules really are owned by very few
+people. That is a solid *description*.
+
+**What failed — it does not explain friction.** Concentration is **near-collinear with module size**
+(Spearman **−0.86**, p=4e-69): a module maintained by few people is almost tautologically a module with
+few commits. Once module size is controlled, the effect collapses on exactly the measures §5b showed
+are trustworthy:
+
+| Outcome | Concentration alone | + module-size control |
+|---|---|---|
+| `t_to_patch` (building) | +3.27, p = 0.024 | +3.51, **p = 0.239** |
+| Total lifetime | +2.98, p < 0.001 | +2.38, **p = 0.073** |
+| Triage latency | +4.51, p < 0.001 | +7.13, p < 0.001 |
+
+Only **triage** survives — and triage is precisely the measure §5b showed is contaminated for these
+tickets (unmaintained status field ⇒ triage ≈ lifetime). Worse, concentration produces **no gradient
+at all within the non-connector corpus** (triage rho = −0.05 p=0.50; `t_to_patch` rho = +0.09 p=0.27;
+total rho = +0.08 p=0.25).
+
+**Verdict: the replacement attempt fails.** Maintainer concentration does not defensibly substitute for
+the post-hoc tier, so **§9a caveat (d) stands** — the connector finding still needs a held-out project.
+
+**What we learned anyway (the useful part).** In this corpus, "peripheral module" is a **single latent
+property**: small, few-authored, low-centrality and vendor-specific all travel together and cannot be
+separated with 11 modules. That is a concrete design requirement for the next study rather than a
+vague call for more data: **breaking this collinearity needs many more modules — i.e. multiple
+projects — and is a precondition for any causal claim about attention.**
+
 ## 10. Retracted result — a within-episode signal that was a volume confound
 
 We tested whether, *among* architectural episodes, more *structural review discussion* predicts slower
@@ -323,9 +371,13 @@ not predict triage latency (p = 0.33 with tier controlled), and the raw associat
 attention" interpretation is not supported — those tickets do not drive the Jira workflow that would
 make waiting measurable (§5b).
 
+**Tested and failed to establish:** **maintainer concentration** as a measured replacement for the
+post-hoc connector tier (§9b) — it corroborates the tier's character from git but is collinear with
+module size (rho −0.86) and explains nothing once size is controlled.
+
 **Not established:** whether *structural review discussion as such* adds friction beyond volume (§10 —
-untested, not disproven, needs validated signal); whether the **maintainer-concentration** explanation
-for the connector tier is causal (§9a — post-hoc, needs a held-out project); whether the
+untested, not disproven, needs validated signal); whether any attention-based explanation for the
+connector tier holds (§9a/§9b — still post-hoc, needs a held-out project); whether the
 **self-assignment** effect is causal rather than definitional (§5a — endogenous); whether the
 *review-phase* half of the abstraction cost generalizes **beyond open-source** (§12 — the
 *build-phase* half now plausibly does); causal direction.
@@ -344,18 +396,19 @@ a **post-hoc** connector tier.
 
 ## 15. Open questions / directions
 
-1. ~~**Blast-radius model:** does a module's dependency centrality predict architectural-change
-   triage?~~ **Answered in §9a: no.** Replaced by → **attention-rationing model:** does maintainer
-   concentration (or bus factor / review-pool size) predict triage better than any structural
-   property? The §9a connector result says test *social* centrality, not *code* centrality.
+1. ~~**Blast-radius model**~~ (**§9a: no**) → ~~**attention-rationing model** via maintainer
+   concentration~~ (**§9b: not separable from module size**). What remains: **break the collinearity.**
+   Peripherality, size, author count and centrality are one variable in a single project; only a
+   multi-project corpus can tell them apart. This is now the precondition for any attention claim.
 2. **Validated structural signal** (dual-rater κ), then re-test §10.
 3. **Commercial contrast** to separate intrinsic vs OSS-coordination effects (§12).
 4. ~~**Better effort proxies** from the changelog (active vs waiting time)~~ **Done in §5a.** Follow-on:
    rework/reverts, and recovering active time for the ~75% of tickets that never log `In Progress`
    (GitHub PR timestamps via the githubbot relay would give a workflow-independent clock — and would
    also repair the §5b comparability problem).
-5. **Replicate** on Kafka/HBase/Camel — now with a **specific pre-registered prediction** from §9a:
-   peripheral/vendor-integration modules should show longer triage than core modules.
+5. **Replicate** on Kafka/HBase/Camel — now with a **specific pre-registered prediction** from §9a
+   (peripheral/vendor-integration modules should show longer triage than core modules) *and* the
+   design requirement from §9b (enough modules to separate size from concentration).
 6. Human-factors (RQ2): who takes on architectural work, and why *peripheral* work stalls.
 7. **Recover the Ozone/Submarine episodes** (§9a caveat a) by resolving their split-out repos.
 
@@ -368,7 +421,9 @@ and **refactoring→module attribution + mechanism test** (`scripts/episode_file
 `scripts/blast_radius_model.py`, which reruns the §5 replication gate before reporting anything);
 **status-changelog phase decomposition** (`scripts/friction_decomposition.py`) separating *building*
 from *merging* time, with a built-in workflow-comparability check (§5b) that other Apache-Jira studies
-would need; committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.json`,
+would need; **prior-window social-centrality measures** (`scripts/social_centrality.py` — bus factor,
+concentration and reviewer pool computed only over history preceding each ticket, with the size-
+collinearity check that decides whether they mean anything); committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.json`,
 `arch_vs_ordinary.json`, `module_blast_radius.json`, `blast_radius_results.json`,
 `friction_decomposition.json`) and the charts.
 

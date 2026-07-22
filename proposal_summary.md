@@ -117,9 +117,21 @@ cloud-connector tier (`hadoop-aws`, `hadoop-azure`; blast radius ~2) waits **43.
 elsewhere — **~14×, p = 3e-07**, stable across eras. Nothing depends on these modules, so hesitation
 cannot be the story; **one maintainer owns 33%** of their tickets (vs 9% elsewhere).
 
-**Friction tracks where community attention is thinnest, not where technical risk is highest.** That
-is hard evidence for the reframing in §9 below. And §4 survives it: abstraction still predicts triage
-with tier and era controlled (coef +0.67, **p = 0.010**) — a fifth control passed.
+And §4 survives it: abstraction still predicts triage with tier and era controlled (coef +0.67,
+**p = 0.010**) — a fifth control passed.
+
+**We then tried to promote this from observation to mechanism, and could not.** The connector tier was
+hand-drawn from module names in a table, so we tried replacing it with a measured variable —
+maintainer concentration from git, computed only over commits *preceding* each ticket. It corroborates
+the tier's character independently (top author owns 39% of connector commits vs 9% elsewhere,
+p=4e-21; bus factor 3 vs 10) but **explains nothing**: concentration is collinear with module size
+(rho = −0.86), and once size is controlled the effect vanishes on every trustworthy measure
+(building-time p = 0.24, lifetime p = 0.07), with no gradient at all inside the rest of the corpus.
+
+The useful residue is a **design requirement, not a result**: in one project, "peripheral" — small,
+few-authored, low-centrality, vendor-specific — is a *single* variable. Separating those requires a
+multi-project corpus, which is now a precondition for any attention-based claim rather than a
+nice-to-have.
 
 ## 7. Between-group primary comparison (context for §4)
 
@@ -161,10 +173,11 @@ structural change?"*
 **Contribution:** a reproducible fault-tolerant pipeline; a defended, mechanism-level preliminary
 finding, now **localised to a specific development phase** (abstraction-creation is the locus of
 refactoring friction, and the cost is in *building* — robust to five controls, time-not-quality, and
-demonstrably not a volunteer-queueing artifact); **two mechanisms tested and killed by our own
-analysis** (the structural-discussion signal, §8; the blast-radius model, §6a); a **measurement caveat
-for Apache-Jira mining generally** (status-derived timings are not comparable across module tiers that
-drive different workflows, §4a); and a well-scoped design. **Full study:** an **attention-rationing model** (maintainer concentration / review
+demonstrably not a volunteer-queueing artifact); **three mechanisms tested and rejected by our own
+analysis** (the structural-discussion signal §8; the blast-radius model §6a; maintainer concentration
+§6a) — each reported rather than buried; a **measurement caveat for Apache-Jira mining generally**
+(status-derived timings are not comparable across module tiers that drive different workflows, §4a);
+and a well-scoped design in which the surviving claim is small, specific and defended. **Full study:** an **attention-rationing model** (maintainer concentration / review
 pool, not code centrality — the §6a lead); a validated, dual-rated (κ) structural signal; better
 changelog effort proxies; a commercial contrast to separate intrinsic from OSS effects; and
 replication on Kafka/HBase/Camel, now carrying a **pre-registered prediction** from §6a — peripheral
