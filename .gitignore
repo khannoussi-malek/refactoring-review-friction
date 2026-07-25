@@ -36,3 +36,6 @@ refminer_sui*.json
 prs_all.json
 pr_review_detail.json
 pr_timeline.json
+
+# multi-project replication corpora (cloned, not vendored)
+corpora/

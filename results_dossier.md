@@ -72,9 +72,45 @@ Splitting architectural episodes by *what they do*:
 | Resolution time (days) | 18.0 | **34.5** | 0.0001 |
 
 **Relocating code is no harder than ordinary work (2.8 vs ordinary 2.1 days); introducing new
-abstractions is ~2.5× slower to start and ~2× slower to resolve.** The abstraction effect **survives
-controlling for change size and discussion volume** (OLS on log-triage: coef +0.55, **p = 0.013**).
+abstractions is ~2.5× slower to start and ~2× slower to resolve.**
 Mechanism: creating a shared abstraction is a larger design commitment → developers hesitate to start.
+
+**CORRECTED 2026-07-25 — the split is post-hoc and the adjusted effect is borderline.**
+Two things must be said with this table, both found by re-testing it properly
+(`scripts/full_adjustment.py`, `scripts/advisor_followup.py`):
+
+1. **The abstraction/relocation split was defined *after* seeing the §4 triage numbers** (commit
+   `22ec902`, one commit after the §4 result). It is **exploratory** and belongs in a
+   pre-registered arm, not in a confirmatory claim.
+2. **"Survives five controls" was five *separate nested models* in three scripts, never one
+   equation, and no CI was ever reported.** In a single joint model (n=319, HC3):
+
+| Model | abstraction coef [95% CI] | p | ×days |
+|---|---|---|---|
+| unadjusted | +0.599 [+0.172, +1.026] | 0.006 | ×1.82 |
+| + change size | +0.523 [+0.051, +0.996] | 0.030 | ×1.69 |
+| + discussion volume | +0.526 [+0.051, +1.001] | 0.030 | ×1.69 |
+| + contributor experience | +0.504 [+0.031, +0.977] | 0.037 | ×1.66 |
+| + module tier | +0.455 [−0.010, +0.920] | 0.055 | ×1.58 |
+| **+ era = FULLY ADJUSTED** | **+0.429 [−0.032, +0.889]** | **0.068** | **×1.54 [0.97, 2.43]** |
+
+It **does not hold at p<0.05 under full adjustment.** It degrades smoothly rather than collapsing
+(contrast §10, which went 0.003 → 0.51) and is stable in direction across all six specifications,
+but the honest statement is *consistent, underpowered, not established*. VIF max 2.6, so this is
+power, not collinearity.
+
+**The split rule itself was too generous, and tightening it does not help.** "Any abstraction-type
+refactoring" coded 17% of tickets (53) as abstraction that also contain relocation work. Two
+stricter versions:
+
+| Version | n | unadjusted | fully adjusted |
+|---|---|---|---|
+| pure abstraction vs pure relocation (mixed dropped) | 155 / 112 | +0.660, p=0.004 | +0.404 [−0.076, +0.885], **p=0.099** |
+| abstraction as a continuous *share* of the ticket | 319 | +0.638, p=0.006 | +0.436 [−0.026, +0.898], **p=0.065** |
+
+Clustering the SEs changes little: by module (26 groups) p=0.061, by assignee (109 groups) p=0.124.
+Note the analysis frame is already one row per **ticket** (349 episodes → 323 tickets aggregated
+upstream), so clustering on ticket is a no-op; module and assignee are the dependence that remains.
 
 This also explains an **inverted cross-module result**: cross-module moves (which are *relocations*)
 are actually the *fastest* (triage 1.0 day) — so crossing a module boundary is not what makes work
@@ -122,6 +158,31 @@ and harder to get others to accept.
 **not volunteer-queueing artifacts**. A ticket in `In Progress` has someone working on it. So the core
 finding is substantially **intrinsic difficulty**, not open-source coordination — which is exactly what
 §12 said we could not yet claim. The OSS confound is now **bounded, not merely acknowledged**.
+
+**CORRECTED 2026-07-25 — the phase tables above are unadjusted medians, and adjustment softens them.**
+Every number in this section was a Mann-Whitney median comparison. Under the same joint model as §5
+(size, discussion volume, experience, tier, era; each phase restricted to the tickets that drive it):
+
+| Phase | median arch/ord | adjusted coef [95% CI] | p |
+|---|---|---|---|
+| Days to first patch (**BUILD**) | 3.83 / 0.98 | +0.301 [−0.034, +0.636] | 0.078 |
+| Days in review (**MERGE**) | 8.46 / 8.15 | +0.014 [−0.221, +0.249] | 0.909 |
+| Active coding (In Progress, n=181) | 4.87 / 1.11 | +0.232 [−0.404, +0.868] | 0.475 |
+| Total lifetime | 30.13 / 15.30 | +0.046 [−0.204, +0.296] | 0.717 |
+
+**The shape survives, the significance does not.** Build-phase friction is ~3× the merge-phase
+coefficient and merge is a clean null, which is the qualitative claim ("reviewers are not the
+bottleneck; building is") — but ×1.35 [0.97, 1.89] at p=0.078 is not an established effect. Dropping
+the tier dummy, which is 0 by construction for every control ticket and therefore absorbs the slowest
+architectural tickets, moves it to +0.316, p=0.062. **This is the most likely headline for a
+registered report precisely because it is the one claim that cannot be volunteer queueing — but it
+must be pre-registered and re-tested, not reported as established.**
+
+**"Abstraction pays twice" does NOT survive adjustment and is withdrawn as a claim.** Within
+architectural work, adjusted: `t_to_patch` +0.327 (p=0.22), `t_review` **+0.107 (p=0.61)**, active
+coding −0.144 (p=0.74, n=91). The earlier +0.57 p=0.0025 on `t_review` was connector-controlled only.
+The review-phase half of the abstraction cost is **not established**; §12's "abstraction-as-hard-to-
+agree-on is social" reading rests on it and must be dropped with it.
 
 **Self-assignment (a strong effect, but read it carefully).** Whether the reporter ends up doing the
 work themselves does *not* differ between groups (79.8% architectural vs 78.0% ordinary, p=0.62) — but
@@ -188,6 +249,22 @@ would slow *both*):
 benefit at all.** Median days-to-first-commit for ordinary work drifts from ~21 (2018) to ~7–13
 (2022–23), while architectural work moves the other way (~34 → ~79). The gap widens from ~1.6× to
 ~10×.
+
+**CORRECTED 2026-07-25 — it does not hold on post-migration data alone.** The truncation windows below
+all still contain pre-2020 data. Restricting to the era after the GitHub migration, on the same git
+clock:
+
+| Window | n (ordinary controls) | interaction [95% CI] | p |
+|---|---|---|---|
+| 2019+ | 424 (253) | +0.192 [+0.029, +0.356] | 0.021 * |
+| **2020+** | 239 (145) | **+0.102 [−0.155, +0.360]** | **0.44** |
+| **2021+** | 166 (101) | **+0.260 [−0.176, +0.697]** | **0.24** |
+
+The point estimate halves at 2020+ and both CIs are wide. What runs out is the **control arm** — the
+ordinary group has <5 tickets after 2023, so the recent era cannot support a difference-in-differences
+at all. The divergence therefore **rests substantially on the pre-2020 half of the window**, and the
+truncation-window stability below is reassurance about *left truncation*, not about the measurement
+break. Report as era-bounded, not as a decade-long trend that continues today.
 
 **Robustness.** The interaction is stable under every truncation window — **+0.202 (2016+), +0.190
 (2018+), +0.192 (2019+)**, p<0.05 throughout. The *year main effect* weakens (−0.227 → −0.095 n.s.),
@@ -409,6 +486,67 @@ separated with 11 modules. That is a concrete design requirement for the next st
 vague call for more data: **breaking this collinearity needs many more modules — i.e. multiple
 projects — and is a precondition for any causal claim about attention.**
 
+## 9c. A portable tier rule that works — "does this module wrap an external system?"
+
+§9a's tier was drawn by hand from seven module names in a results table, and §9b failed to replace it
+with maintainer concentration. Neither can be carried to Kafka. What Hadoop's slow modules actually
+share is that they **wrap an external service API** — which is a project-independent property (Kafka
+has Connect, Camel is almost nothing but connectors). The operationalisation must avoid a hand-written
+vendor list, or the hand-drawing has just moved.
+
+**The rule** (`scripts/external_wrapper_tier.py`), computed from `pom.xml` alone, before any outcome
+data:
+
+> A third-party groupId is **rare** if at most τ of the project's own modules declare it. A module's
+> **vendor share** is the fraction of its declared dependencies that are rare third-party groupIds.
+> A module is an **external-system wrapper** if its vendor share ≥ 0.40.
+
+Shared infrastructure (guava, slf4j, junit) is common by construction and drops out automatically; a
+vendor SDK pulled in by one or two modules is what the rule fires on. Both parameters are
+pre-registerable and need no knowledge of the project.
+
+**Two failed versions are recorded so they are not retried.** (a) *Count* of rare dependencies rather
+than share: flags 15 of 25 modules, because a hub accumulates rare dependencies simply by being large.
+(b) *Ignoring dependency scope*: flags 18 of 25, because test-only helpers (logback, hsqldb,
+mock-server) are rare by nature. Restricting to compile/runtime scope and switching from count to
+share is what makes it work.
+
+| Rule (τ=0.05) | modules flagged | precision vs hand tier | recall | median triage: wrapper vs rest |
+|---|---|---|---|---|
+| vendor share ≥ 0.15 | 14 | 0.21 | 1.00 | 14.9 vs 1.2 d (p=6e-05) |
+| vendor share ≥ 0.25 | 10 | 0.30 | 1.00 | 17.4 vs 2.9 d (p=5e-04) |
+| **vendor share ≥ 0.40** | **6** | **0.50** | **1.00** | **32.1 vs 2.9 d (p=3.4e-07)** |
+| *hand-drawn tier (reference)* | *7* | *1.00* | *1.00* | *43.6 vs 3.1 d (p=2.7e-07)* |
+
+**It reproduces the tier effect at comparable strength with no hand-drawing.** The continuous version
+needs no threshold at all: vendor share vs triage, rho = **+0.371, p < 1e-4** (n=242).
+
+**And it survives the control that killed §9b.** Vendor share is only mildly related to module size
+(rho = −0.38, against the **−0.86** that made maintainer concentration inseparable from "small"):
+
+| Model | vendor-share coef [95% CI] | p |
+|---|---|---|
+| alone (+ abstraction) | +3.158 [+2.018, +4.299] | <1e-4 |
+| + module size | +3.135 [+1.949, +4.321] | <1e-4 |
+| + module size + era | **+2.885 [+1.571, +4.199]** | **<1e-4** |
+
+**This is the first tier measure in the study that is both portable and not a proxy for module size.**
+
+*Caveats.* (a) Precision is 0.50 because only **3** hand-tier modules carry architectural tickets, so
+the agreement statistic rests on three positives and means very little — the triage split and the size
+control are the real evidence. (b) The three "false positives" are arguable: `hadoop-yarn-csi` (gRPC
+to external storage plugins) and `hadoop-yarn-server-common` (external SQL Server state store) are
+external-system wrappers on any reading; `hadoop-common` is a genuine miss and the reason the rule
+needs a size or centrality guard before use. (c) **This is still Hadoop**, where the target was drawn:
+reproducing it here is a necessary condition, not evidence of generality. The rule must be **fixed in
+advance** and tested on Kafka/HBase/Camel.
+
+**Separability check for §5 (`advisor_followup.py` step 3).** Abstraction is not confounded with the
+tier: abstraction is 74% of connector tickets vs 64% elsewhere (Fisher OR=1.63, **p=0.19**), so the
+joint model is identified. Cell medians (days): relocation/non-tier **1.1**, abstraction/non-tier
+**4.2**, relocation/tier **8.0**, abstraction/tier **49.0** — but the last-but-one cell has n=12, so
+the apparent interaction cannot be tested here.
+
 ## 10. Retracted result — a within-episode signal that was a volume confound
 
 We tested whether, *among* architectural episodes, more *structural review discussion* predicts slower
@@ -442,15 +580,19 @@ Some of the measured "friction" still reflects **how open-source coordinates wor
 - **§9a's connector tier** cannot be read as an attention effect, because those tickets do not drive
   the workflow that would make "waiting" measurable (§5b).
 
-**But the core finding is now demonstrably NOT a coordination artifact.** §5a shows architectural work
-takes ~4× longer in **logged active coding time** (4.87 vs 1.13 days) and ~4× longer to **produce a
-patch**, while being merged just as fast as ordinary work. Time spent `In Progress` is time somebody is
-working — it cannot be volunteer queueing. Abstraction additionally costs ~2× in review (12.15 vs 5.46
-days, p=0.0003), which *is* a social cost, but it sits on top of a real construction cost rather than
-substituting for one.
+**The core finding is probably not a coordination artifact, but this is now weaker than it was.** §5a
+shows architectural work takes ~4× longer in **logged active coding time** (4.87 vs 1.13 days) and ~4×
+longer to **produce a patch**, while being merged just as fast as ordinary work. Time spent
+`In Progress` is time somebody is working — it cannot be volunteer queueing. **CORRECTED 2026-07-25:**
+under full adjustment the build-phase gap is ×1.35, p=0.078 and the active-coding gap is p=0.475
+(n=181), so the *direction* of the bound holds and its *strength* does not. Read §12 as "the OSS
+confound is bounded in principle and the bound is not yet measured tightly."
+
+Also withdrawn: abstraction's ~2× review cost (12.15 vs 5.46 days) does not survive adjustment
+(p=0.61), so the **social half of the split below has no evidence behind it.**
 
 So the honest split is: **abstraction-as-difficulty is intrinsic and should replicate in industry;
-abstraction-as-hard-to-agree-on is social and may be OSS-flavoured; who-picks-it-up is purely OSS.**
+abstraction-as-hard-to-agree-on is untested, not supported; who-picks-it-up is purely OSS.**
 
 **Reframing opportunity:** RQ1 may be less "do individuals hesitate?" and more **"how does a
 volunteer community ration attention across high-stakes structural change?"** — a novel, legitimate
@@ -459,22 +601,33 @@ with a **commercial/industrial codebase** (all-OSS replication tests OSS-general
 
 ## 13. What is / isn't established
 
+> **REVISED 2026-07-25 after the full-adjustment pass.** Three items below moved from *established*
+> to *consistent but underpowered*: the abstraction effect (§5), the build-vs-merge localisation
+> (§5a), and the decade divergence in the recent era (§5c). One item — "abstraction pays twice" —
+> is withdrawn outright. One item was added: a portable tier rule (§9c). The pattern is uniform:
+> **unadjusted differences are large and adjusted ones are directionally identical but sit at
+> p≈0.06–0.10 on ~250–320 tickets.** This is a power problem, and §15 now quantifies it.
+
 **Established:** (a) architectural refactorings are a distinct, higher-friction class (§4); (b) the
-friction is specifically in **abstraction-creation, not relocation** (§5), surviving size/volume/
-experience/tier/era controls and the full-workflow restriction; (c) **the friction is in building the
-change, not in getting it merged** — ~4× longer active coding time — so it is largely **intrinsic
-difficulty, not volunteer queueing** (§5a); (d) **abstraction uniquely pays twice**, ~4.5× to build
-*and* ~2× in review (§5a); (e) architectural tickets are ~2× more **entangled** (§7); (f) friction is
+friction is specifically in **abstraction-creation, not relocation** (§5) — *unadjusted*; under full
+joint adjustment ×1.54 [0.97, 2.43], p=0.068, so **consistent, not established**; (c) the friction is
+in building the change, not in getting it merged (§5a) — merge is a clean null (p=0.91) and build is
+×1.35 [0.97, 1.89], p=0.078, so the **shape** is established and the magnitude is not; (d) *[withdrawn
+— see below]*; (e) architectural tickets are ~2× more **entangled** (§7); (f) friction is
 **time, not quality** (§8) — and this now survives a far stronger rework test than the reopen rate:
 architectural work needs more CI attempts only because it is bigger, not because it is more
 error-prone per unit of code (§8a); (g) friction varies ~40× across modules (§9), concentrated in the
-peripheral vendor tier rather than the foundation (§9a); (h) **architectural refactoring did not share
-in a decade of process improvement that made ordinary refactoring faster** — a widening divergence
-robust to composition controls and every truncation window (§5c); (i) estimates absent; traceability
-excellent.
+peripheral vendor tier rather than the foundation (§9a), and that tier is now reproducible from a
+**portable, pre-registerable rule** that survives the module-size control (§9c); (h) architectural
+refactoring did not share in the decade of process improvement that made ordinary refactoring faster
+(§5c) — **but only up to ~2019**: post-2020 the control arm is too thin to test (p=0.44), so this is
+era-bounded; (i) estimates absent; traceability excellent.
 
 **Refuted by our own tests:** the **blast-radius mechanism** (§9a) — module dependency centrality does
 not predict triage latency (p = 0.33 with tier controlled), and the raw association runs *negative*.
+
+**Withdrawn 2026-07-25:** **"abstraction pays twice"** (§5a) — the ~2× review-phase cost (12.15 vs
+5.46 days) does not survive full adjustment (+0.107, p=0.61). It was connector-controlled only.
 
 **Qualified by our own tests:** §9a's connector tier is slower end-to-end but its "waiting for
 attention" interpretation is not supported — those tickets do not drive the Jira workflow that would
@@ -508,10 +661,27 @@ a **post-hoc** connector tier.
 
 ## 15. Open questions / directions
 
+0. **POWER IS NOW THE BINDING CONSTRAINT — and the answer is more projects, not more commits.**
+   (`advisor_followup.py` step 8.) Anchoring on the fully adjusted pure-split effect (coef +0.404,
+   SE 0.245, n=267), 80% power needs **~769 independent architectural tickets** — ~21,000 commits at
+   Hadoop's yield of one episode per 26 commits. But tickets inside one project are not independent.
+   With P projects and intra-project correlation ICC, effective n is capped at **P/ICC no matter how
+   much is mined**:
+
+   | ICC | P=3 | P=5 | P=10 | P=20 | P=40 |
+   |---|---|---|---|---|---|
+   | 0.02 | ceiling 150 | 250 | 500 | 1000 → 163 tickets each | 2000 → 31 each |
+   | 0.05 | ceiling 60 | 100 | 200 | 400 | 800 → 472 each |
+
+   **Kafka + HBase + Camel cannot reach 80% power at any corpus size.** The registered report needs
+   **~10–20 projects contributing modest numbers of episodes**, not three deeply-mined ones. This is
+   the same conclusion §9b reached from the module side, arrived at independently.
 1. ~~**Blast-radius model**~~ (**§9a: no**) → ~~**attention-rationing model** via maintainer
-   concentration~~ (**§9b: not separable from module size**). What remains: **break the collinearity.**
-   Peripherality, size, author count and centrality are one variable in a single project; only a
-   multi-project corpus can tell them apart. This is now the precondition for any attention claim.
+   concentration~~ (**§9b: not separable from module size**) → **§9c: the external-wrapper vendor-share
+   rule works** — portable, computed from `pom.xml` before any outcome data, reproduces the tier split
+   (32.1 vs 2.9 days) and survives the size control that killed §9b (+2.885, p<1e-4). **Pre-register it
+   and test it on the held-out projects.** The remaining collinearity worry stands: peripherality, size
+   and author count are still one variable *within* a project, and only breadth separates them.
 2. **Validated structural signal** (dual-rater κ), then re-test §10.
 3. **Commercial contrast** to separate intrinsic vs OSS-coordination effects (§12).
 4. ~~**Better effort proxies** from the changelog (active vs waiting time)~~ **Done in §5a**;
@@ -542,7 +712,14 @@ duration, plus the drift/composition/truncation threat checks around it);
 from *merging* time, with a built-in workflow-comparability check (§5b) that other Apache-Jira studies
 would need; **prior-window social-centrality measures** (`scripts/social_centrality.py` — bus factor,
 concentration and reviewer pool computed only over history preceding each ticket, with the size-
-collinearity check that decides whether they mean anything); committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.json`,
+collinearity check that decides whether they mean anything);
+**single-equation full adjustment with CIs** (`scripts/full_adjustment.py` — the joint model and the
+post-migration era cut, replacing five nested models spread across three scripts);
+**split-robustness, phase adjustment, clustered SEs and the power model** (`scripts/advisor_followup.py`
+— including the project-count ceiling `n_eff ≤ P/ICC` that decides corpus design);
+**portable module-tier rule** (`scripts/external_wrapper_tier.py` — vendor-share from `pom.xml`,
+computable before any outcome data, with the size-collinearity control that killed its predecessor);
+committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.json`,
 `arch_vs_ordinary.json`, `module_blast_radius.json`, `blast_radius_results.json`,
 `friction_decomposition.json`) and the charts.
 
@@ -550,30 +727,40 @@ collinearity check that decides whether they mean anything); committed data arti
 
 > On 8,919 Apache Hadoop commits (v3.1.0–v3.4.3) we detected 349 architectural refactoring episodes,
 > 99% traceable to Jira. Against 400 ordinary refactoring tickets, architectural ones draw more review
-> and take ~2× longer to start and resolve. The friction is specifically in **abstraction-creating**
+> and take ~2× longer to start and resolve. The friction concentrates in **abstraction-creating**
 > refactorings (extract interface/superclass/class): ~2.5× longer triage than code relocation
-> (p=0.004), surviving controls for change size, discussion volume, and contributor experience; simple
-> relocation is no harder than ordinary work. The effect is **time, not quality** (no extra rework).
-> Decomposing the status changelog into phases localises it: architectural work takes **~4× longer in
-> logged active coding time** (4.87 vs 1.13 days) and ~4× longer to produce a patch, but is **merged as
-> fast as ordinary work** — so the friction is largely **intrinsic construction difficulty, not
-> volunteer queueing**, bounding the open-source confound rather than merely conceding it. Abstraction
-> uniquely pays twice: ~4.5× to build *and* ~2× in review (12.2 vs 5.5 days, p=0.0003).
+> (p=0.004 unadjusted), while simple relocation is no harder than ordinary work. Under a **single
+> fully-adjusted model** — change size, discussion volume, contributor experience, module tier and era
+> in one equation — the effect is **×1.54 [0.97, 2.43], p=0.068**: directionally stable across every
+> specification but **underpowered rather than established**, and the split was defined post-hoc. The
+> effect is **time, not quality** (no extra rework).
+> Decomposing the status changelog into phases localises it: architectural work takes ~4× longer in
+> logged active coding time (4.87 vs 1.13 days) and ~4× longer to produce a patch, but is **merged as
+> fast as ordinary work** — adjusted, review is a clean null (p=0.91) and the build gap is ×1.35
+> (p=0.078). So what friction exists is **construction, not review**, which bounds the volunteer-
+> queueing confound in principle even though the bound is not yet measured tightly.
 > Tracked across a decade with a workflow-independent clock (ticket → first citing commit, since Jira
 > status hygiene collapsed 93%→16% mid-corpus), **ordinary refactoring got steadily faster while
 > architectural refactoring did not improve at all** — a widening divergence (difference-in-differences
-> interaction +0.20, p=0.003, composition-controlled and stable across truncation windows). The one
-> category of work that a decade of tooling did not make cheaper is the structural one.
+> interaction +0.20, p=0.003, composition-controlled), **bounded to the pre-2020 era**: after the
+> migration the ordinary control arm thins to <5 tickets/year and the interaction is untestable
+> (p=0.44).
 > Triage latency varies ~40× across modules, and we tested the obvious mechanism — *blast radius*,
 > that touching a heavily depended-upon module invites hesitation — against Hadoop's Maven dependency
 > graph (117 modules). **It fails:** centrality does not predict triage (p = 0.33) and the raw
 > association is *negative*. The friction concentrates instead in the structurally **peripheral**
 > vendor cloud-connector tier (43.6 vs 3.1 days, p = 3e-07), where one maintainer owns a third of the
 > work — friction tracks where **community attention is thinnest**, not where technical risk is
-> highest. Effort estimates are absent in Apache (0%). A within-episode "structural discussion" signal
-> was found and **retracted** as a discussion-volume confound. Remaining caveats: the *review* half of
-> the abstraction cost and the question of who picks work up are open-source-specific, and
-> status-derived timings are not comparable across module tiers that drive different Jira workflows —
-> a methodological caveat we surface and correct for. Contribution: a reproducible pipeline, a defended
-> mechanism-level finding localised to a specific development phase, two mechanisms killed by our own
-> tests, and a well-scoped study design.
+> highest. That tier was hand-drawn, so we replaced it with a **portable rule computable from
+> `pom.xml` before any outcome data** — a module is an external-system wrapper if a high share of its
+> dependencies are third-party groupIds rare within the project. It reproduces the split (32.1 vs 2.9
+> days, p=3e-07) and, unlike maintainer concentration, **survives the module-size control** (+2.885,
+> p<1e-4). Effort estimates are absent in Apache (0%). A within-episode "structural discussion" signal
+> was found and **retracted** as a discussion-volume confound, and "abstraction pays twice" was
+> **withdrawn** when the review-phase half failed adjustment (p=0.61). Remaining caveats: who picks
+> work up is open-source-specific; status-derived timings are not comparable across module tiers that
+> drive different Jira workflows; and the adjusted effects sit at p≈0.06–0.10, for which a power
+> analysis shows the fix is **breadth — ~10–20 projects, not three deeply-mined ones** (three projects
+> cannot reach 80% power at any corpus size). Contribution: a reproducible pipeline, a mechanism-level
+> finding localised to a specific development phase, **three** mechanisms killed by our own tests, one
+> portable tier rule that survives, and a powered study design.
