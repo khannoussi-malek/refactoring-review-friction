@@ -1,0 +1,131 @@
+{
+  "project": "phoenix",
+  "prefix": "org.apache.phoenix",
+  "n_modules": 15,
+  "tau": 0.05,
+  "cut": 0.4,
+  "guard": "dependents < 90th percentile",
+  "flagged": [],
+  "modules": {
+    "phoenix": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": ".",
+      "flagged": false
+    },
+    "phoenix-assembly": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "phoenix-assembly",
+      "flagged": false
+    },
+    "phoenix-client-embedded-hbase-2.5": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "phoenix-client-parent/phoenix-client-embedded",
+      "flagged": false
+    },
+    "phoenix-client-lite-hbase-2.5": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "phoenix-client-parent/phoenix-client-lite",
+      "flagged": false
+    },
+    "phoenix-client-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "phoenix-client-parent",
+      "flagged": false
+    },
+    "phoenix-core": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "phoenix-core",
+      "flagged": false
+    },
+    "phoenix-core-client": {
+      "vendor_share": 0.0,
+      "n_deps": 29,
+      "dependents": 7,
+      "rare_groups": [],
+      "dir": "phoenix-core-client",
+      "flagged": false
+    },
+    "phoenix-core-server": {
+      "vendor_share": 0.0,
+      "n_deps": 22,
+      "dependents": 5,
+      "rare_groups": [],
+      "dir": "phoenix-core-server",
+      "flagged": false
+    },
+    "phoenix-hbase-compat-2.5.0": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "phoenix-hbase-compat-2.5.0",
+      "flagged": false
+    },
+    "phoenix-hbase-compat-2.5.4": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 8,
+      "rare_groups": [],
+      "dir": "phoenix-hbase-compat-2.5.4",
+      "flagged": false
+    },
+    "phoenix-hbase-compat-2.6.0": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "phoenix-hbase-compat-2.6.0",
+      "flagged": false
+    },
+    "phoenix-hbase-compat-2.6.4": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "phoenix-hbase-compat-2.6.4",
+      "flagged": false
+    },
+    "phoenix-pherf": {
+      "vendor_share": 0.0,
+      "n_deps": 14,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "phoenix-pherf",
+      "flagged": false
+    },
+    "phoenix-server-hbase-2.5": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "phoenix-server",
+      "flagged": false
+    },
+    "phoenix-tracing-webapp": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "phoenix-tracing-webapp",
+      "flagged": false
+    }
+  }
+}

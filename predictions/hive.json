@@ -1,0 +1,608 @@
+{
+  "project": "hive",
+  "prefix": "org.apache.hive",
+  "n_modules": 58,
+  "tau": 0.05,
+  "cut": 0.4,
+  "guard": "dependents < 90th percentile",
+  "flagged": [
+    "hive-druid-handler",
+    "hive-exec",
+    "hive-kubernetes-operator",
+    "hive-metastore-benchmarks",
+    "hive-serde",
+    "hive-service",
+    "hive-standalone-metastore-rest-catalog",
+    "hive-standalone-metastore-server",
+    "hive-testutils"
+  ],
+  "modules": {
+    "hive": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": ".",
+      "flagged": false
+    },
+    "hive-accumulo-handler": {
+      "vendor_share": 0.25,
+      "n_deps": 4,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.accumulo"
+      ],
+      "dir": "accumulo-handler/src/java",
+      "flagged": false
+    },
+    "hive-beeline": {
+      "vendor_share": 0.1818,
+      "n_deps": 11,
+      "dependents": 1,
+      "rare_groups": [
+        "net.sf.supercsv",
+        "org.postgresql"
+      ],
+      "dir": "beeline/src/java",
+      "flagged": false
+    },
+    "hive-classification": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 36,
+      "rare_groups": [],
+      "dir": "classification/src/java",
+      "flagged": false
+    },
+    "hive-cli": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 6,
+      "rare_groups": [],
+      "dir": "cli/src/java",
+      "flagged": false
+    },
+    "hive-common": {
+      "vendor_share": 0.125,
+      "n_deps": 24,
+      "dependents": 34,
+      "rare_groups": [
+        "javax.servlet",
+        "net.sf.jpam",
+        "org.fusesource.jansi"
+      ],
+      "dir": "common/src/java",
+      "flagged": false
+    },
+    "hive-contrib": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "contrib/src/java",
+      "flagged": false
+    },
+    "hive-druid-handler": {
+      "vendor_share": 0.5,
+      "n_deps": 10,
+      "dependents": 1,
+      "rare_groups": [
+        "com.fasterxml.jackson.dataformat",
+        "io.netty",
+        "javax.validation",
+        "org.apache.druid",
+        "org.apache.druid.extensions"
+      ],
+      "dir": "druid-handler/src/java",
+      "flagged": true
+    },
+    "hive-exec": {
+      "vendor_share": 0.5455,
+      "n_deps": 44,
+      "dependents": 22,
+      "rare_groups": [
+        "com.amazonaws.secretsmanager",
+        "com.esotericsoftware.kryo",
+        "com.esri.geometry",
+        "com.fasterxml.jackson.dataformat",
+        "com.google.code.gson",
+        "com.google.re2j",
+        "com.jayway.jsonpath",
+        "com.opencsv",
+        "com.sun.jersey.contribs",
+        "commons-collections",
+        "commons-configuration",
+        "org.apache.atlas",
+        "org.apache.calcite",
+        "org.apache.datasketches",
+        "org.apache.ivy",
+        "org.apache.parquet",
+        "org.codehaus.groovy",
+        "org.codehaus.janino",
+        "org.datanucleus",
+        "org.graalvm.js",
+        "org.jodd",
+        "org.reflections",
+        "org.roaringbitmap",
+        "stax"
+      ],
+      "dir": "ql/src/java",
+      "flagged": true
+    },
+    "hive-hbase-handler": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "hbase-handler/src/java",
+      "flagged": false
+    },
+    "hive-hcatalog": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hcatalog",
+      "flagged": false
+    },
+    "hive-hcatalog-core": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 5,
+      "rare_groups": [],
+      "dir": "hcatalog/core",
+      "flagged": false
+    },
+    "hive-hcatalog-pig-adapter": {
+      "vendor_share": 0.2,
+      "n_deps": 5,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.pig"
+      ],
+      "dir": "hcatalog/hcatalog-pig-adapter",
+      "flagged": false
+    },
+    "hive-hcatalog-server-extensions": {
+      "vendor_share": 0.2,
+      "n_deps": 5,
+      "dependents": 3,
+      "rare_groups": [
+        "jakarta.jms"
+      ],
+      "dir": "hcatalog/server-extensions",
+      "flagged": false
+    },
+    "hive-hplsql": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 12,
+      "rare_groups": [],
+      "dir": "hplsql",
+      "flagged": false
+    },
+    "hive-iceberg": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "iceberg",
+      "flagged": false
+    },
+    "hive-iceberg-catalog": {
+      "vendor_share": 0.2857,
+      "n_deps": 7,
+      "dependents": 5,
+      "rare_groups": [
+        "org.apache.httpcomponents.client5",
+        "org.apache.httpcomponents.core5"
+      ],
+      "dir": "iceberg/iceberg-catalog",
+      "flagged": false
+    },
+    "hive-iceberg-handler": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 2,
+      "rare_groups": [],
+      "dir": "iceberg/iceberg-handler",
+      "flagged": false
+    },
+    "hive-iceberg-rest-catalog-client": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 3,
+      "rare_groups": [],
+      "dir": "iceberg/iceberg-rest-catalog-client",
+      "flagged": false
+    },
+    "hive-iceberg-shading": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 6,
+      "rare_groups": [],
+      "dir": "iceberg/iceberg-shading",
+      "flagged": false
+    },
+    "hive-jdbc": {
+      "vendor_share": 0.1429,
+      "n_deps": 7,
+      "dependents": 3,
+      "rare_groups": [
+        "org.apache.httpcomponents"
+      ],
+      "dir": "jdbc/src/java",
+      "flagged": false
+    },
+    "hive-jdbc-handler": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "jdbc-handler",
+      "flagged": false
+    },
+    "hive-kubernetes-operator": {
+      "vendor_share": 0.5714,
+      "n_deps": 7,
+      "dependents": 0,
+      "rare_groups": [
+        "io.fabric8",
+        "io.github.java-diff-utils",
+        "io.javaoperatorsdk",
+        "io.vertx"
+      ],
+      "dir": "packaging/src/kubernetes/src/java",
+      "flagged": true
+    },
+    "hive-kudu-handler": {
+      "vendor_share": 0.3333,
+      "n_deps": 3,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.kudu"
+      ],
+      "dir": "kudu-handler/src/java",
+      "flagged": false
+    },
+    "hive-llap-client": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 24,
+      "rare_groups": [],
+      "dir": "llap-client/src/java",
+      "flagged": false
+    },
+    "hive-llap-common": {
+      "vendor_share": 0.1429,
+      "n_deps": 7,
+      "dependents": 25,
+      "rare_groups": [
+        "io.jsonwebtoken"
+      ],
+      "dir": "llap-common/src/java",
+      "flagged": false
+    },
+    "hive-llap-ext-client": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "llap-ext-client/src/java",
+      "flagged": false
+    },
+    "hive-llap-server": {
+      "vendor_share": 0.1875,
+      "n_deps": 16,
+      "dependents": 12,
+      "rare_groups": [
+        "com.lmax",
+        "io.netty",
+        "org.codehaus.jettison"
+      ],
+      "dir": "llap-server/src/java",
+      "flagged": false
+    },
+    "hive-llap-tez": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 23,
+      "rare_groups": [],
+      "dir": "llap-tez/src/java",
+      "flagged": false
+    },
+    "hive-metastore": {
+      "vendor_share": 0.0,
+      "n_deps": 8,
+      "dependents": 23,
+      "rare_groups": [],
+      "dir": "metastore/src/java",
+      "flagged": false
+    },
+    "hive-metastore-benchmarks": {
+      "vendor_share": 0.5,
+      "n_deps": 8,
+      "dependents": 0,
+      "rare_groups": [
+        "info.picocli",
+        "org.apache.maven.plugins",
+        "org.jetbrains",
+        "org.openjdk.jmh"
+      ],
+      "dir": "standalone-metastore/metastore-tools/metastore-benchmarks",
+      "flagged": true
+    },
+    "hive-metastore-packaging": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "standalone-metastore/packaging",
+      "flagged": false
+    },
+    "hive-metastore-tools": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "standalone-metastore/metastore-tools",
+      "flagged": false
+    },
+    "hive-packaging": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "packaging",
+      "flagged": false
+    },
+    "hive-parser": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 23,
+      "rare_groups": [],
+      "dir": "parser/src/java",
+      "flagged": false
+    },
+    "hive-serde": {
+      "vendor_share": 0.5,
+      "n_deps": 12,
+      "dependents": 33,
+      "rare_groups": [
+        "com.carrotsearch",
+        "com.esri.geometry",
+        "com.google.code.findbugs",
+        "com.google.flatbuffers",
+        "com.opencsv",
+        "org.apache.parquet"
+      ],
+      "dir": "serde/src/java",
+      "flagged": true
+    },
+    "hive-service": {
+      "vendor_share": 0.5,
+      "n_deps": 18,
+      "dependents": 11,
+      "rare_groups": [
+        "com.nimbusds",
+        "javax.servlet",
+        "net.sf.jpam",
+        "org.apache.santuario",
+        "org.bouncycastle",
+        "org.jamon",
+        "org.pac4j",
+        "org.springframework",
+        "org.springframework.ldap"
+      ],
+      "dir": "service/src/java",
+      "flagged": true
+    },
+    "hive-service-rpc": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 34,
+      "rare_groups": [],
+      "dir": "service-rpc/src/java",
+      "flagged": false
+    },
+    "hive-shims": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 35,
+      "rare_groups": [],
+      "dir": "shims/aggregator",
+      "flagged": false
+    },
+    "hive-shims-0.23": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 36,
+      "rare_groups": [],
+      "dir": "shims/0.23",
+      "flagged": false
+    },
+    "hive-shims-aggregator": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "shims",
+      "flagged": false
+    },
+    "hive-shims-common": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 37,
+      "rare_groups": [],
+      "dir": "shims/common",
+      "flagged": false
+    },
+    "hive-standalone-metastore": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "standalone-metastore",
+      "flagged": false
+    },
+    "hive-standalone-metastore-client": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 28,
+      "rare_groups": [],
+      "dir": "standalone-metastore/metastore-client",
+      "flagged": false
+    },
+    "hive-standalone-metastore-common": {
+      "vendor_share": 0.2381,
+      "n_deps": 21,
+      "dependents": 38,
+      "rare_groups": [
+        "com.github.ben-manes.caffeine",
+        "com.zaxxer",
+        "io.grpc",
+        "javax.annotation",
+        "org.springframework.ldap"
+      ],
+      "dir": "standalone-metastore/metastore-common",
+      "flagged": false
+    },
+    "hive-standalone-metastore-rest-catalog": {
+      "vendor_share": 0.4,
+      "n_deps": 5,
+      "dependents": 2,
+      "rare_groups": [
+        "io.micrometer",
+        "org.springframework.boot"
+      ],
+      "dir": "standalone-metastore/metastore-rest-catalog",
+      "flagged": true
+    },
+    "hive-standalone-metastore-server": {
+      "vendor_share": 0.4839,
+      "n_deps": 31,
+      "dependents": 23,
+      "rare_groups": [
+        "com.cronutils",
+        "com.microsoft.sqlserver",
+        "com.mysql",
+        "com.nimbusds",
+        "com.oracle.database.jdbc",
+        "com.zaxxer",
+        "commons-beanutils",
+        "org.apache.datasketches",
+        "org.datanucleus",
+        "org.mariadb.jdbc",
+        "org.pac4j",
+        "org.postgresql",
+        "org.reflections",
+        "org.springframework",
+        "sqlline"
+      ],
+      "dir": "standalone-metastore/metastore-server",
+      "flagged": true
+    },
+    "hive-storage-api": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 39,
+      "rare_groups": [],
+      "dir": "storage-api/src/java",
+      "flagged": false
+    },
+    "hive-streaming": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "streaming/src/java",
+      "flagged": false
+    },
+    "hive-testutils": {
+      "vendor_share": 0.6667,
+      "n_deps": 3,
+      "dependents": 1,
+      "rare_groups": [
+        "junit",
+        "org.junit.jupiter"
+      ],
+      "dir": "testutils/src/java",
+      "flagged": true
+    },
+    "hive-udf": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 23,
+      "rare_groups": [],
+      "dir": "udf/src/java",
+      "flagged": false
+    },
+    "hive-vector-code-gen": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 23,
+      "rare_groups": [],
+      "dir": "vector-code-gen/src",
+      "flagged": false
+    },
+    "hive-webhcat": {
+      "vendor_share": 0.3333,
+      "n_deps": 12,
+      "dependents": 1,
+      "rare_groups": [
+        "com.sun.jersey",
+        "javax.ws.rs",
+        "org.glassfish.jaxb",
+        "org.glassfish.jersey.ext"
+      ],
+      "dir": "hcatalog/webhcat/svr",
+      "flagged": false
+    },
+    "hive-webhcat-java-client": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "hcatalog/webhcat/java-client",
+      "flagged": false
+    },
+    "kafka-handler": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.kafka"
+      ],
+      "dir": "kafka-handler/src/java",
+      "flagged": false
+    },
+    "metastore-tools-common": {
+      "vendor_share": 0.25,
+      "n_deps": 4,
+      "dependents": 1,
+      "rare_groups": [
+        "org.jetbrains"
+      ],
+      "dir": "standalone-metastore/metastore-tools/tools-common",
+      "flagged": false
+    },
+    "patched-iceberg-api": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 8,
+      "rare_groups": [],
+      "dir": "iceberg/patched-iceberg-api",
+      "flagged": false
+    },
+    "patched-iceberg-core": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 7,
+      "rare_groups": [
+        "com.github.ben-manes.caffeine"
+      ],
+      "dir": "iceberg/patched-iceberg-core",
+      "flagged": false
+    }
+  }
+}

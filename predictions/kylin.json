@@ -1,0 +1,495 @@
+{
+  "project": "kylin",
+  "prefix": "org.apache.kylin",
+  "n_modules": 47,
+  "tau": 0.05,
+  "cut": 0.4,
+  "guard": "dependents < 90th percentile",
+  "flagged": [
+    "kylin-common-service",
+    "kylin-core-job",
+    "kylin-core-metrics",
+    "kylin-datasource-sdk",
+    "kylin-it",
+    "kylin-jdbc",
+    "kylin-query-common",
+    "kylin-query-service",
+    "kylin-server",
+    "kylin-server-it"
+  ],
+  "modules": {
+    "distributed-lock-ext": {
+      "vendor_share": 0.25,
+      "n_deps": 4,
+      "dependents": 30,
+      "rare_groups": [
+        "org.springframework.integration"
+      ],
+      "dir": "src/distributed-lock-ext",
+      "flagged": false
+    },
+    "kylin": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": ".",
+      "flagged": false
+    },
+    "kylin-assembly": {
+      "vendor_share": 0.3333,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [
+        "com.jcraft",
+        "net.sf.ehcache"
+      ],
+      "dir": "src/assembly",
+      "flagged": false
+    },
+    "kylin-common-booter": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "src/common-booter",
+      "flagged": false
+    },
+    "kylin-common-server": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 12,
+      "rare_groups": [],
+      "dir": "src/common-server",
+      "flagged": false
+    },
+    "kylin-common-service": {
+      "vendor_share": 0.4167,
+      "n_deps": 12,
+      "dependents": 22,
+      "rare_groups": [
+        "commons-fileupload",
+        "io.lettuce",
+        "net.sf.ehcache",
+        "net.spy",
+        "redis.clients"
+      ],
+      "dir": "src/common-service",
+      "flagged": true
+    },
+    "kylin-core-common": {
+      "vendor_share": 0.4667,
+      "n_deps": 15,
+      "dependents": 43,
+      "rare_groups": [
+        "com.alibaba",
+        "com.flipkart.zjsonpatch",
+        "com.lmax",
+        "io.kyligence",
+        "io.micrometer",
+        "javax.validation",
+        "org.freemarker"
+      ],
+      "dir": "src/core-common",
+      "flagged": false
+    },
+    "kylin-core-job": {
+      "vendor_share": 0.6667,
+      "n_deps": 3,
+      "dependents": 30,
+      "rare_groups": [
+        "com.github.oshi",
+        "org.mybatis.spring.boot"
+      ],
+      "dir": "src/core-job",
+      "flagged": true
+    },
+    "kylin-core-metadata": {
+      "vendor_share": 0.25,
+      "n_deps": 12,
+      "dependents": 39,
+      "rare_groups": [
+        "com.fasterxml.jackson.core",
+        "com.tdunning",
+        "org.roaringbitmap"
+      ],
+      "dir": "src/core-metadata",
+      "flagged": false
+    },
+    "kylin-core-metrics": {
+      "vendor_share": 0.5,
+      "n_deps": 2,
+      "dependents": 31,
+      "rare_groups": [
+        "io.dropwizard.metrics"
+      ],
+      "dir": "src/core-metrics",
+      "flagged": true
+    },
+    "kylin-core-storage": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 32,
+      "rare_groups": [],
+      "dir": "src/core-storage",
+      "flagged": false
+    },
+    "kylin-data-loading-booter": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "src/data-loading-booter",
+      "flagged": false
+    },
+    "kylin-data-loading-server": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 3,
+      "rare_groups": [],
+      "dir": "src/data-loading-server",
+      "flagged": false
+    },
+    "kylin-data-loading-service": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 15,
+      "rare_groups": [],
+      "dir": "src/data-loading-service",
+      "flagged": false
+    },
+    "kylin-datasource-sdk": {
+      "vendor_share": 0.5,
+      "n_deps": 2,
+      "dependents": 25,
+      "rare_groups": [
+        "com.fasterxml.jackson.dataformat"
+      ],
+      "dir": "src/datasource-sdk",
+      "flagged": true
+    },
+    "kylin-datasource-service": {
+      "vendor_share": 0.3333,
+      "n_deps": 3,
+      "dependents": 19,
+      "rare_groups": [
+        "org.apache.kafka"
+      ],
+      "dir": "src/datasource-service",
+      "flagged": false
+    },
+    "kylin-engine-build-sdk": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 30,
+      "rare_groups": [],
+      "dir": "src/spark-project/engine-build-sdk",
+      "flagged": false
+    },
+    "kylin-engine-spark": {
+      "vendor_share": 0.375,
+      "n_deps": 8,
+      "dependents": 29,
+      "rare_groups": [
+        "com.github.hipjim",
+        "io.delta",
+        "io.fabric8"
+      ],
+      "dir": "src/spark-project/engine-spark",
+      "flagged": false
+    },
+    "kylin-internal-catalog": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 31,
+      "rare_groups": [],
+      "dir": "src/spark-project/kylin-internal-catalog",
+      "flagged": false
+    },
+    "kylin-it": {
+      "vendor_share": 0.5,
+      "n_deps": 10,
+      "dependents": 1,
+      "rare_groups": [
+        "com.github.ben-manes.caffeine",
+        "commons-beanutils",
+        "org.apache.tomcat.embed",
+        "org.codehaus.janino",
+        "org.hibernate.validator"
+      ],
+      "dir": "src/kylin-it",
+      "flagged": true
+    },
+    "kylin-jdbc": {
+      "vendor_share": 0.5714,
+      "n_deps": 7,
+      "dependents": 0,
+      "rare_groups": [
+        "com.fasterxml.jackson.core",
+        "commons-cli",
+        "commons-codec",
+        "org.apache.httpcomponents"
+      ],
+      "dir": "src/jdbc",
+      "flagged": true
+    },
+    "kylin-job-service": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 13,
+      "rare_groups": [],
+      "dir": "src/job-service",
+      "flagged": false
+    },
+    "kylin-metadata-server": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 4,
+      "rare_groups": [],
+      "dir": "src/metadata-server",
+      "flagged": false
+    },
+    "kylin-modeling-service": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 18,
+      "rare_groups": [],
+      "dir": "src/modeling-service",
+      "flagged": false
+    },
+    "kylin-ops-booter": {
+      "vendor_share": 0.25,
+      "n_deps": 8,
+      "dependents": 0,
+      "rare_groups": [
+        "com.squareup.okhttp3",
+        "com.squareup.okio"
+      ],
+      "dir": "src/ops-booter",
+      "flagged": false
+    },
+    "kylin-ops-server": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 2,
+      "rare_groups": [],
+      "dir": "src/ops-server",
+      "flagged": false
+    },
+    "kylin-ops-service": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 13,
+      "rare_groups": [],
+      "dir": "src/ops-service",
+      "flagged": false
+    },
+    "kylin-query": {
+      "vendor_share": 0.2,
+      "n_deps": 5,
+      "dependents": 26,
+      "rare_groups": [
+        "org.immutables"
+      ],
+      "dir": "src/query",
+      "flagged": false
+    },
+    "kylin-query-booter": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "src/query-booter",
+      "flagged": false
+    },
+    "kylin-query-common": {
+      "vendor_share": 0.6667,
+      "n_deps": 3,
+      "dependents": 31,
+      "rare_groups": [
+        "com.fasterxml.jackson.dataformat",
+        "jakarta.ws.rs"
+      ],
+      "dir": "src/query-common",
+      "flagged": true
+    },
+    "kylin-query-server": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 4,
+      "rare_groups": [],
+      "dir": "src/query-server",
+      "flagged": false
+    },
+    "kylin-query-service": {
+      "vendor_share": 0.5,
+      "n_deps": 2,
+      "dependents": 14,
+      "rare_groups": [
+        "net.sf.supercsv"
+      ],
+      "dir": "src/query-service",
+      "flagged": true
+    },
+    "kylin-rec-booter": {
+      "vendor_share": 0.375,
+      "n_deps": 8,
+      "dependents": 0,
+      "rare_groups": [
+        "com.fasterxml.jackson.module",
+        "org.json4s",
+        "org.scala-lang.modules"
+      ],
+      "dir": "src/rec-booter",
+      "flagged": false
+    },
+    "kylin-rec-server": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "src/rec-server",
+      "flagged": false
+    },
+    "kylin-rec-service": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 2,
+      "rare_groups": [],
+      "dir": "src/rec-service",
+      "flagged": false
+    },
+    "kylin-server": {
+      "vendor_share": 0.5455,
+      "n_deps": 22,
+      "dependents": 0,
+      "rare_groups": [
+        "com.fasterxml.jackson.module",
+        "com.lmax",
+        "com.netflix.servo",
+        "com.taobao.arthas",
+        "de.codecentric",
+        "io.reactivex",
+        "org.javassist",
+        "org.json4s",
+        "org.latencyutils",
+        "org.mapstruct",
+        "org.scala-lang.modules",
+        "xerces"
+      ],
+      "dir": "src/server",
+      "flagged": true
+    },
+    "kylin-server-it": {
+      "vendor_share": 0.4444,
+      "n_deps": 9,
+      "dependents": 0,
+      "rare_groups": [
+        "commons-beanutils",
+        "org.apache.tomcat.embed",
+        "org.codehaus.janino",
+        "org.hibernate.validator"
+      ],
+      "dir": "src/kylin-server-it",
+      "flagged": true
+    },
+    "kylin-soft-affinity-cache": {
+      "vendor_share": 0.25,
+      "n_deps": 4,
+      "dependents": 34,
+      "rare_groups": [
+        "org.alluxio"
+      ],
+      "dir": "src/spark-project/kylin-soft-affinity-cache",
+      "flagged": false
+    },
+    "kylin-source-hive": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 30,
+      "rare_groups": [],
+      "dir": "src/source-hive",
+      "flagged": false
+    },
+    "kylin-source-jdbc": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 5,
+      "rare_groups": [],
+      "dir": "src/spark-project/source-jdbc",
+      "flagged": false
+    },
+    "kylin-sparder": {
+      "vendor_share": 0.3333,
+      "n_deps": 6,
+      "dependents": 30,
+      "rare_groups": [
+        "org.apache.parquet",
+        "org.apache.poi"
+      ],
+      "dir": "src/spark-project/sparder",
+      "flagged": false
+    },
+    "kylin-spark-common": {
+      "vendor_share": 0.6667,
+      "n_deps": 9,
+      "dependents": 33,
+      "rare_groups": [
+        "com.github.hipjim",
+        "io.delta",
+        "it.unimi.dsi",
+        "org.apache.celeborn",
+        "org.apache.gluten",
+        "org.apache.iceberg"
+      ],
+      "dir": "src/spark-project/spark-common",
+      "flagged": false
+    },
+    "kylin-spark-it": {
+      "vendor_share": 0.25,
+      "n_deps": 4,
+      "dependents": 0,
+      "rare_groups": [
+        "org.apache.parquet"
+      ],
+      "dir": "src/spark-project/spark-it",
+      "flagged": false
+    },
+    "kylin-streaming": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 25,
+      "rare_groups": [],
+      "dir": "src/streaming",
+      "flagged": false
+    },
+    "kylin-streaming-sdk": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 26,
+      "rare_groups": [],
+      "dir": "src/streaming-sdk",
+      "flagged": false
+    },
+    "kylin-streaming-service": {
+      "vendor_share": 0.3333,
+      "n_deps": 3,
+      "dependents": 4,
+      "rare_groups": [
+        "commons-collections"
+      ],
+      "dir": "src/streaming-service",
+      "flagged": false
+    },
+    "kylin-tool": {
+      "vendor_share": 0.3333,
+      "n_deps": 3,
+      "dependents": 24,
+      "rare_groups": [
+        "org.apache.curator"
+      ],
+      "dir": "src/tool",
+      "flagged": false
+    }
+  }
+}

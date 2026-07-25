@@ -1,0 +1,506 @@
+{
+  "project": "hbase",
+  "prefix": "org.apache.hbase",
+  "n_modules": 55,
+  "tau": 0.05,
+  "cut": 0.4,
+  "guard": "dependents < 90th percentile",
+  "flagged": [],
+  "modules": {
+    "hbase": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": ".",
+      "flagged": false
+    },
+    "hbase-annotations": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 2,
+      "rare_groups": [],
+      "dir": "hbase-annotations",
+      "flagged": false
+    },
+    "hbase-archetype-builder": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-archetypes/hbase-archetype-builder",
+      "flagged": false
+    },
+    "hbase-archetypes": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-archetypes",
+      "flagged": false
+    },
+    "hbase-assembly": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-assembly",
+      "flagged": false
+    },
+    "hbase-assembly-byo-hadoop": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-assembly-byo-hadoop",
+      "flagged": false
+    },
+    "hbase-asyncfs": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 19,
+      "rare_groups": [],
+      "dir": "hbase-asyncfs",
+      "flagged": false
+    },
+    "hbase-backup": {
+      "vendor_share": 0.0,
+      "n_deps": 8,
+      "dependents": 4,
+      "rare_groups": [],
+      "dir": "hbase-backup",
+      "flagged": false
+    },
+    "hbase-balancer": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 19,
+      "rare_groups": [
+        "org.agrona"
+      ],
+      "dir": "hbase-balancer",
+      "flagged": false
+    },
+    "hbase-build-configuration": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-build-configuration",
+      "flagged": false
+    },
+    "hbase-checkstyle": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-checkstyle",
+      "flagged": false
+    },
+    "hbase-client": {
+      "vendor_share": 0.2,
+      "n_deps": 15,
+      "dependents": 30,
+      "rare_groups": [
+        "com.github.stephenc.jcip",
+        "org.jruby.jcodings",
+        "org.jruby.joni"
+      ],
+      "dir": "hbase-client",
+      "flagged": false
+    },
+    "hbase-client-project": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-archetypes/hbase-client-project",
+      "flagged": false
+    },
+    "hbase-common": {
+      "vendor_share": 0.1667,
+      "n_deps": 12,
+      "dependents": 40,
+      "rare_groups": [
+        "commons-validator",
+        "io.opentelemetry.semconv"
+      ],
+      "dir": "hbase-common",
+      "flagged": false
+    },
+    "hbase-compression": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-compression",
+      "flagged": false
+    },
+    "hbase-compression-aircompressor": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 3,
+      "rare_groups": [
+        "io.airlift"
+      ],
+      "dir": "hbase-compression/hbase-compression-aircompressor",
+      "flagged": false
+    },
+    "hbase-compression-brotli": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 3,
+      "rare_groups": [
+        "com.aayushatharva.brotli4j"
+      ],
+      "dir": "hbase-compression/hbase-compression-brotli",
+      "flagged": false
+    },
+    "hbase-compression-lz4": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 3,
+      "rare_groups": [
+        "at.yawk.lz4"
+      ],
+      "dir": "hbase-compression/hbase-compression-lz4",
+      "flagged": false
+    },
+    "hbase-compression-snappy": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 3,
+      "rare_groups": [
+        "org.xerial.snappy"
+      ],
+      "dir": "hbase-compression/hbase-compression-snappy",
+      "flagged": false
+    },
+    "hbase-compression-zstd": {
+      "vendor_share": 0.1667,
+      "n_deps": 6,
+      "dependents": 3,
+      "rare_groups": [
+        "com.github.luben"
+      ],
+      "dir": "hbase-compression/hbase-compression-zstd",
+      "flagged": false
+    },
+    "hbase-dev-generate-classpath": {
+      "vendor_share": 0.3,
+      "n_deps": 10,
+      "dependents": 0,
+      "rare_groups": [
+        "com.sun.xml.ws",
+        "org.hamcrest",
+        "org.mockito"
+      ],
+      "dir": "hbase-dev-generate-classpath",
+      "flagged": false
+    },
+    "hbase-diagnostics": {
+      "vendor_share": 0.0,
+      "n_deps": 10,
+      "dependents": 3,
+      "rare_groups": [],
+      "dir": "hbase-diagnostics",
+      "flagged": false
+    },
+    "hbase-endpoint": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 3,
+      "rare_groups": [],
+      "dir": "hbase-endpoint",
+      "flagged": false
+    },
+    "hbase-examples": {
+      "vendor_share": 0.1818,
+      "n_deps": 11,
+      "dependents": 0,
+      "rare_groups": [
+        "com.google.protobuf",
+        "com.lmax"
+      ],
+      "dir": "hbase-examples",
+      "flagged": false
+    },
+    "hbase-extensions": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-extensions",
+      "flagged": false
+    },
+    "hbase-external-blockcache": {
+      "vendor_share": 0.25,
+      "n_deps": 4,
+      "dependents": 3,
+      "rare_groups": [
+        "net.spy"
+      ],
+      "dir": "hbase-external-blockcache",
+      "flagged": false
+    },
+    "hbase-hadoop-compat": {
+      "vendor_share": 0.1429,
+      "n_deps": 7,
+      "dependents": 32,
+      "rare_groups": [
+        "javax.activation"
+      ],
+      "dir": "hbase-hadoop-compat",
+      "flagged": false
+    },
+    "hbase-hbtop": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 3,
+      "rare_groups": [],
+      "dir": "hbase-hbtop",
+      "flagged": false
+    },
+    "hbase-http": {
+      "vendor_share": 0.3,
+      "n_deps": 10,
+      "dependents": 19,
+      "rare_groups": [
+        "com.fasterxml.jackson.core",
+        "javax.xml.bind",
+        "tools.profiler"
+      ],
+      "dir": "hbase-http",
+      "flagged": false
+    },
+    "hbase-it": {
+      "vendor_share": 0.1111,
+      "n_deps": 9,
+      "dependents": 0,
+      "rare_groups": [
+        "com.sun.xml.ws"
+      ],
+      "dir": "hbase-it",
+      "flagged": false
+    },
+    "hbase-logging": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 41,
+      "rare_groups": [],
+      "dir": "hbase-logging",
+      "flagged": false
+    },
+    "hbase-mapreduce": {
+      "vendor_share": 0.0,
+      "n_deps": 11,
+      "dependents": 11,
+      "rare_groups": [],
+      "dir": "hbase-mapreduce",
+      "flagged": false
+    },
+    "hbase-metrics": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 33,
+      "rare_groups": [],
+      "dir": "hbase-metrics",
+      "flagged": false
+    },
+    "hbase-metrics-api": {
+      "vendor_share": 0.0,
+      "n_deps": 5,
+      "dependents": 35,
+      "rare_groups": [],
+      "dir": "hbase-metrics-api",
+      "flagged": false
+    },
+    "hbase-openssl": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 3,
+      "rare_groups": [],
+      "dir": "hbase-extensions/hbase-openssl",
+      "flagged": false
+    },
+    "hbase-procedure": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 19,
+      "rare_groups": [],
+      "dir": "hbase-procedure",
+      "flagged": false
+    },
+    "hbase-protocol-shaded": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 32,
+      "rare_groups": [],
+      "dir": "hbase-protocol-shaded",
+      "flagged": false
+    },
+    "hbase-replication": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 19,
+      "rare_groups": [],
+      "dir": "hbase-replication",
+      "flagged": false
+    },
+    "hbase-resource-bundle": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 32,
+      "rare_groups": [],
+      "dir": "hbase-resource-bundle",
+      "flagged": false
+    },
+    "hbase-rest": {
+      "vendor_share": 0.3333,
+      "n_deps": 15,
+      "dependents": 4,
+      "rare_groups": [
+        "com.fasterxml.jackson.core",
+        "com.github.ben-manes.caffeine",
+        "com.sun.activation",
+        "javax.xml.bind",
+        "org.codehaus.jettison"
+      ],
+      "dir": "hbase-rest",
+      "flagged": false
+    },
+    "hbase-server": {
+      "vendor_share": 0.2222,
+      "n_deps": 18,
+      "dependents": 18,
+      "rare_groups": [
+        "com.github.ben-manes.caffeine",
+        "com.github.stephenc.jcip",
+        "com.lmax",
+        "javax.servlet.jsp"
+      ],
+      "dir": "hbase-server",
+      "flagged": false
+    },
+    "hbase-shaded": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-shaded",
+      "flagged": false
+    },
+    "hbase-shaded-check-invariants": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-shaded/hbase-shaded-check-invariants",
+      "flagged": false
+    },
+    "hbase-shaded-client": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 7,
+      "rare_groups": [],
+      "dir": "hbase-shaded/hbase-shaded-client",
+      "flagged": false
+    },
+    "hbase-shaded-client-byo-hadoop": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 4,
+      "rare_groups": [],
+      "dir": "hbase-shaded/hbase-shaded-client-byo-hadoop",
+      "flagged": false
+    },
+    "hbase-shaded-client-project": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-archetypes/hbase-shaded-client-project",
+      "flagged": false
+    },
+    "hbase-shaded-mapreduce": {
+      "vendor_share": 0.0,
+      "n_deps": 3,
+      "dependents": 4,
+      "rare_groups": [],
+      "dir": "hbase-shaded/hbase-shaded-mapreduce",
+      "flagged": false
+    },
+    "hbase-shaded-testing-util": {
+      "vendor_share": 0.0,
+      "n_deps": 4,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-shaded/hbase-shaded-testing-util",
+      "flagged": false
+    },
+    "hbase-shaded-testing-util-tester": {
+      "vendor_share": 0.0,
+      "n_deps": 2,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-shaded/hbase-shaded-testing-util-tester",
+      "flagged": false
+    },
+    "hbase-shaded-with-hadoop-check-invariants": {
+      "vendor_share": 0.0,
+      "n_deps": 1,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-shaded/hbase-shaded-with-hadoop-check-invariants",
+      "flagged": false
+    },
+    "hbase-shell": {
+      "vendor_share": 0.2,
+      "n_deps": 5,
+      "dependents": 3,
+      "rare_groups": [
+        "org.jruby"
+      ],
+      "dir": "hbase-shell",
+      "flagged": false
+    },
+    "hbase-testing-util": {
+      "vendor_share": 0.3333,
+      "n_deps": 6,
+      "dependents": 1,
+      "rare_groups": [
+        "org.junit.jupiter",
+        "org.mockito"
+      ],
+      "dir": "hbase-testing-util",
+      "flagged": false
+    },
+    "hbase-thrift": {
+      "vendor_share": 0.0,
+      "n_deps": 9,
+      "dependents": 4,
+      "rare_groups": [],
+      "dir": "hbase-thrift",
+      "flagged": false
+    },
+    "hbase-website": {
+      "vendor_share": 0.0,
+      "n_deps": 0,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "hbase-website",
+      "flagged": false
+    },
+    "hbase-zookeeper": {
+      "vendor_share": 0.1818,
+      "n_deps": 11,
+      "dependents": 20,
+      "rare_groups": [
+        "commons-cli",
+        "org.xerial.snappy"
+      ],
+      "dir": "hbase-zookeeper",
+      "flagged": false
+    }
+  }
+}
