@@ -39,3 +39,6 @@ pr_timeline.json
 
 # multi-project replication corpora (cloned, not vendored)
 corpora/
+
+# deposit archives (manifests are committed; the tarball goes to Zenodo)
+deposit/*.tar.gz
