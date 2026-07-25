@@ -102,9 +102,60 @@ instance of the same operationalisation problem as above.
 
 ## Reproduce
 
+### Toolchain
+
+Maven was **not installed system-wide**. It was a local binary unpacked into a
+scratch directory and invoked by absolute path:
+
 ```
-python3 scripts/replication/effective_deps.py --xml <p>-effective.xml --project <p> --out predictions/<p>.json
+curl -L -o mvn.tgz https://archive.apache.org/dist/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+tar xzf mvn.tgz
+export MVN_BIN="$PWD/apache-maven-3.9.9/bin/mvn"     # Apache Maven 3.9.9
+```
+
+`Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)`, running on the
+JDK at `~/.sdkman/candidates/java/current`. Nothing was added to the system
+package manager, so a reproducer must set `MVN_BIN` (or put `mvn` on `PATH`);
+`scripts/replication/prepare.sh` reads `MVN_BIN` and falls back to `mvn`.
+
+### Clones — all 38 probed projects
+
+`corpora/` was deleted after the sweep (3.7 GB). Everything is re-derivable:
+
+```bash
+# 22 projects needing a working tree (effective-pom or outcome extraction)
+mkdir -p corpora && cd corpora
+for r in accumulo atlas calcite cxf drill flink flume hbase helix hive hudi \
+         karaf knox kylin oozie ozone parquet-java phoenix ranger tez tika zookeeper; do
+  git clone --filter=blob:none "https://github.com/apache/$r.git" "$r"
+done
+cd ..
+
+# 16 probed for traceability only -- no working tree needed, much smaller
+mkdir -p probe && cd probe
+for r in dubbo james-project jena oodt pinot rocketmq servicecomb-java-chassis \
+         shardingsphere skywalking sqoop storm struts syncope tomee wicket zeppelin; do
+  git clone --filter=blob:none --no-checkout "https://github.com/apache/$r.git" "$r"
+done
+```
+
+`--no-checkout` is what makes the traceability sweep cheap: `git log` needs no
+working tree, and the probe reads nothing else.
+
+**`--no-renames` is required** for any `git log --name-only` over these clones.
+Rename detection compares blob *content*, which `--filter=blob:none` does not
+have locally, so git tries to fetch every candidate blob from the promisor
+remote and eventually dies with `could not fetch ... from promisor remote`.
+
+### Pipeline
+
+```
+scripts/replication/prepare.sh <project> <JIRA_KEY> <xmldir>   # probe + effective-pom + frozen rule
 python3 scripts/replication/outcomes.py git  --project <p> --repo corpora/<p> --key <KEY>
 python3 scripts/replication/outcomes.py jira --project <p>
 python3 scripts/replication/outcomes.py test --project <p>
 ```
+
+Jira keys used per project are listed in `CORPUS_FEASIBILITY.md`; four projects
+were re-probed multi-key (TOMEE+OPENEJB, JAMES+MAILBOX, KARAF+FELIX,
+CALCITE+OPTIQ, and additionally ROCKETMQ+RIP, PINOT+THIRDEYE).

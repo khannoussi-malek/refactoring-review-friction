@@ -21,7 +21,7 @@ ROCKETMQ+RIP, PINOT+THIRDEYE).
 The **≥80% bar was fixed before any project was cloned**
 (`predictions/PREDICTIONS.md`). It has not been moved.
 
-## Result — 12 of 34 projects pass
+## Result — 12 of 38 projects pass
 
 | Project | commits | traceability | family |
 |---|---|---|---|
@@ -38,12 +38,18 @@ The **≥80% bar was fixed before any project was cloned**
 | Kylin | 968 | **83.9%** | Hadoop |
 | Sqoop | 969 | **82.6%** | Hadoop |
 
-Below the bar: Atlas 78.1, James 74.8, Flume 73.9, Karaf 71.8, Calcite 67.7,
-Flink 66.0, Hudi 65.2, OODT 62.0, Zeppelin 60.7, ServiceComb 56.2, Tika 54.8,
-Struts 54.1, Storm 46.7, Accumulo 43.0, CXF 37.5, Syncope 36.0, TomEE 32.2,
-Wicket 30.9, Parquet 29.1, Jena 24.4, TomEE 23.8, Dubbo 11.0, Helix 10.5,
+Below the bar (26 projects): Atlas 78.1, James 74.8, Flume 73.9, Karaf 71.8,
+Calcite 67.7, Flink 66.0, Hudi 65.2, OODT 62.0, Zeppelin 60.7, ServiceComb 56.2,
+Tika 54.8, Struts 54.1, Storm 46.7, Accumulo 43.0, CXF 37.5, Syncope 36.0,
+TomEE 32.2, Wicket 30.9, Parquet 29.1, Jena 24.4, Dubbo 11.0, Helix 10.5,
 RocketMQ 5.7, Pinot 5.2, SkyWalking 0.3, **ShardingSphere 0.0** (49,109 commits,
 not one Jira citation).
+
+*Correction (2026-07-25): an earlier version of this file said "12 of 34" and
+listed TomEE twice — once at 23.8% (single-key `TOMEE`) and once at 32.2%
+(multi-key `TOMEE,OPENEJB`). The denominator is **38** probed projects: 22 with
+a working tree in `corpora/`, 16 log-only in `probe/`. Only the multi-key rate
+counts, per the pre-registered probe definition.*
 
 **Every single passing project is Hadoop-ecosystem.** No general-purpose Java
 project clears the bar — the best, James, reaches 74.8%, and the median sits
@@ -112,4 +118,6 @@ immediately actionable. Option 1 is the one to avoid drifting into silently.
 For a project that passes, everything downstream is automated and cheap:
 `scripts/replication/prepare.sh` runs the probe, `mvn help:effective-pom` and the
 frozen rule in about three minutes; `outcomes.py` pulls the git and Jira sides.
-Finding the projects was the expensive part — 34 clones, ~3.7 GB, to keep 12.
+Finding the projects was the expensive part — 38 clones, 4.3 GB, to keep 12.
+The clones have since been deleted; `REPLICATION.md` carries the commands to
+recreate all 38.
