@@ -1,0 +1,253 @@
+{
+ "verdict": {
+  "testable": true,
+  "n_flagged": 6,
+  "n_rest": 34,
+  "median_flagged": 12.725185185185186,
+  "median_rest": 7.837025462962963,
+  "p": 0.21030486819960503,
+  "replicates": false
+ },
+ "modules": [
+  {
+   "module": "hive-accumulo-handler",
+   "n_tickets": 16,
+   "median_days": 16.441122685185185,
+   "flagged": false
+  },
+  {
+   "module": "hive-webhcat-java-client",
+   "n_tickets": 26,
+   "median_days": 16.23279513888889,
+   "flagged": false
+  },
+  {
+   "module": "hive-standalone-metastore-common",
+   "n_tickets": 238,
+   "median_days": 15.831927083333333,
+   "flagged": false
+  },
+  {
+   "module": "hive-jdbc",
+   "n_tickets": 200,
+   "median_days": 15.078043981481482,
+   "flagged": false
+  },
+  {
+   "module": "kafka-handler",
+   "n_tickets": 16,
+   "median_days": 14.420613425925925,
+   "flagged": false
+  },
+  {
+   "module": "hive-storage-api",
+   "n_tickets": 53,
+   "median_days": 14.116076388888889,
+   "flagged": false
+  },
+  {
+   "module": "hive-standalone-metastore-rest-catalog",
+   "n_tickets": 15,
+   "median_days": 13.943993055555556,
+   "flagged": true
+  },
+  {
+   "module": "hive-standalone-metastore-server",
+   "n_tickets": 671,
+   "median_days": 13.783622685185184,
+   "flagged": true
+  },
+  {
+   "module": "hive-serde",
+   "n_tickets": 293,
+   "median_days": 13.603055555555555,
+   "flagged": true
+  },
+  {
+   "module": "hive-hcatalog-server-extensions",
+   "n_tickets": 38,
+   "median_days": 12.573900462962962,
+   "flagged": false
+  },
+  {
+   "module": "hive-hbase-handler",
+   "n_tickets": 78,
+   "median_days": 12.526163194444445,
+   "flagged": false
+  },
+  {
+   "module": "hive-shims-aggregator",
+   "n_tickets": 126,
+   "median_days": 12.47095486111111,
+   "flagged": false
+  },
+  {
+   "module": "hive-hcatalog-core",
+   "n_tickets": 127,
+   "median_days": 12.059699074074073,
+   "flagged": false
+  },
+  {
+   "module": "hive-webhcat",
+   "n_tickets": 90,
+   "median_days": 12.013038194444444,
+   "flagged": false
+  },
+  {
+   "module": "hive-service",
+   "n_tickets": 337,
+   "median_days": 11.847314814814816,
+   "flagged": true
+  },
+  {
+   "module": "hive-standalone-metastore",
+   "n_tickets": 305,
+   "median_days": 10.977256944444445,
+   "flagged": false
+  },
+  {
+   "module": "hive-hplsql",
+   "n_tickets": 50,
+   "median_days": 10.278096064814815,
+   "flagged": false
+  },
+  {
+   "module": "hive-contrib",
+   "n_tickets": 31,
+   "median_days": 9.899212962962963,
+   "flagged": false
+  },
+  {
+   "module": "hive-metastore",
+   "n_tickets": 590,
+   "median_days": 9.64832175925926,
+   "flagged": false
+  },
+  {
+   "module": "hive-beeline",
+   "n_tickets": 203,
+   "median_days": 8.967789351851852,
+   "flagged": false
+  },
+  {
+   "module": "hive-exec",
+   "n_tickets": 8016,
+   "median_days": 8.209126157407407,
+   "flagged": true
+  },
+  {
+   "module": "hive-cli",
+   "n_tickets": 67,
+   "median_days": 7.867349537037037,
+   "flagged": false
+  },
+  {
+   "module": "hive-jdbc-handler",
+   "n_tickets": 37,
+   "median_days": 7.8067013888888885,
+   "flagged": false
+  },
+  {
+   "module": "hive-streaming",
+   "n_tickets": 19,
+   "median_days": 7.7499768518518515,
+   "flagged": false
+  },
+  {
+   "module": "hive-common",
+   "n_tickets": 725,
+   "median_days": 7.580115740740741,
+   "flagged": false
+  },
+  {
+   "module": "hive-iceberg-handler",
+   "n_tickets": 366,
+   "median_days": 7.5028703703703705,
+   "flagged": false
+  },
+  {
+   "module": "hive-hcatalog-pig-adapter",
+   "n_tickets": 41,
+   "median_days": 7.084953703703704,
+   "flagged": false
+  },
+  {
+   "module": "hive-hcatalog",
+   "n_tickets": 171,
+   "median_days": 6.961469907407407,
+   "flagged": false
+  },
+  {
+   "module": "hive-druid-handler",
+   "n_tickets": 88,
+   "median_days": 6.0820081018518515,
+   "flagged": true
+  },
+  {
+   "module": "hive-parser",
+   "n_tickets": 26,
+   "median_days": 6.025260416666667,
+   "flagged": false
+  },
+  {
+   "module": "hive-llap-client",
+   "n_tickets": 56,
+   "median_days": 5.815983796296297,
+   "flagged": false
+  },
+  {
+   "module": "hive-shims-common",
+   "n_tickets": 31,
+   "median_days": 5.814421296296296,
+   "flagged": false
+  },
+  {
+   "module": "hive-llap-server",
+   "n_tickets": 447,
+   "median_days": 5.7938425925925925,
+   "flagged": false
+  },
+  {
+   "module": "hive-packaging",
+   "n_tickets": 95,
+   "median_days": 5.6422337962962965,
+   "flagged": false
+  },
+  {
+   "module": "hive-shims-0.23",
+   "n_tickets": 50,
+   "median_days": 5.073263888888889,
+   "flagged": false
+  },
+  {
+   "module": "hive-llap-tez",
+   "n_tickets": 47,
+   "median_days": 4.928599537037037,
+   "flagged": false
+  },
+  {
+   "module": "hive-iceberg-catalog",
+   "n_tickets": 24,
+   "median_days": 3.401452546296296,
+   "flagged": false
+  },
+  {
+   "module": "hive-llap-ext-client",
+   "n_tickets": 18,
+   "median_days": 3.0100925925925925,
+   "flagged": false
+  },
+  {
+   "module": "hive-iceberg",
+   "n_tickets": 11,
+   "median_days": 2.996886574074074,
+   "flagged": false
+  },
+  {
+   "module": "hive-llap-common",
+   "n_tickets": 21,
+   "median_days": 1.8389236111111111,
+   "flagged": false
+  }
+ ]
+}

@@ -35,6 +35,21 @@ def _path(project, stage):
     return os.path.join(OUT, f"{project}.{stage}.json")
 
 
+def _absorb(rec, pat, first):
+    """One `git log` record -> keep the EARLIEST commit citing each key."""
+    if not rec.strip():
+        return
+    parts = rec.split("\x1f")
+    if len(parts) < 5:
+        return
+    sha, ts, subj, body, files = parts[0], int(parts[1]), parts[2], parts[3], parts[4]
+    paths = [p for p in files.split("\n") if p.strip()]
+    for key in {m.group(0) for m in pat.finditer(f"{subj}\n{body}")}:
+        prev = first.get(key)
+        if prev is None or ts < prev["ts"]:
+            first[key] = {"ts": ts, "sha": sha, "paths": paths}
+
+
 # ---------------------------------------------------------------- git stage
 def stage_git(args):
     """key -> earliest citing commit, its files, and the module they land in."""
@@ -44,24 +59,34 @@ def stage_git(args):
     # hive-standalone-metastore when both prefix-match.
     by_len = sorted(dirs.items(), key=lambda kv: -len(kv[1]))
 
-    pat = re.compile(rf"\b({'|'.join(re.escape(k) for k in args.key.split(','))})-\d+\b")
+    keys = args.key.split(",")
+    pat = re.compile(rf"\b({'|'.join(re.escape(k) for k in keys)})-\d+\b")
+    # --name-only over a whole project's history is hundreds of MB of text, so
+    # stream it and prefilter to commits that cite a key at all. On Hive that is
+    # 17.7k of 18.2k commits, but on a repo with heavy non-cited traffic it is
+    # the difference between running and not.
     fmt = "%x1e%H%x1f%ct%x1f%s%x1f%b%x1f"
-    cmd = ["git", "-C", args.repo, "log", "--name-only", f"--pretty=format:{fmt}"]
-    raw = subprocess.run(cmd, capture_output=True, text=True, check=True).stdout
+    # --no-renames is required, not cosmetic: rename detection compares blob
+    # CONTENT, and these are --filter=blob:none clones, so git tries to fetch
+    # every candidate blob from the promisor remote and eventually fails. Paths
+    # are all this needs, and a rename simply shows up as both paths.
+    cmd = ["git", "-C", args.repo, "log", "--name-only", "--no-renames",
+           f"--pretty=format:{fmt}",
+           "--extended-regexp", f"--grep={'|'.join(k + '-[0-9]+' for k in keys)}"]
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True, bufsize=1 << 20)
 
-    first = {}
-    for rec in raw.split("\x1e"):
-        if not rec.strip():
-            continue
-        parts = rec.split("\x1f")
-        if len(parts) < 5:
-            continue
-        sha, ts, subj, body, files = parts[0], int(parts[1]), parts[2], parts[3], parts[4]
-        paths = [p for p in files.split("\n") if p.strip()]
-        for key in {m.group(0) for m in pat.finditer(f"{subj}\n{body}")}:
-            prev = first.get(key)
-            if prev is None or ts < prev["ts"]:
-                first[key] = {"ts": ts, "sha": sha, "paths": paths}
+    first, buf = {}, ""
+    for chunk in iter(lambda: proc.stdout.read(1 << 20), ""):
+        buf += chunk
+        recs = buf.split("\x1e")
+        buf = recs.pop()                     # last one may be incomplete
+        for rec in recs:
+            _absorb(rec, pat, first)
+    _absorb(buf, pat, first)
+    proc.stdout.close()
+    if proc.wait() != 0:
+        raise SystemExit(f"git log failed for {args.repo}")
+    # (record absorption happens in _absorb)
 
     # Attribute each ticket to the module holding the most of its files.
     rows = {}

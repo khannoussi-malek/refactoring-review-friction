@@ -532,6 +532,34 @@ needs no threshold at all: vendor share vs triage, rho = **+0.371, p < 1e-4** (n
 
 **This is the first tier measure in the study that is both portable and not a proxy for module size.**
 
+> ### ⚠ REPLICATION RESULT (2026-07-25): the rule does NOT hold out. 0 of 3 projects.
+>
+> Predictions were pre-registered (`predictions/PREDICTIONS.md`, commit `ca076a9`) before any
+> outcome data was pulled, then tested on held-out Apache projects. Full write-up:
+> `replication/REPLICATION.md`.
+>
+> | Project | modules (flagged/not) | flagged median | unflagged | p |
+> |---|---|---|---|---|
+> | Hive | 40 (6/34) | 12.7 d | 7.8 d | 0.210 |
+> | Drill | 17 (2/15) | 8.8 d | **9.7 d** (wrong direction) | 1.000 |
+> | Kylin | 15 (5/10) | 6.2 d | 5.9 d | 0.310 |
+>
+> Two further projects (**HBase, Phoenix**) produced **no prediction at all** — the frozen 0.40
+> vendor-share cut never fires on them (HBase's maximum is 0.33). Flink was dropped at 66%
+> traceability. So the rule's *coverage* is 3 of 5, and its *accuracy* on those 3 is nil.
+>
+> **Two things this does not mean.** (a) It does not refute the tier *concept*: in both large
+> projects the slowest modules are external-system connectors — `hive-accumulo-handler`,
+> `hive-jdbc`, `kafka-handler`, `drill-mongo-storage`, `drill-storage-kafka` — and the rule flagged
+> **none** of them, selecting the core engines (`drill-java-exec`, `hive-exec`) instead. The
+> operationalisation fails; the concept is untested. (b) The pre-registered test is itself
+> near-useless: run on **Hadoop**, where the separation is 51.1 vs 6.5 days, it still gives
+> **p=0.133**, because 2-vs-4 modules cannot produce a smaller two-sided Mann-Whitney p-value at
+> any effect size.
+>
+> **Consequence for §15:** the breadth requirement is not specific to the abstraction question.
+> Module-level tier tests need many projects for the same reason ticket-level ones do.
+
 *Caveats.* (a) Precision is 0.50 because only **3** hand-tier modules carry architectural tickets, so
 the agreement statistic rests on three positives and means very little — the triage split and the size
 control are the real evidence. (b) The three "false positives" are arguable: `hadoop-yarn-csi` (gRPC
