@@ -42,8 +42,8 @@ Below the bar (26 projects): Atlas 78.1, James 74.8, Flume 73.9, Karaf 71.8,
 Calcite 67.7, Flink 66.0, Hudi 65.2, OODT 62.0, Zeppelin 60.7, ServiceComb 56.2,
 Tika 54.8, Struts 54.1, Storm 46.7, Accumulo 43.0, CXF 37.5, Syncope 36.0,
 TomEE 32.2, Wicket 30.9, Parquet 29.1, Jena 24.4, Dubbo 11.0, Helix 10.5,
-RocketMQ 5.7, Pinot 5.2, SkyWalking 0.3, **ShardingSphere 0.0** (49,109 commits,
-not one Jira citation).
+RocketMQ 5.7, Pinot 5.2, SkyWalking 0.3, **ShardingSphere 0.01** (5 Jira citations in
+49,111 commits, against 30,746 GitHub-issue references).
 
 *Correction (2026-07-25): an earlier version of this file said "12 of 34" and
 listed TomEE twice — once at 23.8% (single-key `TOMEE`) and once at 32.2%
@@ -56,6 +56,10 @@ project clears the bar — the best, James, reaches 74.8%, and the median sits
 near 35%. The newer Apache projects donated from industry (ShardingSphere,
 SkyWalking, RocketMQ, Dubbo, Pinot) are effectively at zero: they run on GitHub
 Issues and never adopted the Jira-citation convention at all.
+
+*Correction (2026-07-25): ShardingSphere is 5 citations in 49,111 commits
+(0.01%), not literally none — an earlier version of this file said "not one
+Jira citation". See `paper/numbers.md` §6.*
 
 Note that even Hadoop adjacency is not sufficient — **Parquet fails at 29.1%**
 and **Accumulo at 43.0%** (it migrated to GitHub Issues). The signal is a
