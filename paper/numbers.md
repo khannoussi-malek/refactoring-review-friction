@@ -38,7 +38,7 @@ project was cloned. Never moved.
 | 12 | Sqoop | 969 | 82.6% | pass | Hadoop ecosystem; retired to Attic |
 | 13 | Atlas | ⚠ not recorded | 78.1% | drop | just below bar |
 | 14 | James | 17,374 | 74.8% ² | drop | general Java |
-| 15 | Flume | ⚠ not recorded | 73.9% | drop | Hadoop-adjacent but below bar |
+| 15 | Flume | 2,084 ³ | 73.9% ³ | drop | Hadoop-adjacent but below bar |
 | 16 | Karaf | 10,058 | 71.8% ² | drop | general Java |
 | 17 | Calcite | ⚠ not recorded | 67.7% ² | drop | general Java |
 | 18 | Flink | 38,219 | 66.0% | drop | streaming; heavy GitHub PR use |
@@ -62,6 +62,11 @@ project was cloned. Never moved.
 | 36 | Pinot | 15,639 | 5.2% | drop | industry-donated; GitHub Issues |
 | 37 | SkyWalking | 8,577 | 0.3% | drop | industry-donated; GitHub Issues |
 | 38 | ShardingSphere | 49,109 | 0.0% | drop | industry-donated; GitHub Issues |
+
+³ Flume was re-cloned and re-probed from scratch during the Task 4
+reproducibility check (2026-07-25): 1,540 / 2,084 = **73.9%**, reproducing the
+recorded rate exactly. This is the only row in the table independently
+re-derived after the clones were deleted.
 
 ² re-probed multi-key: TOMEE+OPENEJB, JAMES+MAILBOX, KARAF+FELIX, CALCITE+OPTIQ.
 Single-key rates were TomEE 23.8, James 69.9, Karaf 68.9, Calcite 66.4.
