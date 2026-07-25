@@ -77,7 +77,7 @@ def count(args):
     projects = defaultdict(set)           # repo -> {project keys}
     hits = defaultdict(Counter)           # repo -> field -> present_with_value
     nulls = defaultdict(Counter)          # repo -> field -> present_null
-    apache_proj = defaultdict(Counter)    # project -> counters (base-rate detail)
+    per_proj = defaultdict(Counter)       # (repo, project) -> counters
     n = 0
 
     for _db, repo, doc in stream_archive(args.zip):
@@ -115,14 +115,15 @@ def count(args):
         if any_est:
             hits[repo]["any_estimate"] += 1
 
-        if repo == "Apache" and pkey:
-            apache_proj[pkey]["total"] += 1
+        if pkey:
+            c = per_proj[(repo, pkey)]
+            c["total"] += 1
             if f.get("timeoriginalestimate") is not None:
-                apache_proj[pkey]["timeoriginalestimate"] += 1
-            if any(f.get(cid) is not None for cid in spec["story"]):
-                apache_proj[pkey]["story_points"] += 1
+                c["timeoriginalestimate"] += 1
+            if spec["story"] and any(f.get(cid) is not None for cid in spec["story"]):
+                c["story_points"] += 1
             if any_est:
-                apache_proj[pkey]["any_estimate"] += 1
+                c["any_estimate"] += 1
 
     total_projects = sum(len(v) for v in projects.values())
     result = {
@@ -137,7 +138,7 @@ def count(args):
                            "time_fields_present": sorted(c["time"]),
                            "story_fields": c["story"]} for r, c in cat.items()},
         "repos": {},
-        "apache_projects": {p: dict(c) for p, c in apache_proj.items()},
+        "projects": {f"{r}|{p}": dict(c) for (r, p), c in per_proj.items()},
     }
     for repo, tot in seen.items():
         spec = cat.get(repo)

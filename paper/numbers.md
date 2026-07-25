@@ -229,6 +229,38 @@ separately as "345 of 349 episodes traceable to 323 tickets".
 Verified: `timeoriginalestimate`, `timeestimate`, `timespent` all `null`, and
 zero non-null `customfield_*`.
 
+
+### Validation note — the project count, and why 1,822 is not usable
+
+Three figures, which must travel together:
+
+| definition | count |
+|---|---:|
+| final-state, **key**-based — what every per-project number here uses | **1,276** |
+| final-state ∪ changelog history, **name**-based — the dataset's own method | **2,506** |
+| published in the dataset README | **1,822** (not reproducible) |
+
+The dataset's notebook defines the count as
+`set.union(unique_projects_final, unique_projects_history)`, i.e. project
+*names* in the issue's final state unioned with names appearing in its
+changelog. Implementing that overshoots by 684; counting final-state keys
+undershoots by 546. Neither reproduces 1,822.
+
+**Measured cause, partial:** across 2,686,282 issues, **326 project ids carry
+more than one distinct name; 0 project keys do.** `Jira/12910` appears as
+*SourceTree*, *SourceTree For Mac* and *Sourcetree For Mac* — three names for
+one project, one of them a capitalisation-only variant. `Mojang/10400` is
+*Minecraft* and *Minecraft: Java Edition*.
+
+**Project keys are stable identifiers; project names are not, and the published
+count is name-based.** Removing the ~326 surplus names lands near 2,180, still
+above 1,822, so renaming explains part of the overshoot and not all of it. The
+remainder is unidentified and the hypothesis is recorded as *consistent with
+rename inflation, unverified*.
+
+**Standing rule: 1,822 is never quoted next to a per-project number.** Issue
+counts are unaffected — 2,686,282 parsed against ~2.7M published, −0.5%.
+
 ## 6. Industry-donated projects
 
 Re-derived 2026-07-25, `scripts/traceability_probe.py` (`da74465`):
