@@ -200,16 +200,16 @@
    "key_single": "FLUME",
    "keys_multi": "FLUME",
    "commits_citing_single": 1540,
-   "commits_citing_multi": 1540,
+   "jira_key_refs": 1540,
+   "github_issue_refs": 195,
    "rate_single": 0.7389635316698656,
    "rate_multi": 0.7389635316698656,
-   "commits_citing_github_issue": 195,
    "rate_github_issue": 0.0935700575815739,
    "passes_bar": false,
    "bar": 0.8,
-   "drop_reason": "below_bar_narrowly",
-   "jira_key_refs": 1540,
-   "github_issue_refs": 195
+   "commits_citing_multi": 1540,
+   "commits_citing_github_issue": 195,
+   "drop_reason": "below_bar_narrowly"
   },
   {
    "project": "helix",

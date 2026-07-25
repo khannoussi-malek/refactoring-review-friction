@@ -8,7 +8,7 @@ python3 -m venv .venv
 # shellcheck disable=SC1091
 source .venv/bin/activate
 pip install --quiet --upgrade pip
-pip install --quiet pandas lifelines   # lifelines = survival analysis, for Q3
+pip install --quiet -r requirements.txt   # pinned; see requirements.txt for why lifelines is gone
 
 echo "== Build RefactoringMiner from source =="
 if [ ! -d RefactoringMiner-src ]; then
