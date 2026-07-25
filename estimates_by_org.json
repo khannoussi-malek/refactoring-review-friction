@@ -1,0 +1,3861 @@
+{
+ "validation": {
+  "issues_parsed": 2686282,
+  "issues_published": 2700000,
+  "projects_parsed": 1276,
+  "projects_published": 1822,
+  "repos_parsed": 16
+ },
+ "catalogues": {
+  "Apache": {
+   "snapshot": "2023",
+   "n_fields": 211,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_12314523": "Original story points",
+    "customfield_12310293": "Story Points"
+   }
+  },
+  "Hyperledger": {
+   "snapshot": "2023",
+   "n_fields": 81,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10002": "Story Points"
+   }
+  },
+  "IntelDAOS": {
+   "snapshot": "2023",
+   "n_fields": 79,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10026": "Story Points",
+    "customfield_10016": "Story point estimate"
+   }
+  },
+  "JFrog": {
+   "snapshot": "2023",
+   "n_fields": 178,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_14600": "Story Points"
+   }
+  },
+  "Jira": {
+   "snapshot": "2023",
+   "n_fields": 218,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10623": "Story Points",
+    "customfield_10571": "Story Points",
+    "customfield_19232": "Original story points",
+    "customfield_10653": "Story Points"
+   }
+  },
+  "JiraEcosystem": {
+   "snapshot": "2023",
+   "n_fields": 516,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_19406": "Story point estimate",
+    "customfield_10133": "Story Points"
+   }
+  },
+  "MariaDB": {
+   "snapshot": "MAY_2021",
+   "n_fields": 66,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_11602": "Original story points"
+   }
+  },
+  "Mindville": {
+   "snapshot": "MAY_2021",
+   "n_fields": 59,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10006": "Story Points"
+   }
+  },
+  "Mojang": {
+   "snapshot": "2023",
+   "n_fields": 65,
+   "time_fields_present": [],
+   "story_fields": {}
+  },
+  "MongoDB": {
+   "snapshot": "2023",
+   "n_fields": 220,
+   "time_fields_present": [],
+   "story_fields": {
+    "customfield_19950": "Actual Story Points",
+    "customfield_10555": "Story Points",
+    "customfield_18952": "Original story points"
+   }
+  },
+  "Qt": {
+   "snapshot": "2023",
+   "n_fields": 76,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10183": "Story Points"
+   }
+  },
+  "RedHat": {
+   "snapshot": "2023",
+   "n_fields": 270,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_12314040": "Original story points",
+    "customfield_12310243": "Story Points"
+   }
+  },
+  "Sakai": {
+   "snapshot": "2023",
+   "n_fields": 160,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10026": "Story Points",
+    "customfield_10016": "Story point estimate"
+   }
+  },
+  "SecondLife": {
+   "snapshot": "2023",
+   "n_fields": 163,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_13174": "Original story points",
+    "customfield_10163": "Story Points"
+   }
+  },
+  "Sonatype": {
+   "snapshot": "2023",
+   "n_fields": 102,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10132": "Story Points",
+    "customfield_12702": "Original story points"
+   }
+  },
+  "Spring": {
+   "snapshot": "2023",
+   "n_fields": 68,
+   "time_fields_present": [
+    "aggregatetimeestimate",
+    "aggregatetimeoriginalestimate",
+    "aggregatetimespent",
+    "timeestimate",
+    "timeoriginalestimate",
+    "timespent"
+   ],
+   "story_fields": {
+    "customfield_10142": "Story Points",
+    "customfield_10781": "Actual Story Points"
+   }
+  }
+ },
+ "repos": {
+  "Jira": {
+   "issues": 274545,
+   "snapshot": "2023",
+   "projects": 30,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 6422,
+     "present_null": 268123
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 7879,
+     "present_null": 266666
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 5069,
+     "present_null": 269476
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 6571,
+     "present_null": 267974
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 8019,
+     "present_null": 266526
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 5204,
+     "present_null": 269341
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 4362,
+     "present_null": 270183
+    }
+   },
+   "any_estimate": 10715
+  },
+  "RedHat": {
+   "issues": 353000,
+   "snapshot": "2023",
+   "projects": 241,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 11047,
+     "present_null": 341953
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 11863,
+     "present_null": 341137
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 1848,
+     "present_null": 351152
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 11159,
+     "present_null": 341841
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 11990,
+     "present_null": 341010
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 1891,
+     "present_null": 351109
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 27922,
+     "present_null": 325078
+    }
+   },
+   "any_estimate": 38686
+  },
+  "Mojang": {
+   "issues": 420819,
+   "snapshot": "2023",
+   "projects": 8,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "timeestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "timespent": {
+     "state": "absent_from_catalogue"
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "aggregatetimeestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "aggregatetimespent": {
+     "state": "absent_from_catalogue"
+    },
+    "story_points": {
+     "state": "absent_from_catalogue"
+    }
+   },
+   "any_estimate": 0
+  },
+  "Apache": {
+   "issues": 1014926,
+   "snapshot": "2023",
+   "projects": 646,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 21353,
+     "present_null": 993573
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 85587,
+     "present_null": 929339
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 66253,
+     "present_null": 948673
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 21641,
+     "present_null": 993285
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 86924,
+     "present_null": 928002
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 67389,
+     "present_null": 947537
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 4368,
+     "present_null": 1010558
+    }
+   },
+   "any_estimate": 25949
+  },
+  "Qt": {
+   "issues": 148579,
+   "snapshot": "2023",
+   "projects": 21,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 1503,
+     "present_null": 147076
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 1556,
+     "present_null": 147023
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 160,
+     "present_null": 148419
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 1685,
+     "present_null": 146894
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 1737,
+     "present_null": 146842
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 186,
+     "present_null": 148393
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 2452,
+     "present_null": 146127
+    }
+   },
+   "any_estimate": 4011
+  },
+  "MongoDB": {
+   "issues": 137172,
+   "snapshot": "2023",
+   "projects": 27,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "timeestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "timespent": {
+     "state": "absent_from_catalogue"
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "aggregatetimeestimate": {
+     "state": "absent_from_catalogue"
+    },
+    "aggregatetimespent": {
+     "state": "absent_from_catalogue"
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 17261,
+     "present_null": 119911
+    }
+   },
+   "any_estimate": 17261
+  },
+  "Sonatype": {
+   "issues": 87284,
+   "snapshot": "2023",
+   "projects": 5,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 893,
+     "present_null": 86391
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 1859,
+     "present_null": 85425
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 1660,
+     "present_null": 85624
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 962,
+     "present_null": 86322
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 1919,
+     "present_null": 85365
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 1716,
+     "present_null": 85568
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 1983,
+     "present_null": 85301
+    }
+   },
+   "any_estimate": 2922
+  },
+  "Spring": {
+   "issues": 69156,
+   "snapshot": "2023",
+   "projects": 80,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 8530,
+     "present_null": 60626
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 8985,
+     "present_null": 60171
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 2649,
+     "present_null": 66507
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 8652,
+     "present_null": 60504
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 9111,
+     "present_null": 60045
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 2754,
+     "present_null": 66402
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 3948,
+     "present_null": 65208
+    }
+   },
+   "any_estimate": 12598
+  },
+  "Sakai": {
+   "issues": 50550,
+   "snapshot": "2023",
+   "projects": 53,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 396,
+     "present_null": 50154
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 353,
+     "present_null": 50197
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 578,
+     "present_null": 49972
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 410,
+     "present_null": 50140
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 367,
+     "present_null": 50183
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 613,
+     "present_null": 49937
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 50550
+    }
+   },
+   "any_estimate": 410
+  },
+  "JiraEcosystem": {
+   "issues": 41866,
+   "snapshot": "2023",
+   "projects": 101,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 2640,
+     "present_null": 39226
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 2858,
+     "present_null": 39008
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 560,
+     "present_null": 41306
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 2738,
+     "present_null": 39128
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 2958,
+     "present_null": 38908
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 588,
+     "present_null": 41278
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 2047,
+     "present_null": 39819
+    }
+   },
+   "any_estimate": 4766
+  },
+  "MariaDB": {
+   "issues": 31229,
+   "snapshot": "MAY_2021",
+   "projects": 11,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 31229
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 31229
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 31229
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 31229
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 31229
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 31229
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 31229
+    }
+   },
+   "any_estimate": 0
+  },
+  "Hyperledger": {
+   "issues": 28146,
+   "snapshot": "2023",
+   "projects": 32,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 892,
+     "present_null": 27254
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 961,
+     "present_null": 27185
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 152,
+     "present_null": 27994
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 918,
+     "present_null": 27228
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 987,
+     "present_null": 27159
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 162,
+     "present_null": 27984
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 3611,
+     "present_null": 24535
+    }
+   },
+   "any_estimate": 4322
+  },
+  "JFrog": {
+   "issues": 15535,
+   "snapshot": "2023",
+   "projects": 10,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 15535
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 15535
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 15535
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 15535
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 15535
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 15535
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 15535
+    }
+   },
+   "any_estimate": 0
+  },
+  "IntelDAOS": {
+   "issues": 9474,
+   "snapshot": "2023",
+   "projects": 2,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 9474
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 9474
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 9474
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 9474
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 9474
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 9474
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 7527,
+     "present_null": 1947
+    }
+   },
+   "any_estimate": 7527
+  },
+  "Mindville": {
+   "issues": 2134,
+   "snapshot": "MAY_2021",
+   "projects": 7,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 2134
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 2134
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 2134
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 2134
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 2134
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 2134
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 0,
+     "present_null": 2134
+    }
+   },
+   "any_estimate": 0
+  },
+  "SecondLife": {
+   "issues": 1867,
+   "snapshot": "2023",
+   "projects": 2,
+   "fields": {
+    "timeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 220,
+     "present_null": 1647
+    },
+    "timeestimate": {
+     "state": "present",
+     "present_with_value": 569,
+     "present_null": 1298
+    },
+    "timespent": {
+     "state": "present",
+     "present_with_value": 524,
+     "present_null": 1343
+    },
+    "aggregatetimeoriginalestimate": {
+     "state": "present",
+     "present_with_value": 238,
+     "present_null": 1629
+    },
+    "aggregatetimeestimate": {
+     "state": "present",
+     "present_with_value": 582,
+     "present_null": 1285
+    },
+    "aggregatetimespent": {
+     "state": "present",
+     "present_with_value": 533,
+     "present_null": 1334
+    },
+    "story_points": {
+     "state": "present",
+     "present_with_value": 9,
+     "present_null": 1858
+    }
+   },
+   "any_estimate": 243
+  }
+ },
+ "apache_projects": {
+  "ZOOKEEPER": {
+   "total": 4263,
+   "timeoriginalestimate": 144,
+   "any_estimate": 148
+  },
+  "ZIPKIN": {
+   "total": 1
+  },
+  "ZETACOMP": {
+   "total": 123,
+   "timeoriginalestimate": 26,
+   "any_estimate": 26
+  },
+  "ZEPPELIN": {
+   "total": 5614,
+   "timeoriginalestimate": 144,
+   "any_estimate": 145
+  },
+  "YUNIKORN": {
+   "total": 994,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "YETUS": {
+   "total": 1136,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "YARN": {
+   "total": 10769,
+   "timeoriginalestimate": 90,
+   "any_estimate": 98
+  },
+  "XW": {
+   "total": 1128,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "XMLSCHEMA": {
+   "total": 61,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "XMLRPC": {
+   "total": 193,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "XMLCOMMONS": {
+   "total": 92,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "XMLBEANS": {
+   "total": 584,
+   "timeoriginalestimate": 15,
+   "any_estimate": 15
+  },
+  "XGC": {
+   "total": 125,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "XERCESP": {
+   "total": 55,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "XERCESJ": {
+   "total": 1725,
+   "timeoriginalestimate": 53,
+   "any_estimate": 53
+  },
+  "XERCESC": {
+   "total": 2230,
+   "timeoriginalestimate": 35,
+   "any_estimate": 35
+  },
+  "XBEAN": {
+   "total": 312,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "XAP": {
+   "total": 589
+  },
+  "XALANJ": {
+   "total": 954,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "XALANC": {
+   "total": 813,
+   "timeoriginalestimate": 22,
+   "any_estimate": 22
+  },
+  "WW": {
+   "total": 5093,
+   "timeoriginalestimate": 120,
+   "any_estimate": 120
+  },
+  "WSS": {
+   "total": 684,
+   "timeoriginalestimate": 21,
+   "any_estimate": 21
+  },
+  "WSRP4J": {
+   "total": 109
+  },
+  "WSIF": {
+   "total": 94,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "WSCOMMONS": {
+   "total": 197,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "WOOKIE": {
+   "total": 425,
+   "timeoriginalestimate": 82,
+   "any_estimate": 85
+  },
+  "WODEN": {
+   "total": 243,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "WINK": {
+   "total": 439,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "WICKET": {
+   "total": 6933,
+   "timeoriginalestimate": 381,
+   "any_estimate": 382
+  },
+  "WHISKER": {
+   "total": 20,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "WHIRR": {
+   "total": 754,
+   "timeoriginalestimate": 34,
+   "any_estimate": 34
+  },
+  "WHIMSY": {
+   "total": 369
+  },
+  "WEEX": {
+   "total": 681,
+   "timeoriginalestimate": 34,
+   "any_estimate": 34
+  },
+  "WEAVER": {
+   "total": 26
+  },
+  "WAYANG": {
+   "total": 46
+  },
+  "WAVE": {
+   "total": 446,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "WAGON": {
+   "total": 594,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "WADI": {
+   "total": 11,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "VYSPER": {
+   "total": 350,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "VXQUERY": {
+   "total": 244,
+   "timeoriginalestimate": 3,
+   "any_estimate": 4
+  },
+  "VFS": {
+   "total": 809,
+   "timeoriginalestimate": 48,
+   "any_estimate": 48
+  },
+  "VELTOOLS": {
+   "total": 192,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "VELOCITYSB": {
+   "total": 9,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "VELOCITY": {
+   "total": 886,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "VCL": {
+   "total": 1122,
+   "timeoriginalestimate": 24,
+   "any_estimate": 24
+  },
+  "VALIDATOR": {
+   "total": 480,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "USERGRID": {
+   "total": 1341,
+   "timeoriginalestimate": 45,
+   "any_estimate": 503,
+   "story_points": 487
+  },
+  "UNOMI": {
+   "total": 540,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "UIMA": {
+   "total": 6401,
+   "timeoriginalestimate": 81,
+   "any_estimate": 82
+  },
+  "TWILL": {
+   "total": 271,
+   "timeoriginalestimate": 3,
+   "any_estimate": 4
+  },
+  "TUWENI": {
+   "total": 32,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "TUSCANY": {
+   "total": 4082,
+   "timeoriginalestimate": 33,
+   "any_estimate": 33
+  },
+  "TST": {
+   "total": 58,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "TSIK": {
+   "total": 2
+  },
+  "TS": {
+   "total": 5103,
+   "timeoriginalestimate": 87,
+   "any_estimate": 87
+  },
+  "TRIPLES": {
+   "total": 6
+  },
+  "TRINIDAD": {
+   "total": 2561,
+   "timeoriginalestimate": 212,
+   "any_estimate": 212
+  },
+  "TREQ": {
+   "total": 21,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "TRB": {
+   "total": 103,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "TRANSPORTS": {
+   "total": 5
+  },
+  "TRANSACTION": {
+   "total": 42,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "TRAINING": {
+   "total": 37
+  },
+  "TRAFODION": {
+   "total": 3337,
+   "timeoriginalestimate": 61,
+   "any_estimate": 62
+  },
+  "TORQUEOLD": {
+   "total": 378
+  },
+  "TORQUE": {
+   "total": 360,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "TOREE": {
+   "total": 528,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "TOOLS": {
+   "total": 3
+  },
+  "TOMEE": {
+   "total": 3371,
+   "timeoriginalestimate": 32,
+   "any_estimate": 33
+  },
+  "TOMAHAWK": {
+   "total": 1683,
+   "timeoriginalestimate": 64,
+   "any_estimate": 64
+  },
+  "TOBAGO": {
+   "total": 2091,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "TM": {
+   "total": 39,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "TINKERPOP": {
+   "total": 2681,
+   "timeoriginalestimate": 32,
+   "any_estimate": 32
+  },
+  "TILESSHOW": {
+   "total": 15
+  },
+  "TILESSHARED": {
+   "total": 21,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "TILESSB": {
+   "total": 10
+  },
+  "TILES": {
+   "total": 578,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29
+  },
+  "TIKA": {
+   "total": 3633,
+   "timeoriginalestimate": 107,
+   "any_estimate": 109
+  },
+  "THRIFT": {
+   "total": 5490,
+   "timeoriginalestimate": 226,
+   "any_estimate": 227
+  },
+  "TEZ": {
+   "total": 4347,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "TEXT": {
+   "total": 205,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "TEXEN": {
+   "total": 19,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "TEVAL": {
+   "total": 1
+  },
+  "TESTING": {
+   "total": 12,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "TEST6": {
+   "total": 2
+  },
+  "TEPHRA": {
+   "total": 314,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "TENTACLES": {
+   "total": 15,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "TC": {
+   "total": 553,
+   "timeoriginalestimate": 20,
+   "any_estimate": 20
+  },
+  "TAVERNA": {
+   "total": 1063,
+   "timeoriginalestimate": 128,
+   "any_estimate": 130
+  },
+  "TATPI": {
+   "total": 5
+  },
+  "TASHI": {
+   "total": 28,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "TAPESTRY": {
+   "total": 2499,
+   "timeoriginalestimate": 18,
+   "any_estimate": 18
+  },
+  "TAP5": {
+   "total": 2696,
+   "timeoriginalestimate": 32,
+   "any_estimate": 32
+  },
+  "TAMAYA": {
+   "total": 414,
+   "timeoriginalestimate": 46,
+   "any_estimate": 46
+  },
+  "TAJO": {
+   "total": 2183,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "SYSTEMDS": {
+   "total": 3119,
+   "timeoriginalestimate": 104,
+   "any_estimate": 104
+  },
+  "SYNCOPE": {
+   "total": 1650,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "SYNAPSE": {
+   "total": 1120,
+   "timeoriginalestimate": 18,
+   "any_estimate": 18
+  },
+  "SVN": {
+   "total": 4518,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "SUREFIRE": {
+   "total": 1958,
+   "timeoriginalestimate": 36,
+   "any_estimate": 36
+  },
+  "SUPERSET": {
+   "total": 13,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "SUBMARINE": {
+   "total": 1171,
+   "timeoriginalestimate": 15,
+   "any_estimate": 19
+  },
+  "STUDIO": {
+   "total": 16
+  },
+  "STREAMS": {
+   "total": 680,
+   "timeoriginalestimate": 125,
+   "any_estimate": 125
+  },
+  "STREAMPIPES": {
+   "total": 489,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "STRATOS": {
+   "total": 1662,
+   "timeoriginalestimate": 26,
+   "any_estimate": 26
+  },
+  "STR": {
+   "total": 3009,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "STORM": {
+   "total": 3762,
+   "timeoriginalestimate": 68,
+   "any_estimate": 68
+  },
+  "STONEHENGE": {
+   "total": 130,
+   "timeoriginalestimate": 42,
+   "any_estimate": 42
+  },
+  "STOMP": {
+   "total": 2
+  },
+  "STEVE": {
+   "total": 55
+  },
+  "STDCXX": {
+   "total": 1062,
+   "timeoriginalestimate": 406,
+   "any_estimate": 411
+  },
+  "STATISTICS": {
+   "total": 41,
+   "timeoriginalestimate": 2,
+   "any_estimate": 3
+  },
+  "STANBOL": {
+   "total": 1473,
+   "timeoriginalestimate": 38,
+   "any_estimate": 40
+  },
+  "SSHD": {
+   "total": 1235,
+   "timeoriginalestimate": 49,
+   "any_estimate": 49
+  },
+  "SQOOP": {
+   "total": 3152,
+   "timeoriginalestimate": 67,
+   "any_estimate": 69
+  },
+  "SPOT": {
+   "total": 309,
+   "timeoriginalestimate": 23,
+   "any_estimate": 24
+  },
+  "SPARK": {
+   "total": 37443,
+   "timeoriginalestimate": 835,
+   "any_estimate": 850
+  },
+  "SOLR": {
+   "total": 15704,
+   "timeoriginalestimate": 381,
+   "any_estimate": 383
+  },
+  "SOAP": {
+   "total": 173
+  },
+  "SMXCOMP": {
+   "total": 972,
+   "timeoriginalestimate": 18,
+   "any_estimate": 19
+  },
+  "SMX4NMR": {
+   "total": 318,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "SMX4KNL": {
+   "total": 269,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "SMX4": {
+   "total": 1905,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "SM": {
+   "total": 4308,
+   "timeoriginalestimate": 102,
+   "any_estimate": 104
+  },
+  "SLING": {
+   "total": 11011,
+   "timeoriginalestimate": 117,
+   "any_estimate": 118
+  },
+  "SLIDER": {
+   "total": 1265,
+   "timeoriginalestimate": 178,
+   "any_estimate": 193
+  },
+  "SITE": {
+   "total": 22
+  },
+  "SIS": {
+   "total": 531,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "SIRONA": {
+   "total": 65,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "SINGA": {
+   "total": 528,
+   "timeoriginalestimate": 20,
+   "any_estimate": 20
+  },
+  "SHIRO": {
+   "total": 838,
+   "timeoriginalestimate": 55,
+   "any_estimate": 55
+  },
+  "SHINDIG": {
+   "total": 1979,
+   "timeoriginalestimate": 233,
+   "any_estimate": 236
+  },
+  "SHALE": {
+   "total": 497
+  },
+  "SERF": {
+   "total": 196
+  },
+  "SENTRY": {
+   "total": 2564,
+   "timeoriginalestimate": 21,
+   "any_estimate": 23
+  },
+  "SEDONA": {
+   "total": 76,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "SDAP": {
+   "total": 349
+  },
+  "SCXML": {
+   "total": 287,
+   "timeoriginalestimate": 20,
+   "any_estimate": 20
+  },
+  "SCOUT": {
+   "total": 138
+  },
+  "SCM": {
+   "total": 958,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "SCIMPLE": {
+   "total": 91
+  },
+  "SCB": {
+   "total": 2326,
+   "timeoriginalestimate": 22,
+   "any_estimate": 23
+  },
+  "SB": {
+   "total": 22
+  },
+  "SAVAN": {
+   "total": 13
+  },
+  "SANTUARIO": {
+   "total": 208,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "SANDESHA2C": {
+   "total": 75,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "SANDESHA2": {
+   "total": 216,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "SANDBOX": {
+   "total": 266,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "SAND": {
+   "total": 17
+  },
+  "SAMZA": {
+   "total": 2714,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "SAMOA": {
+   "total": 83,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "S4": {
+   "total": 165,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "S2GRAPH": {
+   "total": 258,
+   "timeoriginalestimate": 107,
+   "any_estimate": 111
+  },
+  "RYA": {
+   "total": 540,
+   "timeoriginalestimate": 13,
+   "any_estimate": 14
+  },
+  "RUNTIME": {
+   "total": 52
+  },
+  "ROL": {
+   "total": 2135,
+   "timeoriginalestimate": 39,
+   "any_estimate": 39
+  },
+  "ROCKETMQ": {
+   "total": 384,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "RNG": {
+   "total": 165,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RIVER": {
+   "total": 467,
+   "timeoriginalestimate": 19,
+   "any_estimate": 20
+  },
+  "RIPPLE": {
+   "total": 106,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "RESOURCES": {
+   "total": 41
+  },
+  "REEF": {
+   "total": 2065,
+   "timeoriginalestimate": 150,
+   "any_estimate": 158
+  },
+  "RBATIS": {
+   "total": 2
+  },
+  "RAVE": {
+   "total": 1286,
+   "timeoriginalestimate": 43,
+   "any_estimate": 44
+  },
+  "RATIS": {
+   "total": 1467,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "RAT": {
+   "total": 291,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "RANGER": {
+   "total": 3567,
+   "timeoriginalestimate": 47,
+   "any_estimate": 47
+  },
+  "RAMPARTC": {
+   "total": 159,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "RAMPART": {
+   "total": 442,
+   "timeoriginalestimate": 32,
+   "any_estimate": 32
+  },
+  "QUICKSTEP": {
+   "total": 128,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "QPIDJMS": {
+   "total": 553,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "QPIDIT": {
+   "total": 138
+  },
+  "QPID": {
+   "total": 8465,
+   "timeoriginalestimate": 180,
+   "any_estimate": 181
+  },
+  "PYLUCENE": {
+   "total": 61,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "PULSAR": {
+   "total": 17,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "PROXY": {
+   "total": 28,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "PROVISIONR": {
+   "total": 47
+  },
+  "PROTON": {
+   "total": 2472,
+   "timeoriginalestimate": 21,
+   "any_estimate": 21
+  },
+  "PROTOCOLS": {
+   "total": 120,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "PRIMITIVES": {
+   "total": 13
+  },
+  "PRC": {
+   "total": 23
+  },
+  "POSTAGE": {
+   "total": 25,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "PORTLETBRIDGE": {
+   "total": 235,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "PORTALS": {
+   "total": 25,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "POOL": {
+   "total": 383,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "POLYGENE": {
+   "total": 311,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "PODLINGNAMESEARCH": {
+   "total": 186
+  },
+  "PNIX": {
+   "total": 58,
+   "timeoriginalestimate": 58,
+   "any_estimate": 58
+  },
+  "PLUTO": {
+   "total": 792,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "PLC4X": {
+   "total": 321,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "PLANET": {
+   "total": 1
+  },
+  "PIVOT": {
+   "total": 1039,
+   "timeoriginalestimate": 40,
+   "any_estimate": 40
+  },
+  "PIRK": {
+   "total": 81,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "PIO": {
+   "total": 214,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "PINOT": {
+   "total": 14,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "PIG": {
+   "total": 5338,
+   "timeoriginalestimate": 63,
+   "any_estimate": 64
+  },
+  "PHOTARK": {
+   "total": 96,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "PHOENIX": {
+   "total": 6593,
+   "timeoriginalestimate": 141,
+   "any_estimate": 144
+  },
+  "PEGASUS": {
+   "total": 11
+  },
+  "PDFBOX": {
+   "total": 5347,
+   "timeoriginalestimate": 208,
+   "any_estimate": 208
+  },
+  "PB": {
+   "total": 112,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "PARQUET": {
+   "total": 2092,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "OWC": {
+   "total": 6
+  },
+  "OWB": {
+   "total": 1393,
+   "timeoriginalestimate": 84,
+   "any_estimate": 84
+  },
+  "ORP": {
+   "total": 11
+  },
+  "ORCHESTRA": {
+   "total": 67,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "ORC": {
+   "total": 1075,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "OPENWIRE": {
+   "total": 16,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "OPENOFFICE": {
+   "total": 189
+  },
+  "OPENNLP": {
+   "total": 1309,
+   "timeoriginalestimate": 84,
+   "any_estimate": 84
+  },
+  "OPENMEETINGS": {
+   "total": 2718,
+   "timeoriginalestimate": 103,
+   "any_estimate": 105
+  },
+  "OPENJPA": {
+   "total": 2896,
+   "timeoriginalestimate": 131,
+   "any_estimate": 139
+  },
+  "OPENEJB": {
+   "total": 2046,
+   "timeoriginalestimate": 50,
+   "any_estimate": 51
+  },
+  "OPENAZ": {
+   "total": 24
+  },
+  "OOZIE": {
+   "total": 3646,
+   "timeoriginalestimate": 137,
+   "any_estimate": 145
+  },
+  "OODT": {
+   "total": 1040,
+   "timeoriginalestimate": 38,
+   "any_estimate": 39
+  },
+  "ONAMI": {
+   "total": 118
+  },
+  "OMID": {
+   "total": 217,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "OLTU": {
+   "total": 216,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "OLIO": {
+   "total": 154,
+   "timeoriginalestimate": 22,
+   "any_estimate": 22
+  },
+  "OLINGO": {
+   "total": 1552,
+   "timeoriginalestimate": 28,
+   "any_estimate": 28
+  },
+  "OJB": {
+   "total": 144,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "OGNL": {
+   "total": 261,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "OFBIZ": {
+   "total": 12470,
+   "timeoriginalestimate": 300,
+   "any_estimate": 306
+  },
+  "OEP": {
+   "total": 37
+  },
+  "ODFTOOLKIT": {
+   "total": 479,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "ODE": {
+   "total": 1078,
+   "timeoriginalestimate": 37,
+   "any_estimate": 37
+  },
+  "OCM": {
+   "total": 70,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "OAK": {
+   "total": 9612,
+   "timeoriginalestimate": 11,
+   "any_estimate": 15
+  },
+  "NUVEM": {
+   "total": 24
+  },
+  "NUTTX": {
+   "total": 9,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "NUTCH": {
+   "total": 2909,
+   "timeoriginalestimate": 59,
+   "any_estimate": 59
+  },
+  "NUMBERS": {
+   "total": 179,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "NPANDAY": {
+   "total": 634,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "NLPCRAFT": {
+   "total": 471
+  },
+  "NIFIREG": {
+   "total": 326
+  },
+  "NIFILIBS": {
+   "total": 4
+  },
+  "NIFI": {
+   "total": 9499,
+   "timeoriginalestimate": 221,
+   "any_estimate": 222
+  },
+  "NETBEANSINFRA": {
+   "total": 259,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "NETBEANS": {
+   "total": 6155,
+   "timeoriginalestimate": 58,
+   "any_estimate": 58
+  },
+  "NET": {
+   "total": 700,
+   "timeoriginalestimate": 61,
+   "any_estimate": 61
+  },
+  "NEMO": {
+   "total": 484,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "NEETHI": {
+   "total": 21,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MYRIAD": {
+   "total": 325,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "MYNEWTDOC": {
+   "total": 73
+  },
+  "MYNEWT": {
+   "total": 1
+  },
+  "MYFACESTEST": {
+   "total": 72,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "MYFACES": {
+   "total": 4054,
+   "timeoriginalestimate": 93,
+   "any_estimate": 93
+  },
+  "MXNET": {
+   "total": 1407,
+   "timeoriginalestimate": 6,
+   "any_estimate": 215,
+   "story_points": 209
+  },
+  "MWRAPPER": {
+   "total": 47
+  },
+  "MWAR": {
+   "total": 433,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "MVERIFIER": {
+   "total": 36,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "MUSE": {
+   "total": 314,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "MTOOLCHAINS": {
+   "total": 34
+  },
+  "MTOMCAT": {
+   "total": 316,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "MSTAGE": {
+   "total": 26
+  },
+  "MSOURCES": {
+   "total": 122,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "MSKINS": {
+   "total": 166,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "MSITE": {
+   "total": 779,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "MSHARED": {
+   "total": 991,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "MSHADE": {
+   "total": 406,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MSCRIPTING": {
+   "total": 8
+  },
+  "MSCMPUB": {
+   "total": 45
+  },
+  "MRUNIT": {
+   "total": 224,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "MRRESOURCES": {
+   "total": 117
+  },
+  "MRQL": {
+   "total": 102,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MRM": {
+   "total": 1993,
+   "timeoriginalestimate": 75,
+   "any_estimate": 76
+  },
+  "MRESOURCES": {
+   "total": 255,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "MRESOLVER": {
+   "total": 228
+  },
+  "MREPOSITORY": {
+   "total": 39,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MRELEASE": {
+   "total": 1045,
+   "timeoriginalestimate": 25,
+   "any_estimate": 25
+  },
+  "MRAR": {
+   "total": 82,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MPT": {
+   "total": 44
+  },
+  "MPOM": {
+   "total": 269
+  },
+  "MPMD": {
+   "total": 324,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "MPLUGINTESTING": {
+   "total": 66,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MPLUGIN": {
+   "total": 369,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "MPIR": {
+   "total": 385,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "MPH": {
+   "total": 169,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "MPDF": {
+   "total": 93
+  },
+  "MPATCH": {
+   "total": 16
+  },
+  "MODPYTHON": {
+   "total": 256,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MODELER": {
+   "total": 32
+  },
+  "MNGSITE": {
+   "total": 421,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "MNG": {
+   "total": 6046,
+   "timeoriginalestimate": 210,
+   "any_estimate": 210
+  },
+  "MNEMONIC": {
+   "total": 711,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MLINKCHECK": {
+   "total": 38
+  },
+  "MJMOD": {
+   "total": 27,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MJLINK": {
+   "total": 64,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MJDEPS": {
+   "total": 27
+  },
+  "MJDEPRSCAN": {
+   "total": 4
+  },
+  "MJAVADOC": {
+   "total": 690,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "MJARSIGNER": {
+   "total": 59,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MJAR": {
+   "total": 262,
+   "timeoriginalestimate": 4,
+   "any_estimate": 5
+  },
+  "MIRAE": {
+   "total": 8
+  },
+  "MINVOKER": {
+   "total": 288
+  },
+  "MINSTALL": {
+   "total": 166,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "MINIFICPP": {
+   "total": 1707,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "MINIFI": {
+   "total": 240,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MINDEXER": {
+   "total": 128
+  },
+  "MIME4J": {
+   "total": 312,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "MILAGRO": {
+   "total": 36,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MGPG": {
+   "total": 83
+  },
+  "MFHTML5": {
+   "total": 21,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MFCOMMONS": {
+   "total": 46,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "METRON": {
+   "total": 2349,
+   "timeoriginalestimate": 75,
+   "any_estimate": 78
+  },
+  "METAMODEL": {
+   "total": 400,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "MESOS": {
+   "total": 10197,
+   "timeoriginalestimate": 110,
+   "any_estimate": 3359,
+   "story_points": 3273
+  },
+  "MENFORCER": {
+   "total": 402,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MEJB": {
+   "total": 122,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MEECROWAVE": {
+   "total": 306
+  },
+  "MECLIPSE": {
+   "total": 723,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "MEAR": {
+   "total": 296,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "MDOCCK": {
+   "total": 33,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MDOAP": {
+   "total": 55
+  },
+  "MDEPLOY": {
+   "total": 265,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "MDEP": {
+   "total": 750,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MCOMPILER": {
+   "total": 462,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "MCLEAN": {
+   "total": 86,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "MCHECKSTYLE": {
+   "total": 397,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "MCHANGES": {
+   "total": 409,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "MCHANGELOG": {
+   "total": 144,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "MAVIBOT": {
+   "total": 49
+  },
+  "MATH": {
+   "total": 1628,
+   "timeoriginalestimate": 148,
+   "any_estimate": 148
+  },
+  "MASSEMBLY": {
+   "total": 941,
+   "timeoriginalestimate": 39,
+   "any_estimate": 39
+  },
+  "MASFRES": {
+   "total": 42,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MARVIN": {
+   "total": 77,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "MARTIFACT": {
+   "total": 28
+  },
+  "MARMOTTA": {
+   "total": 680,
+   "timeoriginalestimate": 158,
+   "any_estimate": 164
+  },
+  "MARCHETYPES": {
+   "total": 63,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MAPREDUCE": {
+   "total": 7047,
+   "timeoriginalestimate": 168,
+   "any_estimate": 171
+  },
+  "MANTTASKS": {
+   "total": 247,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "MANTRUN": {
+   "total": 202,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "MANT": {
+   "total": 77
+  },
+  "MAILET": {
+   "total": 166,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "MAILBOX": {
+   "total": 407,
+   "timeoriginalestimate": 8,
+   "any_estimate": 9
+  },
+  "MAHOUT": {
+   "total": 2121,
+   "timeoriginalestimate": 150,
+   "any_estimate": 150
+  },
+  "MADLIB": {
+   "total": 1482
+  },
+  "MACR": {
+   "total": 53
+  },
+  "LUCY": {
+   "total": 320,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "LUCENENET": {
+   "total": 649,
+   "timeoriginalestimate": 75,
+   "any_estimate": 75
+  },
+  "LUCENE": {
+   "total": 10313,
+   "timeoriginalestimate": 210,
+   "any_estimate": 213
+  },
+  "LOKAHI": {
+   "total": 8
+  },
+  "LOGGING": {
+   "total": 176,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "LOGCXX": {
+   "total": 530,
+   "timeoriginalestimate": 44,
+   "any_estimate": 45
+  },
+  "LOG4PHP": {
+   "total": 244,
+   "timeoriginalestimate": 30,
+   "any_estimate": 30
+  },
+  "LOG4NET": {
+   "total": 680,
+   "timeoriginalestimate": 96,
+   "any_estimate": 96
+  },
+  "LOG4J2": {
+   "total": 3304,
+   "timeoriginalestimate": 124,
+   "any_estimate": 125
+  },
+  "LIVY": {
+   "total": 841,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "LIMINAL": {
+   "total": 81,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "LIBCLOUD": {
+   "total": 1045,
+   "timeoriginalestimate": 137,
+   "any_estimate": 137
+  },
+  "LENS": {
+   "total": 1451,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "LEGAL": {
+   "total": 582
+  },
+  "LCN4C": {
+   "total": 8
+  },
+  "LAUNCHER": {
+   "total": 12
+  },
+  "LANG": {
+   "total": 1641,
+   "timeoriginalestimate": 77,
+   "any_estimate": 77
+  },
+  "LABS": {
+   "total": 352,
+   "timeoriginalestimate": 26,
+   "any_estimate": 26
+  },
+  "KYLIN": {
+   "total": 4989,
+   "timeoriginalestimate": 121,
+   "any_estimate": 121
+  },
+  "KUDU": {
+   "total": 3194,
+   "timeoriginalestimate": 22,
+   "any_estimate": 25
+  },
+  "KNOX": {
+   "total": 2694,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "KITTY": {
+   "total": 33,
+   "any_estimate": 8,
+   "timeoriginalestimate": 7
+  },
+  "KI": {
+   "total": 1
+  },
+  "KATO": {
+   "total": 16
+  },
+  "KARAF": {
+   "total": 7145,
+   "timeoriginalestimate": 70,
+   "any_estimate": 70
+  },
+  "KAND": {
+   "total": 10
+  },
+  "KALUMET": {
+   "total": 56,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "KAFKA": {
+   "total": 12312,
+   "timeoriginalestimate": 311,
+   "any_estimate": 318
+  },
+  "JXR": {
+   "total": 159,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "JXPATH": {
+   "total": 197,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "JUNEAU": {
+   "total": 242,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "JUDDI": {
+   "total": 1012,
+   "timeoriginalestimate": 30,
+   "any_estimate": 30
+  },
+  "JSPWIKI": {
+   "total": 1050,
+   "timeoriginalestimate": 37,
+   "any_estimate": 37
+  },
+  "JSPF": {
+   "total": 108,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JSIEVE": {
+   "total": 115
+  },
+  "JS2": {
+   "total": 1354,
+   "timeoriginalestimate": 32,
+   "any_estimate": 33
+  },
+  "JS1": {
+   "total": 569
+  },
+  "JOSHUA": {
+   "total": 346,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "JOHNZON": {
+   "total": 356
+  },
+  "JEXL": {
+   "total": 353,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "JENA": {
+   "total": 2238,
+   "timeoriginalestimate": 92,
+   "any_estimate": 92
+  },
+  "JELLY": {
+   "total": 291,
+   "timeoriginalestimate": 40,
+   "any_estimate": 40
+  },
+  "JDO": {
+   "total": 798,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "JDKIM": {
+   "total": 47,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "JCS": {
+   "total": 227,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "JCRVLT": {
+   "total": 577,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JCRTCK": {
+   "total": 19
+  },
+  "JCRSITE": {
+   "total": 51
+  },
+  "JCRSERVLET": {
+   "total": 6,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JCRRMI": {
+   "total": 34
+  },
+  "JCRCL": {
+   "total": 3
+  },
+  "JCRBENCH": {
+   "total": 3
+  },
+  "JCR": {
+   "total": 4630,
+   "timeoriginalestimate": 101,
+   "any_estimate": 102
+  },
+  "JCLOUDS": {
+   "total": 1590,
+   "timeoriginalestimate": 51,
+   "any_estimate": 53
+  },
+  "JCI": {
+   "total": 79
+  },
+  "JAXME": {
+   "total": 106,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "JAMES": {
+   "total": 3611,
+   "timeoriginalestimate": 59,
+   "any_estimate": 59
+  },
+  "JACOB": {
+   "total": 9
+  },
+  "IVYDE": {
+   "total": 384,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "IVY": {
+   "total": 1623,
+   "timeoriginalestimate": 28,
+   "any_estimate": 28
+  },
+  "ISIS": {
+   "total": 2932,
+   "timeoriginalestimate": 21,
+   "any_estimate": 21
+  },
+  "IOTDB": {
+   "total": 2265,
+   "timeoriginalestimate": 350,
+   "any_estimate": 350
+  },
+  "IOTA": {
+   "total": 43,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "IO": {
+   "total": 744,
+   "timeoriginalestimate": 50,
+   "any_estimate": 50
+  },
+  "INLONG": {
+   "total": 800,
+   "timeoriginalestimate": 14,
+   "any_estimate": 17
+  },
+  "INFRATEST3": {
+   "total": 1
+  },
+  "INFRACLOUD1": {
+   "total": 8,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "INFRA": {
+   "total": 15777,
+   "timeoriginalestimate": 143,
+   "any_estimate": 143
+  },
+  "INCUBATOR": {
+   "total": 258,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "IMPERIUS": {
+   "total": 34,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "IMPALA": {
+   "total": 11031,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "IMAP": {
+   "total": 353,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "IMAGING": {
+   "total": 319,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29
+  },
+  "IGNITE": {
+   "total": 16194,
+   "timeoriginalestimate": 145,
+   "any_estimate": 148
+  },
+  "IBATISNET": {
+   "total": 301,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "IBATIS": {
+   "total": 777,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "HUPA": {
+   "total": 117,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "HUDI": {
+   "total": 3172,
+   "story_points": 145,
+   "any_estimate": 219,
+   "timeoriginalestimate": 74
+  },
+  "HTTPDRAFT": {
+   "total": 95
+  },
+  "HTTPCORE": {
+   "total": 687,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "HTTPCLIENT": {
+   "total": 2116,
+   "timeoriginalestimate": 67,
+   "any_estimate": 67
+  },
+  "HTTPASYNC": {
+   "total": 133,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "HTRACE": {
+   "total": 402,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "HORN": {
+   "total": 59,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "HOP": {
+   "total": 2158,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "HIVEMIND": {
+   "total": 213
+  },
+  "HIVEMALL": {
+   "total": 317
+  },
+  "HIVE": {
+   "total": 25731,
+   "timeoriginalestimate": 257,
+   "any_estimate": 262
+  },
+  "HISE": {
+   "total": 103,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "HERMES": {
+   "total": 16
+  },
+  "HERALDRY": {
+   "total": 5
+  },
+  "HELIX": {
+   "total": 857,
+   "timeoriginalestimate": 15,
+   "any_estimate": 16
+  },
+  "HDT": {
+   "total": 63,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "HDFS": {
+   "total": 15588,
+   "timeoriginalestimate": 138,
+   "any_estimate": 140
+  },
+  "HDDS": {
+   "total": 6121,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "HCATALOG": {
+   "total": 649,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "HBASE": {
+   "total": 26421,
+   "timeoriginalestimate": 285,
+   "any_estimate": 293
+  },
+  "HAWQ": {
+   "total": 1808,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "HARMONY": {
+   "total": 6676,
+   "timeoriginalestimate": 183,
+   "any_estimate": 184
+  },
+  "HAMA": {
+   "total": 1006,
+   "timeoriginalestimate": 39,
+   "any_estimate": 42
+  },
+  "HADOOP": {
+   "total": 15797,
+   "any_estimate": 304,
+   "timeoriginalestimate": 292
+  },
+  "GUMP": {
+   "total": 169
+  },
+  "GUACAMOLE": {
+   "total": 1485,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29
+  },
+  "GROOVY": {
+   "total": 10187,
+   "timeoriginalestimate": 138,
+   "any_estimate": 139
+  },
+  "GRIFFIN": {
+   "total": 366,
+   "timeoriginalestimate": 94,
+   "any_estimate": 95
+  },
+  "GRFT": {
+   "total": 110
+  },
+  "GOSSIP": {
+   "total": 101,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "GORA": {
+   "total": 649,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "GOBBLIN": {
+   "total": 1591,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "GIRAPH": {
+   "total": 1252,
+   "timeoriginalestimate": 49,
+   "any_estimate": 49
+  },
+  "GERONIMODEVTOOLS": {
+   "total": 806,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "GERONIMO": {
+   "total": 782,
+   "timeoriginalestimate": 20,
+   "any_estimate": 20
+  },
+  "GEOMETRY": {
+   "total": 130
+  },
+  "GEODE": {
+   "total": 9905,
+   "story_points": 10,
+   "any_estimate": 89,
+   "timeoriginalestimate": 77
+  },
+  "GEARPUMP": {
+   "total": 368,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "GBUILD": {
+   "total": 22
+  },
+  "FUNCTOR": {
+   "total": 31,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "FTPSERVER": {
+   "total": 499,
+   "timeoriginalestimate": 28,
+   "any_estimate": 28
+  },
+  "FREEMARKER": {
+   "total": 202,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "FORTRESS": {
+   "total": 23,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "FOR": {
+   "total": 1251
+  },
+  "FOP": {
+   "total": 3040,
+   "timeoriginalestimate": 30,
+   "any_estimate": 30
+  },
+  "FLUME": {
+   "total": 3380,
+   "timeoriginalestimate": 102,
+   "any_estimate": 103
+  },
+  "FLINK": {
+   "total": 25492,
+   "timeoriginalestimate": 253,
+   "any_estimate": 258
+  },
+  "FLEX": {
+   "total": 35390,
+   "timeoriginalestimate": 143,
+   "any_estimate": 145
+  },
+  "FLAGON": {
+   "total": 460,
+   "timeoriginalestimate": 142,
+   "any_estimate": 144
+  },
+  "FINERACT": {
+   "total": 1476,
+   "timeoriginalestimate": 28,
+   "any_estimate": 28
+  },
+  "FINCN": {
+   "total": 350,
+   "timeoriginalestimate": 86,
+   "any_estimate": 86
+  },
+  "FILEUPLOAD": {
+   "total": 341,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "FELIX": {
+   "total": 6392,
+   "timeoriginalestimate": 128,
+   "any_estimate": 128
+  },
+  "FEEDPARSER": {
+   "total": 9
+  },
+  "FEDIZ": {
+   "total": 252,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "FC": {
+   "total": 305,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "FALCON": {
+   "total": 2343,
+   "timeoriginalestimate": 59,
+   "any_estimate": 67
+  },
+  "EXTVAL": {
+   "total": 161,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "EXTSCRIPT": {
+   "total": 190
+  },
+  "EXTCDI": {
+   "total": 317,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "EXLBR": {
+   "total": 52
+  },
+  "EXEC": {
+   "total": 119,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "EWS": {
+   "total": 8
+  },
+  "EVENTMESH": {
+   "total": 9
+  },
+  "ETCH": {
+   "total": 295,
+   "timeoriginalestimate": 19,
+   "any_estimate": 19
+  },
+  "ESME": {
+   "total": 373,
+   "timeoriginalestimate": 28,
+   "any_estimate": 30
+  },
+  "ESCIMO": {
+   "total": 2
+  },
+  "EMPIREDB": {
+   "total": 360,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "EMAIL": {
+   "total": 195,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "EL": {
+   "total": 20
+  },
+  "EDGENT": {
+   "total": 450,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "ECS": {
+   "total": 4,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "ECHARTS": {
+   "total": 18
+  },
+  "EASYANT": {
+   "total": 75,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "EAGLE": {
+   "total": 1097,
+   "timeoriginalestimate": 40,
+   "any_estimate": 40
+  },
+  "DVSL": {
+   "total": 2
+  },
+  "DUBBO": {
+   "total": 78,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "DTACLOUD": {
+   "total": 587,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "DROIDS": {
+   "total": 179,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "DRILL": {
+   "total": 8069,
+   "timeoriginalestimate": 106,
+   "any_estimate": 108
+  },
+  "DOXIATOOLS": {
+   "total": 56
+  },
+  "DOXIASITETOOLS": {
+   "total": 228,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "DOXIA": {
+   "total": 573,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "DOSGI": {
+   "total": 278,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "DORMANT": {
+   "total": 53
+  },
+  "DORIS": {
+   "total": 1
+  },
+  "DMAP": {
+   "total": 204,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "DL": {
+   "total": 213,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "DISPATCH": {
+   "total": 2302,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "DISCOVERY": {
+   "total": 21,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "DIRTSEC": {
+   "total": 14
+  },
+  "DIRSTUDIO": {
+   "total": 1277,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "DIRSHARED": {
+   "total": 120,
+   "timeoriginalestimate": 26,
+   "any_estimate": 26
+  },
+  "DIRSERVER": {
+   "total": 2278,
+   "timeoriginalestimate": 47,
+   "any_estimate": 47
+  },
+  "DIRNAMING": {
+   "total": 15
+  },
+  "DIRMINA": {
+   "total": 1114,
+   "timeoriginalestimate": 35,
+   "any_estimate": 35
+  },
+  "DIRKRB": {
+   "total": 747,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "DIRGROOVY": {
+   "total": 9
+  },
+  "DIRECTMEMORY": {
+   "total": 139
+  },
+  "DIRAPI": {
+   "total": 355,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "DIR": {
+   "total": 226,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "DIGESTER": {
+   "total": 195,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "DI": {
+   "total": 36,
+   "timeoriginalestimate": 6,
+   "any_estimate": 7
+  },
+  "DERBY": {
+   "total": 7123,
+   "timeoriginalestimate": 78,
+   "any_estimate": 78
+  },
+  "DEPOT": {
+   "total": 2
+  },
+  "DELTASPIKE": {
+   "total": 1390,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "DDLUTILS": {
+   "total": 289,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "DBUTILS": {
+   "total": 146,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "DBF": {
+   "total": 13
+  },
+  "DBCP": {
+   "total": 574,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "DAYTRADER": {
+   "total": 67
+  },
+  "DATASKETCHES": {
+   "total": 10
+  },
+  "DATALAB": {
+   "total": 1858,
+   "story_points": 74,
+   "any_estimate": 75,
+   "timeoriginalestimate": 1
+  },
+  "DATAFU": {
+   "total": 161,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "DAFFODIL": {
+   "total": 2577,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "DAEMON": {
+   "total": 436,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "CXFXJC": {
+   "total": 40,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "CXF": {
+   "total": 8531,
+   "timeoriginalestimate": 264,
+   "any_estimate": 266
+  },
+  "CURATOR": {
+   "total": 622,
+   "timeoriginalestimate": 26,
+   "any_estimate": 26
+  },
+  "CTAKES": {
+   "total": 556,
+   "timeoriginalestimate": 46,
+   "any_estimate": 46
+  },
+  "CSV": {
+   "total": 291,
+   "timeoriginalestimate": 18,
+   "any_estimate": 18
+  },
+  "CS": {
+   "total": 13,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "CRYPTO": {
+   "total": 148
+  },
+  "CRUNCH": {
+   "total": 697,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "CRAIL": {
+   "total": 113,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "COUCHDB": {
+   "total": 3292,
+   "timeoriginalestimate": 101,
+   "any_estimate": 102
+  },
+  "COTTON": {
+   "total": 15,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "CORAL": {
+   "total": 21,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "COR": {
+   "total": 53
+  },
+  "CONTINUUM": {
+   "total": 2724,
+   "timeoriginalestimate": 65,
+   "any_estimate": 66
+  },
+  "CONNECTORS": {
+   "total": 1689,
+   "timeoriginalestimate": 89,
+   "any_estimate": 89
+  },
+  "CONFIGURATION": {
+   "total": 805,
+   "timeoriginalestimate": 39,
+   "any_estimate": 39
+  },
+  "CONCERTED": {
+   "total": 23,
+   "timeoriginalestimate": 5,
+   "any_estimate": 6
+  },
+  "COMPRESS": {
+   "total": 601,
+   "timeoriginalestimate": 30,
+   "any_estimate": 30
+  },
+  "COMMONSSITE": {
+   "total": 134,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "COMMONSRDF": {
+   "total": 78,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "COMDEV": {
+   "total": 404,
+   "timeoriginalestimate": 23,
+   "any_estimate": 23
+  },
+  "COLLECTIONS": {
+   "total": 744,
+   "timeoriginalestimate": 45,
+   "any_estimate": 45
+  },
+  "CODEC": {
+   "total": 298,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "COCOON3": {
+   "total": 132
+  },
+  "COCOON": {
+   "total": 2364
+  },
+  "CMIS": {
+   "total": 1096,
+   "timeoriginalestimate": 53,
+   "any_estimate": 53
+  },
+  "CMDA": {
+   "total": 19,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "CLOWNFISH": {
+   "total": 120
+  },
+  "CLOUDSTACK": {
+   "total": 40,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "CLKE": {
+   "total": 47
+  },
+  "CLK": {
+   "total": 804,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "CLIMATE": {
+   "total": 973,
+   "timeoriginalestimate": 31,
+   "any_estimate": 33
+  },
+  "CLI": {
+   "total": 313,
+   "timeoriginalestimate": 20,
+   "any_estimate": 20
+  },
+  "CLEREZZA": {
+   "total": 1069,
+   "timeoriginalestimate": 18,
+   "any_estimate": 18
+  },
+  "CHUKWA": {
+   "total": 822,
+   "timeoriginalestimate": 28,
+   "any_estimate": 29
+  },
+  "CHAINSAW": {
+   "total": 42,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "CHAIN": {
+   "total": 113,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "CENTRAL": {
+   "total": 19
+  },
+  "CELIX": {
+   "total": 469,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "CB": {
+   "total": 14007,
+   "timeoriginalestimate": 663,
+   "any_estimate": 668
+  },
+  "CAY": {
+   "total": 2714,
+   "timeoriginalestimate": 43,
+   "any_estimate": 43
+  },
+  "CASSANDRASC": {
+   "total": 32
+  },
+  "CASSANDRA": {
+   "total": 17115,
+   "timeoriginalestimate": 428,
+   "any_estimate": 432
+  },
+  "CARBONDATA": {
+   "total": 4316,
+   "timeoriginalestimate": 40,
+   "any_estimate": 42
+  },
+  "CAMEL": {
+   "total": 17391,
+   "timeoriginalestimate": 223,
+   "any_estimate": 229
+  },
+  "CALCITE": {
+   "total": 4968,
+   "timeoriginalestimate": 41,
+   "any_estimate": 41
+  },
+  "CACTUS": {
+   "total": 275,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "BVAL": {
+   "total": 185,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "BUILDR": {
+   "total": 735,
+   "timeoriginalestimate": 19,
+   "any_estimate": 19
+  },
+  "BSF": {
+   "total": 44,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "BROOKLYN": {
+   "total": 628,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "BOOKKEEPER": {
+   "total": 1095,
+   "timeoriginalestimate": 18,
+   "any_estimate": 18
+  },
+  "BLUR": {
+   "total": 450,
+   "timeoriginalestimate": 3,
+   "any_estimate": 4
+  },
+  "BLUESKY": {
+   "total": 10,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "BLUEMARLIN": {
+   "total": 3
+  },
+  "BLAZE": {
+   "total": 10
+  },
+  "BIGTOP": {
+   "total": 3622,
+   "timeoriginalestimate": 43,
+   "any_estimate": 45
+  },
+  "BETWIXT": {
+   "total": 73,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "BEEHIVE": {
+   "total": 1231,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "BEANUTILS": {
+   "total": 551,
+   "timeoriginalestimate": 21,
+   "any_estimate": 21
+  },
+  "BEAM": {
+   "total": 13597,
+   "any_estimate": 167,
+   "timeoriginalestimate": 165
+  },
+  "BCEL": {
+   "total": 342,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "BATIK": {
+   "total": 1317,
+   "timeoriginalestimate": 20,
+   "any_estimate": 20
+  },
+  "BATCHEE": {
+   "total": 154
+  },
+  "BAHIR": {
+   "total": 297,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29
+  },
+  "AXISCPP": {
+   "total": 1087,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "AXIS2C": {
+   "total": 1692,
+   "timeoriginalestimate": 94,
+   "any_estimate": 94
+  },
+  "AXIS2": {
+   "total": 5918,
+   "timeoriginalestimate": 289,
+   "any_estimate": 291
+  },
+  "AXIS": {
+   "total": 2918,
+   "timeoriginalestimate": 36,
+   "any_estimate": 36
+  },
+  "AXIOM": {
+   "total": 506,
+   "timeoriginalestimate": 23,
+   "any_estimate": 23
+  },
+  "AWF": {
+   "total": 243,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "AVRO": {
+   "total": 3272,
+   "timeoriginalestimate": 118,
+   "any_estimate": 119
+  },
+  "AVNSHARP": {
+   "total": 6
+  },
+  "AVALON": {
+   "total": 7
+  },
+  "AUTOTAG": {
+   "total": 24,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "AURORA": {
+   "total": 1970,
+   "timeoriginalestimate": 13,
+   "any_estimate": 181,
+   "story_points": 170
+  },
+  "ATTRIBUTES": {
+   "total": 13
+  },
+  "ATTIC": {
+   "total": 198
+  },
+  "ATLAS": {
+   "total": 4469,
+   "timeoriginalestimate": 33,
+   "any_estimate": 35
+  },
+  "ASYNCWEB": {
+   "total": 45,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "ASTERIXDB": {
+   "total": 2993,
+   "timeoriginalestimate": 23,
+   "any_estimate": 23
+  },
+  "ASFSITE": {
+   "total": 14,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "ARTEMIS": {
+   "total": 3571,
+   "timeoriginalestimate": 23,
+   "any_estimate": 23
+  },
+  "ARROW": {
+   "total": 15128,
+   "timeoriginalestimate": 104,
+   "any_estimate": 104
+  },
+  "ARMI": {
+   "total": 6,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "ARIES": {
+   "total": 2056,
+   "timeoriginalestimate": 53,
+   "any_estimate": 53
+  },
+  "ARIA": {
+   "total": 427,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "ARCHETYPE": {
+   "total": 581,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "APOLLO": {
+   "total": 51
+  },
+  "APLO": {
+   "total": 401,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "APISIX": {
+   "total": 36,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "APEXMALHAR": {
+   "total": 2041,
+   "timeoriginalestimate": 42,
+   "any_estimate": 42
+  },
+  "APEXCORE": {
+   "total": 782,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "APA": {
+   "total": 80,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "ANY23": {
+   "total": 526,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "ANAKIA": {
+   "total": 69,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "AMQNET": {
+   "total": 623,
+   "timeoriginalestimate": 91,
+   "any_estimate": 93
+  },
+  "AMQCPP": {
+   "total": 646,
+   "timeoriginalestimate": 59,
+   "any_estimate": 60
+  },
+  "AMQCLI": {
+   "total": 13
+  },
+  "AMQ": {
+   "total": 7540,
+   "timeoriginalestimate": 196,
+   "any_estimate": 200
+  },
+  "AMBARI": {
+   "total": 25384,
+   "timeoriginalestimate": 407,
+   "any_estimate": 409
+  },
+  "AMATERASU": {
+   "total": 84,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "ALOIS": {
+   "total": 13,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "AIRFLOW": {
+   "total": 7038,
+   "timeoriginalestimate": 224,
+   "any_estimate": 224
+  },
+  "AIRAVATA": {
+   "total": 3538,
+   "timeoriginalestimate": 26,
+   "any_estimate": 27
+  },
+  "AGILA": {
+   "total": 44
+  },
+  "AGEOLD": {
+   "total": 65,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "AGE2": {
+   "total": 77,
+   "timeoriginalestimate": 18,
+   "any_estimate": 18
+  },
+  "ADDR": {
+   "total": 37
+  },
+  "ACL": {
+   "total": 5,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "ACE": {
+   "total": 539,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "ACCUMULO": {
+   "total": 4745,
+   "timeoriginalestimate": 82,
+   "any_estimate": 85
+  },
+  "ABDERA": {
+   "total": 311,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "AAR": {
+   "total": 9107,
+   "timeoriginalestimate": 127,
+   "any_estimate": 127
+  }
+ }
+}

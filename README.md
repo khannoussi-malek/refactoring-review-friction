@@ -13,8 +13,9 @@ rater for anything requiring manual coding.
 ## 2. Headline
 
 The study set out to find signals in issue trackers that precede architectural
-refactoring. Those signals are largely absent — effort estimates do not exist in
-this corpus, and the review-discussion signal collapsed under a volume control —
+refactoring. Those signals are largely absent — effort estimates are used on 1.449% of
+the Hadoop corpus and none of the 323 architectural tickets, too thin to build
+on, and the review-discussion signal collapsed under a volume control —
 and the data itself became the finding. Traceability is reported one way and
 needed the other way: the **commit-side** rate (what fraction of commits cite a
 ticket) is what the literature publishes and what project-selection criteria
@@ -34,7 +35,7 @@ ticket-side rate runs **12.0%–69.0%** — not one exceeds 69%.
 | Monorepo key matching decides the answer | Hadoop reads **26.2%** single-key, **92.3%** four-key, **97.8%** seven-key | Same 28,290 commits in all three | `scripts/citation_rate.py` `de657c3` |
 | Jira status hygiene decays at the 2019–20 GitHub migration | tickets reaching `Patch Available`: **93.5% → 15.5%** | ≤2019 vs ≥2022 | `scripts/temporal_trend.py` `a6accaf` |
 | CI verdicts in Jira terminate rather than decay | **96.7% → 50.8% → 0 of 43** | ≤2018 / 2019–21 / ≥2022; no ticket after 2021 carries one | `paper/ERA_AUDIT.md` `e0d76ef` |
-| Effort estimates are absent | **0 of 323** architectural tickets carry any of four time-tracking fields | Apache convention, not a property of software | `paper/numbers.md` `9b4e384` |
+| Effort estimates: architectural tickets run below the base rate | Apache-wide **2.557%**, Hadoop corpus **1.449%**, architectural subset **0 of 323** (expected 4.7, P≈0.009) | Deficit on thin evidence — architectural tickets are not a random draw; estimate use is per-project (MESOS 32.94%) not Apache-wide | `scripts/jira_estimates.py` |
 | The standard MSR sampling frame cannot express the criterion | GHS indexes 735,669 repositories with **35 fields**; only `totalIssues`/`openIssues` touch issues, both GitHub-issue counts | No tracker type, no linkage, no commit-message convention | `paper/PRIOR_WORK.md` `215b10f` |
 | RefactoringMiner mislabels TypeScript type aliases | **160** `interface → class` false positives in one commit; 3rd most frequent type in that corpus | TypeScript mode; reported upstream as [issue #1124](https://github.com/tsantalis/RefactoringMiner/issues/1124) | `SUI_FINDINGS.md` |
 
@@ -67,7 +68,8 @@ across 10 Apache projects.
 ## 6. The three research questions
 
 **RQ1 — signals preceding refactoring.** First operationalisation tested and
-closed: the effort-estimate signal does not exist in this corpus (0/323), and
+closed: estimate use in the Hadoop corpus is 1.449% and the architectural
+subset carries none (0/323), too thin to build on, and
 the review-discussion signal is confounded by volume. Current candidate: the
 interval from a self-admitted technical debt comment to a detected architectural
 refactoring of the entity it annotates. Prior work is same-commit co-occurrence

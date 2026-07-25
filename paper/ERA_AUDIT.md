@@ -71,7 +71,7 @@ half-blind rather than merely thinner.
 | §5c | **Primary** decade divergence, DiD +0.202 | git clock: ticket → first citing commit |
 | §7 | Entanglement, issue-links 1.53 vs 0.76 | ticket property, no status |
 | §8a | Change size, 1,178 vs 213 java lines | git |
-| §3 | Traceability 99%, estimates 0/323 | ticket fields, no status |
+| §3 | Traceability 99%; estimates 0/323 against a 1.449% Hadoop-corpus base rate | ticket fields, no status |
 | §11 | Codebook keyword precision 25% | comment text |
 | §9a | Blast radius itself (Maven graph) | poms |
 

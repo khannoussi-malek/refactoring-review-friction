@@ -192,39 +192,42 @@ established."
 
 ---
 
-## 5. Effort estimates in Apache — zero
+## 5. Effort estimates — a deficit against a measured base rate, not an absence
 
-Re-derived 2026-07-25 directly from `.jira_cache/*.json` (fetch script
-`scripts/setup.sh` / Jira API cache):
+Re-derived 2026-07-25 from `.jira_cache/*.json` (all four time-tracking fields
+non-null in **0 of 323** architectural tickets), and the base rate measured
+across the Public Jira Dataset.
 
-| field | non-null |
-|---|---|
-| `fields.timeoriginalestimate` | **0 / 323** |
-| `fields.timeestimate` | **0 / 323** |
-| `fields.timespent` | **0 / 323** |
-| `fields.aggregatetimeoriginalestimate` | **0 / 323** |
+**Estimate coverage is three numbers, never one** (`scripts/jira_estimates.py`,
+Zenodo 15719919):
 
-**CORRECTED: the figure is 0 / 323 tickets.** The paper reports **0/323**, not
-0/345.
+| population | issues | any estimate |
+|---|---:|---:|
+| Apache-wide, 646 projects | 1,014,926 | **2.557%** (25,949) |
+| Hadoop corpus (HADOOP+HDFS+YARN+MAPREDUCE) | 49,201 | **1.449%** (713) |
+| architectural subset (this study) | 323 | **0.000%** (0) |
 
-`results_dossier.md` §3 says 0/345. 345 counts *episodes* — architectural
-refactoring commits — of which several belong to the same ticket (verified: 349
-episodes, 345 carrying an `issue_key`, resolving to **323 unique tickets**). An
-estimate is a property of a ticket, not of a commit, so the ticket is the
-correct unit and 345 double-counts tickets that carry more than one
-architectural commit.
+Architectural tickets carry estimates at a **lower** rate than the surrounding
+population: 0/323 against a 1.449% base rate gives an expected 4.7 and
+P ≈ 0.009 under a naive binomial. Architectural tickets are not a random draw
+and the non-randomness could run in either direction, so this is a deficit
+suggestive on thin evidence, not an established effect. Estimate use is also a
+per-project convention rather than an Apache-wide one — MESOS 32.94%,
+STDCXX 38.70%, USERGRID 37.51% against 2.557% overall.
 
-Both are zero, so no downstream claim changes. Use **0/323 tickets** and, if the
-episode count is needed for the mining narrative, state it separately as "345 of
-349 episodes were traceable to 323 tickets".
+**Superseded claim.** Earlier versions of this file and `results_dossier.md`
+said estimates are "absent in Apache". That was drawn at the wrong level of
+aggregation: Apache records an estimate on 2.557% of a million issues, and the
+four Hadoop-corpus projects on 1.449% of 49,201. The field is in use; the
+architectural subset drew none of it.
+
+**Denominator.** 345 counts *episodes*; several share a ticket. An estimate is a
+property of a ticket, so the unit is **323 tickets**. State the episode count
+separately as "345 of 349 episodes traceable to 323 tickets".
 
 **HADOOP-18679** — "Add BulkDelete API for paged delete of files and objects".
 Verified: `timeoriginalestimate`, `timeestimate`, `timespent` all `null`, and
-**zero non-null `customfield_*`** of any kind. Cited in `SLICE_LOG.md`
-(`de657c3`) as the illustrative case — a substantial interface-design ticket
-carrying no estimate anywhere.
-
----
+zero non-null `customfield_*`.
 
 ## 6. Industry-donated projects
 

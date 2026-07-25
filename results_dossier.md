@@ -38,7 +38,11 @@ proved unusable — see §3.)
 
 - **Traceability 99%** (345/349 episodes cite a Jira key) — but only when every monorepo subproject key
   is matched (HADOOP/HDFS/YARN/MAPREDUCE/HDDS/Ozone/Submarine); a single-key probe misreads it as 26%.
-- **Effort estimates 0%** (0/345) — absent in Apache, which killed the original framing.
+- **Effort estimates 0/323 tickets** — a *deficit*, not an absence. Apache records an estimate on
+  2.557% of 1,014,926 issues and the Hadoop corpus on 1.449% of 49,201; the architectural subset
+  draws 0 of 323 (expected 4.7, P≈0.009, naive binomial). Architectural tickets are not a random
+  draw and the non-randomness could run either way, so this is suggestive on thin evidence. It
+  still killed the original framing, because a 1.4% base rate cannot carry an effort-estimate study.
 
 ## 4. Primary finding — architectural refactorings are a distinct, higher-friction class
 
@@ -599,8 +603,9 @@ review" rate is inflated; a validated, dual-rated (κ) classifier is needed to u
 threat" to "measured and bounded."*
 
 Some of the measured "friction" still reflects **how open-source coordinates work**:
-- **Estimates absent** is an Apache-culture artifact (no managerial planning), not a property of
-  software.
+- **Low estimate use** is an Apache-culture artifact (no managerial planning), not a property of
+  software — and it is per-project, not Apache-wide: MESOS 32.94%, STDCXX 38.70%, USERGRID 37.51%
+  against 2.557% overall.
 - **Experience finding** reflects OSS **committer gatekeeping** (trust/permission), not just skill.
 - **Self-assignment** (§5a) is the clearest OSS-specific mechanism: the decisive event is someone
   choosing to own the work (2.05 vs 31.66 days to patch). A firm with assigned owners has no
@@ -783,7 +788,8 @@ committed data artifacts (`*_all.json`, `cox_dataset.json`, `episode_outcomes.js
 > `pom.xml` before any outcome data** — a module is an external-system wrapper if a high share of its
 > dependencies are third-party groupIds rare within the project. It reproduces the split (32.1 vs 2.9
 > days, p=3e-07) and, unlike maintainer concentration, **survives the module-size control** (+2.885,
-> p<1e-4). Effort estimates are absent in Apache (0%). A within-episode "structural discussion" signal
+> p<1e-4). Effort estimates are used on 2.557% of Apache issues and 1.449% of the Hadoop corpus; the 323
+> architectural tickets carry none (expected 4.7, P≈0.009). A within-episode "structural discussion" signal
 > was found and **retracted** as a discussion-volume confound, and "abstraction pays twice" was
 > **withdrawn** when the review-phase half failed adjustment (p=0.61). Remaining caveats: who picks
 > work up is open-source-specific; status-derived timings are not comparable across module tiers that
