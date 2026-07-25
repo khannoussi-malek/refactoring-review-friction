@@ -909,2950 +909,5765 @@
    "any_estimate": 243
   }
  },
- "apache_projects": {
-  "ZOOKEEPER": {
+ "projects": {
+  "Jira|SRCTREEWIN": {
+   "total": 9646,
+   "story_points": 79,
+   "any_estimate": 189,
+   "timeoriginalestimate": 129
+  },
+  "RedHat|XNIO": {
+   "total": 369,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RedHat|WTO": {
+   "total": 112,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "RedHat|WRKLDS": {
+   "total": 102,
+   "story_points": 42,
+   "any_estimate": 45,
+   "timeoriginalestimate": 3
+  },
+  "RedHat|WISE": {
+   "total": 321,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RedHat|WINDUPRULE": {
+   "total": 765,
+   "story_points": 120,
+   "any_estimate": 120
+  },
+  "Mojang|WEB": {
+   "total": 3473
+  },
+  "Apache|ZOOKEEPER": {
    "total": 4263,
    "timeoriginalestimate": 144,
    "any_estimate": 148
   },
-  "ZIPKIN": {
+  "RedHat|WINDUP": {
+   "total": 3035,
+   "story_points": 557,
+   "any_estimate": 561,
+   "timeoriginalestimate": 4
+  },
+  "Mojang|REALMS": {
+   "total": 9105
+  },
+  "RedHat|WINC": {
+   "total": 147,
+   "story_points": 129,
+   "any_estimate": 129
+  },
+  "RedHat|WFWIP": {
+   "total": 278,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Apache|ZIPKIN": {
    "total": 1
   },
-  "ZETACOMP": {
+  "Apache|ZETACOMP": {
    "total": 123,
    "timeoriginalestimate": 26,
    "any_estimate": 26
   },
-  "ZEPPELIN": {
+  "Apache|ZEPPELIN": {
    "total": 5614,
    "timeoriginalestimate": 144,
    "any_estimate": 145
   },
-  "YUNIKORN": {
+  "RedHat|WFTC": {
+   "total": 85
+  },
+  "RedHat|WFSSL": {
+   "total": 81
+  },
+  "RedHat|WFNC": {
+   "total": 61
+  },
+  "RedHat|WFMP": {
+   "total": 134
+  },
+  "RedHat|WFLY": {
+   "total": 12984,
+   "story_points": 19,
+   "any_estimate": 87,
+   "timeoriginalestimate": 68
+  },
+  "Mojang|MCPE": {
+   "total": 144778
+  },
+  "Jira|SRCTREE": {
+   "total": 5292,
+   "story_points": 13,
+   "any_estimate": 61,
+   "timeoriginalestimate": 51
+  },
+  "Apache|YUNIKORN": {
    "total": 994,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "YETUS": {
+  "Apache|YETUS": {
    "total": 1136,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "YARN": {
+  "Jira|SER": {
+   "total": 177,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "Jira|SCALE": {
+   "total": 58
+  },
+  "Jira|OAUTH20": {
+   "total": 4
+  },
+  "Jira|MIG": {
+   "total": 786
+  },
+  "Apache|YARN": {
    "total": 10769,
    "timeoriginalestimate": 90,
    "any_estimate": 98
   },
-  "XW": {
+  "Jira|JWMCLOUD": {
+   "total": 136
+  },
+  "Jira|JSWSERVER": {
+   "total": 13273,
+   "story_points": 351,
+   "any_estimate": 530,
+   "timeoriginalestimate": 183
+  },
+  "RedHat|WFK2": {
+   "total": 610
+  },
+  "RedHat|WFDISC": {
+   "total": 36
+  },
+  "RedHat|WFCORE": {
+   "total": 5054,
+   "story_points": 4,
+   "any_estimate": 26,
+   "timeoriginalestimate": 22
+  },
+  "RedHat|WFCOM": {
+   "total": 62
+  },
+  "RedHat|WFCC": {
+   "total": 38,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|WFARQ": {
+   "total": 100
+  },
+  "RedHat|WELD": {
+   "total": 2576,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "RedHat|WEJBHTTP": {
+   "total": 60
+  },
+  "RedHat|VIRTNET": {
+   "total": 37
+  },
+  "RedHat|VAFSC": {
+   "total": 1
+  },
+  "RedHat|UX": {
+   "total": 19
+  },
+  "RedHat|USMINT": {
+   "total": 110
+  },
+  "RedHat|UNDERTOW": {
+   "total": 1780,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "RedHat|TS": {
+   "total": 1
+  },
+  "RedHat|TRACING": {
+   "total": 1467,
+   "story_points": 32,
+   "any_estimate": 32
+  },
+  "RedHat|THREESCALE": {
+   "total": 4658,
+   "story_points": 449,
+   "any_estimate": 451,
+   "timeoriginalestimate": 2
+  },
+  "Jira|JSWCLOUD": {
+   "total": 12733,
+   "timeoriginalestimate": 273,
+   "any_estimate": 691,
+   "story_points": 318
+  },
+  "RedHat|THORN": {
+   "total": 2467,
+   "story_points": 920,
+   "any_estimate": 920
+  },
+  "RedHat|TEST": {
+   "total": 181,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|TEIIDWEBTL": {
+   "total": 36
+  },
+  "RedHat|TEIIDWEBCN": {
+   "total": 45
+  },
+  "RedHat|TEIIDSB": {
+   "total": 207,
+   "timeoriginalestimate": 51,
+   "story_points": 76,
+   "any_estimate": 76
+  },
+  "RedHat|TEIIDDES": {
+   "total": 3099,
+   "story_points": 1,
+   "any_estimate": 17,
+   "timeoriginalestimate": 15
+  },
+  "Apache|XW": {
    "total": 1128,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "XMLSCHEMA": {
+  "Apache|XMLSCHEMA": {
    "total": 61,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "XMLRPC": {
+  "Apache|XMLRPC": {
    "total": 193,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "XMLCOMMONS": {
+  "Apache|XMLCOMMONS": {
    "total": 92,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "XMLBEANS": {
+  "Apache|XMLBEANS": {
    "total": 584,
    "timeoriginalestimate": 15,
    "any_estimate": 15
   },
-  "XGC": {
+  "Apache|XGC": {
    "total": 125,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "XERCESP": {
+  "Apache|XERCESP": {
    "total": 55,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "XERCESJ": {
+  "Apache|XERCESJ": {
    "total": 1725,
    "timeoriginalestimate": 53,
    "any_estimate": 53
   },
-  "XERCESC": {
+  "RedHat|TEIID": {
+   "total": 5769,
+   "story_points": 150,
+   "any_estimate": 287,
+   "timeoriginalestimate": 260
+  },
+  "Apache|XERCESC": {
    "total": 2230,
    "timeoriginalestimate": 35,
    "any_estimate": 35
   },
-  "XBEAN": {
+  "Apache|XBEAN": {
    "total": 312,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "XAP": {
+  "Apache|XAP": {
    "total": 589
   },
-  "XALANJ": {
+  "Jira|JSDSERVER": {
+   "total": 6895,
+   "story_points": 11,
+   "any_estimate": 21,
+   "timeoriginalestimate": 10
+  },
+  "Apache|XALANJ": {
    "total": 954,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "XALANC": {
+  "Apache|XALANC": {
    "total": 813,
    "timeoriginalestimate": 22,
    "any_estimate": 22
   },
-  "WW": {
+  "Apache|WW": {
    "total": 5093,
    "timeoriginalestimate": 120,
    "any_estimate": 120
   },
-  "WSS": {
+  "RedHat|SWSQE": {
+   "total": 1299,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "RedHat|SWITCHYARD": {
+   "total": 3015,
+   "timeoriginalestimate": 77,
+   "any_estimate": 80
+  },
+  "RedHat|STXM": {
+   "total": 18
+  },
+  "RedHat|STOR": {
+   "total": 205,
+   "story_points": 13,
+   "any_estimate": 14,
+   "timeoriginalestimate": 2
+  },
+  "RedHat|SSLNTV": {
+   "total": 13
+  },
+  "RedHat|SRVKP": {
+   "total": 664,
+   "story_points": 317,
+   "any_estimate": 317
+  },
+  "RedHat|SPLAT": {
+   "total": 195,
+   "story_points": 15,
+   "any_estimate": 15
+  },
+  "RedHat|SOA": {
+   "total": 3116,
+   "timeoriginalestimate": 53,
+   "any_estimate": 55
+  },
+  "Apache|WSS": {
    "total": 684,
    "timeoriginalestimate": 21,
    "any_estimate": 21
   },
-  "WSRP4J": {
+  "Apache|WSRP4J": {
    "total": 109
   },
-  "WSIF": {
+  "Apache|WSIF": {
    "total": 94,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "WSCOMMONS": {
+  "Apache|WSCOMMONS": {
    "total": 197,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "WOOKIE": {
+  "Apache|WOOKIE": {
    "total": 425,
    "timeoriginalestimate": 82,
    "any_estimate": 85
   },
-  "WODEN": {
+  "Apache|WODEN": {
    "total": 243,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "WINK": {
+  "Apache|WINK": {
    "total": 439,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "WICKET": {
+  "Apache|WICKET": {
    "total": 6933,
    "timeoriginalestimate": 381,
    "any_estimate": 382
   },
-  "WHISKER": {
+  "RedHat|SNOWDROP": {
+   "total": 120
+  },
+  "RedHat|SHRINKWRAP": {
+   "total": 465,
+   "story_points": 1,
+   "any_estimate": 2,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|SHRINKRES": {
+   "total": 301,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "RedHat|SECURITY": {
+   "total": 959,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Jira|JSDCLOUD": {
+   "total": 6892,
+   "story_points": 14,
+   "any_estimate": 23,
+   "timeoriginalestimate": 9
+  },
+  "RedHat|SECDATA": {
+   "total": 7
+  },
+  "RedHat|SDN": {
+   "total": 879,
+   "story_points": 282,
+   "any_estimate": 295,
+   "timeoriginalestimate": 21
+  },
+  "RedHat|SB": {
+   "total": 1319,
+   "timeoriginalestimate": 6,
+   "any_estimate": 13,
+   "story_points": 7
+  },
+  "RedHat|RUN": {
+   "total": 170,
+   "story_points": 112,
+   "any_estimate": 112
+  },
+  "RedHat|RIFTSAW": {
+   "total": 554,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29
+  },
+  "Apache|WHISKER": {
    "total": 20,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "WHIRR": {
+  "Apache|WHIRR": {
    "total": 754,
    "timeoriginalestimate": 34,
    "any_estimate": 34
   },
-  "WHIMSY": {
+  "RedHat|RHSSO": {
+   "total": 1477,
+   "story_points": 19,
+   "any_estimate": 28,
+   "timeoriginalestimate": 8
+  },
+  "Apache|WHIMSY": {
    "total": 369
   },
-  "WEEX": {
+  "Apache|WEEX": {
    "total": 681,
    "timeoriginalestimate": 34,
    "any_estimate": 34
   },
-  "WEAVER": {
+  "RedHat|RHPAM": {
+   "total": 2886,
+   "story_points": 145,
+   "any_estimate": 185,
+   "timeoriginalestimate": 40
+  },
+  "Apache|WEAVER": {
    "total": 26
   },
-  "WAYANG": {
+  "Apache|WAYANG": {
    "total": 46
   },
-  "WAVE": {
+  "Apache|WAVE": {
    "total": 446,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "WAGON": {
+  "Apache|WAGON": {
    "total": 594,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "WADI": {
+  "Apache|WADI": {
    "total": 11,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "VYSPER": {
+  "Apache|VYSPER": {
    "total": 350,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "VXQUERY": {
+  "Apache|VXQUERY": {
    "total": 244,
    "timeoriginalestimate": 3,
    "any_estimate": 4
   },
-  "VFS": {
+  "Apache|VFS": {
    "total": 809,
    "timeoriginalestimate": 48,
    "any_estimate": 48
   },
-  "VELTOOLS": {
+  "Apache|VELTOOLS": {
    "total": 192,
    "timeoriginalestimate": 12,
    "any_estimate": 12
   },
-  "VELOCITYSB": {
+  "Apache|VELOCITYSB": {
    "total": 9,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "VELOCITY": {
+  "Apache|VELOCITY": {
    "total": 886,
    "timeoriginalestimate": 17,
    "any_estimate": 17
   },
-  "VCL": {
+  "RedHat|RHOSPDOC": {
+   "total": 134,
+   "story_points": 11,
+   "any_estimate": 20,
+   "timeoriginalestimate": 9
+  },
+  "RedHat|RHMWINT": {
+   "total": 141,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|RHECLIPSE": {
+   "total": 23
+  },
+  "RedHat|RHDM": {
+   "total": 1260,
+   "story_points": 163,
+   "any_estimate": 186,
+   "timeoriginalestimate": 23
+  },
+  "Apache|VCL": {
    "total": 1122,
    "timeoriginalestimate": 24,
    "any_estimate": 24
   },
-  "VALIDATOR": {
+  "RedHat|RHDEVDOCS": {
+   "total": 2486,
+   "story_points": 1871,
+   "any_estimate": 1887,
+   "timeoriginalestimate": 23
+  },
+  "Apache|VALIDATOR": {
    "total": 480,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "USERGRID": {
+  "Apache|USERGRID": {
    "total": 1341,
    "timeoriginalestimate": 45,
    "any_estimate": 503,
    "story_points": 487
   },
-  "UNOMI": {
+  "RedHat|RHD": {
+   "total": 459,
+   "story_points": 58,
+   "any_estimate": 59,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|RHBZ": {
+   "total": 13
+  },
+  "RedHat|RHBRMS": {
+   "total": 2400,
+   "story_points": 2,
+   "any_estimate": 2064,
+   "timeoriginalestimate": 2062
+  },
+  "Jira|JRASERVER": {
+   "total": 47225,
+   "timeoriginalestimate": 1343,
+   "any_estimate": 1735,
+   "story_points": 404
+  },
+  "Apache|UNOMI": {
    "total": 540,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "UIMA": {
+  "Apache|UIMA": {
    "total": 6401,
    "timeoriginalestimate": 81,
    "any_estimate": 82
   },
-  "TWILL": {
+  "RedHat|RHBPMS": {
+   "total": 4026,
+   "timeoriginalestimate": 3336,
+   "any_estimate": 3336
+  },
+  "Apache|TWILL": {
    "total": 271,
    "timeoriginalestimate": 3,
    "any_estimate": 4
   },
-  "TUWENI": {
+  "Apache|TUWENI": {
    "total": 32,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "TUSCANY": {
+  "Apache|TUSCANY": {
    "total": 4082,
    "timeoriginalestimate": 33,
    "any_estimate": 33
   },
-  "TST": {
+  "RedHat|RFE": {
+   "total": 803
+  },
+  "RedHat|RESTEASY": {
+   "total": 2922,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29,
+   "story_points": 2
+  },
+  "RedHat|REMJMX": {
+   "total": 170
+  },
+  "RedHat|REM3": {
+   "total": 367
+  },
+  "RedHat|RDO": {
+   "total": 12
+  },
+  "RedHat|QUARKUS": {
+   "total": 748,
+   "story_points": 72,
+   "any_estimate": 72,
+   "timeoriginalestimate": 1
+  },
+  "Apache|TST": {
    "total": 58,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "TSIK": {
+  "Apache|TSIK": {
    "total": 2
   },
-  "TS": {
+  "Apache|TS": {
    "total": 5103,
    "timeoriginalestimate": 87,
    "any_estimate": 87
   },
-  "TRIPLES": {
+  "RedHat|PSAP": {
+   "total": 208,
+   "story_points": 3,
+   "any_estimate": 3
+  },
+  "RedHat|PROJQUAY": {
+   "total": 2455,
+   "story_points": 32,
+   "any_estimate": 32
+  },
+  "RedHat|POL": {
+   "total": 495
+  },
+  "RedHat|PLINK": {
+   "total": 723,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RedHat|PLANNER": {
+   "total": 2540,
+   "story_points": 1003,
+   "any_estimate": 1004,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|PD": {
+   "total": 319
+  },
+  "Apache|TRIPLES": {
    "total": 6
   },
-  "TRINIDAD": {
+  "Apache|TRINIDAD": {
    "total": 2561,
    "timeoriginalestimate": 212,
    "any_estimate": 212
   },
-  "TREQ": {
+  "RedHat|OTA": {
+   "total": 240,
+   "story_points": 169,
+   "any_estimate": 169
+  },
+  "RedHat|OSSMDOC": {
+   "total": 417,
+   "story_points": 195,
+   "any_estimate": 195
+  },
+  "RedHat|OSSM": {
+   "total": 424,
+   "story_points": 7,
+   "any_estimate": 7
+  },
+  "RedHat|OSPK8": {
+   "total": 114
+  },
+  "RedHat|OSJC": {
+   "total": 283,
+   "story_points": 16,
+   "any_estimate": 19,
+   "timeoriginalestimate": 4
+  },
+  "Apache|TREQ": {
    "total": 21,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "TRB": {
+  "Apache|TRB": {
    "total": 103,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "TRANSPORTS": {
+  "Mojang|MCL": {
+   "total": 17630
+  },
+  "Apache|TRANSPORTS": {
    "total": 5
   },
-  "TRANSACTION": {
+  "Apache|TRANSACTION": {
    "total": 42,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "TRAINING": {
+  "Apache|TRAINING": {
    "total": 37
   },
-  "TRAFODION": {
+  "Apache|TRAFODION": {
    "total": 3337,
    "timeoriginalestimate": 61,
    "any_estimate": 62
   },
-  "TORQUEOLD": {
+  "RedHat|OSDK": {
+   "total": 497,
+   "story_points": 214,
+   "any_estimate": 214
+  },
+  "RedHat|OSASINFRA": {
+   "total": 528,
+   "story_points": 187,
+   "any_estimate": 189,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|ORG": {
+   "total": 1850,
+   "story_points": 200,
+   "any_estimate": 206,
+   "timeoriginalestimate": 5
+  },
+  "Apache|TORQUEOLD": {
    "total": 378
   },
-  "TORQUE": {
+  "Apache|TORQUE": {
    "total": 360,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "TOREE": {
+  "Apache|TOREE": {
    "total": 528,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "TOOLS": {
+  "RedHat|OPENJDK": {
+   "total": 347,
+   "story_points": 105,
+   "any_estimate": 105
+  },
+  "RedHat|OLM": {
+   "total": 314,
+   "story_points": 92,
+   "any_estimate": 92
+  },
+  "RedHat|ODH": {
+   "total": 384,
+   "story_points": 71,
+   "any_estimate": 71
+  },
+  "RedHat|ODC": {
+   "total": 1406,
+   "story_points": 371,
+   "any_estimate": 373,
+   "timeoriginalestimate": 18
+  },
+  "Apache|TOOLS": {
    "total": 3
   },
-  "TOMEE": {
+  "Apache|TOMEE": {
    "total": 3371,
    "timeoriginalestimate": 32,
    "any_estimate": 33
   },
-  "TOMAHAWK": {
+  "RedHat|OCPPLAN": {
+   "total": 1291,
+   "story_points": 11,
+   "any_estimate": 11
+  },
+  "RedHat|OCPNODE": {
+   "total": 241,
+   "story_points": 108,
+   "any_estimate": 108
+  },
+  "RedHat|OCPCLOUD": {
+   "total": 255,
+   "story_points": 126,
+   "any_estimate": 126
+  },
+  "RedHat|OBSDA": {
+   "total": 30,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|NOTIF": {
+   "total": 410
+  },
+  "RedHat|NEXUS": {
+   "total": 336,
+   "story_points": 213,
+   "any_estimate": 213
+  },
+  "Apache|TOMAHAWK": {
    "total": 1683,
    "timeoriginalestimate": 64,
    "any_estimate": 64
   },
-  "TOBAGO": {
+  "RedHat|NETOBSERV": {
+   "total": 110,
+   "story_points": 63,
+   "any_estimate": 63,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|NE": {
+   "total": 167,
+   "story_points": 45,
+   "any_estimate": 46,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|MULTIARCH": {
+   "total": 915,
+   "timeoriginalestimate": 63,
+   "any_estimate": 352,
+   "story_points": 296
+  },
+  "Apache|TOBAGO": {
    "total": 2091,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "TM": {
+  "RedHat|MSC": {
+   "total": 244,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RedHat|MR": {
+   "total": 831,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|MP": {
+   "total": 3
+  },
+  "RedHat|MORFE": {
+   "total": 2
+  },
+  "RedHat|MON": {
+   "total": 728,
+   "story_points": 6,
+   "any_estimate": 6
+  },
+  "RedHat|MODULES": {
+   "total": 396,
+   "story_points": 1,
+   "any_estimate": 2,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|MODE": {
+   "total": 2679,
+   "story_points": 2,
+   "any_estimate": 52,
+   "timeoriginalestimate": 48
+  },
+  "Mojang|MCD": {
+   "total": 6484
+  },
+  "Apache|TM": {
    "total": 39,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "TINKERPOP": {
+  "Apache|TINKERPOP": {
    "total": 2681,
    "timeoriginalestimate": 32,
    "any_estimate": 32
   },
-  "TILESSHOW": {
+  "RedHat|MODCLUSTER": {
+   "total": 692,
+   "story_points": 2,
+   "any_estimate": 11,
+   "timeoriginalestimate": 9
+  },
+  "RedHat|MIG": {
+   "total": 382
+  },
+  "RedHat|MCO": {
+   "total": 86,
+   "story_points": 8,
+   "any_estimate": 8
+  },
+  "Mojang|MCCE": {
+   "total": 11774
+  },
+  "Apache|TILESSHOW": {
    "total": 15
   },
-  "TILESSHARED": {
+  "Apache|TILESSHARED": {
    "total": 21,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "TILESSB": {
+  "Apache|TILESSB": {
    "total": 10
   },
-  "TILES": {
+  "Apache|TILES": {
    "total": 578,
    "timeoriginalestimate": 29,
    "any_estimate": 29
   },
-  "TIKA": {
+  "Apache|TIKA": {
    "total": 3633,
    "timeoriginalestimate": 107,
    "any_estimate": 109
   },
-  "THRIFT": {
+  "RedHat|MC": {
+   "total": 20,
+   "story_points": 10,
+   "any_estimate": 10
+  },
+  "RedHat|MBT": {
+   "total": 79
+  },
+  "RedHat|MAISTRA": {
+   "total": 2299,
+   "story_points": 41,
+   "any_estimate": 41
+  },
+  "RedHat|LOGTOOL": {
+   "total": 148
+  },
+  "RedHat|LOGMGR": {
+   "total": 273,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "RedHat|LOG": {
+   "total": 830,
+   "story_points": 251,
+   "any_estimate": 258,
+   "timeoriginalestimate": 7
+  },
+  "Apache|THRIFT": {
    "total": 5490,
    "timeoriginalestimate": 226,
    "any_estimate": 227
   },
-  "TEZ": {
+  "Mojang|MC": {
+   "total": 213845
+  },
+  "RedHat|KUADRANT": {
+   "total": 6
+  },
+  "RedHat|KOGITO": {
+   "total": 6347,
+   "story_points": 912,
+   "any_estimate": 912
+  },
+  "Apache|TEZ": {
    "total": 4347,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "TEXT": {
+  "Apache|TEXT": {
    "total": 205,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "TEXEN": {
+  "Apache|TEXEN": {
    "total": 19,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "TEVAL": {
+  "Apache|TEVAL": {
    "total": 1
   },
-  "TESTING": {
+  "Apache|TESTING": {
    "total": 12,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "TEST6": {
+  "Apache|TEST6": {
    "total": 2
   },
-  "TEPHRA": {
+  "Apache|TEPHRA": {
    "total": 314,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "TENTACLES": {
+  "Apache|TENTACLES": {
    "total": 15,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "TC": {
+  "Apache|TC": {
    "total": 553,
    "timeoriginalestimate": 20,
    "any_estimate": 20
   },
-  "TAVERNA": {
+  "Apache|TAVERNA": {
    "total": 1063,
    "timeoriginalestimate": 128,
    "any_estimate": 130
   },
-  "TATPI": {
+  "RedHat|KIECLOUD": {
+   "total": 524,
+   "story_points": 3,
+   "any_estimate": 3
+  },
+  "RedHat|KEYCLOAK": {
+   "total": 15564,
+   "story_points": 1343,
+   "any_estimate": 1344,
+   "timeoriginalestimate": 2
+  },
+  "Apache|TATPI": {
    "total": 5
   },
-  "TASHI": {
+  "Apache|TASHI": {
    "total": 28,
    "timeoriginalestimate": 12,
    "any_estimate": 12
   },
-  "TAPESTRY": {
+  "Apache|TAPESTRY": {
    "total": 2499,
    "timeoriginalestimate": 18,
    "any_estimate": 18
   },
-  "TAP5": {
+  "Apache|TAP5": {
    "total": 2696,
    "timeoriginalestimate": 32,
    "any_estimate": 32
   },
-  "TAMAYA": {
+  "Apache|TAMAYA": {
    "total": 414,
    "timeoriginalestimate": 46,
    "any_estimate": 46
   },
-  "TAJO": {
+  "Apache|TAJO": {
    "total": 2183,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "SYSTEMDS": {
+  "Apache|SYSTEMDS": {
    "total": 3119,
    "timeoriginalestimate": 104,
    "any_estimate": 104
   },
-  "SYNCOPE": {
+  "Apache|SYNCOPE": {
    "total": 1650,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "SYNAPSE": {
+  "Apache|SYNAPSE": {
    "total": 1120,
    "timeoriginalestimate": 18,
    "any_estimate": 18
   },
-  "SVN": {
+  "Apache|SVN": {
    "total": 4518,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "SUREFIRE": {
+  "Apache|SUREFIRE": {
    "total": 1958,
    "timeoriginalestimate": 36,
    "any_estimate": 36
   },
-  "SUPERSET": {
+  "RedHat|KATA": {
+   "total": 1106,
+   "story_points": 535,
+   "any_estimate": 563,
+   "timeoriginalestimate": 40
+  },
+  "Apache|SUPERSET": {
    "total": 13,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "SUBMARINE": {
+  "Apache|SUBMARINE": {
    "total": 1171,
    "timeoriginalestimate": 15,
    "any_estimate": 19
   },
-  "STUDIO": {
+  "RedHat|JWS": {
+   "total": 930,
+   "story_points": 103,
+   "any_estimate": 117,
+   "timeoriginalestimate": 14
+  },
+  "Jira|JRACLOUD": {
+   "total": 27916,
+   "timeoriginalestimate": 140,
+   "any_estimate": 501,
+   "story_points": 361
+  },
+  "RedHat|JKNS": {
+   "total": 34,
+   "story_points": 12,
+   "any_estimate": 12
+  },
+  "RedHat|JGRP": {
+   "total": 2482,
+   "timeoriginalestimate": 45,
+   "any_estimate": 45
+  },
+  "Apache|STUDIO": {
    "total": 16
   },
-  "STREAMS": {
+  "Apache|STREAMS": {
    "total": 680,
    "timeoriginalestimate": 125,
    "any_estimate": 125
   },
-  "STREAMPIPES": {
+  "Apache|STREAMPIPES": {
    "total": 489,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "STRATOS": {
+  "Apache|STRATOS": {
    "total": 1662,
    "timeoriginalestimate": 26,
    "any_estimate": 26
   },
-  "STR": {
+  "Apache|STR": {
    "total": 3009,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "STORM": {
+  "RedHat|JDG": {
+   "total": 1710
+  },
+  "Apache|STORM": {
    "total": 3762,
    "timeoriginalestimate": 68,
    "any_estimate": 68
   },
-  "STONEHENGE": {
+  "RedHat|JDF": {
+   "total": 814
+  },
+  "RedHat|JBWS": {
+   "total": 3845,
+   "timeoriginalestimate": 66,
+   "any_estimate": 70
+  },
+  "RedHat|JBTM": {
+   "total": 3483,
+   "timeoriginalestimate": 221,
+   "any_estimate": 226,
+   "story_points": 1
+  },
+  "Apache|STONEHENGE": {
    "total": 130,
    "timeoriginalestimate": 42,
    "any_estimate": 42
   },
-  "STOMP": {
+  "Apache|STOMP": {
    "total": 2
   },
-  "STEVE": {
+  "Apache|STEVE": {
    "total": 55
   },
-  "STDCXX": {
+  "Apache|STDCXX": {
    "total": 1062,
    "timeoriginalestimate": 406,
    "any_estimate": 411
   },
-  "STATISTICS": {
+  "Apache|STATISTICS": {
    "total": 41,
    "timeoriginalestimate": 2,
    "any_estimate": 3
   },
-  "STANBOL": {
+  "Apache|STANBOL": {
    "total": 1473,
    "timeoriginalestimate": 38,
    "any_estimate": 40
   },
-  "SSHD": {
+  "Apache|SSHD": {
    "total": 1235,
    "timeoriginalestimate": 49,
    "any_estimate": 49
   },
-  "SQOOP": {
+  "Apache|SQOOP": {
    "total": 3152,
    "timeoriginalestimate": 67,
    "any_estimate": 69
   },
-  "SPOT": {
+  "RedHat|JBTHR": {
+   "total": 88
+  },
+  "RedHat|JBSSO": {
+   "total": 55,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "RedHat|JBSEAM": {
+   "total": 5032,
+   "timeoriginalestimate": 292,
+   "any_estimate": 293
+  },
+  "Apache|SPOT": {
    "total": 309,
    "timeoriginalestimate": 23,
    "any_estimate": 24
   },
-  "SPARK": {
+  "Apache|SPARK": {
    "total": 37443,
    "timeoriginalestimate": 835,
    "any_estimate": 850
   },
-  "SOLR": {
+  "RedHat|JBRULES": {
+   "total": 3056,
+   "timeoriginalestimate": 87,
+   "any_estimate": 87
+  },
+  "RedHat|JBPM": {
+   "total": 9084,
+   "story_points": 495,
+   "any_estimate": 814,
+   "timeoriginalestimate": 318
+  },
+  "RedHat|JBPAPP": {
+   "total": 5932,
+   "timeoriginalestimate": 82,
+   "any_estimate": 85
+  },
+  "RedHat|JBNAME": {
+   "total": 61
+  },
+  "RedHat|JBMETA": {
+   "total": 418
+  },
+  "RedHat|JBMAR": {
+   "total": 220,
+   "story_points": 1,
+   "any_estimate": 2,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|JBLOGGING": {
+   "total": 108,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "RedHat|JBJCA": {
+   "total": 1399,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Jira|JPOSERVER": {
+   "total": 2180,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RedHat|JBIDE": {
+   "total": 27295,
+   "story_points": 1753,
+   "any_estimate": 2665,
+   "timeoriginalestimate": 896
+  },
+  "Jira|JIRAAUTOSERVER": {
+   "total": 342
+  },
+  "Jira|ID": {
+   "total": 1310,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Jira|I18N": {
+   "total": 837,
+   "story_points": 4,
+   "any_estimate": 4
+  },
+  "Jira|HTTP": {
+   "total": 2
+  },
+  "Jira|FE": {
+   "total": 5561,
+   "story_points": 244,
+   "any_estimate": 690,
+   "timeoriginalestimate": 446
+  },
+  "Jira|CWD": {
+   "total": 4407,
+   "timeoriginalestimate": 395,
+   "any_estimate": 605,
+   "story_points": 214
+  },
+  "Jira|CRUC": {
+   "total": 6765,
+   "story_points": 182,
+   "any_estimate": 1277,
+   "timeoriginalestimate": 1097
+  },
+  "Apache|SOLR": {
    "total": 15704,
    "timeoriginalestimate": 381,
    "any_estimate": 383
   },
-  "SOAP": {
+  "Jira|CONFSERVER": {
+   "total": 43910,
+   "story_points": 796,
+   "any_estimate": 1202,
+   "timeoriginalestimate": 415
+  },
+  "RedHat|JBEWS": {
+   "total": 319,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "RedHat|JBESB": {
+   "total": 3890,
+   "timeoriginalestimate": 39,
+   "any_estimate": 40
+  },
+  "RedHat|JBERET": {
+   "total": 522
+  },
+  "RedHat|JBEE": {
+   "total": 243,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RedHat|JBEAP": {
+   "total": 17102,
+   "story_points": 685,
+   "any_estimate": 936,
+   "timeoriginalestimate": 254
+  },
+  "Apache|SOAP": {
    "total": 173
   },
-  "SMXCOMP": {
+  "Apache|SMXCOMP": {
    "total": 972,
    "timeoriginalestimate": 18,
    "any_estimate": 19
   },
-  "SMX4NMR": {
+  "Apache|SMX4NMR": {
    "total": 318,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "SMX4KNL": {
+  "Apache|SMX4KNL": {
    "total": 269,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "SMX4": {
+  "Apache|SMX4": {
    "total": 1905,
    "timeoriginalestimate": 11,
    "any_estimate": 11
   },
-  "SM": {
+  "Apache|SM": {
    "total": 4308,
    "timeoriginalestimate": 102,
    "any_estimate": 104
   },
-  "SLING": {
+  "Apache|SLING": {
    "total": 11011,
    "timeoriginalestimate": 117,
    "any_estimate": 118
   },
-  "SLIDER": {
+  "RedHat|JBDS": {
+   "total": 4221,
+   "story_points": 554,
+   "any_estimate": 872,
+   "timeoriginalestimate": 317
+  },
+  "RedHat|JBCS": {
+   "total": 622,
+   "story_points": 126,
+   "any_estimate": 126
+  },
+  "RedHat|JBCLUSTER": {
+   "total": 248,
+   "timeoriginalestimate": 40,
+   "any_estimate": 42
+  },
+  "RedHat|JBAS": {
+   "total": 8394,
+   "timeoriginalestimate": 305,
+   "any_estimate": 313
+  },
+  "Apache|SLIDER": {
    "total": 1265,
    "timeoriginalestimate": 178,
    "any_estimate": 193
   },
-  "SITE": {
+  "Apache|SITE": {
    "total": 22
   },
-  "SIS": {
+  "Apache|SIS": {
    "total": 531,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "SIRONA": {
+  "Apache|SIRONA": {
    "total": 65,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "SINGA": {
+  "Apache|SINGA": {
    "total": 528,
    "timeoriginalestimate": 20,
    "any_estimate": 20
   },
-  "SHIRO": {
+  "Apache|SHIRO": {
    "total": 838,
    "timeoriginalestimate": 55,
    "any_estimate": 55
   },
-  "SHINDIG": {
+  "Apache|SHINDIG": {
    "total": 1979,
    "timeoriginalestimate": 233,
    "any_estimate": 236
   },
-  "SHALE": {
+  "Apache|SHALE": {
    "total": 497
   },
-  "SERF": {
+  "Apache|SERF": {
    "total": 196
   },
-  "SENTRY": {
+  "Apache|SENTRY": {
    "total": 2564,
    "timeoriginalestimate": 21,
    "any_estimate": 23
   },
-  "SEDONA": {
+  "RedHat|JBADMCON": {
+   "total": 142,
+   "timeoriginalestimate": 32,
+   "any_estimate": 32
+  },
+  "Apache|SEDONA": {
    "total": 76,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "SDAP": {
+  "Apache|SDAP": {
    "total": 349
   },
-  "SCXML": {
+  "RedHat|JANDEX": {
+   "total": 48
+  },
+  "RedHat|ISPN": {
+   "total": 12829,
+   "story_points": 2,
+   "any_estimate": 45,
+   "timeoriginalestimate": 41
+  },
+  "Apache|SCXML": {
    "total": 287,
    "timeoriginalestimate": 20,
    "any_estimate": 20
   },
-  "SCOUT": {
+  "Apache|SCOUT": {
    "total": 138
   },
-  "SCM": {
+  "Apache|SCM": {
    "total": 958,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "SCIMPLE": {
+  "Apache|SCIMPLE": {
    "total": 91
   },
-  "SCB": {
+  "Apache|SCB": {
    "total": 2326,
    "timeoriginalestimate": 22,
    "any_estimate": 23
   },
-  "SB": {
+  "Mojang|BDS": {
+   "total": 13730
+  },
+  "RedHat|IR": {
+   "total": 93,
+   "story_points": 15,
+   "any_estimate": 15
+  },
+  "RedHat|IPROTO": {
+   "total": 217
+  },
+  "RedHat|ILSLED": {
+   "total": 3
+  },
+  "RedHat|HRJS": {
+   "total": 89
+  },
+  "RedHat|HRCPP": {
+   "total": 488,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "Apache|SB": {
    "total": 22
   },
-  "SAVAN": {
+  "Apache|SAVAN": {
    "total": 13
   },
-  "SANTUARIO": {
+  "Apache|SANTUARIO": {
    "total": 208,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "SANDESHA2C": {
+  "Apache|SANDESHA2C": {
    "total": 75,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "SANDESHA2": {
+  "Apache|SANDESHA2": {
    "total": 216,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "SANDBOX": {
+  "Apache|SANDBOX": {
    "total": 266,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "SAND": {
+  "Apache|SAND": {
    "total": 17
   },
-  "SAMZA": {
+  "Apache|SAMZA": {
    "total": 2714,
    "timeoriginalestimate": 12,
    "any_estimate": 12
   },
-  "SAMOA": {
+  "RedHat|HOSTEDCP": {
+   "total": 275,
+   "story_points": 21,
+   "any_estimate": 21
+  },
+  "RedHat|HOR": {
+   "total": 59
+  },
+  "RedHat|HIVE": {
+   "total": 340,
+   "story_points": 76,
+   "any_estimate": 76
+  },
+  "RedHat|HELM": {
+   "total": 278,
+   "story_points": 70,
+   "any_estimate": 70
+  },
+  "RedHat|HAWKULAR": {
+   "total": 1309,
+   "timeoriginalestimate": 92,
+   "any_estimate": 97
+  },
+  "Apache|SAMOA": {
    "total": 83,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "S4": {
+  "Apache|S4": {
    "total": 165,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "S2GRAPH": {
+  "Apache|S2GRAPH": {
    "total": 258,
    "timeoriginalestimate": 107,
    "any_estimate": 111
   },
-  "RYA": {
+  "Apache|RYA": {
    "total": 540,
    "timeoriginalestimate": 13,
    "any_estimate": 14
   },
-  "RUNTIME": {
+  "RedHat|HAL": {
+   "total": 1601,
+   "story_points": 2,
+   "any_estimate": 13,
+   "timeoriginalestimate": 11
+  },
+  "Apache|RUNTIME": {
    "total": 52
   },
-  "ROL": {
+  "Apache|ROL": {
    "total": 2135,
    "timeoriginalestimate": 39,
    "any_estimate": 39
   },
-  "ROCKETMQ": {
+  "RedHat|HAC": {
+   "total": 376,
+   "story_points": 67,
+   "any_estimate": 67
+  },
+  "RedHat|GRPA": {
+   "total": 231,
+   "story_points": 132,
+   "any_estimate": 132
+  },
+  "Apache|ROCKETMQ": {
    "total": 384,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "RNG": {
+  "RedHat|GITOPS": {
+   "total": 611,
+   "story_points": 333,
+   "any_estimate": 333
+  },
+  "Qt|QTWEBSITE": {
+   "total": 787,
+   "timeoriginalestimate": 20,
+   "any_estimate": 36,
+   "story_points": 16
+  },
+  "Qt|QTWB": {
+   "total": 34,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Qt|QTVSADDINBUG": {
+   "total": 967
+  },
+  "RedHat|FUSETOOLS": {
+   "total": 3341,
+   "story_points": 12,
+   "any_estimate": 60,
+   "timeoriginalestimate": 49
+  },
+  "Qt|QTSOLBUG": {
+   "total": 196
+  },
+  "Qt|QTQAINFRA": {
+   "total": 4169,
+   "story_points": 56,
+   "any_estimate": 108,
+   "timeoriginalestimate": 48
+  },
+  "Apache|RNG": {
    "total": 165,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "RIVER": {
+  "Apache|RIVER": {
    "total": 467,
    "timeoriginalestimate": 19,
    "any_estimate": 20
   },
-  "RIPPLE": {
+  "Apache|RIPPLE": {
    "total": 106,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "RESOURCES": {
+  "Apache|RESOURCES": {
    "total": 41
   },
-  "REEF": {
+  "Apache|REEF": {
    "total": 2065,
    "timeoriginalestimate": 150,
    "any_estimate": 158
   },
-  "RBATIS": {
+  "RedHat|FUSEJON": {
+   "total": 139
+  },
+  "RedHat|FUSEDOC": {
+   "total": 233,
+   "story_points": 7,
+   "any_estimate": 69,
+   "timeoriginalestimate": 63
+  },
+  "RedHat|FORGE": {
+   "total": 2634,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Apache|RBATIS": {
    "total": 2
   },
-  "RAVE": {
+  "Apache|RAVE": {
    "total": 1286,
    "timeoriginalestimate": 43,
    "any_estimate": 44
   },
-  "RATIS": {
+  "Qt|QTPLAYGROUND": {
+   "total": 20
+  },
+  "Qt|QTMOBILITY": {
+   "total": 1926,
+   "timeoriginalestimate": 22,
+   "any_estimate": 24
+  },
+  "Apache|RATIS": {
    "total": 1467,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "RAT": {
+  "Apache|RAT": {
    "total": 291,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "RANGER": {
+  "Qt|QTMCU": {
+   "total": 62,
+   "story_points": 17,
+   "any_estimate": 17
+  },
+  "Qt|QTJIRA": {
+   "total": 315,
+   "timeoriginalestimate": 14,
+   "any_estimate": 14
+  },
+  "Qt|QTIFW": {
+   "total": 2178,
+   "story_points": 99,
+   "any_estimate": 105,
+   "timeoriginalestimate": 6
+  },
+  "Apache|RANGER": {
    "total": 3567,
    "timeoriginalestimate": 47,
    "any_estimate": 47
   },
-  "RAMPARTC": {
+  "RedHat|FH": {
+   "total": 2235,
+   "story_points": 882,
+   "any_estimate": 890,
+   "timeoriginalestimate": 17
+  },
+  "RedHat|FAI": {
+   "total": 633,
+   "story_points": 11,
+   "any_estimate": 11
+  },
+  "RedHat|FAB": {
+   "total": 60
+  },
+  "RedHat|ETCD": {
+   "total": 69
+  },
+  "RedHat|ESSC": {
+   "total": 14
+  },
+  "RedHat|ERT": {
+   "total": 694,
+   "story_points": 177,
+   "any_estimate": 184,
+   "timeoriginalestimate": 17
+  },
+  "RedHat|ERRAI": {
+   "total": 1104,
+   "timeoriginalestimate": 110,
+   "any_estimate": 111,
+   "story_points": 1
+  },
+  "Apache|RAMPARTC": {
    "total": 159,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "RAMPART": {
+  "Apache|RAMPART": {
    "total": 442,
    "timeoriginalestimate": 32,
    "any_estimate": 32
   },
-  "QUICKSTEP": {
+  "Apache|QUICKSTEP": {
    "total": 128,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "QPIDJMS": {
+  "Apache|QPIDJMS": {
    "total": 553,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "QPIDIT": {
+  "RedHat|ERDEMO": {
+   "total": 103
+  },
+  "RedHat|ENTVTX": {
+   "total": 153
+  },
+  "RedHat|ENTSBT": {
+   "total": 456
+  },
+  "RedHat|ENTMQST": {
+   "total": 2482,
+   "story_points": 1008,
+   "any_estimate": 1013,
+   "timeoriginalestimate": 19
+  },
+  "Qt|QTEXT": {
+   "total": 14
+  },
+  "Qt|QTCREATORBUG": {
+   "total": 25249,
+   "story_points": 32,
+   "any_estimate": 73,
+   "timeoriginalestimate": 36
+  },
+  "RedHat|ENTMQMAAS": {
+   "total": 2202,
+   "story_points": 281,
+   "any_estimate": 313,
+   "timeoriginalestimate": 45
+  },
+  "RedHat|ENTMQIC": {
+   "total": 838,
+   "timeoriginalestimate": 58,
+   "any_estimate": 70
+  },
+  "RedHat|ENTMQCL": {
+   "total": 440,
+   "timeoriginalestimate": 23,
+   "any_estimate": 23
+  },
+  "RedHat|ENTMQBR": {
+   "total": 3720,
+   "story_points": 293,
+   "any_estimate": 540,
+   "timeoriginalestimate": 282
+  },
+  "Apache|QPIDIT": {
    "total": 138
   },
-  "QPID": {
+  "Apache|QPID": {
    "total": 8465,
    "timeoriginalestimate": 180,
    "any_estimate": 181
   },
-  "PYLUCENE": {
+  "RedHat|ENTMQ": {
+   "total": 1473,
+   "story_points": 13,
+   "any_estimate": 15,
+   "timeoriginalestimate": 2
+  },
+  "RedHat|ENTESB": {
+   "total": 13529,
+   "story_points": 120,
+   "any_estimate": 124,
+   "timeoriginalestimate": 11
+  },
+  "Jira|CONFCLOUD": {
+   "total": 25115,
+   "story_points": 424,
+   "any_estimate": 515,
+   "timeoriginalestimate": 97
+  },
+  "Apache|PYLUCENE": {
    "total": 61,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "PULSAR": {
+  "Apache|PULSAR": {
    "total": 17,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "PROXY": {
+  "Apache|PROXY": {
    "total": 28,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "PROVISIONR": {
+  "Apache|PROVISIONR": {
    "total": 47
   },
-  "PROTON": {
+  "Apache|PROTON": {
    "total": 2472,
    "timeoriginalestimate": 21,
    "any_estimate": 21
   },
-  "PROTOCOLS": {
+  "Apache|PROTOCOLS": {
    "total": 120,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "PRIMITIVES": {
+  "Apache|PRIMITIVES": {
    "total": 13
   },
-  "PRC": {
+  "Apache|PRC": {
    "total": 23
   },
-  "POSTAGE": {
+  "Apache|POSTAGE": {
    "total": 25,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "PORTLETBRIDGE": {
+  "Apache|PORTLETBRIDGE": {
    "total": 235,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "PORTALS": {
+  "Apache|PORTALS": {
    "total": 25,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "POOL": {
+  "Apache|POOL": {
    "total": 383,
    "timeoriginalestimate": 12,
    "any_estimate": 12
   },
-  "POLYGENE": {
+  "Apache|POLYGENE": {
    "total": 311,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "PODLINGNAMESEARCH": {
+  "Apache|PODLINGNAMESEARCH": {
    "total": 186
   },
-  "PNIX": {
+  "Apache|PNIX": {
    "total": 58,
    "timeoriginalestimate": 58,
    "any_estimate": 58
   },
-  "PLUTO": {
+  "Apache|PLUTO": {
    "total": 792,
    "timeoriginalestimate": 12,
    "any_estimate": 12
   },
-  "PLC4X": {
+  "Apache|PLC4X": {
    "total": 321,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "PLANET": {
+  "Apache|PLANET": {
    "total": 1
   },
-  "PIVOT": {
+  "Apache|PIVOT": {
    "total": 1039,
    "timeoriginalestimate": 40,
    "any_estimate": 40
   },
-  "PIRK": {
+  "Apache|PIRK": {
    "total": 81,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "PIO": {
+  "Apache|PIO": {
    "total": 214,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "PINOT": {
+  "Apache|PINOT": {
    "total": 14,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "PIG": {
+  "Apache|PIG": {
    "total": 5338,
    "timeoriginalestimate": 63,
    "any_estimate": 64
   },
-  "PHOTARK": {
+  "Apache|PHOTARK": {
    "total": 96,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "PHOENIX": {
+  "Apache|PHOENIX": {
    "total": 6593,
    "timeoriginalestimate": 141,
    "any_estimate": 144
   },
-  "PEGASUS": {
+  "RedHat|EMB": {
+   "total": 93
+  },
+  "RedHat|ELYWEB": {
+   "total": 169
+  },
+  "RedHat|ELYMP": {
+   "total": 1
+  },
+  "RedHat|ELYEE": {
+   "total": 6
+  },
+  "RedHat|ELY": {
+   "total": 2110,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "RedHat|EJBTHREE": {
+   "total": 2190,
+   "timeoriginalestimate": 80,
+   "any_estimate": 81
+  },
+  "Qt|QTBUG": {
+   "total": 97172,
+   "story_points": 1298,
+   "any_estimate": 2482,
+   "timeoriginalestimate": 1132
+  },
+  "RedHat|EJBCLIENT": {
+   "total": 381,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "RedHat|EAPDOC": {
+   "total": 2
+  },
+  "RedHat|DROOLS": {
+   "total": 6087,
+   "story_points": 1822,
+   "any_estimate": 1845,
+   "timeoriginalestimate": 30
+  },
+  "Apache|PEGASUS": {
    "total": 11
   },
-  "PDFBOX": {
+  "Apache|PDFBOX": {
    "total": 5347,
    "timeoriginalestimate": 208,
    "any_estimate": 208
   },
-  "PB": {
+  "RedHat|DMR": {
+   "total": 39
+  },
+  "RedHat|DEVSECOPS": {
+   "total": 65,
+   "story_points": 8,
+   "any_estimate": 8
+  },
+  "RedHat|DEVEX": {
+   "total": 89,
+   "story_points": 43,
+   "any_estimate": 43
+  },
+  "RedHat|DEVELOPER": {
+   "total": 5425,
+   "story_points": 1949,
+   "any_estimate": 1950,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|DESIGN": {
+   "total": 1765,
+   "story_points": 58,
+   "any_estimate": 61,
+   "timeoriginalestimate": 3
+  },
+  "Apache|PB": {
    "total": 112,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "PARQUET": {
+  "Apache|PARQUET": {
    "total": 2092,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "OWC": {
+  "RedHat|DBZ": {
+   "total": 4241
+  },
+  "Apache|OWC": {
    "total": 6
   },
-  "OWB": {
+  "Apache|OWB": {
    "total": 1393,
    "timeoriginalestimate": 84,
    "any_estimate": 84
   },
-  "ORP": {
+  "Jira|CLOV": {
+   "total": 1501,
+   "story_points": 387,
+   "any_estimate": 553,
+   "timeoriginalestimate": 165
+  },
+  "Apache|ORP": {
    "total": 11
   },
-  "ORCHESTRA": {
+  "Apache|ORCHESTRA": {
    "total": 67,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "ORC": {
+  "Apache|ORC": {
    "total": 1075,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "OPENWIRE": {
+  "Apache|OPENWIRE": {
    "total": 16,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "OPENOFFICE": {
+  "Apache|OPENOFFICE": {
    "total": 189
   },
-  "OPENNLP": {
+  "Apache|OPENNLP": {
    "total": 1309,
    "timeoriginalestimate": 84,
    "any_estimate": 84
   },
-  "OPENMEETINGS": {
+  "Apache|OPENMEETINGS": {
    "total": 2718,
    "timeoriginalestimate": 103,
    "any_estimate": 105
   },
-  "OPENJPA": {
+  "Jira|CLOUD": {
+   "total": 7755,
+   "timeoriginalestimate": 558,
+   "story_points": 24,
+   "any_estimate": 590
+  },
+  "RedHat|DBAAS": {
+   "total": 193
+  },
+  "RedHat|DASHBUILDE": {
+   "total": 212
+  },
+  "RedHat|CS": {
+   "total": 940,
+   "story_points": 6,
+   "any_estimate": 6
+  },
+  "RedHat|CRW": {
+   "total": 2159,
+   "story_points": 163,
+   "any_estimate": 163
+  },
+  "Apache|OPENJPA": {
    "total": 2896,
    "timeoriginalestimate": 131,
    "any_estimate": 139
   },
-  "OPENEJB": {
+  "Apache|OPENEJB": {
    "total": 2046,
    "timeoriginalestimate": 50,
    "any_estimate": 51
   },
-  "OPENAZ": {
+  "Jira|BSERV": {
+   "total": 7885,
+   "timeoriginalestimate": 11,
+   "any_estimate": 19,
+   "story_points": 8
+  },
+  "Apache|OPENAZ": {
    "total": 24
   },
-  "OOZIE": {
+  "Apache|OOZIE": {
    "total": 3646,
    "timeoriginalestimate": 137,
    "any_estimate": 145
   },
-  "OODT": {
+  "RedHat|CPDEVOPS": {
+   "total": 117
+  },
+  "RedHat|COVIDSAFE": {
+   "total": 326,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "RedHat|COST": {
+   "total": 1932,
+   "story_points": 23,
+   "any_estimate": 23
+  },
+  "RedHat|CORS": {
+   "total": 244,
+   "story_points": 88,
+   "any_estimate": 88
+  },
+  "RedHat|CONSOLE": {
+   "total": 598,
+   "story_points": 197,
+   "any_estimate": 197
+  },
+  "RedHat|CNRDOC": {
+   "total": 53,
+   "story_points": 9,
+   "any_estimate": 9
+  },
+  "RedHat|CMTOOL": {
+   "total": 314,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|CMP": {
+   "total": 271,
+   "story_points": 195,
+   "any_estimate": 195
+  },
+  "RedHat|CMCS": {
+   "total": 4
+  },
+  "RedHat|CLOUD": {
+   "total": 2226,
+   "story_points": 49,
+   "any_estimate": 130,
+   "timeoriginalestimate": 82
+  },
+  "Apache|OODT": {
    "total": 1040,
    "timeoriginalestimate": 38,
    "any_estimate": 39
   },
-  "ONAMI": {
+  "Apache|ONAMI": {
    "total": 118
   },
-  "OMID": {
+  "RedHat|CHE": {
+   "total": 299,
+   "story_points": 190,
+   "any_estimate": 191,
+   "timeoriginalestimate": 4
+  },
+  "Apache|OMID": {
    "total": 217,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "OLTU": {
+  "Apache|OLTU": {
    "total": 216,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "OLIO": {
+  "Apache|OLIO": {
    "total": 154,
    "timeoriginalestimate": 22,
    "any_estimate": 22
   },
-  "OLINGO": {
+  "Apache|OLINGO": {
    "total": 1552,
    "timeoriginalestimate": 28,
    "any_estimate": 28
   },
-  "OJB": {
+  "RedHat|CGW": {
+   "total": 555,
+   "story_points": 417,
+   "any_estimate": 417
+  },
+  "RedHat|CDK": {
+   "total": 411,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "RedHat|CDI": {
+   "total": 737,
+   "story_points": 2,
+   "any_estimate": 3,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|CCO": {
+   "total": 116,
+   "story_points": 18,
+   "any_estimate": 18
+  },
+  "RedHat|CC": {
+   "total": 1
+  },
+  "RedHat|CAPEDWARF": {
+   "total": 260
+  },
+  "RedHat|BYTEMAN": {
+   "total": 413,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "RedHat|BXMSDOC": {
+   "total": 3589,
+   "story_points": 1403,
+   "any_estimate": 1490,
+   "timeoriginalestimate": 88
+  },
+  "Apache|OJB": {
    "total": 144,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "OGNL": {
+  "Apache|OGNL": {
    "total": 261,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "OFBIZ": {
+  "Apache|OFBIZ": {
    "total": 12470,
    "timeoriginalestimate": 300,
    "any_estimate": 306
   },
-  "OEP": {
+  "Jira|BCLOUD": {
+   "total": 20352
+  },
+  "RedHat|BUILD": {
+   "total": 205,
+   "story_points": 102,
+   "any_estimate": 102
+  },
+  "RedHat|BPMC": {
+   "total": 91
+  },
+  "RedHat|ASA": {
+   "total": 1
+  },
+  "RedHat|AS7": {
+   "total": 5427,
+   "timeoriginalestimate": 24,
+   "any_estimate": 24
+  },
+  "RedHat|ARQ": {
+   "total": 2168,
+   "story_points": 41,
+   "any_estimate": 68,
+   "timeoriginalestimate": 44
+  },
+  "RedHat|ARMOCP": {
+   "total": 96,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|APPDUX": {
+   "total": 842,
+   "story_points": 511,
+   "any_estimate": 511,
+   "timeoriginalestimate": 1
+  },
+  "RedHat|APPAI": {
+   "total": 337,
+   "story_points": 44,
+   "any_estimate": 44
+  },
+  "RedHat|APIMAN": {
+   "total": 1333,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "RedHat|API": {
+   "total": 104,
+   "story_points": 5,
+   "any_estimate": 5
+  },
+  "RedHat|AMQDOC": {
+   "total": 751,
+   "timeoriginalestimate": 33,
+   "any_estimate": 37,
+   "story_points": 4
+  },
+  "Apache|OEP": {
    "total": 37
   },
-  "ODFTOOLKIT": {
+  "Apache|ODFTOOLKIT": {
    "total": 479,
    "timeoriginalestimate": 11,
    "any_estimate": 11
   },
-  "ODE": {
+  "Apache|ODE": {
    "total": 1078,
    "timeoriginalestimate": 37,
    "any_estimate": 37
   },
-  "OCM": {
+  "RedHat|AL": {
+   "total": 1
+  },
+  "RedHat|AG": {
+   "total": 185
+  },
+  "RedHat|AF": {
+   "total": 2696,
+   "story_points": 227,
+   "any_estimate": 293,
+   "timeoriginalestimate": 66
+  },
+  "RedHat|AESH": {
+   "total": 491
+  },
+  "RedHat|AEROGEAR": {
+   "total": 9715,
+   "story_points": 584,
+   "any_estimate": 917,
+   "timeoriginalestimate": 334
+  },
+  "Jira|BAM": {
+   "total": 14625,
+   "timeoriginalestimate": 1078,
+   "any_estimate": 1487,
+   "story_points": 528
+  },
+  "Apache|OCM": {
    "total": 70,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "OAK": {
+  "Apache|OAK": {
    "total": 9612,
    "timeoriginalestimate": 11,
    "any_estimate": 15
   },
-  "NUVEM": {
+  "RedHat|ACM": {
+   "total": 131
+  },
+  "RedHat|AAH": {
+   "total": 979,
+   "story_points": 261,
+   "any_estimate": 261
+  },
+  "RedHat|AA": {
+   "total": 615,
+   "story_points": 4,
+   "any_estimate": 4
+  },
+  "MongoDB|WT": {
+   "total": 8325,
+   "story_points": 2650,
+   "any_estimate": 2650
+  },
+  "Apache|NUVEM": {
    "total": 24
   },
-  "NUTTX": {
+  "Apache|NUTTX": {
    "total": 9,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "NUTCH": {
+  "Apache|NUTCH": {
    "total": 2909,
    "timeoriginalestimate": 59,
    "any_estimate": 59
   },
-  "NUMBERS": {
+  "Apache|NUMBERS": {
    "total": 179,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "NPANDAY": {
+  "Apache|NPANDAY": {
    "total": 634,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "NLPCRAFT": {
+  "Apache|NLPCRAFT": {
    "total": 471
   },
-  "NIFIREG": {
+  "Apache|NIFIREG": {
    "total": 326
   },
-  "NIFILIBS": {
+  "Apache|NIFILIBS": {
    "total": 4
   },
-  "NIFI": {
+  "Apache|NIFI": {
    "total": 9499,
    "timeoriginalestimate": 221,
    "any_estimate": 222
   },
-  "NETBEANSINFRA": {
+  "MongoDB|VSCODE": {
+   "total": 170,
+   "story_points": 62,
+   "any_estimate": 62
+  },
+  "MongoDB|TOOLS": {
+   "total": 2452,
+   "story_points": 200,
+   "any_estimate": 200
+  },
+  "Jira|API": {
+   "total": 438
+  },
+  "Jira|ACCESS": {
+   "total": 527
+  },
+  "Sonatype|OSSRH": {
+   "total": 74960,
+   "timeoriginalestimate": 52,
+   "any_estimate": 55,
+   "story_points": 2
+  },
+  "MongoDB|SWIFT": {
+   "total": 1338
+  },
+  "Qt|QT3DS": {
+   "total": 4092,
+   "timeoriginalestimate": 85,
+   "any_estimate": 86
+  },
+  "MongoDB|SPARK": {
+   "total": 291
+  },
+  "MongoDB|SERVER": {
+   "total": 58928,
+   "story_points": 1970,
+   "any_estimate": 1970
+  },
+  "Qt|QSR": {
+   "total": 1248,
+   "story_points": 322,
+   "any_estimate": 350,
+   "timeoriginalestimate": 32
+  },
+  "Qt|QDS": {
+   "total": 4619,
+   "story_points": 609,
+   "any_estimate": 663,
+   "timeoriginalestimate": 60
+  },
+  "Apache|NETBEANSINFRA": {
    "total": 259,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "NETBEANS": {
+  "Apache|NETBEANS": {
    "total": 6155,
    "timeoriginalestimate": 58,
    "any_estimate": 58
   },
-  "NET": {
+  "Qt|QBS": {
+   "total": 1634,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Qt|PYSIDE": {
+   "total": 1595,
+   "timeoriginalestimate": 9,
+   "any_estimate": 12,
+   "story_points": 2
+  },
+  "Qt|COIN": {
+   "total": 699,
+   "story_points": 1,
+   "any_estimate": 4,
+   "timeoriginalestimate": 2
+  },
+  "Qt|CLOUD": {
+   "total": 82
+  },
+  "Qt|AUTOSUITE": {
+   "total": 1521,
+   "timeoriginalestimate": 35,
+   "any_estimate": 35
+  },
+  "Spring|XD": {
+   "total": 3707,
+   "story_points": 3705,
+   "any_estimate": 3705,
+   "timeoriginalestimate": 1
+  },
+  "Spring|SWS": {
+   "total": 1041,
+   "timeoriginalestimate": 46,
+   "any_estimate": 46
+  },
+  "Spring|SWF": {
+   "total": 1668,
+   "timeoriginalestimate": 124,
+   "any_estimate": 124
+  },
+  "Spring|STS": {
+   "total": 4407,
+   "timeoriginalestimate": 1300,
+   "any_estimate": 1371
+  },
+  "Apache|NET": {
    "total": 700,
    "timeoriginalestimate": 61,
    "any_estimate": 61
   },
-  "NEMO": {
+  "Apache|NEMO": {
    "total": 484,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "NEETHI": {
+  "Apache|NEETHI": {
    "total": 21,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MYRIAD": {
+  "Apache|MYRIAD": {
    "total": 325,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "MYNEWTDOC": {
+  "Apache|MYNEWTDOC": {
    "total": 73
   },
-  "MYNEWT": {
+  "Apache|MYNEWT": {
    "total": 1
   },
-  "MYFACESTEST": {
+  "Apache|MYFACESTEST": {
    "total": 72,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "MYFACES": {
+  "Apache|MYFACES": {
    "total": 4054,
    "timeoriginalestimate": 93,
    "any_estimate": 93
   },
-  "MXNET": {
+  "Spring|SPS": {
+   "total": 7
+  },
+  "Spring|SPRNETVSADDIN": {
+   "total": 12
+  },
+  "Spring|SPRNETSOCIALTW": {
+   "total": 12,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SPRNETSOCIALLI": {
+   "total": 8,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SPRNETSOCIALDB": {
+   "total": 11
+  },
+  "Spring|SPRNETSOCIAL": {
+   "total": 8,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SPRNETREST": {
+   "total": 36,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SPRNETCODECONFIG": {
+   "total": 7,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SPRNET": {
+   "total": 1537,
+   "timeoriginalestimate": 69,
+   "any_estimate": 69
+  },
+  "Apache|MXNET": {
    "total": 1407,
    "timeoriginalestimate": 6,
    "any_estimate": 215,
    "story_points": 209
   },
-  "MWRAPPER": {
+  "Spring|SPR": {
+   "total": 17413,
+   "timeoriginalestimate": 727,
+   "any_estimate": 736
+  },
+  "Apache|MWRAPPER": {
    "total": 47
   },
-  "MWAR": {
+  "Apache|MWAR": {
    "total": 433,
    "timeoriginalestimate": 12,
    "any_estimate": 12
   },
-  "MVERIFIER": {
+  "Apache|MVERIFIER": {
    "total": 36,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "MUSE": {
+  "Apache|MUSE": {
    "total": 314,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "MTOOLCHAINS": {
+  "Apache|MTOOLCHAINS": {
    "total": 34
   },
-  "MTOMCAT": {
+  "Apache|MTOMCAT": {
    "total": 316,
    "timeoriginalestimate": 17,
    "any_estimate": 17
   },
-  "MSTAGE": {
+  "Apache|MSTAGE": {
    "total": 26
   },
-  "MSOURCES": {
+  "Apache|MSOURCES": {
    "total": 122,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "MSKINS": {
+  "Apache|MSKINS": {
    "total": 166,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "MSITE": {
+  "Apache|MSITE": {
    "total": 779,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "MSHARED": {
+  "Apache|MSHARED": {
    "total": 991,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "MSHADE": {
+  "Apache|MSHADE": {
    "total": 406,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MSCRIPTING": {
+  "Apache|MSCRIPTING": {
    "total": 8
   },
-  "MSCMPUB": {
+  "Apache|MSCMPUB": {
    "total": 45
   },
-  "MRUNIT": {
+  "Apache|MRUNIT": {
    "total": 224,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "MRRESOURCES": {
+  "Apache|MRRESOURCES": {
    "total": 117
   },
-  "MRQL": {
+  "Apache|MRQL": {
    "total": 102,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MRM": {
+  "Apache|MRM": {
    "total": 1993,
    "timeoriginalestimate": 75,
    "any_estimate": 76
   },
-  "MRESOURCES": {
+  "Apache|MRESOURCES": {
    "total": 255,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "MRESOLVER": {
+  "Apache|MRESOLVER": {
    "total": 228
   },
-  "MREPOSITORY": {
+  "Apache|MREPOSITORY": {
    "total": 39,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MRELEASE": {
+  "Apache|MRELEASE": {
    "total": 1045,
    "timeoriginalestimate": 25,
    "any_estimate": 25
   },
-  "MRAR": {
+  "Apache|MRAR": {
    "total": 82,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MPT": {
+  "Apache|MPT": {
    "total": 44
   },
-  "MPOM": {
+  "Apache|MPOM": {
    "total": 269
   },
-  "MPMD": {
+  "Apache|MPMD": {
    "total": 324,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "MPLUGINTESTING": {
+  "Apache|MPLUGINTESTING": {
    "total": 66,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MPLUGIN": {
+  "Apache|MPLUGIN": {
    "total": 369,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "MPIR": {
+  "Apache|MPIR": {
    "total": 385,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "MPH": {
+  "Apache|MPH": {
    "total": 169,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "MPDF": {
+  "Apache|MPDF": {
    "total": 93
   },
-  "MPATCH": {
+  "Apache|MPATCH": {
    "total": 16
   },
-  "MODPYTHON": {
+  "Apache|MODPYTHON": {
    "total": 256,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MODELER": {
+  "Apache|MODELER": {
    "total": 32
   },
-  "MNGSITE": {
+  "Apache|MNGSITE": {
    "total": 421,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "MNG": {
+  "Apache|MNG": {
    "total": 6046,
    "timeoriginalestimate": 210,
    "any_estimate": 210
   },
-  "MNEMONIC": {
+  "Apache|MNEMONIC": {
    "total": 711,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MLINKCHECK": {
+  "Apache|MLINKCHECK": {
    "total": 38
   },
-  "MJMOD": {
+  "Apache|MJMOD": {
    "total": 27,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MJLINK": {
+  "Apache|MJLINK": {
    "total": 64,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MJDEPS": {
+  "Apache|MJDEPS": {
    "total": 27
   },
-  "MJDEPRSCAN": {
+  "Apache|MJDEPRSCAN": {
    "total": 4
   },
-  "MJAVADOC": {
+  "Apache|MJAVADOC": {
    "total": 690,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "MJARSIGNER": {
+  "Spring|SOCIALTW": {
+   "total": 86,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Spring|SOCIALLI": {
+   "total": 40,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SOCIALGH": {
+   "total": 5
+  },
+  "Spring|SOCIALFB": {
+   "total": 198,
+   "timeoriginalestimate": 10,
+   "any_estimate": 10
+  },
+  "Spring|SOCIAL": {
+   "total": 450,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "Spring|SMA": {
+   "total": 28,
+   "timeoriginalestimate": 25,
+   "any_estimate": 25
+  },
+  "Apache|MJARSIGNER": {
    "total": 59,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MJAR": {
+  "Apache|MJAR": {
    "total": 262,
    "timeoriginalestimate": 4,
    "any_estimate": 5
   },
-  "MIRAE": {
+  "Spring|SLICE": {
+   "total": 101,
+   "timeoriginalestimate": 38,
+   "any_estimate": 58
+  },
+  "Spring|SJC": {
+   "total": 239,
+   "timeoriginalestimate": 107,
+   "any_estimate": 108
+  },
+  "Spring|SHL": {
+   "total": 186,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "Spring|SHDP": {
+   "total": 583,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "Spring|SGFNET": {
+   "total": 24
+  },
+  "Spring|SGF": {
+   "total": 917,
+   "timeoriginalestimate": 286,
+   "any_estimate": 286
+  },
+  "Spring|SEWORKFLOW": {
+   "total": 5,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SETHREADNET": {
+   "total": 35,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "Spring|SESURF": {
+   "total": 113,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "Spring|SESQLJ": {
+   "total": 1
+  },
+  "Spring|SESPRINGPYTHONPY": {
+   "total": 166,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29
+  },
+  "Spring|SESPRINGINTEGRATIONNET": {
+   "total": 3
+  },
+  "Spring|SESPRINGACTIONSCRIPTAS": {
+   "total": 145,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "Apache|MIRAE": {
    "total": 8
   },
-  "MINVOKER": {
+  "Apache|MINVOKER": {
    "total": 288
   },
-  "MINSTALL": {
+  "Apache|MINSTALL": {
    "total": 166,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "MINIFICPP": {
+  "Apache|MINIFICPP": {
    "total": 1707,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "MINIFI": {
+  "Spring|SESIA": {
+   "total": 30,
+   "timeoriginalestimate": 16,
+   "any_estimate": 16
+  },
+  "Spring|SES": {
+   "total": 173,
+   "timeoriginalestimate": 11,
+   "any_estimate": 11
+  },
+  "Spring|SENMSNET": {
+   "total": 1
+  },
+  "Spring|SEJCR": {
+   "total": 23,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "Spring|SEDBFO": {
+   "total": 33
+  },
+  "Spring|SECONFIGNET": {
+   "total": 4
+  },
+  "Spring|SECOAUTH": {
+   "total": 438,
+   "timeoriginalestimate": 337,
+   "any_estimate": 337
+  },
+  "Spring|SEC": {
+   "total": 3150,
+   "timeoriginalestimate": 305,
+   "any_estimate": 308
+  },
+  "Apache|MINIFI": {
    "total": 240,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MINDEXER": {
+  "Spring|SEBLOB": {
+   "total": 9
+  },
+  "Spring|SE": {
+   "total": 8,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|SCALA": {
+   "total": 18
+  },
+  "Spring|ROOFLEX": {
+   "total": 51,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|ROO": {
+   "total": 3987,
+   "timeoriginalestimate": 406,
+   "any_estimate": 411
+  },
+  "Apache|MINDEXER": {
    "total": 128
   },
-  "MIME4J": {
+  "Apache|MIME4J": {
    "total": 312,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "MILAGRO": {
+  "Apache|MILAGRO": {
    "total": 36,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MGPG": {
+  "Apache|MGPG": {
    "total": 83
   },
-  "MFHTML5": {
+  "Apache|MFHTML5": {
    "total": 21,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MFCOMMONS": {
+  "Apache|MFCOMMONS": {
    "total": 46,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "METRON": {
+  "Apache|METRON": {
    "total": 2349,
    "timeoriginalestimate": 75,
    "any_estimate": 78
   },
-  "METAMODEL": {
+  "Spring|RCP": {
+   "total": 632,
+   "timeoriginalestimate": 7,
+   "any_estimate": 7
+  },
+  "Spring|OSGI": {
+   "total": 815,
+   "timeoriginalestimate": 18,
+   "any_estimate": 18
+  },
+  "Spring|MOD": {
+   "total": 504,
+   "timeoriginalestimate": 31,
+   "any_estimate": 31
+  },
+  "Spring|MOBILE": {
+   "total": 113,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|LDAP": {
+   "total": 340,
+   "timeoriginalestimate": 17,
+   "any_estimate": 17
+  },
+  "Sonatype|OSSIPUB": {
+   "total": 26,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "Sonatype|NEXUS": {
+   "total": 10607,
+   "story_points": 1981,
+   "any_estimate": 2851,
+   "timeoriginalestimate": 825
+  },
+  "Apache|METAMODEL": {
    "total": 400,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "MESOS": {
+  "Apache|MESOS": {
    "total": 10197,
    "timeoriginalestimate": 110,
    "any_estimate": 3359,
    "story_points": 3273
   },
-  "MENFORCER": {
+  "Spring|INTSAMPLES": {
+   "total": 150,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Spring|INTEXT": {
+   "total": 229,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|INT": {
+   "total": 4494,
+   "timeoriginalestimate": 804,
+   "any_estimate": 812
+  },
+  "Spring|INFRA": {
+   "total": 49
+  },
+  "Spring|IDE": {
+   "total": 1386,
+   "timeoriginalestimate": 1042,
+   "any_estimate": 1042
+  },
+  "Spring|GREENHOUSE": {
+   "total": 559,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Spring|DATASOLR": {
+   "total": 615,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "Spring|DATARIAK": {
+   "total": 6
+  },
+  "Spring|DATAREST": {
+   "total": 1565,
+   "timeoriginalestimate": 23,
+   "any_estimate": 23
+  },
+  "Spring|DATAREDIS": {
+   "total": 1257,
+   "timeoriginalestimate": 29,
+   "any_estimate": 29
+  },
+  "Spring|DATAMONGO": {
+   "total": 2590,
+   "timeoriginalestimate": 364,
+   "any_estimate": 365
+  },
+  "Apache|MENFORCER": {
    "total": 402,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MEJB": {
+  "Apache|MEJB": {
    "total": 122,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MEECROWAVE": {
+  "Apache|MEECROWAVE": {
    "total": 306
   },
-  "MECLIPSE": {
+  "Apache|MECLIPSE": {
    "total": 723,
    "timeoriginalestimate": 17,
    "any_estimate": 17
   },
-  "MEAR": {
+  "MongoDB|RUST": {
+   "total": 1046
+  },
+  "Sonatype|MVNCENTRAL": {
+   "total": 1641,
+   "timeoriginalestimate": 13,
+   "any_estimate": 13
+  },
+  "MongoDB|RUBY": {
+   "total": 2689,
+   "story_points": 168,
+   "any_estimate": 168
+  },
+  "Spring|DATAMAP": {
+   "total": 3,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|DATALDAP": {
+   "total": 187,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Spring|DATAKV": {
+   "total": 261,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Spring|DATAJPA": {
+   "total": 1687,
+   "timeoriginalestimate": 195,
+   "any_estimate": 196
+  },
+  "Sonatype|DX": {
+   "total": 50
+  },
+  "Apache|MEAR": {
    "total": 296,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "MDOCCK": {
+  "Spring|DATAJDBC": {
+   "total": 610,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Spring|DATAHB": {
+   "total": 4
+  },
+  "Spring|DATAGRAPH": {
+   "total": 1465,
+   "timeoriginalestimate": 20,
+   "any_estimate": 20
+  },
+  "MongoDB|PYTHON": {
+   "total": 2872,
+   "story_points": 16,
+   "any_estimate": 16
+  },
+  "Sakai|YAFT": {
+   "total": 77
+  },
+  "Sakai|XSDW": {
+   "total": 25
+  },
+  "Sakai|WIC": {
+   "total": 12
+  },
+  "Sakai|WCON": {
+   "total": 9
+  },
+  "Sakai|TXB": {
+   "total": 222
+  },
+  "Sakai|TRINITY": {
+   "total": 38
+  },
+  "Sakai|TIME": {
+   "total": 75,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Sakai|TII": {
+   "total": 250
+  },
+  "Sakai|SOU": {
+   "total": 5
+  },
+  "Sakai|SMS": {
+   "total": 296
+  },
+  "Sakai|SMP": {
+   "total": 28
+  },
+  "Sakai|SM": {
+   "total": 23
+  },
+  "Sakai|SLIB": {
+   "total": 111
+  },
+  "Sakai|SKE": {
+   "total": 250
+  },
+  "Sakai|SCO": {
+   "total": 178
+  },
+  "Sakai|SAKORA": {
+   "total": 16
+  },
+  "Sakai|SAK": {
+   "total": 43351,
+   "timeoriginalestimate": 335,
+   "any_estimate": 347
+  },
+  "Apache|MDOCCK": {
    "total": 33,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MDOAP": {
+  "Apache|MDOAP": {
    "total": 55
   },
-  "MDEPLOY": {
+  "Apache|MDEPLOY": {
    "total": 265,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "MDEP": {
+  "Apache|MDEP": {
    "total": 750,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MCOMPILER": {
+  "Spring|DATAGEODE": {
+   "total": 392,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Spring|DATAES": {
+   "total": 1003,
+   "timeoriginalestimate": 21,
+   "any_estimate": 21
+  },
+  "Spring|DATACOUCH": {
+   "total": 676,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Spring|DATACOL": {
+   "total": 2
+  },
+  "Spring|DATACMNS": {
+   "total": 1781,
+   "timeoriginalestimate": 191,
+   "any_estimate": 191
+  },
+  "Apache|MCOMPILER": {
    "total": 462,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "MCLEAN": {
+  "Apache|MCLEAN": {
    "total": 86,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "MCHECKSTYLE": {
+  "Apache|MCHECKSTYLE": {
    "total": 397,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "MCHANGES": {
+  "MongoDB|PHPLIB": {
+   "total": 716,
+   "story_points": 6,
+   "any_estimate": 6
+  },
+  "MongoDB|PHPC": {
+   "total": 1600,
+   "story_points": 3,
+   "any_estimate": 3
+  },
+  "Spring|DATACASS": {
+   "total": 826,
+   "timeoriginalestimate": 21,
+   "any_estimate": 263,
+   "story_points": 243
+  },
+  "Apache|MCHANGES": {
    "total": 409,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "MCHANGELOG": {
+  "Apache|MCHANGELOG": {
    "total": 144,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "MAVIBOT": {
+  "Apache|MAVIBOT": {
    "total": 49
   },
-  "MATH": {
+  "Apache|MATH": {
    "total": 1628,
    "timeoriginalestimate": 148,
    "any_estimate": 148
   },
-  "MASSEMBLY": {
+  "Spring|DATAAERO": {
+   "total": 1
+  },
+  "Spring|BATCHADM": {
+   "total": 233,
+   "timeoriginalestimate": 136,
+   "any_estimate": 136
+  },
+  "Spring|BATCH": {
+   "total": 2598,
+   "timeoriginalestimate": 1537,
+   "any_estimate": 1540
+  },
+  "MongoDB|NODE": {
+   "total": 3621,
+   "story_points": 295,
+   "any_estimate": 295
+  },
+  "Apache|MASSEMBLY": {
    "total": 941,
    "timeoriginalestimate": 39,
    "any_estimate": 39
   },
-  "MASFRES": {
+  "Apache|MASFRES": {
    "total": 42,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MARVIN": {
+  "Apache|MARVIN": {
    "total": 77,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "MARTIFACT": {
+  "Apache|MARTIFACT": {
    "total": 28
   },
-  "MARMOTTA": {
+  "Apache|MARMOTTA": {
    "total": 680,
    "timeoriginalestimate": 158,
    "any_estimate": 164
   },
-  "MARCHETYPES": {
+  "Spring|ANDROID": {
+   "total": 165,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Spring|AMQP": {
+   "total": 834,
+   "timeoriginalestimate": 136,
+   "any_estimate": 136
+  },
+  "Apache|MARCHETYPES": {
    "total": 63,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MAPREDUCE": {
+  "Apache|MAPREDUCE": {
    "total": 7047,
    "timeoriginalestimate": 168,
    "any_estimate": 171
   },
-  "MANTTASKS": {
+  "JiraEcosystem|WLC": {
+   "total": 22,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|WEBHOOKS": {
+   "total": 142,
+   "story_points": 7,
+   "any_estimate": 9,
+   "timeoriginalestimate": 2
+  },
+  "JiraEcosystem|VOTE": {
+   "total": 62,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|VHS": {
+   "total": 33,
+   "story_points": 6,
+   "any_estimate": 6,
+   "timeoriginalestimate": 1
+  },
+  "JiraEcosystem|VCACHE": {
+   "total": 105
+  },
+  "JiraEcosystem|USGTRK": {
+   "total": 7,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|UPM": {
+   "total": 3763,
+   "story_points": 65,
+   "any_estimate": 312,
+   "timeoriginalestimate": 222
+  },
+  "MongoDB|MOTOR": {
+   "total": 796,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "MongoDB|MONGOSH": {
+   "total": 765,
+   "story_points": 274,
+   "any_estimate": 274
+  },
+  "MongoDB|MONGOID": {
+   "total": 5089,
+   "story_points": 86,
+   "any_estimate": 86
+  },
+  "JiraEcosystem|TOC": {
+   "total": 12,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|THREAD": {
+   "total": 1
+  },
+  "JiraEcosystem|SVN": {
+   "total": 257,
+   "timeoriginalestimate": 12,
+   "any_estimate": 12
+  },
+  "MongoDB|MONGOCRYPT": {
+   "total": 346
+  },
+  "MongoDB|KAFKA": {
+   "total": 258
+  },
+  "JiraEcosystem|STRM": {
+   "total": 2293,
+   "story_points": 10,
+   "any_estimate": 181,
+   "timeoriginalestimate": 169
+  },
+  "MongoDB|JAVA": {
+   "total": 4055,
+   "story_points": 238,
+   "any_estimate": 238
+  },
+  "JiraEcosystem|SPFE": {
+   "total": 764,
+   "story_points": 161,
+   "any_estimate": 161
+  },
+  "JiraEcosystem|SPEAKEASY": {
+   "total": 149,
+   "timeoriginalestimate": 21,
+   "any_estimate": 22
+  },
+  "JiraEcosystem|SOY": {
+   "total": 136,
+   "story_points": 8,
+   "any_estimate": 9,
+   "timeoriginalestimate": 1
+  },
+  "JiraEcosystem|SNIP": {
+   "total": 32,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|SELENIUM": {
+   "total": 297,
+   "timeoriginalestimate": 9,
+   "any_estimate": 9
+  },
+  "JiraEcosystem|SCANNER": {
+   "total": 106,
+   "story_points": 34,
+   "any_estimate": 34
+  },
+  "JiraEcosystem|SAL": {
+   "total": 365,
+   "story_points": 16,
+   "any_estimate": 29,
+   "timeoriginalestimate": 13
+  },
+  "JiraEcosystem|REST": {
+   "total": 398,
+   "story_points": 17,
+   "any_estimate": 37,
+   "timeoriginalestimate": 19
+  },
+  "MongoDB|GODRIVER": {
+   "total": 2161,
+   "story_points": 243,
+   "any_estimate": 243
+  },
+  "JiraEcosystem|REFAPP": {
+   "total": 497,
+   "story_points": 15,
+   "any_estimate": 115,
+   "timeoriginalestimate": 96
+  },
+  "JiraEcosystem|RAB": {
+   "total": 32
+  },
+  "JiraEcosystem|QR": {
+   "total": 16,
+   "story_points": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|PTRUNNER": {
+   "total": 39
+  },
+  "JiraEcosystem|PRETTY": {
+   "total": 30,
+   "story_points": 4,
+   "any_estimate": 5,
+   "timeoriginalestimate": 1
+  },
+  "JiraEcosystem|PLVS": {
+   "total": 454,
+   "timeoriginalestimate": 6,
+   "any_estimate": 6
+  },
+  "JiraEcosystem|PLUGWEB": {
+   "total": 594,
+   "story_points": 119,
+   "any_estimate": 119,
+   "timeoriginalestimate": 3
+  },
+  "MongoDB|EVG": {
+   "total": 12546,
+   "story_points": 7139,
+   "any_estimate": 7139
+  },
+  "Apache|MANTTASKS": {
    "total": 247,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "MANTRUN": {
+  "Apache|MANTRUN": {
    "total": 202,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "MANT": {
+  "JiraEcosystem|PLUGFRAG": {
+   "total": 24,
+   "timeoriginalestimate": 1,
+   "any_estimate": 5,
+   "story_points": 4
+  },
+  "JiraEcosystem|PLUG": {
+   "total": 1161,
+   "story_points": 27,
+   "any_estimate": 118,
+   "timeoriginalestimate": 93
+  },
+  "Apache|MANT": {
    "total": 77
   },
-  "MAILET": {
+  "Apache|MAILET": {
    "total": 166,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "MAILBOX": {
+  "Apache|MAILBOX": {
    "total": 407,
    "timeoriginalestimate": 8,
    "any_estimate": 9
   },
-  "MAHOUT": {
+  "Apache|MAHOUT": {
    "total": 2121,
    "timeoriginalestimate": 150,
    "any_estimate": 150
   },
-  "MADLIB": {
+  "JiraEcosystem|PLE": {
+   "total": 1499,
+   "timeoriginalestimate": 818,
+   "any_estimate": 823
+  },
+  "Apache|MADLIB": {
    "total": 1482
   },
-  "MACR": {
+  "JiraEcosystem|PLATFORM": {
+   "total": 194,
+   "story_points": 37,
+   "any_estimate": 42,
+   "timeoriginalestimate": 5
+  },
+  "JiraEcosystem|PL": {
+   "total": 2889,
+   "story_points": 25,
+   "any_estimate": 65,
+   "timeoriginalestimate": 39
+  },
+  "Apache|MACR": {
    "total": 53
   },
-  "LUCY": {
+  "Apache|LUCY": {
    "total": 320,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "LUCENENET": {
+  "Apache|LUCENENET": {
    "total": 649,
    "timeoriginalestimate": 75,
    "any_estimate": 75
   },
-  "LUCENE": {
+  "Apache|LUCENE": {
    "total": 10313,
    "timeoriginalestimate": 210,
    "any_estimate": 213
   },
-  "LOKAHI": {
+  "JiraEcosystem|PAS": {
+   "total": 14
+  },
+  "JiraEcosystem|PAPIA": {
+   "total": 6
+  },
+  "JiraEcosystem|OAUTH": {
+   "total": 327,
+   "story_points": 3,
+   "any_estimate": 47,
+   "timeoriginalestimate": 42
+  },
+  "JiraEcosystem|MR": {
+   "total": 92
+  },
+  "JiraEcosystem|MPJC": {
+   "total": 34,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|MJF": {
+   "total": 307,
+   "story_points": 1,
+   "any_estimate": 5,
+   "timeoriginalestimate": 4
+  },
+  "JiraEcosystem|MC": {
+   "total": 2
+  },
+  "JiraEcosystem|LESS": {
+   "total": 48,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "JiraEcosystem|JWSP": {
+   "total": 63
+  },
+  "JiraEcosystem|JTOOL": {
+   "total": 253,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "JiraEcosystem|JSDECO": {
+   "total": 183,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|JRTE": {
+   "total": 42,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|JRJC": {
+   "total": 249,
+   "timeoriginalestimate": 1,
+   "any_estimate": 12,
+   "story_points": 11
+  },
+  "JiraEcosystem|JPSP": {
+   "total": 2
+  },
+  "JiraEcosystem|JPERF": {
+   "total": 721,
+   "story_points": 30,
+   "any_estimate": 30
+  },
+  "MongoDB|DRIVERS": {
+   "total": 833
+  },
+  "JiraEcosystem|JICAL": {
+   "total": 40
+  },
+  "JiraEcosystem|JDG": {
+   "total": 9
+  },
+  "MongoDB|DOCS": {
+   "total": 13871,
+   "story_points": 2472,
+   "any_estimate": 2472
+  },
+  "JiraEcosystem|JDDAP": {
+   "total": 136,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|JCHART": {
+   "total": 39,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|JCAL": {
+   "total": 40
+  },
+  "JiraEcosystem|JAW": {
+   "total": 21
+  },
+  "JiraEcosystem|JAP": {
+   "total": 29
+  },
+  "JiraEcosystem|HTTPSVC": {
+   "total": 2
+  },
+  "JiraEcosystem|HACK": {
+   "total": 155
+  },
+  "JiraEcosystem|FRGE": {
+   "total": 577,
+   "timeoriginalestimate": 8,
+   "any_estimate": 8
+  },
+  "JiraEcosystem|FP": {
+   "total": 31,
+   "story_points": 6,
+   "any_estimate": 9,
+   "timeoriginalestimate": 3
+  },
+  "JiraEcosystem|FISH": {
+   "total": 63
+  },
+  "JiraEcosystem|FI": {
+   "total": 109
+  },
+  "JiraEcosystem|FASTDEV": {
+   "total": 111
+  },
+  "JiraEcosystem|FAGE": {
+   "total": 26,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|EVENT": {
+   "total": 46,
+   "story_points": 6,
+   "any_estimate": 6
+  },
+  "JiraEcosystem|DEVBOX": {
+   "total": 51
+  },
+  "JiraEcosystem|DARK": {
+   "total": 3
+  },
+  "JiraEcosystem|CSUR": {
+   "total": 42
+  },
+  "JiraEcosystem|CSE": {
+   "total": 149,
+   "story_points": 54,
+   "any_estimate": 54,
+   "timeoriginalestimate": 1
+  },
+  "JiraEcosystem|CPSP": {
+   "total": 43,
+   "timeoriginalestimate": 1,
+   "any_estimate": 2,
+   "story_points": 1
+  },
+  "JiraEcosystem|CPC": {
+   "total": 69
+  },
+  "JiraEcosystem|CONFSTATS": {
+   "total": 23
+  },
+  "JiraEcosystem|CMMT": {
+   "total": 20
+  },
+  "JiraEcosystem|CHA": {
+   "total": 64
+  },
+  "JiraEcosystem|CE": {
+   "total": 959,
+   "story_points": 9,
+   "any_estimate": 12,
+   "timeoriginalestimate": 2
+  },
+  "JiraEcosystem|CCPH": {
+   "total": 18
+  },
+  "JiraEcosystem|CACHE": {
+   "total": 139
+  },
+  "JiraEcosystem|BROWSERS": {
+   "total": 41
+  },
+  "JiraEcosystem|AW": {
+   "total": 15
+  },
+  "JiraEcosystem|AUI": {
+   "total": 4183,
+   "story_points": 688,
+   "any_estimate": 711,
+   "timeoriginalestimate": 22
+  },
+  "Apache|LOKAHI": {
    "total": 8
   },
-  "LOGGING": {
+  "Apache|LOGGING": {
    "total": 176,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "LOGCXX": {
+  "Apache|LOGCXX": {
    "total": 530,
    "timeoriginalestimate": 44,
    "any_estimate": 45
   },
-  "LOG4PHP": {
+  "Apache|LOG4PHP": {
    "total": 244,
    "timeoriginalestimate": 30,
    "any_estimate": 30
   },
-  "LOG4NET": {
+  "Apache|LOG4NET": {
    "total": 680,
    "timeoriginalestimate": 96,
    "any_estimate": 96
   },
-  "LOG4J2": {
+  "Apache|LOG4J2": {
    "total": 3304,
    "timeoriginalestimate": 124,
    "any_estimate": 125
   },
-  "LIVY": {
+  "JiraEcosystem|ATST": {
+   "total": 529,
+   "timeoriginalestimate": 7,
+   "any_estimate": 8,
+   "story_points": 1
+  },
+  "JiraEcosystem|ATR": {
+   "total": 105,
+   "story_points": 6,
+   "any_estimate": 13,
+   "timeoriginalestimate": 7
+  },
+  "JiraEcosystem|ATLASSDK": {
+   "total": 185,
+   "story_points": 13,
+   "any_estimate": 13
+  },
+  "JiraEcosystem|ASAP": {
+   "total": 116
+  },
+  "JiraEcosystem|APL": {
+   "total": 1266,
+   "story_points": 17,
+   "any_estimate": 312,
+   "timeoriginalestimate": 280
+  },
+  "MongoDB|DAG": {
+   "total": 341,
+   "story_points": 133,
+   "any_estimate": 133
+  },
+  "MongoDB|CXX": {
+   "total": 2298,
+   "story_points": 224,
+   "any_estimate": 224
+  },
+  "JiraEcosystem|AO": {
+   "total": 720,
+   "story_points": 25,
+   "any_estimate": 90,
+   "timeoriginalestimate": 56
+  },
+  "Sakai|RSV": {
+   "total": 27
+  },
+  "Sakai|RSF": {
+   "total": 18
+  },
+  "Sakai|RPLAY": {
+   "total": 24
+  },
+  "Sakai|QUALTRICS": {
+   "total": 260,
+   "timeoriginalestimate": 5,
+   "any_estimate": 5
+  },
+  "Sakai|QNA": {
+   "total": 226,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Sakai|PROD": {
+   "total": 372
+  },
+  "Sakai|POH": {
+   "total": 17
+  },
+  "Sakai|OCW": {
+   "total": 12
+  },
+  "Sakai|NFS": {
+   "total": 64
+  },
+  "JiraEcosystem|AMPS": {
+   "total": 1490,
+   "story_points": 56,
+   "any_estimate": 103,
+   "timeoriginalestimate": 46
+  },
+  "MongoDB|CSHARP": {
+   "total": 3752,
+   "story_points": 21,
+   "any_estimate": 21
+  },
+  "Apache|LIVY": {
    "total": 841,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "LIMINAL": {
+  "Apache|LIMINAL": {
    "total": 81,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "LIBCLOUD": {
+  "Sakai|MRKUP": {
+   "total": 17
+  },
+  "Sakai|MAW": {
+   "total": 15
+  },
+  "Sakai|MARCH": {
+   "total": 6
+  },
+  "Sakai|MAPS": {
+   "total": 33
+  },
+  "Sakai|LAMS": {
+   "total": 10
+  },
+  "Sakai|LAI": {
+   "total": 21
+  },
+  "Sakai|ITU": {
+   "total": 22
+  },
+  "Sakai|IQ": {
+   "total": 6
+  },
+  "Sakai|HPT": {
+   "total": 15
+  },
+  "Sakai|GRBK": {
+   "total": 1433,
+   "timeoriginalestimate": 25,
+   "any_estimate": 25
+  },
+  "Apache|LIBCLOUD": {
    "total": 1045,
    "timeoriginalestimate": 137,
    "any_estimate": 137
   },
-  "LENS": {
+  "Apache|LENS": {
    "total": 1451,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "LEGAL": {
+  "JiraEcosystem|AMKT": {
+   "total": 4563,
+   "story_points": 117,
+   "any_estimate": 119,
+   "timeoriginalestimate": 2
+  },
+  "MongoDB|COMPASS": {
+   "total": 2603,
+   "story_points": 777,
+   "any_estimate": 777
+  },
+  "Sakai|GM": {
+   "total": 145
+  },
+  "Sakai|GAL": {
+   "total": 111
+  },
+  "Sakai|FARM": {
+   "total": 39
+  },
+  "Sakai|EVALSYS": {
+   "total": 1577,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Apache|LEGAL": {
    "total": 582
   },
-  "LCN4C": {
+  "Apache|LCN4C": {
    "total": 8
   },
-  "LAUNCHER": {
+  "Apache|LAUNCHER": {
    "total": 12
   },
-  "LANG": {
+  "Apache|LANG": {
    "total": 1641,
    "timeoriginalestimate": 77,
    "any_estimate": 77
   },
-  "LABS": {
+  "Sakai|EVALPORT": {
+   "total": 9
+  },
+  "Sakai|ELLUM": {
+   "total": 26,
+   "timeoriginalestimate": 21,
+   "any_estimate": 23
+  },
+  "Sakai|DOCS": {
+   "total": 39
+  },
+  "Sakai|DASH": {
+   "total": 400,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Sakai|DAO": {
+   "total": 14,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Sakai|CNFV": {
+   "total": 21,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Sakai|CLOG": {
+   "total": 195
+  },
+  "Sakai|CHK": {
+   "total": 48,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Sakai|CC": {
+   "total": 18
+  },
+  "Sakai|BW": {
+   "total": 167
+  },
+  "Sakai|BBB": {
+   "total": 159
+  },
+  "Sakai|ADMX": {
+   "total": 14
+  },
+  "Sakai|A11YTEST": {
+   "total": 4
+  },
+  "Apache|LABS": {
    "total": 352,
    "timeoriginalestimate": 26,
    "any_estimate": 26
   },
-  "KYLIN": {
+  "Apache|KYLIN": {
    "total": 4989,
    "timeoriginalestimate": 121,
    "any_estimate": 121
   },
-  "KUDU": {
+  "MariaDB|CONJ": {
+   "total": 813
+  },
+  "MariaDB|CONCPP": {
+   "total": 57
+  },
+  "MariaDB|CONC": {
+   "total": 465
+  },
+  "MariaDB|MDEV": {
+   "total": 22437
+  },
+  "MongoDB|CDRIVER": {
+   "total": 3410,
+   "story_points": 282,
+   "any_estimate": 282
+  },
+  "JiraEcosystem|AL": {
+   "total": 6
+  },
+  "JiraEcosystem|AKS": {
+   "total": 19
+  },
+  "JiraEcosystem|AIT": {
+   "total": 5
+  },
+  "JiraEcosystem|AIN": {
+   "total": 6
+  },
+  "JiraEcosystem|AHTTP": {
+   "total": 35
+  },
+  "JiraEcosystem|AG": {
+   "total": 1485,
+   "story_points": 9,
+   "any_estimate": 589,
+   "timeoriginalestimate": 560
+  },
+  "JiraEcosystem|ADGF": {
+   "total": 177,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|ACSPRING": {
+   "total": 114
+  },
+  "JiraEcosystem|ACJS": {
+   "total": 654,
+   "story_points": 135,
+   "any_estimate": 135
+  },
+  "JiraEcosystem|ACJIRA": {
+   "total": 1999,
+   "timeoriginalestimate": 2,
+   "any_estimate": 90,
+   "story_points": 87
+  },
+  "Apache|KUDU": {
    "total": 3194,
    "timeoriginalestimate": 22,
    "any_estimate": 25
   },
-  "KNOX": {
+  "JiraEcosystem|ACEJS": {
+   "total": 121,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "JiraEcosystem|ACCESS": {
+   "total": 629,
+   "story_points": 27,
+   "any_estimate": 27,
+   "timeoriginalestimate": 1
+  },
+  "Apache|KNOX": {
    "total": 2694,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "KITTY": {
-   "total": 33,
-   "any_estimate": 8,
-   "timeoriginalestimate": 7
+  "JiraEcosystem|ACC": {
+   "total": 75,
+   "timeoriginalestimate": 44,
+   "any_estimate": 44
   },
-  "KI": {
-   "total": 1
+  "JiraEcosystem|AC": {
+   "total": 1544,
+   "timeoriginalestimate": 3,
+   "story_points": 185,
+   "any_estimate": 187
   },
-  "KATO": {
-   "total": 16
+  "MariaDB|R2DBC": {
+   "total": 14
   },
-  "KARAF": {
-   "total": 7145,
-   "timeoriginalestimate": 70,
-   "any_estimate": 70
+  "MariaDB|ODBC": {
+   "total": 288
   },
-  "KAND": {
-   "total": 10
+  "MariaDB|MXS": {
+   "total": 3333
   },
-  "KALUMET": {
+  "Hyperledger|URSA": {
+   "total": 9
+  },
+  "Hyperledger|TX": {
    "total": 56,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "KAFKA": {
+  "Hyperledger|STL": {
+   "total": 1663,
+   "story_points": 966,
+   "any_estimate": 966
+  },
+  "Hyperledger|IS": {
+   "total": 1536,
+   "timeoriginalestimate": 42,
+   "any_estimate": 742,
+   "story_points": 720
+  },
+  "JiraEcosystem|ABD": {
+   "total": 35
+  },
+  "JiraEcosystem|AA": {
+   "total": 19,
+   "timeoriginalestimate": 1,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "Apache|KITTY": {
+   "total": 33,
+   "any_estimate": 8,
+   "timeoriginalestimate": 7
+  },
+  "Apache|KI": {
+   "total": 1
+  },
+  "Apache|KATO": {
+   "total": 16
+  },
+  "Apache|KARAF": {
+   "total": 7145,
+   "timeoriginalestimate": 70,
+   "any_estimate": 70
+  },
+  "Hyperledger|IR": {
+   "total": 1172,
+   "timeoriginalestimate": 36,
+   "any_estimate": 107,
+   "story_points": 74
+  },
+  "Hyperledger|INDY": {
+   "total": 2323,
+   "story_points": 681,
+   "any_estimate": 813,
+   "timeoriginalestimate": 135
+  },
+  "JFrog|TFSAP": {
+   "total": 24
+  },
+  "JFrog|TCAP": {
+   "total": 1063
+  },
+  "JFrog|RTFACT": {
+   "total": 12158
+  },
+  "Apache|KAND": {
+   "total": 10
+  },
+  "Apache|KALUMET": {
+   "total": 56,
+   "timeoriginalestimate": 1,
+   "any_estimate": 1
+  },
+  "Apache|KAFKA": {
    "total": 12312,
    "timeoriginalestimate": 311,
    "any_estimate": 318
   },
-  "JXR": {
+  "Hyperledger|IA": {
+   "total": 54,
+   "story_points": 9,
+   "any_estimate": 9
+  },
+  "Hyperledger|GRID": {
+   "total": 103,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Hyperledger|FGJ": {
+   "total": 110,
+   "story_points": 13,
+   "any_estimate": 13
+  },
+  "Hyperledger|FCW": {
+   "total": 31
+  },
+  "Hyperledger|FABR": {
+   "total": 10
+  },
+  "Hyperledger|FABP": {
+   "total": 263,
+   "story_points": 16,
+   "any_estimate": 36,
+   "timeoriginalestimate": 33
+  },
+  "Hyperledger|FABN": {
+   "total": 1611,
+   "story_points": 64,
+   "any_estimate": 82,
+   "timeoriginalestimate": 28
+  },
+  "Hyperledger|FABLG": {
+   "total": 10
+  },
+  "Hyperledger|FABJ": {
+   "total": 484,
+   "timeoriginalestimate": 15,
+   "any_estimate": 25,
+   "story_points": 11
+  },
+  "Hyperledger|FABGW": {
+   "total": 24
+  },
+  "Hyperledger|FABG": {
+   "total": 980,
+   "story_points": 1,
+   "any_estimate": 4,
+   "timeoriginalestimate": 3
+  },
+  "Hyperledger|FABCT": {
+   "total": 58,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2,
+   "story_points": 1
+  },
+  "Hyperledger|FABCN": {
+   "total": 438,
+   "timeoriginalestimate": 15,
+   "any_estimate": 15
+  },
+  "Hyperledger|FABCJ": {
+   "total": 300,
+   "timeoriginalestimate": 3,
+   "any_estimate": 3
+  },
+  "Hyperledger|FABCG": {
+   "total": 20
+  },
+  "Hyperledger|FABCE": {
+   "total": 150
+  },
+  "Hyperledger|FABCAG": {
+   "total": 34
+  },
+  "Hyperledger|FABC": {
+   "total": 855,
+   "story_points": 37,
+   "any_estimate": 62,
+   "timeoriginalestimate": 39
+  },
+  "Hyperledger|FABB": {
+   "total": 139,
+   "timeoriginalestimate": 4,
+   "any_estimate": 4
+  },
+  "Hyperledger|FAB": {
+   "total": 13926,
+   "story_points": 638,
+   "any_estimate": 983,
+   "timeoriginalestimate": 454
+  },
+  "MariaDB|MDBF": {
+   "total": 206
+  },
+  "MariaDB|MCOL": {
+   "total": 3325
+  },
+  "JFrog|NMAP": {
+   "total": 48
+  },
+  "JFrog|MAP": {
+   "total": 33
+  },
+  "JFrog|JUX": {
+   "total": 33
+  },
+  "JFrog|HAP": {
+   "total": 1274
+  },
+  "MariaDB|CONPY": {
+   "total": 135
+  },
+  "MariaDB|CONJS": {
+   "total": 156
+  },
+  "JFrog|GAP": {
+   "total": 189
+  },
+  "JFrog|BI": {
+   "total": 295
+  },
+  "JFrog|BAP": {
+   "total": 418
+  },
+  "IntelDAOS|DAOS": {
+   "total": 8533,
+   "story_points": 6835,
+   "any_estimate": 6835
+  },
+  "Mindville|ITI": {
+   "total": 7
+  },
+  "Mindville|IMFC": {
+   "total": 76
+  },
+  "Mindville|IJBI": {
+   "total": 35
+  },
+  "Mindville|IDFTI": {
+   "total": 3
+  },
+  "Mindville|ID": {
+   "total": 87
+  },
+  "Mindville|ICS": {
+   "total": 1847
+  },
+  "Mindville|ICC": {
+   "total": 79
+  },
+  "SecondLife|STORM": {
+   "total": 1547,
+   "timeoriginalestimate": 215,
+   "any_estimate": 237,
+   "story_points": 9
+  },
+  "Hyperledger|COM": {
+   "total": 10
+  },
+  "Hyperledger|CE": {
+   "total": 717,
+   "timeoriginalestimate": 29,
+   "any_estimate": 30
+  },
+  "SecondLife|OPEN": {
+   "total": 320,
+   "timeoriginalestimate": 5,
+   "any_estimate": 6
+  },
+  "Apache|JXR": {
    "total": 159,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "JXPATH": {
+  "Apache|JXPATH": {
    "total": 197,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "JUNEAU": {
+  "Apache|JUNEAU": {
    "total": 242,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "JUDDI": {
+  "Apache|JUDDI": {
    "total": 1012,
    "timeoriginalestimate": 30,
    "any_estimate": 30
   },
-  "JSPWIKI": {
+  "Hyperledger|BESU": {
+   "total": 203,
+   "timeoriginalestimate": 2,
+   "any_estimate": 2
+  },
+  "Hyperledger|BE": {
+   "total": 844,
+   "timeoriginalestimate": 49,
+   "any_estimate": 419,
+   "story_points": 378
+  },
+  "Apache|JSPWIKI": {
    "total": 1050,
    "timeoriginalestimate": 37,
    "any_estimate": 37
   },
-  "JSPF": {
+  "Hyperledger|AV": {
+   "total": 6
+  },
+  "Hyperledger|ARIES": {
+   "total": 7,
+   "story_points": 2,
+   "any_estimate": 2
+  },
+  "Apache|JSPF": {
    "total": 108,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "JSIEVE": {
+  "Apache|JSIEVE": {
    "total": 115
   },
-  "JS2": {
+  "Apache|JS2": {
    "total": 1354,
    "timeoriginalestimate": 32,
    "any_estimate": 33
   },
-  "JS1": {
+  "IntelDAOS|CART": {
+   "total": 941,
+   "story_points": 692,
+   "any_estimate": 692
+  },
+  "Apache|JS1": {
    "total": 569
   },
-  "JOSHUA": {
+  "Apache|JOSHUA": {
    "total": 346,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "JOHNZON": {
+  "Apache|JOHNZON": {
    "total": 356
   },
-  "JEXL": {
+  "Apache|JEXL": {
    "total": 353,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "JENA": {
+  "Apache|JENA": {
    "total": 2238,
    "timeoriginalestimate": 92,
    "any_estimate": 92
   },
-  "JELLY": {
+  "Apache|JELLY": {
    "total": 291,
    "timeoriginalestimate": 40,
    "any_estimate": 40
   },
-  "JDO": {
+  "Apache|JDO": {
    "total": 798,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "JDKIM": {
+  "Apache|JDKIM": {
    "total": 47,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "JCS": {
+  "Apache|JCS": {
    "total": 227,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "JCRVLT": {
+  "Apache|JCRVLT": {
    "total": 577,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "JCRTCK": {
+  "Apache|JCRTCK": {
    "total": 19
   },
-  "JCRSITE": {
+  "Apache|JCRSITE": {
    "total": 51
   },
-  "JCRSERVLET": {
+  "Apache|JCRSERVLET": {
    "total": 6,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "JCRRMI": {
+  "Apache|JCRRMI": {
    "total": 34
   },
-  "JCRCL": {
+  "Apache|JCRCL": {
    "total": 3
   },
-  "JCRBENCH": {
+  "Apache|JCRBENCH": {
    "total": 3
   },
-  "JCR": {
+  "Apache|JCR": {
    "total": 4630,
    "timeoriginalestimate": 101,
    "any_estimate": 102
   },
-  "JCLOUDS": {
+  "Apache|JCLOUDS": {
    "total": 1590,
    "timeoriginalestimate": 51,
    "any_estimate": 53
   },
-  "JCI": {
+  "Apache|JCI": {
    "total": 79
   },
-  "JAXME": {
+  "Apache|JAXME": {
    "total": 106,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "JAMES": {
+  "Apache|JAMES": {
    "total": 3611,
    "timeoriginalestimate": 59,
    "any_estimate": 59
   },
-  "JACOB": {
+  "Apache|JACOB": {
    "total": 9
   },
-  "IVYDE": {
+  "Apache|IVYDE": {
    "total": 384,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "IVY": {
+  "Apache|IVY": {
    "total": 1623,
    "timeoriginalestimate": 28,
    "any_estimate": 28
   },
-  "ISIS": {
+  "Apache|ISIS": {
    "total": 2932,
    "timeoriginalestimate": 21,
    "any_estimate": 21
   },
-  "IOTDB": {
+  "Apache|IOTDB": {
    "total": 2265,
    "timeoriginalestimate": 350,
    "any_estimate": 350
   },
-  "IOTA": {
+  "Apache|IOTA": {
    "total": 43,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "IO": {
+  "Apache|IO": {
    "total": 744,
    "timeoriginalestimate": 50,
    "any_estimate": 50
   },
-  "INLONG": {
+  "Apache|INLONG": {
    "total": 800,
    "timeoriginalestimate": 14,
    "any_estimate": 17
   },
-  "INFRATEST3": {
+  "Apache|INFRATEST3": {
    "total": 1
   },
-  "INFRACLOUD1": {
+  "Apache|INFRACLOUD1": {
    "total": 8,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "INFRA": {
+  "Apache|INFRA": {
    "total": 15777,
    "timeoriginalestimate": 143,
    "any_estimate": 143
   },
-  "INCUBATOR": {
+  "Apache|INCUBATOR": {
    "total": 258,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "IMPERIUS": {
+  "Apache|IMPERIUS": {
    "total": 34,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "IMPALA": {
+  "Apache|IMPALA": {
    "total": 11031,
    "timeoriginalestimate": 11,
    "any_estimate": 11
   },
-  "IMAP": {
+  "Apache|IMAP": {
    "total": 353,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "IMAGING": {
+  "Apache|IMAGING": {
    "total": 319,
    "timeoriginalestimate": 29,
    "any_estimate": 29
   },
-  "IGNITE": {
+  "Apache|IGNITE": {
    "total": 16194,
    "timeoriginalestimate": 145,
    "any_estimate": 148
   },
-  "IBATISNET": {
+  "Apache|IBATISNET": {
    "total": 301,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "IBATIS": {
+  "Apache|IBATIS": {
    "total": 777,
    "timeoriginalestimate": 17,
    "any_estimate": 17
   },
-  "HUPA": {
+  "Apache|HUPA": {
    "total": 117,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "HUDI": {
+  "Apache|HUDI": {
    "total": 3172,
    "story_points": 145,
    "any_estimate": 219,
    "timeoriginalestimate": 74
   },
-  "HTTPDRAFT": {
+  "Apache|HTTPDRAFT": {
    "total": 95
   },
-  "HTTPCORE": {
+  "Apache|HTTPCORE": {
    "total": 687,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "HTTPCLIENT": {
+  "Apache|HTTPCLIENT": {
    "total": 2116,
    "timeoriginalestimate": 67,
    "any_estimate": 67
   },
-  "HTTPASYNC": {
+  "Apache|HTTPASYNC": {
    "total": 133,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "HTRACE": {
+  "Apache|HTRACE": {
    "total": 402,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "HORN": {
+  "Apache|HORN": {
    "total": 59,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "HOP": {
+  "Apache|HOP": {
    "total": 2158,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "HIVEMIND": {
+  "Apache|HIVEMIND": {
    "total": 213
   },
-  "HIVEMALL": {
+  "Apache|HIVEMALL": {
    "total": 317
   },
-  "HIVE": {
+  "Apache|HIVE": {
    "total": 25731,
    "timeoriginalestimate": 257,
    "any_estimate": 262
   },
-  "HISE": {
+  "Apache|HISE": {
    "total": 103,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "HERMES": {
+  "Apache|HERMES": {
    "total": 16
   },
-  "HERALDRY": {
+  "Apache|HERALDRY": {
    "total": 5
   },
-  "HELIX": {
+  "Apache|HELIX": {
    "total": 857,
    "timeoriginalestimate": 15,
    "any_estimate": 16
   },
-  "HDT": {
+  "Apache|HDT": {
    "total": 63,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "HDFS": {
+  "Apache|HDFS": {
    "total": 15588,
    "timeoriginalestimate": 138,
    "any_estimate": 140
   },
-  "HDDS": {
+  "Apache|HDDS": {
    "total": 6121,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "HCATALOG": {
+  "Apache|HCATALOG": {
    "total": 649,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "HBASE": {
+  "Apache|HBASE": {
    "total": 26421,
    "timeoriginalestimate": 285,
    "any_estimate": 293
   },
-  "HAWQ": {
+  "Apache|HAWQ": {
    "total": 1808,
    "timeoriginalestimate": 5,
    "any_estimate": 5
   },
-  "HARMONY": {
+  "Apache|HARMONY": {
    "total": 6676,
    "timeoriginalestimate": 183,
    "any_estimate": 184
   },
-  "HAMA": {
+  "Apache|HAMA": {
    "total": 1006,
    "timeoriginalestimate": 39,
    "any_estimate": 42
   },
-  "HADOOP": {
+  "Apache|HADOOP": {
    "total": 15797,
    "any_estimate": 304,
    "timeoriginalestimate": 292
   },
-  "GUMP": {
+  "Apache|GUMP": {
    "total": 169
   },
-  "GUACAMOLE": {
+  "Apache|GUACAMOLE": {
    "total": 1485,
    "timeoriginalestimate": 29,
    "any_estimate": 29
   },
-  "GROOVY": {
+  "Apache|GROOVY": {
    "total": 10187,
    "timeoriginalestimate": 138,
    "any_estimate": 139
   },
-  "GRIFFIN": {
+  "Apache|GRIFFIN": {
    "total": 366,
    "timeoriginalestimate": 94,
    "any_estimate": 95
   },
-  "GRFT": {
+  "Apache|GRFT": {
    "total": 110
   },
-  "GOSSIP": {
+  "Apache|GOSSIP": {
    "total": 101,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "GORA": {
+  "Apache|GORA": {
    "total": 649,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "GOBBLIN": {
+  "Apache|GOBBLIN": {
    "total": 1591,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "GIRAPH": {
+  "Apache|GIRAPH": {
    "total": 1252,
    "timeoriginalestimate": 49,
    "any_estimate": 49
   },
-  "GERONIMODEVTOOLS": {
+  "Apache|GERONIMODEVTOOLS": {
    "total": 806,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "GERONIMO": {
+  "Apache|GERONIMO": {
    "total": 782,
    "timeoriginalestimate": 20,
    "any_estimate": 20
   },
-  "GEOMETRY": {
+  "Apache|GEOMETRY": {
    "total": 130
   },
-  "GEODE": {
+  "Apache|GEODE": {
    "total": 9905,
    "story_points": 10,
    "any_estimate": 89,
    "timeoriginalestimate": 77
   },
-  "GEARPUMP": {
+  "Apache|GEARPUMP": {
    "total": 368,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "GBUILD": {
+  "Apache|GBUILD": {
    "total": 22
   },
-  "FUNCTOR": {
+  "Apache|FUNCTOR": {
    "total": 31,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "FTPSERVER": {
+  "Apache|FTPSERVER": {
    "total": 499,
    "timeoriginalestimate": 28,
    "any_estimate": 28
   },
-  "FREEMARKER": {
+  "Apache|FREEMARKER": {
    "total": 202,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "FORTRESS": {
+  "Apache|FORTRESS": {
    "total": 23,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "FOR": {
+  "Apache|FOR": {
    "total": 1251
   },
-  "FOP": {
+  "Apache|FOP": {
    "total": 3040,
    "timeoriginalestimate": 30,
    "any_estimate": 30
   },
-  "FLUME": {
+  "Apache|FLUME": {
    "total": 3380,
    "timeoriginalestimate": 102,
    "any_estimate": 103
   },
-  "FLINK": {
+  "Apache|FLINK": {
    "total": 25492,
    "timeoriginalestimate": 253,
    "any_estimate": 258
   },
-  "FLEX": {
+  "Apache|FLEX": {
    "total": 35390,
    "timeoriginalestimate": 143,
    "any_estimate": 145
   },
-  "FLAGON": {
+  "Apache|FLAGON": {
    "total": 460,
    "timeoriginalestimate": 142,
    "any_estimate": 144
   },
-  "FINERACT": {
+  "Apache|FINERACT": {
    "total": 1476,
    "timeoriginalestimate": 28,
    "any_estimate": 28
   },
-  "FINCN": {
+  "Apache|FINCN": {
    "total": 350,
    "timeoriginalestimate": 86,
    "any_estimate": 86
   },
-  "FILEUPLOAD": {
+  "Apache|FILEUPLOAD": {
    "total": 341,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "FELIX": {
+  "Apache|FELIX": {
    "total": 6392,
    "timeoriginalestimate": 128,
    "any_estimate": 128
   },
-  "FEEDPARSER": {
+  "Apache|FEEDPARSER": {
    "total": 9
   },
-  "FEDIZ": {
+  "Apache|FEDIZ": {
    "total": 252,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "FC": {
+  "Apache|FC": {
    "total": 305,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "FALCON": {
+  "Apache|FALCON": {
    "total": 2343,
    "timeoriginalestimate": 59,
    "any_estimate": 67
   },
-  "EXTVAL": {
+  "Apache|EXTVAL": {
    "total": 161,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "EXTSCRIPT": {
+  "Apache|EXTSCRIPT": {
    "total": 190
   },
-  "EXTCDI": {
+  "Apache|EXTCDI": {
    "total": 317,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "EXLBR": {
+  "Apache|EXLBR": {
    "total": 52
   },
-  "EXEC": {
+  "Apache|EXEC": {
    "total": 119,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "EWS": {
+  "Apache|EWS": {
    "total": 8
   },
-  "EVENTMESH": {
+  "Apache|EVENTMESH": {
    "total": 9
   },
-  "ETCH": {
+  "Apache|ETCH": {
    "total": 295,
    "timeoriginalestimate": 19,
    "any_estimate": 19
   },
-  "ESME": {
+  "Apache|ESME": {
    "total": 373,
    "timeoriginalestimate": 28,
    "any_estimate": 30
   },
-  "ESCIMO": {
+  "Apache|ESCIMO": {
    "total": 2
   },
-  "EMPIREDB": {
+  "Apache|EMPIREDB": {
    "total": 360,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "EMAIL": {
+  "Apache|EMAIL": {
    "total": 195,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "EL": {
+  "Apache|EL": {
    "total": 20
   },
-  "EDGENT": {
+  "Apache|EDGENT": {
    "total": 450,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "ECS": {
+  "Apache|ECS": {
    "total": 4,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "ECHARTS": {
+  "Apache|ECHARTS": {
    "total": 18
   },
-  "EASYANT": {
+  "Apache|EASYANT": {
    "total": 75,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "EAGLE": {
+  "Apache|EAGLE": {
    "total": 1097,
    "timeoriginalestimate": 40,
    "any_estimate": 40
   },
-  "DVSL": {
+  "Apache|DVSL": {
    "total": 2
   },
-  "DUBBO": {
+  "Apache|DUBBO": {
    "total": 78,
    "timeoriginalestimate": 17,
    "any_estimate": 17
   },
-  "DTACLOUD": {
+  "Apache|DTACLOUD": {
    "total": 587,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "DROIDS": {
+  "Apache|DROIDS": {
    "total": 179,
    "timeoriginalestimate": 17,
    "any_estimate": 17
   },
-  "DRILL": {
+  "Apache|DRILL": {
    "total": 8069,
    "timeoriginalestimate": 106,
    "any_estimate": 108
   },
-  "DOXIATOOLS": {
+  "Apache|DOXIATOOLS": {
    "total": 56
   },
-  "DOXIASITETOOLS": {
+  "Apache|DOXIASITETOOLS": {
    "total": 228,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "DOXIA": {
+  "Apache|DOXIA": {
    "total": 573,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "DOSGI": {
+  "Apache|DOSGI": {
    "total": 278,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "DORMANT": {
+  "Apache|DORMANT": {
    "total": 53
   },
-  "DORIS": {
+  "Apache|DORIS": {
    "total": 1
   },
-  "DMAP": {
+  "Apache|DMAP": {
    "total": 204,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "DL": {
+  "Apache|DL": {
    "total": 213,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "DISPATCH": {
+  "Apache|DISPATCH": {
    "total": 2302,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "DISCOVERY": {
+  "Apache|DISCOVERY": {
    "total": 21,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "DIRTSEC": {
+  "Apache|DIRTSEC": {
    "total": 14
   },
-  "DIRSTUDIO": {
+  "Apache|DIRSTUDIO": {
    "total": 1277,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "DIRSHARED": {
+  "Apache|DIRSHARED": {
    "total": 120,
    "timeoriginalestimate": 26,
    "any_estimate": 26
   },
-  "DIRSERVER": {
+  "Apache|DIRSERVER": {
    "total": 2278,
    "timeoriginalestimate": 47,
    "any_estimate": 47
   },
-  "DIRNAMING": {
+  "Apache|DIRNAMING": {
    "total": 15
   },
-  "DIRMINA": {
+  "Apache|DIRMINA": {
    "total": 1114,
    "timeoriginalestimate": 35,
    "any_estimate": 35
   },
-  "DIRKRB": {
+  "Apache|DIRKRB": {
    "total": 747,
    "timeoriginalestimate": 9,
    "any_estimate": 9
   },
-  "DIRGROOVY": {
+  "Apache|DIRGROOVY": {
    "total": 9
   },
-  "DIRECTMEMORY": {
+  "Apache|DIRECTMEMORY": {
    "total": 139
   },
-  "DIRAPI": {
+  "Apache|DIRAPI": {
    "total": 355,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "DIR": {
+  "Apache|DIR": {
    "total": 226,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "DIGESTER": {
+  "Apache|DIGESTER": {
    "total": 195,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "DI": {
+  "Apache|DI": {
    "total": 36,
    "timeoriginalestimate": 6,
    "any_estimate": 7
   },
-  "DERBY": {
+  "Apache|DERBY": {
    "total": 7123,
    "timeoriginalestimate": 78,
    "any_estimate": 78
   },
-  "DEPOT": {
+  "Apache|DEPOT": {
    "total": 2
   },
-  "DELTASPIKE": {
+  "Apache|DELTASPIKE": {
    "total": 1390,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "DDLUTILS": {
+  "Apache|DDLUTILS": {
    "total": 289,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "DBUTILS": {
+  "Apache|DBUTILS": {
    "total": 146,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "DBF": {
+  "Apache|DBF": {
    "total": 13
   },
-  "DBCP": {
+  "Apache|DBCP": {
    "total": 574,
    "timeoriginalestimate": 17,
    "any_estimate": 17
   },
-  "DAYTRADER": {
+  "Apache|DAYTRADER": {
    "total": 67
   },
-  "DATASKETCHES": {
+  "Apache|DATASKETCHES": {
    "total": 10
   },
-  "DATALAB": {
+  "Apache|DATALAB": {
    "total": 1858,
    "story_points": 74,
    "any_estimate": 75,
    "timeoriginalestimate": 1
   },
-  "DATAFU": {
+  "Apache|DATAFU": {
    "total": 161,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "DAFFODIL": {
+  "Apache|DAFFODIL": {
    "total": 2577,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "DAEMON": {
+  "Apache|DAEMON": {
    "total": 436,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "CXFXJC": {
+  "Apache|CXFXJC": {
    "total": 40,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "CXF": {
+  "Apache|CXF": {
    "total": 8531,
    "timeoriginalestimate": 264,
    "any_estimate": 266
   },
-  "CURATOR": {
+  "Apache|CURATOR": {
    "total": 622,
    "timeoriginalestimate": 26,
    "any_estimate": 26
   },
-  "CTAKES": {
+  "Apache|CTAKES": {
    "total": 556,
    "timeoriginalestimate": 46,
    "any_estimate": 46
   },
-  "CSV": {
+  "Apache|CSV": {
    "total": 291,
    "timeoriginalestimate": 18,
    "any_estimate": 18
   },
-  "CS": {
+  "Apache|CS": {
    "total": 13,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "CRYPTO": {
+  "Apache|CRYPTO": {
    "total": 148
   },
-  "CRUNCH": {
+  "Apache|CRUNCH": {
    "total": 697,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "CRAIL": {
+  "Apache|CRAIL": {
    "total": 113,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "COUCHDB": {
+  "Apache|COUCHDB": {
    "total": 3292,
    "timeoriginalestimate": 101,
    "any_estimate": 102
   },
-  "COTTON": {
+  "Apache|COTTON": {
    "total": 15,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "CORAL": {
+  "Apache|CORAL": {
    "total": 21,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "COR": {
+  "Apache|COR": {
    "total": 53
   },
-  "CONTINUUM": {
+  "Apache|CONTINUUM": {
    "total": 2724,
    "timeoriginalestimate": 65,
    "any_estimate": 66
   },
-  "CONNECTORS": {
+  "Apache|CONNECTORS": {
    "total": 1689,
    "timeoriginalestimate": 89,
    "any_estimate": 89
   },
-  "CONFIGURATION": {
+  "Apache|CONFIGURATION": {
    "total": 805,
    "timeoriginalestimate": 39,
    "any_estimate": 39
   },
-  "CONCERTED": {
+  "Apache|CONCERTED": {
    "total": 23,
    "timeoriginalestimate": 5,
    "any_estimate": 6
   },
-  "COMPRESS": {
+  "Apache|COMPRESS": {
    "total": 601,
    "timeoriginalestimate": 30,
    "any_estimate": 30
   },
-  "COMMONSSITE": {
+  "Apache|COMMONSSITE": {
    "total": 134,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "COMMONSRDF": {
+  "Apache|COMMONSRDF": {
    "total": 78,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "COMDEV": {
+  "Apache|COMDEV": {
    "total": 404,
    "timeoriginalestimate": 23,
    "any_estimate": 23
   },
-  "COLLECTIONS": {
+  "Apache|COLLECTIONS": {
    "total": 744,
    "timeoriginalestimate": 45,
    "any_estimate": 45
   },
-  "CODEC": {
+  "Apache|CODEC": {
    "total": 298,
    "timeoriginalestimate": 11,
    "any_estimate": 11
   },
-  "COCOON3": {
+  "Apache|COCOON3": {
    "total": 132
   },
-  "COCOON": {
+  "Apache|COCOON": {
    "total": 2364
   },
-  "CMIS": {
+  "Apache|CMIS": {
    "total": 1096,
    "timeoriginalestimate": 53,
    "any_estimate": 53
   },
-  "CMDA": {
+  "Apache|CMDA": {
    "total": 19,
    "timeoriginalestimate": 16,
    "any_estimate": 16
   },
-  "CLOWNFISH": {
+  "Apache|CLOWNFISH": {
    "total": 120
   },
-  "CLOUDSTACK": {
+  "Apache|CLOUDSTACK": {
    "total": 40,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "CLKE": {
+  "Apache|CLKE": {
    "total": 47
   },
-  "CLK": {
+  "Apache|CLK": {
    "total": 804,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "CLIMATE": {
+  "Apache|CLIMATE": {
    "total": 973,
    "timeoriginalestimate": 31,
    "any_estimate": 33
   },
-  "CLI": {
+  "Apache|CLI": {
    "total": 313,
    "timeoriginalestimate": 20,
    "any_estimate": 20
   },
-  "CLEREZZA": {
+  "Apache|CLEREZZA": {
    "total": 1069,
    "timeoriginalestimate": 18,
    "any_estimate": 18
   },
-  "CHUKWA": {
+  "Apache|CHUKWA": {
    "total": 822,
    "timeoriginalestimate": 28,
    "any_estimate": 29
   },
-  "CHAINSAW": {
+  "Apache|CHAINSAW": {
    "total": 42,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "CHAIN": {
+  "Apache|CHAIN": {
    "total": 113,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "CENTRAL": {
+  "Apache|CENTRAL": {
    "total": 19
   },
-  "CELIX": {
+  "Apache|CELIX": {
    "total": 469,
    "timeoriginalestimate": 13,
    "any_estimate": 13
   },
-  "CB": {
+  "Apache|CB": {
    "total": 14007,
    "timeoriginalestimate": 663,
    "any_estimate": 668
   },
-  "CAY": {
+  "Apache|CAY": {
    "total": 2714,
    "timeoriginalestimate": 43,
    "any_estimate": 43
   },
-  "CASSANDRASC": {
+  "Apache|CASSANDRASC": {
    "total": 32
   },
-  "CASSANDRA": {
+  "Apache|CASSANDRA": {
    "total": 17115,
    "timeoriginalestimate": 428,
    "any_estimate": 432
   },
-  "CARBONDATA": {
+  "Apache|CARBONDATA": {
    "total": 4316,
    "timeoriginalestimate": 40,
    "any_estimate": 42
   },
-  "CAMEL": {
+  "Apache|CAMEL": {
    "total": 17391,
    "timeoriginalestimate": 223,
    "any_estimate": 229
   },
-  "CALCITE": {
+  "Apache|CALCITE": {
    "total": 4968,
    "timeoriginalestimate": 41,
    "any_estimate": 41
   },
-  "CACTUS": {
+  "Apache|CACTUS": {
    "total": 275,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "BVAL": {
+  "Apache|BVAL": {
    "total": 185,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "BUILDR": {
+  "Apache|BUILDR": {
    "total": 735,
    "timeoriginalestimate": 19,
    "any_estimate": 19
   },
-  "BSF": {
+  "Apache|BSF": {
    "total": 44,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "BROOKLYN": {
+  "Apache|BROOKLYN": {
    "total": 628,
    "timeoriginalestimate": 7,
    "any_estimate": 7
   },
-  "BOOKKEEPER": {
+  "Apache|BOOKKEEPER": {
    "total": 1095,
    "timeoriginalestimate": 18,
    "any_estimate": 18
   },
-  "BLUR": {
+  "Apache|BLUR": {
    "total": 450,
    "timeoriginalestimate": 3,
    "any_estimate": 4
   },
-  "BLUESKY": {
+  "Apache|BLUESKY": {
    "total": 10,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "BLUEMARLIN": {
+  "Apache|BLUEMARLIN": {
    "total": 3
   },
-  "BLAZE": {
+  "Apache|BLAZE": {
    "total": 10
   },
-  "BIGTOP": {
+  "Apache|BIGTOP": {
    "total": 3622,
    "timeoriginalestimate": 43,
    "any_estimate": 45
   },
-  "BETWIXT": {
+  "Apache|BETWIXT": {
    "total": 73,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "BEEHIVE": {
+  "Apache|BEEHIVE": {
    "total": 1231,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "BEANUTILS": {
+  "Apache|BEANUTILS": {
    "total": 551,
    "timeoriginalestimate": 21,
    "any_estimate": 21
   },
-  "BEAM": {
+  "Apache|BEAM": {
    "total": 13597,
    "any_estimate": 167,
    "timeoriginalestimate": 165
   },
-  "BCEL": {
+  "Apache|BCEL": {
    "total": 342,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "BATIK": {
+  "Apache|BATIK": {
    "total": 1317,
    "timeoriginalestimate": 20,
    "any_estimate": 20
   },
-  "BATCHEE": {
+  "Apache|BATCHEE": {
    "total": 154
   },
-  "BAHIR": {
+  "Apache|BAHIR": {
    "total": 297,
    "timeoriginalestimate": 29,
    "any_estimate": 29
   },
-  "AXISCPP": {
+  "Apache|AXISCPP": {
    "total": 1087,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "AXIS2C": {
+  "Apache|AXIS2C": {
    "total": 1692,
    "timeoriginalestimate": 94,
    "any_estimate": 94
   },
-  "AXIS2": {
+  "Apache|AXIS2": {
    "total": 5918,
    "timeoriginalestimate": 289,
    "any_estimate": 291
   },
-  "AXIS": {
+  "Apache|AXIS": {
    "total": 2918,
    "timeoriginalestimate": 36,
    "any_estimate": 36
   },
-  "AXIOM": {
+  "Apache|AXIOM": {
    "total": 506,
    "timeoriginalestimate": 23,
    "any_estimate": 23
   },
-  "AWF": {
+  "Apache|AWF": {
    "total": 243,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "AVRO": {
+  "Apache|AVRO": {
    "total": 3272,
    "timeoriginalestimate": 118,
    "any_estimate": 119
   },
-  "AVNSHARP": {
+  "Apache|AVNSHARP": {
    "total": 6
   },
-  "AVALON": {
+  "Apache|AVALON": {
    "total": 7
   },
-  "AUTOTAG": {
+  "Apache|AUTOTAG": {
    "total": 24,
    "timeoriginalestimate": 12,
    "any_estimate": 12
   },
-  "AURORA": {
+  "Apache|AURORA": {
    "total": 1970,
    "timeoriginalestimate": 13,
    "any_estimate": 181,
    "story_points": 170
   },
-  "ATTRIBUTES": {
+  "Apache|ATTRIBUTES": {
    "total": 13
   },
-  "ATTIC": {
+  "Apache|ATTIC": {
    "total": 198
   },
-  "ATLAS": {
+  "Apache|ATLAS": {
    "total": 4469,
    "timeoriginalestimate": 33,
    "any_estimate": 35
   },
-  "ASYNCWEB": {
+  "Apache|ASYNCWEB": {
    "total": 45,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "ASTERIXDB": {
+  "Apache|ASTERIXDB": {
    "total": 2993,
    "timeoriginalestimate": 23,
    "any_estimate": 23
   },
-  "ASFSITE": {
+  "Apache|ASFSITE": {
    "total": 14,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "ARTEMIS": {
+  "Apache|ARTEMIS": {
    "total": 3571,
    "timeoriginalestimate": 23,
    "any_estimate": 23
   },
-  "ARROW": {
+  "Apache|ARROW": {
    "total": 15128,
    "timeoriginalestimate": 104,
    "any_estimate": 104
   },
-  "ARMI": {
+  "Apache|ARMI": {
    "total": 6,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "ARIES": {
+  "Apache|ARIES": {
    "total": 2056,
    "timeoriginalestimate": 53,
    "any_estimate": 53
   },
-  "ARIA": {
+  "Apache|ARIA": {
    "total": 427,
    "timeoriginalestimate": 2,
    "any_estimate": 2
   },
-  "ARCHETYPE": {
+  "Apache|ARCHETYPE": {
    "total": 581,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "APOLLO": {
+  "Apache|APOLLO": {
    "total": 51
   },
-  "APLO": {
+  "Apache|APLO": {
    "total": 401,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "APISIX": {
+  "Apache|APISIX": {
    "total": 36,
    "timeoriginalestimate": 3,
    "any_estimate": 3
   },
-  "APEXMALHAR": {
+  "Apache|APEXMALHAR": {
    "total": 2041,
    "timeoriginalestimate": 42,
    "any_estimate": 42
   },
-  "APEXCORE": {
+  "Apache|APEXCORE": {
    "total": 782,
    "timeoriginalestimate": 11,
    "any_estimate": 11
   },
-  "APA": {
+  "Apache|APA": {
    "total": 80,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "ANY23": {
+  "Apache|ANY23": {
    "total": 526,
    "timeoriginalestimate": 6,
    "any_estimate": 6
   },
-  "ANAKIA": {
+  "Apache|ANAKIA": {
    "total": 69,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "AMQNET": {
+  "Apache|AMQNET": {
    "total": 623,
    "timeoriginalestimate": 91,
    "any_estimate": 93
   },
-  "AMQCPP": {
+  "Apache|AMQCPP": {
    "total": 646,
    "timeoriginalestimate": 59,
    "any_estimate": 60
   },
-  "AMQCLI": {
+  "Apache|AMQCLI": {
    "total": 13
   },
-  "AMQ": {
+  "Apache|AMQ": {
    "total": 7540,
    "timeoriginalestimate": 196,
    "any_estimate": 200
   },
-  "AMBARI": {
+  "Apache|AMBARI": {
    "total": 25384,
    "timeoriginalestimate": 407,
    "any_estimate": 409
   },
-  "AMATERASU": {
+  "Apache|AMATERASU": {
    "total": 84,
    "timeoriginalestimate": 4,
    "any_estimate": 4
   },
-  "ALOIS": {
+  "Apache|ALOIS": {
    "total": 13,
    "timeoriginalestimate": 10,
    "any_estimate": 10
   },
-  "AIRFLOW": {
+  "Apache|AIRFLOW": {
    "total": 7038,
    "timeoriginalestimate": 224,
    "any_estimate": 224
   },
-  "AIRAVATA": {
+  "Apache|AIRAVATA": {
    "total": 3538,
    "timeoriginalestimate": 26,
    "any_estimate": 27
   },
-  "AGILA": {
+  "Apache|AGILA": {
    "total": 44
   },
-  "AGEOLD": {
+  "Apache|AGEOLD": {
    "total": 65,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "AGE2": {
+  "Apache|AGE2": {
    "total": 77,
    "timeoriginalestimate": 18,
    "any_estimate": 18
   },
-  "ADDR": {
+  "Apache|ADDR": {
    "total": 37
   },
-  "ACL": {
+  "Apache|ACL": {
    "total": 5,
    "timeoriginalestimate": 1,
    "any_estimate": 1
   },
-  "ACE": {
+  "Apache|ACE": {
    "total": 539,
    "timeoriginalestimate": 8,
    "any_estimate": 8
   },
-  "ACCUMULO": {
+  "Apache|ACCUMULO": {
    "total": 4745,
    "timeoriginalestimate": 82,
    "any_estimate": 85
   },
-  "ABDERA": {
+  "Apache|ABDERA": {
    "total": 311,
    "timeoriginalestimate": 14,
    "any_estimate": 14
   },
-  "AAR": {
+  "Apache|AAR": {
    "total": 9107,
    "timeoriginalestimate": 127,
    "any_estimate": 127
