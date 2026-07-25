@@ -111,8 +111,7 @@ def probe(name, single, multi, work, skip_clone=False):
             n_multi += 1
         if GH_RE.search(msg):
             n_gh += 1
-    rate = n_multi / total if total else 0.0
-    return {
+    return _derive({
         "project": name,
         "clone_url": url,
         "head_sha": head_sha(repo),
@@ -120,14 +119,32 @@ def probe(name, single, multi, work, skip_clone=False):
         "key_single": single,
         "keys_multi": multi,
         "commits_citing_single": n_single,
-        "commits_citing_multi": n_multi,
-        "rate_single": round(n_single / total, 4) if total else 0.0,
-        "rate_multi": round(rate, 4),
-        "commits_citing_github_issue": n_gh,
-        "rate_github_issue": round(n_gh / total, 4) if total else 0.0,
-        "passes_bar": rate >= BAR,
-        "bar": BAR,
-    }
+        # Task 5b canonical names: both reference channels, every project.
+        "jira_key_refs": n_multi,
+        "github_issue_refs": n_gh,
+    })
+
+
+def _derive(r):
+    """Rates are DERIVED, never stored pre-rounded.
+
+    Storing round(rate, 4) and then formatting to 1dp double-rounds: knox is
+    2694/3194 = 84.3456%, which round-4 turns into 0.8435 and a .1f format then
+    renders as 84.4% -- while citation_rate.py, formatting the full-precision
+    value once, prints 84.3%. That single artifact manufactured both of the
+    "discrepancies" in the first sweep (knox and helix). Keep full precision and
+    format exactly once, at the edge.
+    """
+    n = r["commits_scanned"] or 1
+    r["rate_single"] = r["commits_citing_single"] / n
+    r["rate_multi"] = r["jira_key_refs"] / n
+    r["rate_github_issue"] = r["github_issue_refs"] / n
+    r["passes_bar"] = r["rate_multi"] >= BAR
+    r["bar"] = BAR
+    # legacy alias kept so nothing already written breaks
+    r["commits_citing_multi"] = r["jira_key_refs"]
+    r["commits_citing_github_issue"] = r["github_issue_refs"]
+    return r
 
 
 def drop_reason(r):
@@ -176,7 +193,10 @@ def main():
     # the sweep can be run repeatedly while clones are still arriving.
     existing = {}
     if os.path.exists(args.out):
-        existing = {r["project"]: r for r in json.load(open(args.out))["projects"]}
+        for r in json.load(open(args.out))["projects"]:
+            r.setdefault("jira_key_refs", r.get("commits_citing_multi"))
+            r.setdefault("github_issue_refs", r.get("commits_citing_github_issue"))
+            existing[r["project"]] = _derive(r)   # recompute rates at full precision
 
     records = list(existing.values())
     for name, single, multi in PROJECTS:
