@@ -75,6 +75,51 @@ references (`#NNN`, `GH-NNN`) alongside Jira keys, so
 repo. Nine projects qualify. `below_bar_narrowly` (≥70%), `low_commit_message_hygiene`
 and `jira_effectively_unused` (<15%) are threshold labels on the measured rate.
 
+## 1b. Cross-corpus validation of the measure (Rath & Mäder 2019, SEOSS 33)
+
+The commit-side rate is not a novel measure. SEOSS 33 publishes it per project
+as "Linked Change Sets [%]" for 33 projects (`paper/PRIOR_WORK.md` `215b10f`).
+Our probe reproduces it on a corpus seven years later:
+
+| project | SEOSS 2019 | this probe 2026 | Δ |
+|---|---:|---:|---:|
+| Hadoop | 97.13% (27,776 commits) | **97.8%** (28,290, 7-key) | +0.7pp |
+| Hive | 96.34% (11,179) | **97.0%** (18,213) | +0.7pp |
+| HBase | 90.06% (14,331) | **92.5%** (21,220) | +2.5pp |
+| ZooKeeper | 87.12% (1,600) | **90.4%** (2,718) | +3.3pp |
+| Flink | 41.98% (12,419) | **66.0%** (38,219) | **+24.1pp** |
+
+Four of five agree within 3.3pp across corpora seven years apart — independent
+cross-corpus validation of the measure. Flink's 24.1pp gap is scope, not error:
+their snapshot holds 12,419 commits against our 38,219, so we cover a decade in
+which its citation practice could have changed. **This is untested** — the
+truncation check (re-probing Flink's first 12,419 commits) has not been run.
+
+**Do not claim per-project linkage rates are unreported.** They are, by
+Rath & Mäder 2019 (SEOSS 33, 33 projects) and Rath et al. ICSE 2018 (six
+projects, both directions). What is new here is a pre-registered numeric bar
+with reported attrition, both reference channels measured together, and the
+commit-side/ticket-side divergence below.
+
+## 1c. Commit-side is what gets published; ticket-side is what studies need
+
+| project | commit-side | ticket-side |
+|---|---:|---:|
+| **Kylin** | **83.9%** | **12.0%** |
+| Sqoop | 82.6% | 21.2% |
+| Knox | 84.3% | 69.0% |
+| Ozone | 98.3% | 63.9% |
+
+Kylin is the worked example: it clears the 0.80 commit-side bar comfortably and
+leaves seven in eight of its tickets with no commit at all. Source:
+`scripts/ticket_coverage.py` `e0d76ef`.
+
+**Truncation caveat, load-bearing.** Ticket-side was computed **only for the 12
+projects that already cleared the commit-side bar**. The 12.0–69.0% range is
+therefore *within-passing variation*, not evidence of a general correlation
+between the two rates across all projects. Nothing here licenses a claim about
+projects below the bar, whose ticket-side rates were never measured.
+
 ## 2. Single-key vs multi-key — 26.2% vs **92.3%-A**
 
 **Label discipline.** Two unrelated quantities in this repo are both 92.3%.
@@ -253,13 +298,40 @@ one project, one of them a capitalisation-only variant. `Mojang/10400` is
 *Minecraft* and *Minecraft: Java Edition*.
 
 **Project keys are stable identifiers; project names are not, and the published
-count is name-based.** Removing the ~326 surplus names lands near 2,180, still
+count is name-based.** Measured on the same pass: **0 project ids carry more
+than one key and 0 keys map to more than one id**, against 326 ids carrying
+multiple names. Within a tracker snapshot the id↔key mapping is exactly 1:1.
+(That does not make key-based commit matching safe — commits can cite keys that
+have no project record in the tracker at all; see
+`paper/eligibility_failure_modes.md` mode 6.) Removing the ~326 surplus names lands near 2,180, still
 above 1,822, so renaming explains part of the overshoot and not all of it. The
 remainder is unidentified and the hypothesis is recorded as *consistent with
 rename inflation, unverified*.
 
 **Standing rule: 1,822 is never quoted next to a per-project number.** Issue
 counts are unaffected — 2,686,282 parsed against ~2.7M published, −0.5%.
+
+## 5b. Era bounds on the dossier's status- and CI-based results
+
+Two bounds that must travel with the results they qualify
+(`paper/ERA_AUDIT.md` `e0d76ef`):
+
+**§5a phase decomposition is bounded to 2013–2021.** The reached-`Patch
+Available` sub-corpus nominally spans 2013–2024, but the post-2021 tail is **6
+architectural tickets**. Any claim that build-vs-merge behaviour *persists* is
+unsupported; the result is a statement about 2013–2021.
+
+**§8a is termination, not decay.** Architectural tickets carrying a CI verdict:
+**96.7%** (145/150) ≤2018, **50.8%** (66/130) 2019–21, **0 of 43** ≥2022. The
+verdicts are not sparse after 2021, they are absent, so no additional mining
+extends the series. The mid-window is half-blind rather than merely thinner.
+
+**Decade-trend control arm, corrected.** The ordinary control collapses across
+truncation windows: **394 tickets (2016+) → 145 (2020+) → 101 (2021+)**. The
+post-2020 result (interaction +0.102, p=0.44) is the 2020+ window with 145
+controls; the 101 figure belongs to 2021+. Earlier drafts paired 394→101 with
+the 2020+ p-value, mixing two windows. Source `scripts/full_adjustment.py`
+`4b8c3af`.
 
 ## 6. Industry-donated projects
 

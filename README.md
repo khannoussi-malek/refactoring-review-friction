@@ -35,9 +35,10 @@ one, and across the 12 eligible projects the ticket-side rate runs
 | Jira status hygiene decays; CI verdicts terminate | status `Patch Available` **93.5% → 15.5%**; CI verdicts **96.7% → 50.8% → 0 of 43** | ≤2018 / 2019–21 / ≥2022; no ticket after 2021 carries a CI verdict | `paper/ERA_AUDIT.md` `e0d76ef` |
 | Estimate use is a per-project convention inside Apache, not Apache-wide | **2.557%** overall (25,949 / 1,014,926); MESOS **32.94%**, STDCXX **38.70%**, USERGRID **37.51%** | Presence counts only; no claim about estimate quality | `scripts/jira_estimates.py` `eee902f` |
 | Story points have no portable schema | "Story Points" maps to **15 distinct customfield ids** across 14 orgs; **10 orgs carry more than one**; Mojang has none | `absent_from_catalogue` and `present_null` are different facts: Mojang has no fields, JFrog has all six and leaves them null | `paper/estimate_field_schema.md` `eee902f` |
-| Project keys are stable identifiers, names are not | **326 project ids carry multiple names; 0 keys do** — `Jira/12910` is *SourceTree*, *SourceTree For Mac*, *Sourcetree For Mac* | Measured across 2,686,282 issues | `paper/numbers.md` `0f116aa` |
+| Project keys are stable identifiers, names are not | **326 project ids carry multiple names; 0 ids carry multiple keys; 0 keys map to multiple ids** — `Jira/12910` is *SourceTree*, *SourceTree For Mac*, *Sourcetree For Mac* | id↔key is 1:1 *within a tracker snapshot*; keys cited in commits may have no project record in it at all (§5 mode 6) | `paper/numbers.md` `0f116aa` |
 | The standard sampling frame cannot express eligibility | GHS: 735,669 repositories, **35 fields**, only `totalIssues`/`openIssues` touch issues | Both are GitHub-issue counts; no tracker type, no linkage, no commit convention | `paper/PRIOR_WORK.md` `215b10f` |
 | Estimate-rich and traceable projects barely intersect | **3 of 27** clear both (≥10% estimates, ≥0.80 traceability): DAOS 80.1%/93.4%, EVG 56.9%/91.6%, SLIDER 15.3%/83.1% | Only **4 of 27** clear traceability at all; OPENNLP joins at a 5% estimate floor | `paper/intersection.json` `63f4231` |
+| Selecting on estimate coverage biases toward retired projects | **9 of 23** estimate-ranked Apache projects are in the Attic (39%); among those with ≥10% estimates, **5 of 8** (STDCXX, USERGRID, MESOS, MXNET, SHINDIG) | Traceability selection shows no significant skew: 2/12 passes vs 1/26 drops, Fisher p=0.229 | `paper/intersection.json` `63f4231` |
 | RefactoringMiner mislabels TypeScript type aliases | **160** `interface → class` false positives in one commit; 3rd most frequent type in that corpus | TypeScript mode; reported upstream, [issue #1124](https://github.com/tsantalis/RefactoringMiner/issues/1124) | `SUI_FINDINGS.md` |
 
 ## 4. What did not hold
@@ -86,8 +87,10 @@ Hadoop corpus cannot carry the study. Estimate-rich and traceable projects are
 close to disjoint — 3 of 27 clear both, and among Apache specifically the
 estimate-rich projects are exactly those that moved to GitHub PR workflows
 (MESOS 32.94% estimates against 7.4% traceability) or predate the citation
-convention. The two strong passes, DAOS and EVG, are corporate projects running
-both trackers; the third, SLIDER, is in the Attic. Current candidate: the
+convention. The two strong passes, DAOS and EVG, are corporate projects running both
+trackers; the third, SLIDER, is retired — and retirement is systematic here, not
+incidental: 5 of the 8 Apache projects with ≥10% estimate coverage are in the
+Attic. Current candidate: the
 interval from a self-admitted technical debt comment to a detected architectural
 refactoring of the annotated entity. Prior work is same-commit co-occurrence
 only — Iammarino 2021 (commit-level, four projects, zero temporal analysis) and
