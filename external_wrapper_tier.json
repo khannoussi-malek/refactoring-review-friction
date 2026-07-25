@@ -1,0 +1,250 @@
+{
+  "rare_pct_tau0.02_cut0.25": {
+    "tau": 0.02,
+    "metric": "rare_pct",
+    "cut": 0.25,
+    "n_flagged": 7,
+    "precision": 0.42857142857142855,
+    "recall": 1.0,
+    "false_positives": [
+      "hadoop-common",
+      "hadoop-hdfs-rbf",
+      "hadoop-yarn-csi",
+      "hadoop-yarn-server-common"
+    ],
+    "missed": [],
+    "split": {
+      "n_wrapper": 89,
+      "n_rest": 153,
+      "median_wrapper": 25.22332175925926,
+      "median_rest": 2.9074074074074074,
+      "p": 7.893528454029968e-07
+    }
+  },
+  "rare_pct_tau0.02_cut0.25+guard": {
+    "tau": 0.02,
+    "metric": "rare_pct",
+    "cut": 0.25,
+    "n_flagged": 5,
+    "precision": 0.6,
+    "recall": 1.0,
+    "false_positives": [
+      "hadoop-hdfs-rbf",
+      "hadoop-yarn-csi"
+    ],
+    "missed": [],
+    "split": {
+      "n_wrapper": 51,
+      "n_rest": 191,
+      "median_wrapper": 39.08880787037037,
+      "median_rest": 3.020775462962963,
+      "p": 7.905010360490484e-07
+    }
+  },
+  "rare_pct_tau0.02_cut0.4": {
+    "tau": 0.02,
+    "metric": "rare_pct",
+    "cut": 0.4,
+    "n_flagged": 4,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "false_positives": [
+      "hadoop-yarn-csi",
+      "hadoop-yarn-server-common"
+    ],
+    "missed": [
+      "hadoop-azure"
+    ],
+    "split": {
+      "n_wrapper": 32,
+      "n_rest": 210,
+      "median_wrapper": 32.614953703703705,
+      "median_rest": 4.413015046296296,
+      "p": 0.003660641565504892
+    }
+  },
+  "rare_pct_tau0.02_cut0.4+guard": {
+    "tau": 0.02,
+    "metric": "rare_pct",
+    "cut": 0.4,
+    "n_flagged": 3,
+    "precision": 0.6666666666666666,
+    "recall": 0.6666666666666666,
+    "false_positives": [
+      "hadoop-yarn-csi"
+    ],
+    "missed": [
+      "hadoop-azure"
+    ],
+    "split": {
+      "n_wrapper": 27,
+      "n_rest": 215,
+      "median_wrapper": 39.08880787037037,
+      "median_rest": 4.100543981481482,
+      "p": 0.00015140845839008453
+    }
+  },
+  "rare_pct_tau0.05_cut0.25": {
+    "tau": 0.05,
+    "metric": "rare_pct",
+    "cut": 0.25,
+    "n_flagged": 10,
+    "precision": 0.3,
+    "recall": 1.0,
+    "false_positives": [
+      "hadoop-auth",
+      "hadoop-common",
+      "hadoop-hdfs-client",
+      "hadoop-hdfs-rbf",
+      "hadoop-yarn-csi",
+      "hadoop-yarn-server-common",
+      "hadoop-yarn-server-web-proxy"
+    ],
+    "missed": [],
+    "split": {
+      "n_wrapper": 103,
+      "n_rest": 139,
+      "median_wrapper": 17.386041666666667,
+      "median_rest": 2.9265162037037036,
+      "p": 0.0004903223748392912
+    }
+  },
+  "rare_pct_tau0.05_cut0.25+guard": {
+    "tau": 0.05,
+    "metric": "rare_pct",
+    "cut": 0.25,
+    "n_flagged": 5,
+    "precision": 0.6,
+    "recall": 1.0,
+    "false_positives": [
+      "hadoop-hdfs-rbf",
+      "hadoop-yarn-csi"
+    ],
+    "missed": [],
+    "split": {
+      "n_wrapper": 51,
+      "n_rest": 191,
+      "median_wrapper": 39.08880787037037,
+      "median_rest": 3.020775462962963,
+      "p": 7.905010360490484e-07
+    }
+  },
+  "rare_pct_tau0.05_cut0.4": {
+    "tau": 0.05,
+    "metric": "rare_pct",
+    "cut": 0.4,
+    "n_flagged": 6,
+    "precision": 0.5,
+    "recall": 1.0,
+    "false_positives": [
+      "hadoop-common",
+      "hadoop-yarn-csi",
+      "hadoop-yarn-server-common"
+    ],
+    "missed": [],
+    "split": {
+      "n_wrapper": 85,
+      "n_rest": 157,
+      "median_wrapper": 32.07599537037037,
+      "median_rest": 2.909803240740741,
+      "p": 3.368881527354053e-07
+    }
+  },
+  "rare_pct_tau0.05_cut0.4+guard": {
+    "tau": 0.05,
+    "metric": "rare_pct",
+    "cut": 0.4,
+    "n_flagged": 4,
+    "precision": 0.75,
+    "recall": 1.0,
+    "false_positives": [
+      "hadoop-yarn-csi"
+    ],
+    "missed": [],
+    "split": {
+      "n_wrapper": 47,
+      "n_rest": 195,
+      "median_wrapper": 42.00875,
+      "median_rest": 3.0626736111111112,
+      "p": 1.7186459125637497e-07
+    }
+  },
+  "continuous": {
+    "n": 242,
+    "rho": 0.37121815984286477,
+    "p": 2.534848014680459e-09
+  },
+  "size_control": {
+    "collinearity": {
+      "rho": -0.3821107296653294,
+      "p": 7.828528025105868e-10
+    },
+    "models": {
+      "alone": {
+        "coef": 3.158184595799711,
+        "ci": [
+          2.0176294442232523,
+          4.298739747376169
+        ],
+        "p": 5.7271078677103e-08,
+        "n": 242
+      },
+      "+size": {
+        "coef": 3.1348802569305,
+        "ci": [
+          1.9487245767801562,
+          4.321035937080843
+        ],
+        "p": 2.2192002199315692e-07,
+        "n": 242
+      },
+      "+size+era": {
+        "coef": 2.884807278729606,
+        "ci": [
+          1.57066492318992,
+          4.198949634269292
+        ],
+        "p": 1.6886955452171452e-05,
+        "n": 242
+      }
+    }
+  },
+  "hand_reference": {
+    "n_wrapper": 46,
+    "n_rest": 196,
+    "median_wrapper": 43.564236111111114,
+    "median_rest": 3.1398900462962964,
+    "p": 2.671528534432069e-07
+  },
+  "frozen": {
+    "spec": "rare_pct_tau0.05_cut0.4+guard",
+    "tau": 0.05,
+    "cut": 0.4,
+    "guard": true,
+    "flagged_all_modules": [
+      "hadoop-aliyun",
+      "hadoop-aws",
+      "hadoop-azure",
+      "hadoop-azure-datalake",
+      "hadoop-benchmark",
+      "hadoop-bos",
+      "hadoop-client-api",
+      "hadoop-client-minicluster",
+      "hadoop-client-runtime",
+      "hadoop-compat-bench",
+      "hadoop-cos",
+      "hadoop-gcp",
+      "hadoop-huaweicloud",
+      "hadoop-kafka",
+      "hadoop-mapreduce-client",
+      "hadoop-mapreduce-client-app",
+      "hadoop-maven-plugins",
+      "hadoop-tos",
+      "hadoop-yarn-applications-catalog-webapp",
+      "hadoop-yarn-csi",
+      "hadoop-yarn-server-timelineservice-documentstore",
+      "hadoop-yarn-server-timelineservice-hbase-common",
+      "hadoop-yarn-server-timelineservice-hbase-tests"
+    ]
+  }
+}
