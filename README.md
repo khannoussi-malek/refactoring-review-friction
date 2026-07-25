@@ -1,245 +1,136 @@
-# RQ1 feasibility study — architectural refactoring & review friction in Apache Hadoop
+# When do developers decide to refactor?
 
-This started as a week-1 "thin slice" starter kit. It grew into a study that established a
-reproducible pipeline, ruled out the original signal, produced a defended mechanism-level finding —
-and **rejected three competing explanations and corrected one of its own claims along the way.** This
-README explains what was done and what was (and wasn't) found; full commands are in
-[SLICE_LOG.md](SLICE_LOG.md), the write-up in [research_prospectus.md](research_prospectus.md).
+## 1. What this is
 
-> **Headline finding:** The friction in architectural refactoring is specifically in **creating
-> abstractions**, not relocating code. Extracting interfaces/superclasses/classes is **~2.5× slower to
-> be picked up** (7.2 vs 2.8 days, p=0.004) and ~2× slower to resolve than moving/renaming code — which
-> is itself no harder than ordinary work. The effect **survives controls for change size, discussion
-> volume, contributor experience, module tier and era**. Decomposing the Jira status changelog
-> localises it: the cost is in **building** the change (~4× longer in logged active coding time), not
-> in getting it merged — so it is largely **intrinsic difficulty, not volunteer queueing**. Abstraction
-> is the one category that pays twice: harder to build *and* ~2× slower in review (p=0.0003).
->
-> **And it is not getting better.** Across the decade, ordinary refactoring got steadily faster while
-> architectural refactoring did not improve at all (difference-in-differences interaction **+0.20,
-> p=0.003**). A decade of CI and review tooling made routine change cheaper and left structural change
-> exactly where it was — architectural debt compounding relative to everything else.
+An independent pre-doctoral feasibility study. The question is when developers
+decide to restructure code, and what — if anything — precedes that decision in
+the project's own records. The corpus is Apache: 38 projects probed for
+eligibility, Hadoop mined in depth (8,919 commits, 51,861 refactorings, 349
+architectural episodes). It was built by one person in three working sessions
+across one week, which set the corpus depth at one project and left no second
+rater for anything requiring manual coding.
 
-![abstraction gradient](figures/abstraction_gradient.png)
+## 2. Headline
 
-> *(Three candidate mechanisms were tested and **rejected**: a structural-review-discussion signal
-> (a discussion-volume confound), the **blast-radius** model (module centrality does not predict
-> triage — the association even runs negative), and **maintainer concentration** (collinear with module
-> size). An earlier reading of §9 — "friction concentrates in the foundational `hadoop-common`
-> module" — was **corrected**: that number was a Jira-prefix aggregate, 62% of it cloud-connector
-> tickets. All of this is part of the honest story; see below.)*
+The study set out to find signals in issue trackers that precede architectural
+refactoring. Those signals are largely absent — effort estimates do not exist in
+this corpus, and the review-discussion signal collapsed under a volume control —
+and the data itself became the finding. Traceability is reported one way and
+needed the other way: the **commit-side** rate (what fraction of commits cite a
+ticket) is what the literature publishes and what project-selection criteria
+use, while the **ticket-side** rate (what fraction of tickets ever receive a
+commit) is what any ticket-anchored study actually depends on. They diverge
+sharply. Kylin cites a ticket in **83.9%** of commits and yet only **12.0%** of
+its tickets are ever touched by one. Across the 12 eligible projects the
+ticket-side rate runs **12.0%–69.0%** — not one exceeds 69%.
 
----
+## 3. What holds
 
-## What we found
-
-Measured on **8,919 Hadoop commits** (4 release ranges, 3.1.0 → 3.4.3), **349 architectural episodes**:
-
-| Filter (RQ1's chain) | Question | Result | Verdict |
+| Finding | Number | Bound | Source |
 |---|---|---|---|
-| **F3** traceability | commit → Jira ticket? | **345/349 = 99%** | ✅ excellent |
-| **F1** effort estimate | ticket carries an estimate? | **0/345 = 0%** | ❌ absent in Apache |
-| **F2** structural review | review argues about structure? | **31%** (operational) | ⚠️ present, selective |
+| Corpus eligibility is the binding constraint | **12 of 38** projects clear a pre-registered 0.80 commit-side bar; **all 12 are Hadoop-ecosystem** | Apache + Maven + Jira only; bar fixed before any clone | `scripts/traceability_probe.py` `da74465` |
+| Commit-side and ticket-side traceability diverge | Kylin **83.9% vs 12.0%**; range **12.0–69.0%** | Ticket-side computed only for the 12 that pass, so this is within-passing variation, not a general correlation | `scripts/ticket_coverage.py` `e0d76ef` |
+| The measure cross-validates against prior work | 4 of 5 overlapping projects within **3.3pp** of SEOSS 33, corpora 7 years apart (Hadoop 97.13→97.8, Hive 96.34→97.0, HBase 90.06→92.5, ZooKeeper 87.12→90.4) | Flink differs by 24.1pp; scope, not error — their snapshot is 12,419 commits, ours 38,219 | `paper/PRIOR_WORK.md` `215b10f` |
+| Monorepo key matching decides the answer | Hadoop reads **26.2%** single-key, **92.3%** four-key, **97.8%** seven-key | Same 28,290 commits in all three | `scripts/citation_rate.py` `de657c3` |
+| Jira status hygiene decays at the 2019–20 GitHub migration | tickets reaching `Patch Available`: **93.5% → 15.5%** | ≤2019 vs ≥2022 | `scripts/temporal_trend.py` `a6accaf` |
+| CI verdicts in Jira terminate rather than decay | **96.7% → 50.8% → 0 of 43** | ≤2018 / 2019–21 / ≥2022; no ticket after 2021 carries one | `paper/ERA_AUDIT.md` `e0d76ef` |
+| Effort estimates are absent | **0 of 323** architectural tickets carry any of four time-tracking fields | Apache convention, not a property of software | `paper/numbers.md` `9b4e384` |
+| The standard MSR sampling frame cannot express the criterion | GHS indexes 735,669 repositories with **35 fields**; only `totalIssues`/`openIssues` touch issues, both GitHub-issue counts | No tracker type, no linkage, no commit-message convention | `paper/PRIOR_WORK.md` `215b10f` |
+| RefactoringMiner mislabels TypeScript type aliases | **160** `interface → class` false positives in one commit; 3rd most frequent type in that corpus | TypeScript mode; reported upstream as [issue #1124](https://github.com/tsantalis/RefactoringMiner/issues/1124) | `SUI_FINDINGS.md` |
 
-Four things this study established:
+## 4. What did not hold
 
-1. **The original framing was wrong.** RQ1 assumed *effort estimates* as the signal. Apache records
-   **none** — the field is empty on all 345 tickets ("*no actual time allocated to implement it*").
-   No amount of data fixes this; it's a property of the process.
-2. **A better signal exists and is minable.** *Structural review discussion* lives on the GitHub PR,
-   which Apache's `githubbot` mirrors into the Jira ticket — so it's reachable from the public Jira
-   API, no GitHub token. Present in ~31% of episodes (the naive keyword rule says 62%, but a codebook
-   check found it only 25% precise — see [codebook_results.md](codebook_results.md)).
-3. **Architectural refactorings are measurably higher-friction than ordinary ones, and the friction is
-   in *abstraction*.** Vs. a 400-ticket ordinary control, architectural work draws more review and is
-   ~2× slower to start and resolve. Splitting it: *relocation* (move/rename) ≈ ordinary work, but
-   *abstraction* (extract interface/superclass/class) is ~2.5× slower to be picked up (7.2 vs 2.8 days,
-   p=0.004) — surviving controls for size, volume, contributor experience, module tier and era. It's
-   **time, not quality** — and that null now survives a far stronger test than the reopen rate:
-   using Hadoop's pre-commit CI (runs ≈ patch revisions), architectural tickets need more attempts
-   (5 vs 3, p<1e-4), but the effect dies under a change-size control (p=0.07) because those patches
-   are simply bigger (1,178 vs 213 java lines churned). Not more error-prone *per unit of code*.
+| Hypothesis | Result | Why it failed |
+|---|---|---|
+| Structural review discussion predicts slower resolution | Retracted. Cox HR 0.69 (p=0.003) → **HR 1.10 (p=0.51)** | Discussion *volume* is the real predictor; structural density is null |
+| Blast radius — depended-upon modules invite hesitation | **p=0.33** with tier controlled; raw association runs *negative* | Centrality does not predict triage; the apparent effect was the connector tier |
+| Maintainer concentration replaces the hand-drawn tier | Collapses once module size enters | Collinear with size, **rho = −0.86** |
+| Abstraction is harder than relocation | **×1.54 [0.97, 2.43], p=0.068** fully adjusted (n=319) | Three definitions — any-rule, pure-vs-pure, continuous share — give the same answer; the split was defined post-hoc |
+| Architectural refactoring did not share a decade of process improvement | Holds to 2019 (+0.192, p=0.021); **post-2020 p=0.44** | The ordinary control arm collapses to <5 tickets/year |
+| A portable tier rule generalises | **0 of 3** projects replicate (Hive p=0.210, Drill p=1.000 wrong direction, Kylin p=0.310) | Vendor share selects large modules, not thin adapters; threshold left at 0.40 although lowering it would have rescued HBase and Phoenix |
 
-   ![CI rework](figures/ci_rework.png)
+The tier effect was never established at module level anywhere: run the same
+pre-registered test on Hadoop, where the split is 43.6 vs 3.1 days, and it
+returns **p=0.133** — the floor attainable with 2 flagged against 4 unflagged
+modules.
 
-   **And the friction is in *building*, not merging.** Splitting the Jira status changelog into phases:
-   architectural work takes ~4× longer to produce a patch (3.86 vs 1.00 days) and ~4× longer in logged
-   **active coding time** (4.87 vs 1.13 days, p=0.037), yet is merged as fast as ordinary work
-   (8.5 vs 8.4 days, n.s.). Active coding time cannot be volunteer queueing — so the effect is largely
-   **intrinsic difficulty**, which bounds the open-source caveat instead of just conceding it.
-   Abstraction is the one category that pays twice: ~4.5× to build *and* ~2× in review (p=0.0003).
+## 5. What this cost
 
-   ![friction phases](figures/friction_phases.png)
+Eligibility is a design consequence, not an inconvenience. A ticket-anchored
+study on Apache loses at least a third of its tickets and up to seven eighths:
+best case Knox at 69.0% ticket-side, worst case Kylin at 12.0%. Studies built on
+this frame inherit that loss silently, including current ones —
+[arXiv:2605.16133](https://arxiv.org/html/2605.16133v1) (May 2026) measures
+architectural-debt time-to-fix by tracing Jira issues to version-control history
+across 10 Apache projects.
 
-   **And across the decade, architectural work is the one category that did not get cheaper.** Using a
-   workflow-independent clock (ticket → first citing commit — Jira status hygiene collapsed 93%→16%
-   when Hadoop moved to GitHub PRs), ordinary refactoring got steadily faster (rho=−0.21, p=3e-05)
-   while architectural refactoring stayed flat (rho=+0.04, p=0.45). Difference-in-differences
-   interaction **+0.20, p=0.003**, composition-controlled and stable across truncation windows.
+## 6. The three research questions
 
-   ![temporal trend](figures/temporal_trend.png)
+**RQ1 — signals preceding refactoring.** First operationalisation tested and
+closed: the effort-estimate signal does not exist in this corpus (0/323), and
+the review-discussion signal is confounded by volume. Current candidate: the
+interval from a self-admitted technical debt comment to a detected architectural
+refactoring of the entity it annotates. Prior work is same-commit co-occurrence
+only — Iammarino 2021 (commit-level, four projects, no temporal analysis) and
+Esfandiari 2023 (commit tags, 77 projects) — with no intervals measured. Novelty
+risk, stated: distinctness rests on three simultaneous choices (SATD-anchored,
+entity-level, refactoring-detected), and dropping any one collapses it into
+existing work. Detail in `paper/SATD_NOVELTY.md` `5b50ef1`.
 
-   Triage latency also varies ~40× across modules:
+**RQ2 — why the delay, human factors.** Untouched, and strengthened by RQ1's
+outcome. The artifact evidence is thin enough that what remains as explanation
+is knowledge held by people rather than recorded in the tracker. That is now an
+evidenced argument rather than an assumption.
 
-   ![module hotspots](figures/module_hotspots.png)
+**RQ3 — tooling implications.** Untouched. Scope depends on what RQ1 and RQ2
+establish.
 
-   Architectural tickets are also **~2× more entangled** (issue-links, p=0.001) — a second,
-   volume-independent signal.
-4. **Three candidate mechanisms were tested and rejected.** (A fourth claim — that friction
-   concentrates in the foundational module — was *corrected* rather than rejected; see the note under
-   the headline. The prospectus tabulates all four together.)
-   - *Structural review discussion → slower resolution* held under a change-size control (Cox HR 0.69,
-     p=0.003) but **collapsed under a discussion-volume control** (HR 1.10, p=0.51).
-   - *Blast radius* — the natural reading of the ~40× module spread, that touching a heavily
-     depended-upon module invites hesitation — **fails against Hadoop's own Maven dependency graph**
-     (117 modules): centrality does not predict triage (p=0.33), and the raw association runs
-     *negative*. What is really there is the **opposite**: the structurally peripheral cloud-connector
-     tier waits **43.6 vs 3.1 days** (~14×, p=3e-07), with one maintainer owning 33% of its tickets.
-   - *Maintainer concentration* — the attempt to replace that hand-drawn tier with a measured social
-     variable from git — corroborates it (top author owns 39% of connector commits vs 9%, p=4e-21)
-     but **explains nothing**: it is collinear with module size (rho=−0.86) and dies under a size
-     control. In one project, "peripheral" is a single variable; separating it needs many projects.
+## 7. What ships next
 
-   ![blast radius](figures/blast_radius.png)
+- Methods paper on traceability as a corpus-eligibility constraint — near complete.
+- Registered report proposing the SATD-interval design.
+- Entity-tracking feasibility: whether a rename chain is recoverable across
+  Move Class and Move Package, which the design requires.
+- Zenodo deposit of the frozen Jira caches.
 
-**Net:** a defended, mechanism-level finding (abstraction is the locus of refactoring friction, the
-cost is in *building* it, and it is the one category not getting cheaper over time), supporting
-results (estimates absent; quality unchanged even under a stronger rework test), **three self-rejected
-mechanisms and one self-corrected claim**, and a reproducible pipeline. Plus a systemic caveat for
-anyone mining Apache Jira: **three independent measurement channels — status comparability, status
-hygiene, and CI visibility — all decay at the 2019–20 GitHub migration**, which is why the
-decade-spanning claims here are built on git-derived instruments instead. The surviving claim is
-small, specific and defended. Full detail: [results_dossier.md](results_dossier.md).
+## 8. What this needs that one person cannot supply
 
-## More figures
+- **A second rater.** Inter-rater agreement cannot be computed alone, so no
+  measure requiring manual coding is currently defensible — including the
+  architectural-episode gold set and the codebook, whose keyword rule is 25%
+  precise on a single-rater pass.
+- **Field judgment on whether the SATD gap is real.** A literature search
+  establishes that no one has measured the interval; it cannot establish whether
+  that absence is an opportunity or a known dead end.
+- **Corpus breadth.** Module-level tests need many modules, and effective n is
+  capped at P/ICC by between-project correlation regardless of corpus size — at
+  12 projects the ceiling is 600 against the 769 the effect needs, if ICC is
+  0.02. Depth beyond Hadoop was not reachable in three working sessions.
 
-(The headline *abstraction gradient* and *module hotspots* charts are shown above; all live in
-[figures/](figures/).)
+## 9. Reproducibility
 
-**Scale** — architectural refactoring is rare (349 of 51,861 refactorings):
+`requirements.txt` is pinned to the versions the results were produced with. The
+Jira caches are frozen as a 2,491-file archive with a per-file SHA-256 manifest
+and **no rebuild script**, because Jira is live and a re-fetch returns a
+different state (`scripts/freeze_caches.py` `ce4bf7d`).
+`paper/traceability_probe.json` pins `head_sha` per project, so any re-run is
+exactly diffable. The traceability probe itself is stdlib-only and needs no
+virtualenv.
 
-![funnel](figures/study_funnel.png)
-
-**Primary comparison** — architectural vs. ordinary refactorings across four measures:
-
-![compare](figures/arch_vs_ordinary.png)
-
-**Rigor** — the retracted finding: significant until discussion volume is controlled, then it crosses
-the "no-effect" line:
-
-![retraction](figures/retraction.png)
-
-## What we did (the pipeline)
-
-```
-citation probe ─▶ detect refactorings ─▶ filter to architectural episodes ─▶ mine review signal ─▶ survival analysis
-   (Filter 3)        (RefactoringMiner)         (Definition 1)                  (F1/F2 per episode)     (Cox / KM)
-```
-
-1. **Picked the project by traceability.** `citation_rate.py` — Hadoop cites a Jira key in **92.3%**
-   of commits (multi-key: the repo is a monorepo, so a single `HADOOP` key misleadingly reads 26%).
-2. **Detected refactorings at scale.** RefactoringMiner is single-threaded, so
-   `run_rm_parallel.sh` / `run_rm_safe.sh` split each release range into chunks across 8–16 cores.
-   RM hangs on minified-JS dependency bumps; the self-healing runner's watchdog auto-kills and skips
-   those (they hold no architectural refactorings). 90–99% coverage per range → **51,861 refactorings**.
-3. **Filtered to architectural episodes.** `filter_architectural.py` keeps package-level and
-   cross-package refactorings → **349 episodes** (incl. 40 cross-module + Move/Rename/Split Package).
-4. **Mined the signals.** `pr_review_signal.py` reads each ticket's review discussion from Jira
-   (githubbot PR relay), scoring structural content; a codebook (`codebook.md`) calibrates it.
-5. **Ran the analysis.** Cycle-time by F2, Kaplan–Meier + log-rank, then a Cox model controlling for
-   change size.
-
-## Reproduce
-
-The `hadoop/` clone and all large outputs are **not** in this repo (see `.gitignore`) — they're
-external or regenerable. The committed `*.json` results are the findings; regenerate the rest with:
-
-```bash
-# 0    get the corpus (not committed — it's a 1.2 GB upstream clone)
-git clone https://github.com/apache/hadoop.git
-
-# 1-2  environment + the decisive traceability probe
-bash scripts/setup.sh                      # builds RefactoringMiner + Python venv (JDK 17, Python 3.9)
-python3 scripts/citation_rate.py --repo hadoop --key HADOOP,HDFS,YARN,MAPREDUCE
-
-# 3    detect refactorings over a release range (self-healing, uses all cores)
-bash scripts/run_rm_safe.sh hadoop rel/release-3.3.0 rel/release-3.4.0 16 150 refminer_wide.json
-
-# 4    filter to architectural episodes (multi-key for the monorepo + Ozone/HDDS)
-source .venv/bin/activate
-python3 scripts/filter_architectural.py --rm refminer_wide.json --repo hadoop \
-  --key HADOOP,HDFS,YARN,MAPREDUCE,HDDS,OZONE,SUBMARINE,YETUS --module-depth 4
-
-# 5    mine the F2 review signal per episode (public Apache Jira, cached)
-python3 scripts/pr_review_signal.py --episodes architectural_episodes.json --out review_signal.json
-
-# 6    test the blast-radius mechanism (needs the Jira caches from step 5)
-python3 scripts/module_graph.py --repo hadoop        # Maven graph → blast radius per module
-python3 scripts/episode_files.py                     # episode → the files its refactorings touched
-python3 scripts/blast_radius_model.py                # the mechanism test + figure
-
-# 7    split friction into building vs merging time (status changelog)
-python3 scripts/friction_decomposition.py
-
-# 8    social centrality: can a measured variable replace the post-hoc tier? (it cannot)
-python3 scripts/social_centrality.py
-
-# 9    decade trajectory: did architectural work share in the project's speedup? (it did not)
-python3 scripts/temporal_trend.py
-
-# 10   rework: does architectural work need more patch revisions? (yes, but only because it is bigger)
-python3 scripts/ci_rework.py
-```
-
-## Key documents
+## 10. Repository map
 
 | File | What it is |
 |---|---|
-| [research_prospectus.md](research_prospectus.md) | **The 2-page write-up** — finding, method, threats, plan |
-| [SLICE_LOG.md](SLICE_LOG.md) | Full reproducible run log, every command + the RM-hang saga |
-| [worksheet.md](worksheet.md) | The manual 5-episode trace + go/no-go, then the scaled n=345 check |
-| [codebook.md](codebook.md) · [codebook_results.md](codebook_results.md) | F2 definition + first-pass labeling (keyword is 25% precise) |
-| [codebook_labeling.md](codebook_labeling.md) | 40 real comments to dual-rate (κ) — the open next step |
-
-## Files
-
-```
-scripts/
-  citation_rate.py          Filter-3 probe: % commits citing an issue key (multi-key)
-  setup.sh                  build RefactoringMiner + Python env
-  run_refactoringminer.sh   single-threaded RM (original starter)
-  run_rm_parallel.sh        N-way parallel RM (tag range → chunks)
-  run_rm_safe.sh            self-healing parallel RM (watchdog skips hang-inducing commits)
-  rm_skip_range.sh          RM over a range excluding specific commits
-  filter_architectural.py   RM output → candidate architectural episodes (multi-key, --all branches)
-  pr_review_signal.py       episode → F2 review signal, mined from githubbot's PR relay in Jira
-  module_graph.py           Maven poms → module dependency graph + blast radius (117 modules)
-  episode_files.py          episode → file paths its architectural refactorings touched
-  blast_radius_model.py     the mechanism test (replicates §5 as a gate before reporting anything)
-  friction_decomposition.py status changelog → building vs merging vs active time, per group
-  social_centrality.py      git → bus factor / concentration (prior-window) + size-confound check
-  temporal_trend.py         decade trajectory on a workflow-independent git clock (DiD vs control)
-  ci_rework.py              CI runs ≈ patch revisions, with git change-size as the decisive control
-
-data (generated)
-  refminer_all.json               51,861 refactorings, 8,919 commits (4 ranges merged)
-  architectural_episodes_all.json 349 episodes, 345 traceable
-  review_signal_all.json          F2 signal per ticket
-  module_blast_radius.json        blast radius + deps per Maven module
-  blast_radius_results.json       mechanism test: models, connector tier, §9 decomposition
-  friction_decomposition.json     phase split, workflow-comparability check, self-assignment
-  social_centrality.json          social measures, size collinearity, the failed replacement test
-  temporal_trend.json             decade divergence, workflow-drift + truncation threat checks
-  ci_rework.json                  rework counts, size control, the unusable failure-rate measure
-  episode_outcomes.json           per-episode cycle-time + F2 + resolved flag
-  cox_dataset.json                the survival-model table
-  .jira_cache/ .jira_meta/        cached Jira responses (comments; dates/status)
-```
-
-## What a full study adds (RQ1 proper)
-
-Validate the codebook with a second rater (Cohen's κ — set is ready in `codebook_labeling.md`),
-replace cycle-time with better changelog-derived effort proxies, add covariates + clustering to the
-survival model, and replicate on Kafka/HBase/Camel for generality. The public Jira dump (Zenodo
-record 15719919) supplies the full changelog history when you scale beyond the live API.
-# refactoring-review-friction
+| `results_dossier.md` | Full Hadoop results, including retractions and corrections |
+| `replication/CORPUS_FEASIBILITY.md` | The 12-of-38 eligibility result and its power consequences |
+| `replication/REPLICATION.md` | Held-out test of the tier rule; 0 of 3 |
+| `paper/numbers.md` | Every paper number traced to script and commit |
+| `paper/ERA_AUDIT.md` | Which results depend on instruments that decay at 2019–20 |
+| `paper/PRIOR_WORK.md` | SEOSS 33, Rath ICSE'18, GHS — what is already published |
+| `paper/SATD_NOVELTY.md` | Whether the SATD-interval gap is open |
+| `paper/ENTITY_IDENTIFIERS.md` | Whether RefactoringMiner entities survive the pipeline |
+| `paper/REPRODUCIBILITY.md` | Fresh-clone check and what it exposed |
+| `predictions/PREDICTIONS.md` | Pre-registered predictions, committed before outcomes |
+| `SUI_FINDINGS.md` | TypeScript pilot; exploratory |
+| `deposit/MANIFEST-v1.md` | Frozen cache archive manifest |
+| `SLICE_LOG.md` | Command-level log of the original mining runs |
