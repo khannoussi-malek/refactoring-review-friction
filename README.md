@@ -7,9 +7,9 @@ project's own records precedes the decision to restructure code. The corpus is
 38 Apache projects probed for eligibility, Hadoop mined in depth (8,919 commits,
 51,861 refactorings, 349 architectural episodes), plus the public Jira dataset
 (Zenodo 15719919) across 16 organisations and 2,686,282 issues. It was built by
-one person in three working sessions across one week (19–25 July 2026),
-alongside full-time employment, which set the corpus depth at one project and
-left no second rater.
+one person in three working sessions, alongside full-time employment, which set
+the corpus depth at one project and left no second rater. The committed history
+spans 19–25 July 2026.
 
 ## 2. Headline
 
