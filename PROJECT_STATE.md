@@ -51,6 +51,7 @@ margin justifies a registered report, and a branch layout decision.
 | 07-25 | **id→key measured: 0 ids carry >1 key, 0 keys map to >1 id, against 326 ids with >1 name.** Supersedes the earlier key-vs-name framing: keys are 1:1 with ids *within a snapshot*, and the multi-key requirement is caused by concurrent siblings or superseded records, not key instability | `paper/eligibility_failure_modes.md` mode 6 | `5179907` | **yes — supersedes the `0f116aa` framing** |
 | 07-25 | Attic skew is on the estimate dimension, not traceability: 9/23 estimate-ranked Apache in Attic, 5/8 among ≥10%; traceability skew n.s. (Fisher p=0.229) | `paper/intersection.json` | `5179907` | no |
 | 07-25 | Estimate × traceability intersection: 3 of 27 clear both; 4 of 27 clear traceability at all | `paper/intersection.json` | `63f4231` | no |
+| 07-30 | **Drop to a seven-project held-out corpus.** HBase and Phoenix quarantined in `spent/`; their aligned `git.json` + `jira.json` are one subtraction from per-ticket latency, so held-out status was not defensible even though no outcome was ever observed | `spent/README.md` | this commit | **yes — resolves the `5179907` flag** |
 
 ## 3. What is held out and why
 
@@ -59,16 +60,22 @@ A citation rate, a ticket count or an estimate-field count says nothing about ho
 long anything took; a triage latency, resolution time or status duration does.
 Observing an outcome spends the project.
 
+**The held-out corpus is seven projects.**
+
 | project | observed | NOT observed |
 |---|---|---|
-| Ozone, Tez, ZooKeeper, Ranger, Oozie, Knox, Sqoop | commit-side traceability; ticket-side coverage; GitHub-ref counts | any timing, latency or status duration |
-| **HBase, Phoenix** | as above, **plus `replication/{hbase,phoenix}.{git,jira}.json` are committed** — first-citing-commit timestamps and ticket creation dates | no timing statistic was ever computed or printed; no `.test.json` exists for either |
+| Ozone, Tez, ZooKeeper, Ranger, Oozie, Knox, Sqoop | commit-side traceability; ticket-side coverage; GitHub-ref counts; key-matcher precision sample (`paper/matcher_validation.md`, messages only, no timestamps) | any timing, latency or status duration |
 
-**HBase and Phoenix are at risk.** Their committed `git.json` + `jira.json` are
-one subtraction apart from per-ticket latencies. No outcome was observed — the
-frozen rule flagged zero modules, so the test stage never ran — but a future
-session could spend them by accident. Decision pending on whether to drop them to
-a seven-project held-out corpus (`5179907` records the flag, not a resolution).
+**HBase and Phoenix were dropped from the corpus on 07-30 and quarantined in
+`spent/`.** No outcome was ever observed for either — the frozen rule flagged
+zero modules, so the test stage never ran, and no `.test.json` exists — but their
+`git.json` + `jira.json` align on ticket key and are one subtraction apart from
+per-ticket latencies. Held-out status is a claim about what a future analyst can
+still learn, and two projects with their outcome inputs committed cannot support
+it. Quarantined rather than deleted, because the files are evidence that the rule
+fired on nothing (`replication/REPLICATION.md`, coverage failure). Rationale in
+`spent/README.md`. Their coverage numbers remain permitted and are reported in
+`paper/table1_eligibility.md`.
 
 ## 4. What was spent
 
@@ -92,7 +99,7 @@ timing study.
 | Branch layout — four branches separating methods paper / SATD design / exploratory Hadoop | proposed, awaiting decision; nothing created. Constraint: `ca076a9` must remain an ancestor of `48caf14` or the pre-registration evidence is destroyed |
 | Whether the three-legged SATD novelty margin justifies a registered report | awaiting external judgement; literature search cannot settle it (`5b50ef1`) |
 | Which RQ1 design proceeds | gated on Task 18 |
-| HBase/Phoenix held-out status | flagged, unresolved |
+| ~~HBase/Phoenix held-out status~~ | **resolved 07-30** — dropped to a seven-project corpus, both quarantined in `spent/` |
 
 ## 6. Outstanding tasks
 
