@@ -2,7 +2,9 @@
 
 Internal record. `README.md` is the outward-facing account. This exists so a
 future session can reconstruct *why* without re-reading chat. Every row carries a
-commit hash or is marked `[undocumented]`.
+commit hash **and** an evidence file. Rows once carried a marker for reasoning
+that existed only in chat; the last of them — the 07-25 refusal to run ICC on
+four clusters — was written up on 07-30, and the marker is retired.
 
 ## 1. Current state
 
@@ -37,7 +39,7 @@ margin justifies a registered report, and a branch layout decision.
 | 07-25 | **Hold the 0.40 threshold during the failed replication.** Lowering it would have rescued HBase (max 0.33) and Phoenix; not lowered | `replication/REPLICATION.md` | `48caf14` | no — deliberate |
 | 07-25 | **Kill the tier rule** — 0 of 3 replicate (Hive p=0.210, Drill p=1.000 wrong direction, Kylin p=0.310) | `replication/*.test.json` | `48caf14` | no |
 | 07-25 | **Abandon dependency-based tier rules entirely** — v2 scored 0.608 pooled vs v1's 0.617 on its own development data | `wrapper_rule_v2_dev.json` | `0216b64` | no |
-| 07-25 | **Decline to run ICC on four clusters** — between-cluster variance not estimable at n=4; must come from the pooled study as a first stage | `[undocumented]` — reasoning is in chat only; `replication/CORPUS_FEASIBILITY.md` states the ICC *requirement* but not the refusal | `0a81339` | no |
+| 07-25 | **Decline to run ICC on four clusters** — between-cluster variance not estimable at n=4; must come from the pooled study as a first stage | `replication/CORPUS_FEASIBILITY.md` §"Correction (2026-07-25)" — 3 df on the between-cluster component cannot resolve 0.015 from 0.02, and the four available clusters bias it downward | `0a81339` | no |
 | 07-25 | Corpus eligibility: 12 of 38, all Hadoop-ecosystem | `paper/traceability_probe.json` | `0a81339`, `b878131` | no |
 | 07-25 | **Freeze Jira caches rather than write a rebuild script** — Jira is live, a re-fetch returns different state, so a rebuild script would imply reproducibility that does not exist | `deposit/MANIFEST-v1.md` | `ce4bf7d` | no |
 | 07-25 | **Do not rewrite dated working logs** (`SLICE_LOG.md`, `worksheet.md`, `advisor_brief.md`) — they record what was believed when; rewriting would falsify the record | `README.md` §10 | `eee902f` | no |
@@ -51,7 +53,7 @@ margin justifies a registered report, and a branch layout decision.
 | 07-25 | **id→key measured: 0 ids carry >1 key, 0 keys map to >1 id, against 326 ids with >1 name.** Supersedes the earlier key-vs-name framing: keys are 1:1 with ids *within a snapshot*, and the multi-key requirement is caused by concurrent siblings or superseded records, not key instability | `paper/eligibility_failure_modes.md` mode 6 | `5179907` | **yes — supersedes the `0f116aa` framing** |
 | 07-25 | Attic skew is on the estimate dimension, not traceability: 9/23 estimate-ranked Apache in Attic, 5/8 among ≥10%; traceability skew n.s. (Fisher p=0.229) | `paper/intersection.json` | `5179907` | no |
 | 07-25 | Estimate × traceability intersection: 3 of 27 clear both; 4 of 27 clear traceability at all | `paper/intersection.json` | `63f4231` | no |
-| 07-30 | **Drop to a seven-project held-out corpus.** HBase and Phoenix quarantined in `spent/`; their aligned `git.json` + `jira.json` are one subtraction from per-ticket latency, so held-out status was not defensible even though no outcome was ever observed | `spent/README.md` | this commit | **yes — resolves the `5179907` flag** |
+| 07-30 | **Drop to a seven-project held-out corpus.** HBase and Phoenix quarantined in `spent/`; their aligned `git.json` + `jira.json` are one subtraction from per-ticket latency, so held-out status was not defensible even though no outcome was ever observed | `spent/README.md` | `a2e87ba` | **yes — resolves the `5179907` flag** |
 
 ## 3. What is held out and why
 

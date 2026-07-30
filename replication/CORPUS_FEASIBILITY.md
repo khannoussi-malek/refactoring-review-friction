@@ -95,6 +95,40 @@ decides the design before any more mining happens. If ICC lands above 0.02, no
 corpus of Apache-Jira projects can power this effect and the outcome measure has
 to change.
 
+### Correction (2026-07-25): the four-cluster ICC was proposed here and refused
+
+**The paragraph above is right about the requirement and wrong about where the
+estimate can come from. It was not run, and it should not be.**
+
+An ICC is a ratio of between-cluster variance to total variance. At **n=4
+clusters** — Hadoop, Hive, Drill, Kylin — the between-cluster component has 3
+degrees of freedom, and its sampling distribution is so wide that the point
+estimate carries essentially no information about the parameter. The interval
+would span most of the feasible range, and the whole decision this section turns
+on is the difference between ICC 0.015 and 0.02. A four-cluster estimate cannot
+resolve a distinction that fine; it would be a number without a meaning, and
+worse than no number, because it would look like evidence.
+
+Two further reasons specific to these four:
+
+* **They are the least representative four available.** Hadoop is the project the
+  design was built on, and Hive, Drill and Kylin were selected into the
+  replication precisely because they cleared a traceability bar that only
+  Hadoop-ecosystem projects clear. Their between-project variance is a lower
+  bound on a random sample's, which biases ICC *down* — the direction that makes
+  the study look feasible when it is not.
+* **The outcome is already spent on all four.** An estimate drawn from them
+  cannot be validated against anything held out.
+
+**Where the estimate must come from instead:** the pooled study itself, as a
+first stage. Fit the variance-components model on the full corpus as collected,
+report the ICC with its interval as a result of stage one, and let it set the
+stopping rule for stage two. That is the only design in which the parameter is
+estimated at an n where it means something.
+
+Recorded because the refusal is a decision, not an omission: see
+`PROJECT_STATE.md` §2, row 07-25.
+
 ## The three ways out
 
 1. **Drop the traceability bar and model the measurement error.** At 60% another
