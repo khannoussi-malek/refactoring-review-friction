@@ -447,3 +447,99 @@ precisely: 30,746 GitHub-issue references against 5 Jira keys.
 
 Everything else in §2–§6 was re-derived from a committed artifact or a live
 script run on the verification date.
+
+---
+
+## 9. Manuscript provenance — numbers the draft uses that §1–§8 did not carry
+
+Added 2026-07-30 for `paper/manuscript/PROVENANCE_CHECK.md`. Sections §1–§8 cover
+the traceability and estimate results; drafting `related.md`, `taxonomy.md` and
+`threats.md` pulled in numbers from memos that had no row here. Each is listed
+with the artifact it comes from and the commit that artifact was last changed in.
+**No number below is new**: every one was already committed somewhere in the
+repository, and this section gives it a provenance row so R7 holds.
+
+### 9a. Second ecosystem — start-ui-web (TypeScript)
+
+Corpus: `BearStudio/start-ui-web`, **1,199** commits 2019-12→2026-07, detector
+coverage **1,121 / 1,199 = 93%**, **n=28** architectural PRs. Exploratory
+throughout; only counts and proportions are used in the manuscript, never a test.
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| commit-message recall | **3 of 96 = 3.1%**; 93 of 96 silent | `SUI_FINDINGS.md` secondary 1 | `c080775` |
+| commit-message precision | **3 of 10 = 30%** | same | `c080775` |
+| architectural commits linking an issue | **7%** (other refactoring 7%, non-refactoring 10%) | `SUI_FINDINGS.md` secondary 2 | `c080775` |
+| PR-visible architectural commits | **30 of 96 = 31%**; 66 of 96 = **69%** unreviewed | `scripts/sui/selection_bias.py` | `8dc2cdd` |
+| PR routing is not arbitrary | churn 777 vs 151 lines p=0.0037; files 22 vs 9 p=0.0038; abstraction share 37% vs 9% p=0.0027 | same | `8dc2cdd` |
+| migration-driven churn | **13×** larger (1,372 vs 104 lines, p<0.0001), n=21 vs 69 | `SUI_FINDINGS.md` secondary 4 | `c080775` |
+| detector false positive | **160** `interface → class`, RefactoringMiner **3.1.4**, TS support complete **2026-05-24**, upstream **#1124** | `paper/RM_TYPESCRIPT.md` | `ac4a9cf` |
+
+### 9b. Detector coverage loss — clustered, and the size-bias test
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| scope of the test | `root..HEAD` **1,198** commits; **1,057** analysed, **141** lost | `SUI_FINDINGS.md` threats | `c080775` |
+| churn, analysed vs lost | **32** vs **14** lines, **p=0.0022** — lost commits are *smaller* | same | `c080775` |
+| top-decile-churn share | 9.6% vs 12.8%, **p=0.23** n.s. | same | `c080775` |
+| the clustered hole | **75 of 81** commits in 2024 (**93%**) absent, against 2–8% elsewhere | same | `c080775` |
+| repair | **68** commits, 120 refactorings, 24 architectural recovered; coverage **88% → 93%** | same | `c080775` |
+
+### 9c. Author identity aliasing
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| Hadoop keys on git author **name** (`%an`) | — | `scripts/social_centrality.py` | `93056ae` |
+| Hadoop raw aliasing | **1,035** emails → **797** identities (**238** merged) | `scripts/sui/ALIASING_NOTE.md`, `scripts/sui/identity.py` | `50bb6df` |
+| emails spanning multiple names | **96**, covering **27,307** commits = **35.2%** of the corpus | same | `50bb6df` |
+| impact on the measures — **null** | mean `top1_share` **0.1545** by name vs **0.1495** by email; `bus_factor` 8.46 vs 8.56; `n_authors` 87.2 vs 91.0; **112** modules ≥20 commits; paired Wilcoxon **p=0.3651** | same | `50bb6df` |
+| start-ui-web, by contrast | 59 → 50 identities; top-author share **58.1% → 67.2%** | same | `50bb6df` |
+| `reviewer_pool` is null | `triage~reviewer_pool` rho **0.0010**, p **0.988** | `social_centrality.json` | `93056ae` |
+| collected for the manuscript | — | `paper/ALIASING_HADOOP.md` | `b7f6d43` |
+
+### 9d. Era audit — the status instrument alongside the CI instrument
+
+§5b already carries the CI series (96.7% / 50.8% / 0 of 43). The status series it
+did not:
+
+| quantity | ≤2018 | 2019–21 | ≥2022 | source | commit |
+|---|---|---|---|---|---|
+| architectural tickets reaching `Patch Available` | **147 of 150** | **98 of 130** | **6 of 43** | `paper/ERA_AUDIT.md` | `eee902f` |
+
+### 9e. Taxonomy worked examples
+
+| mode | quantity | source | commit |
+|---|---|---|---|
+| 2 | RHBRMS **86.00%** estimate coverage on **2,400** issues, no code | `estimates_by_org.json` | `dcea7c0` |
+| 3 | kata-containers: **0** `KATA-` keys in **19,807** commits | `paper/eligibility_failure_modes.md` | `5179907` |
+| 4 | spring-batch: `BATCH-` in **4,046 of 7,034** commits, none in the 20 most recent sampled | same | `5179907` |
+| 6 | Evergreen cites `DEVPROD` **2,785**× , tracker holds only `EVG`; DataLab cites `EPMCDLAB` **3,900**× and `DLAB` **3,547**×, tracker holds only `DATALAB` (**1,858** issues) | same | `5179907` |
+| 6 | a single-key probe reads Evergreen as **71.7%** | same | `5179907` |
+| 6 | `kiegroup/optaplanner` redirects to `apache/incubator-kie-optaplanner`, PLANNER **1,629** either way | `paper/intersection.json` | `63f4231` |
+| 6 | Sqoop cites **790** distinct keys, **122** with no tracker record, **668** resolving | `paper/ticket_coverage.json` | `e0d76ef` |
+
+### 9f. Prior work
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| GHS | **735,669** repositories, **35** fields; only `totalIssues`/`openIssues` touch issues | `paper/PRIOR_WORK.md` §4 | `215b10f` |
+| SEOSS 33 spread | **8.11%** (Errai) → **97.13%** (Hadoop), 33 projects | `paper/PRIOR_WORK.md` §1 | `215b10f` |
+| Rath ICSE'18, commit side | ~**48%** of commits unlinked; ~**60%** linked on average; **15%** unlinked in Derby vs ~**76%** in Maven | `paper/PRIOR_WORK.md` §2 | `215b10f` |
+| Rath ICSE'18, ticket side | **43.3%** of improvements and **42.4%** of bugs have no commits; Derby 2,638 bugs, 1,093 1:1, 273 1:n, 1,272 unlinked ⇒ **51.8%** | same | `215b10f` |
+| Vieira PROMISE'19 | >**70,000** bug reports, 55 ASF projects — **linkage rates unverified, 403 on every source** | `paper/PRIOR_WORK.md` §3 | `215b10f` |
+| Iammarino 2021 | four projects, same-commit only, tightest analysis same-file **n=201** | `paper/SATD_NOVELTY.md` | `5b50ef1` |
+| Esfandiari 2023 | commit tags, **77** projects, same-commit only | same | `5b50ef1` |
+
+### 9g. Corpus limits and frozen thresholds
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| commit-side range, 12 eligible | **82.6–98.3%** | `paper/table1_eligibility.md` ← `scripts/make_table1.py` | `8d9f8ad` |
+| power requirement | **769** independent tickets for 80% power; effective n capped at **P/ICC**; at P=12 and ICC **0.02** the ceiling is **600** | `scripts/advisor_followup.py`, `replication/CORPUS_FEASIBILITY.md` | `4b8c3af`, `f07d976` |
+| ICC not estimated from four clusters | 3 df on the between-cluster component; must come from the pooled study | `replication/CORPUS_FEASIBILITY.md` | `f07d976` |
+| lowering the bar | at **60%** another nine projects qualify; median candidate near **35%** | same | `f07d976` |
+| frozen tier threshold | vendor share **≥0.40**, held; HBase max **0.33** and Phoenix flagged nothing; rule then failed **0 of 3** | `scripts/external_wrapper_tier.py`, `replication/REPLICATION.md` | `314845c`, `abdfb40` |
+| bar pre-registered before any clone | **≥0.80**, never moved | `predictions/PREDICTIONS.md` | `ca076a9` |
+| joint model, abstraction | **×1.54 [0.97, 2.43], p=0.068, n=319** | `scripts/full_adjustment.py` | `4b8c3af` |
+| codebook keyword precision | **≈25%** (5 of 20 flagged), miss ≈5% (1 of 20), 40-comment single-rater sample, no κ — **an instrument result, not an instrument** | `codebook_results.md`, `results_dossier.md` §11, `codebook.md` | `de657c3` |
+| frozen cache archive | **2,491** files, per-file SHA-256, **no rebuild script** | `scripts/freeze_caches.py`, `deposit/MANIFEST-v1.md` | `ce4bf7d` |
