@@ -305,6 +305,18 @@ significant trend (rho=−0.54, p=0.215) on the repaired corpus.
 
 **Small n throughout.** 28 architectural PRs, 28 matched pairs. One repository. One company.
 
+**The third TypeScript corpus was never opened, and the empty artifact that suggested otherwise is
+gone.** A zero-byte `prs_twenty.json` sat in the repo root from 2026-07-22 and was deleted on
+2026-07-30. It held no data and never had: `scripts/sui/fetch_prs.py` writes `json.dump(nodes)`
+unconditionally on every exit path, including every failure path, so even a fetch that returned
+nothing emits `[]`. Zero bytes means the shell redirect created the file and the process aborted
+before reaching that line. Twenty is a **tier-3 holdout** under the pilot design
+(`docs/superpowers/specs/2026-07-22-ts-refactoring-friction-pilot-design.md` §2), openable only
+after a pre-registration is committed and hashed. No such pre-registration exists, so the corpus
+stays closed and the replication announced in `SUI_ADVISOR_BRIEF.md` §8 remains unrun for Twenty
+and cal.diy. Documenso, the tier-2 calibration corpus, was opened as designed
+(`prs_documenso.json`, `refminer_documenso.json`).
+
 ---
 
 ## Reproduce
