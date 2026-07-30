@@ -120,6 +120,47 @@ therefore *within-passing variation*, not evidence of a general correlation
 between the two rates across all projects. Nothing here licenses a claim about
 projects below the bar, whose ticket-side rates were never measured.
 
+## 1d. The key matcher is 97.5% precise — measured, not assumed
+
+Added 2026-07-30. The rates in §1 and §1c are produced by matching
+`\b(?:KEY|KEY2)-\d+\b` against commit messages, and the first objection to any of
+them is that the regex catches text that is not a reference. Measured on a
+**200-commit manual sample**, equal allocation across the 12 eligible projects,
+seed `20260730`, drawn from each project's **pinned `head_sha`**:
+
+| quantity | value | source |
+|---|---|---|
+| precision, pooled sample | **195 / 200 = 97.5%** (Wilson 95% CI 94.3–98.9%) | `scripts/validate_matcher.py` |
+| precision, corpus-weighted | **97.7%** (±2.8pp, stratified) | same |
+| `revert` — sole matched key is the reverted work | 4 of 200 | same |
+| `backport` — key refers to work ported from elsewhere | 1 of 200 | same |
+| `version_string`, `changelog_paste`, `foreign_key` | 0 of 200 | same |
+
+**The matcher is not the weak link in this paper.** The failure modes a reviewer
+would expect — version strings, changelog pastes, foreign monorepo keys — did not
+appear at all, and the residual 2.5% is reverts and one backport.
+
+**Two zeros that are structural, and must be quoted with the caveat.**
+`version_string` is near-unreachable because the pattern demands the upper-case
+key followed by `-` and digits, which release identifiers in these projects
+(`1.116.0-kylin-4.x-r028`, `4.1.89.Final`) do not produce. `foreign_key` is
+unreachable for 11 of the 12, because each project is probed with its own key set
+and only Ozone is multi-key (`HDDS,OZONE`, both its own). **The §2 single-key →
+multi-key result on Hadoop is therefore NOT validated by this sample** — Hadoop
+is the only true monorepo in the study and is not among the 12.
+
+**Method verification.** Before sampling, the scan reproduces every project's
+published `commits_scanned` and `jira_key_refs` exactly, for all 12, and aborts
+otherwise. That is what establishes the validated matcher is the matcher that
+produced §1 — without editing `citation_rate.py` and disturbing its provenance.
+
+**Single rater, and why that is admissible here.** This is a mechanical check
+against a written rule with categories fixed before labelling, not a coded
+judgment, so §8's constraint (no κ available) does not bind it. The sample and
+every label are committed — `paper/matcher_sample.json`,
+`paper/matcher_labels.json` — so the check is auditable rather than agreed.
+Full write-up and the adjudication rules: `paper/matcher_validation.md`.
+
 ## 2. Single-key vs multi-key — 26.2% vs **92.3%-A**
 
 **Label discipline.** Two unrelated quantities in this repo are both 92.3%.
