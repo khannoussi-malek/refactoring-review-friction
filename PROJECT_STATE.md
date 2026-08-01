@@ -9,13 +9,18 @@ four clusters — was written up on 07-30, and the marker is retired.
 ## 1. Current state
 
 RQ1's first operationalisation (effort estimates) is tested and closed; the
-second (review discussion) was retracted as a volume confound. The methods paper
+second (review discussion) was retracted as a volume confound; the third (the
+external-wrapper tier rule) failed held-out replication 0 of 3. The methods paper
 — traceability and estimate coverage as corpus-eligibility constraints — is near
-complete and is the only shippable output. The RQ1 successor design (SATD
-comment → architectural refactoring interval) is unstarted and gated on Task 18,
-which decides whether entity tracking across Move Class / Move Package is
-achievable at all. Blocking: external judgement on whether the SATD novelty
-margin justifies a registered report, and a branch layout decision.
+complete and is the only shippable output. The SATD-interval design was
+superseded on 07-26 without being started. **The current RQ1 anchor is the
+violation-symptom interval**: an architecture violation symptom raised in code
+review → a later, separate architectural refactoring of the flagged entity
+(`paper/ANCHOR_HISTORY.md`). It is at the feasibility-gate stage, not the design
+stage: `prereg/RESOLUTION_GATE.md` fixes a 20-comment resolution gate on Hadoop
+before any commitment. Task 18 (entity tracking across Move Class / Move Package)
+still gates it, and inherits unchanged from the SATD design. Blocking: the gate
+outcome, and a branch layout decision.
 
 ## 2. Decision log
 
@@ -46,14 +51,21 @@ margin justifies a registered report, and a branch layout decision.
 | 07-25 | Drop `lifelines`; pin requirements from actual imports | `requirements.txt` | `dd27103` | no |
 | 07-25 | **Estimate conclusion was drawn at the wrong aggregation level** — "absent in Apache" replaced by 2.557% Apache-wide / 1.449% Hadoop corpus / 0 of 323 architectural (expected 4.7, P≈0.009) | `estimates_by_org.json` | `eee902f` | **yes — reversal of `de657c3` §3** |
 | 07-25 | Read the mongodump archive as a stream rather than restoring it (~60 GB expanded vs 10.5 GB free) | `scripts/jira_archive.py` | `eee902f` | no |
-| 07-25 | **Switch RQ1 from tier rule to SATD-interval design** — dependency channel closed, tier rule dead, estimate signal too thin | `paper/SATD_NOVELTY.md` | `5b50ef1` | no |
+| 07-25 | **Switch RQ1 from tier rule to SATD-interval design** — dependency channel closed, tier rule dead, estimate signal too thin | `paper/SATD_NOVELTY.md` | `5b50ef1` | **yes — superseded by the 07-26 row below** |
 | 07-25 | Record the SATD novelty risk as three simultaneous legs, any one of which collapses it | `paper/SATD_NOVELTY.md` | `5b50ef1` | no |
 | 07-25 | Entity identifiers recoverable from `refminer_all.json` without re-mining 8,919 commits | `paper/ENTITY_IDENTIFIERS.md` | `2259129` | no |
 | 07-25 | Project count: report 1,276 (key-based) / 2,506 (name-union) / 1,822 (published, not reproducible); never quote 1,822 beside a per-project number | `paper/numbers.md` | `0f116aa` | no |
 | 07-25 | **id→key measured: 0 ids carry >1 key, 0 keys map to >1 id, against 326 ids with >1 name.** Supersedes the earlier key-vs-name framing: keys are 1:1 with ids *within a snapshot*, and the multi-key requirement is caused by concurrent siblings or superseded records, not key instability | `paper/eligibility_failure_modes.md` mode 6 | `5179907` | **yes — supersedes the `0f116aa` framing** |
 | 07-25 | Attic skew is on the estimate dimension, not traceability: 9/23 estimate-ranked Apache in Attic, 5/8 among ≥10%; traceability skew n.s. (Fisher p=0.229) | `paper/intersection.json` | `5179907` | no |
 | 07-25 | Estimate × traceability intersection: 3 of 27 clear both; 4 of 27 clear traceability at all | `paper/intersection.json` | `63f4231` | no |
+| 07-26 | **Switch RQ1 from the SATD-interval design to the violation-symptom-interval design** — anchor is now an architecture violation symptom raised in code review, and the interval from that symptom to a later, separate architectural refactoring of the flagged entity. The SATD design was never started and is superseded unstarted, not failed: it remained gated on Task 18 and on external judgement of a three-legged novelty margin | `paper/ANCHOR_HISTORY.md` | `2843a48` | no |
 | 07-30 | **Drop to a seven-project held-out corpus.** HBase and Phoenix quarantined in `spent/`; their aligned `git.json` + `jira.json` are one subtraction from per-ticket latency, so held-out status was not defensible even though no outcome was ever observed | `spent/README.md` | `a2e87ba` | **yes — resolves the `5179907` flag** |
+
+The 07-26 row is out of order against its commit hash and deliberately so: the
+decision was taken on 07-26 and written up on 08-01, the same pattern as the
+07-25 ICC refusal recorded in §1. The hash is the commit that added
+`paper/ANCHOR_HISTORY.md`, backfilled one commit later; `git log --diff-filter=A
+-- paper/ANCHOR_HISTORY.md` is the check.
 
 ## 3. What is held out and why
 
@@ -99,8 +111,9 @@ timing study.
 | decision | state |
 |---|---|
 | Branch layout — four branches separating methods paper / SATD design / exploratory Hadoop | proposed, awaiting decision; nothing created. Constraint: `ca076a9` must remain an ancestor of `48caf14` or the pre-registration evidence is destroyed |
-| Whether the three-legged SATD novelty margin justifies a registered report | awaiting external judgement; literature search cannot settle it (`5b50ef1`) |
-| Which RQ1 design proceeds | gated on Task 18 |
+| ~~Whether the three-legged SATD novelty margin justifies a registered report~~ | **moot 07-26** — the SATD design was superseded before the judgement arrived. The question is not answered, only no longer load-bearing (`5b50ef1`) |
+| ~~Which RQ1 design proceeds~~ | **resolved 07-26** — violation-symptom interval (`paper/ANCHOR_HISTORY.md`). Whether it *survives* is the feasibility gate, `prereg/RESOLUTION_GATE.md` |
+| Whether the violation-symptom novelty margin holds against Li et al. and the ATD time-to-fix literature | **not assessed.** No equivalent of `paper/SATD_NOVELTY.md` exists for this anchor; no external paper on it is present in the repo |
 | ~~HBase/Phoenix held-out status~~ | **resolved 07-30** — dropped to a seven-project corpus, both quarantined in `spent/` |
 
 ## 6. Outstanding tasks

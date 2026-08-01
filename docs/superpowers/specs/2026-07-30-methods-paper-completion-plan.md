@@ -440,3 +440,46 @@ script** — `paper/numbers.md` §7 credits `scripts/filter_architectural.py`,
 which contains no plotting code. **Ruling: leave `study_funnel.png` untouched
 and author a new `figures/eligibility_funnel.png` from a committed script**;
 report the `numbers.md` provenance error rather than fixing it, per §9.
+
+---
+
+## 11. Scope exception to R4 — the violation-symptom resolution gate (2026-08-01)
+
+Authorised after this plan was written, by the author, and recorded here rather
+than in the task list because it is not a task of this plan.
+
+**What changed.** RQ1's anchor moved on 07-26 from the SATD interval to the
+violation-symptom interval (`PROJECT_STATE.md` §2, `paper/ANCHOR_HISTORY.md`).
+Before committing to it there is a feasibility gate: 20 structural review
+comments, classified by how each resolved. R4 forbids adding analyses, so without
+an explicit exception the gate cannot run.
+
+**Ruling: R4 is relaxed for the resolution gate and for nothing else.**
+
+*Permitted, and only this:*
+* The gate defined in `prereg/RESOLUTION_GATE.md`, on **existing local data
+  only** — `.jira_cache/`, `refminer_all.json`, the `hadoop/` clone,
+  `ticket_first_commit.json`.
+* Scripts that read those and emit sampling frames and evidence packs.
+
+*Still forbidden, unchanged:*
+* New corpora. New clones. **Any network call of any kind.**
+* **Any new RefactoringMiner run** — `refminer_*.json` is read, never regenerated.
+* New p-values, and any statistical test on gate output.
+* Anything that alters a manuscript number. The gate contributes nothing to
+  `paper/numbers.md` or `paper/manuscript/`, and §8's definition of done is
+  untouched.
+
+*Rules that continue to bind in full:* **R1** — the gate reads only Hadoop, which
+§4 of `PROJECT_STATE.md` records as fully spent; no file under `replication/` or
+`spent/` is opened, and no timing statistic is computed for any of the seven
+held-out projects. **R2, R3, R5, R7, R8** unchanged. **R6 binds hardest** — the
+gate builds a *labelling sheet for a human coder*. No bucket is assigned by any
+script here, and a single-rater result cannot become a claim.
+
+**Why the corpus is Hadoop and not Gerrit.** No network call is permitted and
+`hadoop/` is the only clone on disk. The anchor targets Gerrit review; Hadoop's
+`githubbot`-relayed Jira record has no patchset structure, so "resolved inside
+the same review" is approximated against the ticket's merge commit. This is a
+known limitation of the gate, recorded in `paper/ANCHOR_HISTORY.md` and in the
+pre-registration, not a property of the anchor.
