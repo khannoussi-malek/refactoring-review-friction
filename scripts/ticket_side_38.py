@@ -262,6 +262,24 @@ def main():
             if passing and p["ticket_side_frozen"] > min(
                 q["ticket_side_frozen"] for q in passing)),
     }
+    # Sensitivity: drop the projects where most cited keys postdate the snapshot.
+    # For those the repository barely overlaps the ticket population the
+    # denominator describes, so the rate is about a truncated history rather than
+    # about traceability, and it belongs outside the association.
+    FLAG = 0.5
+    keep = [p for p in usable
+            if (p["share_cited_above_frozen_range"] or 0) <= FLAG]
+    out["association"]["sensitivity_excluding_truncated_history"] = {
+        "threshold_share_cited_above_snapshot": FLAG,
+        "excluded": sorted(p["project"] for p in usable if p not in keep),
+        "n": len(keep),
+        "spearman": spearman([p["commit_side_rate"] for p in keep],
+                             [p["ticket_side_frozen"] for p in keep]),
+        "passing": rng([p for p in keep if p["passes_bar"]]),
+        "dropped": rng([p for p in keep if not p["passes_bar"]]),
+    }
+    s = out["association"]["sensitivity_excluding_truncated_history"]
+
     a = out["association"]
     print(f"\ncommit-side vs ticket-side, {a['n_with_usable_denominator']} projects "
           f"with a usable denominator: Spearman rho = "
@@ -274,6 +292,10 @@ def main():
           f"median {a['dropped']['median']*100:.1f}%")
     print(f"  dropped projects above the worst passing project: "
           f"{len(a['dropped_above_worst_passing'])}")
+    print(f"  sensitivity, excluding {len(s['excluded'])} truncated-history cases "
+          f"({', '.join(s['excluded'])}): n={s['n']}, rho={s['spearman']:+.3f}, "
+          f"passing median {s['passing']['median']*100:.1f}%, "
+          f"dropped median {s['dropped']['median']*100:.1f}%")
 
     # validation summary
     val = [p["live"] for p in out["projects"] if "live" in p]

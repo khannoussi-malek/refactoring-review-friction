@@ -1,0 +1,1241 @@
+{
+ "denominator_source": {
+  "frozen": "estimates_by_org.json -> Apache|<KEY>.total (Zenodo 15719919, 2686282 issues parsed)",
+  "live": "paper/ticket_coverage.json (Apache Jira REST, keys only, 2026-07-25) \u2014 12 projects"
+ },
+ "estimator": "|{cited own-project keys with number <= N}| / N",
+ "projects": [
+  {
+   "project": "hive",
+   "head_sha": "6730aadd1895690b653f3c2260ce5328b61af1ae",
+   "commits_at_pinned_sha": 18213,
+   "commits_scanned_in_probe": 18213,
+   "commit_side_rate": 0.9701861307857025,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "HIVE"
+   ],
+   "primary_key": "HIVE",
+   "per_key": {
+    "HIVE": {
+     "distinct_keys_cited": 16534,
+     "max_number_cited": 186462,
+     "tracker_issues_frozen": 25731,
+     "cited_within_frozen_range": 14427,
+     "ticket_side_frozen": 0.5606855543896467
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.5606855543896467,
+   "frozen_numerator": 14427,
+   "frozen_denominator": 25731,
+   "distinct_keys_cited_total": 16534,
+   "cited_above_frozen_range": 2107,
+   "share_cited_above_frozen_range": 0.12743437764606266,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 29635,
+    "cited_within_live_range": 16489,
+    "ticket_side_estimated": 0.5564029019740172,
+    "ticket_side_published": 0.5577526573308588,
+    "delta_pp": -0.13497553568415643,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 5
+   }
+  },
+  {
+   "project": "phoenix",
+   "head_sha": "1b55fb4b330f53df464edc96074fef208bda1806",
+   "commits_at_pinned_sha": 4264,
+   "commits_scanned_in_probe": 4264,
+   "commit_side_rate": 0.9200281425891182,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "PHOENIX"
+   ],
+   "primary_key": "PHOENIX",
+   "per_key": {
+    "PHOENIX": {
+     "distinct_keys_cited": 3278,
+     "max_number_cited": 32451,
+     "tracker_issues_frozen": 6593,
+     "cited_within_frozen_range": 2684,
+     "ticket_side_frozen": 0.4070984377369938
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.4070984377369938,
+   "frozen_numerator": 2684,
+   "frozen_denominator": 6593,
+   "distinct_keys_cited_total": 3278,
+   "cited_above_frozen_range": 594,
+   "share_cited_above_frozen_range": 0.18120805369127516,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 7931,
+    "cited_within_live_range": 3270,
+    "ticket_side_estimated": 0.4123061404614803,
+    "ticket_side_published": 0.41318875299457825,
+    "delta_pp": -0.08826125330979595,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 1
+   }
+  },
+  {
+   "project": "drill",
+   "head_sha": "86e9b82f164c5849312580cf2c4cbdd617622722",
+   "commits_at_pinned_sha": 4594,
+   "commits_scanned_in_probe": 4594,
+   "commit_side_rate": 0.8415324336090553,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "DRILL"
+   ],
+   "primary_key": "DRILL",
+   "per_key": {
+    "DRILL": {
+     "distinct_keys_cited": 3677,
+     "max_number_cited": 8550,
+     "tracker_issues_frozen": 8069,
+     "cited_within_frozen_range": 3355,
+     "ticket_side_frozen": 0.4157888214152931
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.4157888214152931,
+   "frozen_numerator": 3355,
+   "frozen_denominator": 8069,
+   "distinct_keys_cited_total": 3677,
+   "cited_above_frozen_range": 322,
+   "share_cited_above_frozen_range": 0.08757138971988034,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 8507,
+    "cited_within_live_range": 3654,
+    "ticket_side_estimated": 0.4295286234865405,
+    "ticket_side_published": 0.4321147290466674,
+    "delta_pp": -0.258610556012695,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 1
+   }
+  },
+  {
+   "project": "kylin",
+   "head_sha": "b5b94b51abaf83d68088e4fcab606d2a6530e54d",
+   "commits_at_pinned_sha": 968,
+   "commits_scanned_in_probe": 968,
+   "commit_side_rate": 0.8388429752066116,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "KYLIN"
+   ],
+   "primary_key": "KYLIN",
+   "per_key": {
+    "KYLIN": {
+     "distinct_keys_cited": 711,
+     "max_number_cited": 6090,
+     "tracker_issues_frozen": 4989,
+     "cited_within_frozen_range": 2,
+     "ticket_side_frozen": 0.0004008819402685909
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.0004008819402685909,
+   "frozen_numerator": 2,
+   "frozen_denominator": 4989,
+   "distinct_keys_cited_total": 711,
+   "cited_above_frozen_range": 709,
+   "share_cited_above_frozen_range": 0.9971870604781997,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 5931,
+    "cited_within_live_range": 582,
+    "ticket_side_estimated": 0.09812847749114821,
+    "ticket_side_published": 0.1195413926825156,
+    "delta_pp": -2.1412915191367383,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 2
+   }
+  },
+  {
+   "project": "accumulo",
+   "head_sha": "5c7d96deb6922bd3e310d09cd33c71c2693c38f5",
+   "commits_at_pinned_sha": 15069,
+   "commits_scanned_in_probe": 15069,
+   "commit_side_rate": 0.42969009224235183,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "ACCUMULO"
+   ],
+   "primary_key": "ACCUMULO",
+   "per_key": {
+    "ACCUMULO": {
+     "distinct_keys_cited": 2958,
+     "max_number_cited": 9998,
+     "tracker_issues_frozen": 4745,
+     "cited_within_frozen_range": 2899,
+     "ticket_side_frozen": 0.6109589041095891
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.6109589041095891,
+   "frozen_numerator": 2899,
+   "frozen_denominator": 4745,
+   "distinct_keys_cited_total": 2958,
+   "cited_above_frozen_range": 59,
+   "share_cited_above_frozen_range": 0.019945909398242055,
+   "small_denominator": false
+  },
+  {
+   "project": "atlas",
+   "head_sha": "b45faecc9634b562347b320fd6faa8239aebf9e1",
+   "commits_at_pinned_sha": 4140,
+   "commits_scanned_in_probe": 4140,
+   "commit_side_rate": 0.7811594202898551,
+   "passes_bar": false,
+   "drop_reason": "below_bar_narrowly",
+   "keys_probed": [
+    "ATLAS"
+   ],
+   "primary_key": "ATLAS",
+   "per_key": {
+    "ATLAS": {
+     "distinct_keys_cited": 2900,
+     "max_number_cited": 5346,
+     "tracker_issues_frozen": 4469,
+     "cited_within_frozen_range": 2420,
+     "ticket_side_frozen": 0.5415081673752518
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.5415081673752518,
+   "frozen_numerator": 2420,
+   "frozen_denominator": 4469,
+   "distinct_keys_cited_total": 2900,
+   "cited_above_frozen_range": 480,
+   "share_cited_above_frozen_range": 0.16551724137931034,
+   "small_denominator": false
+  },
+  {
+   "project": "calcite",
+   "head_sha": "8447eda2f2fe34af9571f84ccb5de3d74c9e5ecd",
+   "commits_at_pinned_sha": 6746,
+   "commits_scanned_in_probe": 6746,
+   "commit_side_rate": 0.676697302104951,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "CALCITE",
+    "OPTIQ"
+   ],
+   "primary_key": "CALCITE",
+   "per_key": {
+    "CALCITE": {
+     "distinct_keys_cited": 4179,
+     "max_number_cited": 7663,
+     "tracker_issues_frozen": 4968,
+     "cited_within_frozen_range": 2645,
+     "ticket_side_frozen": 0.5324074074074074
+    },
+    "OPTIQ": {
+     "distinct_keys_cited": 85,
+     "max_number_cited": 443,
+     "tracker_issues_frozen": null,
+     "cited_within_frozen_range": 0,
+     "ticket_side_frozen": null
+    }
+   },
+   "keys_with_no_tracker_record": [
+    "OPTIQ"
+   ],
+   "ticket_side_frozen": 0.5324074074074074,
+   "frozen_numerator": 2645,
+   "frozen_denominator": 4968,
+   "distinct_keys_cited_total": 4264,
+   "cited_above_frozen_range": 1619,
+   "share_cited_above_frozen_range": 0.37969043151969983,
+   "small_denominator": false
+  },
+  {
+   "project": "flume",
+   "head_sha": "9acf15436181a523f7ac9bba016c04383708609f",
+   "commits_at_pinned_sha": 2084,
+   "commits_scanned_in_probe": 2084,
+   "commit_side_rate": 0.7389635316698656,
+   "passes_bar": false,
+   "drop_reason": "below_bar_narrowly",
+   "keys_probed": [
+    "FLUME"
+   ],
+   "primary_key": "FLUME",
+   "per_key": {
+    "FLUME": {
+     "distinct_keys_cited": 1478,
+     "max_number_cited": 3477,
+     "tracker_issues_frozen": 3380,
+     "cited_within_frozen_range": 1434,
+     "ticket_side_frozen": 0.4242603550295858
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.4242603550295858,
+   "frozen_numerator": 1434,
+   "frozen_denominator": 3380,
+   "distinct_keys_cited_total": 1478,
+   "cited_above_frozen_range": 44,
+   "share_cited_above_frozen_range": 0.029769959404600813,
+   "small_denominator": false
+  },
+  {
+   "project": "helix",
+   "head_sha": "0902505fdaa3ab1af9009d2c034eb3758f0185fd",
+   "commits_at_pinned_sha": 4926,
+   "commits_scanned_in_probe": 4926,
+   "commit_side_rate": 0.1045473000406009,
+   "passes_bar": false,
+   "drop_reason": "github_issue_references_dominate",
+   "keys_probed": [
+    "HELIX"
+   ],
+   "primary_key": "HELIX",
+   "per_key": {
+    "HELIX": {
+     "distinct_keys_cited": 396,
+     "max_number_cited": 1974,
+     "tracker_issues_frozen": 857,
+     "cited_within_frozen_range": 367,
+     "ticket_side_frozen": 0.4282380396732789
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.4282380396732789,
+   "frozen_numerator": 367,
+   "frozen_denominator": 857,
+   "distinct_keys_cited_total": 396,
+   "cited_above_frozen_range": 29,
+   "share_cited_above_frozen_range": 0.07323232323232323,
+   "small_denominator": false
+  },
+  {
+   "project": "hudi",
+   "head_sha": "26b1ebc4e9384d15c5599a4d97d522f781063b35",
+   "commits_at_pinned_sha": 7659,
+   "commits_scanned_in_probe": 7659,
+   "commit_side_rate": 0.6524350437393915,
+   "passes_bar": false,
+   "drop_reason": "github_issue_references_dominate",
+   "keys_probed": [
+    "HUDI"
+   ],
+   "primary_key": "HUDI",
+   "per_key": {
+    "HUDI": {
+     "distinct_keys_cited": 4647,
+     "max_number_cited": 18827,
+     "tracker_issues_frozen": 3172,
+     "cited_within_frozen_range": 1474,
+     "ticket_side_frozen": 0.4646910466582598
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.4646910466582598,
+   "frozen_numerator": 1474,
+   "frozen_denominator": 3172,
+   "distinct_keys_cited_total": 4647,
+   "cited_above_frozen_range": 3173,
+   "share_cited_above_frozen_range": 0.6828061114697654,
+   "small_denominator": false
+  },
+  {
+   "project": "karaf",
+   "head_sha": "d3a178529f965f247d7f9cc0a9cd5af310df5389",
+   "commits_at_pinned_sha": 10058,
+   "commits_scanned_in_probe": 10058,
+   "commit_side_rate": 0.7180353947106781,
+   "passes_bar": false,
+   "drop_reason": "below_bar_narrowly",
+   "keys_probed": [
+    "KARAF",
+    "FELIX"
+   ],
+   "primary_key": "KARAF",
+   "per_key": {
+    "KARAF": {
+     "distinct_keys_cited": 4208,
+     "max_number_cited": 8002,
+     "tracker_issues_frozen": 7145,
+     "cited_within_frozen_range": 3737,
+     "ticket_side_frozen": 0.5230230930720784
+    },
+    "FELIX": {
+     "distinct_keys_cited": 253,
+     "max_number_cited": 6183,
+     "tracker_issues_frozen": 6392,
+     "cited_within_frozen_range": 253,
+     "ticket_side_frozen": 0.03958072590738423
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.29474772844795744,
+   "frozen_numerator": 3990,
+   "frozen_denominator": 13537,
+   "distinct_keys_cited_total": 4461,
+   "cited_above_frozen_range": 471,
+   "share_cited_above_frozen_range": 0.10558170813718896,
+   "small_denominator": false
+  },
+  {
+   "project": "knox",
+   "head_sha": "6bdf64cdfd3cd10a0dc806d182171631d566a218",
+   "commits_at_pinned_sha": 3194,
+   "commits_scanned_in_probe": 3194,
+   "commit_side_rate": 0.8434564809016907,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "KNOX"
+   ],
+   "primary_key": "KNOX",
+   "per_key": {
+    "KNOX": {
+     "distinct_keys_cited": 2340,
+     "max_number_cited": 3389,
+     "tracker_issues_frozen": 2694,
+     "cited_within_frozen_range": 1849,
+     "ticket_side_frozen": 0.6863400148478099
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.6863400148478099,
+   "frozen_numerator": 1849,
+   "frozen_denominator": 2694,
+   "distinct_keys_cited_total": 2340,
+   "cited_above_frozen_range": 491,
+   "share_cited_above_frozen_range": 0.20982905982905983,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 3391,
+    "cited_within_live_range": 2340,
+    "ticket_side_estimated": 0.690061928634621,
+    "ticket_side_published": 0.690061928634621,
+    "delta_pp": 0.0,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 0
+   }
+  },
+  {
+   "project": "oozie",
+   "head_sha": "8bdac8be4fa719a99612a83dcba86748486f9408",
+   "commits_at_pinned_sha": 2412,
+   "commits_scanned_in_probe": 2412,
+   "commit_side_rate": 0.851575456053068,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "OOZIE"
+   ],
+   "primary_key": "OOZIE",
+   "per_key": {
+    "OOZIE": {
+     "distinct_keys_cited": 1851,
+     "max_number_cited": 3728,
+     "tracker_issues_frozen": 3646,
+     "cited_within_frozen_range": 1811,
+     "ticket_side_frozen": 0.49670872188699944
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.49670872188699944,
+   "frozen_numerator": 1811,
+   "frozen_denominator": 3646,
+   "distinct_keys_cited_total": 1851,
+   "cited_above_frozen_range": 40,
+   "share_cited_above_frozen_range": 0.021609940572663425,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 3727,
+    "cited_within_live_range": 1850,
+    "ticket_side_estimated": 0.4963777837402737,
+    "ticket_side_published": 0.49664609605580895,
+    "delta_pp": -0.026831231553525736,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 0
+   }
+  },
+  {
+   "project": "ozone",
+   "head_sha": "4f5ae5454fef0ecb9fbec8750af6204f4ee28540",
+   "commits_at_pinned_sha": 10962,
+   "commits_scanned_in_probe": 10962,
+   "commit_side_rate": 0.9828498449188104,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "HDDS",
+    "OZONE"
+   ],
+   "primary_key": "HDDS",
+   "per_key": {
+    "HDDS": {
+     "distinct_keys_cited": 10162,
+     "max_number_cited": 15959,
+     "tracker_issues_frozen": 6121,
+     "cited_within_frozen_range": 4047,
+     "ticket_side_frozen": 0.6611664760660023
+    },
+    "OZONE": {
+     "distinct_keys_cited": 0,
+     "max_number_cited": 0,
+     "tracker_issues_frozen": null,
+     "cited_within_frozen_range": 0,
+     "ticket_side_frozen": null
+    }
+   },
+   "keys_with_no_tracker_record": [
+    "OZONE"
+   ],
+   "ticket_side_frozen": 0.6611664760660023,
+   "frozen_numerator": 4047,
+   "frozen_denominator": 6121,
+   "distinct_keys_cited_total": 10162,
+   "cited_above_frozen_range": 6115,
+   "share_cited_above_frozen_range": 0.6017516236961228,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 15909,
+    "cited_within_live_range": 10159,
+    "ticket_side_estimated": 0.6385693632535043,
+    "ticket_side_published": 0.6387579357596329,
+    "delta_pp": -0.018857250612858145,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 0
+   }
+  },
+  {
+   "project": "parquet-java",
+   "head_sha": "83c2c80d49c57b1ae180df45229ee01dbceddc1e",
+   "commits_at_pinned_sha": 2990,
+   "commits_scanned_in_probe": 2990,
+   "commit_side_rate": 0.29063545150501674,
+   "passes_bar": false,
+   "drop_reason": "github_issue_references_dominate",
+   "keys_probed": [
+    "PARQUET"
+   ],
+   "primary_key": "PARQUET",
+   "per_key": {
+    "PARQUET": {
+     "distinct_keys_cited": 846,
+     "max_number_cited": 3532,
+     "tracker_issues_frozen": 2092,
+     "cited_within_frozen_range": 644,
+     "ticket_side_frozen": 0.3078393881453155
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.3078393881453155,
+   "frozen_numerator": 644,
+   "frozen_denominator": 2092,
+   "distinct_keys_cited_total": 846,
+   "cited_above_frozen_range": 202,
+   "share_cited_above_frozen_range": 0.23877068557919623,
+   "small_denominator": false
+  },
+  {
+   "project": "ranger",
+   "head_sha": "f133c2138963fbbff22a93965567db0021e3290d",
+   "commits_at_pinned_sha": 5390,
+   "commits_scanned_in_probe": 5390,
+   "commit_side_rate": 0.862708719851577,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "RANGER"
+   ],
+   "primary_key": "RANGER",
+   "per_key": {
+    "RANGER": {
+     "distinct_keys_cited": 3726,
+     "max_number_cited": 5700,
+     "tracker_issues_frozen": 3567,
+     "cited_within_frozen_range": 2436,
+     "ticket_side_frozen": 0.6829268292682927
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.6829268292682927,
+   "frozen_numerator": 2436,
+   "frozen_denominator": 3567,
+   "distinct_keys_cited_total": 3726,
+   "cited_above_frozen_range": 1290,
+   "share_cited_above_frozen_range": 0.3462157809983897,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 5699,
+    "cited_within_live_range": 3725,
+    "ticket_side_estimated": 0.6536234427092472,
+    "ticket_side_published": 0.6536234427092472,
+    "delta_pp": 0.0,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 1
+   }
+  },
+  {
+   "project": "tez",
+   "head_sha": "dd8137f4c13f71f55b975445d02140686b931664",
+   "commits_at_pinned_sha": 3123,
+   "commits_scanned_in_probe": 3123,
+   "commit_side_rate": 0.9743836055075248,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "TEZ"
+   ],
+   "primary_key": "TEZ",
+   "per_key": {
+    "TEZ": {
+     "distinct_keys_cited": 2775,
+     "max_number_cited": 8649,
+     "tracker_issues_frozen": 4347,
+     "cited_within_frozen_range": 2548,
+     "ticket_side_frozen": 0.5861513687600645
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.5861513687600645,
+   "frozen_numerator": 2548,
+   "frozen_denominator": 4347,
+   "distinct_keys_cited_total": 2775,
+   "cited_above_frozen_range": 227,
+   "share_cited_above_frozen_range": 0.0818018018018018,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 4724,
+    "cited_within_live_range": 2762,
+    "ticket_side_estimated": 0.5846740050804403,
+    "ticket_side_published": 0.5872142252328535,
+    "delta_pp": -0.2540220152413175,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 1
+   }
+  },
+  {
+   "project": "tika",
+   "head_sha": "379b32246f217ae08d47395729adcf626b9cd250",
+   "commits_at_pinned_sha": 10543,
+   "commits_scanned_in_probe": 10543,
+   "commit_side_rate": 0.5480413544531917,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "TIKA"
+   ],
+   "primary_key": "TIKA",
+   "per_key": {
+    "TIKA": {
+     "distinct_keys_cited": 2821,
+     "max_number_cited": 6000,
+     "tracker_issues_frozen": 3633,
+     "cited_within_frozen_range": 2123,
+     "ticket_side_frozen": 0.5843655381227636
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.5843655381227636,
+   "frozen_numerator": 2123,
+   "frozen_denominator": 3633,
+   "distinct_keys_cited_total": 2821,
+   "cited_above_frozen_range": 698,
+   "share_cited_above_frozen_range": 0.24742998936547322,
+   "small_denominator": false
+  },
+  {
+   "project": "zookeeper",
+   "head_sha": "53a78e36f99602162643303ab330377fc383b41f",
+   "commits_at_pinned_sha": 2718,
+   "commits_scanned_in_probe": 2718,
+   "commit_side_rate": 0.9043414275202355,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "ZOOKEEPER"
+   ],
+   "primary_key": "ZOOKEEPER",
+   "per_key": {
+    "ZOOKEEPER": {
+     "distinct_keys_cited": 2292,
+     "max_number_cited": 5067,
+     "tracker_issues_frozen": 4263,
+     "cited_within_frozen_range": 1969,
+     "ticket_side_frozen": 0.4618813042458363
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.4618813042458363,
+   "frozen_numerator": 1969,
+   "frozen_denominator": 4263,
+   "distinct_keys_cited_total": 2292,
+   "cited_above_frozen_range": 323,
+   "share_cited_above_frozen_range": 0.14092495636998253,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 4875,
+    "cited_within_live_range": 2200,
+    "ticket_side_estimated": 0.4512820512820513,
+    "ticket_side_published": 0.46994871794871795,
+    "delta_pp": -1.8666666666666665,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 1
+   }
+  },
+  {
+   "project": "james-project",
+   "head_sha": "f4b8d3711065787de2593bc85009f923dd7e6094",
+   "commits_at_pinned_sha": 17374,
+   "commits_scanned_in_probe": 17374,
+   "commit_side_rate": 0.7480142742028318,
+   "passes_bar": false,
+   "drop_reason": "below_bar_narrowly",
+   "keys_probed": [
+    "JAMES",
+    "MAILBOX"
+   ],
+   "primary_key": "JAMES",
+   "per_key": {
+    "JAMES": {
+     "distinct_keys_cited": 2069,
+     "max_number_cited": 33775,
+     "tracker_issues_frozen": 3611,
+     "cited_within_frozen_range": 1595,
+     "ticket_side_frozen": 0.44170589864303517
+    },
+    "MAILBOX": {
+     "distinct_keys_cited": 122,
+     "max_number_cited": 407,
+     "tracker_issues_frozen": 407,
+     "cited_within_frozen_range": 122,
+     "ticket_side_frozen": 0.29975429975429974
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.42732702837232456,
+   "frozen_numerator": 1717,
+   "frozen_denominator": 4018,
+   "distinct_keys_cited_total": 2191,
+   "cited_above_frozen_range": 474,
+   "share_cited_above_frozen_range": 0.21633957097215883,
+   "small_denominator": false
+  },
+  {
+   "project": "jena",
+   "head_sha": "fbe7bfcb1eb27b1ad67cd86089c3b981d468df98",
+   "commits_at_pinned_sha": 13091,
+   "commits_scanned_in_probe": 13091,
+   "commit_side_rate": 0.2440608051332977,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "JENA"
+   ],
+   "primary_key": "JENA",
+   "per_key": {
+    "JENA": {
+     "distinct_keys_cited": 1485,
+     "max_number_cited": 2837,
+     "tracker_issues_frozen": 2238,
+     "cited_within_frozen_range": 1409,
+     "ticket_side_frozen": 0.629579982126899
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.629579982126899,
+   "frozen_numerator": 1409,
+   "frozen_denominator": 2238,
+   "distinct_keys_cited_total": 1485,
+   "cited_above_frozen_range": 76,
+   "share_cited_above_frozen_range": 0.05117845117845118,
+   "small_denominator": false
+  },
+  {
+   "project": "oodt",
+   "head_sha": "f3dda2591bef8f16ce0a13dd4452538ca0f2f63d",
+   "commits_at_pinned_sha": 2251,
+   "commits_scanned_in_probe": 2251,
+   "commit_side_rate": 0.6197245668591737,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "OODT"
+   ],
+   "primary_key": "OODT",
+   "per_key": {
+    "OODT": {
+     "distinct_keys_cited": 640,
+     "max_number_cited": 1037,
+     "tracker_issues_frozen": 1040,
+     "cited_within_frozen_range": 640,
+     "ticket_side_frozen": 0.6153846153846154
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.6153846153846154,
+   "frozen_numerator": 640,
+   "frozen_denominator": 1040,
+   "distinct_keys_cited_total": 640,
+   "cited_above_frozen_range": 0,
+   "share_cited_above_frozen_range": 0.0,
+   "small_denominator": false
+  },
+  {
+   "project": "sqoop",
+   "head_sha": "f8beae32a067d72bf9ed6e903b041ad347ca5491",
+   "commits_at_pinned_sha": 969,
+   "commits_scanned_in_probe": 969,
+   "commit_side_rate": 0.8255933952528379,
+   "passes_bar": true,
+   "drop_reason": null,
+   "keys_probed": [
+    "SQOOP"
+   ],
+   "primary_key": "SQOOP",
+   "per_key": {
+    "SQOOP": {
+     "distinct_keys_cited": 790,
+     "max_number_cited": 3487,
+     "tracker_issues_frozen": 3152,
+     "cited_within_frozen_range": 663,
+     "ticket_side_frozen": 0.21034263959390864
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.21034263959390864,
+   "frozen_numerator": 663,
+   "frozen_denominator": 3152,
+   "distinct_keys_cited_total": 790,
+   "cited_above_frozen_range": 127,
+   "share_cited_above_frozen_range": 0.16075949367088607,
+   "small_denominator": false,
+   "live": {
+    "tracker_issues_live": 3152,
+    "cited_within_live_range": 663,
+    "ticket_side_estimated": 0.21034263959390864,
+    "ticket_side_published": 0.21192893401015228,
+    "delta_pp": -0.15862944162436388,
+    "published_distinct_keys_cited": null,
+    "published_cited_keys_not_in_jira": 122
+   }
+  },
+  {
+   "project": "storm",
+   "head_sha": "cca249f18129999f0959753d71d10f1bda14e890",
+   "commits_at_pinned_sha": 11871,
+   "commits_scanned_in_probe": 11871,
+   "commit_side_rate": 0.4665992755454469,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "STORM"
+   ],
+   "primary_key": "STORM",
+   "per_key": {
+    "STORM": {
+     "distinct_keys_cited": 2344,
+     "max_number_cited": 10054,
+     "tracker_issues_frozen": 3762,
+     "cited_within_frozen_range": 2096,
+     "ticket_side_frozen": 0.557150451887294
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.557150451887294,
+   "frozen_numerator": 2096,
+   "frozen_denominator": 3762,
+   "distinct_keys_cited_total": 2344,
+   "cited_above_frozen_range": 248,
+   "share_cited_above_frozen_range": 0.10580204778156997,
+   "small_denominator": false
+  },
+  {
+   "project": "struts",
+   "head_sha": "73f17c1be7bbc4cde5b1ba007298a6cfefa5b4bf",
+   "commits_at_pinned_sha": 8353,
+   "commits_scanned_in_probe": 8353,
+   "commit_side_rate": 0.541003232371603,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "WW"
+   ],
+   "primary_key": "WW",
+   "per_key": {
+    "WW": {
+     "distinct_keys_cited": 2194,
+     "max_number_cited": 5653,
+     "tracker_issues_frozen": 5093,
+     "cited_within_frozen_range": 1832,
+     "ticket_side_frozen": 0.35970940506577653
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.35970940506577653,
+   "frozen_numerator": 1832,
+   "frozen_denominator": 5093,
+   "distinct_keys_cited_total": 2194,
+   "cited_above_frozen_range": 362,
+   "share_cited_above_frozen_range": 0.1649954421148587,
+   "small_denominator": false
+  },
+  {
+   "project": "syncope",
+   "head_sha": "21d513d1c328f9299f88e5db1a5674ce3cd00895",
+   "commits_at_pinned_sha": 9422,
+   "commits_scanned_in_probe": 9422,
+   "commit_side_rate": 0.3597962216090002,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "SYNCOPE"
+   ],
+   "primary_key": "SYNCOPE",
+   "per_key": {
+    "SYNCOPE": {
+     "distinct_keys_cited": 1717,
+     "max_number_cited": 1985,
+     "tracker_issues_frozen": 1650,
+     "cited_within_frozen_range": 1399,
+     "ticket_side_frozen": 0.8478787878787879
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.8478787878787879,
+   "frozen_numerator": 1399,
+   "frozen_denominator": 1650,
+   "distinct_keys_cited_total": 1717,
+   "cited_above_frozen_range": 318,
+   "share_cited_above_frozen_range": 0.18520675596971461,
+   "small_denominator": false
+  },
+  {
+   "project": "tomee",
+   "head_sha": "a3e8806a9da8dc47023c9d96701cee5c3d0e019a",
+   "commits_at_pinned_sha": 16228,
+   "commits_scanned_in_probe": 16228,
+   "commit_side_rate": 0.32222085284693125,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "TOMEE",
+    "OPENEJB"
+   ],
+   "primary_key": "TOMEE",
+   "per_key": {
+    "TOMEE": {
+     "distinct_keys_cited": 2397,
+     "max_number_cited": 4657,
+     "tracker_issues_frozen": 3371,
+     "cited_within_frozen_range": 1885,
+     "ticket_side_frozen": 0.5591812518540492
+    },
+    "OPENEJB": {
+     "distinct_keys_cited": 1091,
+     "max_number_cited": 2134,
+     "tracker_issues_frozen": 2046,
+     "cited_within_frozen_range": 1043,
+     "ticket_side_frozen": 0.5097751710654936
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.540520583348717,
+   "frozen_numerator": 2928,
+   "frozen_denominator": 5417,
+   "distinct_keys_cited_total": 3488,
+   "cited_above_frozen_range": 560,
+   "share_cited_above_frozen_range": 0.16055045871559634,
+   "small_denominator": false
+  },
+  {
+   "project": "wicket",
+   "head_sha": "34ef6da88d728542c6b991f67577852bca1298ee",
+   "commits_at_pinned_sha": 22260,
+   "commits_scanned_in_probe": 22260,
+   "commit_side_rate": 0.30858041329739444,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "WICKET"
+   ],
+   "primary_key": "WICKET",
+   "per_key": {
+    "WICKET": {
+     "distinct_keys_cited": 4353,
+     "max_number_cited": 7187,
+     "tracker_issues_frozen": 6933,
+     "cited_within_frozen_range": 4189,
+     "ticket_side_frozen": 0.6042117409490841
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.6042117409490841,
+   "frozen_numerator": 4189,
+   "frozen_denominator": 6933,
+   "distinct_keys_cited_total": 4353,
+   "cited_above_frozen_range": 164,
+   "share_cited_above_frozen_range": 0.037675166551803356,
+   "small_denominator": false
+  },
+  {
+   "project": "zeppelin",
+   "head_sha": "597652e4c2e21a90511805abaf43bcc1619751b3",
+   "commits_at_pinned_sha": 5708,
+   "commits_scanned_in_probe": 5708,
+   "commit_side_rate": 0.6072179397337071,
+   "passes_bar": false,
+   "drop_reason": "github_issue_references_dominate",
+   "keys_probed": [
+    "ZEPPELIN"
+   ],
+   "primary_key": "ZEPPELIN",
+   "per_key": {
+    "ZEPPELIN": {
+     "distinct_keys_cited": 3296,
+     "max_number_cited": 6742,
+     "tracker_issues_frozen": 5614,
+     "cited_within_frozen_range": 2816,
+     "ticket_side_frozen": 0.5016031350195939
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.5016031350195939,
+   "frozen_numerator": 2816,
+   "frozen_denominator": 5614,
+   "distinct_keys_cited_total": 3296,
+   "cited_above_frozen_range": 480,
+   "share_cited_above_frozen_range": 0.14563106796116504,
+   "small_denominator": false
+  },
+  {
+   "project": "dubbo",
+   "head_sha": "eb1d8abaebdc2ce1e15d6236cf9f9179d34e9082",
+   "commits_at_pinned_sha": 8892,
+   "commits_scanned_in_probe": 8892,
+   "commit_side_rate": 0.11021142600089968,
+   "passes_bar": false,
+   "drop_reason": "github_issue_references_dominate",
+   "keys_probed": [
+    "DUBBO"
+   ],
+   "primary_key": "DUBBO",
+   "per_key": {
+    "DUBBO": {
+     "distinct_keys_cited": 393,
+     "max_number_cited": 11047,
+     "tracker_issues_frozen": 78,
+     "cited_within_frozen_range": 48,
+     "ticket_side_frozen": 0.6153846153846154
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.6153846153846154,
+   "frozen_numerator": 48,
+   "frozen_denominator": 78,
+   "distinct_keys_cited_total": 393,
+   "cited_above_frozen_range": 345,
+   "share_cited_above_frozen_range": 0.8778625954198473,
+   "small_denominator": true
+  },
+  {
+   "project": "rocketmq",
+   "head_sha": "b37e2bbacd2c899112f22028b139dfdfb10da712",
+   "commits_at_pinned_sha": 9165,
+   "commits_scanned_in_probe": 9165,
+   "commit_side_rate": 0.05739225313693399,
+   "passes_bar": false,
+   "drop_reason": "github_issue_references_dominate",
+   "keys_probed": [
+    "ROCKETMQ",
+    "RIP"
+   ],
+   "primary_key": "ROCKETMQ",
+   "per_key": {
+    "ROCKETMQ": {
+     "distinct_keys_cited": 140,
+     "max_number_cited": 4203,
+     "tracker_issues_frozen": 384,
+     "cited_within_frozen_range": 139,
+     "ticket_side_frozen": 0.3619791666666667
+    },
+    "RIP": {
+     "distinct_keys_cited": 35,
+     "max_number_cited": 83,
+     "tracker_issues_frozen": null,
+     "cited_within_frozen_range": 0,
+     "ticket_side_frozen": null
+    }
+   },
+   "keys_with_no_tracker_record": [
+    "RIP"
+   ],
+   "ticket_side_frozen": 0.3619791666666667,
+   "frozen_numerator": 139,
+   "frozen_denominator": 384,
+   "distinct_keys_cited_total": 175,
+   "cited_above_frozen_range": 36,
+   "share_cited_above_frozen_range": 0.2057142857142857,
+   "small_denominator": true
+  },
+  {
+   "project": "servicecomb-java-chassis",
+   "head_sha": "ac4a6991e6334607b786607ad1e60638ff6ad4bf",
+   "commits_at_pinned_sha": 4668,
+   "commits_scanned_in_probe": 4668,
+   "commit_side_rate": 0.5616966580976864,
+   "passes_bar": false,
+   "drop_reason": "low_commit_message_hygiene",
+   "keys_probed": [
+    "SCB"
+   ],
+   "primary_key": "SCB",
+   "per_key": {
+    "SCB": {
+     "distinct_keys_cited": 1277,
+     "max_number_cited": 2895,
+     "tracker_issues_frozen": 2326,
+     "cited_within_frozen_range": 924,
+     "ticket_side_frozen": 0.39724849527085127
+    }
+   },
+   "keys_with_no_tracker_record": [],
+   "ticket_side_frozen": 0.39724849527085127,
+   "frozen_numerator": 924,
+   "frozen_denominator": 2326,
+   "distinct_keys_cited_total": 1277,
+   "cited_above_frozen_range": 353,
+   "share_cited_above_frozen_range": 0.2764291307752545,
+   "small_denominator": false
+  },
+  {
+   "project": "skywalking",
+   "head_sha": "dddc3b51be9d027755d48e99f72b362e969ccecd",
+   "commits_at_pinned_sha": 8577,
+   "commits_scanned_in_probe": 8577,
+   "commit_side_rate": 0.002564999417045587,
+   "passes_bar": false,
+   "drop_reason": "github_issue_references_dominate",
+   "keys_probed": [
+    "SWIP"
+   ],
+   "primary_key": "SWIP",
+   "per_key": {
+    "SWIP": {
+     "distinct_keys_cited": 11,
+     "max_number_cited": 15,
+     "tracker_issues_frozen": null,
+     "cited_within_frozen_range": 0,
+     "ticket_side_frozen": null
+    }
+   },
+   "keys_with_no_tracker_record": [
+    "SWIP"
+   ],
+   "ticket_side_frozen": null,
+   "frozen_numerator": 0,
+   "frozen_denominator": 0,
+   "distinct_keys_cited_total": 11,
+   "cited_above_frozen_range": 11,
+   "share_cited_above_frozen_range": 1.0,
+   "small_denominator": false
+  }
+ ],
+ "missing_clones": [
+  "hbase",
+  "flink",
+  "cxf",
+  "pinot",
+  "shardingsphere"
+ ],
+ "association": {
+  "n_with_usable_denominator": 30,
+  "excluded_small_denominator": [
+   "dubbo",
+   "rocketmq"
+  ],
+  "excluded_no_tracker_record": [
+   "skywalking"
+  ],
+  "spearman_commit_side_vs_ticket_side": -0.015795328142380424,
+  "passing": {
+   "n": 11,
+   "min": 0.0004008819402685909,
+   "max": 0.6863400148478099,
+   "median": 0.49670872188699944
+  },
+  "dropped": {
+   "n": 19,
+   "min": 0.29474772844795744,
+   "max": 0.8478787878787879,
+   "median": 0.5324074074074074
+  },
+  "dropped_above_worst_passing": [
+   "accumulo",
+   "atlas",
+   "calcite",
+   "flume",
+   "helix",
+   "hudi",
+   "james-project",
+   "jena",
+   "karaf",
+   "oodt",
+   "parquet-java",
+   "servicecomb-java-chassis",
+   "storm",
+   "struts",
+   "syncope",
+   "tika",
+   "tomee",
+   "wicket",
+   "zeppelin"
+  ],
+  "sensitivity_excluding_truncated_history": {
+   "threshold_share_cited_above_snapshot": 0.5,
+   "excluded": [
+    "hudi",
+    "kylin",
+    "ozone"
+   ],
+   "n": 27,
+   "spearman": -0.07142857142857142,
+   "passing": {
+    "n": 9,
+    "min": 0.21034263959390864,
+    "max": 0.6863400148478099,
+    "median": 0.49670872188699944
+   },
+   "dropped": {
+    "n": 18,
+    "min": 0.29474772844795744,
+    "max": 0.8478787878787879,
+    "median": 0.540520583348717
+   }
+  }
+ },
+ "validation": {
+  "n": 11,
+  "mean_abs_delta_pp": 0.4498314063492834,
+  "max_abs_delta_pp": 2.1412915191367383,
+  "worst": {
+   "tracker_issues_live": 5931,
+   "cited_within_live_range": 582,
+   "ticket_side_estimated": 0.09812847749114821,
+   "ticket_side_published": 0.1195413926825156,
+   "delta_pp": -2.1412915191367383,
+   "published_distinct_keys_cited": null,
+   "published_cited_keys_not_in_jira": 2
+  }
+ }
+}

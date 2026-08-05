@@ -557,3 +557,35 @@ ticket-realisation extension.
 |---|---|---|---|
 | Hadoop commits analysed by RefactoringMiner | **8,919** commits, **51,861** refactorings, **248,336** location records | `paper/ENTITY_IDENTIFIERS.md`, `refminer_all.json` | `2259129` |
 | the ICC value the feasibility table turns on | **0.015** → ceiling n_eff **800**, "feasible, barely"; **0.02** → **600**, infeasible. The whole design decision is the gap between these two, which is why a four-cluster estimate was refused | `replication/CORPUS_FEASIBILITY.md` | `f07d976` |
+
+### 10b. Distribution of the 38 probed rates — and one figure withdrawn
+
+`scripts/probe_summary.py` → `paper/probe_summary.json`. Written because the
+manuscript wanted "the median sits near 35%" and that figure does not reproduce.
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| commit-side rate, all 38 probed | median **63.6%**, mean 57.2%, min 0.0%, max 98.3% | `scripts/probe_summary.py` | `152a477` |
+| commit-side rate, the 26 the bar dropped | median **44.8%**, mean 42.2%, max **78.1%** (atlas) | same | `152a477` |
+| commit-side rate, the 12 that cleared it | median 88.4%, mean 89.5% | same | `152a477` |
+| pass count as the bar moves | 0.80 → **12**; 0.70 → 16; 0.60 → **21**; 0.50 → 24 | same | `152a477` |
+| highest rate outside the Hadoop ecosystem | **74.8%** (james-project); **0** non-Hadoop projects clear the bar | same | `152a477` |
+
+**⚠ WITHDRAWN — "the median sits near 35%".** Carried by
+`replication/CORPUS_FEASIBILITY.md` and by §9g of this file ("median candidate
+near **35%**"). It does not reproduce from `paper/traceability_probe.json` under
+any grouping tried: all 38 gives 63.6%, the 26 dropped give 44.8%, the 17 below
+60% give 30.9%. **Do not quote 35%.** The manuscript uses 63.6% and 44.8%. The
+original sentence is left in place in `CORPUS_FEASIBILITY.md` with a dated
+correction appended beneath it, per the additive-correction rule; the likely
+origin is the earlier "12 of 34" probe state, but that is a hypothesis and the
+earlier state is not recoverable.
+
+**Confirmed on the same pass:** "at 60% another nine projects qualify" is exact —
+12 at 0.80, 21 at 0.60.
+
+**Family is a hand classification.** "All 12 are Hadoop-ecosystem" and "the best
+outside it is James" both depend on a project→family judgment that is **not a
+field in the probe** (§7 of this file records that). `probe_summary.py` writes the
+classification into the artifact so the judgment is inspectable rather than
+implicit.
