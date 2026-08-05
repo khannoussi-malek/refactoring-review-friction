@@ -152,6 +152,12 @@ def render(probe, passing, dropped, ticket):
     add("")
 
     # --- caption -------------------------------------------------------------
+    # Hive is the worked example. Kylin held this role until §4.2.1 withdrew it:
+    # its pinned branch reaches 968 commits from 2022-08-01, 7.5% of the
+    # repository's 12,937, so its 12.0% is a four-year window against a
+    # twelve-year tracker. Kylin stays in the table, flagged.
+    hive = next(r for r in passing if r["project"] == "hive")
+    ht = ticket["hive"]
     kylin = next(r for r in passing if r["project"] == "kylin")
     kt = ticket["kylin"]
     lo = min(ticket[r["project"]]["ticket_side_rate"] for r in passing)
@@ -170,25 +176,45 @@ def render(probe, passing, dropped, ticket):
         "and what selection criteria use. The ticket-side rate — what fraction of "
         "tickets ever receive a citing commit — is what a ticket-anchored study "
         "depends on. "
-        f"**Kylin cites a ticket in {pct(kylin['commits_citing_multi'], kylin['commits_scanned'])} "
-        f"of its commits while only {pct(kt['tickets_cited_by_a_commit'], kt['jira_tickets_total'])} "
-        "of its tickets are ever touched by one** — it clears the bar comfortably "
-        "and leaves seven of every eight tickets with no commit at all. Across the "
+        f"**Apache Hive cites a ticket in "
+        f"{pct(hive['commits_citing_multi'], hive['commits_scanned'])} of its "
+        f"{hive['commits_scanned']:,} commits, while "
+        f"{pct(ht['tickets_cited_by_a_commit'], ht['jira_tickets_total'])} of its "
+        f"{ht['jira_tickets_total']:,} tickets are ever touched by one** — near "
+        "perfect commit-side hygiene, and still close to half the tracker "
+        "invisible to a ticket-anchored design. Across the "
         f"{len(passing)} eligible projects the commit-side rate runs "
-        f"{100.0 * ck_lo:.1f}–{100.0 * ck_hi:.1f}% while the ticket-side rate runs "
+        f"{100.0 * ck_lo:.1f}–{100.0 * ck_hi:.1f}% while TRR_live runs "
         f"**{lo_p}–{hi_p}, with none above {hi_p}**."
+    )
+    add("")
+    add(
+        f"**Kylin's row is flagged, not featured.** At "
+        f"{pct(kylin['commits_citing_multi'], kylin['commits_scanned'])} "
+        f"commit-side against {pct(kt['tickets_cited_by_a_commit'], kt['jira_tickets_total'])} "
+        "ticket-side it is the sharpest divergence in the table, and earlier "
+        "drafts led with it. **That example is withdrawn (§4.2.1.)** The pinned "
+        "commit reaches 968 commits beginning 2022-08-01, 7.5% of the 12,937 on "
+        "the repository's refs, so the ticket-side figure is a four-year commit "
+        "window measured against a twelve-year tracker. The row is retained "
+        "because the measurement is correct for the branch that was pinned; it "
+        "should not be read as a fact about Kylin's traceability."
     )
     add("")
     add(
         "**The ceiling, and why it reframes the divergence.** A commit that "
         "cites a ticket contributes at most one NEW distinct ticket to the "
         "ticket-side numerator, so the rate cannot exceed "
-        "`commit-side x commits / tickets` (method §3.1.4). That bound BINDS "
-        "for all twelve: it runs 13.7% (kylin) to 81.6% (ranger), and every "
-        "project reaches 80–95% of it. The ticket-side spread is therefore "
-        "almost entirely a spread in commits per ticket, not in citation "
-        "discipline — `TRR/ceiling` has a median of 0.89 and a range of only "
-        "1.19x across the twelve, against a 5.8x spread in the rate itself."
+        "`commit-side x commits / tickets` (method §3.1.4). Every quantity in "
+        "this table is the live measurement, so the bound here is "
+        "ceiling_live, and it BINDS for all twelve: it runs 13.7% (kylin) to "
+        "81.6% (ranger), and every project reaches 80–95% of it. The ticket-side "
+        "spread is therefore almost entirely a spread in commits per ticket, not "
+        "in citation discipline — fill_live has a median of 0.89 and a range "
+        "of only 1.19x across the twelve, against a 5.8x spread in the rate "
+        "itself. Table 3 computes ceiling_frozen instead and puts three "
+        "projects at or above 100%, where the bound does not bind at all; the "
+        "two are different denominators, not a disagreement (§3.1.3, §4.2)."
     )
     add("")
     add(

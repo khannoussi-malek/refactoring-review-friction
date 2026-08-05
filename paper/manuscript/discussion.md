@@ -14,7 +14,8 @@ will not be told which of those numbers mean anything.
 commits per ticket beside it.** A commit-side rate answers "if I start from a
 commit, can I find its ticket?". A design that starts from *tickets* needs the
 ticket realisation rate, and the first does not imply the second — Hive is 97.0%
-one way and 55.8% the other. But the more useful advice is the ceiling (§3.1.4):
+one way and 55.8% the other (TRR_live). But the more useful advice is the
+ceiling (§3.1.4):
 **below one commit per ticket the two rates are not commensurable at all**, and
 every project in our eligible corpus is below it except Ranger and Knox. Report
 `commits / tickets`; it costs nothing, it bounds the ticket-side rate before any

@@ -14,8 +14,10 @@ judgment rather than a finding. The channel the literature publishes is
 not the channel a ticket-anchored study needs. The **commit-side rate** — what
 fraction of commits cite a ticket — runs 82.6–98.3% across the eligible twelve,
 while the **ticket realisation rate** — what fraction of tickets ever receive a
-citing commit — runs 12.0–69.0%. Apache Hive cites a ticket in 97.0% of its
-18,213 commits and realises 55.8% of its 29,635 tickets.
+citing commit — runs 12.0–69.0% under TRR_live. Apache Hive cites a ticket in
+97.0% of its 18,213 commits and realises 55.8% of its 29,635 tickets, again
+TRR_live; Table 3 reports the same project at 56.1% under TRR_frozen, which
+counts a different ticket denominator (§3.1.3).
 
 **Most of that gap is arithmetic, not discipline.** A citing commit adds at most
 one new distinct ticket, so the ticket-side rate cannot exceed

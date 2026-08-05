@@ -610,6 +610,10 @@ numerator and denominator aligned in issue-number space. **No Jira fetch.**
 | commit-side vs ticket realisation, Spearman | **rho = −0.010** over 33; **−0.062** over 30 excluding hudi, kylin, ozone | same | `45aebc8` |
 | cleared the bar, n=12 | 0.04–68.6%, **median 55.5%** | same | `45aebc8` |
 | the bar dropped, n=21 | 29.5–84.8%, **median 53.2%** | same | `45aebc8` |
+| **ceiling_frozen above 100%** (added 2026-08-05, consistency pass) | **ozone 176.0%**, **ranger 130.4%**, **knox 100.0%** — a bound above 100% does not bind: the repository holds more citing commits than the snapshot holds tickets | `paper/table3_ticket_side.md` | this pass |
+| **kylin ceiling_frozen** | **16.3%**, well under the bound — its fill_frozen 0.00 is a numerator effect, not a non-binding ceiling | `paper/table3_ticket_side.md` | this pass |
+| **kylin fill_frozen** | **0.00**, from TRR_frozen 0.04% against a tracker of **4,989** | `paper/table3_ticket_side.md` | this pass |
+| **hive TRR_frozen** | **56.1%**, against TRR_live 55.8% — different ticket denominators (§3.1.3), not a disagreement | `paper/table3_ticket_side.md` | this pass |
 | highest rate in the whole probe | **syncope 84.8%** — commit-side **36.0%**, dropped by the bar | same | `45aebc8` |
 | excluded, denominator < 500 | pinot (**14** tracker issues), dubbo (**78**), rocketmq (**384**) | same | `45aebc8` |
 | excluded, no tracker record for the probed key | shardingsphere, skywalking | same | `45aebc8` |

@@ -31,7 +31,7 @@ project's tickets ever receive a citing commit — is what a ticket-anchored stu
 actually depends on, because such a study samples tickets and then looks for the
 work. The two diverge sharply and in a direction that flatters the corpus. Apache
 Hive cites a ticket in **97.0%** of its 18,213 commits — nearly perfect by any
-selection criterion — and realises **55.8%** of its 29,635 tickets.
+selection criterion — and realises **55.8%** of its 29,635 tickets (TRR_live).
 
 **And most of that gap turns out to be arithmetic.** A commit that cites a ticket
 adds at most one *new* distinct ticket, so the ticket-side rate is capped at

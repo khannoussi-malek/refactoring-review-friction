@@ -164,6 +164,19 @@ a few. **`fill` is the quantity a claim about citation discipline needs**;
 Tables 1 and 3 report both. §4.2 shows that in this corpus almost all of the
 ticket-side variation is ceiling and almost none of it is fill.
 
+**The subscript propagates, and it matters.** `ceiling` and `fill` are both
+functions of TRR and of the ticket denominator, so each inherits whichever
+instantiation of §3.1.3 produced it: ceiling_live and fill_live are computed
+against the live Jira read of 2026-07-25, ceiling_frozen and fill_frozen
+against the frozen snapshot. The two are not interchangeable and they do not
+always agree about whether the bound binds at all — three projects have
+ceiling_frozen at or above 100% while every ceiling_live is below it (§4.2,
+Table 3). **Throughout this paper an unsubscripted `TRR`, `ceiling` or `fill`
+means the quantity in general rather than a measured value; every measured value
+carries its subscript**, in the prose, in the abstract and in the table captions.
+Where a project appears with two numbers for what looks like one quantity, the
+subscripts are the difference.
+
 ## 3.2 Corpus construction
 
 **38 Apache candidates**, each Maven-built, Jira-tracked and multi-module. Each

@@ -219,11 +219,17 @@ used** to support any claim here.
 
 **One coincidence in the rater pilot is disclosed because it looks like tuning
 and we cannot prove it is not.** `paper/LLM_RATER_PILOT.md` reports that
-re-labelling six comments under the opposite ordering of two codebook rules moves
-the attainable kappa ceiling from 0.491 to **0.840**. Five of those six are in the
-flagged bucket, and **five is exactly the reclassification count that maximises
-the ceiling over every possible count**: four gives 0.765, six gives 0.837, seven
-gives 0.833. The six were selected by a stated semantic criterion, they are
+six comments change label under the opposite ordering of two codebook rules, and
+**five of the six fall in the flagged bucket** — the margin moves 3/12/5 to
+3/7/10, a swing of exactly five. The kappa ceiling is computed on that bucket, so
+five is the count that drives it, and five moves the attainable ceiling from
+0.491 to **0.840**. *(Corrected 2026-08-05: this paragraph previously credited the
+0.840 to the six re-labelled comments. Six is the total across both buckets; the
+ceiling is indexed by flagged-bucket moves alone. No figure changes.)*
+
+**Five is also exactly the count that maximises the ceiling over every possible
+count**: four gives 0.765, six gives 0.837, seven gives 0.833. The six were
+selected by a stated semantic criterion, they are
 individually defensible, and the finding is robust at 0.833–0.840 across plus or
 minus two comments — but the criterion was applied by the same party that
 reported the resulting number, and it landed on the global maximum. Stated here

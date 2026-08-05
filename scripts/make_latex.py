@@ -51,18 +51,28 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "paper" / "manuscript"
 ORDER = ["abstract.md", "intro.md", "related.md", "method.md", "results.md",
          "taxonomy.md", "threats.md", "discussion.md", "acknowledgements.md"]
+# The fourth field is how many data tables in the file belong to the caption.
+# table1 splits its data across "Eligible (12)" and "Dropped (26)", which are two
+# halves of one table and must share one number. Every table beyond that count is
+# provenance rather than data -- table2's "Sources" list -- and is set without a
+# caption so it does not consume a float number the prose then cannot match.
 TABLES = [("paper/table1_eligibility.md", "tab:eligibility",
            "Corpus eligibility across the 38 probed projects, both traceability "
            "channels, with commits per ticket, the arithmetic ceiling of "
-           "Section 3.1.4 and the share of it reached."),
+           "Section 3.1.4 and the share of it reached. All quantities are the "
+           "live measurement: TRR_live, ceiling_live, fill_live (Section 3.1.3).",
+           2),
           ("paper/table2_visibility.md", "tab:visibility",
            "Three-channel visibility of architectural change across two "
            "ecosystems. Every cell is a different quantity with its own "
-           "denominator and no statistic is computed across them."),
+           "denominator and no statistic is computed across them.",
+           1),
           ("paper/table3_ticket_side.md", "tab:ticketside",
            "The ticket realisation rate across all 38 probed projects, with the "
            "note column recording every reason a row should not be read at face "
-           "value.")]
+           "value. All quantities are the frozen measurement: TRR_frozen, "
+           "ceiling_frozen, fill_frozen (Section 3.1.3).",
+           1)]
 FIGURE = ("figures/eligibility_funnel.png", "fig:funnel",
           "Corpus attrition: 38 probed projects to 12 eligible to a single "
           "ecosystem, with the six operationalisations that were tested and "
@@ -214,6 +224,11 @@ INLINE_MATH = [
     # were setting as "H\_p" with a visible underscore while the same symbol in
     # the displayed equation set as a subscript. Code spans are already stashed,
     # so a snake_case identifier cannot reach this rule.
+    # the named estimators of 3.1.3, which are lowercase and so miss the rule
+    # below; without this ceiling_live set as "ceiling\_live" in the same
+    # sentence where TRR_live set as a subscript
+    (re.compile(r"(?<![A-Za-z0-9_\\])(ceiling|fill)_(live|frozen)(?![A-Za-z0-9_])"),
+     lambda m: f"{m.group(1)}_{{{m.group(2)}}}"),
     # Matches exactly the six the sources use -- C_p H_p K_p N_p TRR_frozen
     # TRR_live -- and nothing else; checked against all nine section files.
     (re.compile(r"(?<![A-Za-z0-9_\\])([A-Z]{1,4})_([a-z]{1,8})(?![A-Za-z0-9_])"),
@@ -587,7 +602,8 @@ def breakable(s):
 RAGGED = []
 
 
-def emit_table(rows, caption=None, label=None, unmapped=None, continued=False):
+def emit_table(rows, caption=None, label=None, unmapped=None,
+               continued=False, caption_raw=None):
     if not rows:
         return []
     ncol = max(len(r) for r in rows)
@@ -611,7 +627,14 @@ def emit_table(rows, caption=None, label=None, unmapped=None, continued=False):
         out.append(r"\begin{landscape}")
     out.append(r"\begingroup" + size + r"\setlength{\tabcolsep}{3pt}")
     out.append(r"\begin{longtable}{" + spec + "}")
-    if caption:
+    if caption_raw:
+        # \caption* prints the text without consuming a number, which is how the
+        # second half of a split table keeps its parent's. A numbered \caption
+        # here printed the NEXT number and only then was the counter wound back,
+        # so Table 1's continuation appeared as "Table 2". caption_raw is emitted
+        # verbatim because it carries a \ref the escaper would mangle.
+        out.append(r"\caption*{" + caption_raw + r"}\\")
+    elif caption:
         out.append(r"\caption{" + inline(caption, unmapped) + "}"
                    + (r"\label{" + label + "}" if label else "") + r"\\")
     head = " & ".join(r"\textbf{" + breakable(inline(c, unmapped)) + "}"
@@ -624,10 +647,9 @@ def emit_table(rows, caption=None, label=None, unmapped=None, continued=False):
     for r in rows[1:]:
         out.append(" & ".join(breakable(inline(c, unmapped)) for c in r) + r" \\")
     out.append(r"\end{longtable}")
-    if not caption or continued:
-        # longtable steps the table counter whether or not it carries a caption.
-        # A continuation half of a split table shares the number of its first
-        # half rather than claiming the next one.
+    if not (caption and not continued):
+        # longtable steps the table counter for every environment, captioned or
+        # not. Anything that is not a numbered float winds it back.
         out.append(r"\addtocounter{table}{-1}")
     out.append(r"\endgroup")
     if landscape:
@@ -801,7 +823,7 @@ def table_appendix(unmapped):
     and the label the front matter points at."""
     out = [r"\clearpage", r"\section*{Tables}",
            r"\addcontentsline{toc}{section}{Tables}", ""]
-    for path, label, caption in TABLES:
+    for path, label, caption, n_data in TABLES:
         blocks = parse((ROOT / path).read_text(encoding="utf-8").split("\n"))
         seen, dropped_h1 = 0, False
         for kind, payload in blocks:
@@ -811,14 +833,18 @@ def table_appendix(unmapped):
                 continue
             if kind == "table":
                 seen += 1
-                # NOT caption.split(".")[0] -- the captions contain "Section
-                # 3.1.4", so splitting on the first full stop truncates the
-                # continuation caption mid-reference
-                short = re.split(r"(?<=[a-z]{2})\.\s", caption)[0].rstrip(".")
-                out += emit_table(
-                    payload, label=label if seen == 1 else None,
-                    caption=caption if seen == 1 else f"{short} (continued).",
-                    continued=seen > 1, unmapped=unmapped)
+                if seen == 1:
+                    out += emit_table(payload, caption=caption, label=label,
+                                      unmapped=unmapped)
+                elif seen <= n_data:
+                    # second half of the same table: same number, no new float
+                    out += emit_table(
+                        payload, continued=True, unmapped=unmapped,
+                        caption_raw=r"\textbf{Table~\ref{" + label
+                        + r"}}, \emph{continued.}")
+                else:
+                    # provenance, not data: no caption and no number at all
+                    out += emit_table(payload, unmapped=unmapped)
             else:
                 out += emit([(kind, payload)], starred=True, unmapped=unmapped)
         out.append("")
@@ -860,7 +886,7 @@ def check_numbering(headings):
     return bad
 
 
-STARRED = re.compile(r"\\(?:sub){0,2}section\*|\\paragraph\*")
+STARRED = re.compile(r"\\(?:sub){0,2}section\*|\\paragraph\*|\\caption\*")
 
 
 def digits(s):

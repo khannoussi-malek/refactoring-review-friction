@@ -61,11 +61,11 @@ corpus now.
 ## 4.2 The channel that is published is not the channel that is needed — and the gap is mostly arithmetic
 
 Across the same twelve projects, the **commit-side rate runs 82.6–98.3%** while
-the **ticket realisation rate runs 12.0–69.0%, with none above 69.0%**
+**TRR_live runs 12.0–69.0%, with none above 69.0%**
 (Definition 1 and Definition 2, §3.1; Table 1). The headline case:
 
 > **Apache Hive cites a ticket in 97.0% of its 18,213 commits, and 55.8% of its
-> 29,635 tickets are ever cited by one.** Nearly perfect commit-side hygiene, and
+> 29,635 tickets are ever cited by one — TRR_live.** Nearly perfect commit-side hygiene, and
 > still nearly half the tracker is invisible to a ticket-anchored design.
 
 **Most of that gap is not a discipline gap. It is the ceiling (§3.1.4).** Hive
@@ -73,11 +73,21 @@ has **0.61 commits per ticket**, so at 97.0% commit-side its ticket-side rate
 cannot exceed **59.6%** whatever anyone does — and it reaches **0.94** of that.
 The pattern holds across all twelve:
 
-* the **ceiling binds for every one of them**, running 13.7% (Kylin) to 81.6%
+* **ceiling_live binds for every one of them**, running 13.7% (Kylin) to 81.6%
   (Ranger) — a 6.0× spread;
-* the **fill is flat**: median **0.89**, range **0.80** (Ranger) to **0.95**
+* **fill_live is flat**: median **0.89**, range **0.80** (Ranger) to **0.95**
   (Drill), a spread of only **1.19×**;
-* so the 5.8× spread in the ticket-side rate is **6.0× ceiling and 1.19× fill**.
+* so the 5.8× spread in TRR_live is **6.0× ceiling and 1.19× fill**.
+
+**Every ceiling in this section is ceiling_live, and the frozen estimator does
+not agree that the bound binds.** Table 3 computes ceiling_frozen against the
+frozen Jira snapshot and puts three of the twelve at or above 100% — Ozone
+**176.0%**, Ranger **130.4%**, Knox **100.0%** — where a bound above 100% does not
+constrain anything. That is not a disagreement about the projects. It is what a
+2026 commit window measured against an older tracker produces: the repository
+holds more citing commits than the snapshot holds tickets, so the arithmetic
+ceiling exceeds one and stops being a ceiling. The two estimators bound different
+denominators, and Table 3's own note says so. Neither figure is withdrawn.
 
 Ranked by fill rather than by rate, the ordering changes almost completely: Drill
 (43.2%, fill 0.95) sits above Ranger (65.4%, fill 0.80). *Every project in the
@@ -109,8 +119,18 @@ re-initialised for Kylin 5; the earlier history is on other branches.
 So Kylin's 12.0% is measured over a **four-year commit window against a
 twelve-year, 5,931-issue tracker**, and its 0.16 commits per ticket — the lowest
 in the corpus by a factor of two — is a fact about the branch, not about Kylin's
-traceability. Its fill is **0.87**, squarely at the corpus median: *by the measure
-that isolates discipline, Kylin is unremarkable.*
+traceability. Its fill_live is **0.87**, squarely at the corpus median: *by the
+measure that isolates discipline, Kylin is unremarkable.*
+
+Table 3 reports the same project at **fill_frozen 0.00**, and the two are not in
+conflict. Under the frozen snapshot Kylin's TRR_frozen is **0.04%** — two cited
+keys against a tracker of 4,989 — because **99.72% of its cited keys postdate the
+snapshot**, so the number cap removes almost the whole numerator. Its
+ceiling_frozen is 16.3%, well under the bound. The frozen estimator is registering
+the same truncated branch this section is about, from the other side: live, the
+window is too short for the tracker; frozen, the tracker is too old for the
+window. Kylin is the worst end-to-end case in the corpus at 11.91pp (Table 3), and
+it is flagged in both tables for that reason.
 
 Three other projects have a pinned branch that starts after their repository does
 — Jena (49.0% of refs), Karaf (45.4%) and James (89.4%, by eight days) — and none
@@ -124,7 +144,7 @@ flagged wherever it appears, and no claim in this paper rests on it.
 ## 4.3 The divergence is a property of the population, not of the survivors
 
 Reporting §4.2 on the twelve that passed leaves the obvious objection open: the
-range 12.0–69.0% is *within-passing variation*, and says nothing about the 26
+range 12.0–69.0% is *within-passing variation* in TRR_live, and says nothing about the 26
 projects below the bar, whose ticket realisation rates were never measured. That
 objection is answered here by measuring all 38. **Table 3
 (`paper/table3_ticket_side.md`) is the result**: one row per probed project, with
@@ -179,7 +199,7 @@ it is **−0.062** on 30 (95% CI [−0.413, +0.305]).
 
 | | n | ticket realisation rate |
 |---|---:|---|
-| cleared the 0.80 bar | 12 | 0.04–68.6%, **median 52.6%** |
+| cleared the 0.80 bar | 12 | 0.04–68.6%, **median 52.6%** (TRR_frozen) |
 | the bar dropped | 21 | 29.5–84.8%, **median 53.2%** |
 
 The passing group's median is **0.6pp below** the dropped group's — the bar
