@@ -1,0 +1,288 @@
+{
+ "instrument": "codebook.md, applied verbatim; decision rule steps 1-4 in order",
+ "rater": "Claude Opus 5 (claude-opus-5[1m]), single pass, 2026-08-05",
+ "blinding": "No item-level human labels exist to be blind to (codebook_labeling.md columns A and B are empty for all 40 rows). The rater HAD seen the bucket margins in codebook_results.md before rating; see paper/LLM_RATER_PILOT.md for why that is disclosed as contamination.",
+ "buckets": "rows 1-20 tripped the keyword filter; rows 21-40 did not",
+ "labels": [
+  {
+   "n": 1,
+   "ticket": "YARN-10189",
+   "comment": "HI [~bteke], Good job, very nice refactor. Latest patch LGTM, committed to trunk. Please take care of uploading patches for branch-3.3 and branch-3.2 to have a jenkins result for both branches. Thanks",
+   "label": "I",
+   "rationale": "'very nice refactor' is praise attached to an approval; no argument about code shape. Rule 3 fires before rule 4."
+  },
+  {
+   "n": 2,
+   "ticket": "HDFS-15346",
+   "comment": "Hi [~LiJinglun], HDFS-15340 is merged now. I suggest you can split remaining work to two subtasks: * One for DistCpFedBalance implement (we will do this on current JIRA) * Document of fedbalance tool (need to create a new JIRA)",
+   "label": "I",
+   "rationale": "'split remaining work to two subtasks' splits the JIRA, not the code. Keyword collision."
+  },
+  {
+   "n": 3,
+   "ticket": "HDFS-16174",
+   "comment": "Thanks [~gautham] for the refactor. Merged PR 3303 to trunk.",
+   "label": "I",
+   "rationale": "'the refactor' as a fact accompanying a merge notice."
+  },
+  {
+   "n": 4,
+   "ticket": "HADOOP-18073",
+   "comment": "Thanks [~mthakur] , I've run the test and all ok. For the refactoring of that method, i'd prefer to do it as a separate PR. If all looks good to you, could you/[~stevel@apache.org] please push this rebased branch up to the feature branch?",
+   "label": "I",
+   "rationale": "argues WHEN to do a refactoring (separate PR), not how code should be divided."
+  },
+  {
+   "n": 5,
+   "ticket": "HADOOP-14445",
+   "comment": "[~weichiu]: Thanks a lot for your test case from HADOOP-14441. I just added couple of things like renew and cancel token in addition to your test case.",
+   "label": "C",
+   "rationale": "about a test case; no structural word."
+  },
+  {
+   "n": 6,
+   "ticket": "HDDS-1717",
+   "comment": "I have tried resolving this without duplicating the classes. I have refactored OMProxyInfo to not extend FailoverProxyProvider.ProxyInfo.",
+   "label": "S",
+   "rationale": "argues against duplicating classes and removes an inheritance relation (OMProxyInfo no longer extends ProxyInfo) \u2014 a change to how responsibilities are divided."
+  },
+  {
+   "n": 7,
+   "ticket": "HDFS-14854",
+   "comment": "I spotted a couple of minor issues with the v5 patch so I have uploaded v6.",
+   "label": "C",
+   "rationale": "patch housekeeping."
+  },
+  {
+   "n": 8,
+   "ticket": "HDFS-14997",
+   "comment": "+1 on [^HDFS-14997.005.patch]. This is pretty core, so I'll give it a couple days before committing in case somebody else has comments.",
+   "label": "C",
+   "rationale": "approval, plus a wait-before-commit process note."
+  },
+  {
+   "n": 9,
+   "ticket": "HADOOP-14178",
+   "comment": "The upgrade will be very big change, so I'd like to split this into some sub-tasks to reduce the cost of review. The first sub-task is to remove the usage of Whitebox, which was removed in Mockito 2.1. I'll add sub-tasks later if needed.",
+   "label": "I",
+   "rationale": "'split this into some sub-tasks' is task decomposition, not code division."
+  },
+  {
+   "n": 10,
+   "ticket": "HADOOP-14178",
+   "comment": "bq. The patch becomes bigger and bigger. I'd like to split the patch for each modules for reviewers to review the patches easily. This is not simple. Mockito 1.x and 2.x use the same package name, so we need to exclude the dependency appropriately and this it is very hard work.",
+   "label": "I",
+   "rationale": "'split the patch for each modules' is patch decomposition for reviewer convenience; the package-name remark is a build-dependency fact."
+  },
+  {
+   "n": 11,
+   "ticket": "HADOOP-16125",
+   "comment": "[^HADOOP-16125.003.patch] looks clean as clean can be. +1 I'll wait a couple days for committing in case anybody has comments.",
+   "label": "C",
+   "rationale": "approval."
+  },
+  {
+   "n": 12,
+   "ticket": "HDDS-1458",
+   "comment": "bq. The disk tests are only setting up structure to run inline in maven only. Can we support both the approaches?",
+   "label": "I",
+   "rationale": "'setting up structure' is test-harness setup; the question is about how tests are run."
+  },
+  {
+   "n": 13,
+   "ticket": "HDFS-13215",
+   "comment": "It looks like people is mostly positive about this change. I'd go ahead but I don't have much cycles this week so I'd appreciate if anybody can do the refactor. Anybody willing to take this?",
+   "label": "I",
+   "rationale": "'do the refactor' used to recruit a volunteer; no argument about shape."
+  },
+  {
+   "n": 14,
+   "ticket": "HDFS-13033",
+   "comment": "{quote} # moveBlock logic seems to be duplicated. Can we refactor to keep common?{quote} I've created {{StoragePolicySatisfyUtils}} class to keep commonly used functions. Attached another patch addressing all the above Uma's comments. Please review, thanks!",
+   "label": "S",
+   "rationale": "identifies duplicated moveBlock logic and extracts a StoragePolicySatisfyUtils class to hold the common functions."
+  },
+  {
+   "n": 15,
+   "ticket": "HDFS-13790",
+   "comment": "This is mostly refactoring of {{RouterRpcServer}}, if anybody is interested please feel free to assign this JIRA to you. If nobody volunteers, I can take it over eventually.",
+   "label": "I",
+   "rationale": "'mostly refactoring of RouterRpcServer' as a fact plus a call for volunteers."
+  },
+  {
+   "n": 16,
+   "ticket": "YARN-7988",
+   "comment": "Attached v1 patch for refactoring . [~Naganarasimha]/[~cheersyang]/[~sunilg] could you please review",
+   "label": "I",
+   "rationale": "'patch for refactoring' as a fact with a review request."
+  },
+  {
+   "n": 17,
+   "ticket": "HDFS-11106",
+   "comment": "+1 on 001.patch. The refactoring is definitely helpful for future development.",
+   "label": "I",
+   "rationale": "approval; 'the refactoring is helpful' is praise, not an argument about shape."
+  },
+  {
+   "n": 18,
+   "ticket": "HDFS-11920",
+   "comment": "[~vagarychen] Thanks for taking care of this. I think it would be a good idea to support a seek interface or FileChannel interface in the new group streams.",
+   "label": "S",
+   "rationale": "proposes a seek/FileChannel interface on the new group streams \u2014 an interface-shape proposal."
+  },
+  {
+   "n": 19,
+   "ticket": "HDDS-18",
+   "comment": "[~nandakumar131] Thanks for reviewing the patch! HDDS-18.001.patch addresses your comments. In OzoneClientFactory now I am just logging the error message. Also I have refactored OzoneRestClientException to OzoneClientException.",
+   "label": "I",
+   "rationale": "reports a rename of an exception type already made; no argument advanced for it."
+  },
+  {
+   "n": 20,
+   "ticket": "HADOOP-18679",
+   "comment": "update, #5081 does successfully show the staging UT failure (good!) but also some in hadoop-common due to the new interface...we need to modify the tests to indicate it is safe to not override the base implementation.",
+   "label": "C",
+   "rationale": "codebook boundary call, stated verbatim in codebook.md: this HADOOP-18679 comment is about test fallout from the interface, not the interface's shape."
+  },
+  {
+   "n": 21,
+   "ticket": "YARN-10189",
+   "comment": "Uploaded a solution proposal as PoC patch. It's up for discussion.",
+   "label": "C",
+   "rationale": "process note about a PoC patch."
+  },
+  {
+   "n": 22,
+   "ticket": "HDFS-15973",
+   "comment": "Let's fix the whitespace warning and while we are at it, in the documentation let's use RPC in capitals. BTW, is just removing the sleep good enough? There is no need to wait for anything? We went very fast from 100 to 0.",
+   "label": "C",
+   "rationale": "whitespace, documentation capitalisation, and a behavioural question about removing a sleep."
+  },
+  {
+   "n": 23,
+   "ticket": "HADOOP-18207",
+   "comment": "I deleted 3.4.0 from the fix version. When PR is merged, we will set the fix version again.",
+   "label": "C",
+   "rationale": "fix-version housekeeping."
+  },
+  {
+   "n": 24,
+   "ticket": "HADOOP-18830",
+   "comment": "going to cut this. it doesn't get used as predicate pushdown into the FS just confuses everything above it",
+   "label": "S",
+   "rationale": "argues predicate pushdown does not belong in the FS and confuses the layers above it \u2014 a where-should-this-live argument."
+  },
+  {
+   "n": 25,
+   "ticket": "YARN-10548",
+   "comment": "[~gandras] Seems like none of the above failures are strongly related to my patch as I've been just moving around code.",
+   "label": "I",
+   "rationale": "'just moving around code' names a structural operation but only as an aside explaining unrelated test failures."
+  },
+  {
+   "n": 26,
+   "ticket": "HADOOP-14445",
+   "comment": "I'll make an effort to review today but schedule is very hectic. My last proposal was centered around _not_ having another conf option so I'm not pleased that one was added. Initially I'm inclined to do something similar to Rushabh's last patch but I need to do a brain reload.",
+   "label": "C",
+   "rationale": "argues against adding another configuration option; about the configuration surface, not how code is divided."
+  },
+  {
+   "n": 27,
+   "ticket": "HDFS-14625",
+   "comment": "Thanks [~hemanthboyina]! Pushed 004 patch to trunk. I'm not sure if this should go into lower branches. Please let me know.",
+   "label": "C",
+   "rationale": "commit and branch housekeeping."
+  },
+  {
+   "n": 28,
+   "ticket": "HDFS-14997",
+   "comment": "Linking an issue where the change in how we do command processing uncovers an old, existing problem. Perhaps it is of interest.",
+   "label": "C",
+   "rationale": "links a related issue; a factual note."
+  },
+  {
+   "n": 29,
+   "ticket": "HDDS-748",
+   "comment": "Thanks [~anu] the feedback. Removed the proposal tag. I also added a link: I think it blocks HDDS-763 (that would be more easy with separated codecs.",
+   "label": "S",
+   "rationale": "'that would be more easy with separated codecs' proposes separating the codecs. Boundary call: it is a fragment and the argument is one clause long."
+  },
+  {
+   "n": 30,
+   "ticket": "HDDS-805",
+   "comment": "Patch v5 to fix failure in \\{{TestSecureOzoneContainer}}. Others look unrelated.",
+   "label": "C",
+   "rationale": "patch fixes a test failure."
+  },
+  {
+   "n": 31,
+   "ticket": "YARN-9322",
+   "comment": "Thanks! This is a good idea, will file the follow-up jira tomorrow.",
+   "label": "C",
+   "rationale": "agreement plus a follow-up-jira promise."
+  },
+  {
+   "n": 32,
+   "ticket": "HADOOP-16059",
+   "comment": "[~elgoiri] Client to datanode connection will get fast for any operation that shall require the same",
+   "label": "C",
+   "rationale": "a statement about runtime behaviour."
+  },
+  {
+   "n": 33,
+   "ticket": "HDFS-14508",
+   "comment": "Oh, I thought HDFS-14475 was already in. [~crh] can you take a look at [^HDFS-14508-HDFS-13891.2.patch]? The new approach seems reasonable to me. I remember there was some kind of documentation for the metrics too.",
+   "label": "C",
+   "rationale": "review request; 'the new approach seems reasonable' is approval without a shape argument."
+  },
+  {
+   "n": 34,
+   "ticket": "HDFS-11695",
+   "comment": "Thanks [~umamaheswararao] for review... Attached updated patch, Pls review..",
+   "label": "C",
+   "rationale": "thanks and a review request."
+  },
+  {
+   "n": 35,
+   "ticket": "HDDS-265",
+   "comment": "[~ljain], [~hanishakoneru] Thanks for reviewing and committing this.",
+   "label": "C",
+   "rationale": "thanks."
+  },
+  {
+   "n": 36,
+   "ticket": "HADOOP-15663",
+   "comment": "Updated fixed version to 3.2.0 as HADOOP-15407 branch is merged to trunk",
+   "label": "C",
+   "rationale": "fix-version housekeeping."
+  },
+  {
+   "n": 37,
+   "ticket": "HDFS-13328",
+   "comment": "FYI, attached [^HDFS-13328-05.patch], where I made a very small change. Just removed one new line in {{ReencryptionHandler.java}} class in order to make cherry pick smooth.",
+   "label": "C",
+   "rationale": "removed a blank line to ease a cherry-pick."
+  },
+  {
+   "n": 38,
+   "ticket": "HDFS-11775",
+   "comment": "Thanks [~nandakumar131] for the contribution and all for the reviews. I've commit the patch to the feature branch.",
+   "label": "C",
+   "rationale": "commit notice."
+  },
+  {
+   "n": 39,
+   "ticket": "HDFS-12387",
+   "comment": "Thanks for the update. +1 given the test issue is understood.",
+   "label": "C",
+   "rationale": "approval."
+  },
+  {
+   "n": 40,
+   "ticket": "HADOOP-19047",
+   "comment": "@steveloughran - I am glad to assist with the testing. Is there any release candidate branch for the same? Could you please share the wiki on what tests needs to be done?",
+   "label": "C",
+   "rationale": "questions about how to run the tests."
+  }
+ ]
+}

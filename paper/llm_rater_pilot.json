@@ -1,0 +1,85 @@
+{
+ "source_labels": "paper/llm_rater_labels.json",
+ "human_margins": {
+  "flagged": {
+   "S": 5,
+   "I": 5,
+   "C": 10
+  },
+  "unflagged": {
+   "S": 1,
+   "I": 1,
+   "C": 18
+  }
+ },
+ "kappa_computable": false,
+ "why": "codebook_labeling.md columns A and B are empty for all 40 rows; codebook_results.md records margins only. Cohen's kappa needs paired labels.",
+ "buckets": {
+  "flagged": {
+   "llm_margins": {
+    "S": 3,
+    "I": 12,
+    "C": 5
+   },
+   "human_margins": {
+    "S": 5,
+    "I": 5,
+    "C": 10
+   },
+   "bounds": {
+    "n": 20,
+    "pe": 0.3125,
+    "po_max": 0.65,
+    "po_min": 0.0,
+    "kappa_max": 0.49090909090909096,
+    "kappa_min": -0.45454545454545453
+   }
+  },
+  "unflagged": {
+   "llm_margins": {
+    "S": 2,
+    "I": 1,
+    "C": 17
+   },
+   "human_margins": {
+    "S": 1,
+    "I": 1,
+    "C": 18
+   },
+   "bounds": {
+    "n": 20,
+    "pe": 0.7725,
+    "po_max": 0.95,
+    "po_min": 0.75,
+    "kappa_max": 0.7802197802197801,
+    "kappa_min": -0.09890109890109873
+   }
+  }
+ },
+ "pooled": {
+  "llm_margins": {
+   "S": 5,
+   "I": 13,
+   "C": 22
+  },
+  "human_margins": {
+   "S": 6,
+   "I": 6,
+   "C": 28
+  },
+  "bounds": {
+   "n": 40,
+   "pe": 0.4525,
+   "po_max": 0.8250000000000001,
+   "po_min": 0.25,
+   "kappa_max": 0.6803652968036531,
+   "kappa_min": -0.36986301369863017
+  }
+ },
+ "keyword_rule": {
+  "precision_human": 0.25,
+  "precision_llm": 0.15,
+  "recall_human": 0.8333333333333334,
+  "recall_llm": 0.6
+ }
+}
