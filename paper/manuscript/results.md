@@ -229,11 +229,25 @@ five projects overlapping SEOSS 33 agree within **3.3pp** on corpora seven years
 apart: Hadoop 97.13% → 97.8%, Hive 96.34% → 97.0%, HBase 90.06% → 92.5%,
 ZooKeeper 87.12% → 90.4%.
 
-Flink differs by **24.1pp** (41.98% → 66.0%). This is almost certainly scope
-rather than error — their snapshot holds 12,419 commits against our 38,219, so we
-cover a decade in which Flink's citation practice could have changed. **The
-truncation check that would confirm it — re-probing Flink's first 12,419 commits —
-has not been run**, and the explanation is stated here as untested.
+Flink differed by **24.1pp** on full history (41.98% → 66.0%), and the scope
+explanation for it has now been tested. Re-probing the **earliest 12,419
+commits** — SEOSS's own change-set count — gives **5,214 / 12,419 = 41.9841%**
+against their **41.98%**: a gap of **+0.0041pp**, where full history gives
++24.1pp. **Five of five overlapping projects agree once scope is matched.** The
+remaining 25,800 commits run at 77.62%, and Flink's by-year series shows why:
+0.0% in each of 2010, 2011, 2012 and 2013, 19.4% in 2014, 66.0% in 2015, and
+70–88% every year since (`paper/FLINK_TRUNCATION.md`).
+
+**The exactness of that match is not a warning sign.** The quantity is a
+deterministic count over a fixed, identically bounded commit range — not an
+estimate, and with no sampling error. Two correct implementations of the same
+well-specified count should agree exactly, and a disagreement would indicate a
+specification difference rather than noise; exact agreement is only suspicious
+between estimators that *have* sampling error. The two numbers also arrive by
+independent paths, one transcribed from a published table and one scanned fresh
+from a clone at a pinned sha. **It confirms scope alignment and nothing more** —
+in particular it does not validate the ticket-side estimator of §4.3, which is a
+different measurement with its own error, reported there.
 
 ## 4.5 Convergent invisibility across three channels and two ecosystems
 

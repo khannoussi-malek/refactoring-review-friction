@@ -5,41 +5,63 @@
 Written 2026-08-05. Subject matter: `README.md` §9(a), `paper/numbers.md` §5
 ("Validation note — the project count, and why 1,822 is not usable") and §10e.
 
-## Recipients — verified from the paper's own title page
+## Recipients
 
-Read from the title page of arXiv:2201.08368, *An Alternative Issue Tracking
-Dataset of Public Jira Repositories*, Montgomery, Lüders & Maalej, MSR 2022
-(doi:10.1145/3524842.3528486). Not from a search summary.
+**Walid Maalej is no longer at Hamburg.** He moved to the Hasso Plattner
+Institute; the address on the 2022 paper is stale. Verified from HPI's own site
+(https://hpi.de/en/research/research-groups/software-engineering-and-ai/, page
+last changed 28/05/2026): **Prof. Dr. Walid Maalej, Head of Software Engineering
+and AI**, W3 Professor and Chair at the joint Digital Engineering Faculty of HPI
+and the University of Potsdam, in post since 1 February. The only address HPI
+publishes for him is **`office-maalej@hpi.de`**, which is the group office mailbox
+— the same address listed for the office assistant, Anne Klonower
+(+49 331-5509-4900). There is no personal address on the page.
 
-| | |
-|---|---|
-| Lloyd Montgomery | `lloyd.montgomery@uni-hamburg.de` |
-| Clara Lüders | `clara.marie.lueders@uni-hamburg.de` |
-| Walid Maalej | `walid.maalej@uni-hamburg.de` |
+Montgomery's and Lüders's addresses are from the title page of arXiv:2201.08368,
+*An Alternative Issue Tracking Dataset of Public Jira Repositories*, MSR 2022
+(doi:10.1145/3524842.3528486) — read from the paper itself, not from a search
+summary.
 
-All University of Hamburg. The Zenodo record itself lists **no** contact route,
-no repository link and no corresponding author — the paper is the only published
-route, which is why it was used.
+| role | name | address | verified |
+|---|---|---|---|
+| **To** | Lloyd Montgomery | `lloyd.montgomery@uni-hamburg.de` | paper title page, 2022 |
+| **Cc** | Clara Marie Lüders | `clara.marie.lueders@uni-hamburg.de` | paper title page, 2022 |
+| **Cc** | Walid Maalej | **`office-maalej@hpi.de`** | **HPI site, 2026** |
 
-**Check before sending:** that these addresses are current (the paper is from
-2022), and whether a Zenodo comment or an issue on the authors' own repository
-would be the better channel, since the answer is useful to other users of the
-dataset.
+**To the first author, the others copied.** A question about how the dataset was
+built goes to the person who built it; co-authors belong on the copy line, not
+addressed equally.
 
----
+**Two checks before sending, and only one of them is closed.**
 
-**To:** lloyd.montgomery@uni-hamburg.de; clara.marie.lueders@uni-hamburg.de; walid.maalej@uni-hamburg.de
+1. **Maalej: closed.** The HPI address is current and institutionally published.
+   Note it is an *office* mailbox, so a technical query will reach him via an
+   assistant. That is the route HPI offers.
+2. **Montgomery and Lüders: open.** Their addresses are four years old and I
+   could **not** confirm either from a current institutional page — the Hamburg
+   group page I fetched no longer lists any of the three, which is consistent with
+   Maalej's chair having moved. Google Scholar still shows Montgomery with a
+   verified `uni-hamburg.de` address, but a Scholar profile is not an
+   institutional source and I am not treating it as one. **Check both before
+   sending**; a bounced primary recipient wastes the request.
+
+Also worth considering: whether a comment on the Zenodo record would be the better
+channel, since the answer is useful to other users of the dataset.
+
+**To:** lloyd.montgomery@uni-hamburg.de
+
+**Cc:** clara.marie.lueders@uni-hamburg.de; office-maalej@hpi.de
 
 **Subject:** The Public Jira Dataset — a project count I could not reproduce
 
 ---
 
-Dear Dr Montgomery, Dr Lüders and Professor Maalej,
+Dear Dr Montgomery,
 
 I have been using the Public Jira Dataset (Zenodo 15719919) as a base-rate source
 and cannot reproduce the published project count. I expect I am missing a
 processing step rather than that anything is wrong, so I would rather ask than
-guess.
+guess. I have copied your co-authors.
 
 Streaming the mongodump archive, I parse 2,686,282 issues against the 2.7 million
 published. On that pass, counting distinct project **keys** in each issue's final
@@ -75,7 +97,7 @@ https://github.com/khannoussi-malek/refactoring-review-friction
 
 ## Notes for the author — not part of the email
 
-**Word count: 287.** Under the 300 asked for.
+**Word count: 273.** Under the 300 asked for. Verified by counting the body between the salutation and the signature.
 
 **A judgment call you should check.** The brief asked the email to carry two
 findings: the project count, and the spring-batch result (0% every year since

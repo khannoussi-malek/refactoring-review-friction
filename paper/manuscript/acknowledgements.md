@@ -45,6 +45,10 @@ have helped, the six retractions, and the judgment of what the results mean are
 the author's. **The author takes full responsibility for all content, including
 any error a tool introduced and the author did not catch.**
 
+*A line-by-line verification checklist for this section, separating what is
+observable in the repository's record from what is inferred about the sessions
+that predate it, is at `paper/DISCLOSURE_VERIFICATION.md`.*
+
 **Errors that assistance introduced and review caught** are recorded rather than
 quietly fixed, because they bound how much the audit trail is worth: a median
 computed as the upper-middle value at even *n*; a validation figure quoted for a

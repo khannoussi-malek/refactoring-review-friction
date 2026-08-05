@@ -250,3 +250,178 @@ no GitHub API write.
 * **The AI-use disclosure covers what I can see.** The commits from `3c0c24d`
   onward are in the record; the sessions of 19–25 July 2026 are not, and I have
   described them only as far as the repository documents them.
+
+---
+
+# Appendix — unblocked items, 2026-08-05 (second pass)
+
+## Gate status: both still unsatisfied
+
+```
+$ ls paper/BACHMANN_DETERMINATION.md paper/SPLIT_DECISION.md
+ls: paper/BACHMANN_DETERMINATION.md: No such file or directory
+ls: paper/SPLIT_DECISION.md: No such file or directory
+```
+
+Nothing was adjudicated, split, trimmed, or resolved. Every
+`[DETERMINATION PENDING]` marker is intact — `related.md` §2.4, `related.md` §2.2
+item 5, and the `UNDETERMINED` note on the Bachmann reference in `CITATION.cff`.
+
+## Task 1 — the "too good" objection, answered in the paper
+
+**CLAIM CHANGE.** The Flink result is now *in* the manuscript, not only in its
+memo. This is the edit deferred in the first pass; the brief unblocked it, and the
+edits are local sentence replacements that survive any split.
+
+| file | change |
+|---|---|
+| `related.md` §2.1 | "the truncation check ... has not been run" replaced by the matched-window result and the defence |
+| `results.md` §4.4 | "**has not been run** ... stated here as untested" replaced by "five of five agree once scope is matched", the by-year series, and the defence |
+| `paper/numbers.md` §1b | marked **RESOLVED 2026-08-05**; the superseded sentence is quoted, not deleted |
+| `paper/manuscript/UNSOURCED.md` §2 | **CLOSED**, kept on the list so the record shows it closed by measurement |
+| `paper/FLINK_TRUNCATION.md` | new §3.1, and §7 rewritten from "not applied" to "applied" |
+
+**The argument, as written into §2.1, §4.4 and §3.1 of the memo.** The quantity is
+a **deterministic count** — commits whose message matches `\b(?:FLINK)-\d+\b`, over
+a commit range both studies bound identically — not an estimate, and carrying no
+sampling error. Two correct implementations of the same well-specified count
+*should* agree exactly; a disagreement would indicate a specification difference
+(different key pattern, different range, different merge handling), not noise.
+**Exact agreement is only suspicious between estimators that have sampling error.**
+The residual 0.0041pp is what survives SEOSS rounding to two decimals.
+
+Stated alongside the independence argument that already existed: SEOSS's 41.98% is
+transcribed from their published table and was re-verified against the PMC copy in
+the audit; 41.9841% is a fresh scan of a clone at a pinned sha by code that has
+never read their table.
+
+**Not overclaimed.** All three places say the match confirms scope alignment and
+nothing further; §4.4 adds explicitly that it does **not** validate the ticket-side
+estimator of §4.3, which is a genuine estimator with error (1.76pp mean, 11.91pp
+max) validated separately and less comfortably.
+
+**Still outstanding and not ours:** `PROJECT_STATE.md` §6 task 16 still lists the
+Flink check as open. That file is the author's decision log.
+
+## Task 2 — within-project temporal observation, recorded and not built on
+
+`paper/WITHIN_PROJECT_TEMPORAL.md`, plus `paper/numbers.md` §10i.
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| flink by year | **0.0%** in 2010, 2011, 2012, 2013; **19.4%** 2014; **66.0%** 2015; **70–88%** every year 2016–2026 | `scripts/flink_truncation.py` → `paper/flink_truncation.json` | `b720c4e` |
+| flink Incubator graduation | **December 2014** | `scripts/era_separation.py` → `paper/era_separation.json` | `1c5add6` |
+| spring-batch, the mirror case | **45.6%** of 7,035; **0** of the most recent 1,000; **0.0%** every year from 2020; last used **2019** | `scripts/springbatch_recency.py` | `1c5add6` |
+
+**Written up as a distinct unit of analysis.** The failed corpus-level test
+compares 38 projects at one point each; this compares one project against itself
+over time. A between-project null neither establishes nor excludes a
+within-project effect, and the memo says so in those terms. The §4.1 era result
+stands unchanged.
+
+**Bounded as instructed.** n = 1, no control, no test, no p-value — the memo states
+that computing one on a series selected *after* it looked interesting would present
+a post-hoc test as a prospective one. Five alternative explanations are named and
+none was checked. §5 of the memo lists what a real test would require.
+
+**Verified not promoted:** `grep -ci "graduat" paper/manuscript/abstract.md
+paper/manuscript/intro.md` → **0, 0**. Not in the abstract, not in the
+contributions, no claim rests on it. The only claim either series supports is
+taxonomy mode 4, which the paper already made.
+
+## Task 3 — recipients corrected
+
+**Maalej has moved, and the address on the paper is stale.** Verified from HPI's
+own site (`hpi.de/en/research/research-groups/software-engineering-and-ai/`, page
+last changed 28/05/2026): **Prof. Dr. Walid Maalej, Head of Software Engineering
+and AI**, W3 Professor and Chair at the joint HPI / University of Potsdam Digital
+Engineering Faculty, in post since 1 February. The only address HPI publishes is
+**`office-maalej@hpi.de`** — the group office mailbox, shared with the office
+assistant Anne Klonower (+49 331-5509-4900). There is no personal address on the
+page, and the draft notes that a technical query will therefore arrive via an
+assistant.
+
+Restructured as instructed:
+
+* **To:** Lloyd Montgomery — `lloyd.montgomery@uni-hamburg.de`
+* **Cc:** Clara Marie Lüders — `clara.marie.lueders@uni-hamburg.de`
+* **Cc:** Walid Maalej — `office-maalej@hpi.de`
+
+Salutation now "Dear Dr Montgomery," with one added clause, "I have copied your
+co-authors."
+
+**Body unchanged otherwise: 273 words**, one question, framed as a reproduction
+that does not match, attributing nothing and alleging nothing. The spring-batch
+paragraph remains an optional paste in the notes, not in the body. **Still a
+draft. Not sent.**
+
+**An open item I could not close.** The brief flagged only Maalej as having moved,
+and Maalej is now verified. **Montgomery's and Lüders's addresses are four years
+old and I could not confirm either from a current institutional page** — the
+Hamburg group page I fetched lists none of the three, which is consistent with the
+chair having moved. Google Scholar still shows Montgomery at `uni-hamburg.de`, but
+a Scholar profile is not an institutional source and I have not treated it as one.
+**The draft says so and asks for both to be checked before sending**, because a
+bounced primary recipient wastes the request.
+
+## Task 4 — disclosure verification checklist
+
+`paper/DISCLOSURE_VERIFICATION.md`. **30 assertions**, one line each, each marked
+OBSERVED or INFERRED, with tick boxes for TRUE / FALSE / INCOMPLETE.
+
+| | count |
+|---|---:|
+| OBSERVED — checkable in the record, and checked | 9 |
+| INFERRED — not observed | 12 |
+| Mixed — outcome observed, attribution inferred | 7 |
+| Partly observed | 1 |
+| Author's to state, not verifiable by anyone else | 1 |
+
+**The four lines flagged as needing the closest reading:**
+
+* **B1** — "*every* script in `scripts/` was drafted with assistance". The strongest
+  claim in §8, and inferred: nine named scripts predate any session I can see.
+* **C3–C6** — that the 0.80 bar, the decision to hold it, the 0.40 threshold and
+  the six retractions were the author's. In each case the *outcome* is in the
+  record and the *authorship of the decision* is not.
+* **D5** — that the four-error list is complete. Complete as to what review
+  *caught*; nothing establishes nothing else was introduced and missed.
+* **A3** — silence about any other tool. An omitted tool is the failure mode
+  reviewers penalise.
+
+§8 now carries a one-line pointer to the checklist.
+
+## Verification
+
+```
+$ python3 scripts/check_provenance.py
+  ARTIFACT   201     DOCUMENTED 45     EXTERNAL 0
+  ARTIFACT_NO_ROW 0  UNSOURCED 0
+$ pdflatex preprint.tex   # x2
+  Output written on preprint.pdf (36 pages, 419194 bytes)
+```
+
+Protected files untouched: `predictions/PREDICTIONS.md`, `SLICE_LOG.md`,
+`worksheet.md`, `advisor_brief.md`, `requirements.txt`. Frozen archive still
+matches its manifest. No Jira fetched.
+
+**Nothing published.** No arXiv submission, no Zenodo deposit, no email sent, no
+GitHub API write. The only network access was reading HPI's public research-group
+page and the dataset paper on arXiv.
+
+## Not completed
+
+1. **Both gates.** Unchanged.
+2. **Montgomery's and Lüders's addresses** could not be verified as current.
+3. **`PROJECT_STATE.md` §6 task 16** still lists the Flink check as outstanding.
+4. **`.gitignore`** still carries the unstaged tooling `+.claude/` line.
+
+## Uncertainty
+
+The Flink defence rests on the claim that both studies bounded the range
+identically. **Ours is exact — the earliest 12,419 commits reachable from a pinned
+sha. Theirs is inferred**: SEOSS publishes a change-set count, not a definition of
+which 12,419. If they counted something slightly different — excluding merges,
+say, or counting a different branch — then the agreement is a coincidence after
+all rather than the expected behaviour of a deterministic count. I cannot rule
+that out from their published table, and the argument in §2.1 and §4.4 assumes it.

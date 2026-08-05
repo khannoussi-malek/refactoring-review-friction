@@ -24,10 +24,23 @@ on corpora seven years apart:
 | Flink | 41.98% (12,419) | 66.0% (38,219) | **+24.1pp** |
 
 That agreement is **independent cross-corpus validation of the measure** and is
-treated here as such. Flink's 24.1pp gap is scope rather than error — their
-snapshot holds 12,419 commits against our 38,219, so we cover a decade in which
-its citation practice could have changed — and **the truncation check that would
-confirm this has not been run** (`PROJECT_STATE.md` §6, task 16).
+treated here as such. Flink's 24.1pp gap is scope rather than error, and unlike
+in earlier drafts this is now tested rather than asserted: restricting our probe
+to the **earliest 12,419 commits** — the change-set count SEOSS publishes, and the
+only quantity the two studies share — gives **5,214 / 12,419 = 41.9841%** against
+their **41.98%**, a gap of **+0.0041pp**. All five overlapping projects agree once
+scope is matched.
+
+**On the exactness of that match, which invites suspicion and should not.** The
+quantity is a deterministic count — commits whose message matches a key pattern,
+over a fixed and identically bounded commit range — not an estimate, and it
+carries no sampling error. Two correct implementations of the same well-specified
+count *should* agree exactly; a disagreement would indicate a difference in
+specification, not noise. Exact agreement is only suspicious between estimators
+that have sampling error, and this has none. The two figures also reach us by
+independent paths: SEOSS's 41.98% is transcribed from their published table, and
+41.9841% is a fresh scan of a clone at a pinned sha. **What the match confirms is
+scope alignment, and nothing beyond it.**
 
 SEOSS's selection criteria matter for our argument: a project must "continuously
 capture vertical and horizontal trace links among these artifacts". So a

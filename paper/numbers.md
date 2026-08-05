@@ -92,8 +92,14 @@ Our probe reproduces it on a corpus seven years later:
 Four of five agree within 3.3pp across corpora seven years apart — independent
 cross-corpus validation of the measure. Flink's 24.1pp gap is scope, not error:
 their snapshot holds 12,419 commits against our 38,219, so we cover a decade in
-which its citation practice could have changed. **This is untested** — the
-truncation check (re-probing Flink's first 12,419 commits) has not been run.
+which its citation practice could have changed.
+
+**RESOLVED 2026-08-05.** The line that stood here said "**This is untested** —
+the truncation check (re-probing Flink's first 12,419 commits) has not been run."
+It has now been run: **5,214 / 12,419 = 41.9841%** against SEOSS's **41.98%**,
+gap **+0.0041pp**. See §10h and `paper/FLINK_TRUNCATION.md`. The correct summary
+is **five of five agree once scope is matched**. The superseded sentence is quoted
+here rather than deleted, per the additive-correction rule.
 
 **Do not claim per-project linkage rates are unreported.** They are, by
 Rath & Mäder 2019 (SEOSS 33, 33 projects) and Rath et al. ICSE 2018 (six
@@ -836,3 +842,35 @@ manuscript is frozen pending the split decision; see `paper/FLINK_TRUNCATION.md`
 0% for four years then 70–88%, against spring-batch's 45.6% overall and 0% every
 year since 2020. A single lifetime rate averages two regimes in both. That
 applies to this study's own 0.80 bar, which is a lifetime rate at a pinned sha.
+
+### 10i. A within-project temporal observation — recorded, not built on
+
+Added 2026-08-05. **This is an observation carried forward, not a finding.** It is
+not in the abstract, not in the contributions list, and no claim rests on it.
+Full statement of its limits: `paper/WITHIN_PROJECT_TEMPORAL.md`.
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| flink citation rate, by year | **0.0%** in each of 2010, 2011, 2012, 2013; **19.4%** 2014; **66.0%** 2015; **70–88%** every year 2016–2026 | `scripts/flink_truncation.py` → `paper/flink_truncation.json` | `b720c4e` |
+| flink Incubator graduation | **December 2014** | `scripts/era_separation.py` → `paper/era_separation.json`, from https://incubator.apache.org/projects/ read 2026-08-05 | `1c5add6` |
+| spring-batch, the mirror case | **45.6%** of 7,035 overall; **0** of the most recent 1,000; **0.0%** every year from 2020; last used **2019** | `scripts/springbatch_recency.py` → `paper/springbatch_recency.json` | `1c5add6` |
+
+**What this is and is not.** The corpus-level era test in §4.1 **failed** —
+repository start year AUC 0.611 (p = 0.279), Incubator graduation AUC 0.289
+(p = 0.098), both worse than the hand label's 0.868 accuracy — and that result
+stands unchanged. **The two are different units of analysis:** the failed test
+compares 38 projects at one point each; this observation compares one project
+against itself over time. A between-project null neither establishes nor excludes
+a within-project effect. Neither licenses the other.
+
+**n = 1, no control, no test, and no p-value** — computing one on a single series
+selected after it looked interesting would present a post-hoc test as a
+prospective one. The pattern is *consistent with* a graduation effect and equally
+consistent with a coincident release cycle, a commit-template change, a CI hook,
+a host migration, or an influx of contributors from another ASF project. **None
+was checked.**
+
+**The claim these two series do support** is taxonomy mode 4 — a single lifetime
+rate averages two regimes — which is why they appear in the manuscript at all,
+and which is directionally agnostic: Flink adopts the convention, spring-batch
+abandons it, and spring-batch is not an ASF project.

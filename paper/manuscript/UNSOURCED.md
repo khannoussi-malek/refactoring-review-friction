@@ -51,17 +51,20 @@ contribution 2.
 project categories, or an ecosystem list from a cited source — would remove the
 judgment. We report the exposure instead.
 
-## 2. "Flink's 24.1pp gap is scope, not error" is an explanation, not a result
+## 2. "Flink's 24.1pp gap is scope, not error" — CLOSED 2026-08-05
 
 **Where:** §4.4, §2.1.
 
-**Status:** stated as untested in both places, and in `paper/numbers.md` §1b. The
-check that would settle it — re-probing Flink's first 12,419 commits to match
-SEOSS 33's snapshot — has not been run (`PROJECT_STATE.md` §6, task 16). Until it
-is, the reader has our word that the difference is corpus scope rather than a
-disagreement between two implementations of the same measure.
+**Status: resolved, and the item is closed.** The check was run
+(`scripts/flink_truncation.py`). Restricting the probe to the earliest 12,419
+commits — SEOSS's own change-set count — gives **5,214 / 12,419 = 41.9841%**
+against their **41.98%**, a gap of **+0.0041pp**. Flink is also not truncated:
+its pinned branch begins at the repository's first commit. The paper now says
+five of five overlapping projects agree once scope is matched, and §4.4 explains
+why an exact match on a deterministic count is expected rather than suspicious.
 
-**Cost to fix:** low. One clone already on disk, roughly ten minutes.
+**Kept on this list rather than deleted** so the record shows an open item was
+closed by measurement, not by dropping the claim.
 
 ## 3. The frozen tracker snapshot has no recoverable date
 

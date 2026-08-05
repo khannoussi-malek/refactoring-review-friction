@@ -72,6 +72,39 @@ implemented probes, built seven years apart by different people from different
 clones, agree on the same project to **four decimal places** once they are given
 the same commit range.
 
+### 3.1 Why the exactness is expected, not suspicious
+
+A reader will ask whether a match this close indicates contamination. It does
+not, and the reason is a property of the quantity rather than a defence of the
+procedure.
+
+**The rate is a deterministic count, not an estimate.** It is the number of
+commits whose message matches `\b(?:FLINK)-\d+\b`, over a commit range that both
+studies bound identically, divided by the size of that range. There is no
+sampling, no model, and therefore no sampling error. **Two correct
+implementations of the same well-specified count should agree exactly.** A
+disagreement would not have been noise — it would have indicated that one of the
+two was specifying something different: a different key pattern, a different
+range, a different treatment of merge commits.
+
+Exact agreement is only suspicious between estimators that *have* sampling error,
+where matching to four decimals would imply an impossible coincidence. That is
+not this. The residual 0.0041pp is what remains after SEOSS rounds to two
+decimals, which is the only place a difference could survive.
+
+**And the two paths are independent.** SEOSS's 41.98% is transcribed from their
+published Table 2 — and was independently re-verified against the PMC copy during
+the adversarial audit (`audit/CITATIONS.md` §2.1). Our 41.9841% is a fresh scan of
+a `--filter=tree:0` clone at a pinned sha, by code that has never read their
+table. No input is shared beyond the project itself.
+
+**What it establishes, and the boundary.** The match confirms that the two
+studies were measuring the same thing over the same range, and that the 24.1pp
+full-history difference is scope. **It validates nothing else.** In particular it
+says nothing about the ticket-side estimator of §4.3, which *is* an estimator with
+error (1.76pp mean, 11.91pp max end-to-end) and is validated separately and less
+comfortably.
+
 ## 4. And the practice change is visible
 
 The scope explanation asserted that Flink's citation practice changed over the
@@ -160,27 +193,27 @@ survived. Nothing here rules that shape out for any of the 38.
 
 ---
 
-## 7. What changes in the paper
+## 7. What changed in the paper — applied 2026-08-05
 
-**This is a claim change, and it strengthens rather than weakens.** Three places
-carry "the truncation check has not been run" and must now carry the result:
+**These edits are now made.** They were deferred in the first pass because the
+manuscript was frozen pending the split decision; the split remains undecided,
+but the edits are local sentence replacements that survive any division of the
+paper, so holding them served no purpose.
 
-* `related.md` §2.1 — "**and the truncation check that would confirm this has not
-  been run**" → the check was run and the matched-window rate is 41.98% against
-  SEOSS's 41.98%.
-* `results.md` §4.4 — "**and the truncation check has not been run**. State it as
-  untested." → same.
-* `paper/numbers.md` §1b — "**This is untested** — the truncation check ... has
-  not been run."
-* `paper/manuscript/UNSOURCED.md` §2 — the item can be closed.
-* `PROJECT_STATE.md` §6, task 16 — can be marked done.
+| file | was | now |
+|---|---|---|
+| `related.md` §2.1 | "the truncation check that would confirm this has not been run" | the matched-window result, plus §3.1's argument for why the exactness is expected |
+| `results.md` §4.4 | "**The truncation check ... has not been run**, and the explanation is stated here as untested" | "five of five overlapping projects agree once scope is matched", the by-year series, and the same defence |
+| `paper/numbers.md` §1b | "**This is untested**" | marked **RESOLVED 2026-08-05**, superseded sentence quoted rather than deleted |
+| `paper/manuscript/UNSOURCED.md` §2 | an open item | **CLOSED**, kept on the list so the record shows it was closed by measurement |
+| `paper/numbers.md` §10h | — | the provenance rows |
 
-The headline for §4.4 moves from *"4 of 5 overlapping projects agree within
+**Still to do, and not ours:** `PROJECT_STATE.md` §6 task 16 still lists the Flink
+truncation test as outstanding. `PROJECT_STATE.md` is the author's decision log
+and this pass did not edit it.
+
+**The headline for §4.4 moved** from *"4 of 5 overlapping projects agree within
 3.3pp, and the fifth is explained but untested"* to **"5 of 5 agree once scope is
-matched, the fifth to within 0.004pp."**
-
-**These edits are not made here.** They change what the paper claims, and the
-manuscript is currently frozen pending GATE 2 (the split decision) — editing
-§2.1, §4.4 and the abstract now would collide with whatever split the author
-specifies. The change is recorded here and in `paper/FINAL_BRIEF_LOG.md` for the
-author to apply, or for a follow-up pass once the split is decided.
+matched, the fifth to within 0.004pp."** That is a change in what the paper
+claims, not in how it says it, and it is flagged as such in
+`paper/FINAL_BRIEF_LOG.md`.
