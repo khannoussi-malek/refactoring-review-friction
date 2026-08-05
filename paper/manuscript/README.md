@@ -38,17 +38,33 @@ lives here.
 
 | # | file | status | source material |
 |---:|---|---|---|
-| 1 | `results.md` | **to write** | prose around Tables 1 and 2 |
-| 2 | `method.md` | **to write** | corpus construction, the pre-registered 0.80 bar, key matching and its measured precision, the detector and its version |
+| 1 | `results.md` | **drafted 08-05** | prose around Tables 1, 2 and 3 |
+| 2 | `method.md` | **drafted 08-05** | corpus construction, the pre-registered 0.80 bar, key matching and its measured precision, the detector and its version; §3.1 now carries the two rate definitions |
 | 3 | `taxonomy.md` | drafted | `paper/eligibility_failure_modes.md` |
 | 4 | `threats.md` | drafted | `paper/ERA_AUDIT.md`, `paper/ALIASING_HADOOP.md`, the chunk-loss test, the single-rater limit, three-working-sessions provenance, n=28 |
 | 5 | `related.md` | drafted | `paper/PRIOR_WORK.md` |
-| 6 | `intro.md` | **to write last** | once the paper's actual content is known |
-| 7 | `discussion.md` | **to write last** | |
-| 7 | `abstract.md` | **to write last** | |
+| 6 | `intro.md` | **drafted 08-05** | contributions stated against `paper/PRIOR_WORK.md` |
+| 7 | `discussion.md` | **drafted 08-05** | |
+| 8 | `abstract.md` | **drafted 08-05** | written last, as planned |
 
 Reading order is `abstract → intro → related → method → results → taxonomy →
-threats → discussion`.
+threats → discussion`. `python3 scripts/assemble_manuscript.py` concatenates the
+sections into `PAPER.md` in that order; the section files remain the source of
+truth and `PAPER.md` is regenerated, never edited.
+
+## Added on 2026-08-05
+
+**The ticket-side rate is now named and defined.** `method.md` §3.1 gives
+Definition 1 (commit-side rate, the published quantity) and Definition 2 (the
+**ticket realisation rate**), with what counts as a ticket, what counts as ever
+receiving a commit, and how the denominator is bounded in time. The quantity was
+previously described and unnamed.
+
+**The extension to all 38 projects** — `scripts/ticket_side_38.py`,
+`paper/table3_ticket_side.md` — answers the truncation caveat that Table 1's
+caption raises. That caveat is **not deleted**: it remains true of the live-Jira
+measurement, and the extension is a separate estimator with its own validation
+and its own limits, reported as §4.3 rather than folded into §4.2.
 
 ## The two tables are the paper
 

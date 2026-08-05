@@ -1,0 +1,57 @@
+This repository is licensed in two parts, because it holds two different kinds
+of thing and one licence would be wrong for one of them.
+
+CODE — the MIT Licence, below.
+    Everything under `scripts/`, plus `config.example.env` and `requirements.txt`.
+
+TEXT, FIGURES AND DERIVED DATA — Creative Commons Attribution 4.0 International
+(CC BY 4.0), https://creativecommons.org/licenses/by/4.0/legalcode.
+    Everything under `paper/`, `predictions/`, `prereg/`, `replication/`,
+    `deposit/`, `figures/`, `docs/` and `spent/`, all top-level Markdown files,
+    and the committed JSON result artifacts.
+
+Attribution for the CC BY 4.0 part means citing the work as set out in
+`CITATION.cff`.
+
+NOT COVERED BY EITHER. The repository redistributes no third-party source. It
+does hold data derived from public issue trackers and public git histories:
+
+  * `.jira_*/` and `deposit/jira-caches-v1.tar.gz` are responses from the Apache
+    Software Foundation's public Jira (https://issues.apache.org/jira). Apache
+    Jira content is contributed under the Apache Contributor Licence Agreement
+    and is redistributed here for reproducibility. Author display names appear in
+    some records; `scripts/pseudonymize.py` is the tool provided for removing
+    them.
+  * `estimates_by_org.json` is derived from the Public Jira Dataset,
+    Zenodo 15719919, which carries its own licence. Consult that deposit before
+    redistributing anything derived from it.
+  * `refminer_*.json` is the output of RefactoringMiner
+    (https://github.com/tsantalis/RefactoringMiner), MIT-licensed, run over
+    public Apache repositories. The output is data about those repositories, not
+    a derivative of the tool.
+  * `hadoop/`, `corpora/` and the probe clones are not committed. They are
+    Apache Software Foundation repositories under the Apache Licence 2.0 and must
+    be obtained from their own sources.
+
+===============================================================================
+MIT Licence (applies to the CODE part above)
+
+Copyright (c) 2026 Malek Khannoussi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

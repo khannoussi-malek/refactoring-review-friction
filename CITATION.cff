@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+message: >-
+  If you use this repository, cite it as below. If you use the frozen Jira cache
+  archive, cite the Zenodo deposit instead, once minted — see
+  deposit/DEPOSIT_CHECKLIST.md.
+title: >-
+  Traceability and estimate coverage as corpus-eligibility constraints:
+  a probe of 38 Apache projects
+abstract: >-
+  An independent pre-doctoral empirical study of what precedes a developer's
+  decision to refactor. 38 Apache projects were probed against a pre-registered
+  0.80 commit-side traceability bar; 12 passed and all 12 are Hadoop-ecosystem.
+  The channel the literature publishes — what fraction of commits cite a ticket —
+  diverges sharply from the one an issue-anchored study needs: what fraction of
+  tickets ever receive a commit. The repository carries pre-registered
+  predictions, six hypotheses that failed with named causes, a retracted Cox
+  model, a self-corrected aggregation error, and a provenance row for every
+  number.
+type: software
+authors:
+  - family-names: Khannoussi
+    given-names: Malek
+    email: khannoussimalek@gmail.com
+    # orcid: https://orcid.org/0000-0000-0000-0000   # TODO: author to supply
+repository-code: https://github.com/khannoussi-malek/refactoring-review-friction
+url: https://github.com/khannoussi-malek/refactoring-review-friction
+license: MIT
+license-url: https://github.com/khannoussi-malek/refactoring-review-friction/blob/main/LICENSE
+version: "1.0.0"
+date-released: "2026-08-05"
+keywords:
+  - mining software repositories
+  - empirical software engineering
+  - refactoring
+  - reproducibility
+  - traceability
+  - issue tracking
+  - corpus selection
+  - Apache
+references:
+  - type: dataset
+    title: The Public Jira Dataset
+    doi: 10.5281/zenodo.15719919
+    notes: >-
+      Source of the Apache-wide estimate-coverage base rates and the per-project
+      issue counts used as ticket-side denominators.
+  - type: article
+    authors:
+      - family-names: Rath
+        given-names: Michael
+      - family-names: Mäder
+        given-names: Patrick
+    title: >-
+      The SEOSS 33 dataset — Requirements, bug reports, code history, and trace
+      links for entire projects
+    journal: Data in Brief
+    volume: 25
+    year: 2019
+    doi: 10.1016/j.dib.2019.104005
+    notes: >-
+      Publishes per-project linked-change-set percentages for 33 projects; the
+      cross-corpus validation in paper/PRIOR_WORK.md is against this table.
+  - type: software
+    title: RefactoringMiner
+    authors:
+      - family-names: Tsantalis
+        given-names: Nikolaos
+    repository-code: https://github.com/tsantalis/RefactoringMiner
+    version: "3.1.4"
+    notes: The refactoring detector used throughout.

@@ -1,0 +1,57 @@
+{
+ "probe": "paper/traceability_probe.json",
+ "bar": 0.8,
+ "groups": {
+  "all_probed": {
+   "n": 38,
+   "min": 0.0001018101850909165,
+   "max": 0.9828498449188104,
+   "median": 0.6360798052992827,
+   "mean": 0.5715155433487685
+  },
+  "cleared_the_bar": {
+   "n": 12,
+   "min": 0.8255933952528379,
+   "max": 0.9828498449188104,
+   "median": 0.8835250736859063,
+   "mean": 0.8950592230238928
+  },
+  "dropped": {
+   "n": 26,
+   "min": 0.0001018101850909165,
+   "max": 0.7811594202898551,
+   "median": 0.4481446838938994,
+   "mean": 0.4221876911910188
+  },
+  "single_key_all": {
+   "n": 38,
+   "min": 0.0001018101850909165,
+   "max": 0.9828498449188104,
+   "median": 0.6360798052992827,
+   "mean": 0.5654406656717393
+  },
+  "below_60pc": {
+   "n": 17,
+   "min": 0.0001018101850909165,
+   "max": 0.5616966580976864,
+   "median": 0.30858041329739444,
+   "mean": 0.28083694040062607
+  }
+ },
+ "pass_counts_at": {
+  "0.80": 12,
+  "0.70": 16,
+  "0.60": 21,
+  "0.50": 24
+ },
+ "family_note": "HADOOP_ECOSYSTEM is a hand classification made in this script, not a recorded field in the probe. paper/numbers.md \u00a77 records that family is not a recorded field; any claim keyed on it inherits that.",
+ "best_dropped": {
+  "project": "atlas",
+  "rate": 0.7811594202898551
+ },
+ "best_outside_hadoop_ecosystem": {
+  "project": "james-project",
+  "rate": 0.7480142742028318
+ },
+ "cleared_bar_outside_hadoop_ecosystem": []
+}

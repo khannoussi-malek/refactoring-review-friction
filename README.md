@@ -107,10 +107,19 @@ evidenced argument rather than an assumption.
 
 ## 7. What ships next
 
-- Methods paper on traceability and estimate coverage as corpus-eligibility constraints — near complete.
-- Registered report proposing the SATD-interval design.
-- Entity-tracking feasibility: whether a rename chain is recoverable across Move Class and Move Package.
-- Zenodo deposit of the frozen Jira caches.
+- Methods paper on traceability and estimate coverage as corpus-eligibility
+  constraints — **complete draft as of 2026-08-05**, `paper/manuscript/PAPER.md`.
+- Registered report proposing the SATD-interval design. **Superseded 2026-07-26**
+  before it was started; the current RQ1 anchor is the violation-symptom interval
+  and it is at the feasibility-gate stage (`paper/ANCHOR_HISTORY.md`,
+  `prereg/RESOLUTION_GATE.md`). Its novelty margin is recorded as *not assessed*.
+- Entity-tracking feasibility: whether a rename chain is recoverable across Move
+  Class and Move Package. **Answered 2026-08-05 — go, with a stated ceiling**
+  (`paper/ENTITY_TRACKING_FEASIBILITY.md`). Class identity is recoverable at 89.7%
+  per operation and 91.6% across package moves; the binding constraint turned out
+  to be the completeness of the mined commit range, at 83.1%, not the detector.
+- Zenodo deposit of the frozen Jira caches. **Metadata prepared, nothing
+  published** (`deposit/zenodo.json`, `deposit/DEPOSIT_CHECKLIST.md`).
 
 ## 8. What this needs that one person cannot supply
 
@@ -118,6 +127,15 @@ evidenced argument rather than an assumption.
   measure requiring manual coding is currently defensible — the
   architectural-episode gold set and the codebook, whose keyword rule is 25%
   precise on a single-rater pass, both sit behind this.
+  **Sharpened 2026-08-05.** A second-rater pilot found a further problem: the
+  first pass kept only the two 3-cell margins, not the per-comment labels, so κ
+  is not computable *even if a second rater appears now*. What the margins do
+  determine is the interval κ must lie in, and on the bucket that matters — the
+  comments the keyword filter flags — **no pairing reaches κ above 0.491**. Six
+  of the 40 comments turn on an undisambiguated ordering between two codebook
+  rules, and resolving it the other way moves the attainable ceiling to 0.840.
+  An LLM was used as the second rater and **that is not a substitute for a human
+  one**; the reasons are stated in `paper/LLM_RATER_PILOT.md` §6.
 - **Field judgment on whether the SATD gap is real.** A literature search
   establishes that no one has measured the interval; it cannot establish whether
   that absence is an opportunity or a known dead end.
@@ -176,3 +194,10 @@ stays intact. The traceability probe is stdlib-only and needs no virtualenv.
 | `SUI_FINDINGS.md` | TypeScript pilot; exploratory |
 | `deposit/MANIFEST-v1.md` | Frozen cache archive manifest |
 | `SLICE_LOG.md` | Dated command-level log of the original mining runs |
+| `paper/manuscript/PAPER.md` | The methods paper, assembled from the section files |
+| `paper/table3_ticket_side.md` | Ticket realisation rate across all 38 probed projects |
+| `paper/ENTITY_TRACKING_FEASIBILITY.md` | Whether class identity survives Move Class and Move Package — go/no-go |
+| `paper/LLM_RATER_PILOT.md` | Second-rater pilot, the κ that cannot be computed, and the bounds that can |
+| `deposit/DEPOSIT_CHECKLIST.md` | Zenodo metadata prepared; what remains manual |
+| `docs/DRAFT_dataset_authors_query.md` | Unsent draft of the §9(a) question to the dataset authors |
+| `LICENSE`, `CITATION.cff` | MIT for code, CC-BY-4.0 for text and derived data; citation record |

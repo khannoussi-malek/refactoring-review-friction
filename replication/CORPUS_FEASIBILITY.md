@@ -159,3 +159,35 @@ frozen rule in about three minutes; `outcomes.py` pulls the git and Jira sides.
 Finding the projects was the expensive part — 38 clones, 4.3 GB, to keep 12.
 The clones have since been deleted; `REPLICATION.md` carries the commands to
 recreate all 38.
+
+---
+
+## Correction (2026-08-05): "the median sits near 35%" is not reproducible
+
+The sentence above — *"the best, James, reaches 74.8%, and the median sits near
+35%"* — is left in place because this file records what was believed when. The
+median claim does not reproduce from `paper/traceability_probe.json` under any
+grouping tried:
+
+| grouping | n | median |
+|---|---:|---:|
+| all probed projects | 38 | **63.6%** |
+| projects the bar dropped | 26 | **44.8%** |
+| projects below 60% | 17 | 30.9% |
+| projects clearing the bar | 12 | 88.4% |
+
+Computed by `scripts/probe_summary.py` → `paper/probe_summary.json`. No grouping
+lands near 35%, so the figure is treated as **unsourced and withdrawn**; the
+manuscript quotes 63.6% and 44.8% instead. The most likely origin is the earlier
+"12 of 34" state of the probe, before the denominator was corrected to 38 and
+before TomEE's single-key rate was replaced by its multi-key rate
+(`PROJECT_STATE.md` §7) — but that is a hypothesis, not a reconstruction, and the
+earlier state is not recoverable.
+
+**What does reproduce**, from the same script: James at **74.8%** is the highest
+rate outside the Hadoop ecosystem; Atlas at **78.1%** is the highest among all
+dropped projects and *is* Hadoop-ecosystem, so the two statements are consistent
+only under the family classification, which is a hand judgment and not a field in
+the probe. Lowering the bar to 60% raises the pass count from **12 to 21** — the
+"another nine projects qualify" claim in this file and in `paper/numbers.md` §9g
+is confirmed exactly.

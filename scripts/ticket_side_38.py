@@ -67,11 +67,18 @@ def clone_path(work, name):
     return None
 
 
+# A partial clone will silently reach out to its promisor remote for any object
+# it is missing, which turns "this clone is incomplete" into a network stall
+# instead of an error. Nothing here should ever touch the network.
+ENV = dict(os.environ, GIT_NO_LAZY_FETCH="1", GIT_TERMINAL_PROMPT="0")
+
+
 def cited_numbers(repo, rev, keys):
     """{key prefix: set of issue numbers} cited anywhere in the commit messages."""
     pat = re.compile(rf"\b({'|'.join(re.escape(k) for k in keys)})-(\d+)\b")
     cmd = ["git", "-C", repo, "log", "--pretty=format:%s%n%b", rev]
-    out = subprocess.run(cmd, capture_output=True, text=True, check=True).stdout
+    out = subprocess.run(cmd, capture_output=True, text=True, check=True,
+                         env=ENV, timeout=600).stdout
     found = defaultdict(set)
     for m in pat.finditer(out):
         found[m.group(1)].add(int(m.group(2)))
@@ -80,7 +87,8 @@ def cited_numbers(repo, rev, keys):
 
 def commits_at(repo, rev):
     out = subprocess.run(["git", "-C", repo, "rev-list", "--count", rev],
-                         capture_output=True, text=True, check=True).stdout
+                         capture_output=True, text=True, check=True,
+                         env=ENV, timeout=600).stdout
     return int(out.strip())
 
 
@@ -96,6 +104,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", required=True)
     ap.add_argument("--out", default="paper/ticket_side_38.json")
+    ap.add_argument("--table", default="paper/table3_ticket_side.md")
     args = ap.parse_args()
 
     probe = json.load(open(PROBE))["projects"]
@@ -128,7 +137,7 @@ def main():
         try:
             nums = cited_numbers(repo, sha, keys)
             n_commits = commits_at(repo, sha)
-        except subprocess.CalledProcessError as e:
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
             out["missing_clones"].append(name)
             print(f"{name:26s} pinned sha unreachable: {e}", file=sys.stderr)
             continue
@@ -169,6 +178,17 @@ def main():
         rec["ticket_side_frozen"] = num / den if den else None
         rec["frozen_numerator"], rec["frozen_denominator"] = num, den
 
+        # Diagnostic, not decoration. If most cited keys are numbered ABOVE the
+        # snapshot's issue count, the repository at the pinned sha barely
+        # overlaps the ticket population the denominator describes -- which is
+        # what a truncated or rewritten git history looks like from here.
+        cited_all = sum(len(nums.get(k, set())) for k in keys)
+        rec["distinct_keys_cited_total"] = cited_all
+        rec["cited_above_frozen_range"] = cited_all - num
+        rec["share_cited_above_frozen_range"] = (
+            (cited_all - num) / cited_all if cited_all else None)
+        rec["small_denominator"] = bool(den and den < 500)
+
         # validation arm: same estimator, live denominator, primary key only
         if name in live:
             n_live = live[name]["jira_tickets_total"]
@@ -195,6 +215,66 @@ def main():
         sys.stdout.flush()
         json.dump(out, open(args.out, "w"), indent=1)
 
+    # ---- the question the extension exists to answer -------------------------
+    # Does a high commit-side rate predict a usable ticket-side rate? Spearman,
+    # because neither rate is normal and the relationship need not be linear.
+    usable = [p for p in out["projects"]
+              if p["ticket_side_frozen"] is not None and not p["small_denominator"]]
+    def spearman(xs, ys):
+        def ranks(v):
+            order = sorted(range(len(v)), key=lambda i: v[i])
+            r = [0.0] * len(v)
+            i = 0
+            while i < len(order):                 # average ties
+                j = i
+                while j + 1 < len(order) and v[order[j + 1]] == v[order[i]]:
+                    j += 1
+                avg = (i + j) / 2 + 1
+                for k in range(i, j + 1):
+                    r[order[k]] = avg
+                i = j + 1
+            return r
+        rx, ry = ranks(xs), ranks(ys)
+        n = len(xs)
+        mx, my = sum(rx) / n, sum(ry) / n
+        num_ = sum((a - mx) * (b - my) for a, b in zip(rx, ry))
+        den_ = (sum((a - mx) ** 2 for a in rx) * sum((b - my) ** 2 for b in ry)) ** 0.5
+        return num_ / den_ if den_ else None
+    cs = [p["commit_side_rate"] for p in usable]
+    tsf = [p["ticket_side_frozen"] for p in usable]
+    passing = [p for p in usable if p["passes_bar"]]
+    dropped = [p for p in usable if not p["passes_bar"]]
+    def rng(ps):
+        v = sorted(p["ticket_side_frozen"] for p in ps)
+        return {"n": len(v), "min": v[0] if v else None, "max": v[-1] if v else None,
+                "median": v[len(v) // 2] if v else None}
+    out["association"] = {
+        "n_with_usable_denominator": len(usable),
+        "excluded_small_denominator": [p["project"] for p in out["projects"]
+                                       if p["small_denominator"]],
+        "excluded_no_tracker_record": [p["project"] for p in out["projects"]
+                                       if p["ticket_side_frozen"] is None],
+        "spearman_commit_side_vs_ticket_side": spearman(cs, tsf),
+        "passing": rng(passing),
+        "dropped": rng(dropped),
+        "dropped_above_worst_passing": sorted(
+            p["project"] for p in dropped
+            if passing and p["ticket_side_frozen"] > min(
+                q["ticket_side_frozen"] for q in passing)),
+    }
+    a = out["association"]
+    print(f"\ncommit-side vs ticket-side, {a['n_with_usable_denominator']} projects "
+          f"with a usable denominator: Spearman rho = "
+          f"{a['spearman_commit_side_vs_ticket_side']:+.3f}")
+    print(f"  passing bar (n={a['passing']['n']}): ticket-side "
+          f"{a['passing']['min']*100:.1f}–{a['passing']['max']*100:.1f}%, "
+          f"median {a['passing']['median']*100:.1f}%")
+    print(f"  dropped     (n={a['dropped']['n']}): ticket-side "
+          f"{a['dropped']['min']*100:.1f}–{a['dropped']['max']*100:.1f}%, "
+          f"median {a['dropped']['median']*100:.1f}%")
+    print(f"  dropped projects above the worst passing project: "
+          f"{len(a['dropped_above_worst_passing'])}")
+
     # validation summary
     val = [p["live"] for p in out["projects"] if "live" in p]
     if val:
@@ -208,7 +288,64 @@ def main():
         print(f"\nvalidation on {len(val)} projects with a published exact rate: "
               f"mean |Δ| {sum(d)/len(d):.2f}pp, max {max(d):.2f}pp")
     json.dump(out, open(args.out, "w"), indent=1)
+    if args.table:
+        write_table(out, args.table)
+        print(f"Wrote {args.table}")
     print(f"Wrote {args.out}")
+
+
+def write_table(out, path):
+    """Table 3 — the extension, as a table the manuscript can reference."""
+    rows = sorted(out["projects"], key=lambda r: -r["commit_side_rate"])
+    a = out["association"]
+    L = ["# Table 3 — ticket realisation rate across all 38 probed projects", "",
+         "<!-- GENERATED by scripts/ticket_side_38.py. Do not edit by hand. -->", "",
+         "Denominators come from the frozen public Jira corpus, not from a second "
+         "live fetch; numerator and denominator are aligned in issue-number space "
+         "(method §3.1.3). Validated against the 12 published exact rates: mean "
+         f"absolute error {out['validation']['mean_abs_delta_pp']:.2f}pp, worst "
+         f"{out['validation']['max_abs_delta_pp']:.2f}pp.", "",
+         "| # | project | bar | commit-side | **ticket realisation** | cited ≤ N | tracker N | note |",
+         "|---:|---|---|---:|---:|---:|---:|---|"]
+    for i, r in enumerate(rows, 1):
+        t = r["ticket_side_frozen"]
+        note = []
+        if r["ticket_side_frozen"] is None:
+            note.append("no tracker record for the cited key")
+        if r["small_denominator"]:
+            note.append("denominator < 500, not usable")
+        if (r["share_cited_above_frozen_range"] or 0) > 0.5:
+            note.append(f"{r['share_cited_above_frozen_range']*100:.0f}% of cited "
+                        "keys postdate the snapshot")
+        L.append(f"| {i} | {r['project']} | "
+                 f"{'pass' if r['passes_bar'] else 'drop'} | "
+                 f"{r['commit_side_rate']*100:.1f}% | "
+                 f"{('**%.1f%%**' % (t*100)) if t is not None else '—'} | "
+                 f"{r['frozen_numerator']:,} | {r['frozen_denominator']:,} | "
+                 f"{'; '.join(note) or '—'} |")
+    L += ["",
+          f"**Association.** Over the {a['n_with_usable_denominator']} projects with "
+          f"a usable denominator, Spearman rho between the commit-side rate and the "
+          f"ticket realisation rate is **{a['spearman_commit_side_vs_ticket_side']:+.3f}**. "
+          f"Projects clearing the bar (n={a['passing']['n']}) run "
+          f"{a['passing']['min']*100:.1f}–{a['passing']['max']*100:.1f}% "
+          f"(median {a['passing']['median']*100:.1f}%); projects the bar dropped "
+          f"(n={a['dropped']['n']}) run {a['dropped']['min']*100:.1f}–"
+          f"{a['dropped']['max']*100:.1f}% (median {a['dropped']['median']*100:.1f}%). "
+          f"**{len(a['dropped_above_worst_passing'])} dropped projects have a higher "
+          f"ticket realisation rate than the worst passing one**: "
+          f"{', '.join(a['dropped_above_worst_passing']) or 'none'}.",
+          "",
+          "**Excluded from the association.** Denominator under 500 issues: "
+          f"{', '.join(a['excluded_small_denominator']) or 'none'}. No tracker "
+          f"record for the probed key at all: "
+          f"{', '.join(a['excluded_no_tracker_record']) or 'none'} — these are "
+          "taxonomy modes 1 and 6 rather than low rates, and scoring them would "
+          "put a number where a category belongs.",
+          "",
+          "**Missing clones**, if any: "
+          f"{', '.join(out['missing_clones']) or 'none'}.", ""]
+    open(path, "w").write("\n".join(L))
 
 
 if __name__ == "__main__":

@@ -1,24 +1,51 @@
 # Abstract
 
-**Status: to write last** (writing order 7). Draft only once `results.md`,
-`method.md` and `intro.md` exist — an abstract written first commits the paper to
-claims the sections have not yet earned.
+Empirical studies of architectural change read a project's own records and assume
+the record traces the work. We measure that assumption in three record channels
+across two ecosystems and find it fails in every one.
 
-Must land, in order:
+We probed 38 Apache projects against a traceability bar of 0.80, pre-registered
+before any project was cloned and never moved. **Twelve passed, and all twelve are
+Hadoop-ecosystem**; no general-purpose Java project cleared the bar, the best
+reaching 74.8% against a median near 35%. The channel the literature publishes is
+not the channel a ticket-anchored study needs. The **commit-side rate** — what
+fraction of commits cite a ticket — runs 82.6–98.3% across the eligible twelve,
+while the **ticket realisation rate** — what fraction of tickets ever receive a
+citing commit, a quantity we name and define here — runs 12.0–69.0% and reaches
+69.0% at best. Apache Kylin cites a ticket in 83.9% of its commits and 12.0% of
+its tickets are ever cited by one. Extending the ticket-side computation to all 38
+projects, including the 26 the commit-side bar rejected, {ABSTRACT_EXTENSION}
 
-1. Studies of architectural change depend on issue-linked records.
-2. We probed 38 Apache projects against a pre-registered 0.80 commit-side
-   traceability bar. **12 passed, and all 12 are Hadoop-ecosystem.**
-3. The channel the literature publishes is not the channel such a study needs:
-   commit-side 82.6–98.3% against ticket-side 12.0–69.0% on the same 12 projects.
-   Kylin, 83.9% against 12.0%.
-4. The same invisibility appears in a second ecosystem and two further channels:
-   in a TypeScript corpus, 3 of 96 architectural commits mention refactoring, 7%
-   link an issue, and 69% never pass through code review.
-5. Six mechanisms by which a project silently fails to support such a study,
-   three of them disqualifying and three producing a plausible wrong number.
-6. None of the six is expressible in any published sampling frame — GHS indexes
-   735,669 repositories with 35 fields and cannot express the criterion.
+The same invisibility appears in a second ecosystem and two further channels: in a
+TypeScript corpus, 3 of 96 architectural commits mention refactoring, 7% link an
+issue, and 69% never pass through code review — and the 31% that do are five times
+larger and four times more abstraction-heavy than those that do not, so the
+visible minority is not a random sample of the whole.
 
-**Word budget: MSR technical track. Check the call.** No number here that is not
-in `paper/numbers.md`.
+We give a taxonomy of six mechanisms by which a project silently fails to support
+an issue-linked study. Three are disqualifying — the tracker is displaced by
+GitHub Issues, no source repository exists, the tracker is downstream of the
+repository. Three are **silent**: a convention that changed mid-history, a monorepo
+needing multi-key matching, and a cited key with no project record in the tracker
+each yield a plausible low number rather than an error. A single-key probe reads
+Hadoop at 26.2% where the true rate is 92.3%, and nothing in that result signals
+the key set is wrong.
+
+**None of the six is expressible in any published sampling frame.** GHS indexes
+735,669 repositories with 35 fields, of which only two touch issues and both are
+GitHub-issue counts. Project eligibility for issue-linked research cannot be
+established from metadata; it requires reading commit messages from the project
+itself, per project, before any outcome is measured.
+
+We make no first-to-measure claim: per-project linkage rates are published by
+SEOSS 33 for 33 projects and by Rath et al. (ICSE'18) for six. What is new is a
+pre-registered numeric bar with reported attrition and named rejections, both
+reference channels counted together, the ticket realisation rate named and
+measured across a whole probe rather than its survivors, and the six-mode
+taxonomy.
+
+---
+
+*Drafting note, to be deleted before submission.* Word budget: MSR technical
+track — check the call. Every number here appears in `paper/numbers.md` with a
+script and a commit. The `{ABSTRACT_EXTENSION}` placeholder is filled from §4.3.

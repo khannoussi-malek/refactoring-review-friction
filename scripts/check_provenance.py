@@ -52,9 +52,10 @@ YEAR = re.compile(r"^(19|20)\d{2}$")
 # exclusion is visible: a silent filter here would defeat the whole check.
 NOT_MEASUREMENTS = {
     # section cross-references
-    "2.1", "2.2", "2.3", "2.4", "2.5", "4.1", "4.2", "4.3", "4.4", "4.5",
+    "2.1", "2.2", "2.3", "2.4", "2.5", "3.2", "3.3", "3.4",
+    "4.1", "4.2", "4.3", "4.4", "4.5", "4.6",
     "5.1", "5.2", "5.3", "5.4", "6.1", "6.2", "6.3", "6.4", "6.5", "6.6",
-    "6.7", "6.8",
+    "6.7", "6.8", "7.1", "7.2", "7.3", "7.4", "7.5",
     # DOI / arXiv / dataset identifiers
     "104005", "1804.02433", "2404.01950", "2501.15387", "2605.16133",
     "15719919",
@@ -102,7 +103,7 @@ def main():
     strict = collections.defaultdict(set)
     weak = collections.defaultdict(set)
     for f in sorted(MANUSCRIPT.glob("*.md")):
-        if f.name == OUT.name:
+        if f.name in (OUT.name, "PAPER.md"):
             continue
         text = DATEISH.sub(" ", f.read_text())
         for raw in TOKEN.findall(text):
@@ -161,7 +162,7 @@ def main():
     add("")
     hits = 0
     for f in sorted(MANUSCRIPT.glob("*.md")):
-        if f.name == OUT.name:
+        if f.name in (OUT.name, "PAPER.md"):
             continue
         for n, para in enumerate(f.read_text().split("\n\n"), 1):
             if "1,822" not in para:

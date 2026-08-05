@@ -543,3 +543,17 @@ did not:
 | joint model, abstraction | **×1.54 [0.97, 2.43], p=0.068, n=319** | `scripts/full_adjustment.py` | `4b8c3af` |
 | codebook keyword precision | **≈25%** (5 of 20 flagged), miss ≈5% (1 of 20), 40-comment single-rater sample, no κ — **an instrument result, not an instrument** | `codebook_results.md`, `results_dossier.md` §11, `codebook.md` | `de657c3` |
 | frozen cache archive | **2,491** files, per-file SHA-256, **no rebuild script** | `scripts/freeze_caches.py`, `deposit/MANIFEST-v1.md` | `ce4bf7d` |
+
+---
+
+## 10. Numbers added 2026-08-05
+
+Two loose tokens the manuscript used that §1–§9 did not carry, then the
+ticket-realisation extension.
+
+### 10a. Two provenance rows §1–§9 was missing
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| Hadoop commits analysed by RefactoringMiner | **8,919** commits, **51,861** refactorings, **248,336** location records | `paper/ENTITY_IDENTIFIERS.md`, `refminer_all.json` | `2259129` |
+| the ICC value the feasibility table turns on | **0.015** → ceiling n_eff **800**, "feasible, barely"; **0.02** → **600**, infeasible. The whole design decision is the gap between these two, which is why a four-cluster estimate was refused | `replication/CORPUS_FEASIBILITY.md` | `f07d976` |

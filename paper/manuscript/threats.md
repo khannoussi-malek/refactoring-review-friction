@@ -34,6 +34,40 @@ distinct keys of which 122 have no tracker record, so its ticket-side rate rests
 on the 668 that resolve (§5.3). This is mode 6 inside a passing project, and it
 means ticket-side rates are, strictly, coverage of *resolvable* tickets.
 
+**The 38-project extension uses a different denominator source, and its four
+failure modes are stated rather than assumed away.** §4.3 measures the ticket
+realisation rate for all 38 projects against the frozen public Jira corpus rather
+than a second live fetch, aligning numerator and denominator in issue-number
+space (§3.1.3). Validated against the twelve published exact rates it is accurate
+to a mean absolute error of {VAL_MEAN}pp and a worst case of {VAL_MAX}pp, but
+four things can break it and all four occur in this corpus:
+
+1. **Trackers with gaps.** Number-capping assumes a tracker holding N issues holds
+   approximately the first N numbers. Issues moved or deleted break that, and the
+   estimator then undercounts. This is the largest single validation error in the
+   set and the direction is always downward.
+2. **Repositories whose history does not span the snapshot era.** Where a
+   repository has been truncated or re-initialised, almost none of its cited keys
+   fall inside the frozen range and the estimated rate collapses towards zero.
+   That is a *true* statement about what is recoverable from the repository as it
+   now stands, and a badly misleading one if read as a statement about whether the
+   project's tickets were ever worked. Affected projects are flagged in Table 3
+   with the share of cited keys that postdate the snapshot.
+3. **Denominators too small to carry a rate.** Several trackers hold only a
+   handful of issues in the frozen corpus. Projects with fewer than 500 are
+   excluded from the association statistic and shown in the table with the
+   exclusion marked.
+4. **Keys with no tracker record at all.** Some probed keys have no project record
+   in the frozen corpus. These are taxonomy modes 1 and 6, not low rates, and they
+   are **excluded rather than scored as 0%** — scoring them would put a number
+   where a category belongs, which is the error §5.1 exists to prevent.
+
+**The truncation caveat on Table 1 is not withdrawn.** The 12.0–69.0% range from
+the live measurement remains within-passing variation, computed on the twelve that
+had already cleared the bar. §4.3 does not extend that measurement; it is a
+different estimator against a different snapshot, and it is reported alongside
+rather than merged into it.
+
 **"345 of 349 episodes traceable to 323 tickets" — the unit matters.** An estimate
 is a property of a ticket, not an episode; several episodes share a ticket. An
 earlier draft used 0/345 where 0/323 is correct (`PROJECT_STATE.md` §7).
