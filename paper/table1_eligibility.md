@@ -63,6 +63,8 @@
 
 **Truncation caveat, load-bearing.** Ticket-side coverage was computed only for the 12 projects that had already cleared the commit-side bar. The 12.0%–69.0% range is therefore *within-passing variation* and licenses no claim about the 26 dropped projects, whose ticket-side rates were never measured, nor about any correlation between the two channels in general.
 
+**The caveat above is not withdrawn by Table 3.** `paper/table3_ticket_side.md` computes a ticket realisation rate for every probed project, including the dropped ones, but it does so with a *different denominator source* -- the frozen public Jira corpus rather than the live tracker read for this table -- and a different alignment (issue-number rather than date). It is reported alongside this table, never merged into it.
+
 **Drop reasons are measured, not inferred.** The probe counts GitHub-issue references (`#NNN`, `GH-NNN`) alongside Jira keys, so `github_issue_references_dominate` means the GitHub count exceeds the Jira count in that repository. `below_bar_narrowly` (≥70%) and `low_commit_message_hygiene` are threshold labels on the measured rate.
 
 **No timing column exists in this table and none may be added for a † row.** Every quantity above is a coverage or existence count, which is what the held-out rule permits (`PROJECT_STATE.md` §3).

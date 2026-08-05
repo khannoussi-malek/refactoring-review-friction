@@ -77,7 +77,15 @@ Positioned against the above rather than against an assumed gap:
    Rath 2018 reports both directions; nobody frames the divergence as a threat to
    using a high commit-side rate to justify a corpus. Kylin at 83.9% against
    12.0% is the sharpest case.
-5. **The six-mode taxonomy**, and that none of it is expressible in any published
+5. **The ticket-side rate named, defined and measured across the whole probe.**
+   Rath 2018 reports it per issue *type* — 43.3% of improvements and 42.4% of bugs
+   have no commits — rather than as a named project-level quantity, and reports it
+   only for the six projects it selected. §3.1 gives it a definition, including
+   what counts as a ticket and how the denominator is bounded in time, and §4.3
+   computes it for the projects the bar **rejected** as well as those it kept.
+   That is what makes the divergence a property of the population rather than of
+   the survivors.
+6. **The six-mode taxonomy**, and that none of it is expressible in any published
    frame.
 
 ## 2.3 The standard sampling frame cannot express the criterion

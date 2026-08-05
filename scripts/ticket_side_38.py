@@ -215,6 +215,30 @@ def main():
         sys.stdout.flush()
         json.dump(out, open(args.out, "w"), indent=1)
 
+    # ---- taxonomy mode 6, measured across the whole probe ---------------------
+    # A key that commit messages cite and the tracker has no project record for
+    # exists only in git. Enumerating the tracker cannot recover it.
+    orphans = []
+    for p in out["projects"]:
+        for k in p["keys_with_no_tracker_record"]:
+            orphans.append({"project": p["project"], "key": k,
+                            "distinct_keys_cited": p["per_key"][k]["distinct_keys_cited"]})
+    out["orphan_keys"] = {
+        "n_keys": len(orphans),
+        "n_keys_actually_cited": sum(1 for o in orphans if o["distinct_keys_cited"]),
+        "n_projects_affected": len({o["project"] for o in orphans
+                                    if o["distinct_keys_cited"]}),
+        "keys": sorted(orphans, key=lambda o: -o["distinct_keys_cited"]),
+    }
+    o = out["orphan_keys"]
+    print(f"\nprobed keys with no project record in the frozen tracker corpus: "
+          f"{o['n_keys']} ({o['n_keys_actually_cited']} of them actually cited, "
+          f"across {o['n_projects_affected']} projects)")
+    for row in o["keys"]:
+        if row["distinct_keys_cited"]:
+            print(f"    {row['project']:26s} {row['key']:12s} "
+                  f"{row['distinct_keys_cited']:5,d} distinct keys cited")
+
     # ---- the question the extension exists to answer -------------------------
     # Does a high commit-side rate predict a usable ticket-side rate? Spearman,
     # because neither rate is normal and the relationship need not be linear.

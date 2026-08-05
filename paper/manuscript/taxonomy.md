@@ -69,7 +69,26 @@ identical history and PLANNER 1,629 either way. An earlier verdict that this was
 misresolved build-config repository was wrong and is corrected in
 `PROJECT_STATE.md` §7.
 
-## 5.3 One observed instance inside the eligible corpus
+## 5.3 Mode 6 measured across the whole probe, not just its worked examples
+
+The probed key sets were derived empirically from commit messages (§3.2), and the
+frozen public Jira corpus records every Apache project that existed at its
+snapshot. Intersecting the two turns mode 6 from an anecdote into a count:
+**{ORPHAN_N} of the keys this study probes have no project record in that corpus
+at all**, and {ORPHAN_CITED} of them are actually cited by commits.
+
+| project | key with no tracker record | distinct keys cited under it |
+|---|---|---:|
+{ORPHAN_TABLE}
+
+Calcite is the clearest instance: `OPTIQ` was the project's name before it was
+renamed, its keys are cited {OPTIQ_N} distinct times in the repository's history,
+and **no OPTIQ project exists in the tracker corpus**. Enumerating the tracker's
+projects cannot recover that key. It exists only in git, and a probe that derived
+its key set from the tracker — the natural thing to do — would silently miss every
+commit that cites it.
+
+## 5.4 One observed instance inside the eligible corpus
 
 The taxonomy is not confined to the projects it disqualified. Among the 12 that
 passed, **Sqoop's commits cite 790 distinct keys of which 122 have no record in
@@ -77,7 +96,7 @@ its tracker** (`paper/ticket_coverage.json`) — mode 6 operating inside a proje
 that clears the bar at 82.6%. Its ticket-side rate is computed over the 668 keys
 that do resolve.
 
-## 5.4 What a sampling frame would need
+## 5.5 What a sampling frame would need
 
 None of the six is derivable from repository metadata. Expressing them requires,
 per candidate: the dominant reference channel (Jira keys against GitHub issues,

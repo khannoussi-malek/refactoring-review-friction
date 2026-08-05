@@ -178,6 +178,16 @@ def render(probe, passing, dropped, ticket):
     )
     add("")
     add(
+        "**The caveat above is not withdrawn by Table 3.** "
+        "`paper/table3_ticket_side.md` computes a ticket realisation rate for "
+        "every probed project, including the dropped ones, but it does so with a "
+        "*different denominator source* -- the frozen public Jira corpus rather "
+        "than the live tracker read for this table -- and a different alignment "
+        "(issue-number rather than date). It is reported alongside this table, "
+        "never merged into it."
+    )
+    add("")
+    add(
         "**Drop reasons are measured, not inferred.** The probe counts "
         "GitHub-issue references (`#NNN`, `GH-NNN`) alongside Jira keys, so "
         "`github_issue_references_dominate` means the GitHub count exceeds the "
