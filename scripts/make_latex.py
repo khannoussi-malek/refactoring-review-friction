@@ -8,41 +8,71 @@ Markdown stays the single source of truth and the preprint is regenerated rather
 than maintained in parallel. Editing the .tex by hand defeats the point; edit the
 section and re-run.
 
-WHAT IT HANDLES, because it only has to handle what the manuscript uses:
-headings to three levels, bold, italic, inline code, fenced code, block quotes,
-bullet and numbered lists, pipe tables, horizontal rules, links, footnote-free
-prose, and the Unicode the sections are written in.
+WHY IT PARSES BY BLOCK AND NOT BY LINE
+--------------------------------------
+The previous version applied inline markup line by line. Markdown emphasis wraps
+freely across a newline, so `**a\\nb**` never matched its own regex and 165
+literal asterisks reached the PDF. Paragraphs are therefore joined into one
+logical string *before* any inline substitution runs. Code spans are replaced by
+sentinels rather than split on, so `**bold with `code` inside**` also survives.
+`--selfcheck` fails the build if a markdown marker gets through.
+
+SECTION NUMBERING
+-----------------
+The sources number their own headings (`## 3.1 ...`) and the prose cites those
+numbers as literal text. Levels map h1/h2/h3/h4 to section/subsection/
+subsubsection/paragraph, which reproduces the authored numbering exactly, and
+`--selfcheck` verifies that claim rather than assuming it. The old map sent h1
+and h2 both to \\section, which flattened the hierarchy and ran the document to
+56 numbered sections.
+
+TABLE NUMBERING
+---------------
+longtable steps the table counter for every environment, captioned or not, so
+eight uncaptioned body tables pushed Table 1 to "Table 9". Uncaptioned tables
+step it back.
 
 WHAT IT DOES NOT DO, stated so nobody assumes otherwise: it does not resolve
 cross-references (the sections write "§4.3" as literal text, and that is what
-comes out), it does not number tables automatically beyond the three it is told
-about, and it does not do bibliography management -- citations are prose, as they
-are in the Markdown. A submission-ready version needs a .bib and \\cite commands,
-which is a deliberate manual step listed in deposit/ARXIV_CHECKLIST.md.
-
-Tables are emitted as longtable so they break across pages; Table 3 is eleven
-columns and is additionally set in landscape.
+comes out), and it does not do bibliography management -- citations are prose, as
+they are in the Markdown. A submission-ready version needs a .bib and \\cite
+commands, which is a deliberate manual step listed in deposit/ARXIV_CHECKLIST.md.
 
 Usage:
-    python3 scripts/make_latex.py --out paper/preprint/preprint.tex
+    python3 scripts/make_latex.py --out paper/preprint/preprint.tex --selfcheck
     cd paper/preprint && pdflatex preprint.tex && pdflatex preprint.tex
 """
-import argparse, os, pathlib, re
+import argparse
+import pathlib
+import re
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "paper" / "manuscript"
 ORDER = ["abstract.md", "intro.md", "related.md", "method.md", "results.md",
-         "taxonomy.md", "threats.md", "discussion.md",
-         "acknowledgements.md"]
-TABLES = [("paper/table1_eligibility.md", "Table 1", "tab:eligibility", False),
-          ("paper/table2_visibility.md", "Table 2", "tab:visibility", False),
-          ("paper/table3_ticket_side.md", "Table 3", "tab:ticketside", True)]
+         "taxonomy.md", "threats.md", "discussion.md", "acknowledgements.md"]
+TABLES = [("paper/table1_eligibility.md", "tab:eligibility",
+           "Corpus eligibility across the 38 probed projects, both traceability "
+           "channels, with commits per ticket, the arithmetic ceiling of "
+           "Section 3.1.4 and the share of it reached."),
+          ("paper/table2_visibility.md", "tab:visibility",
+           "Three-channel visibility of architectural change across two "
+           "ecosystems. Every cell is a different quantity with its own "
+           "denominator and no statistic is computed across them."),
+          ("paper/table3_ticket_side.md", "tab:ticketside",
+           "The ticket realisation rate across all 38 probed projects, with the "
+           "note column recording every reason a row should not be read at face "
+           "value.")]
+FIGURE = ("figures/eligibility_funnel.png", "fig:funnel",
+          "Corpus attrition: 38 probed projects to 12 eligible to a single "
+          "ecosystem, with the six operationalisations that were tested and "
+          "closed.")
 
 # Unicode the sections use, mapped to LaTeX that compiles under pdflatex.
 UNI = {
     "—": "---", "–": "--", "×": r"$\times$", "≤": r"$\leq$", "≥": r"$\geq$",
     "→": r"$\rightarrow$", "←": r"$\leftarrow$", "⟶": r"$\longrightarrow$",
-    "§": r"\S", "≈": r"$\approx$", "≠": r"$\neq$", "∈": r"$\in$",
+    "§": r"\S\," , "≈": r"$\approx$", "≠": r"$\neq$", "∈": r"$\in$",
     "∃": r"$\exists$", "∅": r"$\emptyset$", "∩": r"$\cap$", "∪": r"$\cup$",
     "·": r"$\cdot$", "±": r"$\pm$", "−": "-", "‑": "-",
     "ρ": r"$\rho$", "κ": r"$\kappa$", "τ": r"$\tau$", "Δ": r"$\Delta$",
@@ -50,16 +80,25 @@ UNI = {
     "“": "``", "”": "''", "‘": "`", "’": "'", "…": r"\ldots{}",
     "⁻": r"$^{-}$", "⁶": r"$^{6}$", "†": r"$\dagger$", "‡": r"$\ddagger$",
     "ü": r'\"u', "ä": r'\"a', "ö": r'\"o', "é": r"\'e", "è": r"\`e",
-    "ˆ": "", "\u00a0": "~", "\u2009": r"\,", "✅": "", "⚠": r"\textbf{!}",
-    "❌": "", "⏳": "", "≡": r"$\equiv$",
+    "ˆ": "", "\u00a0": "~", "\u2009": r"\,", "✅": r"\checkmark",
+    "⚠": r"\textbf{!}", "❌": "--", "⏳": r"$\ldots$", "≡": r"$\equiv$",
 }
 
 ESC = {"\\": r"\textbackslash{}", "&": r"\&", "%": r"\%", "$": r"\$",
        "#": r"\#", "_": r"\_", "{": r"\{", "}": r"\}",
        "~": r"\textasciitilde{}", "^": r"\textasciicircum{}"}
 
+# Sentinels for spans that must not be touched by the escaper or the emphasis
+# regexes. \x00..\x04 cannot occur in the sources.
+CODE_A, CODE_B = "\x00", "\x01"
+LINK_A, LINK_B, LINK_C = "\x02", "\x03", "\x04"
 
-def esc(s):
+
+# --------------------------------------------------------------------------
+# inline markup
+# --------------------------------------------------------------------------
+
+def esc(s, unmapped=None):
     out = []
     for ch in s:
         if ch in ESC:
@@ -67,194 +106,505 @@ def esc(s):
         elif ch in UNI:
             out.append(UNI[ch])
         elif ord(ch) > 127:
-            out.append("?")          # nothing should reach here; see --strict
+            if unmapped is not None:
+                unmapped.add(ch)
+            out.append("?")
         else:
             out.append(ch)
     return "".join(out)
 
 
-def inline(s):
-    """Markdown inline markup -> LaTeX. Code spans are escaped, not interpreted."""
-    parts = re.split(r"(`[^`]*`)", s)
-    done = []
-    for i, p in enumerate(parts):
-        if i % 2 == 1:
-            done.append(r"\texttt{" + esc(p[1:-1]) + "}")
+def smart_quotes(s):
+    """Straight " renders as two right-quotes in LaTeX. Pair them by position:
+    a quote that opens follows start-of-string, whitespace or an opening
+    bracket."""
+    out, i = [], 0
+    while i < len(s):
+        if s[i] == '"':
+            prev = out[-1] if out else " "
+            out.append("“" if prev in " \t([{-–—/" else "”")
+        else:
+            out.append(s[i])
+        i += 1
+    return "".join(out)
+
+
+def _runs(s):
+    """Every maximal run of asterisks, with whether it may open or close an
+    emphasis span. Following CommonMark: a run may open if the character after
+    it is not whitespace, and may close if the character before it is not."""
+    runs, i = [], 0
+    while i < len(s):
+        if s[i] != "*":
+            i += 1
             continue
-        # links first, so their URLs are not mangled by the escaper
-        p = re.sub(r"\[([^\]]+)\]\(([^)]+)\)",
-                   lambda m: "\x00LINK" + m.group(1) + "\x01" + m.group(2) + "\x02", p)
-        p = esc(p)
-        p = re.sub(r"\*\*(.+?)\*\*", r"\\textbf{\1}", p)
-        p = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"\\emph{\1}", p)
-        p = re.sub(r"\x00LINK(.*?)\x01(.*?)\x02",
-                   lambda m: r"\href{" + m.group(2).replace("%", r"\%")
-                             + "}{" + m.group(1) + "}", p)
-        done.append(p)
-    return "".join(done)
+        j = i
+        while j < len(s) and s[j] == "*":
+            j += 1
+        before = s[i - 1] if i else " "
+        after = s[j] if j < len(s) else " "
+        runs.append({"start": i, "end": j, "left": j - i,
+                     "open": not after.isspace(),
+                     "close": not before.isspace()})
+        i = j
+    return runs
 
 
-def parse_table(lines):
+def emphasis(s):
+    """Markdown emphasis -> LaTeX, by delimiter matching rather than by regex.
+
+    Regex passes cannot parse the sources' own idiom
+
+        **Bachmann et al. (FSE'10), *The Missing Links*** ---
+
+    where a single run of three asterisks closes an italic and a bold at once;
+    a non-greedy `\\*\\*(.+?)\\*\\*` eats `**A, *B**` and strands the last one.
+    They also cannot parse `****six** ... **`, a doubled marker in taxonomy.md.
+    Matching runs against a stack handles both, so neither the idiom nor the
+    typo needs the manuscript edited.
+    """
+    runs = _runs(s)
+    if not runs:
+        return s
+    opens, pairs, stack = [], [], []
+    for r in runs:
+        while r["close"] and r["left"] and stack:
+            o = stack[-1]
+            if not o["left"]:
+                stack.pop()
+                continue
+            use = 2 if (o["left"] >= 2 and r["left"] >= 2) else 1
+            pairs.append((o["end"] - o["left"], use, r["start"] + (r["end"]
+                          - r["start"] - r["left"]), use))
+            o["left"] -= use
+            r["left"] -= use
+            if not o["left"]:
+                stack.pop()
+        if r["open"] and r["left"]:
+            stack.append(r)
+    if not pairs:
+        return s
+
+    drop = set()
+    pre, post = {}, {}
+    for o_at, o_len, c_at, c_len in pairs:
+        cmd = r"\textbf{" if o_len == 2 else r"\emph{"
+        drop.update(range(o_at, o_at + o_len))
+        drop.update(range(c_at, c_at + c_len))
+        pre.setdefault(o_at + o_len, []).insert(0, cmd)
+        post.setdefault(c_at, []).append("}")
+
+    out = []
+    for i, ch in enumerate(s):
+        out += post.get(i, [])
+        out += pre.get(i, [])
+        if i not in drop:
+            out.append(ch)
+    out += post.get(len(s), [])
+    out += pre.get(len(s), [])
+    return "".join(out)
+
+
+def inline(s, unmapped=None):
+    """Markdown inline markup -> LaTeX.
+
+    Order matters: code spans and links become sentinels first so neither the
+    escaper nor the emphasis regexes can see inside them, then the whole string
+    is escaped, then emphasis runs across the *entire* string -- which is why
+    the caller must hand over a joined paragraph and not a single line.
+    """
+    codes, links = [], []
+
+    def stash_code(m):
+        codes.append(m.group(1))
+        return f"{CODE_A}{len(codes) - 1}{CODE_B}"
+
+    def stash_link(m):
+        links.append((m.group(1), m.group(2)))
+        return f"{LINK_A}{len(links) - 1}{LINK_B}"
+
+    s = re.sub(r"`([^`]*)`", stash_code, s)
+    s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", stash_link, s)
+    s = smart_quotes(s)
+    s = esc(s, unmapped)
+
+    # |rho| is absolute-value notation written in ASCII; it is maths, not prose.
+    s = re.sub(r"\|rho\|", r"$|\\rho|$", s)
+
+    s = emphasis(s)
+
+    # Links are restored after escaping, so their label has to be escaped here
+    # or a character like the # in "tsantalis/RefactoringMiner#1124" reaches
+    # LaTeX raw and aborts the run.
+    def unstash_link(m):
+        label, url = links[int(m.group(1))]
+        for ch in ("%", "#"):
+            url = url.replace(ch, "\\" + ch)
+        return r"\href{" + url + "}{" + esc(label, unmapped) + "}"
+
+    s = re.sub(f"{LINK_A}(\\d+){LINK_B}", unstash_link, s)
+    s = re.sub(f"{CODE_A}(\\d+){CODE_B}",
+               lambda m: code_span(codes[int(m.group(1))], unmapped), s)
+    return s
+
+
+def code_span(text, unmapped=None):
+    """\\texttt has no hyphenation, so a long path like
+    paper/manuscript/threats.md overruns the margin. Allow a break after the
+    separators a reader already parses the token by."""
+    body = esc(text, unmapped)
+    return r"\texttt{" + re.sub(r"([/_.\-])", r"\1\\allowbreak{}", body) + "}"
+
+
+# --------------------------------------------------------------------------
+# block parsing
+# --------------------------------------------------------------------------
+
+HEADING = re.compile(r"^(#{1,6})\s+(.*)$")
+BULLET = re.compile(r"^(\s*)([*+-])\s+(.*)$")
+NUMBER = re.compile(r"^(\s*)(\d+[.)])\s+(.*)$")
+ROW = re.compile(r"^\|.*\|\s*$")
+RULE = re.compile(r"^(-{3,}|\*{3,}|_{3,})$")
+
+
+def parse(lines):
+    """Markdown lines -> a list of blocks. Blocks are the unit inline markup is
+    applied to, which is what lets emphasis span a line break."""
+    blocks, i, n = [], 0, len(lines)
+    while i < n:
+        raw, s = lines[i], lines[i].strip()
+
+        if not s:
+            i += 1
+            continue
+
+        if s.startswith("<!--"):
+            while i < n and "-->" not in lines[i]:
+                i += 1
+            i += 1
+            continue
+
+        if s.startswith("```"):
+            i += 1
+            buf = []
+            while i < n and not lines[i].strip().startswith("```"):
+                buf.append(lines[i])
+                i += 1
+            blocks.append(("code", buf))
+            i += 1
+            continue
+
+        m = HEADING.match(s)
+        if m:
+            blocks.append(("head", (len(m.group(1)), m.group(2))))
+            i += 1
+            continue
+
+        if RULE.match(s):
+            blocks.append(("rule", None))
+            i += 1
+            continue
+
+        if ROW.match(s):
+            buf = []
+            while i < n and ROW.match(lines[i].strip()):
+                buf.append(lines[i])
+                i += 1
+            blocks.append(("table", table_rows(buf)))
+            continue
+
+        if s.startswith(">"):
+            buf = []
+            while i < n and (lines[i].strip().startswith(">") or
+                             (lines[i].strip() and buf and
+                              not _starts_block(lines[i]))):
+                buf.append(re.sub(r"^\s*>\s?", "", lines[i]))
+                i += 1
+            blocks.append(("quote", parse(buf)))
+            continue
+
+        m = BULLET.match(raw) or NUMBER.match(raw)
+        if m:
+            i, items, kind = read_list(lines, i)
+            blocks.append((kind, items))
+            continue
+
+        # paragraph: every following line until a blank or a new block starts
+        buf = [s]
+        i += 1
+        while i < n and lines[i].strip() and not _starts_block(lines[i]):
+            buf.append(lines[i].strip())
+            i += 1
+        blocks.append(("para", " ".join(buf)))
+    return blocks
+
+
+def _starts_block(line):
+    s = line.strip()
+    return bool(HEADING.match(s) or ROW.match(s) or RULE.match(s)
+                or s.startswith(("```", ">"))
+                or BULLET.match(line) or NUMBER.match(line))
+
+
+def read_list(lines, i):
+    """Read one list. An item absorbs its wrapped continuation lines, so
+    emphasis spanning them is joined before inline() sees it."""
+    n = len(lines)
+    first = BULLET.match(lines[i]) or NUMBER.match(lines[i])
+    kind = "olist" if NUMBER.match(lines[i]) else "ulist"
+    base = len(first.group(1))
+    items = []
+    while i < n:
+        line = lines[i]
+        m = BULLET.match(line) or NUMBER.match(line)
+        if m and len(m.group(1)) <= base:
+            if NUMBER.match(line) and kind == "ulist":
+                break
+            if BULLET.match(line) and kind == "olist":
+                break
+            buf = [m.group(3).strip()]
+            i += 1
+            # continuation lines and nested content belong to this item
+            sub = []
+            while i < n:
+                nxt = lines[i]
+                if not nxt.strip():
+                    if i + 1 < n and (BULLET.match(lines[i + 1])
+                                      or NUMBER.match(lines[i + 1])) \
+                            and len((BULLET.match(lines[i + 1])
+                                     or NUMBER.match(lines[i + 1])).group(1)) > base:
+                        sub.append("")
+                        i += 1
+                        continue
+                    break
+                m2 = BULLET.match(nxt) or NUMBER.match(nxt)
+                if m2 and len(m2.group(1)) <= base:
+                    break
+                if m2 or _starts_block(nxt):
+                    sub.append(nxt)
+                    i += 1
+                    continue
+                (sub if sub else buf).append(nxt.strip())
+                i += 1
+            items.append((" ".join(buf), parse(sub) if any(x.strip() for x in sub) else []))
+            continue
+        if not line.strip():
+            i += 1
+            if i < n and (BULLET.match(lines[i]) or NUMBER.match(lines[i])):
+                continue
+            break
+        break
+    return i, items, kind
+
+
+def table_rows(lines):
     rows = []
     for ln in lines:
         cells = [c.strip() for c in ln.strip().strip("|").split("|")]
-        if all(set(c) <= set("-: ") for c in cells) and cells:
+        if cells and all(set(c) <= set("-: ") for c in cells):
             continue                       # the alignment row
         rows.append(cells)
     return rows
 
 
-def emit_table(rows, landscape=False, caption=None, label=None):
+# --------------------------------------------------------------------------
+# emission
+# --------------------------------------------------------------------------
+
+LEVEL = {1: "section", 2: "subsection", 3: "subsubsection", 4: "paragraph",
+         5: "paragraph", 6: "paragraph"}
+NUMBERED = re.compile(r"^(\d+(?:\.\d+)*)\.?\s+(.*)$")
+
+
+def col_widths(rows, ncol, total=1.0):
+    """Allocate column width in proportion to the longest cell, clamped so a
+    narrow index column keeps a usable minimum and one essay column cannot eat
+    the page. Equal widths put an 80-character note beside a 2-character rank."""
+    longest = [max((len(r[c]) if c < len(r) else 0) for r in rows) or 1
+               for c in range(ncol)]
+    # square-root damping: proportional allocation alone gives the note column
+    # nearly everything, which starves the numbers it exists to annotate
+    weight = [w ** 0.5 for w in longest]
+    scale = total / sum(weight)
+    out = []
+    for w, raw in zip(weight, longest):
+        frac = w * scale
+        out.append(min(max(frac, 0.035), 0.42))
+    over = sum(out) / total
+    return [w / over for w in out]
+
+
+def breakable(s):
+    """A p-column can only wrap at a space. "commits/ticket" has none, so it
+    overhangs into the next column instead of wrapping. Offer a break after the
+    separators inside any long unbroken token."""
+    def fix(m):
+        return re.sub(r"([/_.\-])", r"\1\\allowbreak{}", m.group(0))
+    return re.sub(r"\S{10,}", fix, s)
+
+
+def emit_table(rows, caption=None, label=None, unmapped=None, continued=False):
     if not rows:
         return []
     ncol = max(len(r) for r in rows)
     rows = [r + [""] * (ncol - len(r)) for r in rows]
-    # Left-align everything: the content is mixed prose and numbers, and p-columns
-    # keep wide tables from overrunning the page.
-    width = f"{0.92 / ncol:.3f}\\textwidth"
-    spec = "".join(f">{{\\raggedright\\arraybackslash}}p{{{width}}}" for _ in range(ncol))
+    widths = col_widths(rows, ncol)
+    # Each p-column also carries 2\tabcolsep of gutter, so a budget expressed
+    # as a plain fraction of \linewidth overruns by ncol*2*tabcolsep -- 78pt on
+    # the 13-column table. Subtracting it per column makes the row width come
+    # out at exactly \linewidth.
+    spec = "".join(r">{\raggedright\arraybackslash}p{\dimexpr "
+                   f"{w:.4f}" + r"\linewidth-2\tabcolsep\relax}"
+                   for w in widths)
+    landscape = ncol >= 8
+    size = r"\scriptsize" if ncol >= 8 else r"\footnotesize"
+
     out = []
     if landscape:
         out.append(r"\begin{landscape}")
-    out.append(r"\footnotesize")
+    out.append(r"\begingroup" + size + r"\setlength{\tabcolsep}{3pt}")
     out.append(r"\begin{longtable}{" + spec + "}")
     if caption:
-        out.append(r"\caption{" + inline(caption) + "}"
+        out.append(r"\caption{" + inline(caption, unmapped) + "}"
                    + (r"\label{" + label + "}" if label else "") + r"\\")
-    head = " & ".join(r"\textbf{" + inline(c) + "}" for c in rows[0]) + r" \\"
-    out += [r"\hline", head, r"\hline", r"\endfirsthead",
-            r"\hline", head, r"\hline", r"\endhead"]
+    head = " & ".join(r"\textbf{" + breakable(inline(c, unmapped)) + "}"
+                      for c in rows[0]) + r" \\"
+    out += [r"\toprule", head, r"\midrule", r"\endfirsthead"]
+    if caption:
+        out.append(r"\caption[]{\emph{(continued)}}\\")
+    out += [r"\toprule", head, r"\midrule", r"\endhead",
+            r"\bottomrule", r"\endlastfoot"]
     for r in rows[1:]:
-        out.append(" & ".join(inline(c) for c in r) + r" \\")
-    out += [r"\hline", r"\end{longtable}", r"\normalsize"]
+        out.append(" & ".join(breakable(inline(c, unmapped)) for c in r) + r" \\")
+    out.append(r"\end{longtable}")
+    if not caption or continued:
+        # longtable steps the table counter whether or not it carries a caption.
+        # A continuation half of a split table shares the number of its first
+        # half rather than claiming the next one.
+        out.append(r"\addtocounter{table}{-1}")
+    out.append(r"\endgroup")
     if landscape:
         out.append(r"\end{landscape}")
     return out
 
 
-def convert(md, drop_h1=False):
-    lines = md.split("\n")
-    out, i = [], 0
-    list_stack = []
-
-    def close_lists(to=0):
-        while len(list_stack) > to:
-            out.append(r"\end{" + list_stack.pop() + "}")
-
-    while i < len(lines):
-        ln = lines[i]
-        s = ln.strip()
-
-        if s.startswith("<!--"):
-            while i < len(lines) and "-->" not in lines[i]:
-                i += 1
-            i += 1
-            continue
-        if s.startswith("```"):
-            i += 1
-            buf = []
-            while i < len(lines) and not lines[i].strip().startswith("```"):
-                buf.append(lines[i])
-                i += 1
-            i += 1
-            close_lists()
-            out += [r"\begin{verbatim}"] + buf + [r"\end{verbatim}"]
-            continue
-        if re.match(r"^\|.*\|\s*$", s):
-            buf = []
-            while i < len(lines) and re.match(r"^\|.*\|\s*$", lines[i].strip()):
-                buf.append(lines[i])
-                i += 1
-            close_lists()
-            out += emit_table(parse_table(buf))
-            continue
-        if re.match(r"^(-{3,}|\*{3,}|_{3,})$", s):
-            close_lists()
-            i += 1
-            continue
-        m = re.match(r"^(#{1,4})\s+(.*)$", s)
-        if m:
-            close_lists()
-            lvl, txt = len(m.group(1)), m.group(2)
-            txt = re.sub(r"^\d+(\.\d+)*\.?\s+", "", txt)   # strip manual numbering
-            if lvl == 1 and drop_h1:
-                i += 1
-                continue
-            cmd = {1: "section", 2: "section", 3: "subsection", 4: "subsubsection"}[lvl]
-            out.append("\\" + cmd + "{" + inline(txt) + "}")
-            i += 1
-            continue
-        if s.startswith(">"):
-            buf = []
-            while i < len(lines) and lines[i].strip().startswith(">"):
-                buf.append(lines[i].strip().lstrip(">").strip())
-                i += 1
-            close_lists()
-            out += [r"\begin{quote}", inline(" ".join(buf)), r"\end{quote}"]
-            continue
-        m = re.match(r"^(\s*)([*+-]|\d+[.)])\s+(.*)$", ln)
-        if m:
-            indent, marker, txt = m.group(1), m.group(2), m.group(3)
-            kind = "enumerate" if re.match(r"\d", marker) else "itemize"
-            depth = 1 + len(indent) // 3
-            while len(list_stack) > depth:
-                out.append(r"\end{" + list_stack.pop() + "}")
-            if len(list_stack) < depth:
-                out.append(r"\begin{" + kind + "}")
-                list_stack.append(kind)
-            elif list_stack and list_stack[-1] != kind:
-                out.append(r"\end{" + list_stack.pop() + "}")
-                out.append(r"\begin{" + kind + "}")
-                list_stack.append(kind)
-            out.append(r"\item " + inline(txt))
-            i += 1
-            continue
-        if not s:
-            if list_stack and i + 1 < len(lines) and not re.match(
-                    r"^(\s*)([*+-]|\d+[.)])\s+", lines[i + 1]):
-                close_lists()
+def emit(blocks, starred=False, headings=None, unmapped=None, depth=0):
+    out = []
+    for kind, payload in blocks:
+        if kind == "para":
+            out += [inline(payload, unmapped), ""]
+        elif kind == "head":
+            lvl, txt = payload
+            m = NUMBERED.match(txt)
+            number, title = (m.group(1), m.group(2)) if m else (None, txt)
+            cmd = LEVEL[min(lvl, 6)]
+            star = "*" if starred else ""
+            body = inline(title, unmapped)
+            if headings is not None and not starred:
+                headings.append((cmd, number, title))
+            out.append("\\" + cmd + star + "{" + body + "}")
+            if starred and cmd in ("section", "subsection"):
+                out.append(r"\addcontentsline{toc}{" + cmd + "}{" + body + "}")
             out.append("")
-            i += 1
-            continue
-        # continuation of a list item, or a paragraph
-        if list_stack:
-            out.append(inline(s))
-        else:
-            out.append(inline(s))
-        i += 1
-    close_lists()
-    return "\n".join(out)
+        elif kind == "code":
+            out += [r"\begin{quote}\footnotesize\begin{verbatim}"] \
+                + payload + [r"\end{verbatim}\end{quote}", ""]
+        elif kind == "table":
+            out += emit_table(payload, unmapped=unmapped) + [""]
+        elif kind == "rule":
+            out += [r"\medskip\hrule\medskip", ""]
+        elif kind == "quote":
+            out += [r"\begin{quote}"] \
+                + emit(payload, starred, headings, unmapped, depth + 1) \
+                + [r"\end{quote}", ""]
+        elif kind in ("ulist", "olist"):
+            env = "itemize" if kind == "ulist" else "enumerate"
+            out.append(r"\begin{" + env + "}")
+            for text, sub in payload:
+                out.append(r"\item " + inline(text, unmapped))
+                if sub:
+                    out += emit(sub, starred, headings, unmapped, depth + 1)
+            out += [r"\end{" + env + "}", ""]
+    return out
 
+
+def convert(md, starred=False, headings=None, unmapped=None):
+    return "\n".join(emit(parse(md.split("\n")), starred, headings, unmapped))
+
+
+# --------------------------------------------------------------------------
+# document
+# --------------------------------------------------------------------------
+
+TITLE = ("Traceability and estimate coverage as corpus-eligibility "
+         "constraints: a probe of 38 Apache projects")
+AUTHOR = "Malek Khannoussi"
 
 PREAMBLE = r"""\documentclass[11pt,a4paper]{article}
+
+%% Latin Modern in place of bare T1 Computer Modern. Without it pdflatex falls
+%% back to 600dpi bitmap EC fonts: the page renders rough on screen and the text
+%% layer loses ligatures, so "different" extracts as "dierent" and the PDF is
+%% not searchable for those words.
+\usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=2.4cm]{geometry}
+\usepackage[english]{babel}
+
+\usepackage[margin=2.5cm,bottom=2.8cm]{geometry}
 \usepackage{array}
+\usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{pdflscape}
-\usepackage[expansion=false]{microtype}
-\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+%% resolve the figure whether pdflatex runs from paper/preprint (repo layout) or
+%% from a flat directory with the image beside the .tex (arXiv submission)
+\graphicspath{{../../}{./}}
+\usepackage[font=small,labelfont=bf,skip=6pt]{caption}
+%% expansion is available again now that the fonts are scalable
+\usepackage{microtype}
 \usepackage{parskip}
-\setlength{\emergencystretch}{3em}
-\sloppy
 
-\title{Traceability and estimate coverage as corpus-eligibility constraints:\\
-a probe of 38 Apache projects}
-\author{Malek Khannoussi\\\small independent researcher\\\small\texttt{khannoussimalek@gmail.com}}
+\usepackage[hidelinks,
+            pdftitle={Traceability and estimate coverage as corpus-eligibility constraints: a probe of 38 Apache projects},
+            pdfauthor={Malek Khannoussi},
+            pdfsubject={Empirical software engineering; mining software repositories},
+            pdfkeywords={traceability, corpus eligibility, refactoring, issue linkage, Apache},
+            pdfcreator={scripts/make_latex.py}]{hyperref}
+
+%% keep a stray line off the top or bottom of a page
+\widowpenalty=10000
+\clubpenalty=10000
+\setlength{\emergencystretch}{2em}
+
+\title{\bfseries Traceability and estimate coverage as corpus-eligibility
+constraints:\\[2pt] a probe of 38 Apache projects}
+\author{Malek Khannoussi\\[2pt]
+\normalsize independent researcher\\
+\normalsize\texttt{khannoussimalek@gmail.com}}
 \date{\today}
 
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 """
 
-FRONTMATTER = r"""
-\section*{Tables}
 
-This paper carries three tables and one figure. They are the paper; the prose is
-the argument around them.
+def frontmatter(figure_ok):
+    """The reader's map of the paper. It follows the abstract rather than
+    preceding it -- the old order put a list of tables between the title and the
+    abstract."""
+    fig = (r"\item \textbf{Figure~\ref{fig:funnel}} --- 38 to 12 to one "
+           r"ecosystem, plus the six hypotheses that did not hold."
+           if figure_ok else
+           r"\item \textbf{Figure} --- the eligibility funnel is in the "
+           r"replication package; the image was not found at build time.")
+    return r"""
+\bigskip
+\noindent\textbf{What to read first.} This paper carries three tables and one
+figure. They are the paper; the prose is the argument around them.
 
-\begin{itemize}
+\begin{itemize}\setlength{\itemsep}{2pt}
 \item \textbf{Table~\ref{tab:eligibility}} --- corpus eligibility across the 38
 probed projects, both traceability channels, with commits per ticket, the
 arithmetic ceiling of Section~3.1.4 and the share of it reached.
@@ -264,66 +614,196 @@ with its own denominator and no statistic is computed across them.
 \item \textbf{Table~\ref{tab:ticketside}} --- the ticket realisation rate across
 all 38 probed projects, with the note column recording every reason a row should
 not be read at face value.
-\item \textbf{Figure} \texttt{figures/eligibility\_funnel.png} --- 38 to 12 to one
-ecosystem, plus the six hypotheses that did not hold. Not embedded in this
-preprint; see the replication package.
+""" + fig + r"""
 \end{itemize}
 
-\vspace{1em}\hrule\vspace{1em}
+\medskip\hrule
 """
+
+
+def emit_figure(unmapped):
+    path = ROOT / FIGURE[0]
+    if not path.exists():
+        return []
+    return ["", r"\begin{figure}[htbp]", r"\centering",
+            r"\includegraphics[width=0.86\linewidth]{" + FIGURE[0] + "}",
+            r"\caption{" + inline(FIGURE[2], unmapped) + r"}\label{"
+            + FIGURE[1] + "}", r"\end{figure}", ""]
+
+
+def table_appendix(unmapped):
+    """Each table file carries its own headings, its data table and a prose
+    caption. The headings are starred so the appendix cannot renumber the
+    paper's sections, and the first data table in each file takes the caption
+    and the label the front matter points at."""
+    out = [r"\clearpage", r"\section*{Tables}",
+           r"\addcontentsline{toc}{section}{Tables}", ""]
+    for path, label, caption in TABLES:
+        blocks = parse((ROOT / path).read_text().split("\n"))
+        seen, dropped_h1 = 0, False
+        for kind, payload in blocks:
+            # the file's own h1 repeats the caption verbatim; one title is enough
+            if kind == "head" and payload[0] == 1 and not dropped_h1:
+                dropped_h1 = True
+                continue
+            if kind == "table":
+                seen += 1
+                out += emit_table(
+                    payload, label=label if seen == 1 else None,
+                    caption=caption if seen == 1
+                    else f"{caption.split('.')[0]} (continued).",
+                    continued=seen > 1, unmapped=unmapped)
+            else:
+                out += emit([(kind, payload)], starred=True, unmapped=unmapped)
+        out.append("")
+    return out
+
+
+# --------------------------------------------------------------------------
+# self-check
+# --------------------------------------------------------------------------
+
+LEAKS = [
+    # any surviving asterisk is a leak: LaTeX has no use for a bare one here,
+    # and an unpaired marker is exactly what the old line-by-line pass produced
+    ("literal emphasis marker", re.compile(r"\*")),
+    ("literal markdown link", re.compile(r"\[[^\]]+\]\([^)]+\)")),
+    ("unconverted heading", re.compile(r"(?m)^#{1,6}\s")),
+    ("unconverted table row", re.compile(r"(?m)^\|")),
+    ("stray sentinel", re.compile(r"[\x00-\x04]")),
+]
+
+DEPTH = {"section": 1, "subsection": 2, "subsubsection": 3, "paragraph": 4}
+
+
+def check_numbering(headings):
+    """The prose cites section numbers as literal text, so LaTeX's automatic
+    numbering has to reproduce the numbers the sources authored. Simulate the
+    counters and report any heading where it does not."""
+    counters, bad = [0, 0, 0, 0], []
+    for cmd, number, title in headings:
+        d = DEPTH[cmd]
+        if d > 3:
+            continue
+        counters[d - 1] += 1
+        for k in range(d, 4):
+            counters[k] = 0
+        got = ".".join(str(c) for c in counters[:d])
+        if number and got != number:
+            bad.append((number, got, title))
+    return bad
+
+
+STARRED = re.compile(r"\\(?:sub){0,2}section\*|\\paragraph\*")
+
+
+def selfcheck(text, headings):
+    problems = []
+    # a starred sectioning command is the one legitimate asterisk in the output
+    scan = STARRED.sub("", text)
+    for name, rx in LEAKS:
+        hits = rx.findall(scan)
+        if hits:
+            problems.append(f"{name}: {len(hits)} occurrence(s), first {hits[0]!r}")
+    for authored, got, title in check_numbering(headings):
+        problems.append(f"section number drift: source says {authored}, "
+                        f"LaTeX will print {got} -- {title!r}")
+    for env in ("longtable", "itemize", "enumerate", "quote", "verbatim",
+                "figure", "landscape"):
+        o = len(re.findall(r"\\begin\{" + env + r"\}", text))
+        c = len(re.findall(r"\\end\{" + env + r"\}", text))
+        if o != c:
+            problems.append(f"unbalanced {env}: {o} begin, {c} end")
+    return problems
+
+
+def demo():
+    """Smallest check that fails if emphasis matching breaks. The third case is
+    the sources' bold-ending-in-italic idiom and the fourth is the doubled
+    marker in taxonomy.md; both used to strand an asterisk in the PDF."""
+    cases = [
+        ("**a**", r"\textbf{a}"),
+        ("*a*", r"\emph{a}"),
+        ("**A, *B*** rest", r"\textbf{A, \emph{B}} rest"),
+        ("****six** of the keys**", r"\textbf{\textbf{six} of the keys}"),
+        ("plain text", "plain text"),
+        ("2 * 3 * 4", "2 * 3 * 4"),           # spaced asterisks are not markup
+    ]
+    for src, want in cases:
+        got = emphasis(src)
+        assert got == want, f"emphasis({src!r}) -> {got!r}, want {want!r}"
+
+    # a paragraph is joined before inline() runs, so emphasis spans the newline
+    joined = convert("**bold\nacross a line** and `co-de`")
+    assert "**" not in joined, joined
+    assert r"\textbf{bold across a line}" in joined, joined
+
+    # h2 must not become a section, or the paper renumbers to 56
+    heads = []
+    convert("# 1. Intro\n\n# 2. Related\n\n# 3. Method\n\n## 3.1 Rates\n\n"
+            "### 3.1.1 Tickets\n\n## 3.2 Corpus\n", headings=heads)
+    assert [h[0] for h in heads[2:]] == ["section", "subsection",
+                                         "subsubsection", "subsection"], heads
+    assert not check_numbering(heads), check_numbering(heads)
+
+    # the old h1/h2 -> section map is what ran the document to 56 sections
+    flat = [("section", n, t) for _, n, t in heads]
+    assert check_numbering(flat), "flattening h2 to section must be detected"
+    print("demo: ok")
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="paper/preprint/preprint.tex")
-    ap.add_argument("--strict", action="store_true",
-                    help="fail on any character with no mapping")
+    ap.add_argument("--selfcheck", action="store_true",
+                    help="fail the build on leaked markdown or number drift")
+    ap.add_argument("--test", action="store_true", help="run demo() and exit")
     args = ap.parse_args()
 
-    body = [PREAMBLE, FRONTMATTER]
+    if args.test:
+        demo()
+        return
 
-    abstract_md = (SRC / "abstract.md").read_text()
-    abstract_md = re.sub(r"^#\s+Abstract\s*$", "", abstract_md, flags=re.M)
-    body += [r"\begin{abstract}", convert(abstract_md, drop_h1=True),
-             r"\end{abstract}"]
+    unmapped, headings = set(), []
+    figure_ok = (ROOT / FIGURE[0]).exists()
+    body = [PREAMBLE]
 
-    for name in ORDER[1:]:
-        body.append(convert((SRC / name).read_text()))
+    abstract_md = re.sub(r"^#\s+Abstract\s*$", "",
+                         (SRC / "abstract.md").read_text(), flags=re.M)
+    body += [r"\begin{abstract}", convert(abstract_md, unmapped=unmapped),
+             r"\end{abstract}", frontmatter(figure_ok), r"\clearpage"]
 
-    body.append(r"\clearpage")
-    body.append(r"\section*{Tables}")
-    for path, cap, label, land in TABLES:
-        md = (ROOT / path).read_text()
-        tbl_lines, caption_lines, in_tbl = [], [], False
-        for ln in md.split("\n"):
-            if re.match(r"^\|.*\|\s*$", ln.strip()):
-                tbl_lines.append(ln)
-                in_tbl = True
-            elif in_tbl and not ln.strip():
-                in_tbl = False
-            elif not in_tbl:
-                caption_lines.append(ln)
-        rows = parse_table(tbl_lines)
-        body.append(convert("\n".join(caption_lines)))
-        body += emit_table(rows, landscape=land,
-                           caption=f"{cap}. See the caption text above.",
-                           label=label)
+    for i, name in enumerate(ORDER[1:]):
+        body.append(convert((SRC / name).read_text(), headings=headings,
+                            unmapped=unmapped))
+        if name == "results.md":
+            body += emit_figure(unmapped)
 
+    body += table_appendix(unmapped)
     body.append(r"\end{document}")
     text = "\n\n".join(body)
-
-    if args.strict:
-        bad = sorted({c for c in text if ord(c) > 127})
-        if bad:
-            raise SystemExit(f"unmapped characters: {bad}")
 
     out = ROOT / args.out
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text)
-    print(f"Wrote {args.out}  ({len(text.split()):,} tokens, "
-          f"{len(text.splitlines()):,} lines)")
-    left = sorted({c for c in text if ord(c) > 127})
-    print("non-ASCII remaining:", left if left else "none")
+
+    print(f"Wrote {args.out}  ({len(text.splitlines()):,} lines, "
+          f"{len(headings)} numbered headings)")
+    if unmapped:
+        print("UNMAPPED CHARACTERS (rendered as '?'):", sorted(unmapped))
+    if not figure_ok:
+        print(f"NOTE: {FIGURE[0]} not found; figure omitted")
+
+    problems = selfcheck(text, headings)
+    if problems:
+        print("\nSELF-CHECK FAILURES:")
+        for p in problems:
+            print("  -", p)
+        if args.selfcheck:
+            sys.exit(1)
+    else:
+        print("Self-check: no leaked markdown, no section-number drift, "
+              "environments balanced.")
 
 
 if __name__ == "__main__":
