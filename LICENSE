@@ -1,40 +1,84 @@
-This repository is licensed in two parts, because it holds two different kinds
-of thing and one licence would be wrong for one of them.
-
-CODE — the MIT Licence, below.
-    Everything under `scripts/`, plus `config.example.env` and `requirements.txt`.
-
-TEXT, FIGURES AND DERIVED DATA — Creative Commons Attribution 4.0 International
-(CC BY 4.0), https://creativecommons.org/licenses/by/4.0/legalcode.
-    Everything under `paper/`, `predictions/`, `prereg/`, `replication/`,
-    `deposit/`, `figures/`, `docs/` and `spent/`, all top-level Markdown files,
-    and the committed JSON result artifacts.
-
-Attribution for the CC BY 4.0 part means citing the work as set out in
-`CITATION.cff`.
-
-NOT COVERED BY EITHER. The repository redistributes no third-party source. It
-does hold data derived from public issue trackers and public git histories:
-
-  * `.jira_*/` and `deposit/jira-caches-v1.tar.gz` are responses from the Apache
-    Software Foundation's public Jira (https://issues.apache.org/jira). Apache
-    Jira content is contributed under the Apache Contributor Licence Agreement
-    and is redistributed here for reproducibility. Author display names appear in
-    some records; `scripts/pseudonymize.py` is the tool provided for removing
-    them.
-  * `estimates_by_org.json` is derived from the Public Jira Dataset,
-    Zenodo 15719919, which carries its own licence. Consult that deposit before
-    redistributing anything derived from it.
-  * `refminer_*.json` is the output of RefactoringMiner
-    (https://github.com/tsantalis/RefactoringMiner), MIT-licensed, run over
-    public Apache repositories. The output is data about those repositories, not
-    a derivative of the tool.
-  * `hadoop/`, `corpora/` and the probe clones are not committed. They are
-    Apache Software Foundation repositories under the Apache Licence 2.0 and must
-    be obtained from their own sources.
+This repository is licensed in parts, because it holds several different kinds of
+thing and one licence would be wrong for most of them. Every path is covered by
+exactly one of the four headings below; where a directory is split, the split is
+stated explicitly.
 
 ===============================================================================
-MIT Licence (applies to the CODE part above)
+1. CODE — the MIT Licence, reproduced at the end of this file.
+
+    Everything under `scripts/`, plus `config.example.env` and
+    `requirements.txt`.
+
+===============================================================================
+2. TEXT, FIGURES AND DERIVED RESULTS — Creative Commons Attribution 4.0
+   International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/legalcode
+
+    Everything under `paper/`, `predictions/`, `prereg/`, `replication/`,
+    `figures/`, `docs/`, `spent/` and `audit/`; all top-level Markdown files; and
+    the committed JSON result artifacts EXCEPT `estimates_by_org.json`, which is
+    a derived work and is covered by heading 4.
+
+    Under `deposit/`: `MANIFEST-v1.md`, `MANIFEST-v1.json`,
+    `DEPOSIT_CHECKLIST.md` and `zenodo.json` only.
+
+    Attribution means citing the work as set out in `CITATION.cff`.
+
+===============================================================================
+3. THE FROZEN JIRA ARCHIVE — a split, and the split is the whole point.
+
+    Applies to `deposit/jira-caches-v1.tar.gz` and to the untracked `.jira_*/`
+    directories it was built from.
+
+    * THE COMPILATION IS CC BY 4.0. The selection of issues, the five-directory
+      arrangement, the freeze at a stated instant, and the per-file SHA-256
+      manifest are this author's work and are licensed CC BY 4.0 on the same
+      terms as heading 2.
+
+    * THE UNDERLYING ISSUE CONTENT IS NOT. The API responses inside the archive
+      are Apache Software Foundation issue-tracker content from
+      https://issues.apache.org/jira, publicly published by the ASF and
+      contributed to it by its authors under the ASF's contribution terms. This
+      author claims no copyright in it, licenses none, and redistributes it
+      unmodified for reproducibility. Anyone reusing the issue content should
+      consult the ASF, not this file.
+
+    This is the same position `deposit/zenodo.json` records for the Zenodo
+    deposit, stated here so the two agree. Superseded wording is noted at the end
+    of this file.
+
+    PERSONAL DATA. Jira author and assignee display names appear in some records.
+    They are public on issues.apache.org. `scripts/pseudonymize.py` removes them
+    if a pseudonymised copy is wanted.
+
+===============================================================================
+4. THIRD-PARTY MATERIAL AND DERIVED WORKS — governed by their own licences.
+
+    * `estimates_by_org.json` is a derived work of THE PUBLIC JIRA DATASET,
+      Lloyd Montgomery, Clara Lueders and Walid Maalej, Zenodo 15719919,
+      which is licensed CC BY 4.0. CC BY 4.0 permits this derivation and requires
+      attribution of those three authors. That attribution is given here, in
+      `CITATION.cff`, and in `paper/numbers.md`. Anyone redistributing
+      `estimates_by_org.json` or anything derived from it must carry the same
+      attribution.
+
+    * `refminer_*.json` is the output of RefactoringMiner,
+      https://github.com/tsantalis/RefactoringMiner, MIT Licence,
+      Copyright (c) 2019 Nikolaos Tsantalis, run over public Apache
+      repositories. The output is data about those repositories; it is not a
+      derivative of the tool, and the tool's licence does not reach it. The
+      detector version used throughout is 3.1.4.
+
+    * `hadoop/`, `corpora/` and the probe clones are NOT COMMITTED. They are
+      Apache Software Foundation repositories under the Apache Licence 2.0 and
+      must be obtained from their own sources. `paper/traceability_probe.json`
+      pins a commit sha per project so any re-clone is exactly diffable.
+
+    * `RefactoringMiner/` and `RefactoringMiner-src/` are NOT COMMITTED
+      (see `.gitignore`); they are the upstream tool under its own MIT Licence.
+
+===============================================================================
+MIT Licence (applies to the CODE part, heading 1, and to the compilation
+elements of heading 3 only insofar as they are code)
 
 Copyright (c) 2026 Malek Khannoussi
 
@@ -55,3 +99,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+===============================================================================
+REVISION HISTORY
+
+2026-08-05 — Contradiction resolved. The previous version of this file listed
+all of `deposit/` under CC BY 4.0 in one clause and
+`deposit/jira-caches-v1.tar.gz` under "NOT COVERED BY EITHER" in another, so the
+archive was placed in two mutually exclusive buckets. `deposit/zenodo.json`
+stated a third position: CC BY 4.0 over "this compilation and its manifest, not
+the underlying Apache issue content". Heading 3 above adopts the `zenodo.json`
+position, which is the defensible one, and the `deposit/` entry under heading 2
+is narrowed to the manifests and prose. Reported in `audit/HYGIENE.md` §3.1 and
+`paper/REVISION_LOG.md`. This was corrected in place rather than appended
+because a licence that says two incompatible things is not a record of a past
+belief — it is unusable, and the archive is queued for a Zenodo deposit whose
+licence field cannot be edited after minting.
+
+2026-08-05 — Attribution added. The Public Jira Dataset's three authors and its
+CC BY 4.0 licence are now named (heading 4); the previous version said only that
+it "carries its own licence". RefactoringMiner's copyright holder is now named.

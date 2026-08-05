@@ -1,32 +1,50 @@
 #!/usr/bin/env python3
 """
-check_provenance.py -- enforce R7: every number in the manuscript exists in
-paper/numbers.md, and emit paper/manuscript/PROVENANCE_CHECK.md.
+check_provenance.py -- resolve every number in the manuscript to something that
+computed it, and grade how strong that resolution is.
 
-R7 is the rule that keeps this paper honest: a number without a script and a
-commit behind it does not go in. Checking that by hand does not survive a second
-draft, so it is mechanical here and re-runnable.
+WHY THIS WAS REWRITTEN (2026-08-05). The previous version tested
+`if token in numbers.md` -- a raw substring search against a hand-written prose
+file. It never opened a script, never checked a commit hash, and never looked at
+an artifact, so it could be satisfied by typing a number into `numbers.md`. The
+independent audit (`audit/NUMBERS.md` §7) showed it passing three tokens by
+coincidence:
 
-WHAT TOKEN MATCHING CAN AND CANNOT PROVE. An earlier version of this script
-reported "zero unsourced" over every numeric token, which was a false pass: in a
-document as number-dense as numbers.md, a two-digit token like `12` or `27`
-matches *something* by coincidence, so its presence is not evidence of
-provenance. Tokens are therefore split:
+    0.86  <- the manuscript's "rho = -0.86", matched against `0.86232`,
+             an unrelated proportion, and having no provenance row at all
+    930   <- "930 commits on other branches", matched against the commit
+             hash `93056ae`
+    5.5   <- a section heading `## 5.5`, matched against `15.5%` / `55.5%`
 
-  STRICT  -- distinctive: >=3 significant digits, or carrying a thousands
-             separator, decimal point, or percent sign. A literal match in
-             numbers.md is real evidence for these, and a miss is a real failure.
-             These are what the pass/fail verdict is computed over.
+Its headline, "175 sourced, 0 unsourced", was therefore not a provenance result.
+A checker that cannot fail is worse than no checker, because the paper cited it
+as evidence of rigour.
 
-  WEAK    -- bare one- or two-digit integers, and calendar years. Literal
-             matching proves nothing here, so they are NOT counted as verified.
-             They are listed in the report for the reader's eye instead, with the
-             files they appear in.
+WHAT THIS VERSION DOES. Three graded tiers, and a token is reported at the
+highest tier it reaches:
 
-Reporting a strict verdict and an explicit weak list is the honest version. A
-single "zero unsourced" number over both classes would overstate the check.
+  ARTIFACT  The value appears in a committed machine-readable artifact (a
+            JSON file under the repository root or paper/), matched
+            numerically rather than textually: the artifact is walked, every
+            numeric leaf is rendered at the manuscript token's own precision,
+            and a hit means some computed value really does round to it. This
+            is the only tier that establishes a number was computed.
 
-Exit 1 if any STRICT token is unsourced, so this can gate a submission.
+  DOCUMENTED  The value appears in `paper/numbers.md` as a STANDALONE token --
+            not as a substring of a longer number -- inside a section whose text
+            names a script path that exists on disk and a commit hash that
+            resolves in this repository. Weaker than ARTIFACT: it establishes a
+            traceable claim of provenance, not the provenance itself.
+
+  EXTERNAL  The value is attributed to a cited work rather than computed
+            here -- it appears as a standalone token in `paper/PRIOR_WORK.md`,
+            or in a `numbers.md` section that names a DOI or arXiv identifier.
+            Its provenance is the cited paper, and the check for it is
+            `audit/CITATIONS.md`, not this script.
+
+  UNSOURCED  None of the above. Reported, and the script exits 1.
+
+Exit 1 on any UNSOURCED strict token, so this can gate a submission.
 
 Usage:
     python3 scripts/check_provenance.py            # write the report
@@ -34,63 +52,165 @@ Usage:
 """
 import argparse
 import collections
+import json
 import pathlib
 import re
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MANUSCRIPT = ROOT / "paper" / "manuscript"
 NUMBERS = ROOT / "paper" / "numbers.md"
+PRIOR = ROOT / "paper" / "PRIOR_WORK.md"
 OUT = MANUSCRIPT / "PROVENANCE_CHECK.md"
+SKIP_FILES = {"PROVENANCE_CHECK.md", "PAPER.md", "UNSOURCED.md", "README.md"}
 
 TOKEN = re.compile(r"\d[\d,]*(?:\.\d+)?%?")
-# Dates first, or "2026-05-24" contributes bogus "05" and "24" tokens.
 DATEISH = re.compile(r"\d{4}-\d{2}(?:-\d{2})?")
 YEAR = re.compile(r"^(19|20)\d{2}$")
+SECTION = re.compile(r"^#{2,4}\s+(\d+(?:\.\d+)*)", re.M)
 
-# Tokens that look numeric but are not measurements. Explicit so that every
-# exclusion is visible: a silent filter here would defeat the whole check.
+# Tokens that look numeric but are not measurements. Section numbers are
+# derived from the manuscript's own headings rather than hand-listed, because
+# hand-listing is what let `5.5` through.
 NOT_MEASUREMENTS = {
-    # section cross-references
-    "2.1", "2.2", "2.3", "2.4", "2.5", "3.2", "3.3", "3.4",
-    "4.1", "4.2", "4.3", "4.4", "4.5", "4.6",
-    "5.1", "5.2", "5.3", "5.4", "6.1", "6.2", "6.3", "6.4", "6.5", "6.6",
-    "6.7", "6.8", "7.1", "7.2", "7.3", "7.4", "7.5",
     # DOI / arXiv / dataset identifiers
     "104005", "1804.02433", "2404.01950", "2501.15387", "2605.16133",
-    "15719919",
+    "15719919", "1882291.1882308", "2025113.2025120", "1882308", "2025120",
     # upstream issue, PR and branch identifiers, and one commit hash in prose
     "1124", "998", "1471779", "256", "5179907",
     # detector version 3.1.4 tokenises as "3.1"
     "3.1",
+    # page ranges of cited works
+    "97", "106", "121", "130", "259", "268",
 }
 
+ARTIFACT_GLOBS = ["*.json", "paper/*.json", "replication/*.json",
+                  "predictions/*.json", "deposit/MANIFEST-v1.json"]
+# Artifacts too large to walk on every run, and which carry no headline number.
+ARTIFACT_SKIP = re.compile(r"refminer|module_commit_log|ticket_first_commit|"
+                           r"ticket_change_size|pr_timeline|prs_|episode_files|"
+                           r"MANIFEST-v1|matcher_sample|gate_")
 
+
+def section_numbers():
+    out = set()
+    for f in MANUSCRIPT.glob("*.md"):
+        for m in SECTION.finditer(f.read_text()):
+            out.add(m.group(1))
+    return out
+
+
+def classify(tok, sections):
+    """-> 'strict' | 'weak' | None (drop)."""
+    if tok in NOT_MEASUREMENTS or tok in sections:
+        return None
+    if YEAR.match(tok):
+        return "weak"
+    digits = tok.strip("%").replace(",", "").replace(".", "")
+    if len(digits) < 2:
+        return None
+    distinctive = ("," in tok or "." in tok or "%" in tok or len(digits) >= 3)
+    return "strict" if distinctive else "weak"
+
+
+# ----------------------------------------------------------------- tier ARTIFACT
+def numeric_leaves(obj, out):
+    if isinstance(obj, dict):
+        for v in obj.values():
+            numeric_leaves(v, out)
+    elif isinstance(obj, list):
+        for v in obj:
+            numeric_leaves(v, out)
+    elif isinstance(obj, bool):
+        pass
+    elif isinstance(obj, (int, float)):
+        out.append(obj)
+
+
+def artifact_values():
+    """{rendered string -> set of artifact paths}, at several precisions."""
+    idx = collections.defaultdict(set)
+    seen = set()
+    for g in ARTIFACT_GLOBS:
+        for p in ROOT.glob(g):
+            rel = str(p.relative_to(ROOT))
+            if rel in seen or ARTIFACT_SKIP.search(rel):
+                continue
+            seen.add(rel)
+            try:
+                if p.stat().st_size > 40_000_000:
+                    continue
+                data = json.load(open(p))
+            except Exception:
+                continue
+            leaves = []
+            numeric_leaves(data, leaves)
+            for v in leaves:
+                for s in render(v):
+                    idx[s].add(rel)
+    return idx
+
+
+def render(v):
+    """Every way a manuscript might legitimately print this value."""
+    out = set()
+    if isinstance(v, int):
+        out.add(str(v))
+        out.add(f"{v:,}")
+        return out
+    for d in (0, 1, 2, 3, 4):
+        out.add(f"{v:.{d}f}")
+        out.add(f"{v:.{d}f}%")
+        out.add(f"{v * 100:.{d}f}")
+        out.add(f"{v * 100:.{d}f}%")
+        try:
+            out.add(f"{v:,.{d}f}")
+            out.add(f"{v * 100:,.{d}f}")
+        except ValueError:
+            pass
+    if float(v).is_integer():
+        out.add(str(int(v)))
+        out.add(f"{int(v):,}")
+    return out
+
+
+# --------------------------------------------------------------- tier DOCUMENTED
 def numbers_sections():
-    """-> [(label, body)] for paper/numbers.md, in document order."""
     text = NUMBERS.read_text()
     parts = re.split(r"^#{2,3} +(.*)$", text, flags=re.M)
     out = [("preamble", parts[0])]
     for i in range(1, len(parts), 2):
         label = parts[i].strip()
-        # "1d. The key matcher is ..." -> "§1d"; otherwise keep it short
         m = re.match(r"([0-9]+[a-z]?)\.\s*(.*)", label)
         short = f"§{m.group(1)}" if m else label.split("—")[0].strip()[:38]
         out.append((short, parts[i + 1]))
     return out
 
 
-def classify(tok):
-    """-> 'strict' | 'weak' | None (drop)."""
-    if tok in NOT_MEASUREMENTS:
-        return None
-    if YEAR.match(tok):
-        return "weak"
-    digits = tok.strip("%").replace(",", "").replace(".", "")
-    if len(digits) < 2:
-        return None                              # single digits are prose
-    distinctive = ("," in tok or "." in tok or "%" in tok or len(digits) >= 3)
-    return "strict" if distinctive else "weak"
+def standalone(tok, body):
+    """Token present, not as a substring of a longer number."""
+    return re.search(r"(?<![\d.,])" + re.escape(tok) + r"(?![\d,]*\d)", body) is not None
+
+
+CITES = re.compile(r"doi:|arXiv|10\.\d{4}/|SEOSS|Rath|Dabic|Vieira|GHS|"
+                   r"Bachmann|Iammarino|Esfandiari|PROMISE|ICSE|Zenodo",
+                   re.I)
+
+
+def section_backing(body, cache):
+    """(scripts that exist, commit hashes that resolve) named in this section."""
+    scripts = [s for s in set(re.findall(r"`(scripts/[\w/.-]+\.(?:py|sh))`", body))
+               if (ROOT / s).exists()]
+    hashes = []
+    for h in set(re.findall(r"`([0-9a-f]{7,10})`", body)):
+        if h not in cache:
+            r = subprocess.run(["git", "-C", str(ROOT), "cat-file", "-t", h],
+                               capture_output=True, text=True)
+            cache[h] = r.stdout.strip() == "commit"
+        if cache[h]:
+            hashes.append(h)
+    return scripts, hashes
 
 
 def main():
@@ -98,121 +218,145 @@ def main():
     ap.add_argument("--quiet", action="store_true")
     a = ap.parse_args()
 
-    sections = numbers_sections()
+    sections = section_numbers()
+    sec = numbers_sections()
+    art = artifact_values()
+    hcache = {}
 
-    strict = collections.defaultdict(set)
-    weak = collections.defaultdict(set)
+    strict, weak = collections.defaultdict(set), collections.defaultdict(set)
     for f in sorted(MANUSCRIPT.glob("*.md")):
-        if f.name in (OUT.name, "PAPER.md"):
+        if f.name in SKIP_FILES:
             continue
         text = DATEISH.sub(" ", f.read_text())
         for raw in TOKEN.findall(text):
             tok = raw.rstrip(".,")
-            kind = classify(tok)
-            if kind == "strict":
+            k = classify(tok, sections)
+            if k == "strict":
                 strict[tok].add(f.name)
-            elif kind == "weak":
+            elif k == "weak":
                 weak[tok].add(f.name)
 
-    sourced, unsourced = {}, {}
+    tiers = {}
     for tok, files in strict.items():
-        hits = [label for label, body in sections if tok in body]
-        (sourced if hits else unsourced)[tok] = (files, hits)
+        hits = art.get(tok) or art.get(tok.rstrip("%"))
+        docs, ext = [], []
+        for label, body in sec:
+            if not standalone(tok, body):
+                continue
+            s, h = section_backing(body, hcache)
+            if s or h:
+                docs.append((label, s[0] if s else "—", h[0] if h else "—"))
+            elif CITES.search(body):
+                ext.append((label, "numbers.md"))
+        if hits and docs:
+            tiers[tok] = ("ARTIFACT", files,
+                          [f"`{x}`" for x in sorted(hits)[:2]] +
+                          [f"{docs[0][0]} → `{docs[0][1]}`"])
+            continue
+        if hits and not docs:
+            # A committed value rounds to this token, but nothing in numbers.md
+            # claims it as a quantity. That is exactly the -0.86 / 930 case the
+            # audit found: a numeric coincidence standing in for provenance.
+            tiers[tok] = ("ARTIFACT_NO_ROW", files,
+                          [f"`{x}`" for x in sorted(hits)[:2]])
+            continue
+        if docs:
+            tiers[tok] = ("DOCUMENTED", files, docs[:3])
+            continue
+        if standalone(tok, PRIOR.read_text()):
+            tiers[tok] = ("EXTERNAL", files, [("paper/PRIOR_WORK.md",
+                                               "attributed to a cited work")])
+        elif ext:
+            tiers[tok] = ("EXTERNAL", files, ext[:3])
+        else:
+            tiers[tok] = ("UNSOURCED", files, [])
 
+    counts = collections.Counter(v[0] for v in tiers.values())
     L = []
     add = L.append
     add("# Provenance check — every number in the manuscript")
     add("")
     add("<!-- GENERATED by scripts/check_provenance.py. Do not edit by hand. -->")
     add("")
+    add(f"**{counts['ARTIFACT']} ARTIFACT · {counts['DOCUMENTED']} DOCUMENTED · "
+        f"{counts['EXTERNAL']} EXTERNAL · **{counts['ARTIFACT_NO_ROW']} "
+        f"ARTIFACT-NO-ROW · {counts['UNSOURCED']} UNSOURCED** — of "
+        f"{len(tiers)} distinctive numeric tokens.")
+    add("")
+    add("The three tiers are not interchangeable and the distinction is the "
+        "point of this file.")
+    add("")
+    add("* **ARTIFACT** — the value is present in a committed machine-readable "
+        "artifact, matched *numerically*: the JSON is walked, each numeric leaf "
+        "is rendered at the token's own precision, and a hit means a computed "
+        "value really does round to what the manuscript prints. This is the only "
+        "tier that establishes the number was computed.")
+    add("* **DOCUMENTED** — the value appears in `paper/numbers.md` as a "
+        "standalone token, in a section that names a script existing on disk and "
+        "a commit hash resolving in this repository. It establishes a traceable "
+        "*claim* of provenance, not the provenance itself. Prose-only figures "
+        "from pipelines whose outputs were not committed land here.")
+    add("* **EXTERNAL** — attributed to a cited work rather than computed "
+        "here. Its provenance is that paper, and the check for it is "
+        "`audit/CITATIONS.md`, which verified every reference against the "
+        "source text.")
+    add("* **ARTIFACT-NO-ROW** — a committed value rounds to the token, but no "
+        "`numbers.md` row claims it as a quantity. **This is a numeric "
+        "coincidence standing in for provenance** and is treated as a failure: "
+        "it is exactly what let `rho = -0.86` match an unrelated `0.86232` and "
+        "`930` match a leaf in another artifact.")
+    add("* **UNSOURCED** — none of the above. The script exits 1.")
+    add("")
+    add("**What ARTIFACT does not establish.** A numeric match shows that some "
+        "committed computed value rounds to the printed token at the printed "
+        "precision. It cannot show the two are the *same quantity* — no "
+        "numeric check can. Quantity identity is what the `numbers.md` row and "
+        "`audit/` are for, which is why ARTIFACT requires a row and "
+        "ARTIFACT-NO-ROW fails.")
+    add("")
+    add("Rewritten 2026-08-05. The previous version was a substring test against "
+        "a hand-written file and passed three tokens by coincidence; see this "
+        "script's docstring and `audit/NUMBERS.md` §7.")
+    add("")
 
-    if unsourced:
-        add(f"## ❌ {len(unsourced)} unsourced — fix before submission")
+    for tier in ("UNSOURCED", "ARTIFACT_NO_ROW", "DOCUMENTED", "EXTERNAL",
+                 "ARTIFACT"):
+        rows = sorted((t, v) for t, v in tiers.items() if v[0] == tier)
+        add(f"## {tier} — {len(rows)}")
         add("")
-        add("| number | appears in |")
-        add("|---|---|")
-        for tok in sorted(unsourced):
-            add(f"| `{tok}` | {', '.join(sorted(unsourced[tok][0]))} |")
-    else:
-        add(f"## ✅ Zero unsourced distinctive quantities")
-        add("")
-        add(f"All **{len(sourced)}** distinctive numeric quantities in "
-            "`paper/manuscript/` resolve to a section of `paper/numbers.md`, and "
-            "every such section names the script or artifact and the commit it "
-            "was last changed in. **R7 holds for every number token matching can "
-            "verify.**")
-    add("")
-    add("**What this verdict covers, and what it does not.** A literal match is "
-        "evidence only for a *distinctive* token — one with three or more "
-        "significant digits, or a thousands separator, decimal point or percent "
-        "sign. In a document as number-dense as `numbers.md`, a bare two-digit "
-        f"integer matches something by coincidence, so the {len(weak)} short "
-        "integers and calendar years listed at the end are **not** counted as "
-        "verified. They are listed for the reader instead. An earlier version of "
-        "this script counted both classes together and reported a pass it had not "
-        "established.")
-    add("")
-
-    add("## The 1,822 rule")
-    add("")
-    add("`1,822` is the published project count that is **not reproducible** and "
-        "must never be quoted beside a per-project number. It travels only with "
-        "`1,276` (final-state, key-based) and `2,506` (name-union, the dataset's "
-        "own method). Checked per paragraph, not per line:")
-    add("")
-    hits = 0
-    for f in sorted(MANUSCRIPT.glob("*.md")):
-        if f.name in (OUT.name, "PAPER.md"):
+        if not rows:
+            add("_none_")
+            add("")
             continue
-        for n, para in enumerate(f.read_text().split("\n\n"), 1):
-            if "1,822" not in para:
-                continue
-            hits += 1
-            ok = "1,276" in para and "2,506" in para
-            add(f"* `{f.name}` paragraph {n} — "
-                + ("✅ travels with both 1,276 and 2,506"
-                   if ok else "⚠️ **CHECK CONTEXT** — one of the two is missing"))
-    if not hits:
-        add("* absent from the manuscript")
-    add("")
-
-    add("## Distinctive quantities, their file, and the section that sources them")
-    add("")
-    add("Each `numbers.md` section names the script or artifact and its commit.")
-    add("")
-    add("| number | appears in | sourced by |")
-    add("|---|---|---|")
-
-    def sortkey(t):
-        try:
-            return (0, float(t.strip("%").replace(",", "")))
-        except ValueError:
-            return (1, 0.0)
-
-    for tok in sorted(sourced, key=sortkey):
-        files, hits_ = sourced[tok]
-        add(f"| `{tok}` | {', '.join(sorted(files))} | {', '.join(hits_[:3])} |")
-    add("")
+        add("| number | appears in | resolved to |")
+        add("|---|---|---|")
+        for tok, (_, files, ev) in rows:
+            if tier in ("ARTIFACT", "ARTIFACT_NO_ROW"):
+                eu = ", ".join(str(x) for x in ev)
+            elif tier == "DOCUMENTED":
+                eu = "; ".join(f"{lab} → `{s}` `{h}`" for lab, s, h in ev)
+            elif tier == "EXTERNAL":
+                eu = "; ".join(f"{lab} — {w}" for lab, w in ev)
+            else:
+                eu = "**nothing**"
+            add(f"| `{tok}` | {', '.join(sorted(files))} | {eu} |")
+        add("")
 
     add(f"## Short integers and years — {len(weak)} tokens, listed not verified")
     add("")
-    add("Token matching cannot establish provenance for these. Each is carried by "
-        "a claim whose distinctive numbers are verified above — e.g. `12 of 38`, "
-        "`3 of 96`, `n=28` — so the reader confirms them in context.")
+    add("Literal matching proves nothing for these. Each is carried by a claim "
+        "whose distinctive numbers are graded above.")
     add("")
     add("| number | appears in |")
     add("|---|---|")
-    for tok in sorted(weak, key=sortkey):
+    for tok in sorted(weak, key=lambda t: (len(t), t)):
         add(f"| `{tok}` | {', '.join(sorted(weak[tok]))} |")
     add("")
-
     add("## Deliberate exclusions")
     add("")
-    add("Numeric tokens dropped as not-measurements, listed so the filter is "
-        "auditable rather than silent: section cross-references, DOI and arXiv "
-        "identifiers, the Zenodo dataset id, upstream issue/PR/branch numbers, "
-        "one commit hash quoted in prose, and the detector version. ISO dates are "
-        "stripped before tokenising, so `2026-05-24` contributes no `05` or `24`.")
+    add("Section numbers are derived from the manuscript's own headings, not "
+        "hand-listed — hand-listing is what let `5.5` through the previous "
+        "version. Identifiers excluded explicitly:")
     add("")
     add("```")
     add(", ".join(sorted(NOT_MEASUREMENTS)))
@@ -221,15 +365,21 @@ def main():
     add("Regenerate: `python3 scripts/check_provenance.py`")
 
     OUT.write_text("\n".join(L) + "\n")
-
     if not a.quiet:
         print(f"wrote {OUT.relative_to(ROOT)}")
-        print(f"  strict: {len(sourced)} sourced, {len(unsourced)} unsourced")
-        print(f"  weak (listed, not verified): {len(weak)}")
-        for tok in sorted(unsourced):
-            print(f"  UNSOURCED {tok}  ({', '.join(sorted(unsourced[tok][0]))})")
-    return 1 if unsourced else 0
+        print(f"  ARTIFACT   {counts['ARTIFACT']}")
+        print(f"  DOCUMENTED {counts['DOCUMENTED']}")
+        print(f"  EXTERNAL   {counts['EXTERNAL']}")
+        print(f"  ARTIFACT_NO_ROW {counts['ARTIFACT_NO_ROW']}")
+        print(f"  UNSOURCED  {counts['UNSOURCED']}")
+        for tok, (t, files, _) in sorted(tiers.items()):
+            if t == "UNSOURCED":
+                print(f"    UNSOURCED {tok}  ({', '.join(sorted(files))})")
+        for tok, (t_, files, _) in sorted(tiers.items()):
+            if t_ == "ARTIFACT_NO_ROW":
+                print(f"    ARTIFACT_NO_ROW {tok}  ({', '.join(sorted(files))})")
+    sys.exit(1 if (counts["UNSOURCED"] or counts["ARTIFACT_NO_ROW"]) else 0)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

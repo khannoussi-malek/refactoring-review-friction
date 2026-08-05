@@ -1,0 +1,358 @@
+{
+ "n": 38,
+ "rows": [
+  {
+   "project": "hive",
+   "passes_bar": true,
+   "repo_start_year": 2008,
+   "graduation": null,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "hbase",
+   "passes_bar": true,
+   "repo_start_year": 2007,
+   "graduation": null,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "flink",
+   "passes_bar": false,
+   "repo_start_year": 2010,
+   "graduation": 2014.99,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "phoenix",
+   "passes_bar": true,
+   "repo_start_year": 2014,
+   "graduation": 2014.42,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "drill",
+   "passes_bar": true,
+   "repo_start_year": 2012,
+   "graduation": 2014.92,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "kylin",
+   "passes_bar": true,
+   "repo_start_year": 2014,
+   "graduation": 2015.92,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "accumulo",
+   "passes_bar": false,
+   "repo_start_year": 2011,
+   "graduation": null,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "atlas",
+   "passes_bar": false,
+   "repo_start_year": 2014,
+   "graduation": 2017.5,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "calcite",
+   "passes_bar": false,
+   "repo_start_year": 2012,
+   "graduation": 2015.83,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "cxf",
+   "passes_bar": false,
+   "repo_start_year": 2008,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "flume",
+   "passes_bar": false,
+   "repo_start_year": 2011,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "helix",
+   "passes_bar": false,
+   "repo_start_year": 2011,
+   "graduation": 2013.99,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "hudi",
+   "passes_bar": false,
+   "repo_start_year": 2016,
+   "graduation": 2020.42,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "karaf",
+   "passes_bar": false,
+   "repo_start_year": 2005,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "knox",
+   "passes_bar": true,
+   "repo_start_year": 2012,
+   "graduation": 2014.17,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "oozie",
+   "passes_bar": true,
+   "repo_start_year": 2011,
+   "graduation": 2012.67,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "ozone",
+   "passes_bar": true,
+   "repo_start_year": 2018,
+   "graduation": null,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "parquet-java",
+   "passes_bar": false,
+   "repo_start_year": 2012,
+   "graduation": 2015.33,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "ranger",
+   "passes_bar": true,
+   "repo_start_year": 2014,
+   "graduation": 2017.08,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "tez",
+   "passes_bar": true,
+   "repo_start_year": 2013,
+   "graduation": 2014.58,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "tika",
+   "passes_bar": false,
+   "repo_start_year": 2007,
+   "graduation": 2008.83,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "zookeeper",
+   "passes_bar": true,
+   "repo_start_year": 2008,
+   "graduation": null,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "james-project",
+   "passes_bar": false,
+   "repo_start_year": 2006,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "jena",
+   "passes_bar": false,
+   "repo_start_year": 2002,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "oodt",
+   "passes_bar": false,
+   "repo_start_year": 2010,
+   "graduation": 2010.92,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "pinot",
+   "passes_bar": false,
+   "repo_start_year": 2014,
+   "graduation": 2021.58,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "sqoop",
+   "passes_bar": true,
+   "repo_start_year": 2011,
+   "graduation": 2012.25,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "storm",
+   "passes_bar": false,
+   "repo_start_year": 2011,
+   "graduation": 2014.75,
+   "hadoop_ecosystem": true
+  },
+  {
+   "project": "struts",
+   "passes_bar": false,
+   "repo_start_year": 2006,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "syncope",
+   "passes_bar": false,
+   "repo_start_year": 2010,
+   "graduation": 2012.92,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "tomee",
+   "passes_bar": false,
+   "repo_start_year": 2006,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "wicket",
+   "passes_bar": false,
+   "repo_start_year": 2004,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "zeppelin",
+   "passes_bar": false,
+   "repo_start_year": 2013,
+   "graduation": null,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "dubbo",
+   "passes_bar": false,
+   "repo_start_year": 2011,
+   "graduation": 2019.42,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "rocketmq",
+   "passes_bar": false,
+   "repo_start_year": 2013,
+   "graduation": 2017.75,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "servicecomb-java-chassis",
+   "passes_bar": false,
+   "repo_start_year": 2017,
+   "graduation": 2018.83,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "shardingsphere",
+   "passes_bar": false,
+   "repo_start_year": 2016,
+   "graduation": 2020.33,
+   "hadoop_ecosystem": false
+  },
+  {
+   "project": "skywalking",
+   "passes_bar": false,
+   "repo_start_year": 2015,
+   "graduation": 2019.33,
+   "hadoop_ecosystem": false
+  }
+ ],
+ "graduation_source": "https://incubator.apache.org/projects/, read 2026-08-05",
+ "ecosystem_label": {
+  "table_[[pass_in,pass_out],[drop_in,drop_out]]": [
+   [
+    12,
+    0
+   ],
+   [
+    5,
+    21
+   ]
+  ],
+  "fisher_two_sided_p": 2.2855242104700566e-06,
+  "recall_of_passing": 1.0,
+  "precision_of_label": 0.7058823529411765,
+  "accuracy": 0.868421052631579,
+  "is_a_hand_judgment": true
+ },
+ "repo_start_year": {
+  "coverage": "38 of 38",
+  "passing_median": 2012.0,
+  "passing_range": [
+   2007,
+   2018
+  ],
+  "dropped_median": 2011.0,
+  "dropped_range": [
+   2002,
+   2017
+  ],
+  "separation": {
+   "auc": 0.6105769230769231,
+   "u": 190.5,
+   "z": 1.0834281554617902,
+   "p_normal_approx": 0.27861842407316145,
+   "n_pos": 12,
+   "n_neg": 26
+  },
+  "best_threshold": {
+   "threshold": 2018,
+   "accuracy": 0.7105263157894737,
+   "tp": 1,
+   "fp": 0,
+   "fn": 11,
+   "tn": 26
+  }
+ },
+ "incubator_graduation": {
+  "coverage": "24 of 38",
+  "missing_among_passing": [
+   "hive",
+   "hbase",
+   "ozone",
+   "zookeeper"
+  ],
+  "missing_among_dropped": [
+   "accumulo",
+   "cxf",
+   "flume",
+   "karaf",
+   "james-project",
+   "jena",
+   "struts",
+   "tomee",
+   "wicket",
+   "zeppelin"
+  ],
+  "missing_not_at_random": true,
+  "passing_median": 2014.5,
+  "dropped_median": 2016.665,
+  "separation": {
+   "auc": 0.2890625,
+   "u": 37.0,
+   "z": -1.653405576378645,
+   "p_normal_approx": 0.09824834872949123,
+   "n_pos": 8,
+   "n_neg": 16
+  },
+  "best_threshold": {
+   "threshold": 2021.58,
+   "accuracy": 0.625,
+   "tp": 0,
+   "fp": 1,
+   "fn": 8,
+   "tn": 15
+  }
+ }
+}

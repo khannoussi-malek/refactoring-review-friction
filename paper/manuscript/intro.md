@@ -30,10 +30,16 @@ selection criteria use. The **ticket realisation rate** — what fraction of a
 project's tickets ever receive a citing commit — is what a ticket-anchored study
 actually depends on, because such a study samples tickets and then looks for the
 work. The two diverge sharply and in a direction that flatters the corpus. Apache
-Kylin cites a ticket in **83.9%** of its commits, comfortably clearing any
-selection bar one would think to set, and **12.0%** of its tickets are ever
-touched by one: seven of every eight tickets in that tracker are invisible to a
-ticket-anchored design.
+Hive cites a ticket in **97.0%** of its 18,213 commits — nearly perfect by any
+selection criterion — and realises **55.8%** of its 29,635 tickets.
+
+**And most of that gap turns out to be arithmetic.** A commit that cites a ticket
+adds at most one *new* distinct ticket, so the ticket-side rate is capped at
+`commit-side × commits / tickets`. That ceiling binds for every eligible project,
+running 13.7–81.6%, and every one of them reaches 80–95% of it. What reads as a
+discipline gap is mostly a tracker accumulating tickets faster than a repository
+accumulates commits — which is a fact about the two artifacts, not about the
+people using them, and which no published linkage rate exposes.
 
 **Contributions.** Stated against what is already published rather than against an
 assumed gap. We make **no first-to-measure claim**: Rath & Mäder's SEOSS 33
@@ -49,9 +55,11 @@ withdrawn (§2.1).
    reports rates afterwards. Neither states a threshold, an attrition count, or
    which candidates were rejected. Ours is fixed at 0.80, committed before any
    project was cloned, and never moved.
-2. **A population finding: 12 of 38 pass, and all 12 are one ecosystem.** No
-   project outside that ecosystem clears the bar; the best, James, reaches 74.8%,
-   against a median of 63.6% across all 38 and 44.8% across the 26 rejected.
+2. **A population finding: 12 of 38 pass, and no project outside one ecosystem
+   clears the bar.** The best outside it, James, reaches 74.8%, against a median
+   of 63.6% across all 38 and 44.8% across the 26 rejected. The ecosystem label
+   is a hand classification and we say so: two measured generational variables
+   were tested in its place and neither separates the corpus as well (§4.1).
    SEOSS's own table contains the ingredients —
    Apache projects at the top, JBoss at the bottom — but the inference is not
    drawn there.
@@ -59,14 +67,19 @@ withdrawn (§2.1).
    references alongside Jira keys is what shows that the bar selects a *tracker*
    rather than a discipline: seven of the dropped projects cite GitHub issues in
    more than half of their commits.
-4. **The ticket realisation rate named, defined, and measured across the whole
-   probe rather than only the survivors** — including the 26 projects that failed
-   the commit-side bar, which is what turns the divergence from a caveat about
-   twelve projects into a statement about the population.
-5. **A six-mode taxonomy of the ways a project silently fails to support an
+4. **The arithmetic ceiling that bounds the ticket-side rate**, and the
+   decomposition of that rate into a ceiling set by commits-per-ticket and a
+   residual that measures citation discipline. In this corpus the residual is
+   nearly constant, which is what the divergence actually consists of.
+5. **The ticket-side rate measured across the whole probe rather than only the
+   survivors** — including the 26 projects that failed the commit-side bar. A
+   strong positive association between the two rates is ruled out; a null is not
+   established, and the live and frozen measurements disagree in sign
+   (`paper/DIRECTION_TENSION.md`).
+6. **A six-mode taxonomy of the ways a project silently fails to support an
    issue-linked study**, three of them disqualifying and three of them producing a
    plausible wrong number rather than an error.
-6. **A second ecosystem and two further channels**, which is what makes the
+7. **A second ecosystem and two further channels**, which is what makes the
    result more than an Apache artifact: in a TypeScript corpus, 3 of 96
    architectural commits mention refactoring, 7% link an issue, and 69% never
    pass through code review at all.

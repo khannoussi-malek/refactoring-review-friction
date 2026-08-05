@@ -3,9 +3,10 @@
 Drafted from `paper/eligibility_failure_modes.md` (`5179907`).
 
 **Every mode below was discovered *after* selecting the project, by probing it.
-None is expressible in any published sampling frame.** GHS indexes 735,669
-repositories with 35 fields, of which only `totalIssues` and `openIssues` touch
-issues, and both are GitHub-issue counts (§2.3). All six were found the same way:
+None is expressible in any published sampling frame.** GHS indexed 735,669
+repositories as published in 2021 and exposes 35 fields per record today, of
+which only `totalIssues` and `openIssues` touch issues, and both are
+GitHub-issue counts (§2.3). All six were found the same way:
 by reading commit messages, project by project.
 
 *Note on mode 6.* `README.md` §5 labels mode 6 "repository migrated across
@@ -18,7 +19,7 @@ is below, and it is the one this paper uses.
 | 1 | **GitHub Issues displaced Jira** | ShardingSphere: **5** Jira citations in 49,111 commits, against 30,746 GitHub-issue references | `paper/traceability_probe.json` |
 | 2 | **No source repository exists** | RedHat RHBRMS: 86.00% estimate coverage on 2,400 issues — a product/documentation tracker with no code | `estimates_by_org.json`; repo resolution failed |
 | 3 | **The tracker is downstream of the upstream repo** | kata-containers: **zero** `KATA-` keys in 19,807 commits; the Red Hat Jira tracks a product built from an upstream nobody asks to cite | `paper/intersection.json` (excluded, not scored) |
-| 4 | **Convention changed mid-history** | spring-batch: `BATCH-` in 4,046 of 7,034 commits, and none in the 20 most recent sampled — a single rate averages two regimes | hand-sample + prefix scan |
+| 4 | **Convention changed mid-history** | spring-batch: `BATCH-` in **45.6%** of 7,035 commits overall, in **0 of the most recent 1,000** (back to 2021-06), and at exactly **0% in every year since 2019** — a single rate averages two regimes | full scan, `scripts/springbatch_recency.py` |
 | 5 | **Monorepo needs multi-key matching** | Hadoop: **26.2%** single-key → **92.3%** four-key → **97.8%** seven-key, same 28,290 commits | `scripts/citation_rate.py` |
 | 6 | **The cited key has no project record in the tracker** | Evergreen: commits cite `DEVPROD` (2,785) but the tracker holds only `EVG`. DataLab: commits cite `EPMCDLAB` (3,900) and `DLAB` (3,547); the tracker holds only `DATALAB` | `paper/intersection.json` |
 
@@ -108,3 +109,17 @@ per candidate: the dominant reference channel (Jira keys against GitHub issues,
 counted rather than assumed), the tracker's project-key set, the key set actually
 appearing in commit messages, and the rate computed separately over recent history
 to expose mode 4. All four are cheap. None is in GHS.
+
+**One qualification, because the unqualified claim overstates the gap.** We say
+above that the key set cannot be recovered from the tracker, and that stands: a
+key cited only in git — `OPTIQ`, `EPMCDLAB`, `DEVPROD` — is not in the tracker to
+be enumerated. But a substantial literature *does* recover missing issue–commit
+links without relying on the commit message, beginning with ReLink (Wu et al.,
+ESEC/FSE'11) and continuing since, by learning from time proximity, author
+identity and textual similarity between report and change (§2.4). Those methods
+recover **links**, not **key sets**, and they presuppose a project already known
+to be a candidate — which is the step this taxonomy is about. Modes 4–6 make a
+project's *measured rate* wrong; link recovery can raise the true rate afterwards.
+A sampling frame that exposed the four fields above would tell a researcher which
+projects are worth pointing a link-recovery tool at, which is a different and
+prior question.

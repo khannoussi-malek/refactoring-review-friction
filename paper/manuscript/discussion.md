@@ -10,12 +10,23 @@ the key set is wrong. A researcher who samples on stars, contributors and
 language, then computes a linkage rate, will get a number for every candidate and
 will not be told which of those numbers mean anything.
 
-**Measure the side of the rate your design actually samples on.** A commit-side
-rate answers "if I start from a commit, can I find its ticket?". A design that
-starts from *tickets* — which is what any study of what precedes a decision must
-do — needs the ticket realisation rate, and the first does not imply the second.
-Kylin is the demonstration: 83.9% one way, 12.0% the other, in the same project on
-the same day. §4.3 shows the gap is not an artefact of the eligible twelve.
+**Measure the side of the rate your design actually samples on, and report
+commits per ticket beside it.** A commit-side rate answers "if I start from a
+commit, can I find its ticket?". A design that starts from *tickets* needs the
+ticket realisation rate, and the first does not imply the second — Hive is 97.0%
+one way and 55.8% the other. But the more useful advice is the ceiling (§3.1.4):
+**below one commit per ticket the two rates are not commensurable at all**, and
+every project in our eligible corpus is below it except Ranger and Knox. Report
+`commits / tickets`; it costs nothing, it bounds the ticket-side rate before any
+measurement, and no published linkage rate carries it.
+
+**What our own extension does and does not license.** Across the whole probe we
+find no detectable association between the two rates (rho = −0.010, n = 33, 95%
+CI [−0.35, +0.34]). That rules out a strong positive relationship — the
+assumption a selection bar encodes — but at 80% power this study detects only
+|rho| ≥ 0.47, so it does not establish a null. On the twelve projects measured
+exactly the same correlation is +0.518, and we report the disagreement rather
+than resolving it (`paper/DIRECTION_TENSION.md`).
 
 **Report the bar, the attrition, and the rejected candidates.** The dropped
 projects are the informative part. That 26 of 38 Apache candidates are unusable,
@@ -25,9 +36,10 @@ paper independently rediscovers and does not write down.
 
 ## 7.2 For dataset and sampling-frame builders
 
-The fields that decide usability are absent from the standard frame. GHS indexes
-735,669 repositories with 35 fields; only `totalIssues` and `openIssues` touch
-issues and both are GitHub-issue counts. There is no tracker type, no external
+The fields that decide usability are absent from the standard frame. GHS indexed
+735,669 repositories as published in 2021 and exposes 35 fields per record
+today; only `totalIssues` and `openIssues` touch issues and both are
+GitHub-issue counts. There is no tracker type, no external
 tracker, no issue–commit linkage, no commit-message convention.
 
 Four fields would close most of the gap, and all four are cheap to compute from a
@@ -41,6 +53,17 @@ shallow clone and a tracker listing:
    else;
 4. **the rate recomputed over recent history**, which exposes a convention that
    changed mid-history (mode 4).
+
+**What the four fields would cost.** All four come from a `--filter=tree:0`
+bare clone plus one tracker listing. On this corpus those 38 clones came to
+**228 MB, a mean of 6.0 MB per project**, against the 4.3 GB the original
+working-tree sweep took — a 19x reduction. Fields 1, 3 and 4 need only `git log` over commit
+messages — no trees, no blobs, no working tree. Field 2 is one paginated tracker
+call for issue keys. For a frame that already crawls repository metadata at the
+scale of 735,669 repositories, the marginal cost is the clone, and the clone is
+the cheapest kind there is. We are not claiming it is free at that scale; we are
+claiming it is the same order as what GHS already does per repository, and that
+nobody has to guess.
 
 This study spent 38 clones and 4.3 GB to keep 12. That cost is paid again by every
 group that attempts the same kind of corpus, and none of it is recoverable from
@@ -64,38 +87,29 @@ larger, more deliberate and more discussed than it is.
 
 ## 7.4 What follows from the corpus limit, without softening it
 
-Twelve projects is not enough, and more projects would not fix it. Between-project
-correlation caps the effective sample at **P/ICC** whatever the corpus size: at
-P = 12 and ICC = 0.02 the ceiling is 600 against the 769 independent tickets the
-effect needed at 80% power. **The ICC is unmeasured**, and it was deliberately not
-estimated from the four clusters available — between-cluster variance has 3
-degrees of freedom at n = 4, and the whole decision turns on the difference
-between 0.015 and 0.02, which a four-cluster estimate cannot resolve. It must come
-from the pooled study as a first stage.
+Twelve projects is not enough, and more projects would not fix it.
+Between-project correlation caps the effective sample at **P/ICC** whatever the
+corpus size: at P = 12 and ICC = 0.02 the ceiling is 600 against the 769
+independent tickets the effect needed at 80% power. **The ICC is unmeasured**, and
+was deliberately not estimated from the four clusters available — between-cluster
+variance has 3 degrees of freedom at n = 4, and the decision turns on the
+difference between 0.015 and 0.02, which four clusters cannot resolve. It must
+come from the pooled study as a first stage. The direction of the bias is also
+bad: these twelve share contributors, committers, review norms and in several
+cases build and CI infrastructure, so this sample's ICC exceeds a random
+sample's, and higher ICC is what makes the study impossible.
 
-The direction of the bias is also bad. These twelve share contributors,
-committers, review norms, release processes and in several cases build and CI
-infrastructure, so this sample's ICC is higher than a random sample's — and higher
-ICC is the direction that makes the study impossible.
-
-Three ways out, stated with their costs:
-
-1. **Lower the bar and model the measurement error.** At 60% another nine
-   projects qualify and the ecosystem widens. The cost is a biased sample of
-   *tickets within* each project, and §7.3 says that bias is real rather than
-   hypothetical. **This is the one to avoid drifting into silently**, because it
-   looks like a free corpus expansion and is not.
-2. **Change the outcome so it needs no tickets.** Anything computed purely from
-   git — commit-to-commit intervals, revert rates, recurrence of churn in the same
-   files — dissolves both the traceability filter and the ecosystem clustering.
-   The cost is losing the creation-to-first-commit clock, and with it the ability
-   to measure *waiting* at all.
-3. **Accept ecosystem-bounded scope and say so.** Register as a study of one
-   ecosystem, twelve projects, and state the boundary as a finding rather than
-   discovering it in review.
-
-Option 2 is the strongest study and the largest rebuild. Option 3 is honest and
-immediately actionable.
+Three ways out, with their costs. **Lower the bar and model the measurement
+error** — at 60% another nine projects qualify, at the cost of a biased sample of
+tickets *within* each project, which §7.3 shows is real rather than hypothetical.
+**This is the one to avoid drifting into silently.** **Change the outcome so it
+needs no tickets** — anything computed purely from git dissolves both the
+traceability filter and the ecosystem clustering, at the cost of the
+creation-to-first-commit clock and with it the ability to measure waiting at all.
+**Accept ecosystem-bounded scope and say so** — register as a study of one
+ecosystem, twelve projects, and state the boundary as a finding rather than
+discovering it in review. The second is the strongest study and the largest
+rebuild; the third is honest and immediately actionable.
 
 ## 7.5 What this paper does not claim
 

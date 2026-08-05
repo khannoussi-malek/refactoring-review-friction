@@ -124,6 +124,40 @@ acceptable" to "could be near-perfect". **Six comments out of forty, decided by
 the order of two rules that were never disambiguated, control whether this
 instrument can pass.**
 
+### 4.1 The coincidence, disclosed
+
+Five of those six comments are in the flagged bucket, and **five is the
+reclassification count that maximises the attainable ceiling over every possible
+count**:
+
+| flagged comments moved I → C | LLM flagged margin | κ ceiling |
+|---:|---|---:|
+| 3 | (3, 9, 8) | +0.692 |
+| 4 | (3, 8, 9) | +0.765 |
+| **5 — the number used** | **(3, 7, 10)** | **+0.840 ← global maximum** |
+| 6 | (3, 6, 11) | +0.837 |
+| 7 | (3, 5, 12) | +0.833 |
+| 8 | (3, 4, 13) | +0.745 |
+
+Two comments that were *excluded* would each have lowered it: **#4** ("Thanks,
+I've run the **test** and all ok. For the **refactoring** of that method, i'd
+prefer to do it as a separate PR") and **#13** ("It looks like people is mostly
+positive about this change… I'd appreciate if anybody can do the **refactor**").
+Including either gives six or seven moved, and 0.837 or 0.833.
+
+**Why this is disclosed rather than defended.** The six were chosen by the stated
+criterion in §4 — the dominant speech act is one rule 4 names explicitly *and* a
+structural word is present — and each is individually defensible. The finding is
+also robust: 0.833–0.840 across ±2 comments, so nothing turns on hitting the
+maximum. But the criterion was applied by the same party that reported the number
+it produced, and it landed exactly on the global maximum. **An undisclosed
+coincidence at a global maximum is indistinguishable from tuning**, and a reader
+who checks will find it in ten minutes. The neighbouring values are given above
+so the check is unnecessary.
+
+An independent audit (`audit/JUDGMENTS.md` §3) ran exactly this test and could not
+demonstrate tuning. That is not the same as demonstrating its absence.
+
 That is the substantive finding of this pilot. It is not "the model disagrees
 with the human". It is that the codebook does not determine a label for a
 recognisable class of comment, and any κ computed on it would be measuring the
@@ -173,10 +207,18 @@ good the model is:
    and the resulting margins must be read with it in mind. The rater's margins
    diverge sharply from the ones it had seen, which is weak evidence against
    anchoring — weak, not absent, and not a substitute for having been blind.
-3. **One pass, no reliability of its own.** The model was not run twice, so its
+3. **The contamination biases the ceiling upward, so 0.491 is conservative.**
+   Knowing the human margins could only pull this rater's margins *towards* them,
+   and agreement between margins raises the attainable κ. The reported ceiling is
+   therefore an upper bound on an upper bound: the true attainable κ for an
+   uncontaminated rater is no higher, and the conclusion — that the flagged
+   bucket cannot reach acceptable agreement — is not weakened by the
+   contamination. The observed margins also argue against anchoring, being far
+   from the human's (3/12/5 against 5/5/10).
+4. **One pass, no reliability of its own.** The model was not run twice, so its
    *intra*-rater consistency is unmeasured. A rater whose own reliability is
    unknown cannot establish anyone else's.
-4. **κ against a model is not κ.** Cohen's κ assumes two raters drawing on a
+5. **κ against a model is not κ.** Cohen's κ assumes two raters drawing on a
    shared construct. A model's errors are correlated with the text in ways a
    second human's are not, so even a computable κ here would not carry the
    inference the statistic is used for.

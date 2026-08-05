@@ -123,6 +123,47 @@ numbered ≤ N_p. The two definitions coincide except for issues moved between
 projects, which perturb the correspondence between count and highest number.
 §4.3 measures the size of that perturbation rather than assuming it away.
 
+### 3.1.4 The arithmetic ceiling, and what is left once it is removed
+
+CSR and TRR are not independent quantities, and the constraint between them is
+exact rather than statistical. It is stated here because §4.2 and §4.3 are
+organised around it.
+
+A commit either cites no key of *p*, in which case it contributes nothing to the
+numerator of TRR, or cites at least one — and however many it cites, it can add
+**at most one ticket that no earlier commit had already cited**, in the limiting
+case where every citing commit introduces a fresh key. So the number of distinct
+realised tickets is bounded by the number of citing commits:
+
+> |{ k ∈ Tickets(p, T) : k realised }| ≤ CSR(p) · |C_p|
+
+and dividing by |Tickets(p, T)|:
+
+> **TRR(p) ≤ CSR(p) · |C_p| / |Tickets(p, T)| ≡ ceiling(p)**
+
+The bound is tight — equality holds when citing commits map one-to-one onto
+distinct previously-uncited tickets — and it is reached in practice only if no
+ticket ever receives two commits.
+
+**Two consequences, and the second is why this matters.**
+
+First, **`commits / tickets` is a scale factor the two rates do not share.** A
+project with 0.16 commits per ticket cannot exceed a 16% ticket-side rate at
+*any* commit-side rate, including 100%. Comparing CSR and TRR without it
+compares a ratio to a ratio with a different denominator.
+
+Second, it decomposes TRR into a part that is arithmetic and a part that is
+behaviour:
+
+> **fill(p) = TRR(p) / ceiling(p) ∈ [0, 1]**
+
+`fill` is the share of the attainable maximum actually reached — how efficiently
+a project's citing commits spread across distinct tickets rather than piling onto
+a few. **`fill` is the quantity a claim about citation discipline needs**;
+`ceiling` is a property of how much code the project writes per ticket it files.
+Tables 1 and 3 report both. §4.2 shows that in this corpus almost all of the
+ticket-side variation is ceiling and almost none of it is fill.
+
 ## 3.2 Corpus construction
 
 **38 Apache candidates**, each Maven-built, Jira-tracked and multi-module. Each
@@ -132,12 +173,27 @@ nothing else, so a working tree is pure cost — and probed with
 `paper/traceability_probe.json`, so any re-run is exactly diffable against this
 one.
 
+**Hadoop itself is not one of the 38.** It is the corpus the exploratory work was
+done on, and it is used here only as the worked example for multi-key matching.
+Every rate in Tables 1 and 3 is from a project Hadoop is not.
+
 **Key prefixes were detected empirically from commit messages, not assumed.**
 This is not a refinement; it decides the answer. A single-key probe reads Hadoop
-at 26.2% where the true rate is 92.3% on the same 28,290 commits, and reads
-Evergreen at 71.7% (§5, modes 5 and 6). Six of the 38 needed a second key
-(`CALCITE,OPTIQ`, `HDDS,OZONE`, `KARAF,FELIX`, `PINOT,THIRDEYE`,
-`ROCKETMQ,RIP`, `TOMEE,OPENEJB`, `JAMES,MAILBOX`).
+at **26.2%**, against **92.3%** on a four-key probe and **97.8%** on a seven-key
+probe of the same 28,290 commits (§5, modes 5 and 6). The three figures are the
+same measurement under three key sets, not a rate and a correction to it; 97.8%
+is the most complete of them, and the paper quotes whichever key set it names.
+Evergreen reads 71.7% under a single-key probe for the same reason. Seven of the
+38 needed a second key (`CALCITE,OPTIQ`, `HDDS,OZONE`, `KARAF,FELIX`,
+`PINOT,THIRDEYE`, `ROCKETMQ,RIP`, `TOMEE,OPENEJB`, `JAMES,MAILBOX`).
+
+**One of those second keys was never used.** `OZONE` appears in Ozone's probed
+key set and is cited by **zero** commits; every Jira reference in that repository
+is an `HDDS` key. It is retained in the probe because the key set was fixed from
+a prefix scan before the counts were read, and removing it afterwards would be
+selection on the outcome. §5.3 counts it among the six probed keys with no
+project record in the frozen tracker corpus, which is a different fact about the
+same key: it is neither cited in git nor present in the tracker.
 
 **Both reference channels are counted.** GitHub-issue references (`#NNN`,
 `GH-NNN`) are counted per repository alongside Jira keys. This is what turns each

@@ -67,24 +67,25 @@ Positioned against the above rather than against an assumed gap:
    rate afterwards; neither states a threshold, an attrition count, or which
    candidates were rejected. Ours is fixed in `predictions/PREDICTIONS.md`
    (`ca076a9`) before any project was cloned, and never moved.
-2. **The population finding.** 12 of 38 pass and *all 12 are one ecosystem*.
-   SEOSS's own table contains the ingredients — Apache at the top, JBoss at the
-   bottom — but does not draw the inference.
+2. **The population finding.** 12 of 38 pass and no project outside one
+   ecosystem clears the bar. SEOSS's own table contains the ingredients — Apache
+   at the top, JBoss at the bottom — but does not draw the inference. The
+   ecosystem label is a hand classification and §4.1 reports the measured
+   variables that failed to replace it.
 3. **Both reference channels measured together.** No prior work counts
    GitHub-issue references alongside Jira keys, which is what shows the bar
    selects a *tracker* rather than a discipline.
-4. **The commit-side/ticket-side divergence framed as a sampling-frame warning.**
-   Rath 2018 reports both directions; nobody frames the divergence as a threat to
-   using a high commit-side rate to justify a corpus. Kylin at 83.9% against
-   12.0% is the sharpest case.
-5. **The ticket-side rate named, defined and measured across the whole probe.**
-   Rath 2018 reports it per issue *type* — 43.3% of improvements and 42.4% of bugs
-   have no commits — rather than as a named project-level quantity, and reports it
-   only for the six projects it selected. §3.1 gives it a definition, including
-   what counts as a ticket and how the denominator is bounded in time, and §4.3
-   computes it for the projects the bar **rejected** as well as those it kept.
-   That is what makes the divergence a property of the population rather than of
-   the survivors.
+4. **The arithmetic ceiling.** The bound TRR ≤ CSR × commits / tickets, the
+   decomposition of the ticket-side rate into that ceiling and a residual, and
+   the finding that in this corpus the residual is nearly constant while the
+   ceiling varies six-fold (§3.1.4, §4.2). No prior work reports commits per
+   ticket alongside a linkage rate, which is what makes the two rates look
+   commensurable when they are not.
+5. **The ticket-side rate measured across the whole probe**, including the 26
+   projects the bar **rejected** — Rath 2018 reports it per issue *type*, and only
+   for the six projects it selected. *(Whether the quantity is also newly
+   **named** depends on the Bachmann determination in §2.4 and is
+   **[PENDING]**.)*
 6. **The six-mode taxonomy**, and that none of it is expressible in any published
    frame.
 
@@ -103,36 +104,92 @@ The consequence is the actionable one: a researcher sampling with GHS gets stars
 commits, contributors and license, then discovers post hoc that 26 of 38
 candidates are unusable. That is what happened here.
 
-## 2.4 Refactoring and self-admitted technical debt
+## 2.4 The bug-side linkage literature, and what it already settled
 
-Included because it establishes what the *record-level* literature has not
-measured, and it bounds what this paper claims.
+The commit-side/ticket-side asymmetry this paper measures was studied on the
+bug-side a decade and a half ago, and that literature is the direct ancestor of
+§4.2. It is set out here rather than merely listed, because two of its findings
+bound what this paper can claim.
 
-**Iammarino et al. 2021** (*J. Syst. Softw.*, on SATD removal and refactoring)
-and **Esfandiari 2023** (ICCKE, arXiv:2404.01950, commit tags, 77 projects) both
-study SATD and refactoring **strictly at same-commit co-occurrence**. Iammarino
-covers four projects with no temporal analysis, its tightest analysis being
-same-file at n=201. Esfandiari already reports *move class* as the refactoring
-most associated with debt activity. Neither measures an interval.
+**Bachmann et al. (FSE'10), *The Missing Links: Bugs and Bug-fix Commits*** —
+Adrian Bachmann, Christian Bird, Foyzur Rahman, Premkumar Devanbu and Abraham
+Bernstein — is the closest ancestor. They engaged a core Apache HTTP Server
+developer to annotate **493 commits over a six-week period** exhaustively, using
+a purpose-built tool (Linkster), to establish ground truth rather than infer it
+from commit messages. Against that ground truth they found that **only 47.6% of
+bug-fix-related commits are documented in the bug tracking database**. Their
+target is the completeness of the *link*, established by expert annotation on one
+project over one window; ours is a per-project rate over a whole tracker,
+established mechanically. Their design is far stronger on ground truth and far
+narrower in scope; ours is the reverse.
 
-An architectural-debt time-to-fix literature is active — arXiv:2605.16133 (May
-2026) and arXiv:2501.15387 — using Jira issues at file granularity with **no
-refactoring detection**.
+> **[DETERMINATION PENDING]** Whether the ticket realisation rate of §3.1 is the
+> same quantity Bachmann et al. measured, or a distinct one, is **not settled in
+> this draft**. The argument for distinctness is that §3.1.1 admits every issue
+> type and every status and conditions on nothing, whereas Bachmann conditions on
+> bugs and bug-fix commits. That argument has not been adjudicated against the
+> paper's own text, and the naming claim in §3.1 stands or falls with it. See
+> `paper/REVISION_LOG.md`, GATE.
 
-Two things follow. First, the record channels this paper measures are the same
-channels that literature depends on, so its exposure is the same. Second, the
-successor design this study points to — a SATD-comment-to-refactoring interval,
-entity-level, refactoring-detected — is **not proposed in this paper**; it is a
-separate registered report whose novelty margin is a conjunction of three choices
-and is recorded as gated on external judgment (`paper/SATD_NOVELTY.md`).
+**Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** — C.
+Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu — is
+the reason any of this matters. Missing links are not missing at random, so a
+dataset built from linked records is a biased sample of the work, and models
+fitted to it inherit the bias. **This is the same argument our §7.3 makes for
+architectural change**, arrived at independently and seventeen years later, and
+we cite it as the prior statement of the principle rather than as a parallel.
 
-## 2.5 Detector validity
+**Nguyen, Adams and Hassan (WCRE'10), *A Case Study of Bias in Bug-Fix
+Datasets*** replicates that bias analysis. *(The review that prompted this
+revision cited this work as MSR'10 and characterised it as a replication on a
+system with near-perfect linkage; the venue is WCRE'10, and the
+near-perfect-linkage characterisation could not be verified from an accessible
+copy, so it is not asserted here — see `paper/REVISION_LOG.md`.)*
 
-RefactoringMiner is the detector. Its TypeScript support was complete 2026-05-24,
-two months old at measurement, and **has no independent validation in the
-literature**. One defect was traced and reported upstream: 160
-`interface → class` false positives in a single commit, arising from type aliases
-having no representation in the tool's class model
+**Herzig, Just and Zeller (ICSE'13), *It's not a bug, it's a feature: how
+misclassification impacts bug prediction*** bears directly on §3.1.1's decision to
+admit all issue types. In a manual examination of **more than 7,000 issue reports
+across five open-source projects they found 33.8% misclassified** — filed as bugs
+but resolving to a feature, a documentation update or an internal refactoring —
+and **39% of files marked defective never had a bug**. Our denominator admits
+every type precisely so that no misclassification can move a ticket in or out of
+it. That immunises the ticket realisation rate against the Herzig effect, and it
+is also why our rate is *not* comparable to any rate computed on a
+resolution-filtered or type-filtered population, including Vieira et al.'s.
+
+**Automated link recovery is the standing partial answer to modes 4–6.** ReLink
+(Wu, Zhang, Kim and Cheung, ESEC/FSE'11) learns the features of explicit links —
+time proximity, author identity, textual similarity between the bug report and
+the change — and recovers missing ones at accuracy well above the traditional
+regex heuristics, and a substantial literature has followed it. §5.5 and §7.2
+argue that a project's key set cannot be recovered from its tracker, which
+remains true: ReLink and its successors recover *links*, not *key sets*, and they
+operate on a project already known to be a candidate. But the unqualified claim
+that missing links are unrecoverable would overstate the gap, and §5.5 is
+qualified accordingly.
+
+## 2.5 Refactoring and self-admitted technical debt
+
+Included because it bounds what this paper claims. **Iammarino et al. (2021,
+JSS)** and **Esfandiari & Sami (ICCKE 2023)** both study SATD and refactoring
+strictly at same-commit co-occurrence — Iammarino over four projects with no
+temporal analysis, its tightest cut being same-file at n=201; Esfandiari over 77
+projects, already reporting *move class* as the refactoring most associated with
+debt activity. Neither measures an interval. An architectural-debt time-to-fix
+literature is separately active (arXiv:2605.16133, arXiv:2501.15387).
+
+Two things follow. The record channels this paper measures are the channels that
+literature depends on, so its exposure is ours. And the successor design this
+study points to is **not proposed here**; it is a separate registered report
+gated on external judgment (`paper/SATD_NOVELTY.md`).
+
+## 2.6 Detector validity
+
+RefactoringMiner is the detector. Its TypeScript support was complete
+2026-05-24, two months old at measurement, and has no independent validation we
+could find in the literature. One defect was traced and reported upstream: 160
+`interface → class` false positives in a single commit, from type aliases having
+no representation in the tool's class model
 ([tsantalis/RefactoringMiner#1124](https://github.com/tsantalis/RefactoringMiner/issues/1124),
-filed 2026-07-25; `paper/RM_TYPESCRIPT.md`). That finding is a separate paper and
-appears here only as a bound on the TypeScript column of Table 2.
+filed 2026-07-25). That finding is a separate paper and appears here only as a
+bound on the TypeScript column of Table 2.

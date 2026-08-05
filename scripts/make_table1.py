@@ -99,12 +99,20 @@ def render(probe, passing, dropped, ticket):
     add(f"## Eligible ({len(passing)})")
     add("")
     add("| # | project | Jira key(s) | HEAD | commits scanned | single-key | "
-        "multi-key | tickets total | tickets cited | **ticket-side** |")
-    add("|---:|---|---|---|---:|---:|---:|---:|---:|---:|")
+        "multi-key | tickets total | commits/ticket | ceiling | tickets cited | "
+        "**ticket-side** | TRR/ceiling |")
+    add("|---:|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
     for i, r in enumerate(passing, 1):
         p = r["project"]
         t = ticket[p]
-        add("| {} | {}{} | `{}` | `{}` | {:,} | {} | **{}** | {:,} | {:,} | **{}** |".format(
+        # The arithmetic ceiling: a commit citing a ticket contributes at most
+        # one NEW distinct ticket, so TRR <= CSR * commits / tickets.
+        cpt = r["commits_scanned"] / t["jira_tickets_total"]
+        csr = r["commits_citing_multi"] / r["commits_scanned"]
+        ceil = csr * cpt
+        trr = t["tickets_cited_by_a_commit"] / t["jira_tickets_total"]
+        add("| {} | {}{} | `{}` | `{}` | {:,} | {} | **{}** | {:,} | {:.2f} | "
+            "{:.1f}% | {:,} | **{}** | {:.2f} |".format(
             i,
             p,
             marker(p),
@@ -114,8 +122,11 @@ def render(probe, passing, dropped, ticket):
             pct(r["commits_citing_single"], r["commits_scanned"]),
             pct(r["commits_citing_multi"], r["commits_scanned"]),
             t["jira_tickets_total"],
+            cpt,
+            ceil * 100,
             t["tickets_cited_by_a_commit"],
             pct(t["tickets_cited_by_a_commit"], t["jira_tickets_total"]),
+            trr / ceil,
         ))
     add("")
     add("† held-out corpus: coverage and existence counts only, no outcome ever "
@@ -166,6 +177,18 @@ def render(probe, passing, dropped, ticket):
         f"{len(passing)} eligible projects the commit-side rate runs "
         f"{100.0 * ck_lo:.1f}–{100.0 * ck_hi:.1f}% while the ticket-side rate runs "
         f"**{lo_p}–{hi_p}, with none above {hi_p}**."
+    )
+    add("")
+    add(
+        "**The ceiling, and why it reframes the divergence.** A commit that "
+        "cites a ticket contributes at most one NEW distinct ticket to the "
+        "ticket-side numerator, so the rate cannot exceed "
+        "`commit-side x commits / tickets` (method §3.1.4). That bound BINDS "
+        "for all twelve: it runs 13.7% (kylin) to 81.6% (ranger), and every "
+        "project reaches 80–95% of it. The ticket-side spread is therefore "
+        "almost entirely a spread in commits per ticket, not in citation "
+        "discipline — `TRR/ceiling` has a median of 0.89 and a range of only "
+        "1.19x across the twelve, against a 5.8x spread in the rate itself."
     )
     add("")
     add(

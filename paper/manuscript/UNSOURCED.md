@@ -14,21 +14,42 @@ Ordered by how much a reviewer is likely to press on it.
 
 ---
 
-## 1. Ecosystem family is a hand classification, not a measured field
+## 1. Ecosystem family is a hand classification, and Drill is where it breaks
 
-**Where:** §4.1 ("all twelve are Hadoop-ecosystem", "no project outside the Hadoop
-ecosystem clears it, the best being James at 74.8%"), §1 contribution 2, abstract.
+**Where:** §4.1, §1 contribution 2, abstract.
 
-**Status:** the *rates* are measured; the *family* is a judgment. `paper/numbers.md`
-§7 records that family "is not even a recorded field", and
-`scripts/probe_summary.py` now writes the classification into
-`paper/probe_summary.json` so that the judgment is inspectable. Atlas at 78.1% is
-the highest-rated dropped project and is classified Hadoop-ecosystem; James at
-74.8% is the highest outside it. **If a reader classifies Atlas differently, the
-sentence changes.** No independent taxonomy of Apache project families was used.
+**Status:** the *rates* are measured; the *family* is a judgment.
+`scripts/probe_summary.py` writes the classification into
+`paper/probe_summary.json` so it is inspectable, and §4.1 now reports two
+measured variables tested in its place — repository start year (AUC 0.611,
+p = 0.279) and Apache Incubator graduation date (AUC 0.289, p = 0.098, and
+missing for four of the twelve passing projects). **Neither separates the corpus
+as well as the hand label (accuracy 0.868), so the judgment is kept and marked.**
 
-**Cost to fix:** low. Adopt an external classification (the ASF project
-categories, or the Hadoop ecosystem list from a cited source) and re-derive.
+**The sensitivity is on Drill, not Atlas.** An earlier version of this list named
+Atlas as the exposure. That was wrong in the direction that matters: Atlas is the
+highest-rated *dropped* project at 78.1%, and reclassifying it changes only which
+project is "best outside the ecosystem" — the load-bearing claim survives, because
+78.1% < 80%. The claim actually breaks on three *passing* projects:
+
+| reclassify out of "Hadoop-ecosystem" | best rate outside | anything outside now clears the bar? |
+|---|---|---|
+| Atlas | Atlas 78.1% | **no** |
+| Accumulo / Hudi / Storm / Parquet | James 74.8% | **no** |
+| **Drill** | Drill 84.2% | **YES** |
+| **Kylin** | Kylin 83.9% | **YES** |
+| **Sqoop** | Sqoop 82.6% | **YES** |
+
+Sqoop is unambiguous (it is literally *SQL-to-Hadoop*) and Kylin is solid (an OLAP
+engine on Hadoop, Hive and HBase). **Drill is genuinely arguable**: it is a
+schema-free SQL engine modelled on Google Dremel that queries HDFS, HBase,
+MongoDB, S3, Kafka and local files, and it requires neither HDFS nor YARN. A
+reviewer who places Drill outside the ecosystem falsifies the "all twelve" form of
+contribution 2.
+
+**Cost to fix:** low, and not taken. Adopting an external classification — ASF
+project categories, or an ecosystem list from a cited source — would remove the
+judgment. We report the exposure instead.
 
 ## 2. "Flink's 24.1pp gap is scope, not error" is an explanation, not a result
 
@@ -119,18 +140,22 @@ value it does not have.
 **Cost to fix:** requires the pooled study this paper argues cannot currently be
 assembled. That circularity is the point of §7.4 and is not concealed.
 
-## 9. Mode 4's worked example rests on a 20-commit hand sample
+## 9. Mode 4's worked example rested on a 20-commit hand sample
 
 **Where:** §5, taxonomy table row 4.
 
-**Status:** spring-batch cites `BATCH-` in 4,046 of 7,034 commits and in none of
-the 20 most recent sampled. The 4,046 is a full scan; the "none of the 20 most
-recent" is a hand sample with no confidence interval, and it is the half of the
-claim that establishes the convention *changed*.
+**Status:** **fixed in this revision, and the result is stronger than the sample
+suggested.** `scripts/springbatch_recency.py` scans spring-batch's whole default
+branch: `BATCH-` appears in **45.6% of 7,035 commits** overall, in **0 of the most
+recent 1,000** (back to 2021-06), and at exactly **0% in every year from 2020
+onward**; the last year the convention was used at all is **2019**. The convention
+did not decay — it stopped.
 
-**Cost to fix:** trivial — a rate computed over the last N commits rather than a
-sample of 20. It is exactly the fourth field §5.5 asks sampling frames to expose,
-so the paper is recommending a measurement it did not itself make rigorously.
+**One figure did not reproduce and is recorded as a correction.** The published
+"4,046 of 7,034" is not reproducible: scanning the default branch gives
+**3,210/7,020** for `BATCH-` alone and **3,263/7,020** including `BATCHADM`, and
+scanning all refs gives 3,494 and 3,547. None of five readings reaches 4,046. See
+`paper/numbers.md` §10e.
 
 ## 10. One identity-namespace difference in the Hadoop analysis is unverified
 
@@ -144,6 +169,64 @@ paths were never reconciled. Recorded as unverified rather than checked.
 **Cost to fix:** trivial, and it changes nothing.
 
 ---
+
+## 11. The headline association has no confidence interval in earlier drafts
+
+**Where:** §4.3, §1, abstract — as they stood before this revision.
+
+**Status:** **fixed in this revision, listed because the fix is a claim change.**
+Earlier drafts said the two rates are "uncorrelated" and that the commit-side rate
+"carries essentially no information", on n = 33 with a 95% CI of [−0.35, +0.34]
+and no interval, p-value or power statement anywhere. At 80% power this study
+detects only |rho| ≥ 0.47. The claim is now "a strong positive association is
+ruled out; a null is not established".
+
+## 12. The estimator's reported validation covered a different approximation
+
+**Where:** §4.3, §6.1, Table 3 caption — as they stood before this revision.
+
+**Status:** **fixed in this revision.** The 0.45pp / 2.14pp figure validates
+number-capping; Table 3 also substitutes a frozen snapshot, and the end-to-end
+error is 1.76pp mean / 11.91pp max. The favourable version (11 of 12 within
+2.93pp) existed in the data and was not reported.
+
+## 13. The estimator is applied entirely outside its validated range
+
+**Where:** §4.3, §6.1, Table 3 caption.
+
+**Status:** **now stated, not fixed** — it cannot be fixed without a live Jira
+fetch, which the repository's standing rule forbids. Validated at commit-side
+82.6–98.3%, applied at 10.5–78.1%, **0 of 21** applied projects inside the
+validated range.
+
+## 14. Two manuscript numbers had no provenance row at all
+
+**Where:** `rho = −0.86` (§1) and `930` (§6.4).
+
+**Status:** **fixed in this revision.** Both passed the old provenance checker
+only by substring collision — `0.86` against an unrelated `0.86232`, and `930`
+against the commit hash `93056ae`. Rows added at `paper/numbers.md` §10d; the
+checker was rebuilt so that a numeric match without a `numbers.md` row now
+fails.
+
+## 15. The live and frozen measurements disagree in sign
+
+**Where:** §4.3, `paper/DIRECTION_TENSION.md`.
+
+**Status:** **open, and deliberately unresolved.** Spearman(CSR, TRR) is +0.518
+on the twelve measured live and exactly, and −0.010 on the 33 measured with the
+frozen estimator. The intervals overlap and neither is significant, so they are
+not formally contradictory — but the paper's headline sentence cannot be written
+from both, and the author has not chosen.
+
+## 16. The kappa ceiling lands on a global maximum
+
+**Where:** `paper/LLM_RATER_PILOT.md` §4.1, §6.5.
+
+**Status:** **now disclosed.** Reclassifying five flagged-bucket comments gives
+the highest attainable ceiling of any count (0.840; four gives 0.765, six 0.837,
+seven 0.833). The six comments are individually defensible and the result is
+robust across ±2, but the coincidence was undisclosed.
 
 ## Not on this list, and why
 

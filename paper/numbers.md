@@ -622,3 +622,188 @@ the commit-side rate carries essentially no information about the ticket-side on
 repository's history does not reach back into the snapshot era. The frozen figure
 is a statement about what is recoverable from that repository today and must not
 be read as a traceability rate.
+
+### 10d. Rows the rebuilt provenance checker exposed as missing
+
+Added 2026-08-05. `scripts/check_provenance.py` was rewritten after
+`audit/NUMBERS.md` §7 showed the previous version was a substring test that
+could not fail. The rebuilt checker grades each token ARTIFACT / DOCUMENTED /
+EXTERNAL and fails a token that matches a committed value numerically but has no
+row here claiming it as a quantity. It immediately exposed seven such tokens.
+Six were one documentation gap; two were the ones the audit named.
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| maintainer concentration collinear with module size | Spearman **−0.86** — exactly `size_confound.collinearity.rho` = **−0.8555**, p = 4e-69, n = 112 modules | `scripts/social_centrality.py` → `social_centrality.json`; `results_dossier.md` §9b | `93056ae` |
+| the contaminated comparison set in the first chunk-loss test | **930** commits on branches other than the range the detector was asked to analyse; the error that produced the spurious "lost commits are larger" conclusion | `SUI_FINDINGS.md` threats | `c080775` |
+
+**The project-count trio and its companions now carry a script row.** §5's
+"Validation note" subsection states **1,276** (final-state, key-based),
+**2,506** (final-state ∪ changelog history, name-based) and **1,822**
+(published, not reproducible), together with **2,686,282** issues parsed and
+**326** project ids carrying more than one name. All five are computed by
+`scripts/jira_estimates.py` (`eee902f`) streaming the frozen deposit via
+`scripts/jira_archive.py`; the id↔name and id↔key counts were added at
+`0f116aa` and the 1:1 id↔key result at `5179907`. The subsection named none of
+these, so every one of its numbers failed the rebuilt check. The figures are
+unchanged; only the attribution was missing.
+
+**Standing caveat on the ARTIFACT tier.** A numeric match shows a committed
+computed value rounds to the printed token at the printed precision. It cannot
+show the two are the same *quantity* — no numeric check can. That is why the
+checker requires a row here as well, and why `audit/CITATIONS.md` rather than
+this file is the check on figures attributed to other people's papers.
+
+### 10e. Numbers added by the MSR major revision
+
+All from `scripts/revision_metrics.py`, `scripts/era_separation.py` and
+`scripts/springbatch_recency.py`, run 2026-08-05.
+
+**The arithmetic ceiling (§3.1.4).** `TRR ≤ CSR × commits / tickets`, exact, not
+statistical. Over the 12 eligible projects on the live arm:
+
+| quantity | value | source |
+|---|---|---|
+| ceiling binds (< 1) | **12 of 12**, range **13.7%** (kylin) – **81.6%** (ranger), spread **6.0×** | `scripts/revision_metrics.py` → `paper/revision_metrics.json` |
+| fill = TRR / ceiling | median **0.887**, range **0.801** (ranger) – **0.951** (drill), spread **1.19×** | same |
+| TRR spread, same projects | **5.8×** | same |
+| rho(ceiling, TRR) | **+0.965** | same |
+| rho(commits-per-ticket, TRR) | **+0.937** | same |
+| hive worked example | 0.61 commits/ticket, ceiling **59.6%**, TRR **55.8%**, fill **0.94** | same |
+
+**Medians, recomputed with `statistics.median`.** The published 55.5% was
+`v[len(v)//2]`, the *upper* middle value at even n.
+
+| quantity | value | source |
+|---|---|---|
+| passing group median TRR (frozen), n=12 | **52.60%** — supersedes 55.53% | `scripts/ticket_side_38.py` |
+| dropped group median TRR (frozen), n=21 | **53.24%** | same |
+| gap | **−0.64pp** — the passing group is *below* the dropped group; supersedes "+2.3pp" | same |
+| Mann-Whitney passing vs dropped | p ≈ **0.94** | `scripts/revision_metrics.py` |
+| 55.53% is | the median of the **11 non-Kylin** passing projects | `scripts/ticket_side_38.py` |
+
+**Inference on the association.**
+
+| quantity | value | source |
+|---|---|---|
+| frozen arm, n=33 | rho **−0.0097**, 95% CI **[−0.352, +0.335]**, permutation p **0.958** (200,000 relabellings, seed 20260805) | `scripts/revision_metrics.py` |
+| detectable at 80% power, n=33 | \|rho\| ≥ **0.471** | same |
+| live arm, n=12 (exact both sides) | rho **+0.5175**, 95% CI **[−0.080, +0.841]**, permutation p **0.088** | same |
+| detectable at 80% power, n=12 | \|rho\| ≥ **0.732** | same |
+| rho(CSR, commits-per-ticket) | **+0.455** over the 12; **−0.717** over the 33 — the sign flip that produces the direction disagreement | same, `paper/DIRECTION_TENSION.md` |
+| CSR spread | **1.19×** over the 12; **9.40×** over the 33 | same |
+| commits-per-ticket spread | **5.79×** over the 12; **30.15×** over the 33 | same |
+
+**The estimator, end to end.**
+
+| quantity | value | source |
+|---|---|---|
+| number-capping alone | mean **0.45pp**, max **2.14pp** (kylin) | `scripts/ticket_side_38.py` |
+| number-capping + snapshot substitution (what Table 3 uses) | mean **1.76pp**, max **11.91pp** (kylin) | `scripts/revision_metrics.py` |
+| the same, excluding kylin | mean **0.84pp**, max **2.93pp**; **11 of 12** within 3pp | same |
+| ratio | **3.9×** mean, **5.6×** max | same |
+| validated commit-side range | **82.6–98.3%** (12 projects) | same |
+| applied-only commit-side range | **10.5–78.1%** (21 projects) | same |
+| overlap | **0 of 21** | same |
+
+**Clone depth — pinned branches that start after their repository.**
+
+| project | pinned | all refs | share | branch starts | repo starts |
+|---|---:|---:|---:|---|---|
+| **kylin** | **968** | **12,937** | **7.5%** | **2022-08-01** | **2014-05-13** |
+| jena | 13,091 | 26,732 | 49.0% | 2012-05-08 | 2002-12-19 |
+| karaf | 10,058 | 22,138 | 45.4% | 2007-11-26 | 2005-07-19 |
+| james-project | 17,374 | 19,424 | 89.4% | 2006-09-30 | 2006-09-22 |
+
+Sqoop is **not** truncated: its pinned branch starts at the repository's first
+commit, 2011-06-14. Source `scripts/revision_metrics.py`.
+
+**Era does not replace the hand classification.**
+
+| variable | coverage | separation | source |
+|---|---|---|---|
+| Hadoop-ecosystem label (hand) | 38 of 38 | accuracy **0.868**, recall 1.000, precision 0.706, Fisher p **2.29e-06** | `scripts/era_separation.py` |
+| repository start year | 38 of 38 | AUC **0.611**, p **0.279**, best-threshold accuracy 0.711 | same |
+| Apache Incubator graduation | **24 of 38** | AUC **0.289**, p **0.098**, best-threshold accuracy 0.625 | same |
+
+Graduation dates read from https://incubator.apache.org/projects/ on 2026-08-05.
+Missing for **hive, hbase, ozone, zookeeper** among the passing twelve — they
+entered the ASF as Hadoop subprojects, not as podlings — so the variable is
+missing-not-at-random with respect to the outcome.
+
+**Mode 4, measured rather than sampled.**
+
+| quantity | value | source |
+|---|---|---|
+| spring-batch, `BATCH-` overall | **3,210 / 7,035 = 45.6%** | `scripts/springbatch_recency.py` → `paper/springbatch_recency.json` |
+| including `BATCHADM` | 3,263 / 7,035 = 46.4% | same |
+| most recent 1,000 commits | **0 = 0.0%** (back to 2021-06-07) | same |
+| most recent 2,000 | 141 = 7.0% (back to 2017-05-22) | same |
+| by year | 2012 **75.1%**, 2015 62.3%, 2018 48.2%, **2020 onward 0.0% every year** | same |
+| last year the convention was used | **2019** | same |
+
+**⚠ CORRECTION — "4,046 of 7,034" is not reproducible.** §9e and
+`paper/eligibility_failure_modes.md` state spring-batch cites `BATCH-` in 4,046 of
+7,034 commits. A full scan reproduces neither figure's numerator under any of five
+readings: default branch `BATCH-` only **3,210/7,020**; default branch
+`BATCH|BATCHADM` **3,263/7,020**; all refs `BATCH-` **3,494/8,286**; all refs both
+keys **3,547/8,286**; case-insensitive without word boundaries **3,227/7,020**.
+The commit total is consistent with 7,034 at an earlier HEAD; the numerator gap of
+roughly 800 is not. **Do not quote 4,046.** The original statement is left
+standing in §9e per the additive-correction rule; the manuscript uses 45.6% and
+the by-year series, which are stronger evidence for mode 4 than the original pair.
+
+### 10f. Remaining tokens the rebuilt checker asked for
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| hive tracker size | **29,635** tickets; ticket-side **55.8%**; **0.61** commits/ticket; ceiling **59.6%**; fill **0.94** | `paper/ticket_coverage.json`, `paper/revision_metrics.json` | `45aebc8` |
+| kylin tracker size | **5,931** tickets | `paper/ticket_coverage.json` | `e0d76ef` |
+| kylin, share of cited keys above the frozen snapshot | **709** of **711** = **99.72%** — not 100%, and 100% would contradict the numerator of 2 that yields 0.04% | `paper/ticket_side_38.json` | `45aebc8` |
+| drill / ranger ticket-side, quoted as the fill inversion | drill **43.2%** at fill 0.95; ranger **65.4%** at fill 0.80 | `paper/revision_metrics.json` | `45aebc8` |
+| passing-group median TRR | **52.6%** (`statistics.median`, n=12) | `scripts/ticket_side_38.py` | `45aebc8` |
+| kylin commits per ticket, and the ceiling it forces | **0.16** commits/ticket → ceiling **16%** at any commit-side rate | `paper/revision_metrics.json` | `45aebc8` |
+| the 38 probe clones, total size | **228 MB** for 38 `--filter=tree:0 --bare` clones, mean **6.0 MB** | measured on the clone directory, `scripts/revision_metrics.py` reads the same clones | `45aebc8` |
+
+**Figures attributed to cited works** — provenance is the paper, and
+`audit/CITATIONS.md` is the check on it, not this file.
+
+| quantity | value | source |
+|---|---|---|
+| Bachmann et al., FSE'10 (doi:10.1145/1882291.1882308) | **493** Apache HTTP commits annotated exhaustively by a core developer over six weeks; **47.6%** of bug-fix-related commits documented in the bug tracker | `paper/PRIOR_WORK.md`, verified against the paper's own text |
+| Herzig, Just & Zeller, ICSE'13 | **more than 7,000** issue reports across five projects, **33.8%** misclassified, **39%** of files marked defective never had a bug | same |
+| Bird et al., ESEC/FSE'09, pp. 121–130 | bias in bug-fix datasets; missing links are not missing at random | same |
+| Nguyen, Adams & Hassan, **WCRE'10**, pp. 259–268 | a case study of bias in bug-fix datasets. **The review that prompted this revision cited it as MSR'10; the venue is WCRE'10** | same |
+| Wu, Zhang, Kim & Cheung, ESEC/FSE'11 (doi:10.1145/2025113.2025120) | ReLink recovers missing issue–commit links from time proximity, author identity and textual similarity | same |
+
+### 10g. Rounded forms and the kappa ladder
+
+The manuscript prints these at the precision a reader can use; §10e carries them
+at full precision. Listed so each printed token has a row of its own.
+
+| as printed | full value | source |
+|---|---|---|
+| rho **+0.518** (live, n=12) | +0.5175 | `scripts/revision_metrics.py` → `paper/revision_metrics.json` |
+| CI **[−0.35, +0.34]** (frozen, n=33) | [−0.3518, +0.3352] | same |
+| CI **[−0.413, +0.305]** (frozen sensitivity, n=30) | [−0.4128, +0.3053] | same |
+| detectable **|rho| ≥ 0.47** at 80% power, n=33 | 0.4712 | same |
+| detectable **|rho| ≥ 0.73** at 80% power, n=12 | 0.7317 | same |
+| fill median **0.89**, kylin fill **0.87** | 0.8871; kylin 0.8730 | same |
+| median gap **0.6pp** | 0.64pp, passing below dropped | `scripts/ticket_side_38.py` |
+
+**The kappa ceiling as a function of how many flagged comments are reclassified**
+— computed by exhaustive enumeration of every feasible 3×3 contingency table with
+the fixed margins, not by a closed form (`audit/NUMBERS.md` §5 verified all 180
+tables independently):
+
+| flagged comments moved I → C | LLM margin | ceiling |
+|---:|---|---:|
+| 0 (as rated) | (3, 12, 5) | **0.491** |
+| 4 | (3, 8, 9) | 0.765 |
+| **5 — the number used** | (3, 7, 10) | **0.840** ← global maximum |
+| 6 | (3, 6, 11) | 0.837 |
+| 7 | (3, 5, 12) | 0.833 |
+
+Source `scripts/llm_rater_pilot.py` (`7cc485b`) for the 0.491 and 0.840
+endpoints; the ladder is in `paper/LLM_RATER_PILOT.md` §4.1 and was reproduced by
+the independent audit.

@@ -34,13 +34,32 @@ distinct keys of which 122 have no tracker record, so its ticket-side rate rests
 on the 668 that resolve (§5.3). This is mode 6 inside a passing project, and it
 means ticket-side rates are, strictly, coverage of *resolvable* tickets.
 
-**The 38-project extension uses a different denominator source, and its four
-failure modes are stated rather than assumed away.** §4.3 measures the ticket
-realisation rate for all 38 projects against the frozen public Jira corpus rather
-than a second live fetch, aligning numerator and denominator in issue-number
-space (§3.1.3). Validated against the twelve published exact rates it is accurate
-to a mean absolute error of 0.45pp and a worst case of 2.14pp, but
-four things can break it and all four occur in this corpus:
+**The 38-project extension uses a different denominator source, and the
+validation figure the earlier draft quoted was for a different approximation.**
+§4.3 measures the ticket realisation rate for all 38 projects against the frozen
+public Jira corpus rather than a second live fetch, aligning numerator and
+denominator in issue-number space (§3.1.3). **Two approximations are stacked**:
+number-capping, and substituting a frozen snapshot for the live tracker. The
+0.45pp / 2.14pp figure earlier drafts quoted validates only the first. The
+end-to-end error of the combination Table 3 actually uses is **1.76pp mean /
+11.91pp max**, the worst case being Kylin; excluding Kylin it is 0.84pp mean and
+**2.93pp max, with 11 of 12 inside 3pp**. **Quote the end-to-end figure.**
+
+**And the estimator is applied entirely outside its validated range.** The twelve
+validation projects span commit-side **82.6–98.3%**; the twenty-one that carry
+the §4.3 association span **10.5–78.1%**. The ranges are **disjoint — 0 of 21**
+applied projects fall inside the validated one. The error mechanism is
+tracker-numbering density rather than commit hygiene, and within the twelve the
+error does not track the commit-side rate (rho = −0.16, n = 12), so there is a
+reason to expect the extrapolation to hold — but it is a reason, not a
+validation, and **any claim whose margin is smaller than 11.91pp is not safe on
+this estimator.** The claims that are: the ceiling identity (exact arithmetic,
+not estimated); the eligibility result (commit-side only); the taxonomy. The
+claims that are not: any per-project ticket-side comparison in Table 3 closer
+than ~12pp, and the passing-versus-dropped median gap of 0.6pp, which is far
+inside the noise and is reported as such.
+
+Four further things can break the estimator, and all four occur in this corpus:
 
 1. **Trackers with gaps.** Number-capping assumes a tracker holding N issues holds
    approximately the first N numbers. Issues moved or deleted break that, and the
@@ -52,7 +71,21 @@ four things can break it and all four occur in this corpus:
    That is a *true* statement about what is recoverable from the repository as it
    now stands, and a badly misleading one if read as a statement about whether the
    project's tickets were ever worked. Affected projects are flagged in Table 3
-   with the share of cited keys that postdate the snapshot.
+   with the share of cited keys that postdate the snapshot — **99.72% for Kylin
+   (709 of 711), not 100%**; an earlier draft printed 100%, which contradicts the
+   non-zero numerator that produces Kylin's 0.04%.
+
+   **This defect is not confined to the frozen arm, and that is the more serious
+   finding.** Kylin's pinned commit reaches **968 commits beginning 2022-08-01**,
+   **7.5% of the 12,937 on the repository's refs**, against a tracker of 5,931
+   issues and a repository that begins 2014-05-13. Its *live* 12.0% is therefore
+   also measured over a four-year window against a twelve-year tracker. Earlier
+   drafts made that 12.0% the paper's flagship example while dismissing the frozen
+   0.04% as an artefact; **both are the same artefact**, and the example has been
+   moved to Hive (§4.2.1). Three other projects have a pinned branch starting
+   after their repository — Jena (49.0% of refs), Karaf (45.4%), James (89.4%, by
+   eight days) — and none approaches Kylin's severity
+   (`scripts/revision_metrics.py`).
 3. **Denominators too small to carry a rate.** Several trackers hold only a
    handful of issues in the frozen corpus. Projects with fewer than 500 are
    excluded from the association statistic and shown in the table with the
@@ -183,6 +216,18 @@ re-check the sample without redrawing it.
 
 **The architectural-episode gold set has no second rater and is therefore not
 used** to support any claim here.
+
+**One coincidence in the rater pilot is disclosed because it looks like tuning
+and we cannot prove it is not.** `paper/LLM_RATER_PILOT.md` reports that
+re-labelling six comments under the opposite ordering of two codebook rules moves
+the attainable kappa ceiling from 0.491 to **0.840**. Five of those six are in the
+flagged bucket, and **five is exactly the reclassification count that maximises
+the ceiling over every possible count**: four gives 0.765, six gives 0.837, seven
+gives 0.833. The six were selected by a stated semantic criterion, they are
+individually defensible, and the finding is robust at 0.833–0.840 across plus or
+minus two comments — but the criterion was applied by the same party that
+reported the resulting number, and it landed on the global maximum. Stated here
+rather than left for a reader to find (`audit/JUDGMENTS.md` §3).
 
 ## 6.6 Definitions fixed after seeing data, and thresholds held when they hurt
 

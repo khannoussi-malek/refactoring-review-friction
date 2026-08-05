@@ -34,6 +34,9 @@
    "cited_above_frozen_range": 2107,
    "share_cited_above_frozen_range": 0.12743437764606266,
    "small_denominator": false,
+   "commits_per_ticket": 0.707823248221989,
+   "ceiling": 0.6867202984726595,
+   "fill": 0.8164685908319185,
    "live": {
     "tracker_issues_live": 29635,
     "cited_within_live_range": 16489,
@@ -73,6 +76,9 @@
    "cited_above_frozen_range": 2033,
    "share_cited_above_frozen_range": 0.12170737547892721,
    "small_denominator": false,
+   "commits_per_ticket": 0.8031490102569926,
+   "ceiling": 0.7430831535520988,
+   "fill": 0.7472622625171903,
    "live": {
     "tracker_issues_live": 30063,
     "cited_within_live_range": 16567,
@@ -111,7 +117,10 @@
    "distinct_keys_cited_total": 18709,
    "cited_above_frozen_range": 5157,
    "share_cited_above_frozen_range": 0.27564273878881823,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 1.4992546681311785,
+   "ceiling": 0.9901145457398401,
+   "fill": 0.5369255150554674
   },
   {
    "project": "phoenix",
@@ -142,6 +151,9 @@
    "cited_above_frozen_range": 594,
    "share_cited_above_frozen_range": 0.18120805369127516,
    "small_denominator": false,
+   "commits_per_ticket": 0.6467465493705445,
+   "ceiling": 0.5950250265433035,
+   "fill": 0.6841702778485853,
    "live": {
     "tracker_issues_live": 7931,
     "cited_within_live_range": 3270,
@@ -181,6 +193,9 @@
    "cited_above_frozen_range": 322,
    "share_cited_above_frozen_range": 0.08757138971988034,
    "small_denominator": false,
+   "commits_per_ticket": 0.5693394472673193,
+   "ceiling": 0.47911761060850167,
+   "fill": 0.8678220382824625,
    "live": {
     "tracker_issues_live": 8507,
     "cited_within_live_range": 3654,
@@ -220,6 +235,9 @@
    "cited_above_frozen_range": 709,
    "share_cited_above_frozen_range": 0.9971870604781997,
    "small_denominator": false,
+   "commits_per_ticket": 0.194026859089998,
+   "ceiling": 0.1627580677490479,
+   "fill": 0.0024630541871921183,
    "live": {
     "tracker_issues_live": 5931,
     "cited_within_live_range": 582,
@@ -258,7 +276,10 @@
    "distinct_keys_cited_total": 2958,
    "cited_above_frozen_range": 59,
    "share_cited_above_frozen_range": 0.019945909398242055,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 3.1757639620653317,
+   "ceiling": 1.3645943097997892,
+   "fill": 0.44772200772200776
   },
   {
    "project": "atlas",
@@ -288,7 +309,10 @@
    "distinct_keys_cited_total": 2900,
    "cited_above_frozen_range": 480,
    "share_cited_above_frozen_range": 0.16551724137931034,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 0.926381740881629,
+   "ceiling": 0.7236518236742,
+   "fill": 0.7482993197278912
   },
   {
    "project": "calcite",
@@ -328,7 +352,10 @@
    "distinct_keys_cited_total": 4264,
    "cited_above_frozen_range": 1619,
    "share_cited_above_frozen_range": 0.37969043151969983,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 1.357890499194847,
+   "ceiling": 0.9188808373590982,
+   "fill": 0.579408543263965
   },
   {
    "project": "cxf",
@@ -358,7 +385,10 @@
    "distinct_keys_cited_total": 4981,
    "cited_above_frozen_range": 383,
    "share_cited_above_frozen_range": 0.07689219032322826,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 2.3166100105497596,
+   "ceiling": 0.8677763450943617,
+   "fill": 0.6210995542347697
   },
   {
    "project": "flume",
@@ -388,7 +418,10 @@
    "distinct_keys_cited_total": 1478,
    "cited_above_frozen_range": 44,
    "share_cited_above_frozen_range": 0.029769959404600813,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 0.6165680473372781,
+   "ceiling": 0.4556213017751479,
+   "fill": 0.9311688311688312
   },
   {
    "project": "helix",
@@ -418,7 +451,10 @@
    "distinct_keys_cited_total": 396,
    "cited_above_frozen_range": 29,
    "share_cited_above_frozen_range": 0.07323232323232323,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 5.747957992998833,
+   "ceiling": 0.6009334889148191,
+   "fill": 0.712621359223301
   },
   {
    "project": "hudi",
@@ -448,7 +484,10 @@
    "distinct_keys_cited_total": 4647,
    "cited_above_frozen_range": 3173,
    "share_cited_above_frozen_range": 0.6828061114697654,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 2.4145649432534677,
+   "ceiling": 1.5753467843631779,
+   "fill": 0.29497698619171503
   },
   {
    "project": "karaf",
@@ -486,7 +525,10 @@
    "distinct_keys_cited_total": 4461,
    "cited_above_frozen_range": 471,
    "share_cited_above_frozen_range": 0.10558170813718896,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 0.7430006648445002,
+   "ceiling": 0.533500775651917,
+   "fill": 0.5524785378011631
   },
   {
    "project": "knox",
@@ -517,6 +559,9 @@
    "cited_above_frozen_range": 491,
    "share_cited_above_frozen_range": 0.20982905982905983,
    "small_denominator": false,
+   "commits_per_ticket": 1.1855976243504083,
+   "ceiling": 1.0,
+   "fill": 0.6863400148478099,
    "live": {
     "tracker_issues_live": 3391,
     "cited_within_live_range": 2340,
@@ -556,6 +601,9 @@
    "cited_above_frozen_range": 40,
    "share_cited_above_frozen_range": 0.021609940572663425,
    "small_denominator": false,
+   "commits_per_ticket": 0.6615469007131103,
+   "ceiling": 0.5633571036752606,
+   "fill": 0.8816942551119765,
    "live": {
     "tracker_issues_live": 3727,
     "cited_within_live_range": 1850,
@@ -605,6 +653,9 @@
    "cited_above_frozen_range": 6115,
    "share_cited_above_frozen_range": 0.6017516236961228,
    "small_denominator": false,
+   "commits_per_ticket": 1.7908838425093938,
+   "ceiling": 1.760169906877961,
+   "fill": 0.3756265082606275,
    "live": {
     "tracker_issues_live": 15909,
     "cited_within_live_range": 10159,
@@ -643,7 +694,10 @@
    "distinct_keys_cited_total": 846,
    "cited_above_frozen_range": 202,
    "share_cited_above_frozen_range": 0.23877068557919623,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 1.4292543021032504,
+   "ceiling": 0.41539196940726575,
+   "fill": 0.7410817031070196
   },
   {
    "project": "ranger",
@@ -674,6 +728,9 @@
    "cited_above_frozen_range": 1290,
    "share_cited_above_frozen_range": 0.3462157809983897,
    "small_denominator": false,
+   "commits_per_ticket": 1.5110737314269695,
+   "ceiling": 1.3036164844407065,
+   "fill": 0.5238709677419355,
    "live": {
     "tracker_issues_live": 5699,
     "cited_within_live_range": 3725,
@@ -713,6 +770,9 @@
    "cited_above_frozen_range": 227,
    "share_cited_above_frozen_range": 0.0818018018018018,
    "small_denominator": false,
+   "commits_per_ticket": 0.7184265010351967,
+   "ceiling": 0.7000230043708304,
+   "fill": 0.8373315806769637,
    "live": {
     "tracker_issues_live": 4724,
     "cited_within_live_range": 2762,
@@ -751,7 +811,10 @@
    "distinct_keys_cited_total": 2821,
    "cited_above_frozen_range": 698,
    "share_cited_above_frozen_range": 0.24742998936547322,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 2.9020093586567577,
+   "ceiling": 1.5904211395540875,
+   "fill": 0.3674281758393908
   },
   {
    "project": "zookeeper",
@@ -782,6 +845,9 @@
    "cited_above_frozen_range": 323,
    "share_cited_above_frozen_range": 0.14092495636998253,
    "small_denominator": false,
+   "commits_per_ticket": 0.6375791695988741,
+   "ceiling": 0.576589256392212,
+   "fill": 0.8010577705451587,
    "live": {
     "tracker_issues_live": 4875,
     "cited_within_live_range": 2200,
@@ -828,7 +894,10 @@
    "distinct_keys_cited_total": 2191,
    "cited_above_frozen_range": 474,
    "share_cited_above_frozen_range": 0.21633957097215883,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 4.32404181184669,
+   "ceiling": 3.2344449975111997,
+   "fill": 0.13211757463835025
   },
   {
    "project": "jena",
@@ -858,7 +927,10 @@
    "distinct_keys_cited_total": 1485,
    "cited_above_frozen_range": 76,
    "share_cited_above_frozen_range": 0.05117845117845118,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 5.849419124218052,
+   "ceiling": 1.4276139410187667,
+   "fill": 0.44100156494522696
   },
   {
    "project": "oodt",
@@ -888,7 +960,10 @@
    "distinct_keys_cited_total": 640,
    "cited_above_frozen_range": 0,
    "share_cited_above_frozen_range": 0.0,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 2.164423076923077,
+   "ceiling": 1.3413461538461537,
+   "fill": 0.4587813620071685
   },
   {
    "project": "pinot",
@@ -928,7 +1003,10 @@
    "distinct_keys_cited_total": 615,
    "cited_above_frozen_range": 614,
    "share_cited_above_frozen_range": 0.9983739837398374,
-   "small_denominator": true
+   "small_denominator": true,
+   "commits_per_ticket": 1117.0714285714287,
+   "ceiling": 58.642857142857146,
+   "fill": 0.001218026796589525
   },
   {
    "project": "sqoop",
@@ -959,6 +1037,9 @@
    "cited_above_frozen_range": 127,
    "share_cited_above_frozen_range": 0.16075949367088607,
    "small_denominator": false,
+   "commits_per_ticket": 0.3074238578680203,
+   "ceiling": 0.25380710659898476,
+   "fill": 0.8287500000000001,
    "live": {
     "tracker_issues_live": 3152,
     "cited_within_live_range": 663,
@@ -997,7 +1078,10 @@
    "distinct_keys_cited_total": 2344,
    "cited_above_frozen_range": 248,
    "share_cited_above_frozen_range": 0.10580204778156997,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 3.1555023923444976,
+   "ceiling": 1.4723551302498672,
+   "fill": 0.37840765481133776
   },
   {
    "project": "struts",
@@ -1027,7 +1111,10 @@
    "distinct_keys_cited_total": 2194,
    "cited_above_frozen_range": 362,
    "share_cited_above_frozen_range": 0.1649954421148587,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 1.640094247005694,
+   "ceiling": 0.8872962890241508,
+   "fill": 0.40539942465147155
   },
   {
    "project": "syncope",
@@ -1057,7 +1144,10 @@
    "distinct_keys_cited_total": 1717,
    "cited_above_frozen_range": 318,
    "share_cited_above_frozen_range": 0.18520675596971461,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 5.71030303030303,
+   "ceiling": 2.0545454545454547,
+   "fill": 0.4126843657817109
   },
   {
    "project": "tomee",
@@ -1095,7 +1185,10 @@
    "distinct_keys_cited_total": 3488,
    "cited_above_frozen_range": 560,
    "share_cited_above_frozen_range": 0.16055045871559634,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 2.9957541074395424,
+   "ceiling": 0.9652944434188665,
+   "fill": 0.5599541021227769
   },
   {
    "project": "wicket",
@@ -1125,7 +1218,10 @@
    "distinct_keys_cited_total": 4353,
    "cited_above_frozen_range": 164,
    "share_cited_above_frozen_range": 0.037675166551803356,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 3.2107312851579404,
+   "ceiling": 0.9907687869609115,
+   "fill": 0.6098413160576504
   },
   {
    "project": "zeppelin",
@@ -1155,7 +1251,10 @@
    "distinct_keys_cited_total": 3296,
    "cited_above_frozen_range": 480,
    "share_cited_above_frozen_range": 0.14563106796116504,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 1.0167438546490914,
+   "ceiling": 0.6173851086569291,
+   "fill": 0.812463935372187
   },
   {
    "project": "dubbo",
@@ -1185,7 +1284,10 @@
    "distinct_keys_cited_total": 393,
    "cited_above_frozen_range": 345,
    "share_cited_above_frozen_range": 0.8778625954198473,
-   "small_denominator": true
+   "small_denominator": true,
+   "commits_per_ticket": 114.0,
+   "ceiling": 12.564102564102564,
+   "fill": 0.0489795918367347
   },
   {
    "project": "rocketmq",
@@ -1225,7 +1327,10 @@
    "distinct_keys_cited_total": 175,
    "cited_above_frozen_range": 36,
    "share_cited_above_frozen_range": 0.2057142857142857,
-   "small_denominator": true
+   "small_denominator": true,
+   "commits_per_ticket": 23.8671875,
+   "ceiling": 1.3697916666666667,
+   "fill": 0.26425855513307983
   },
   {
    "project": "servicecomb-java-chassis",
@@ -1255,7 +1360,10 @@
    "distinct_keys_cited_total": 1277,
    "cited_above_frozen_range": 353,
    "share_cited_above_frozen_range": 0.2764291307752545,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": 2.006878761822872,
+   "ceiling": 1.12725709372313,
+   "fill": 0.35240274599542326
   },
   {
    "project": "shardingsphere",
@@ -1287,7 +1395,10 @@
    "distinct_keys_cited_total": 8,
    "cited_above_frozen_range": 8,
    "share_cited_above_frozen_range": 1.0,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": null,
+   "ceiling": null,
+   "fill": null
   },
   {
    "project": "skywalking",
@@ -1319,7 +1430,10 @@
    "distinct_keys_cited_total": 11,
    "cited_above_frozen_range": 11,
    "share_cited_above_frozen_range": 1.0,
-   "small_denominator": false
+   "small_denominator": false,
+   "commits_per_ticket": null,
+   "ceiling": null,
+   "fill": null
   }
  ],
  "missing_clones": [],
@@ -1376,13 +1490,15 @@
    "n": 12,
    "min": 0.0004008819402685909,
    "max": 0.6863400148478099,
-   "median": 0.5552779985617501
+   "median": 0.5259933602243747,
+   "median_upper_middle_legacy": 0.5552779985617501
   },
   "dropped": {
    "n": 21,
    "min": 0.29474772844795744,
    "max": 0.8478787878787879,
-   "median": 0.5324074074074074
+   "median": 0.5324074074074074,
+   "median_upper_middle_legacy": 0.5324074074074074
   },
   "dropped_above_worst_passing": [
    "accumulo",
@@ -1420,13 +1536,15 @@
     "n": 10,
     "min": 0.21034263959390864,
     "max": 0.6863400148478099,
-    "median": 0.5552779985617501
+    "median": 0.5259933602243747,
+    "median_upper_middle_legacy": 0.5552779985617501
    },
    "dropped": {
     "n": 20,
     "min": 0.29474772844795744,
     "max": 0.8478787878787879,
-    "median": 0.5389755011135857
+    "median": 0.5356914542604966,
+    "median_upper_middle_legacy": 0.5389755011135857
    }
   }
  },
@@ -1442,6 +1560,21 @@
    "delta_pp": -2.1412915191367383,
    "published_distinct_keys_cited": null,
    "published_cited_keys_not_in_jira": 2
-  }
+  },
+  "end_to_end_mean_pp": 1.758815279548797,
+  "end_to_end_max_pp": 11.9140510742247,
+  "end_to_end_worst": "kylin",
+  "end_to_end_within_3pp": 11,
+  "end_to_end_max_excl_worst_pp": 2.930338655904552,
+  "validated_csr_range": [
+   0.8255933952528379,
+   0.9828498449188104
+  ],
+  "applied_csr_range": [
+   0.1045473000406009,
+   0.7811594202898551
+  ],
+  "applied_n": 21,
+  "applied_inside_validated": 0
  }
 }

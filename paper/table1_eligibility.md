@@ -8,20 +8,20 @@
 
 ## Eligible (12)
 
-| # | project | Jira key(s) | HEAD | commits scanned | single-key | multi-key | tickets total | tickets cited | **ticket-side** |
-|---:|---|---|---|---:|---:|---:|---:|---:|---:|
-| 1 | ozone † | `HDDS,OZONE` | `4f5ae5454f` | 10,962 | 98.3% | **98.3%** | 15,909 | 10,162 | **63.9%** |
-| 2 | tez † | `TEZ` | `dd8137f4c1` | 3,123 | 97.4% | **97.4%** | 4,724 | 2,774 | **58.7%** |
-| 3 | hive | `HIVE` | `6730aadd18` | 18,213 | 97.0% | **97.0%** | 29,635 | 16,529 | **55.8%** |
-| 4 | hbase ‡ | `HBASE` | `4d417aacea` | 21,220 | 92.5% | **92.5%** | 30,063 | 16,704 | **55.6%** |
-| 5 | phoenix ‡ | `PHOENIX` | `1b55fb4b33` | 4,264 | 92.0% | **92.0%** | 7,931 | 3,277 | **41.3%** |
-| 6 | zookeeper † | `ZOOKEEPER` | `53a78e36f9` | 2,718 | 90.4% | **90.4%** | 4,875 | 2,291 | **47.0%** |
-| 7 | ranger † | `RANGER` | `f133c21389` | 5,390 | 86.3% | **86.3%** | 5,699 | 3,725 | **65.4%** |
-| 8 | oozie † | `OOZIE` | `8bdac8be4f` | 2,412 | 85.2% | **85.2%** | 3,727 | 1,851 | **49.7%** |
-| 9 | knox † | `KNOX` | `6bdf64cdfd` | 3,194 | 84.3% | **84.3%** | 3,391 | 2,340 | **69.0%** |
-| 10 | drill | `DRILL` | `86e9b82f16` | 4,594 | 84.2% | **84.2%** | 8,507 | 3,676 | **43.2%** |
-| 11 | kylin | `KYLIN` | `b5b94b51ab` | 968 | 83.9% | **83.9%** | 5,931 | 709 | **12.0%** |
-| 12 | sqoop † | `SQOOP` | `f8beae32a0` | 969 | 82.6% | **82.6%** | 3,152 | 668 | **21.2%** |
+| # | project | Jira key(s) | HEAD | commits scanned | single-key | multi-key | tickets total | commits/ticket | ceiling | tickets cited | **ticket-side** | TRR/ceiling |
+|---:|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | ozone † | `HDDS,OZONE` | `4f5ae5454f` | 10,962 | 98.3% | **98.3%** | 15,909 | 0.69 | 67.7% | 10,162 | **63.9%** | 0.94 |
+| 2 | tez † | `TEZ` | `dd8137f4c1` | 3,123 | 97.4% | **97.4%** | 4,724 | 0.66 | 64.4% | 2,774 | **58.7%** | 0.91 |
+| 3 | hive | `HIVE` | `6730aadd18` | 18,213 | 97.0% | **97.0%** | 29,635 | 0.61 | 59.6% | 16,529 | **55.8%** | 0.94 |
+| 4 | hbase ‡ | `HBASE` | `4d417aacea` | 21,220 | 92.5% | **92.5%** | 30,063 | 0.71 | 65.3% | 16,704 | **55.6%** | 0.85 |
+| 5 | phoenix ‡ | `PHOENIX` | `1b55fb4b33` | 4,264 | 92.0% | **92.0%** | 7,931 | 0.54 | 49.5% | 3,277 | **41.3%** | 0.84 |
+| 6 | zookeeper † | `ZOOKEEPER` | `53a78e36f9` | 2,718 | 90.4% | **90.4%** | 4,875 | 0.56 | 50.4% | 2,291 | **47.0%** | 0.93 |
+| 7 | ranger † | `RANGER` | `f133c21389` | 5,390 | 86.3% | **86.3%** | 5,699 | 0.95 | 81.6% | 3,725 | **65.4%** | 0.80 |
+| 8 | oozie † | `OOZIE` | `8bdac8be4f` | 2,412 | 85.2% | **85.2%** | 3,727 | 0.65 | 55.1% | 1,851 | **49.7%** | 0.90 |
+| 9 | knox † | `KNOX` | `6bdf64cdfd` | 3,194 | 84.3% | **84.3%** | 3,391 | 0.94 | 79.4% | 2,340 | **69.0%** | 0.87 |
+| 10 | drill | `DRILL` | `86e9b82f16` | 4,594 | 84.2% | **84.2%** | 8,507 | 0.54 | 45.4% | 3,676 | **43.2%** | 0.95 |
+| 11 | kylin | `KYLIN` | `b5b94b51ab` | 968 | 83.9% | **83.9%** | 5,931 | 0.16 | 13.7% | 709 | **12.0%** | 0.87 |
+| 12 | sqoop † | `SQOOP` | `f8beae32a0` | 969 | 82.6% | **82.6%** | 3,152 | 0.31 | 25.4% | 668 | **21.2%** | 0.84 |
 
 † held-out corpus: coverage and existence counts only, no outcome ever observed (`PROJECT_STATE.md` §3).
 ‡ quarantined 2026-07-30, dropped from the held-out corpus; coverage retained, outcome inputs sequestered in `spent/` (`spent/README.md`).
@@ -60,6 +60,8 @@
 ## Caption
 
 **The two traceability channels diverge, and the one the literature publishes is not the one an issue-linked study needs.** The commit-side rate — what fraction of commits cite a ticket — is what SEOSS 33 reports and what selection criteria use. The ticket-side rate — what fraction of tickets ever receive a citing commit — is what a ticket-anchored study depends on. **Kylin cites a ticket in 83.9% of its commits while only 12.0% of its tickets are ever touched by one** — it clears the bar comfortably and leaves seven of every eight tickets with no commit at all. Across the 12 eligible projects the commit-side rate runs 82.6–98.3% while the ticket-side rate runs **12.0%–69.0%, with none above 69.0%**.
+
+**The ceiling, and why it reframes the divergence.** A commit that cites a ticket contributes at most one NEW distinct ticket to the ticket-side numerator, so the rate cannot exceed `commit-side x commits / tickets` (method §3.1.4). That bound BINDS for all twelve: it runs 13.7% (kylin) to 81.6% (ranger), and every project reaches 80–95% of it. The ticket-side spread is therefore almost entirely a spread in commits per ticket, not in citation discipline — `TRR/ceiling` has a median of 0.89 and a range of only 1.19x across the twelve, against a 5.8x spread in the rate itself.
 
 **Truncation caveat, load-bearing.** Ticket-side coverage was computed only for the 12 projects that had already cleared the commit-side bar. The 12.0%–69.0% range is therefore *within-passing variation* and licenses no claim about the 26 dropped projects, whose ticket-side rates were never measured, nor about any correlation between the two channels in general.
 

@@ -183,3 +183,44 @@ directions for six. Any claim of first-to-measure must go.
 [Sampling Projects in GitHub (arXiv)](https://arxiv.org/pdf/2103.04682) ·
 [GHS live API](https://seart-ghs.si.usi.ch/) ·
 [Vieira et al. PROMISE'19 (ResearchGate, 403)](https://www.researchgate.net/publication/335594592)
+
+
+---
+
+## 5. The bug-side linkage literature (added 2026-08-05)
+
+Added in response to the MSR review's central finding: the canonical bug-side
+work on this exact asymmetry was missing. Every item below was verified against
+the source — authors, venue, year, identifier, and the attributed claim. Details
+of the verification are in `audit/CITATIONS.md`.
+
+**Bachmann, Bird, Rahman, Devanbu & Bernstein, FSE'10** — *The Missing Links:
+Bugs and Bug-fix Commits*, doi:10.1145/1882291.1882308, pp. 97–106. A core Apache
+HTTP Server developer annotated **493 commits over six weeks** exhaustively using
+their tool Linkster, establishing ground truth rather than inferring it. Against
+it, **only 47.6% of bug-fix-related commits are documented in the bug tracking
+database**. Verified from the paper's own text.
+
+**Bird, Bachmann, Aune, Duffy, Bernstein, Filkov & Devanbu, ESEC/FSE'09** —
+*Fair and Balanced? Bias in Bug-Fix Datasets*, pp. 121–130. Missing links are not
+missing at random, so a dataset built from linked records is a biased sample and
+models fitted to it inherit the bias.
+
+**Nguyen, Adams & Hassan, WCRE'10** — *A Case Study of Bias in Bug-Fix Datasets*,
+pp. 259–268, IEEE. **Venue correction:** the review that prompted this revision
+cited this as MSR'10. It is WCRE'10. The review also characterised it as a
+replication on a system with near-perfect linkage; that characterisation could
+not be verified from an accessible copy and is **not asserted here**.
+
+**Herzig, Just & Zeller, ICSE'13** — *It's not a bug, it's a feature: how
+misclassification impacts bug prediction*. **More than 7,000 issue reports across
+five open-source projects, 33.8% misclassified**, and **39% of files marked
+defective never had a bug**. Bears directly on this study's decision to admit all
+issue types: a denominator that admits every type cannot be moved by
+misclassification.
+
+**Wu, Zhang, Kim & Cheung, ESEC/FSE'11** — *ReLink: Recovering Links between Bugs
+and Changes*, doi:10.1145/2025113.2025120, Szeged. Learns link features — time
+proximity, author identity, textual similarity — and recovers missing links well
+above regex heuristics. It recovers **links**, not **key sets**, which is why
+§5.5's claim survives in qualified form.
