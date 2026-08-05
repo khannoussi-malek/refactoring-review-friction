@@ -9,7 +9,9 @@
    "ticket": "YARN-10189",
    "comment": "HI [~bteke], Good job, very nice refactor. Latest patch LGTM, committed to trunk. Please take care of uploading patches for branch-3.3 and branch-3.2 to have a jenkins result for both branches. Thanks",
    "label": "I",
-   "rationale": "'very nice refactor' is praise attached to an approval; no argument about code shape. Rule 3 fires before rule 4."
+   "rationale": "'very nice refactor' is praise attached to an approval; no argument about code shape. Rule 3 fires before rule 4.",
+   "rule_3_4_disputed": "approval + 'very nice refactor'",
+   "alt_label": "C"
   },
   {
    "n": 2,
@@ -23,7 +25,9 @@
    "ticket": "HDFS-16174",
    "comment": "Thanks [~gautham] for the refactor. Merged PR 3303 to trunk.",
    "label": "I",
-   "rationale": "'the refactor' as a fact accompanying a merge notice."
+   "rationale": "'the refactor' as a fact accompanying a merge notice.",
+   "rule_3_4_disputed": "commit notice + 'the refactor'",
+   "alt_label": "C"
   },
   {
    "n": 4,
@@ -86,7 +90,9 @@
    "ticket": "HDDS-1458",
    "comment": "bq. The disk tests are only setting up structure to run inline in maven only. Can we support both the approaches?",
    "label": "I",
-   "rationale": "'setting up structure' is test-harness setup; the question is about how tests are run."
+   "rationale": "'setting up structure' is test-harness setup; the question is about how tests are run.",
+   "rule_3_4_disputed": "about how tests are run + 'structure'",
+   "alt_label": "C"
   },
   {
    "n": 13,
@@ -121,7 +127,9 @@
    "ticket": "HDFS-11106",
    "comment": "+1 on 001.patch. The refactoring is definitely helpful for future development.",
    "label": "I",
-   "rationale": "approval; 'the refactoring is helpful' is praise, not an argument about shape."
+   "rationale": "approval; 'the refactoring is helpful' is praise, not an argument about shape.",
+   "rule_3_4_disputed": "approval + 'the refactoring is definitely helpful'",
+   "alt_label": "C"
   },
   {
    "n": 18,
@@ -135,7 +143,9 @@
    "ticket": "HDDS-18",
    "comment": "[~nandakumar131] Thanks for reviewing the patch! HDDS-18.001.patch addresses your comments. In OzoneClientFactory now I am just logging the error message. Also I have refactored OzoneRestClientException to OzoneClientException.",
    "label": "I",
-   "rationale": "reports a rename of an exception type already made; no argument advanced for it."
+   "rationale": "reports a rename of an exception type already made; no argument advanced for it.",
+   "rule_3_4_disputed": "reports a class rename (naming) + 'refactored X to Y'",
+   "alt_label": "C"
   },
   {
    "n": 20,
@@ -177,7 +187,9 @@
    "ticket": "YARN-10548",
    "comment": "[~gandras] Seems like none of the above failures are strongly related to my patch as I've been just moving around code.",
    "label": "I",
-   "rationale": "'just moving around code' names a structural operation but only as an aside explaining unrelated test failures."
+   "rationale": "'just moving around code' names a structural operation but only as an aside explaining unrelated test failures.",
+   "rule_3_4_disputed": "explains test failures + 'just moving around code'",
+   "alt_label": "C"
   },
   {
    "n": 26,
@@ -284,5 +296,6 @@
    "label": "C",
    "rationale": "questions about how to run the tests."
   }
- ]
+ ],
+ "disputed_note": "codebook.md rule 3 (INCIDENTAL: a structural word appears but is not an argument) and rule 4 (STYLE/CORRECTNESS: review about behaviour, tests, naming, approval) both fire on these comments. The decision rule says apply in order, so rule 3 wins and the label is I. alt_label records what the same comment gets if rule 4 is applied first."
 }

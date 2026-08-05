@@ -128,6 +128,34 @@ def main():
     print(f"  precision : human {kr['precision_human']:.0%}  llm {kr['precision_llm']:.0%}")
     print(f"  recall    : human {kr['recall_human']:.0%}  llm {kr['recall_llm']:.0%}")
 
+    # ---- how much of the divergence is the instrument, not the raters? ------
+    # codebook.md rules 3 and 4 both fire on a comment that is an approval, a
+    # test remark or a naming report AND contains a structural word. The decision
+    # rule says apply in order, so rule 3 wins. Re-labelling only those comments
+    # under the opposite order shows how much of the gap that single ordering
+    # choice accounts for.
+    n_disp = sum(1 for r in rows if "alt_label" in r)
+    alt = {}
+    for name, subset in (("flagged", flagged), ("unflagged", unflagged)):
+        m = margins([r.get("alt_label", r["label"]) for r in subset])
+        alt[name] = {"llm_margins_alt": m,
+                     "bounds": kappa_bounds(HUMAN_MARGINS[name], m),
+                     "relabelled": sum(1 for r in subset if "alt_label" in r)}
+        bd = alt[name]["bounds"]
+        print(f"\n  [rule 4 first] {name}: llm " +
+              "  ".join(f"{k}={m[k]:2d}" for k in CATS) +
+              f"  =>  kappa in [{bd['kappa_min']:+.3f}, {bd['kappa_max']:+.3f}]"
+              f"   ({alt[name]['relabelled']} comments relabelled)")
+    m = margins([r.get("alt_label", r["label"]) for r in rows])
+    alt["pooled"] = {"llm_margins_alt": m,
+                     "bounds": kappa_bounds(pooled_h, m), "relabelled": n_disp}
+    bd = alt["pooled"]["bounds"]
+    print(f"  [rule 4 first] pooled : llm " +
+          "  ".join(f"{k}={m[k]:2d}" for k in CATS) +
+          f"  =>  kappa in [{bd['kappa_min']:+.3f}, {bd['kappa_max']:+.3f}]"
+          f"   ({n_disp} comments relabelled)")
+    out["rule_order_sensitivity"] = alt
+
     json.dump(out, open(args.out, "w"), indent=1)
     print(f"\nWrote {args.out}")
 
