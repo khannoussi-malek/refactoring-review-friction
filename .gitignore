@@ -7,7 +7,7 @@ hadoop/
 RefactoringMiner/
 RefactoringMiner-src/
 _rm_unzip/
-
+.claude/
 # ── Large / intermediate RefactoringMiner output (re-detect with run_rm_safe.sh) ──
 refminer*.json
 rm_chunks/

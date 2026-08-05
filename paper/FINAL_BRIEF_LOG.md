@@ -425,3 +425,112 @@ which 12,419. If they counted something slightly different — excluding merges,
 say, or counting a different branch — then the agreement is a coincidence after
 all rather than the expected behaviour of a deterministic count. I cannot rule
 that out from their published table, and the argument in §2.1 and §4.4 assumes it.
+
+---
+
+# Evidence-extraction brief — 2026-08-05
+
+**Scope: retrieval only.** Get the two papers, quote what they say against nine
+items, trace ReLink's 54%, lay it out side by side. **No determination was made.**
+
+## Outputs
+
+| file | state |
+|---|---|
+| `paper/PRIOR_ART_EVIDENCE.md` | new — side-by-side table, 9 items × 2 papers, verbatim + locations, the 54% trace, alignments, differences, what could not be established |
+| `paper/DETERMINATION_WORKSHEET.md` | new — blank. 52 questions across four sections plus a branch A/B/C block. Every answer field empty |
+
+## Sources obtained
+
+All three **in full text**, not abstracts:
+
+| source | via | pages | chars |
+|---|---|---:|---:|
+| Bachmann et al., FSE'10, *The Missing Links* | Microsoft Research open copy | 10 | 58,418 |
+| Bird et al., ESEC/FSE'09, *Fair and Balanced?* | UC Davis (Filkov) open copy | 10 | 85,602 |
+| Wu et al., ESEC/FSE'11, *ReLink* | MIT (Kim) open copy | 11 | 62,464 |
+
+## Sources unavailable
+
+None needed for the brief. Not obtained, and not required: Bachmann's or Bird's
+replication packages (would settle whether their denominators admit non-bug issue
+types — recorded as open question 1 and 2 in `PRIOR_ART_EVIDENCE.md`), and any
+correspondence with the ReLink authors (open question 3).
+
+## Verification of my own extractions
+
+272 quotations, each searched for in the source file:
+
+| verdict | n |
+|---|---:|
+| EXACT — character-for-character | 216 |
+| WS — matches after collapsing PDF line breaks | 39 |
+| DEHYPH — plus rejoining a hyphenated line break | 1 |
+| SILENT — nothing to check | 12 |
+| needed elision of an interpolated figure/footnote/page break | 4 |
+| **fabricated** | **0** |
+
+The 4 elisions are marked ⚠ in the evidence file; every word was verified present
+and in order, only interpolated PDF furniture was removed. Two adversarial passes
+run against the extractions returned 184 CONFIRMED and 39 QUOTE_NOT_VERBATIM of
+which all 39 were labelled whitespace-only. Their three substantive findings are
+carried into the evidence file rather than suppressed — see below.
+
+**One defect in my own harness, caught and fixed.** Routing quotations to a source
+by the block's `paper` field sent 98 Bird quotes to the Bachmann file, because
+Bird is a co-author of Bachmann and the completeness pass covers both papers in
+one block. It produced 98 false fabrication flags. Fixed to route by the page
+marker in the `location` field first. The counts above are post-fix.
+
+## The 54%
+
+Traced. **Neither cited paper contains the string "54%" or "46%".** The figure is
+exactly derivable from Bachmann's Table 1, Original Dataset column: 559 fixed bug
+reports, 256 linked, (559−256)/559 = **54.20%**. Bird's equivalent, computed from
+its Table 1, is 63.38% pooled and never 54% for any of its seven columns; closest
+is Apache at 50.40%. So ReLink's number is right, its denominator matches
+Bachmann's `#Fixed bug reports` as defined by that paper's footnote 4, and its
+joint attribution to "[6, 7]" is loose — it is Bachmann's figure, from one project
+(Apache HTTP Server, 2004-06-18 – 2008-04-25), never printed as a percentage in
+the source.
+
+## Item 9 — where the two SILENTs are not alike
+
+Item 9 (linkage rate as a corpus-selection criterion) was called the most
+important. Both papers came back SILENT, but the two silences differ and the file
+says so:
+
+* **Bachmann's is clean.** The searches covered select / criteri / exclud /
+  threshold / suitable / eligib / candidate / generaliz. The paper's only stated
+  reason for its project is popularity among researchers; its other selection
+  language governs the six-week window inside the already-chosen project.
+* **Bird's is not.** Both adversarial passes independently flagged it as
+  over-broad, citing p. 9 §7: *"we hope to use commercial datasets that have
+  nearly 100% linking to conduct monte-carlo simulations"* — a linkage figure
+  attached to dataset choice, though framed as the authors' own future work.
+  Bird also drops one dataset (PROMISE) for a data-availability reason, not a
+  linkage rate. Both passages are quoted in full in the evidence file, and
+  **which reading matters is left as a worksheet judgment.**
+
+## Statement
+
+**No determination was made.** `paper/PRIOR_ART_EVIDENCE.md` contains no sentence
+concluding that the ticket realisation rate is or is not the quantity Bachmann or
+Bird measured. Its "alignments" and "differences" sections are quotation lists,
+each headed *no conclusion drawn*.
+
+**No manuscript file was modified.** `paper/manuscript/` is untouched — all nine
+section files, `PAPER.md`, and the LaTeX preprint are byte-identical to their
+state before this brief. `paper/BACHMANN_DETERMINATION.md` was not written. No
+`[DETERMINATION PENDING]` marker was edited: they remain in `related.md` §2.4,
+`related.md` §2.2 item 5, and the `UNDETERMINED` note in `CITATION.cff`. Both
+gates are unchanged, nothing was split or trimmed, and nothing was published.
+
+## Uncertainty
+
+The nine items were searched with fixed keyword sets plus a completeness pass
+asking what was missed. That is thorough but not a guarantee of exhaustiveness: a
+paper can address an item in language none of the search terms reach. A **SILENT**
+in the evidence file means *the searches described there did not find it*, and
+Bird's item 9 is the demonstration that a SILENT can be wrong — it was overturned
+by adversarial review, not by the original search.
