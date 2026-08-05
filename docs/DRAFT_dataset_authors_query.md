@@ -1,94 +1,114 @@
 # DRAFT — query to the Public Jira Dataset authors
 
-**Status: DRAFT. NOT SENT. Do not send without the author's review.**
+**Status: DRAFT. NOT SENT.** Do not send without the author's review.
 
-Written 2026-08-05. Subject matter: `README.md` §9(a) and `paper/numbers.md` §5,
-"Validation note — the project count, and why 1,822 is not usable".
+Written 2026-08-05. Subject matter: `README.md` §9(a), `paper/numbers.md` §5
+("Validation note — the project count, and why 1,822 is not usable") and §10e.
 
-The email is deliberately short, states the reproduction precisely, attributes
-nothing, and claims no error. The question is answerable in one sentence if a
-normalisation step exists, and worth knowing either way.
+## Recipients — verified from the paper's own title page
 
-**Before sending, check:**
+Read from the title page of arXiv:2201.08368, *An Alternative Issue Tracking
+Dataset of Public Jira Repositories*, Montgomery, Lüders & Maalej, MSR 2022
+(doi:10.1145/3524842.3528486). Not from a search summary.
 
-* the correct recipient and the current preferred contact route for Zenodo
-  15719919 — the deposit page, the dataset's README, or the associated paper's
-  corresponding author. **This was not verified;** no address is filled in below
-  for that reason.
-* whether the version numbers below match the version actually used. This repo
-  parsed the deposit at `scripts/jira_archive.py` (`eee902f`); the exact Zenodo
-  version string was not recorded and should be quoted in the email.
-* whether an issue tracker or discussion thread on the deposit is the better
-  channel than email, since the answer is useful to other users.
+| | |
+|---|---|
+| Lloyd Montgomery | `lloyd.montgomery@uni-hamburg.de` |
+| Clara Lüders | `clara.marie.lueders@uni-hamburg.de` |
+| Walid Maalej | `walid.maalej@uni-hamburg.de` |
+
+All University of Hamburg. The Zenodo record itself lists **no** contact route,
+no repository link and no corresponding author — the paper is the only published
+route, which is why it was used.
+
+**Check before sending:** that these addresses are current (the paper is from
+2022), and whether a Zenodo comment or an issue on the authors' own repository
+would be the better channel, since the answer is useful to other users of the
+dataset.
 
 ---
 
-**To:** _(to be filled in — see above)_
+**To:** lloyd.montgomery@uni-hamburg.de; clara.marie.lueders@uni-hamburg.de; walid.maalej@uni-hamburg.de
 
-**Subject:** Public Jira Dataset — reproducing the 1,822 project count
+**Subject:** The Public Jira Dataset — a project count I could not reproduce
 
 ---
 
-Dear Dr — ,
+Dear Dr Montgomery, Dr Lüders and Professor Maalej,
 
 I have been using the Public Jira Dataset (Zenodo 15719919) as a base-rate source
-for a methods paper on corpus eligibility, and I have not been able to reproduce
-the published project count. I suspect I am missing a normalisation step rather
-than that anything is wrong, and I would rather ask than guess.
+and cannot reproduce the published project count. I expect I am missing a
+processing step rather than that anything is wrong, so I would rather ask than
+guess.
 
-What I did. I streamed the mongodump archive directly rather than restoring it,
-and parsed 2,686,282 issues against the ~2.7M published, a difference of 0.5%
-which I assume is expected. On that pass:
+Streaming the mongodump archive, I parse 2,686,282 issues against the 2.7 million
+published. On that pass, counting distinct project **keys** in each issue's final
+state gives **1,276** projects. Implementing the count as your notebook defines
+it — the union of project **names** in the final state and in the changelog —
+gives **2,506**. The published figure is **1,822**.
 
-* counting distinct project **keys** in each issue's final state gives **1,276**
-  projects;
-* implementing the count as your notebook defines it —
-  `set.union(unique_projects_final, unique_projects_history)` over project
-  **names** — gives **2,506**;
-* the README reports **1,822**.
+The one measurement I have that bears on the gap: across those issues, 326
+project ids carry more than one distinct name and none carries more than one key.
+Removing the surplus names brings the name-based union to roughly 2,180, so
+renaming appears to explain part of the difference and not all of it.
 
-The one measurement I have that bears on the gap: across those 2,686,282 issues,
-**326 project ids carry more than one distinct name, and 0 project keys do**. For
-example `Jira/12910` appears as *SourceTree*, *SourceTree For Mac* and
-*Sourcetree For Mac*, the last differing only in capitalisation; `Mojang/10400`
-appears as *Minecraft* and *Minecraft: Java Edition*. Removing the surplus names
-brings the name-based union down to roughly 2,180, so renaming explains part of
-the overshoot from 2,506 but not the remainder down to 1,822.
+**Is there a normalisation or deduplication step between these two figures that I
+have not reproduced?** That is my only question. If the published count comes
+from a different pass or a filter on the project set, I would cite whichever
+definition you consider canonical.
 
-My question is simply: **is there a normalisation or deduplication step between
-the two figures that I have not reproduced?** If the published 1,822 comes from a
-different pass, a different snapshot, or a filter on the project set — archived
-projects excluded, or a minimum issue count — that would resolve it, and I would
-cite whichever definition you consider canonical.
+I am happy to send the parsing script and the per-project counts if that would be
+useful.
 
-For what it is worth from a user's side, the key-based count has been the more
-useful of the two for my purpose, because keys turned out to be stable
-identifiers within a snapshot while names are not.
-
-The dataset has been genuinely useful — it is the only source I found that lets a
+Thank you for depositing the dataset — it is the only source I found that lets a
 single-project observation be checked against a base rate across sixteen
 organisations, and streaming the archive rather than restoring it made it usable
-on a laptop. Thank you for depositing it.
+on a laptop.
 
 With best wishes,
 
 Malek Khannoussi
-Independent researcher
 khannoussimalek@gmail.com
 https://github.com/khannoussi-malek/refactoring-review-friction
 
 ---
 
-## Notes for the author, not part of the email
+## Notes for the author — not part of the email
 
-* Every number quoted is in `paper/numbers.md` §5 with its provenance:
-  2,686,282 parsed and 1,276/2,506 from `scripts/jira_estimates.py` (`eee902f`),
-  the 326-ids-multiple-names measurement at `0f116aa`, and the id↔key 1:1 result
-  at `5179907`.
-* The "roughly 2,180" figure is stated in the repository as *consistent with
-  rename inflation, unverified*. It is phrased as an approximation here for that
-  reason. Do not tighten it before sending.
-* If a reply establishes the canonical definition, the correction is **additive**:
-  add a dated note to `paper/numbers.md` §5 rather than editing the existing
-  three-figure table, and update `README.md` §9(a) to record that the question
-  was answered and by whom.
+**Word count: 287.** Under the 300 asked for.
+
+**A judgment call you should check.** The brief asked the email to carry two
+findings: the project count, and the spring-batch result (0% every year since
+2020; the published 4,046 does not reproduce). **I included only the first.**
+
+The reason: **4,046 is our figure, not theirs.** It comes from
+`paper/eligibility_failure_modes.md` and counts `BATCH-` keys in spring-batch's
+*git commit messages*, which is a measurement this study made against a clone —
+nothing in the Public Jira Dataset produces it. Writing to the dataset's authors
+that we could not reproduce our own number would confuse the request, and the
+brief also asked for "one question, plainly asked".
+
+If you want the spring-batch material to reach them, the honest framing is a
+separate observation rather than a failure to reproduce, along these lines — and
+it is genuinely useful to them, because BATCH is a project in the Spring Jira
+they distribute:
+
+> Separately, and only as an observation about a project in the Spring Jira:
+> spring-batch's commits cite `BATCH-` keys in 45.6% of 7,035 commits overall,
+> but in none of the most recent 1,000 and at 0% in every year from 2020. Anyone
+> using the dataset for issue–commit linkage on that project would get very
+> different answers depending on where their commit window stops.
+
+Adding it takes the email to roughly 350 words.
+
+**Every number in the email is sourced.** 2,686,282 / 1,276 / 2,506 / 1,822 and
+the 326-ids result are `scripts/jira_estimates.py` (`eee902f`) with the
+id↔name and id↔key measurements at `0f116aa` and `5179907`, recorded at
+`paper/numbers.md` §5 and §10d. The "roughly 2,180" is stated as an approximation
+in the repository (*consistent with rename inflation, unverified*) and is phrased
+that way here. **Do not tighten it before sending.**
+
+**If a reply establishes the canonical definition**, the correction is additive:
+add a dated note to `paper/numbers.md` §5 rather than editing the three-figure
+table, and update `README.md` §9(a) to record that the question was answered and
+by whom.

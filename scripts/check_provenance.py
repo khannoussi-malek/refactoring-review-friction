@@ -79,8 +79,9 @@ NOT_MEASUREMENTS = {
     "15719919", "1882291.1882308", "2025113.2025120", "1882308", "2025120",
     # upstream issue, PR and branch identifiers, and one commit hash in prose
     "1124", "998", "1471779", "256", "5179907",
-    # detector version 3.1.4 tokenises as "3.1"
-    "3.1",
+    # detector version 3.1.4 tokenises as "3.1"; licence versions CC BY 4.0
+    # and CFF 1.2.0 tokenise as "4.0" and "1.2"
+    "3.1", "4.0", "1.2", "2.0",
     # page ranges of cited works
     "97", "106", "121", "130", "259", "268",
 }

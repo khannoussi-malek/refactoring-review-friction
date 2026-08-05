@@ -807,3 +807,32 @@ tables independently):
 Source `scripts/llm_rater_pilot.py` (`7cc485b`) for the 0.491 and 0.840
 endpoints; the ladder is in `paper/LLM_RATER_PILOT.md` §4.1 and was reproduced by
 the independent audit.
+
+### 10h. The Flink truncation check — resolved 2026-08-05
+
+`scripts/flink_truncation.py` → `paper/flink_truncation.json`. Closes the item
+§1b flagged as "**This is untested**" and `UNSOURCED.md` §2 listed.
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| flink clone depth | pinned sha reaches **38,219** of **51,542** all-ref commits (**74.2%**); pinned branch spans **2010-12-15 → 2026-07-24**; repository's first commit is **2010-12-15** — **not truncated** | `scripts/flink_truncation.py` | `1c5add6` |
+| the truncation test | earliest **12,419** commits (2010-12-15 → 2017-11-17): **5,214** cite a key = **41.9841%** | same | `1c5add6` |
+| SEOSS 33 reports | **41.98%** over 12,419 change sets | `paper/PRIOR_WORK.md` §1 | `215b10f` |
+| **gap on the matched window** | **+0.0041pp**, against +24.1pp on full history | `scripts/flink_truncation.py` | `1c5add6` |
+| remainder after the SEOSS window | 20,026 / 25,800 = **77.62%** (2017-11-20 → 2026-07-24) | same | `1c5add6` |
+| flink by year | **0.0%** in 2010, 2011, 2012 and 2013; **19.4%** 2014; **66.0%** 2015; 70–88% every year since | same | `1c5add6` |
+| flink graduated the Apache Incubator | **December 2014** — the year the convention appears. Consistent, not established: n=1 and no test was run | `scripts/era_separation.py` | `1c5add6` |
+| probe commit counts re-derived | **38 of 38** projects reproduce their published `commits_scanned` exactly at the pinned sha | `scripts/flink_truncation.py` | `1c5add6` |
+| truncated default branches across the 38 | **kylin 7.5%**, karaf 45.4%, jena 49.0%, james-project 89.4% — **no new cases**; flink is not among them | same | `1c5add6` |
+
+**CLAIM CHANGE, not yet applied to the manuscript.** `related.md` §2.1,
+`results.md` §4.4 and §1b of this file all say the check has not been run. The
+correct statement is now **"5 of 5 overlapping projects agree once scope is
+matched, the fifth to within 0.004pp"**. The edits are deferred because the
+manuscript is frozen pending the split decision; see `paper/FLINK_TRUNCATION.md`
+§7 and `paper/FINAL_BRIEF_LOG.md`.
+
+**And it is a second instance of mode 4.** Flink is the mirror of spring-batch:
+0% for four years then 70–88%, against spring-batch's 45.6% overall and 0% every
+year since 2020. A single lifetime rate averages two regimes in both. That
+applies to this study's own 0.80 bar, which is a lifetime rate at a pinned sha.
