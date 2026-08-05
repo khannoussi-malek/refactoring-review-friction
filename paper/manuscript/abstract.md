@@ -6,15 +6,16 @@ across two ecosystems and find it fails in every one.
 
 We probed 38 Apache projects against a traceability bar of 0.80, pre-registered
 before any project was cloned and never moved. **Twelve passed, and all twelve are
-Hadoop-ecosystem**; no general-purpose Java project cleared the bar, the best
-reaching 74.8% against a median near 35%. The channel the literature publishes is
+Hadoop-ecosystem**; no project outside that ecosystem cleared the bar, the best
+reaching 74.8%, against a median of 63.6% across all 38 and 44.8% across the 26
+rejected. The channel the literature publishes is
 not the channel a ticket-anchored study needs. The **commit-side rate** — what
 fraction of commits cite a ticket — runs 82.6–98.3% across the eligible twelve,
 while the **ticket realisation rate** — what fraction of tickets ever receive a
 citing commit, a quantity we name and define here — runs 12.0–69.0% and reaches
 69.0% at best. Apache Kylin cites a ticket in 83.9% of its commits and 12.0% of
 its tickets are ever cited by one. Extending the ticket-side computation to all 38
-projects, including the 26 the commit-side bar rejected, {ABSTRACT_EXTENSION}
+projects, including the 26 the commit-side bar rejected, shows the two rates are uncorrelated: Spearman rho = −0.010 over the 33 projects with a usable denominator, with a median of 55.5% among those the bar accepted and 53.2% among those it rejected. The highest ticket realisation rate in the probe, 84.8%, belongs to a project the bar dropped at 36.0% commit-side. The commit-side rate carries essentially no information about the rate a ticket-anchored study depends on.
 
 The same invisibility appears in a second ecosystem and two further channels: in a
 TypeScript corpus, 3 of 96 architectural commits mention refactoring, 7% link an
@@ -48,4 +49,4 @@ taxonomy.
 
 *Drafting note, to be deleted before submission.* Word budget: MSR technical
 track — check the call. Every number here appears in `paper/numbers.md` with a
-script and a commit. The `{ABSTRACT_EXTENSION}` placeholder is filled from §4.3.
+script and a commit. The §4.3 figures are filled in.

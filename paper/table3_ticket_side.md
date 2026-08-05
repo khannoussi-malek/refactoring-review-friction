@@ -9,39 +9,44 @@ Denominators come from the frozen public Jira corpus, not from a second live fet
 | 1 | ozone | pass | 98.3% | **66.1%** | 4,047 | 6,121 | 60% of cited keys postdate the snapshot |
 | 2 | tez | pass | 97.4% | **58.6%** | 2,548 | 4,347 | — |
 | 3 | hive | pass | 97.0% | **56.1%** | 14,427 | 25,731 | — |
-| 4 | phoenix | pass | 92.0% | **40.7%** | 2,684 | 6,593 | — |
-| 5 | zookeeper | pass | 90.4% | **46.2%** | 1,969 | 4,263 | — |
-| 6 | ranger | pass | 86.3% | **68.3%** | 2,436 | 3,567 | — |
-| 7 | oozie | pass | 85.2% | **49.7%** | 1,811 | 3,646 | — |
-| 8 | knox | pass | 84.3% | **68.6%** | 1,849 | 2,694 | — |
-| 9 | drill | pass | 84.2% | **41.6%** | 3,355 | 8,069 | — |
-| 10 | kylin | pass | 83.9% | **0.0%** | 2 | 4,989 | 100% of cited keys postdate the snapshot |
-| 11 | sqoop | pass | 82.6% | **21.0%** | 663 | 3,152 | — |
-| 12 | atlas | drop | 78.1% | **54.2%** | 2,420 | 4,469 | — |
-| 13 | james-project | drop | 74.8% | **42.7%** | 1,717 | 4,018 | — |
-| 14 | flume | drop | 73.9% | **42.4%** | 1,434 | 3,380 | — |
-| 15 | karaf | drop | 71.8% | **29.5%** | 3,990 | 13,537 | — |
-| 16 | calcite | drop | 67.7% | **53.2%** | 2,645 | 4,968 | — |
-| 17 | hudi | drop | 65.2% | **46.5%** | 1,474 | 3,172 | 68% of cited keys postdate the snapshot |
-| 18 | oodt | drop | 62.0% | **61.5%** | 640 | 1,040 | — |
-| 19 | zeppelin | drop | 60.7% | **50.2%** | 2,816 | 5,614 | — |
-| 20 | servicecomb-java-chassis | drop | 56.2% | **39.7%** | 924 | 2,326 | — |
-| 21 | tika | drop | 54.8% | **58.4%** | 2,123 | 3,633 | — |
-| 22 | struts | drop | 54.1% | **36.0%** | 1,832 | 5,093 | — |
-| 23 | storm | drop | 46.7% | **55.7%** | 2,096 | 3,762 | — |
-| 24 | accumulo | drop | 43.0% | **61.1%** | 2,899 | 4,745 | — |
-| 25 | syncope | drop | 36.0% | **84.8%** | 1,399 | 1,650 | — |
-| 26 | tomee | drop | 32.2% | **54.1%** | 2,928 | 5,417 | — |
-| 27 | wicket | drop | 30.9% | **60.4%** | 4,189 | 6,933 | — |
-| 28 | parquet-java | drop | 29.1% | **30.8%** | 644 | 2,092 | — |
-| 29 | jena | drop | 24.4% | **63.0%** | 1,409 | 2,238 | — |
-| 30 | dubbo | drop | 11.0% | **61.5%** | 48 | 78 | denominator < 500, not usable; 88% of cited keys postdate the snapshot |
-| 31 | helix | drop | 10.5% | **42.8%** | 367 | 857 | — |
-| 32 | rocketmq | drop | 5.7% | **36.2%** | 139 | 384 | denominator < 500, not usable |
-| 33 | skywalking | drop | 0.3% | — | 0 | 0 | no tracker record for the cited key; 100% of cited keys postdate the snapshot |
+| 4 | hbase | pass | 92.5% | **55.5%** | 14,671 | 26,421 | — |
+| 5 | phoenix | pass | 92.0% | **40.7%** | 2,684 | 6,593 | — |
+| 6 | zookeeper | pass | 90.4% | **46.2%** | 1,969 | 4,263 | — |
+| 7 | ranger | pass | 86.3% | **68.3%** | 2,436 | 3,567 | — |
+| 8 | oozie | pass | 85.2% | **49.7%** | 1,811 | 3,646 | — |
+| 9 | knox | pass | 84.3% | **68.6%** | 1,849 | 2,694 | — |
+| 10 | drill | pass | 84.2% | **41.6%** | 3,355 | 8,069 | — |
+| 11 | kylin | pass | 83.9% | **0.0%** | 2 | 4,989 | 100% of cited keys postdate the snapshot |
+| 12 | sqoop | pass | 82.6% | **21.0%** | 663 | 3,152 | — |
+| 13 | atlas | drop | 78.1% | **54.2%** | 2,420 | 4,469 | — |
+| 14 | james-project | drop | 74.8% | **42.7%** | 1,717 | 4,018 | — |
+| 15 | flume | drop | 73.9% | **42.4%** | 1,434 | 3,380 | — |
+| 16 | karaf | drop | 71.8% | **29.5%** | 3,990 | 13,537 | — |
+| 17 | calcite | drop | 67.7% | **53.2%** | 2,645 | 4,968 | — |
+| 18 | flink | drop | 66.0% | **53.2%** | 13,552 | 25,492 | — |
+| 19 | hudi | drop | 65.2% | **46.5%** | 1,474 | 3,172 | 68% of cited keys postdate the snapshot |
+| 20 | oodt | drop | 62.0% | **61.5%** | 640 | 1,040 | — |
+| 21 | zeppelin | drop | 60.7% | **50.2%** | 2,816 | 5,614 | — |
+| 22 | servicecomb-java-chassis | drop | 56.2% | **39.7%** | 924 | 2,326 | — |
+| 23 | tika | drop | 54.8% | **58.4%** | 2,123 | 3,633 | — |
+| 24 | struts | drop | 54.1% | **36.0%** | 1,832 | 5,093 | — |
+| 25 | storm | drop | 46.7% | **55.7%** | 2,096 | 3,762 | — |
+| 26 | accumulo | drop | 43.0% | **61.1%** | 2,899 | 4,745 | — |
+| 27 | cxf | drop | 37.5% | **53.9%** | 4,598 | 8,531 | — |
+| 28 | syncope | drop | 36.0% | **84.8%** | 1,399 | 1,650 | — |
+| 29 | tomee | drop | 32.2% | **54.1%** | 2,928 | 5,417 | — |
+| 30 | wicket | drop | 30.9% | **60.4%** | 4,189 | 6,933 | — |
+| 31 | parquet-java | drop | 29.1% | **30.8%** | 644 | 2,092 | — |
+| 32 | jena | drop | 24.4% | **63.0%** | 1,409 | 2,238 | — |
+| 33 | dubbo | drop | 11.0% | **61.5%** | 48 | 78 | denominator < 500, not usable; 88% of cited keys postdate the snapshot |
+| 34 | helix | drop | 10.5% | **42.8%** | 367 | 857 | — |
+| 35 | rocketmq | drop | 5.7% | **36.2%** | 139 | 384 | denominator < 500, not usable |
+| 36 | pinot | drop | 5.2% | **7.1%** | 1 | 14 | denominator < 500, not usable; 100% of cited keys postdate the snapshot |
+| 37 | skywalking | drop | 0.3% | — | 0 | 0 | no tracker record for the cited key; 100% of cited keys postdate the snapshot |
+| 38 | shardingsphere | drop | 0.0% | — | 0 | 0 | no tracker record for the cited key; 100% of cited keys postdate the snapshot |
 
-**Association.** Over the 30 projects with a usable denominator, Spearman rho between the commit-side rate and the ticket realisation rate is **-0.016**. Projects clearing the bar (n=11) run 0.0–68.6% (median 49.7%); projects the bar dropped (n=19) run 29.5–84.8% (median 53.2%). **19 dropped projects have a higher ticket realisation rate than the worst passing one**: accumulo, atlas, calcite, flume, helix, hudi, james-project, jena, karaf, oodt, parquet-java, servicecomb-java-chassis, storm, struts, syncope, tika, tomee, wicket, zeppelin.
+**Association.** Over the 33 projects with a usable denominator, Spearman rho between the commit-side rate and the ticket realisation rate is **-0.010**. Projects clearing the bar (n=12) run 0.0–68.6% (median 55.5%); projects the bar dropped (n=21) run 29.5–84.8% (median 53.2%). **21 dropped projects have a higher ticket realisation rate than the worst passing one**: accumulo, atlas, calcite, cxf, flink, flume, helix, hudi, james-project, jena, karaf, oodt, parquet-java, servicecomb-java-chassis, storm, struts, syncope, tika, tomee, wicket, zeppelin.
 
-**Excluded from the association.** Denominator under 500 issues: dubbo, rocketmq. No tracker record for the probed key at all: skywalking — these are taxonomy modes 1 and 6 rather than low rates, and scoring them would put a number where a category belongs.
+**Excluded from the association.** Denominator under 500 issues: pinot, dubbo, rocketmq. No tracker record for the probed key at all: shardingsphere, skywalking — these are taxonomy modes 1 and 6 rather than low rates, and scoring them would put a number where a category belongs.
 
-**Missing clones**, if any: hbase, flink, cxf, pinot, shardingsphere.
+**Missing clones**, if any: none.

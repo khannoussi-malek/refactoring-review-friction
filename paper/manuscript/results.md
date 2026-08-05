@@ -66,9 +66,44 @@ denominators from the frozen public Jira corpus and aligns numerator and
 denominator in issue-number space (§3.1.3). **The estimator is validated before it
 is used**: run against the live denominators for the twelve projects where the
 exact rate is already known, it reproduces that rate to a **mean absolute error of
-{VALIDATION_MEAN}pp and a worst case of {VALIDATION_MAX}pp**.
+0.45pp** across all twelve, with a **worst case of 2.14pp** (Kylin, where the
+tracker's issue numbering has enough gaps that number-capping undercounts). All
+38 projects were then measured at their pinned shas.
 
-**Result.** {EXTENSION_RESULT}
+**Result: the two rates are uncorrelated, and the bar does not select for the one
+a ticket-anchored study needs.** Over the 33 projects with a usable denominator,
+Spearman's rho between the commit-side rate and the ticket realisation rate is
+**−0.010**. Excluding the three projects whose repositories barely overlap the
+snapshot era, it is **−0.062** on 30. Neither is distinguishable from zero.
+
+| | n | ticket realisation rate |
+|---|---:|---|
+| cleared the 0.80 bar | 12 | 0.04–68.6%, **median 55.5%** |
+| the bar dropped | 21 | 29.5–84.8%, **median 53.2%** |
+
+The two medians differ by 2.3pp. **The highest ticket realisation rate in the
+entire probe — Syncope at 84.8% — belongs to a project the bar rejected at 36.0%
+commit-side**, and the lowest belongs to one it accepted. Twenty-one of the 21
+dropped projects with a usable denominator exceed the worst passing project,
+though that comparison is inflated by the passing project in question: Kylin
+returns 0.04% here because 100% of the keys its repository cites are numbered
+above the snapshot, a truncated-history artefact rather than a traceability
+result (§6.1). The medians are the robust statement and they say the same thing
+more quietly.
+
+**What this converts.** §4.2's range was *within-passing variation* and licensed
+no claim about the projects below the bar. It now does: measuring them shows the
+commit-side rate carries essentially no information about the ticket-side one, so
+the divergence is a property of the population and not an artefact of having
+looked only at survivors. **The caveat on Table 1 is not withdrawn** — it remains
+true of the live measurement, and this is a different estimator against a
+different snapshot, reported alongside rather than merged into it.
+
+Five projects have no usable rate and are excluded rather than scored zero, which
+is itself the taxonomy at work. Pinot (14 tracker issues), Dubbo (78) and RocketMQ
+(384) have denominators too small to carry a rate. ShardingSphere and SkyWalking
+have **no project record for their probed key at all** — mode 1 and mode 6, a
+category rather than a low number (§5.3).
 
 ## 4.4 The measure replicates independently across corpora seven years apart
 

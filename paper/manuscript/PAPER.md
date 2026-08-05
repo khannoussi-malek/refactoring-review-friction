@@ -23,15 +23,16 @@ across two ecosystems and find it fails in every one.
 
 We probed 38 Apache projects against a traceability bar of 0.80, pre-registered
 before any project was cloned and never moved. **Twelve passed, and all twelve are
-Hadoop-ecosystem**; no general-purpose Java project cleared the bar, the best
-reaching 74.8% against a median near 35%. The channel the literature publishes is
+Hadoop-ecosystem**; no project outside that ecosystem cleared the bar, the best
+reaching 74.8%, against a median of 63.6% across all 38 and 44.8% across the 26
+rejected. The channel the literature publishes is
 not the channel a ticket-anchored study needs. The **commit-side rate** — what
 fraction of commits cite a ticket — runs 82.6–98.3% across the eligible twelve,
 while the **ticket realisation rate** — what fraction of tickets ever receive a
 citing commit, a quantity we name and define here — runs 12.0–69.0% and reaches
 69.0% at best. Apache Kylin cites a ticket in 83.9% of its commits and 12.0% of
 its tickets are ever cited by one. Extending the ticket-side computation to all 38
-projects, including the 26 the commit-side bar rejected, {ABSTRACT_EXTENSION}
+projects, including the 26 the commit-side bar rejected, shows the two rates are uncorrelated: Spearman rho = −0.010 over the 33 projects with a usable denominator, with a median of 55.5% among those the bar accepted and 53.2% among those it rejected. The highest ticket realisation rate in the probe, 84.8%, belongs to a project the bar dropped at 36.0% commit-side. The commit-side rate carries essentially no information about the rate a ticket-anchored study depends on.
 
 The same invisibility appears in a second ecosystem and two further channels: in a
 TypeScript corpus, 3 of 96 architectural commits mention refactoring, 7% link an
@@ -65,7 +66,7 @@ taxonomy.
 
 *Drafting note, to be deleted before submission.* Word budget: MSR technical
 track — check the call. Every number here appears in `paper/numbers.md` with a
-script and a commit. The `{ABSTRACT_EXTENSION}` placeholder is filled from §4.3.
+script and a commit. The §4.3 figures are filled in.
 
 ---
 
@@ -121,8 +122,9 @@ withdrawn (§2.1).
    which candidates were rejected. Ours is fixed at 0.80, committed before any
    project was cloned, and never moved.
 2. **A population finding: 12 of 38 pass, and all 12 are one ecosystem.** No
-   general-purpose Java project clears the bar; the best, James, reaches 74.8%
-   and the median sits near 35%. SEOSS's own table contains the ingredients —
+   project outside that ecosystem clears the bar; the best, James, reaches 74.8%,
+   against a median of 63.6% across all 38 and 44.8% across the 26 rejected.
+   SEOSS's own table contains the ingredients —
    Apache projects at the top, JBoss at the bottom — but the inference is not
    drawn there.
 3. **Both reference channels measured together.** Counting GitHub-issue
@@ -229,7 +231,15 @@ Positioned against the above rather than against an assumed gap:
    Rath 2018 reports both directions; nobody frames the divergence as a threat to
    using a high commit-side rate to justify a corpus. Kylin at 83.9% against
    12.0% is the sharpest case.
-5. **The six-mode taxonomy**, and that none of it is expressible in any published
+5. **The ticket-side rate named, defined and measured across the whole probe.**
+   Rath 2018 reports it per issue *type* — 43.3% of improvements and 42.4% of bugs
+   have no commits — rather than as a named project-level quantity, and reports it
+   only for the six projects it selected. §3.1 gives it a definition, including
+   what counts as a ticket and how the denominator is bounded in time, and §4.3
+   computes it for the projects the bar **rejected** as well as those it kept.
+   That is what makes the divergence a property of the population rather than of
+   the survivors.
+6. **The six-mode taxonomy**, and that none of it is expressible in any published
    frame.
 
 ## 2.3 The standard sampling frame cannot express the criterion
@@ -433,7 +443,7 @@ projects qualify.
 ## 3.3 The bar, and the discipline around it
 
 **CSR ≥ 0.80**, fixed in `predictions/PREDICTIONS.md` (`ca076a9`) **before any
-project was cloned, and never moved.** Lowering it to 0.60 would have admitted
+project was cloned, and never moved.** Lowering it to 60% would have admitted
 nine more projects and widened the corpus beyond a single ecosystem. It was not
 lowered.
 
@@ -477,9 +487,12 @@ and all twelve are Hadoop-ecosystem** (Table 1;
 `figures/eligibility_funnel.png` panel A). The bar was fixed before any project
 was cloned and never moved.
 
-No general-purpose Java project clears it. The best of them, James, reaches
-74.8%; the median across the 38 sits near 35%; the spread runs from
-ShardingSphere at 0.01% to Ozone at 98.3%. Ecosystem adjacency is not sufficient
+No project outside the Hadoop ecosystem clears it. The best of them, James,
+reaches **74.8%**. The spread runs from ShardingSphere at 0.01% to Ozone at
+98.3%, with a median of **63.6%** across all 38 and **44.8%** across the 26 the
+bar rejected. Ecosystem family is a hand classification and not a field in the
+probe, so that first sentence is a reading of the data rather than a measurement
+of it; the numbers around it are measurements. Ecosystem adjacency is not sufficient
 either — **Parquet fails at 29.1% and Accumulo at 43.0%**, both squarely inside
 the Hadoop dependency graph. What the bar selects is a specific commit-hygiene
 convention, not a dependency relationship and not a quality level.
@@ -533,9 +546,44 @@ denominators from the frozen public Jira corpus and aligns numerator and
 denominator in issue-number space (§3.1.3). **The estimator is validated before it
 is used**: run against the live denominators for the twelve projects where the
 exact rate is already known, it reproduces that rate to a **mean absolute error of
-{VALIDATION_MEAN}pp and a worst case of {VALIDATION_MAX}pp**.
+0.45pp** across all twelve, with a **worst case of 2.14pp** (Kylin, where the
+tracker's issue numbering has enough gaps that number-capping undercounts). All
+38 projects were then measured at their pinned shas.
 
-**Result.** {EXTENSION_RESULT}
+**Result: the two rates are uncorrelated, and the bar does not select for the one
+a ticket-anchored study needs.** Over the 33 projects with a usable denominator,
+Spearman's rho between the commit-side rate and the ticket realisation rate is
+**−0.010**. Excluding the three projects whose repositories barely overlap the
+snapshot era, it is **−0.062** on 30. Neither is distinguishable from zero.
+
+| | n | ticket realisation rate |
+|---|---:|---|
+| cleared the 0.80 bar | 12 | 0.04–68.6%, **median 55.5%** |
+| the bar dropped | 21 | 29.5–84.8%, **median 53.2%** |
+
+The two medians differ by 2.3pp. **The highest ticket realisation rate in the
+entire probe — Syncope at 84.8% — belongs to a project the bar rejected at 36.0%
+commit-side**, and the lowest belongs to one it accepted. Twenty-one of the 21
+dropped projects with a usable denominator exceed the worst passing project,
+though that comparison is inflated by the passing project in question: Kylin
+returns 0.04% here because 100% of the keys its repository cites are numbered
+above the snapshot, a truncated-history artefact rather than a traceability
+result (§6.1). The medians are the robust statement and they say the same thing
+more quietly.
+
+**What this converts.** §4.2's range was *within-passing variation* and licensed
+no claim about the projects below the bar. It now does: measuring them shows the
+commit-side rate carries essentially no information about the ticket-side one, so
+the divergence is a property of the population and not an artefact of having
+looked only at survivors. **The caveat on Table 1 is not withdrawn** — it remains
+true of the live measurement, and this is a different estimator against a
+different snapshot, reported alongside rather than merged into it.
+
+Five projects have no usable rate and are excluded rather than scored zero, which
+is itself the taxonomy at work. Pinot (14 tracker issues), Dubbo (78) and RocketMQ
+(384) have denominators too small to carry a rate. ShardingSphere and SkyWalking
+have **no project record for their probed key at all** — mode 1 and mode 6, a
+category rather than a low number (§5.3).
 
 ## 4.4 The measure replicates independently across corpora seven years apart
 
@@ -664,7 +712,31 @@ identical history and PLANNER 1,629 either way. An earlier verdict that this was
 misresolved build-config repository was wrong and is corrected in
 `PROJECT_STATE.md` §7.
 
-## 5.3 One observed instance inside the eligible corpus
+## 5.3 Mode 6 measured across the whole probe, not just its worked examples
+
+The probed key sets were derived empirically from commit messages (§3.2), and the
+frozen public Jira corpus records every Apache project that existed at its
+snapshot. Intersecting the two turns mode 6 from an anecdote into a count:
+****six** of the keys this study probes have no project record in that corpus
+at all**, and five of them are actually cited by commits.
+
+| project | key with no tracker record | distinct keys cited under it |
+|---|---|---:|
+| pinot | `THIRDEYE` | 327 |
+| calcite | `OPTIQ` | 85 |
+| rocketmq | `RIP` | 35 |
+| skywalking | `SWIP` | 11 |
+| shardingsphere | `RS` | 8 |
+| ozone | `OZONE` | 0 — probed, never cited |
+
+Calcite is the clearest instance: `OPTIQ` was the project's name before it was
+renamed, its keys are cited 85 distinct times in the repository's history,
+and **no OPTIQ project exists in the tracker corpus**. Enumerating the tracker's
+projects cannot recover that key. It exists only in git, and a probe that derived
+its key set from the tracker — the natural thing to do — would silently miss every
+commit that cites it.
+
+## 5.4 One observed instance inside the eligible corpus
 
 The taxonomy is not confined to the projects it disqualified. Among the 12 that
 passed, **Sqoop's commits cite 790 distinct keys of which 122 have no record in
@@ -672,7 +744,7 @@ its tracker** (`paper/ticket_coverage.json`) — mode 6 operating inside a proje
 that clears the bar at 82.6%. Its ticket-side rate is computed over the 668 keys
 that do resolve.
 
-## 5.4 What a sampling frame would need
+## 5.5 What a sampling frame would need
 
 None of the six is derivable from repository metadata. Expressing them requires,
 per candidate: the dominant reference channel (Jira keys against GitHub issues,
@@ -717,6 +789,40 @@ recorded here rather than assigned an invented category.
 distinct keys of which 122 have no tracker record, so its ticket-side rate rests
 on the 668 that resolve (§5.3). This is mode 6 inside a passing project, and it
 means ticket-side rates are, strictly, coverage of *resolvable* tickets.
+
+**The 38-project extension uses a different denominator source, and its four
+failure modes are stated rather than assumed away.** §4.3 measures the ticket
+realisation rate for all 38 projects against the frozen public Jira corpus rather
+than a second live fetch, aligning numerator and denominator in issue-number
+space (§3.1.3). Validated against the twelve published exact rates it is accurate
+to a mean absolute error of 0.45pp and a worst case of 2.14pp, but
+four things can break it and all four occur in this corpus:
+
+1. **Trackers with gaps.** Number-capping assumes a tracker holding N issues holds
+   approximately the first N numbers. Issues moved or deleted break that, and the
+   estimator then undercounts. This is the largest single validation error in the
+   set and the direction is always downward.
+2. **Repositories whose history does not span the snapshot era.** Where a
+   repository has been truncated or re-initialised, almost none of its cited keys
+   fall inside the frozen range and the estimated rate collapses towards zero.
+   That is a *true* statement about what is recoverable from the repository as it
+   now stands, and a badly misleading one if read as a statement about whether the
+   project's tickets were ever worked. Affected projects are flagged in Table 3
+   with the share of cited keys that postdate the snapshot.
+3. **Denominators too small to carry a rate.** Several trackers hold only a
+   handful of issues in the frozen corpus. Projects with fewer than 500 are
+   excluded from the association statistic and shown in the table with the
+   exclusion marked.
+4. **Keys with no tracker record at all.** Some probed keys have no project record
+   in the frozen corpus. These are taxonomy modes 1 and 6, not low rates, and they
+   are **excluded rather than scored as 0%** — scoring them would put a number
+   where a category belongs, which is the error §5.1 exists to prevent.
+
+**The truncation caveat on Table 1 is not withdrawn.** The 12.0–69.0% range from
+the live measurement remains within-passing variation, computed on the twelve that
+had already cleared the bar. §4.3 does not extend that measurement; it is a
+different estimator against a different snapshot, and it is reported alongside
+rather than merged into it.
 
 **"345 of 349 episodes traceable to 323 tickets" — the unit matters.** An estimate
 is a property of a ticket, not an episode; several episodes share a ticket. An

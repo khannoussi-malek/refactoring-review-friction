@@ -74,15 +74,20 @@ misresolved build-config repository was wrong and is corrected in
 The probed key sets were derived empirically from commit messages (§3.2), and the
 frozen public Jira corpus records every Apache project that existed at its
 snapshot. Intersecting the two turns mode 6 from an anecdote into a count:
-**{ORPHAN_N} of the keys this study probes have no project record in that corpus
-at all**, and {ORPHAN_CITED} of them are actually cited by commits.
+****six** of the keys this study probes have no project record in that corpus
+at all**, and five of them are actually cited by commits.
 
 | project | key with no tracker record | distinct keys cited under it |
 |---|---|---:|
-{ORPHAN_TABLE}
+| pinot | `THIRDEYE` | 327 |
+| calcite | `OPTIQ` | 85 |
+| rocketmq | `RIP` | 35 |
+| skywalking | `SWIP` | 11 |
+| shardingsphere | `RS` | 8 |
+| ozone | `OZONE` | 0 — probed, never cited |
 
 Calcite is the clearest instance: `OPTIQ` was the project's name before it was
-renamed, its keys are cited {OPTIQ_N} distinct times in the repository's history,
+renamed, its keys are cited 85 distinct times in the repository's history,
 and **no OPTIQ project exists in the tracker corpus**. Enumerating the tracker's
 projects cannot recover that key. It exists only in git, and a probe that derived
 its key set from the tracker — the natural thing to do — would silently miss every

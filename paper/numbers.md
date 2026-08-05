@@ -589,3 +589,36 @@ outside it is James" both depend on a project→family judgment that is **not a
 field in the probe** (§7 of this file records that). `probe_summary.py` writes the
 classification into the artifact so the judgment is inspectable rather than
 implicit.
+
+### 10c. The ticket realisation rate across all 38 probed projects
+
+`scripts/ticket_side_38.py` → `paper/ticket_side_38.json`, `paper/table3_ticket_side.md`.
+Numerators from commit messages at each project's **pinned `head_sha`**;
+denominators from the frozen public Jira corpus via `estimates_by_org.json`;
+numerator and denominator aligned in issue-number space. **No Jira fetch.**
+
+| quantity | value | source | commit |
+|---|---|---|---|
+| projects measured | **38 of 38**; 33 with a usable denominator | `scripts/ticket_side_38.py` | `45aebc8` |
+| estimator validation, against the 12 published exact rates | mean absolute error **0.45pp**, worst **2.14pp** (kylin: 9.81% estimated vs 11.95% published) | same | `45aebc8` |
+| commit-side vs ticket realisation, Spearman | **rho = −0.010** over 33; **−0.062** over 30 excluding hudi, kylin, ozone | same | `45aebc8` |
+| cleared the bar, n=12 | 0.04–68.6%, **median 55.5%** | same | `45aebc8` |
+| the bar dropped, n=21 | 29.5–84.8%, **median 53.2%** | same | `45aebc8` |
+| highest rate in the whole probe | **syncope 84.8%** — commit-side **36.0%**, dropped by the bar | same | `45aebc8` |
+| excluded, denominator < 500 | pinot (**14** tracker issues), dubbo (**78**), rocketmq (**384**) | same | `45aebc8` |
+| excluded, no tracker record for the probed key | shardingsphere, skywalking | same | `45aebc8` |
+| probed keys with no project record in the frozen tracker corpus | **6** keys, **5** of them cited, across **5** projects: THIRDEYE **327** distinct keys, OPTIQ **85**, RIP **35**, SWIP **11**, RS **8**; OZONE probed and never cited | same | `45aebc8` |
+| flagged: most cited keys postdate the snapshot | kylin **100%**, dubbo **88%**, hudi **68%**, ozone **60%**, pinot **100%** | same | `45aebc8` |
+
+**What this does and does not do to §1c.** The truncation caveat on §1c and on
+Table 1 stands: the **12.0–69.0%** live range is within-passing variation. §10c is
+a *different estimator against a different snapshot* and is reported alongside it,
+never merged into it. What it adds is the population claim §1c could not make —
+the commit-side rate carries essentially no information about the ticket-side one.
+
+**Kylin appears twice with different values and both are correct.** Live snapshot
+(2026-07-25): **12.0%**. Frozen snapshot: **0.04%**, because 100% of the keys
+`apache/kylin` cites are numbered above the frozen tracker's issue count — the
+repository's history does not reach back into the snapshot era. The frozen figure
+is a statement about what is recoverable from that repository today and must not
+be read as a traceability rate.

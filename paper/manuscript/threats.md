@@ -39,7 +39,7 @@ failure modes are stated rather than assumed away.** §4.3 measures the ticket
 realisation rate for all 38 projects against the frozen public Jira corpus rather
 than a second live fetch, aligning numerator and denominator in issue-number
 space (§3.1.3). Validated against the twelve published exact rates it is accurate
-to a mean absolute error of {VAL_MEAN}pp and a worst case of {VAL_MAX}pp, but
+to a mean absolute error of 0.45pp and a worst case of 2.14pp, but
 four things can break it and all four occur in this corpus:
 
 1. **Trackers with gaps.** Number-capping assumes a tracker holding N issues holds
