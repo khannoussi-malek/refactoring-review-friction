@@ -72,13 +72,13 @@ FIGURE = ("figures/eligibility_funnel.png", "fig:funnel",
 UNI = {
     "—": "---", "–": "--", "×": r"$\times$", "≤": r"$\leq$", "≥": r"$\geq$",
     "→": r"$\rightarrow$", "←": r"$\leftarrow$", "⟶": r"$\longrightarrow$",
-    "§": r"\S\," , "≈": r"$\approx$", "≠": r"$\neq$", "∈": r"$\in$",
+    "§": r"\S\kern0.13em ", "≈": r"$\approx$", "≠": r"$\neq$", "∈": r"$\in$",
     "∃": r"$\exists$", "∅": r"$\emptyset$", "∩": r"$\cap$", "∪": r"$\cup$",
     "·": r"$\cdot$", "±": r"$\pm$", "−": "-", "‑": "-",
     "ρ": r"$\rho$", "κ": r"$\kappa$", "τ": r"$\tau$", "Δ": r"$\Delta$",
     "α": r"$\alpha$", "β": r"$\beta$", "σ": r"$\sigma$", "µ": r"$\mu$",
     "“": "``", "”": "''", "‘": "`", "’": "'", "…": r"\ldots{}",
-    "⁻": r"$^{-}$", "⁶": r"$^{6}$", "†": r"$\dagger$", "‡": r"$\ddagger$",
+    "⁻": r"$^{-}$", "⁶": r"$^{6}$", "†": r"\textdagger{}", "‡": r"\textdaggerdbl{}",
     "ü": r'\"u', "ä": r'\"a', "ö": r'\"o', "é": r"\'e", "è": r"\`e",
     "ˆ": "", "\u00a0": "~", "\u2009": r"\,", "✅": r"\checkmark",
     "⚠": r"\textbf{!}", "❌": "--", "⏳": r"$\ldots$", "≡": r"$\equiv$",
@@ -92,6 +92,133 @@ ESC = {"\\": r"\textbackslash{}", "&": r"\&", "%": r"\%", "$": r"\$",
 # regexes. \x00..\x04 cannot occur in the sources.
 CODE_A, CODE_B = "\x00", "\x01"
 LINK_A, LINK_B, LINK_C = "\x02", "\x03", "\x04"
+MATH_A, MATH_B = "\x05", "\x06"
+
+# --------------------------------------------------------------------------
+# maths
+# --------------------------------------------------------------------------
+
+# Symbols inside a formula mean the operator, not the text glyph: within math
+# mode LaTeX sets its own spacing around a relation, which is what makes an
+# expression read as an expression.
+MATH_UNI = {
+    "≤": r"\leq ", "≥": r"\geq ", "≈": r"\approx ", "≠": r"\neq ",
+    "∈": r"\in ", "∃": r"\exists ", "∅": r"\emptyset ", "∩": r"\cap ",
+    "∪": r"\cup ", "·": r"\cdot ", "×": r"\times ", "→": r"\to ",
+    "⟶": r"\longrightarrow ", "≡": r"\equiv ", "−": "-", "±": r"\pm ",
+    "ρ": r"\rho ", "κ": r"\kappa ", "τ": r"\tau ", "σ": r"\sigma ",
+    "α": r"\alpha ", "β": r"\beta ", "µ": r"\mu ", "Δ": r"\Delta ",
+    "…": r"\ldots ", " ": " ", " ": r"\,",
+}
+GREEK_WORD = {"rho": r"\rho", "kappa": r"\kappa", "sigma": r"\sigma",
+              "tau": r"\tau", "alpha": r"\alpha", "beta": r"\beta"}
+RELATIONS = "=≤≥<>≡∈"
+
+
+def to_math(s):
+    """Formula text -> the body of a math expression.
+
+    Multi-letter names are set upright, because CSR and Tickets are names and
+    not products of variables; single letters stay italic, because c, k and p
+    are variables.
+    """
+    s = s.strip().strip("*").strip()
+    for k, v in MATH_UNI.items():
+        s = s.replace(k, v)
+    for word, cmd in GREEK_WORD.items():
+        # a lambda, not a template: "\rho" in a replacement string is read as
+        # the escape \r and raises "bad escape"
+        s = re.sub(rf"(?<![A-Za-z\\]){word}(?![A-Za-z])",
+                   lambda m, c=cmd: c + " ", s)
+    # cardinality of a set comes first, so its bars are not read as a plain pair
+    s = re.sub(r"\|\{(.*?)\}\|",
+               lambda m: r"\bigl\lvert\{" + m.group(1) + r"\}\bigr\rvert", s)
+    s = re.sub(r"\|([^|]+)\|", lambda m: r"\lvert " + m.group(1) + r"\rvert ", s)
+    s = re.sub(r"(?<![\\A-Za-z])([A-Za-z]{2,})",
+               lambda m: r"\mathrm{" + m.group(1) + "}", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def split_top(s, seps):
+    """Split on separators that are not nested inside a bracket or a brace.
+    The set-builder in Definition 2 contains two membership signs, and treating
+    those as top-level relations is what stopped it being set as a fraction
+    while its twin in Definition 1 was."""
+    out, buf, depth = [], "", 0
+    i = 0
+    while i < len(s):
+        ch = s[i]
+        if ch in "([{":
+            depth += 1
+        elif ch in ")]}":
+            depth -= 1
+        if depth == 0:
+            hit = next((sep for sep in seps if s.startswith(sep, i)), None)
+            if hit:
+                out += [buf, hit]
+                buf = ""
+                i += len(hit)
+                continue
+        buf += ch
+        i += 1
+    return out + [buf]
+
+
+def display_math(s):
+    r"""One formula -> a display equation. Each operand between two top-level
+    relations is set as a \frac when it is a single quotient, so a ratio of two
+    set cardinalities reads as one."""
+    parts = split_top(s.strip().strip("*").strip(), list(RELATIONS))
+    out = []
+    for i, part in enumerate(parts):
+        if i % 2:
+            out.append(MATH_UNI.get(part, part).strip())
+            continue
+        halves = split_top(part, [" / "])
+        if len(halves) == 3:
+            out.append(r"\frac{" + to_math(halves[0]) + "}{"
+                       + to_math(halves[2]) + "}")
+        else:
+            out.append(to_math(part))
+    return r"\[" + " ".join(x for x in out if x) + r"\]"
+
+
+def is_formula(s):
+    """A quoted line that is an expression rather than a sentence. Kept tight:
+    it must be short, carry a relation, and be dense in operators."""
+    body = s.strip().strip("*").strip()
+    if not body or len(body) > 140 or "\n" in body:
+        return False
+    if not any(r in body for r in RELATIONS):
+        return False
+    ops = sum(1 for c in body if c in "≤≥≈≠∈∃∅∩∪·×→⟶≡|{}/")
+    return ops >= 2 and ops / len(body) > 0.04
+
+
+# Inline statistics: value-preserving rewrites that put an expression into math
+# mode. Every one of them only re-wraps characters; --selfcheck re-reads the
+# digits out of the result and fails if any of them moved.
+NUM = r"[-+−]?\d+(?:\.\d+)?"
+INLINE_MATH = [
+    (re.compile(rf"\|rho\|\s*([≤≥<>=])\s*({NUM})"),
+     lambda m: f"|rho| {m.group(1)} {m.group(2)}"),
+    (re.compile(rf"\b(rho|kappa|p|n|r)\s*([=<>≈≤≥])\s*({NUM})"),
+     lambda m: f"{m.group(1)} {m.group(2)} {m.group(3)}"),
+    (re.compile(rf"\[\s*({NUM})\s*,\s*({NUM})\s*\]"),
+     lambda m: f"[{m.group(1)}, {m.group(2)}]"),
+    (re.compile(rf"({NUM})×"), lambda m: f"{m.group(1)}×"),
+    (re.compile(r"\|rho\|"), lambda m: "|rho|"),
+    (re.compile(r"(?<![\w.])[−+]\d+(?:\.\d+)?(?![\w.])"), lambda m: m.group(0)),
+    (re.compile(r"(?<![A-Za-z\\])(rho|kappa)(?![A-Za-z])"), lambda m: m.group(1)),
+    # subscripted symbols the definitions use: H_p, K_p, C_p. In prose these
+    # were setting as "H\_p" with a visible underscore while the same symbol in
+    # the displayed equation set as a subscript. Code spans are already stashed,
+    # so a snake_case identifier cannot reach this rule.
+    # Matches exactly the six the sources use -- C_p H_p K_p N_p TRR_frozen
+    # TRR_live -- and nothing else; checked against all nine section files.
+    (re.compile(r"(?<![A-Za-z0-9_\\])([A-Z]{1,4})_([a-z]{1,8})(?![A-Za-z0-9_])"),
+     lambda m: f"{m.group(1)}_{{{m.group(2)}}}"),
+]
 
 
 # --------------------------------------------------------------------------
@@ -122,7 +249,7 @@ def smart_quotes(s):
     while i < len(s):
         if s[i] == '"':
             prev = out[-1] if out else " "
-            out.append("“" if prev in " \t([{-–—/" else "”")
+            out.append("“" if prev in " \t([{-–—/*_`" else "”")
         else:
             out.append(s[i])
         i += 1
@@ -223,15 +350,24 @@ def inline(s, unmapped=None):
         links.append((m.group(1), m.group(2)))
         return f"{LINK_A}{len(links) - 1}{LINK_B}"
 
+    maths = []
+
+    def stash_math(m):
+        src, out = m.group(0), to_math(m.group(0))
+        # setting a number in maths must never change the number
+        assert digits(src) == digits(out), f"mathify altered {src!r} -> {out!r}"
+        maths.append(out)
+        return f"{MATH_A}{len(maths) - 1}{MATH_B}"
+
     s = re.sub(r"`([^`]*)`", stash_code, s)
     s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", stash_link, s)
+    for rx, _ in INLINE_MATH:
+        s = rx.sub(stash_math, s)
     s = smart_quotes(s)
     s = esc(s, unmapped)
-
-    # |rho| is absolute-value notation written in ASCII; it is maths, not prose.
-    s = re.sub(r"\|rho\|", r"$|\\rho|$", s)
-
     s = emphasis(s)
+    s = re.sub(f"{MATH_A}(\\d+){MATH_B}",
+               lambda m: "$" + maths[int(m.group(1))] + "$", s)
 
     # Links are restored after escaping, so their label has to be escaped here
     # or a character like the # in "tsantalis/RefactoringMiner#1124" reaches
@@ -439,14 +575,25 @@ def breakable(s):
     overhangs into the next column instead of wrapping. Offer a break after the
     separators inside any long unbroken token."""
     def fix(m):
+        # never inside a control sequence: a break in \kern0.13em splits the
+        # dimension and pdflatex stops with "illegal unit of measure". Code
+        # spans already get their own breaks from code_span().
+        if "\\" in m.group(0):
+            return m.group(0)
         return re.sub(r"([/_.\-])", r"\1\\allowbreak{}", m.group(0))
     return re.sub(r"\S{10,}", fix, s)
+
+
+RAGGED = []
 
 
 def emit_table(rows, caption=None, label=None, unmapped=None, continued=False):
     if not rows:
         return []
     ncol = max(len(r) for r in rows)
+    for r in rows[1:]:
+        if len(r) != len(rows[0]):
+            RAGGED.append((caption or "an inline table", len(rows[0]), len(r)))
     rows = [r + [""] * (ncol - len(r)) for r in rows]
     widths = col_widths(rows, ncol)
     # Each p-column also carries 2\tabcolsep of gutter, so a budget expressed
@@ -514,6 +661,13 @@ def emit(blocks, starred=False, headings=None, unmapped=None, depth=0):
         elif kind == "rule":
             out += [r"\medskip\hrule\medskip", ""]
         elif kind == "quote":
+            # a quoted line that is an expression is a display equation the
+            # sources had no way to mark up; setting it as indented bold text
+            # is what made the method section read as prose about symbols
+            if (len(payload) == 1 and payload[0][0] == "para"
+                    and is_formula(payload[0][1])):
+                out += [display_math(payload[0][1]), ""]
+                continue
             out += [r"\begin{quote}"] \
                 + emit(payload, starred, headings, unmapped, depth + 1) \
                 + [r"\end{quote}", ""]
@@ -540,7 +694,9 @@ TITLE = ("Traceability and estimate coverage as corpus-eligibility "
          "constraints: a probe of 38 Apache projects")
 AUTHOR = "Malek Khannoussi"
 
-PREAMBLE = r"""\documentclass[11pt,a4paper]{article}
+PREAMBLE = r"""%% arXiv defaults to latex+dvips unless the source says otherwise
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
 
 %% Latin Modern in place of bare T1 Computer Modern. Without it pdflatex falls
 %% back to 600dpi bitmap EC fonts: the page renders rough on screen and the text
@@ -550,6 +706,10 @@ PREAMBLE = r"""\documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+
+%% amsmath for \lvert/\rvert and display spacing, amssymb for \checkmark
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \usepackage[margin=2.5cm,bottom=2.8cm]{geometry}
 \usepackage{array}
@@ -570,7 +730,7 @@ PREAMBLE = r"""\documentclass[11pt,a4paper]{article}
             pdfauthor={Malek Khannoussi},
             pdfsubject={Empirical software engineering; mining software repositories},
             pdfkeywords={traceability, corpus eligibility, refactoring, issue linkage, Apache},
-            pdfcreator={scripts/make_latex.py}]{hyperref}
+            pdfcreator={scripts/make\_latex.py}]{hyperref}
 
 %% keep a stray line off the top or bottom of a page
 \widowpenalty=10000
@@ -594,11 +754,12 @@ def frontmatter(figure_ok):
     """The reader's map of the paper. It follows the abstract rather than
     preceding it -- the old order put a list of tables between the title and the
     abstract."""
+    # if the image is absent the bullet is dropped rather than replaced by a
+    # build diagnostic -- "not found at build time" is not a sentence a reader
+    # of the paper should ever see
     fig = (r"\item \textbf{Figure~\ref{fig:funnel}} --- 38 to 12 to one "
            r"ecosystem, plus the six hypotheses that did not hold."
-           if figure_ok else
-           r"\item \textbf{Figure} --- the eligibility funnel is in the "
-           r"replication package; the image was not found at build time.")
+           if figure_ok else "")
     return r"""
 \bigskip
 \noindent\textbf{What to read first.} This paper carries three tables and one
@@ -625,10 +786,12 @@ def emit_figure(unmapped):
     path = ROOT / FIGURE[0]
     if not path.exists():
         return []
-    return ["", r"\begin{figure}[htbp]", r"\centering",
-            r"\includegraphics[width=0.86\linewidth]{" + FIGURE[0] + "}",
+    # The image is 2280x750 -- a 3:1 strip whose panel labels are unreadable at
+    # 16cm. A landscape page gives ~24cm of measure, half again as wide.
+    return ["", r"\begin{landscape}", r"\begin{figure}[p]", r"\centering",
+            r"\includegraphics[width=\linewidth]{" + FIGURE[0] + "}",
             r"\caption{" + inline(FIGURE[2], unmapped) + r"}\label{"
-            + FIGURE[1] + "}", r"\end{figure}", ""]
+            + FIGURE[1] + "}", r"\end{figure}", r"\end{landscape}", ""]
 
 
 def table_appendix(unmapped):
@@ -639,7 +802,7 @@ def table_appendix(unmapped):
     out = [r"\clearpage", r"\section*{Tables}",
            r"\addcontentsline{toc}{section}{Tables}", ""]
     for path, label, caption in TABLES:
-        blocks = parse((ROOT / path).read_text().split("\n"))
+        blocks = parse((ROOT / path).read_text(encoding="utf-8").split("\n"))
         seen, dropped_h1 = 0, False
         for kind, payload in blocks:
             # the file's own h1 repeats the caption verbatim; one title is enough
@@ -648,10 +811,13 @@ def table_appendix(unmapped):
                 continue
             if kind == "table":
                 seen += 1
+                # NOT caption.split(".")[0] -- the captions contain "Section
+                # 3.1.4", so splitting on the first full stop truncates the
+                # continuation caption mid-reference
+                short = re.split(r"(?<=[a-z]{2})\.\s", caption)[0].rstrip(".")
                 out += emit_table(
                     payload, label=label if seen == 1 else None,
-                    caption=caption if seen == 1
-                    else f"{caption.split('.')[0]} (continued).",
+                    caption=caption if seen == 1 else f"{short} (continued).",
                     continued=seen > 1, unmapped=unmapped)
             else:
                 out += emit([(kind, payload)], starred=True, unmapped=unmapped)
@@ -697,8 +863,23 @@ def check_numbering(headings):
 STARRED = re.compile(r"\\(?:sub){0,2}section\*|\\paragraph\*")
 
 
-def selfcheck(text, headings):
+def digits(s):
+    """Every digit run in order. mathify only re-wraps characters, so this
+    sequence must be identical before and after -- a value that moved is a
+    value the typesetter changed, which is the one thing it may never do."""
+    return re.findall(r"\d+(?:\.\d+)?", s)
+
+
+def selfcheck(text, headings, unmapped=None, ragged=None):
     problems = []
+    # a character with no mapping is silently printed as "?", so the build has
+    # to fail on it rather than only mention it
+    if unmapped:
+        problems.append("characters with no LaTeX mapping, printed as '?': "
+                        + " ".join(sorted(unmapped)))
+    for where, head, row in ragged or []:
+        problems.append(f"ragged table row in {where}: header has {head} cells, "
+                        f"row has {row} -- cells would be silently padded")
     # a starred sectioning command is the one legitimate asterisk in the output
     scan = STARRED.sub("", text)
     for name, rx in LEAKS:
@@ -769,12 +950,12 @@ def main():
     body = [PREAMBLE]
 
     abstract_md = re.sub(r"^#\s+Abstract\s*$", "",
-                         (SRC / "abstract.md").read_text(), flags=re.M)
+                         (SRC / "abstract.md").read_text(encoding="utf-8"), flags=re.M)
     body += [r"\begin{abstract}", convert(abstract_md, unmapped=unmapped),
              r"\end{abstract}", frontmatter(figure_ok), r"\clearpage"]
 
     for i, name in enumerate(ORDER[1:]):
-        body.append(convert((SRC / name).read_text(), headings=headings,
+        body.append(convert((SRC / name).read_text(encoding="utf-8"), headings=headings,
                             unmapped=unmapped))
         if name == "results.md":
             body += emit_figure(unmapped)
@@ -785,7 +966,7 @@ def main():
 
     out = ROOT / args.out
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(text)
+    out.write_text(text, encoding="utf-8")
 
     print(f"Wrote {args.out}  ({len(text.splitlines()):,} lines, "
           f"{len(headings)} numbered headings)")
@@ -794,7 +975,7 @@ def main():
     if not figure_ok:
         print(f"NOTE: {FIGURE[0]} not found; figure omitted")
 
-    problems = selfcheck(text, headings)
+    problems = selfcheck(text, headings, unmapped, RAGGED)
     if problems:
         print("\nSELF-CHECK FAILURES:")
         for p in problems:
