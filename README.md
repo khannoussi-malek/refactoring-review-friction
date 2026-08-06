@@ -1,5 +1,8 @@
 # What precedes a developer's decision to refactor?
 
+**Reader's guide (interactive):**
+<https://khannoussi-malek.github.io/refactoring-review-friction/>
+
 ## 1. What this is
 
 An independent pre-doctoral study. The question is what, if anything, in a
