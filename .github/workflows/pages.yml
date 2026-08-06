@@ -30,3 +30,6 @@ jobs:
           path: docs
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # deployments here take >10min; the default timeout cancels a working deploy
+          timeout: 1800000
