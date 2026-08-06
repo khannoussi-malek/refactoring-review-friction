@@ -38,8 +38,9 @@ counts a different ticket denominator (§3.1.3).
 
 **Most of that gap is arithmetic, not discipline.** A citing commit adds at most
 one new distinct ticket, so the ticket-side rate cannot exceed
-`commit-side × commits / tickets`. That ceiling binds for all twelve eligible
-projects, ranging 13.7–81.6%, and every project reaches 80–95% of it: the 5.8×
+`commit-side × commits / tickets`. Under the live measurement ceiling_live binds
+for all twelve eligible projects, ranging 13.7–81.6%, and every project reaches
+80–95% of it: the 5.8×
 spread in the ticket-side rate is a 6.0× spread in the ceiling and only a 1.19×
 spread in what is left. A tracker accumulates tickets faster than a repository
 accumulates commits, and below one commit per ticket the two rates are not
@@ -78,7 +79,8 @@ established from metadata; it requires reading commit messages from the project
 itself, per project, before any outcome is measured.
 
 We make no first-to-measure claim: per-project linkage rates are published by
-SEOSS 33 for 33 projects and by Rath et al. (ICSE'18) for six. What is new is a
+SEOSS 33 [@rath2019seoss] for 33 projects and by Rath et al. (ICSE'18)
+[@rath2018traceability] for six. What is new is a
 pre-registered numeric bar with reported attrition and named rejections, both
 reference channels counted together, the ticket realisation rate named and
 measured across a whole probe rather than its survivors, and the six-mode
@@ -123,16 +125,18 @@ selection criterion — and realises **55.8%** of its 29,635 tickets (TRR_live).
 
 **And most of that gap turns out to be arithmetic.** A commit that cites a ticket
 adds at most one *new* distinct ticket, so the ticket-side rate is capped at
-`commit-side × commits / tickets`. That ceiling binds for every eligible project,
-running 13.7–81.6%, and every one of them reaches 80–95% of it. What reads as a
+`commit-side × commits / tickets`. Under the live measurement ceiling_live binds
+for every eligible project, running 13.7–81.6%, and every one of them reaches
+80–95% of it. Under the frozen snapshot three ceilings exceed 100% and stop
+binding (§4.2, Table 3). What reads as a
 discipline gap is mostly a tracker accumulating tickets faster than a repository
 accumulates commits — which is a fact about the two artifacts, not about the
 people using them, and which no published linkage rate exposes.
 
 **Contributions.** Stated against what is already published rather than against an
-assumed gap. We make **no first-to-measure claim**: Rath & Mäder's SEOSS 33
+assumed gap. We make **no first-to-measure claim**: Rath & Mäder's SEOSS 33 [@rath2019seoss]
 publishes per-project linkage as an explicit table column for 33 projects, and
-Rath et al. (ICSE'18) publishes both directions for six. An earlier version of
+Rath et al. (ICSE'18) [@rath2018traceability] publishes both directions for six. An earlier version of
 this work claimed novelty on that ground; the claim was checked, found false, and
 withdrawn (§2.1).
 
@@ -192,7 +196,7 @@ Drafted from `paper/PRIOR_WORK.md` (`215b10f`) and `paper/SATD_NOVELTY.md`
 withdrawn.** Two prior works publish per-project issue–commit linkage rates, one
 of them as an explicit table column.
 
-**Rath & Mäder 2019, SEOSS 33** (*Data in Brief* 25:104005) publishes, per
+**Rath & Mäder 2019, SEOSS 33** [@rath2019seoss] (*Data in Brief* 25:104005) publishes, per
 project, change-set count and **"Linked Change Sets [%]"** for 33 projects — the
 same quantity as our commit-side rate. Their spread is 8.11%–97.13%; ours is
 0.01%–98.3% across 38. Four of five overlapping projects agree within **3.3pp**
@@ -231,7 +235,7 @@ traceability criterion **is** used for selection — but as a qualitative
 requirement. No cut-off is stated, no rejected candidates are reported, and having
 selected on trace links the dataset still admits Errai at 8.11%.
 
-**Rath et al., ICSE 2018** (*Traceability in the Wild*, arXiv:1804.02433)
+**Rath et al., ICSE 2018** [@rath2018traceability] (*Traceability in the Wild*, arXiv:1804.02433)
 publishes **both directions** for six Git+Jira projects, and is the closest
 precedent to our divergence result. Commit side: "approximately 48% of the commits
 were not linked to any issue", with a per-project spread from 15% unlinked in
@@ -246,7 +250,7 @@ qualitatively in 2018.
 Selection there was also informal: the six were chosen because each "largely
 followed the practice of tagging commits with issue IDs". Again no threshold.
 
-**Vieira et al. 2019** (PROMISE'19, 55 Apache projects, >70,000 bug reports) may
+**Vieira et al. 2019** [@vieira2019reports] (PROMISE'19, 55 Apache projects, >70,000 bug reports) may
 or may not report per-project linkage. **Unverified:** ACM DL, ResearchGate and
 figshare all returned 403 to unauthenticated fetches, so neither the paper body
 nor the package manifest could be read. Recorded as unverified rather than
@@ -287,7 +291,7 @@ Positioned against the above rather than against an assumed gap:
 
 ## 2.3 The standard sampling frame cannot express the criterion
 
-**Dabic et al. 2021, GHS** (*Sampling Projects in GitHub for MSR Studies*,
+**Dabic et al. 2021, GHS** [@dabic2021sampling] (*Sampling Projects in GitHub for MSR Studies*,
 MSR'21) is the standard sampling tool and indexes **735,669 repositories**. A
 record carries **35 fields**, queried from the live API rather than read off the
 paper's Table I, which is an image. Only **`totalIssues`** and **`openIssues`**
@@ -307,11 +311,11 @@ bug-side a decade and a half ago, and that literature is the direct ancestor of
 §4.2. It is set out here rather than merely listed, because two of its findings
 bound what this paper can claim.
 
-**Bachmann et al. (FSE'10), *The Missing Links: Bugs and Bug-fix Commits*** —
+**Bachmann et al. (FSE'10), *The Missing Links: Bugs and Bug-fix Commits*** [@bachmann2010missing] —
 Adrian Bachmann, Christian Bird, Foyzur Rahman, Premkumar Devanbu and Abraham
 Bernstein — is the closest ancestor. They engaged a core Apache HTTP Server
 developer to annotate **493 commits over a six-week period** exhaustively, using
-a purpose-built tool (Linkster), to establish ground truth rather than infer it
+a purpose-built tool (Linkster [@bird2010linkster]), to establish ground truth rather than infer it
 from commit messages. Against that ground truth they found that **only 47.6% of
 bug-fix-related commits are documented in the bug tracking database**. Their
 target is the completeness of the *link*, established by expert annotation on one
@@ -327,7 +331,7 @@ narrower in scope; ours is the reverse.
 > paper's own text, and the naming claim in §3.1 stands or falls with it. See
 > `paper/REVISION_LOG.md`, GATE.
 
-**Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** — C.
+**Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** [@bird2009fair] — C.
 Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu — is
 the reason any of this matters. Missing links are not missing at random, so a
 dataset built from linked records is a biased sample of the work, and models
@@ -335,14 +339,14 @@ fitted to it inherit the bias. **This is the same argument our §7.3 makes for
 architectural change**, arrived at independently and seventeen years later, and
 we cite it as the prior statement of the principle rather than as a parallel.
 
-**Nguyen, Adams and Hassan (WCRE'10), *A Case Study of Bias in Bug-Fix
+**Nguyen, Adams and Hassan (WCRE'10) [@nguyen2010case], *A Case Study of Bias in Bug-Fix
 Datasets*** replicates that bias analysis. *(The review that prompted this
 revision cited this work as MSR'10 and characterised it as a replication on a
 system with near-perfect linkage; the venue is WCRE'10, and the
 near-perfect-linkage characterisation could not be verified from an accessible
 copy, so it is not asserted here — see `paper/REVISION_LOG.md`.)*
 
-**Herzig, Just and Zeller (ICSE'13), *It's not a bug, it's a feature: how
+**Herzig, Just and Zeller (ICSE'13) [@herzig2013not], *It's not a bug, it's a feature: how
 misclassification impacts bug prediction*** bears directly on §3.1.1's decision to
 admit all issue types. In a manual examination of **more than 7,000 issue reports
 across five open-source projects they found 33.8% misclassified** — filed as bugs
@@ -353,7 +357,7 @@ it. That immunises the ticket realisation rate against the Herzig effect, and it
 is also why our rate is *not* comparable to any rate computed on a
 resolution-filtered or type-filtered population, including Vieira et al.'s.
 
-**Automated link recovery is the standing partial answer to modes 4–6.** ReLink
+**Automated link recovery is the standing partial answer to modes 4–6.** ReLink [@wu2011relink]
 (Wu, Zhang, Kim and Cheung, ESEC/FSE'11) learns the features of explicit links —
 time proximity, author identity, textual similarity between the bug report and
 the change — and recovers missing ones at accuracy well above the traditional
@@ -367,12 +371,14 @@ qualified accordingly.
 ## 2.5 Refactoring and self-admitted technical debt
 
 Included because it bounds what this paper claims. **Iammarino et al. (2021,
-JSS)** and **Esfandiari & Sami (ICCKE 2023)** both study SATD and refactoring
+JSS)** [@iammarino2021empirical] and **Esfandiari & Sami (ICCKE 2023)**
+[@esfandiari2023exploratory] both study SATD and refactoring
 strictly at same-commit co-occurrence — Iammarino over four projects with no
 temporal analysis, its tightest cut being same-file at n=201; Esfandiari over 77
 projects, already reporting *move class* as the refactoring most associated with
 debt activity. Neither measures an interval. An architectural-debt time-to-fix
-literature is separately active (arXiv:2605.16133, arXiv:2501.15387).
+literature is separately active (arXiv:2605.16133 [@sutoyo2026dangers],
+arXiv:2501.15387 [@sutoyo2025tracing]).
 
 Two things follow. The record channels this paper measures are the channels that
 literature depends on, so its exposure is ours. And the successor design this
@@ -381,7 +387,7 @@ gated on external judgment (`paper/SATD_NOVELTY.md`).
 
 ## 2.6 Detector validity
 
-RefactoringMiner is the detector. Its TypeScript support was complete
+RefactoringMiner [@tsantalis2026refactoringminer] is the detector. Its TypeScript support was complete
 2026-05-24, two months old at measurement, and has no independent validation we
 could find in the literature. One defect was traced and reported upstream: 160
 `interface → class` false positives in a single commit, from type aliases having
@@ -411,7 +417,8 @@ whose message cites at least one key with a prefix in K_p:
 > **CSR(p) = |{ c : c ⟶ H_p, cites(c) ∩ K_p ≠ ∅ }| / |{ c : c ⟶ H_p }|**
 
 This is the quantity Rath & Mäder publish per project as *"Linked Change Sets
-[%]"* (SEOSS 33) and the quantity Rath et al. (ICSE'18) report as "approximately
+[%]"* (SEOSS 33 [@rath2019seoss]) and the quantity Rath et al. (ICSE'18)
+[@rath2018traceability] report as "approximately
 48% of the commits were not linked to any issue". It is what the corpus-selection
 bar in this study is defined on, and it is not novel here.
 
@@ -421,7 +428,7 @@ tracked issues that are ever cited by at least one commit:
 > **TRR(p) = |{ k ∈ Tickets(p, T) : ∃ c ⟶ H_p, k ∈ cites(c) }| / |Tickets(p, T)|**
 
 The name is introduced here because the quantity has been reported without one.
-Rath et al. (ICSE'18) measure it — "approximately 43.3% of improvements and 42.4%
+Rath et al. (ICSE'18) [@rath2018traceability] measure it — "approximately 43.3% of improvements and 42.4%
 of bugs have no commits associated with them" — as a property of an issue type
 rather than as a project-level rate with a name, and the divergence between it
 and CSR is not framed anywhere as a constraint on corpus selection.
@@ -442,7 +449,8 @@ study samples from the whole tracker before it knows which tickets are useful:
   and are cited in commit messages in their own right; excluding them would drop
   the keys most likely to be cited and inflate the rate.
 * **All statuses and resolutions.** Nothing is conditioned on `resolution =
-  Fixed`. This matters for comparability: Vieira et al. (PROMISE'19) select on
+  Fixed`. This matters for comparability: Vieira et al. (PROMISE'19)
+  [@vieira2019reports] select on
   resolution before measuring, which pre-selects tickets that were worked, so any
   rate computed that way is not comparable to TRR without adjustment.
 * **Keys, not names.** Membership is by the issue's key prefix. Measured across
@@ -496,7 +504,7 @@ Two instantiations are used, and both satisfy the constraint:
 | | tracker snapshot T | repository H_p | coverage |
 |---|---|---|---|
 | **TRR_live** | Apache Jira read 2026-07-25, issue **keys only** | pinned shas of 2026-07-25 | the 12 eligible projects |
-| **TRR_frozen** | the Public Jira Dataset (Zenodo 15719919), a snapshot predating every pinned sha | the same pinned shas | all 38 probed projects |
+| **TRR_frozen** | the Public Jira Dataset [@montgomery2025jira] (Zenodo 15719919), a snapshot predating every pinned sha | the same pinned shas | all 38 probed projects |
 
 For **TRR_live**, T ≈ date(H_p): the two were read the same day, so the newest
 tickets are the censored ones and TRR_live is a slight underestimate. The
@@ -1078,7 +1086,7 @@ to expose mode 4. All four are cheap. None is in GHS.
 above that the key set cannot be recovered from the tracker, and that stands: a
 key cited only in git — `OPTIQ`, `EPMCDLAB`, `DEVPROD` — is not in the tracker to
 be enumerated. But a substantial literature *does* recover missing issue–commit
-links without relying on the commit message, beginning with ReLink (Wu et al.,
+links without relying on the commit message, beginning with ReLink [@wu2011relink] (Wu et al.,
 ESEC/FSE'11) and continuing since, by learning from time proximity, author
 identity and textual similarity between report and change (§2.4). Those methods
 recover **links**, not **key sets**, and they presuppose a project already known

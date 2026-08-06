@@ -9,7 +9,7 @@ Drafted from `paper/PRIOR_WORK.md` (`215b10f`) and `paper/SATD_NOVELTY.md`
 withdrawn.** Two prior works publish per-project issue–commit linkage rates, one
 of them as an explicit table column.
 
-**Rath & Mäder 2019, SEOSS 33** (*Data in Brief* 25:104005) publishes, per
+**Rath & Mäder 2019, SEOSS 33** [@rath2019seoss] (*Data in Brief* 25:104005) publishes, per
 project, change-set count and **"Linked Change Sets [%]"** for 33 projects — the
 same quantity as our commit-side rate. Their spread is 8.11%–97.13%; ours is
 0.01%–98.3% across 38. Four of five overlapping projects agree within **3.3pp**
@@ -48,7 +48,7 @@ traceability criterion **is** used for selection — but as a qualitative
 requirement. No cut-off is stated, no rejected candidates are reported, and having
 selected on trace links the dataset still admits Errai at 8.11%.
 
-**Rath et al., ICSE 2018** (*Traceability in the Wild*, arXiv:1804.02433)
+**Rath et al., ICSE 2018** [@rath2018traceability] (*Traceability in the Wild*, arXiv:1804.02433)
 publishes **both directions** for six Git+Jira projects, and is the closest
 precedent to our divergence result. Commit side: "approximately 48% of the commits
 were not linked to any issue", with a per-project spread from 15% unlinked in
@@ -63,7 +63,7 @@ qualitatively in 2018.
 Selection there was also informal: the six were chosen because each "largely
 followed the practice of tagging commits with issue IDs". Again no threshold.
 
-**Vieira et al. 2019** (PROMISE'19, 55 Apache projects, >70,000 bug reports) may
+**Vieira et al. 2019** [@vieira2019reports] (PROMISE'19, 55 Apache projects, >70,000 bug reports) may
 or may not report per-project linkage. **Unverified:** ACM DL, ResearchGate and
 figshare all returned 403 to unauthenticated fetches, so neither the paper body
 nor the package manifest could be read. Recorded as unverified rather than
@@ -104,7 +104,7 @@ Positioned against the above rather than against an assumed gap:
 
 ## 2.3 The standard sampling frame cannot express the criterion
 
-**Dabic et al. 2021, GHS** (*Sampling Projects in GitHub for MSR Studies*,
+**Dabic et al. 2021, GHS** [@dabic2021sampling] (*Sampling Projects in GitHub for MSR Studies*,
 MSR'21) is the standard sampling tool and indexes **735,669 repositories**. A
 record carries **35 fields**, queried from the live API rather than read off the
 paper's Table I, which is an image. Only **`totalIssues`** and **`openIssues`**
@@ -124,11 +124,11 @@ bug-side a decade and a half ago, and that literature is the direct ancestor of
 §4.2. It is set out here rather than merely listed, because two of its findings
 bound what this paper can claim.
 
-**Bachmann et al. (FSE'10), *The Missing Links: Bugs and Bug-fix Commits*** —
+**Bachmann et al. (FSE'10), *The Missing Links: Bugs and Bug-fix Commits*** [@bachmann2010missing] —
 Adrian Bachmann, Christian Bird, Foyzur Rahman, Premkumar Devanbu and Abraham
 Bernstein — is the closest ancestor. They engaged a core Apache HTTP Server
 developer to annotate **493 commits over a six-week period** exhaustively, using
-a purpose-built tool (Linkster), to establish ground truth rather than infer it
+a purpose-built tool (Linkster [@bird2010linkster]), to establish ground truth rather than infer it
 from commit messages. Against that ground truth they found that **only 47.6% of
 bug-fix-related commits are documented in the bug tracking database**. Their
 target is the completeness of the *link*, established by expert annotation on one
@@ -144,7 +144,7 @@ narrower in scope; ours is the reverse.
 > paper's own text, and the naming claim in §3.1 stands or falls with it. See
 > `paper/REVISION_LOG.md`, GATE.
 
-**Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** — C.
+**Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** [@bird2009fair] — C.
 Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu — is
 the reason any of this matters. Missing links are not missing at random, so a
 dataset built from linked records is a biased sample of the work, and models
@@ -152,14 +152,14 @@ fitted to it inherit the bias. **This is the same argument our §7.3 makes for
 architectural change**, arrived at independently and seventeen years later, and
 we cite it as the prior statement of the principle rather than as a parallel.
 
-**Nguyen, Adams and Hassan (WCRE'10), *A Case Study of Bias in Bug-Fix
+**Nguyen, Adams and Hassan (WCRE'10) [@nguyen2010case], *A Case Study of Bias in Bug-Fix
 Datasets*** replicates that bias analysis. *(The review that prompted this
 revision cited this work as MSR'10 and characterised it as a replication on a
 system with near-perfect linkage; the venue is WCRE'10, and the
 near-perfect-linkage characterisation could not be verified from an accessible
 copy, so it is not asserted here — see `paper/REVISION_LOG.md`.)*
 
-**Herzig, Just and Zeller (ICSE'13), *It's not a bug, it's a feature: how
+**Herzig, Just and Zeller (ICSE'13) [@herzig2013not], *It's not a bug, it's a feature: how
 misclassification impacts bug prediction*** bears directly on §3.1.1's decision to
 admit all issue types. In a manual examination of **more than 7,000 issue reports
 across five open-source projects they found 33.8% misclassified** — filed as bugs
@@ -170,7 +170,7 @@ it. That immunises the ticket realisation rate against the Herzig effect, and it
 is also why our rate is *not* comparable to any rate computed on a
 resolution-filtered or type-filtered population, including Vieira et al.'s.
 
-**Automated link recovery is the standing partial answer to modes 4–6.** ReLink
+**Automated link recovery is the standing partial answer to modes 4–6.** ReLink [@wu2011relink]
 (Wu, Zhang, Kim and Cheung, ESEC/FSE'11) learns the features of explicit links —
 time proximity, author identity, textual similarity between the bug report and
 the change — and recovers missing ones at accuracy well above the traditional
@@ -184,12 +184,14 @@ qualified accordingly.
 ## 2.5 Refactoring and self-admitted technical debt
 
 Included because it bounds what this paper claims. **Iammarino et al. (2021,
-JSS)** and **Esfandiari & Sami (ICCKE 2023)** both study SATD and refactoring
+JSS)** [@iammarino2021empirical] and **Esfandiari & Sami (ICCKE 2023)**
+[@esfandiari2023exploratory] both study SATD and refactoring
 strictly at same-commit co-occurrence — Iammarino over four projects with no
 temporal analysis, its tightest cut being same-file at n=201; Esfandiari over 77
 projects, already reporting *move class* as the refactoring most associated with
 debt activity. Neither measures an interval. An architectural-debt time-to-fix
-literature is separately active (arXiv:2605.16133, arXiv:2501.15387).
+literature is separately active (arXiv:2605.16133 [@sutoyo2026dangers],
+arXiv:2501.15387 [@sutoyo2025tracing]).
 
 Two things follow. The record channels this paper measures are the channels that
 literature depends on, so its exposure is ours. And the successor design this
@@ -198,7 +200,7 @@ gated on external judgment (`paper/SATD_NOVELTY.md`).
 
 ## 2.6 Detector validity
 
-RefactoringMiner is the detector. Its TypeScript support was complete
+RefactoringMiner [@tsantalis2026refactoringminer] is the detector. Its TypeScript support was complete
 2026-05-24, two months old at measurement, and has no independent validation we
 could find in the literature. One defect was traced and reported upstream: 160
 `interface → class` false positives in a single commit, from type aliases having

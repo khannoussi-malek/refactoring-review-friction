@@ -114,7 +114,7 @@ to expose mode 4. All four are cheap. None is in GHS.
 above that the key set cannot be recovered from the tracker, and that stands: a
 key cited only in git — `OPTIQ`, `EPMCDLAB`, `DEVPROD` — is not in the tracker to
 be enumerated. But a substantial literature *does* recover missing issue–commit
-links without relying on the commit message, beginning with ReLink (Wu et al.,
+links without relying on the commit message, beginning with ReLink [@wu2011relink] (Wu et al.,
 ESEC/FSE'11) and continuing since, by learning from time proximity, author
 identity and textual similarity between report and change (§2.4). Those methods
 recover **links**, not **key sets**, and they presuppose a project already known

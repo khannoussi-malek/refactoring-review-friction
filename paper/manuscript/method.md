@@ -17,7 +17,8 @@ whose message cites at least one key with a prefix in K_p:
 > **CSR(p) = |{ c : c ⟶ H_p, cites(c) ∩ K_p ≠ ∅ }| / |{ c : c ⟶ H_p }|**
 
 This is the quantity Rath & Mäder publish per project as *"Linked Change Sets
-[%]"* (SEOSS 33) and the quantity Rath et al. (ICSE'18) report as "approximately
+[%]"* (SEOSS 33 [@rath2019seoss]) and the quantity Rath et al. (ICSE'18)
+[@rath2018traceability] report as "approximately
 48% of the commits were not linked to any issue". It is what the corpus-selection
 bar in this study is defined on, and it is not novel here.
 
@@ -27,7 +28,7 @@ tracked issues that are ever cited by at least one commit:
 > **TRR(p) = |{ k ∈ Tickets(p, T) : ∃ c ⟶ H_p, k ∈ cites(c) }| / |Tickets(p, T)|**
 
 The name is introduced here because the quantity has been reported without one.
-Rath et al. (ICSE'18) measure it — "approximately 43.3% of improvements and 42.4%
+Rath et al. (ICSE'18) [@rath2018traceability] measure it — "approximately 43.3% of improvements and 42.4%
 of bugs have no commits associated with them" — as a property of an issue type
 rather than as a project-level rate with a name, and the divergence between it
 and CSR is not framed anywhere as a constraint on corpus selection.
@@ -48,7 +49,8 @@ study samples from the whole tracker before it knows which tickets are useful:
   and are cited in commit messages in their own right; excluding them would drop
   the keys most likely to be cited and inflate the rate.
 * **All statuses and resolutions.** Nothing is conditioned on `resolution =
-  Fixed`. This matters for comparability: Vieira et al. (PROMISE'19) select on
+  Fixed`. This matters for comparability: Vieira et al. (PROMISE'19)
+  [@vieira2019reports] select on
   resolution before measuring, which pre-selects tickets that were worked, so any
   rate computed that way is not comparable to TRR without adjustment.
 * **Keys, not names.** Membership is by the issue's key prefix. Measured across
@@ -102,7 +104,7 @@ Two instantiations are used, and both satisfy the constraint:
 | | tracker snapshot T | repository H_p | coverage |
 |---|---|---|---|
 | **TRR_live** | Apache Jira read 2026-07-25, issue **keys only** | pinned shas of 2026-07-25 | the 12 eligible projects |
-| **TRR_frozen** | the Public Jira Dataset (Zenodo 15719919), a snapshot predating every pinned sha | the same pinned shas | all 38 probed projects |
+| **TRR_frozen** | the Public Jira Dataset [@montgomery2025jira] (Zenodo 15719919), a snapshot predating every pinned sha | the same pinned shas | all 38 probed projects |
 
 For **TRR_live**, T ≈ date(H_p): the two were read the same day, so the newest
 tickets are the censored ones and TRR_live is a slight underestimate. The

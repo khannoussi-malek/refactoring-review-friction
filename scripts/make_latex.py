@@ -103,6 +103,41 @@ ESC = {"\\": r"\textbackslash{}", "&": r"\&", "%": r"\%", "$": r"\$",
 CODE_A, CODE_B = "\x00", "\x01"
 LINK_A, LINK_B, LINK_C = "\x02", "\x03", "\x04"
 MATH_A, MATH_B = "\x05", "\x06"
+RAW_A, RAW_B = "\x07", "\x08"
+
+# --------------------------------------------------------------------------
+# citations and cross-references
+# --------------------------------------------------------------------------
+
+# The sources mark a citation as [@key], which reads as a citation in the
+# Markdown and becomes \cite{key} here. Keys must exist in
+# paper/preprint/refs.bib; --selfcheck fails the build on one that does not.
+CITE = re.compile(r"\[@([A-Za-z0-9_:.-]+)\]")
+
+# Float labels, keyed by the number the prose writes. The prose says "Table 1"
+# and has said so since before any of these were floats, so the mapping is from
+# the authored number to the label rather than the other way round.
+FLOAT_LABELS = {"Table 1": "tab:eligibility", "Table 2": "tab:visibility",
+                "Table 3": "tab:ticketside", "Figure 1": "fig:funnel"}
+
+# Section numbers seen while parsing the headings. A reference to a number that
+# was never authored is left as literal text and reported rather than pointed at
+# a label that does not exist.
+SECTION_NUMBERS = set()
+# set once in main(); emit_table needs it and threading it through every
+# emit() call site would touch a dozen signatures for one boolean
+DOCCLASS = ['article']
+UNRESOLVED_REFS = []
+CITED_KEYS = set()
+
+
+def bib_keys(path):
+    """Keys defined in the .bib, so a \\cite to a missing entry fails the build
+    rather than printing a silent [?]."""
+    if not path.exists():
+        return set()
+    return set(re.findall(r"@\w+\s*\{\s*([^,\s]+)\s*,",
+                          path.read_text(encoding="utf-8")))
 
 # --------------------------------------------------------------------------
 # maths
@@ -374,8 +409,43 @@ def inline(s, unmapped=None):
         maths.append(out)
         return f"{MATH_A}{len(maths) - 1}{MATH_B}"
 
+    raws = []
+
+    def stash_raw(latex):
+        raws.append(latex)
+        return f"{RAW_A}{len(raws) - 1}{RAW_B}"
+
     s = re.sub(r"`([^`]*)`", stash_code, s)
+
+    # citations before links, because [@key] would otherwise look like link text
+    def do_cite(m):
+        CITED_KEYS.add(m.group(1))
+        return stash_raw(r"\cite{" + m.group(1) + "}")
+
+    s = CITE.sub(do_cite, s)
     s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", stash_link, s)
+
+    # cross-references. The prose hardcodes "§4.3" and "Table 1"; those become
+    # real \ref so they renumber and so a reader can click them.
+    def do_section(m):
+        num = m.group(2)
+        if num.rstrip(".") not in SECTION_NUMBERS:
+            UNRESOLVED_REFS.append(m.group(0))
+            return m.group(0)
+        lead = r"\S\kern0.13em " if m.group(1) == "§" else "Section~"
+        return stash_raw(lead + r"\ref{sec:" + num.rstrip(".") + "}")
+
+    s = re.sub(r"(§|Section~|Section )\s?(\d+(?:\.\d+)*)", do_section, s)
+
+    def do_float(m):
+        label = FLOAT_LABELS.get(m.group(0))
+        if not label:
+            UNRESOLVED_REFS.append(m.group(0))
+            return m.group(0)
+        kind = m.group(0).split()[0]
+        return stash_raw(kind + "~" + r"\ref{" + label + "}")
+
+    s = re.sub(r"(?:Table|Figure) \d+", do_float, s)
     for rx, _ in INLINE_MATH:
         s = rx.sub(stash_math, s)
     s = smart_quotes(s)
@@ -396,6 +466,7 @@ def inline(s, unmapped=None):
     s = re.sub(f"{LINK_A}(\\d+){LINK_B}", unstash_link, s)
     s = re.sub(f"{CODE_A}(\\d+){CODE_B}",
                lambda m: code_span(codes[int(m.group(1))], unmapped), s)
+    s = re.sub(f"{RAW_A}(\\d+){RAW_B}", lambda m: raws[int(m.group(1))], s)
     return s
 
 
@@ -622,7 +693,25 @@ def emit_table(rows, caption=None, label=None, unmapped=None,
     landscape = ncol >= 8
     size = r"\scriptsize" if ncol >= 8 else r"\footnotesize"
 
+    # In a two-column body longtable simply refuses ("longtable not in 1-column
+    # mode"). The body tables are all 3 to 7 rows, so they fit a float; table*
+    # spans both columns, which the widest of them needs. The three big tables
+    # go to the appendix, which drops to one column so longtable works there.
+    floated = DOCCLASS[0] == "ieee" and not caption and not caption_raw
+
     out = []
+    if floated:
+        out += [r"\begin{table*}[htbp]", r"\centering",
+                r"\begingroup" + size + r"\setlength{\tabcolsep}{3pt}",
+                r"\begin{tabular}{" + spec + "}", r"\toprule",
+                " & ".join(r"\textbf{" + breakable(inline(c, unmapped)) + "}"
+                           for c in rows[0]) + r" \\", r"\midrule"]
+        for r in rows[1:]:
+            out.append(" & ".join(breakable(inline(c, unmapped)) for c in r) + r" \\")
+        out += [r"\bottomrule", r"\end{tabular}", r"\endgroup",
+                r"\end{table*}"]
+        return out
+
     if landscape:
         out.append(r"\begin{landscape}")
     out.append(r"\begingroup" + size + r"\setlength{\tabcolsep}{3pt}")
@@ -672,6 +761,10 @@ def emit(blocks, starred=False, headings=None, unmapped=None, depth=0):
             if headings is not None and not starred:
                 headings.append((cmd, number, title))
             out.append("\\" + cmd + star + "{" + body + "}")
+            # label keyed by the number the prose already cites, so "§4.3"
+            # resolves without the sources having to learn a key scheme
+            if number and not starred:
+                out.append(r"\label{sec:" + number + "}")
             if starred and cmd in ("section", "subsection"):
                 out.append(r"\addcontentsline{toc}{" + cmd + "}{" + body + "}")
             out.append("")
@@ -716,7 +809,43 @@ TITLE = ("Traceability and estimate coverage as corpus-eligibility "
          "constraints: a probe of 38 Apache projects")
 AUTHOR = "Malek Khannoussi"
 
-PREAMBLE = r"""%% arXiv defaults to latex+dvips unless the source says otherwise
+# The build date is fixed, not \\today. A paper built on pinned shas and a
+# SHA-256 manifest that re-dates itself on every compile is contradicting its own
+# claim to be reproducible.
+BUILD_DATE = "5 August 2026"
+
+COMMON = r"""
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{graphicx}
+%% resolve the figure whether pdflatex runs from paper/preprint (repo layout) or
+%% from a flat directory with the image beside the .tex (arXiv submission)
+\graphicspath{{../../}{./}}
+\usepackage{microtype}
+
+%% Links are coloured rather than hidden. An internal cross-reference a reader
+%% cannot see is one they will not click; the tones are dark enough to print as
+%% near-black on paper.
+\usepackage[colorlinks=true,
+            linkcolor={[rgb]{0.10,0.20,0.50}},
+            citecolor={[rgb]{0.00,0.35,0.25}},
+            urlcolor={[rgb]{0.35,0.10,0.35}},
+            pdftitle={Traceability and estimate coverage as corpus-eligibility constraints: a probe of 38 Apache projects},
+            pdfauthor={Malek Khannoussi},
+            pdfsubject={Empirical software engineering; mining software repositories},
+            pdfkeywords={traceability, corpus eligibility, refactoring, issue linkage, mining software repositories},
+            pdfcreator={scripts/make\_latex.py}]{hyperref}
+
+\widowpenalty=10000
+\clubpenalty=10000
+\setlength{\emergencystretch}{2em}
+"""
+
+ARTICLE = r"""%% arXiv defaults to latex+dvips unless the source says otherwise
 \pdfoutput=1
 \documentclass[11pt,a4paper]{article}
 
@@ -728,48 +857,64 @@ PREAMBLE = r"""%% arXiv defaults to latex+dvips unless the source says otherwise
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-
-%% amsmath for \lvert/\rvert and display spacing, amssymb for \checkmark
-\usepackage{amsmath}
-\usepackage{amssymb}
-
 \usepackage[margin=2.5cm,bottom=2.8cm]{geometry}
-\usepackage{array}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{pdflscape}
-\usepackage{graphicx}
-%% resolve the figure whether pdflatex runs from paper/preprint (repo layout) or
-%% from a flat directory with the image beside the .tex (arXiv submission)
-\graphicspath{{../../}{./}}
 \usepackage[font=small,labelfont=bf,skip=6pt]{caption}
-%% expansion is available again now that the fonts are scalable
-\usepackage{microtype}
 \usepackage{parskip}
-
-\usepackage[hidelinks,
-            pdftitle={Traceability and estimate coverage as corpus-eligibility constraints: a probe of 38 Apache projects},
-            pdfauthor={Malek Khannoussi},
-            pdfsubject={Empirical software engineering; mining software repositories},
-            pdfkeywords={traceability, corpus eligibility, refactoring, issue linkage, Apache},
-            pdfcreator={scripts/make\_latex.py}]{hyperref}
-
-%% keep a stray line off the top or bottom of a page
-\widowpenalty=10000
-\clubpenalty=10000
-\setlength{\emergencystretch}{2em}
-
+""" + COMMON + r"""
 \title{\bfseries Traceability and estimate coverage as corpus-eligibility
 constraints:\\[2pt] a probe of 38 Apache projects}
 \author{Malek Khannoussi\\[2pt]
-\normalsize independent researcher\\
+\normalsize Independent Researcher\\
+\normalsize Tunisia\\
 \normalsize\texttt{khannoussimalek@gmail.com}}
-\date{\today}
+\date{BUILDDATE}
 
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 """
+
+IEEE = r"""\pdfoutput=1
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+%% IEEEtran asks for Courier (pcr) for \texttt, which a basic TeX Live does not
+%% ship; without this the run dies with "Metric (TFM) file not found". Latin
+%% Modern Mono is metrically sane and is already used by the article build.
+\usepackage{lmodern}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+""" + COMMON + r"""
+\title{Traceability and estimate coverage as corpus-eligibility constraints:\\
+a probe of 38 Apache projects}
+
+\author{\IEEEauthorblockN{Malek Khannoussi}
+\IEEEauthorblockA{Independent Researcher\\
+Tunisia\\
+khannoussimalek@gmail.com}}
+
+\date{BUILDDATE}
+
+\begin{document}
+\maketitle
+"""
+
+KEYWORDS = r"""
+\begin{IEEEkeywords}
+traceability, corpus eligibility, refactoring, issue linkage, mining software
+repositories
+\end{IEEEkeywords}
+"""
+
+
+def preamble(cls):
+    """The document class is a parameter because the venues in this area are
+    split: arXiv takes the single-column article, IEEE conferences take the
+    two-column IEEEtran, and ACM venues take acmart, which slots in here the
+    same way."""
+    src = IEEE if cls == "ieee" else ARTICLE
+    return src.replace("BUILDDATE", BUILD_DATE)
 
 
 def frontmatter(figure_ok):
@@ -808,21 +953,44 @@ def emit_figure(unmapped):
     path = ROOT / FIGURE[0]
     if not path.exists():
         return []
+    cap = (r"\caption{" + inline(FIGURE[2], unmapped) + r"}\label{"
+           + FIGURE[1] + "}")
+    if DOCCLASS[0] == "ieee":
+        # figure* spans both columns, which is 18cm against the article build's
+        # 16cm. Rotating it as well would fight the two-column output routine
+        # for no gain, and did: it left an 828pt overfull box.
+        return ["", r"\begin{figure*}[t]", r"\centering",
+                r"\includegraphics[width=\textwidth]{" + FIGURE[0] + "}",
+                cap, r"\end{figure*}", ""]
     # The image is 2280x750 -- a 3:1 strip whose panel labels are unreadable at
     # 16cm. A landscape page gives ~24cm of measure, half again as wide.
     return ["", r"\begin{landscape}", r"\begin{figure}[p]", r"\centering",
             r"\includegraphics[width=\linewidth]{" + FIGURE[0] + "}",
-            r"\caption{" + inline(FIGURE[2], unmapped) + r"}\label{"
-            + FIGURE[1] + "}", r"\end{figure}", r"\end{landscape}", ""]
+            cap, r"\end{figure}", r"\end{landscape}", ""]
 
 
-def table_appendix(unmapped):
+def bibliography():
+    """IEEEtran numeric style in both builds, so [1], [2] means the same thing
+    whichever class is used."""
+    return ["", r"\bibliographystyle{IEEEtran}", r"\bibliography{refs}", ""]
+
+
+def table_appendix(unmapped, cls="article"):
     """Each table file carries its own headings, its data table and a prose
     caption. The headings are starred so the appendix cannot renumber the
     paper's sections, and the first data table in each file takes the caption
     and the label the front matter points at."""
-    out = [r"\clearpage", r"\section*{Tables}",
-           r"\addcontentsline{toc}{section}{Tables}", ""]
+    # Two-column bodies cannot hold these tables. longtable is incompatible
+    # with twocolumn, and Table 3 is 38 rows over 11 columns, which no
+    # single-page float can take. The appendix therefore drops to one column so
+    # longtable works and landscape gives the measure. No row or column is lost,
+    # which is the constraint that decides this: the ceiling and fill columns
+    # are the paper's mechanism.
+    out = [r"\clearpage"]
+    if cls == "ieee":
+        out.append(r"\onecolumn")
+    out += [r"\section*{Tables}",
+            r"\addcontentsline{toc}{section}{Tables}", ""]
     for path, label, caption, n_data in TABLES:
         blocks = parse((ROOT / path).read_text(encoding="utf-8").split("\n"))
         seen, dropped_h1 = 0, False
@@ -848,6 +1016,8 @@ def table_appendix(unmapped):
             else:
                 out += emit([(kind, payload)], starred=True, unmapped=unmapped)
         out.append("")
+    if cls == "ieee":
+        out.append(r"\twocolumn")
     return out
 
 
@@ -886,7 +1056,8 @@ def check_numbering(headings):
     return bad
 
 
-STARRED = re.compile(r"\\(?:sub){0,2}section\*|\\paragraph\*|\\caption\*")
+STARRED = re.compile(r"\\(?:sub){0,2}section\*|\\paragraph\*|\\caption\*"
+                     r"|\\(?:begin|end)\{(?:table|figure)\*\}")
 
 
 def digits(s):
@@ -965,6 +1136,10 @@ def main():
     ap.add_argument("--selfcheck", action="store_true",
                     help="fail the build on leaked markdown or number drift")
     ap.add_argument("--test", action="store_true", help="run demo() and exit")
+    ap.add_argument("--class", dest="cls", default="article",
+                    choices=["article", "ieee"],
+                    help="article = single-column arXiv preprint; "
+                         "ieee = two-column IEEEtran conference layout")
     args = ap.parse_args()
 
     if args.test:
@@ -973,12 +1148,30 @@ def main():
 
     unmapped, headings = set(), []
     figure_ok = (ROOT / FIGURE[0]).exists()
-    body = [PREAMBLE]
+
+    # Collect every authored section number BEFORE converting anything, so a
+    # reference in section 2 to a section defined in section 7 still resolves.
+    SECTION_NUMBERS.clear()
+    UNRESOLVED_REFS.clear()
+    CITED_KEYS.clear()
+    for name in ORDER[1:]:
+        for line in (SRC / name).read_text(encoding="utf-8").split("\n"):
+            m = HEADING.match(line.strip())
+            if m:
+                n = NUMBERED.match(m.group(2))
+                if n:
+                    SECTION_NUMBERS.add(n.group(1))
+
+    DOCCLASS[0] = args.cls
+    body = [preamble(args.cls)]
 
     abstract_md = re.sub(r"^#\s+Abstract\s*$", "",
                          (SRC / "abstract.md").read_text(encoding="utf-8"), flags=re.M)
     body += [r"\begin{abstract}", convert(abstract_md, unmapped=unmapped),
-             r"\end{abstract}", frontmatter(figure_ok), r"\clearpage"]
+             r"\end{abstract}"]
+    if args.cls == "ieee":
+        body.append(KEYWORDS)
+    body += [frontmatter(figure_ok), r"\clearpage"]
 
     for i, name in enumerate(ORDER[1:]):
         body.append(convert((SRC / name).read_text(encoding="utf-8"), headings=headings,
@@ -986,7 +1179,8 @@ def main():
         if name == "results.md":
             body += emit_figure(unmapped)
 
-    body += table_appendix(unmapped)
+    body += table_appendix(unmapped, args.cls)
+    body += bibliography()
     body.append(r"\end{document}")
     text = "\n\n".join(body)
 
@@ -994,14 +1188,21 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text, encoding="utf-8")
 
-    print(f"Wrote {args.out}  ({len(text.splitlines()):,} lines, "
-          f"{len(headings)} numbered headings)")
+    print(f"Wrote {args.out}  [{args.cls}]  ({len(text.splitlines()):,} lines, "
+          f"{len(headings)} numbered headings, {len(CITED_KEYS)} cited works)")
+    if UNRESOLVED_REFS:
+        from collections import Counter
+        print("REFERENCES LEFT AS LITERAL TEXT (no such label):",
+              dict(Counter(UNRESOLVED_REFS)))
     if unmapped:
         print("UNMAPPED CHARACTERS (rendered as '?'):", sorted(unmapped))
     if not figure_ok:
         print(f"NOTE: {FIGURE[0]} not found; figure omitted")
 
     problems = selfcheck(text, headings, unmapped, RAGGED)
+    missing = CITED_KEYS - bib_keys(ROOT / 'paper' / 'preprint' / 'refs.bib')
+    if missing:
+        problems.append('cited but not in refs.bib: ' + ', '.join(sorted(missing)))
     if problems:
         print("\nSELF-CHECK FAILURES:")
         for p in problems:

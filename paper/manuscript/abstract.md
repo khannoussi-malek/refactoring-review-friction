@@ -21,8 +21,9 @@ counts a different ticket denominator (§3.1.3).
 
 **Most of that gap is arithmetic, not discipline.** A citing commit adds at most
 one new distinct ticket, so the ticket-side rate cannot exceed
-`commit-side × commits / tickets`. That ceiling binds for all twelve eligible
-projects, ranging 13.7–81.6%, and every project reaches 80–95% of it: the 5.8×
+`commit-side × commits / tickets`. Under the live measurement ceiling_live binds
+for all twelve eligible projects, ranging 13.7–81.6%, and every project reaches
+80–95% of it: the 5.8×
 spread in the ticket-side rate is a 6.0× spread in the ceiling and only a 1.19×
 spread in what is left. A tracker accumulates tickets faster than a repository
 accumulates commits, and below one commit per ticket the two rates are not
@@ -61,7 +62,8 @@ established from metadata; it requires reading commit messages from the project
 itself, per project, before any outcome is measured.
 
 We make no first-to-measure claim: per-project linkage rates are published by
-SEOSS 33 for 33 projects and by Rath et al. (ICSE'18) for six. What is new is a
+SEOSS 33 [@rath2019seoss] for 33 projects and by Rath et al. (ICSE'18)
+[@rath2018traceability] for six. What is new is a
 pre-registered numeric bar with reported attrition and named rejections, both
 reference channels counted together, the ticket realisation rate named and
 measured across a whole probe rather than its survivors, and the six-mode

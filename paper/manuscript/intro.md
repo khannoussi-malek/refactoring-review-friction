@@ -35,16 +35,18 @@ selection criterion — and realises **55.8%** of its 29,635 tickets (TRR_live).
 
 **And most of that gap turns out to be arithmetic.** A commit that cites a ticket
 adds at most one *new* distinct ticket, so the ticket-side rate is capped at
-`commit-side × commits / tickets`. That ceiling binds for every eligible project,
-running 13.7–81.6%, and every one of them reaches 80–95% of it. What reads as a
+`commit-side × commits / tickets`. Under the live measurement ceiling_live binds
+for every eligible project, running 13.7–81.6%, and every one of them reaches
+80–95% of it. Under the frozen snapshot three ceilings exceed 100% and stop
+binding (§4.2, Table 3). What reads as a
 discipline gap is mostly a tracker accumulating tickets faster than a repository
 accumulates commits — which is a fact about the two artifacts, not about the
 people using them, and which no published linkage rate exposes.
 
 **Contributions.** Stated against what is already published rather than against an
-assumed gap. We make **no first-to-measure claim**: Rath & Mäder's SEOSS 33
+assumed gap. We make **no first-to-measure claim**: Rath & Mäder's SEOSS 33 [@rath2019seoss]
 publishes per-project linkage as an explicit table column for 33 projects, and
-Rath et al. (ICSE'18) publishes both directions for six. An earlier version of
+Rath et al. (ICSE'18) [@rath2018traceability] publishes both directions for six. An earlier version of
 this work claimed novelty on that ground; the claim was checked, found false, and
 withdrawn (§2.1).
 
