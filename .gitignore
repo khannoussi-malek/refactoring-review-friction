@@ -46,3 +46,7 @@ deposit/*.tar.gz
 # gate evidence caches (regenerable from the hadoop clone)
 .gate_commit_log.json
 .gate_key_index.json
+
+# LaTeX build intermediates
+paper/preprint/*.blg
+paper/preprint/*.log
