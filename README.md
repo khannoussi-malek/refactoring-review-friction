@@ -1,7 +1,10 @@
 # What precedes a developer's decision to refactor?
 
-**Reader's guide (interactive):**
-<https://khannoussi-malek.github.io/refactoring-review-friction/>
+[![The record does not trace the work. A probe of 38 Apache projects against a
+pre-registered traceability bar: 12 of 38 clear the bar, all twelve from one
+ecosystem.](docs/og-card.png)](https://khannoussi-malek.github.io/refactoring-review-friction/)
+
+**[Interactive reader's guide →](https://khannoussi-malek.github.io/refactoring-review-friction/)**
 
 ## 1. What this is
 
