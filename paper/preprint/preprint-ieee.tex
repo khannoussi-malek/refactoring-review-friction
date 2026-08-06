@@ -89,7 +89,7 @@ figure. They are the paper; the prose is the argument around them.
 \begin{itemize}\setlength{\itemsep}{2pt}
 \item \textbf{Table~\ref{tab:eligibility}} --- corpus eligibility across the 38
 probed projects, both traceability channels, with commits per ticket, the
-arithmetic ceiling of Section~3.1.4 and the share of it reached.
+arithmetic ceiling of Section~\ref{sec:3.1.4} and the share of it reached.
 \item \textbf{Table~\ref{tab:visibility}} --- three-channel visibility of
 architectural change across two ecosystems. Every cell is a different quantity
 with its own denominator and no statistic is computed across them.
@@ -257,7 +257,7 @@ Denominator membership is deliberately permissive, because a ticket-anchored stu
 \begin{itemize}
 \item \textbf{All issue types.} Bug, Improvement, New Feature, Task, Test, Wish and Sub-task alike. \textbf{Sub-tasks are included}, because they carry their own key and are cited in commit messages in their own right; excluding them would drop the keys most likely to be cited and inflate the rate.
 \item \textbf{All statuses and resolutions.} Nothing is conditioned on \texttt{resolution = Fixed}. This matters for comparability: Vieira et al. (PROMISE'19) \cite{vieira2019reports} select on resolution before measuring, which pre-selects tickets that were worked, so any rate computed that way is not comparable to TRR without adjustment.
-\item \textbf{Keys, not names.} Membership is by the issue's key prefix. Measured across the 2,686,282-issue public Jira corpus, 326 project ids carry more than one distinct name while 0 carry more than one key, so a name-based denominator is not stable and a key-based one is (\texttt{paper/\allowbreak{}numbers.\allowbreak{}md} \S\kern0.13em \ref{sec:5}).
+\item \textbf{Keys, not names.} Membership is by the issue's key prefix. Measured across the 2,686,282-issue public Jira corpus, 326 project ids carry more than one distinct name while 0 carry more than one key, so a name-based denominator is not stable and a key-based one is (\texttt{paper/\allowbreak{}numbers.\allowbreak{}md} \S\kern0.13em 5).
 \item \textbf{Issues that left the project are not in it.} An issue moved out of \emph{p} before T no longer has a \emph{p}-key in the tracker and is not counted; one moved in is counted under its current key. This is a property of the snapshot, not a choice.
 \end{itemize}
 
@@ -304,20 +304,7 @@ CSR and TRR are not independent quantities, and the constraint between them is e
 
 A commit either cites no key of \emph{p}, in which case it contributes nothing to the numerator of TRR, or cites at least one --- and however many it cites, it can add \textbf{at most one ticket that no earlier commit had already cited}, in the limiting case where every citing commit introduces a fresh key. So the number of distinct realised tickets is bounded by the number of citing commits:
 
-\begin{quote}
-\begin{table*}[htbp]
-\centering
-\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.4793\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3365\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1843\linewidth-2\tabcolsep\relax}}
-\toprule
-\textbf{\{ k $\in$ Tickets(p, T) : k realised \}} & \textbf{$\leq$ CSR(p) $\cdot$} & \textbf{$C_p$} \\
-\midrule
-\bottomrule
-\end{tabular}
-\endgroup
-\end{table*}
-
-\end{quote}
+\[\bigl\lvert\{ k \in \mathrm{Tickets}(p, T) : k \;\mathrm{realised} \}\bigr\rvert \leq \mathrm{CSR}(p) \cdot \lvert C_p\rvert\]
 
 and dividing by |Tickets(p, T)|:
 
@@ -333,7 +320,7 @@ Second, it decomposes TRR into a part that is arithmetic and a part that is beha
 
 \[\mathrm{fill}(p) = \frac{\mathrm{TRR}(p)}{\mathrm{ceiling}(p)} \in [0, 1]\]
 
-\texttt{fill} is the share of the attainable maximum actually reached --- how efficiently a project's citing commits spread across distinct tickets rather than piling onto a few. \textbf{\texttt{fill} is the quantity a claim about citation discipline needs}; \texttt{ceiling} is a property of how much code the project writes per ticket it files. Tables 1 and 3 report both. \S\kern0.13em \ref{sec:4.2} shows that in this corpus almost all of the ticket-side variation is ceiling and almost none of it is fill.
+\texttt{fill} is the share of the attainable maximum actually reached --- how efficiently a project's citing commits spread across distinct tickets rather than piling onto a few. \textbf{\texttt{fill} is the quantity a claim about citation discipline needs}; \texttt{ceiling} is a property of how much code the project writes per ticket it files. Tables~\ref{tab:eligibility} and~\ref{tab:ticketside} report both. \S\kern0.13em \ref{sec:4.2} shows that in this corpus almost all of the ticket-side variation is ceiling and almost none of it is fill.
 
 \textbf{The subscript propagates, and it matters.} \texttt{ceiling} and \texttt{fill} are both functions of TRR and of the ticket denominator, so each inherits whichever instantiation of \S\kern0.13em \ref{sec:3.1.3} produced it: $\mathrm{ceiling}_\mathrm{live}$ and $\mathrm{fill}_\mathrm{live}$ are computed against the live Jira read of 2026-07-25, $\mathrm{ceiling}_\mathrm{frozen}$ and $\mathrm{fill}_\mathrm{frozen}$ against the frozen snapshot. The two are not interchangeable and they do not always agree about whether the bound binds at all --- three projects have $\mathrm{ceiling}_\mathrm{frozen}$ at or above 100\% while every $\mathrm{ceiling}_\mathrm{live}$ is below it (\S\kern0.13em \ref{sec:4.2}, Table~\ref{tab:ticketside}). \textbf{Throughout this paper an unsubscripted \texttt{TRR}, \texttt{ceiling} or \texttt{fill} means the quantity in general rather than a measured value; every measured value carries its subscript}, in the prose, in the abstract and in the table captions. Where a project appears with two numbers for what looks like one quantity, the subscripts are the difference.
 
@@ -342,7 +329,7 @@ Second, it decomposes TRR into a part that is arithmetic and a part that is beha
 
 \textbf{38 Apache candidates}, each Maven-built, Jira-tracked and multi-module. Each was cloned \texttt{-\allowbreak{}-\allowbreak{}filter=blob:none -\allowbreak{}-\allowbreak{}no-\allowbreak{}checkout} --- the probe needs \texttt{git log} and nothing else, so a working tree is pure cost --- and probed with \texttt{scripts/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}py}. Per-project HEAD shas are pinned in \texttt{paper/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}json}, so any re-run is exactly diffable against this one.
 
-\textbf{Hadoop itself is not one of the 38.} It is the corpus the exploratory work was done on, and it is used here only as the worked example for multi-key matching. Every rate in Tables 1 and 3 is from a project Hadoop is not.
+\textbf{Hadoop itself is not one of the 38.} It is the corpus the exploratory work was done on, and it is used here only as the worked example for multi-key matching. Every rate in Tables~\ref{tab:eligibility} and~\ref{tab:ticketside} is from a project Hadoop is not.
 
 \textbf{Key prefixes were detected empirically from commit messages, not assumed.} This is not a refinement; it decides the answer. A single-key probe reads Hadoop at \textbf{26.2\%}, against \textbf{92.3\%} on a four-key probe and \textbf{97.8\%} on a seven-key probe of the same 28,290 commits (\S\kern0.13em \ref{sec:5}, modes 5 and 6). The three figures are the same measurement under three key sets, not a rate and a correction to it; 97.8\% is the most complete of them, and the paper quotes whichever key set it names. Evergreen reads 71.7\% under a single-key probe for the same reason. Seven of the 38 needed a second key (\texttt{CALCITE,OPTIQ}, \texttt{HDDS,OZONE}, \texttt{KARAF,FELIX}, \texttt{PINOT,THIRDEYE}, \texttt{ROCKETMQ,RIP}, \texttt{TOMEE,OPENEJB}, \texttt{JAMES,MAILBOX}).
 
@@ -357,7 +344,7 @@ Second, it decomposes TRR into a part that is arithmetic and a part that is beha
 
 The same discipline was applied where it hurt more. A separate frozen threshold --- vendor share $\geq$ 0.40 for the module-tier rule --- was held through a held-out replication in which lowering it would have rescued two of five projects (HBase, maximum share 0.33; Phoenix, which flagged nothing). It was not lowered, and the rule then failed 0 of 3 where it could be tested (\texttt{replication/\allowbreak{}REPLICATION.\allowbreak{}md}). Both facts are stated because a pre-registered threshold that is never tested against temptation is not evidence of anything.
 
-\textbf{Held-out discipline is mechanical.} Outcome data was never observed for seven projects --- Ozone, Tez, ZooKeeper, Ranger, Oozie, Knox, Sqoop. The rule is written down (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:3}); the ticket-side script requests one Jira field and aborts if it receives another; the matcher-validation script asks git for \texttt{\%H}, \texttt{\%s} and \texttt{\%b} and nothing else, so it \emph{cannot} compute a duration. HBase and Phoenix were dropped from the held-out corpus on 2026-07-30 and quarantined, because their committed artifacts are one subtraction away from per-ticket latency even though no outcome was ever observed for either; their coverage numbers remain usable and are reported.
+\textbf{Held-out discipline is mechanical.} Outcome data was never observed for seven projects --- Ozone, Tez, ZooKeeper, Ranger, Oozie, Knox, Sqoop. The rule is written down (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 3); the ticket-side script requests one Jira field and aborts if it receives another; the matcher-validation script asks git for \texttt{\%H}, \texttt{\%s} and \texttt{\%b} and nothing else, so it \emph{cannot} compute a duration. HBase and Phoenix were dropped from the held-out corpus on 2026-07-30 and quarantined, because their committed artifacts are one subtraction away from per-ticket latency even though no outcome was ever observed for either; their coverage numbers remain usable and are reported.
 
 \subsection{The detector, and the second ecosystem}
 \label{sec:3.4}
@@ -543,7 +530,7 @@ Drafted from \texttt{paper/\allowbreak{}eligibility\_\allowbreak{}failure\_\allo
 
 \textbf{Every mode below was discovered \emph{after} selecting the project, by probing it. None is expressible in any published sampling frame.} GHS indexed 735,669 repositories as published in 2021 and exposes 35 fields per record today, of which only \texttt{totalIssues} and \texttt{openIssues} touch issues, and both are GitHub-issue counts (\S\kern0.13em \ref{sec:2.3}). All six were found the same way: by reading commit messages, project by project.
 
-\emph{Note on mode 6.} \texttt{README.\allowbreak{}md} \S\kern0.13em \ref{sec:5} labels mode 6 ``repository migrated across organisations''. That framing was \textbf{superseded on 2026-07-25} once id$\rightarrow$key stability was measured (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:2}, \texttt{5179907}). The current statement is below, and it is the one this paper uses.
+\emph{Note on mode 6.} \texttt{README.\allowbreak{}md} \S\kern0.13em 5 labels mode 6 ``repository migrated across organisations''. That framing was \textbf{superseded on 2026-07-25} once id$\rightarrow$key stability was measured (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 2, \texttt{5179907}). The current statement is below, and it is the one this paper uses.
 
 \begin{table*}[htbp]
 \centering
@@ -583,7 +570,7 @@ Measured across 2,686,282 issues, \textbf{project id $\rightarrow$ key is 1:1}: 
 
 Both fail silently, which is the same property as modes 4 and 5: commit-to-ticket matching runs on keys, and the key set cannot be derived from the tracker alone.
 
-A related instance is a repository that resolves elsewhere: \texttt{kiegroup/\allowbreak{}optaplanner} HTTP-redirects to \texttt{apache/\allowbreak{}incubator-\allowbreak{}kie-\allowbreak{}optaplanner}, with identical history and PLANNER 1,629 either way. An earlier verdict that this was a misresolved build-config repository was wrong and is corrected in \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:7}.
+A related instance is a repository that resolves elsewhere: \texttt{kiegroup/\allowbreak{}optaplanner} HTTP-redirects to \texttt{apache/\allowbreak{}incubator-\allowbreak{}kie-\allowbreak{}optaplanner}, with identical history and PLANNER 1,629 either way. An earlier verdict that this was a misresolved build-config repository was wrong and is corrected in \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 7.
 
 \subsection{Mode 6 measured across the whole probe, not just its worked examples}
 \label{sec:5.3}
@@ -626,7 +613,7 @@ None of the six is derivable from repository metadata. Expressing them requires,
 \section{Threats to validity}
 \label{sec:6}
 
-Assembled from \texttt{paper/\allowbreak{}ERA\_\allowbreak{}AUDIT.\allowbreak{}md} (\texttt{e0d76ef}), \texttt{paper/\allowbreak{}ALIASING\_\allowbreak{}HADOOP.\allowbreak{}md}, \texttt{paper/\allowbreak{}matcher\_\allowbreak{}validation.\allowbreak{}md}, \texttt{SUI\_\allowbreak{}FINDINGS.\allowbreak{}md}, \texttt{paper/\allowbreak{}numbers.\allowbreak{}md} and \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:7}. Several of the items below are things this study got wrong and corrected. \textbf{They are stated as the paper's credibility, not as its embarrassments} --- a methods paper about record quality that concealed its own record would be self-refuting.
+Assembled from \texttt{paper/\allowbreak{}ERA\_\allowbreak{}AUDIT.\allowbreak{}md} (\texttt{e0d76ef}), \texttt{paper/\allowbreak{}ALIASING\_\allowbreak{}HADOOP.\allowbreak{}md}, \texttt{paper/\allowbreak{}matcher\_\allowbreak{}validation.\allowbreak{}md}, \texttt{SUI\_\allowbreak{}FINDINGS.\allowbreak{}md}, \texttt{paper/\allowbreak{}numbers.\allowbreak{}md} and \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 7. Several of the items below are things this study got wrong and corrected. \textbf{They are stated as the paper's credibility, not as its embarrassments} --- a methods paper about record quality that concealed its own record would be self-refuting.
 
 \subsection{Construct validity}
 \label{sec:6.1}
@@ -657,9 +644,9 @@ Four further things can break the estimator, and all four occur in this corpus:
 
 \textbf{The truncation caveat on Table~\ref{tab:eligibility} is not withdrawn.} The 12.0--69.0\% range from the live measurement remains within-passing variation, computed on the twelve that had already cleared the bar. \S\kern0.13em \ref{sec:4.3} does not extend that measurement; it is a different estimator against a different snapshot, and it is reported alongside rather than merged into it.
 
-\textbf{``345 of 349 episodes traceable to 323 tickets'' --- the unit matters.} An estimate is a property of a ticket, not an episode; several episodes share a ticket. An earlier draft used 0/345 where 0/323 is correct (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:7}).
+\textbf{``345 of 349 episodes traceable to 323 tickets'' --- the unit matters.} An estimate is a property of a ticket, not an episode; several episodes share a ticket. An earlier draft used 0/345 where 0/323 is correct (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 7).
 
-\textbf{Two unrelated quantities are both 92.3\% and are labelled apart.} 92.3\%-A is traceability (26,125 / 28,290 Hadoop commits citing a key, four-key probe); 92.3\%-B is RefactoringMiner chunk coverage (3,175 / 3,440). Different numerators, denominators, scopes and claims. This paper uses \textbf{92.3\%-A only} (\texttt{paper/\allowbreak{}numbers.\allowbreak{}md} \S\kern0.13em \ref{sec:2}).
+\textbf{Two unrelated quantities are both 92.3\% and are labelled apart.} 92.3\%-A is traceability (26,125 / 28,290 Hadoop commits citing a key, four-key probe); 92.3\%-B is RefactoringMiner chunk coverage (3,175 / 3,440). Different numerators, denominators, scopes and claims. This paper uses \textbf{92.3\%-A only} (\texttt{paper/\allowbreak{}numbers.\allowbreak{}md} \S\kern0.13em 2).
 
 \subsection{Internal validity --- instruments that decay, and one that terminates}
 \label{sec:6.2}
@@ -684,7 +671,7 @@ CI verdicts --- architectural tickets carrying $\geq$1 Hadoop-QA comment & 145 o
 
 Two further consequences, both already disclosed in the source memos and generalised by the era audit: status-derived timings are \textbf{not comparable across module tiers} at all (cloud connectors drive the Jira workflow in 28.3\% of tickets against 86.2\% elsewhere, on $n=13$ connector tickets --- thin enough that the proportion is quoted and nothing is leaned on it), and the phase decomposition rests on \textbf{6 architectural tickets after 2021}, so any claim that build-versus- merge behaviour \emph{persists} is unsupported.
 
-\textbf{714 / 714 = 100.0\% is true by construction and is never reported as validation.} The analysis frame is built from commits that cite tickets, so a ticket with no citing commit cannot enter it and the match rate cannot come out at anything else. What it establishes is that the clock is \emph{applicable} to every ticket in the frame --- a statement about the frame, not about coverage of Hadoop's tickets. \textbf{The real coverage question is unanswered and is not computed anywhere} (\texttt{paper/\allowbreak{}numbers.\allowbreak{}md} \S\kern0.13em \ref{sec:4}).
+\textbf{714 / 714 = 100.0\% is true by construction and is never reported as validation.} The analysis frame is built from commits that cite tickets, so a ticket with no citing commit cannot enter it and the match rate cannot come out at anything else. What it establishes is that the clock is \emph{applicable} to every ticket in the frame --- a statement about the frame, not about coverage of Hadoop's tickets. \textbf{The real coverage question is unanswered and is not computed anywhere} (\texttt{paper/\allowbreak{}numbers.\allowbreak{}md} \S\kern0.13em 4).
 
 \subsection{Author identity aliasing does not affect the Hadoop measures}
 \label{sec:6.3}
@@ -722,7 +709,7 @@ Their role is to establish that keyword-based detection over-counts roughly four
 
 \textbf{One coincidence in the rater pilot is disclosed because it looks like tuning and we cannot prove it is not.} \texttt{paper/\allowbreak{}LLM\_\allowbreak{}RATER\_\allowbreak{}PILOT.\allowbreak{}md} reports that six comments change label under the opposite ordering of two codebook rules, and \textbf{five of the six fall in the flagged bucket} --- the margin moves 3/12/5 to 3/7/10, a swing of exactly five. The $\kappa$ ceiling is computed on that bucket, so five is the count that drives it, and five moves the attainable ceiling from 0.491 to \textbf{0.840}. \emph{(Corrected 2026-08-05: this paragraph previously credited the 0.840 to the six re-labelled comments. Six is the total across both buckets; the ceiling is indexed by flagged-bucket moves alone. No figure changes.)}
 
-\textbf{Five is also exactly the count that maximises the ceiling over every possible count}: four gives 0.765, six gives 0.837, seven gives 0.833. The six were selected by a stated semantic criterion, they are individually defensible, and the finding is robust at 0.833--0.840 across plus or minus two comments --- but the criterion was applied by the same party that reported the resulting number, and it landed on the global maximum. Stated here rather than left for a reader to find (\texttt{audit/\allowbreak{}JUDGMENTS.\allowbreak{}md} \S\kern0.13em \ref{sec:3}).
+\textbf{Five is also exactly the count that maximises the ceiling over every possible count}: four gives 0.765, six gives 0.837, seven gives 0.833. The six were selected by a stated semantic criterion, they are individually defensible, and the finding is robust at 0.833--0.840 across plus or minus two comments --- but the criterion was applied by the same party that reported the resulting number, and it landed on the global maximum. Stated here rather than left for a reader to find (\texttt{audit/\allowbreak{}JUDGMENTS.\allowbreak{}md} \S\kern0.13em 3).
 
 \subsection{Definitions fixed after seeing data, and thresholds held when they hurt}
 \label{sec:6.6}
@@ -731,7 +718,7 @@ Their role is to establish that keyword-based detection over-counts roughly four
 
 \textbf{The estimate conclusion was drawn at the wrong level of aggregation and is self-corrected.} ``Effort estimates absent in Apache (0\%)'' was replaced by three numbers that travel together: \textbf{2.557\%} Apache-wide (25,949 / 1,014,926), \textbf{1.449\%} in the Hadoop corpus (713 / 49,201), \textbf{0 of 323} architectural tickets --- expected 4.7, P $\approx$ 0.009 under a naive binomial. Architectural tickets are not a random draw and the non-randomness could run either way, so the deficit is suggestive on thin evidence, not an established effect.
 
-\textbf{A threshold was held during a failed replication when lowering it would have rescued two projects.} The vendor-share tier rule was frozen at $\geq$0.40 before any held-out outcome was observed. HBase (maximum share 0.33) and Phoenix flagged nothing at that cut, so neither could be tested. \textbf{The threshold was not lowered.} The rule then failed 0 of 3 where it could be tested. That the fix was available and declined is recorded deliberately (\texttt{replication/\allowbreak{}REPLICATION.\allowbreak{}md}, \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:2} row 07-25).
+\textbf{A threshold was held during a failed replication when lowering it would have rescued two projects.} The vendor-share tier rule was frozen at $\geq$0.40 before any held-out outcome was observed. HBase (maximum share 0.33) and Phoenix flagged nothing at that cut, so neither could be tested. \textbf{The threshold was not lowered.} The rule then failed 0 of 3 where it could be tested. That the fix was available and declined is recorded deliberately (\texttt{replication/\allowbreak{}REPLICATION.\allowbreak{}md}, \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 2 row 07-25).
 
 \textbf{The eligibility bar was likewise fixed before any project was cloned} and never moved. Lowering it to 60\% would have added nine projects and widened the family.
 
@@ -937,7 +924,7 @@ No funding was received. The author declares no competing interests. The work wa
 
 \end{landscape}
 
-\textdagger{} held-out corpus: coverage and existence counts only, no outcome ever observed (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:3}). \textdaggerdbl{} quarantined 2026-07-30, dropped from the held-out corpus; coverage retained, outcome inputs sequestered in \texttt{spent/\allowbreak{}} (\texttt{spent/\allowbreak{}README.\allowbreak{}md}).
+\textdagger{} held-out corpus: coverage and existence counts only, no outcome ever observed (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 3). \textdaggerdbl{} quarantined 2026-07-30, dropped from the held-out corpus; coverage retained, outcome inputs sequestered in \texttt{spent/\allowbreak{}} (\texttt{spent/\allowbreak{}README.\allowbreak{}md}).
 
 
 
@@ -1031,12 +1018,6 @@ No funding was received. The author declares no competing interests. The work wa
 
 \endgroup
 
-\subsection*{Caption}
-
-\addcontentsline{toc}{subsection}{Caption}
-
-
-
 \textbf{The two traceability channels diverge, and the one the literature publishes is not the one an issue-linked study needs.} The commit-side rate --- what fraction of commits cite a ticket --- is what SEOSS 33 reports and what selection criteria use. The ticket-side rate --- what fraction of tickets ever receive a citing commit --- is what a ticket-anchored study depends on. \textbf{Apache Hive cites a ticket in 97.0\% of its 18,213 commits, while 55.8\% of its 29,635 tickets are ever touched by one} --- near perfect commit-side hygiene, and still close to half the tracker invisible to a ticket-anchored design. Across the 12 eligible projects the commit-side rate runs 82.6--98.3\% while $\mathrm{TRR}_\mathrm{live}$ runs \textbf{12.0\%--69.0\%, with none above 69.0\%}.
 
 
@@ -1061,7 +1042,7 @@ No funding was received. The author declares no competing interests. The work wa
 
 
 
-\textbf{No timing column exists in this table and none may be added for a \textdagger{} row.} Every quantity above is a coverage or existence count, which is what the held-out rule permits (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em \ref{sec:3}).
+\textbf{No timing column exists in this table and none may be added for a \textdagger{} row.} Every quantity above is a coverage or existence count, which is what the held-out rule permits (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 3).
 
 
 
@@ -1113,12 +1094,6 @@ Rows are \textbf{record channels} --- the three places an empirical software eng
 
 \endgroup
 
-\subsection*{Caption}
-
-\addcontentsline{toc}{subsection}{Caption}
-
-
-
 \textbf{This table demonstrates convergent invisibility across non-comparable measures. It is not a single metric measured six times.}
 
 
@@ -1159,13 +1134,7 @@ Consequently: \textbf{the cells are not normalised to a common scale and no summ
 
 
 
-It is also reported \textbf{as a finding about the instrument, never as an instrument this paper's claims rest on}: it is a single-rater pass with no $\kappa$, and \texttt{README.\allowbreak{}md} \S\kern0.13em \ref{sec:8} records that no measure requiring manual coding is currently defensible in this repository. Its role in the paper is to establish that keyword-based detection of structural discussion over-counts roughly fourfold, which is a validity result about a method other studies use --- the same role the TypeScript column's 30\% precision plays for commit messages.
-
-
-
-\subsection*{Sources}
-
-\addcontentsline{toc}{subsection}{Sources}
+It is also reported \textbf{as a finding about the instrument, never as an instrument this paper's claims rest on}: it is a single-rater pass with no $\kappa$, and \texttt{README.\allowbreak{}md} \S\kern0.13em 8 records that no measure requiring manual coding is currently defensible in this repository. Its role in the paper is to establish that keyword-based detection of structural discussion over-counts roughly fourfold, which is a validity result about a method other studies use --- the same role the TypeScript column's 30\% precision plays for commit messages.
 
 
 

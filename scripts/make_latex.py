@@ -128,6 +128,7 @@ SECTION_NUMBERS = set()
 # emit() call site would touch a dozen signatures for one boolean
 DOCCLASS = ['article']
 UNRESOLVED_REFS = []
+EXTERNAL_REFS = []
 CITED_KEYS = set()
 
 
@@ -179,8 +180,19 @@ def to_math(s):
     s = re.sub(r"\|\{(.*?)\}\|",
                lambda m: r"\bigl\lvert\{" + m.group(1) + r"\}\bigr\rvert", s)
     s = re.sub(r"\|([^|]+)\|", lambda m: r"\lvert " + m.group(1) + r"\rvert ", s)
-    s = re.sub(r"(?<![\\A-Za-z])([A-Za-z]{2,})",
-               lambda m: r"\mathrm{" + m.group(1) + "}", s)
+    def upright(m):
+        word = m.group(1)
+        after = s[m.end():m.end() + 1]
+        before = s[m.start() - 1:m.start()] if m.start() else ""
+        body = r"\mathrm{" + word + "}"
+        # A name applied to an argument -- Tickets(p, T) -- needs no space. A
+        # bare predicate does: math mode eats the source space, so "k realised"
+        # set as "krealised" until this put the space back explicitly.
+        if after != "(" and before == " " and s[m.start() - 2:m.start() - 1].isalnum():
+            return r"\;" + body
+        return body
+
+    s = re.sub(r"(?<![\\A-Za-z])([A-Za-z]{2,})", upright, s)
     return re.sub(r"\s+", " ", s).strip()
 
 
@@ -429,6 +441,16 @@ def inline(s, unmapped=None):
     # real \ref so they renumber and so a reader can click them.
     def do_section(m):
         num = m.group(2)
+        # A section pointer that follows a .md filename belongs to a repository
+        # memo, not to this paper. Those files use Arabic numbering, so turning
+        # "paper/numbers.md §5" into a \ref would print "§V" and send a reader
+        # looking for a section that does not exist. Left as literal text, and
+        # left that way permanently -- this is the guard, not a one-off edit.
+        before = s[:m.start()]
+        prev = re.search(f"{CODE_A}(\\d+){CODE_B}\\s*$", before)
+        if prev and codes[int(prev.group(1))].strip().endswith(".md"):
+            EXTERNAL_REFS.append(codes[int(prev.group(1))].strip() + " " + m.group(0))
+            return m.group(0)
         if num.rstrip(".") not in SECTION_NUMBERS:
             UNRESOLVED_REFS.append(m.group(0))
             return m.group(0)
@@ -445,6 +467,27 @@ def inline(s, unmapped=None):
         kind = m.group(0).split()[0]
         return stash_raw(kind + "~" + r"\ref{" + label + "}")
 
+    def do_float_pair(m):
+        kind, a, b = m.group(1), m.group(2), m.group(3)
+        sing = kind[:-1]                       # Tables -> Table
+        la, lb = FLOAT_LABELS.get(f"{sing} {a}"), FLOAT_LABELS.get(f"{sing} {b}")
+        if not (la and lb):
+            UNRESOLVED_REFS.append(m.group(0))
+            return m.group(0)
+        return stash_raw(kind + "~" + r"\ref{" + la + r"} and~\ref{" + lb + "}")
+
+    def do_section_pair(m):
+        a, b = m.group(2), m.group(3)
+        if a not in SECTION_NUMBERS or b not in SECTION_NUMBERS:
+            UNRESOLVED_REFS.append(m.group(0))
+            return m.group(0)
+        lead = r"\S\kern0.13em " if m.group(1) == "§§" else "Sections~"
+        return stash_raw(lead + r"\ref{sec:" + a + r"} and~\ref{sec:" + b + "}")
+
+    # plurals first: "Tables 1 and 3" would otherwise be caught by the singular
+    # rule as "Table" is not matched but "1 and 3" leaves two bare numbers
+    s = re.sub(r"(Tables|Figures) (\d+) and (\d+)", do_float_pair, s)
+    s = re.sub(r"(Sections) (\d+(?:\.\d+)*) and (\d+(?:\.\d+)*)", do_section_pair, s)
     s = re.sub(r"(?:Table|Figure) \d+", do_float, s)
     for rx, _ in INLINE_MATH:
         s = rx.sub(stash_math, s)
@@ -536,6 +579,16 @@ def parse(lines):
             continue
 
         if s.startswith(">"):
+            # A quoted formula whose outermost symbols are cardinality bars
+            # -- |{ k in Tickets(p, T) : k realised }| <= CSR(p) . |C_p| --
+            # starts and ends with "|", so the pipe-table rule claimed it and
+            # shredded the bound into three table cells in BOTH builds. Test
+            # for a formula before letting the table rule near it.
+            solo = re.sub(r"^\s*>\s?", "", raw).strip()
+            if is_formula(solo) and (i + 1 >= n or not lines[i + 1].strip().startswith(">")):
+                blocks.append(("quote", [("para", solo)]))
+                i += 1
+                continue
             buf = []
             while i < n and (lines[i].strip().startswith(">") or
                              (lines[i].strip() and buf and
@@ -935,7 +988,7 @@ figure. They are the paper; the prose is the argument around them.
 \begin{itemize}\setlength{\itemsep}{2pt}
 \item \textbf{Table~\ref{tab:eligibility}} --- corpus eligibility across the 38
 probed projects, both traceability channels, with commits per ticket, the
-arithmetic ceiling of Section~3.1.4 and the share of it reached.
+arithmetic ceiling of Section~\ref{sec:3.1.4} and the share of it reached.
 \item \textbf{Table~\ref{tab:visibility}} --- three-channel visibility of
 architectural change across two ecosystems. Every cell is a different quantity
 with its own denominator and no statistic is computed across them.
@@ -996,6 +1049,11 @@ def table_appendix(unmapped, cls="article"):
         seen, dropped_h1 = 0, False
         for kind, payload in blocks:
             # the file's own h1 repeats the caption verbatim; one title is enough
+            # "Caption" and "Sources" are structural markers in the source
+            # file, not headings of the paper. They were printing as body text
+            # above each caption block.
+            if kind == "head" and payload[1].strip() in ("Caption", "Sources"):
+                continue
             if kind == "head" and payload[0] == 1 and not dropped_h1:
                 dropped_h1 = True
                 continue
@@ -1190,6 +1248,10 @@ def main():
 
     print(f"Wrote {args.out}  [{args.cls}]  ({len(text.splitlines()):,} lines, "
           f"{len(headings)} numbered headings, {len(CITED_KEYS)} cited works)")
+    if EXTERNAL_REFS:
+        from collections import Counter
+        print("external memo pointers kept as literal text:",
+              dict(Counter(EXTERNAL_REFS)))
     if UNRESOLVED_REFS:
         from collections import Counter
         print("REFERENCES LEFT AS LITERAL TEXT (no such label):",

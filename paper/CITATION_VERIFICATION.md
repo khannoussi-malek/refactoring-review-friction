@@ -89,6 +89,33 @@ that is not what this brief authorises. It remains an open finding in the audit.
 
 ---
 
+## Addendum, 2026-08-06: the Esfandiari arXiv identifier
+
+`refs.bib` pairs an ICCKE 2023 conference entry with `arXiv:2404.01950`, an April
+2024 identifier. A 2024 identifier on a 2023 paper is unusual enough to be worth
+checking, so the arXiv record was re-read to confirm it is the same work rather
+than a different paper by the same authors.
+
+It is the same work. From the abstract page, verbatim:
+
+| field | value |
+|---|---|
+| title | "An Exploratory Study of the Relationship between SATD and Other Software Development Activities" |
+| authors | Shima Esfandiari, Ashkan Sami |
+| Comments | "6 pages, DOI: https://doi.org/10.1109/ICCKE60553.2023.10326279" |
+| submitted | 2 Apr 2024 |
+
+Title and both authors match the bibliography entry exactly. **The venue is
+established by the DOI in the Comments field**, not by a prose journal reference:
+`ICCKE60553.2023` is the ICCKE 2023 conference identifier, and it is the same DOI
+the bibliography entry already carries. There is no `Journal reference` field on
+the record, so the DOI is the whole of the evidence, and that is stated here
+rather than implied.
+
+The ordering resolves as an author posting a preprint after publication, which is
+ordinary. **The identifier is kept.** The page range remains unconfirmed for the
+reason given above.
+
 ## What was checked and found sound
 
 * No entry was written from memory. Every one has a route in the table above.
