@@ -12,7 +12,8 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # a slow deployment must be allowed to finish, not be killed by the next push
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -28,8 +29,9 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
+      # ponytail: Pages deployments for this site take >10min and deploy-pages
+      # clamps its wait to 10min, so the step always times out even though the
+      # deployment lands. Don't fail the run on it; confirm with curl instead.
       - id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # deployments here take >10min; the default timeout cancels a working deploy
-          timeout: 1800000
+        continue-on-error: true
