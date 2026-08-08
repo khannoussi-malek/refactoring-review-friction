@@ -417,6 +417,11 @@ def cross_target_numbers():
                       flags=re.S)
         text = re.sub(r"\\ccsdesc\[?\d*\]?\{[^}]*\}", "", text)
         text = re.sub(r"\\acmConference\[[^\]]*\](\{[^}]*\}){3}", "", text)
+        # Tabular column widths are computed from the column COUNT, so they
+        # necessarily differ once a target drops columns. They are typesetting,
+        # not claims, and leaving them in made the check cry wolf.
+        text = re.sub(r"p\{\\dimexpr[^}]*\}", "", text)
+        text = re.sub(r"\\(?:setlength|kern|hspace|vspace)\s*\{[^}]*\}", "", text)
         return {m.group(0) for m in NUM.finditer(text)}
 
     drift = sorted(nums(short) - nums(long_))
