@@ -581,7 +581,7 @@ body.noterms .gl{border-bottom:0;background:none;cursor:inherit;padding:0}
     <p class="small" style="margin-bottom:8px">— <b>ceiling<sub>live</sub> binds for every one of them</b>, running 13.7% (Kylin) to 81.6% (Ranger) — a <b>6.0× spread</b>;<br>
     — <b>fill<sub>live</sub> is nearly flat</b>: median 0.89, range 0.80 (Ranger) to 0.95 (Drill) — a <b>1.19× spread</b>;<br>
     — so the <b>5.8× spread in TRR is 6.0× ceiling and 1.19× fill</b>. Almost all of the variation is arithmetic.</p>
-    <p class="small" style="margin-bottom:0">Ranked by fill instead of by rate, the ordering changes almost completely — Drill (43.2%, fill 0.95) sits above Ranger (65.4%, fill 0.80). Every project in this corpus is reaching most of what its commit supply permits. <b>Below one commit per ticket the two rates are not commensurable, and every eligible project is below it except Ranger and Knox.</b></p>
+    <p class="small" style="margin-bottom:0">Ranked by fill instead of by rate, the ordering changes almost completely — Drill (43.2%, fill 0.95) sits above Ranger (65.4%, fill 0.80). Every project in this corpus is reaching most of what its commit supply permits. <b>Below one commit per ticket the two rates are not commensurable, and every eligible project is below it.</b></p>
   </div>
 
   <div class="panel">
@@ -668,7 +668,7 @@ body.noterms .gl{border-bottom:0;background:none;cursor:inherit;padding:0}
 
   <div class="panel calm" style="margin-top:24px">
     <h4>One honest note about the live correlations</h4>
-    <p class="small" style="margin-bottom:0">Three of the paper's four published coefficients reproduce exactly from these artifacts: <b>−0.010</b> (CSR against TRR<sub>frozen</sub>, n = 33), <b>−0.717</b> (CSR against commits-per-ticket, n = 33), and <b>+0.517</b> against a published +0.518, which is rounding. The fourth, CSR against commits-per-ticket within the eligible twelve, comes out at <b>+0.473</b> here against a published <b>+0.455</b> — close, and almost certainly a different commits-per-ticket basis, but not identical, so it is flagged rather than smoothed over. It does not change the sign, and the sign is the whole point of that comparison.</p>
+    <p class="small" style="margin-bottom:0">All four of the paper's published coefficients reproduce from these artifacts: <b>−0.010</b> (CSR against TRR<sub>frozen</sub>, n = 33), <b>−0.717</b> (CSR against commits-per-ticket, n = 33), <b>+0.5175</b> against a published +0.518, and <b>+0.4545</b> against a published <b>+0.455</b> — the last two are rounding of the coefficient, not disagreement. An earlier version of this page reported the fourth as <b>+0.473</b> and blamed a different commits-per-ticket basis. That was wrong, and the cause was this page: it ranked on the table's 2-decimal column, where Phoenix (0.5376) and Drill (0.5400) both read 0.54 and tie. That tie does not exist in the data, and it was the entire discrepancy. The page now ranks on the exact values everywhere.</p>
   </div>
 </section>
 
@@ -1234,7 +1234,8 @@ const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(k==='csr') return r.csr;
     if(k==='trr') return (mode==='live'? r.trrL : r.trrF) ?? -1;
     if(k==='fill')return (mode==='live'? r.fillL: r.fillF) ?? -1;
-    if(k==='cpt') return (mode==='live'? r.cptL : r.cpt) ?? -1;
+    /* rank on cptX, not the 2dp cptL: rounding ties phoenix with drill */
+    if(k==='cpt') return (mode==='live'? (r.cptX ?? r.cptL) : r.cpt) ?? -1;
   }
   function render(){
     let rows=[...DATA];
@@ -1311,7 +1312,7 @@ const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
      body:'<p>The Jira instance tracks a <em>product built from</em> an upstream that nobody asks to cite it. The upstream developers have no reason to know the tracker exists.</p><p><b>kata‑containers:</b> zero <code>KATA-</code> keys in 19,807 commits. Excluded from the study rather than scored 0% — scoring it would put it on the same axis as a project that tries and fails.</p>',
      ev:'paper/intersection.json — excluded, not scored'},
     {n:4,kind:'silent',t:'The convention changed mid‑history',
-     body:'<p>A single rate averages two regimes, and the average describes neither. A project that cited keys diligently for a decade and then stopped reads as moderately traceable — and is unusable for anything recent.</p><p><b>spring‑batch:</b> <code>BATCH-</code> appears in 45.6% of 7,035 commits overall, in <b>0 of the most recent 1,000</b> (back to 2021‑06), and at exactly <b>0% in every year since 2019</b>.</p>',
+     body:'<p>A single rate averages two regimes, and the average describes neither. A project that cited keys diligently for a decade and then stopped reads as moderately traceable — and is unusable for anything recent.</p><p><b>spring‑batch:</b> <code>BATCH-</code> appears in 45.6% of 7,035 commits overall, in <b>0 of the most recent 1,000</b> (back to 2021‑06), and at exactly <b>0% in every year since 2020</b>.</p>',
      ev:'full scan · scripts/springbatch_recency.py'},
     {n:5,kind:'silent',t:'A monorepo needs multi‑key matching',
      body:'<p>Several live projects share one repository, so a probe with one key sees a fraction of the citations and reports it as the rate. <b>Nothing in the result signals the key set is wrong.</b></p><p><b>Hadoop:</b> 26.2% single‑key → 92.3% four‑key → <b>97.8% seven‑key</b>, over the same 28,290 commits. Evergreen reads 71.7% single‑key for the same reason. This mode is <em>predictable</em>: the project records exist in the tracker, so the key set can be enumerated before touching git.</p>',
@@ -1661,7 +1662,7 @@ const GLOSS = {"csr":{"t":"commit-side rate","g":"core","a":["commit-side rate",
       <text x="${f.xs(cState.xmax)-4}" y="${f.ys(100)-7}" text-anchor="end" font-family="var(--mono)" font-size="9" fill="var(--pen-ticket)">bound stops binding</text>`;
     // projects
     const isL=cState.basis==='live', pool=isL?P12:P33;
-    const gv=r=>isL?{c:r.ceilL,t:r.trrL,x:r.cptL,fl:r.fillL}:{c:r.ceilF,t:r.trrF,x:r.cpt,fl:r.fillF};
+    const gv=r=>isL?{c:r.ceilL,t:r.trrL,x:r.cptX??r.cptL,fl:r.fillL}:{c:r.ceilF,t:r.trrF,x:r.cpt,fl:r.fillF};
     const placed=[];
     if(cState.proj) pool.forEach(r=>{
       const v=gv(r); if(v.x==null||v.x>cState.xmax||v.c==null) return;
@@ -1701,10 +1702,12 @@ const GLOSS = {"csr":{"t":"commit-side rate","g":"core","a":["commit-side rate",
       else cState[t]=!cState[t];
       chartCeiling();
     }));
-    const belowL=P12.filter(r=>r.cptL<1).length, aboveF=P12.filter(r=>r.cpt>=1).map(r=>r.p);
+    /* r.cptL is the live basis, r.cpt the frozen one; the readout names both, so
+       neither identifier may leave its basis implicit. */
+    const belowOneLive=P12.filter(r=>(r.cptX??r.cptL)<1).length, aboveOneFrozen=P12.filter(r=>r.cpt>=1).map(r=>r.p);
     cap.innerHTML=`The straight line is not a fit. It is <b>ceiling = CSR × commits per ticket</b>, exact arithmetic. Every hollow circle is a project sitting on its own ceiling; the solid dot below it is where that project actually landed, and the gap between them is the only part that measures behaviour.`;
-    out.innerHTML=`<span>on the <b>live</b> basis <b>${belowL} of 12</b> sit left of one commit per ticket</span>
-      <span>on the <b>frozen</b> basis ${aboveF.length?`<b>${aboveF.slice(0,-1).join(', ')}${aboveF.length>1?' and ':''}${aboveF[aboveF.length-1]}</b> cross to the right of it`:'all 12 stay left'} — the subscripts again</span>
+    out.innerHTML=`<span>on the <b>live</b> basis <b>${belowOneLive} of 12</b> sit left of one commit per ticket</span>
+      <span>on the <b>frozen</b> basis ${aboveOneFrozen.length?`<b>${aboveOneFrozen.slice(0,-1).join(', ')}${aboveOneFrozen.length>1?' and ':''}${aboveOneFrozen[aboveOneFrozen.length-1]}</b> cross to the right of it`:'all 12 stay left'} — the subscripts again</span>
       <span>ceiling<sub>live</sub> <b>${fmt(Math.min(...P12.map(r=>r.ceilL)))}–${fmt(Math.max(...P12.map(r=>r.ceilL)))}%</b> (6.0×) · fill<sub>live</sub> <b>${fmt(Math.min(...P12.map(r=>r.fillL)),2)}–${fmt(Math.max(...P12.map(r=>r.fillL)),2)}</b> (1.19×)</span>`;
   }
 
@@ -1714,7 +1717,7 @@ const GLOSS = {"csr":{"t":"commit-side rate","g":"core","a":["commit-side rate",
     const live=dState.mode==='live';
     const rows=(live?P12:P33.filter(r=>r.ceilF<=100)).map(r=>({
       p:r.p, trr:live?r.trrL:r.trrF, ceil:live?r.ceilL:r.ceilF,
-      fill:live?r.fillL:r.fillF, cpt:live?r.cptL:r.cpt, pass:r.pass, csr:r.csr}));
+      fill:live?r.fillL:r.fillF, cpt:live?(r.cptX??r.cptL):r.cpt, pass:r.pass, csr:r.csr}));
     rows.sort((a,b)=>b[dState.sort==='trr'?'trr':dState.sort]-a[dState.sort==='trr'?'trr':dState.sort]);
     const L=104,R=64,T=26,B=42, rowH=(H-T-B)/Math.max(rows.length,1);
     const xs=v=>L+(v/100)*(W-L-R);
@@ -1852,7 +1855,10 @@ const GLOSS = {"csr":{"t":"commit-side rate","g":"core","a":["commit-side rate",
     ceilF:{l:'ceiling frozen (%)',       f:r=>r.ceilF},
     fillL:{l:'fill live',                f:r=>r.fillL},
     fillF:{l:'fill frozen',              f:r=>r.fillF},
-    cptL: {l:'commits per ticket (live)',f:r=>r.cptL},
+    /* cptL is rounded to 2dp, which ties phoenix (0.5376) with drill (0.5400)
+       and inflates the rank correlation to +0.473; cptX is the exact value and
+       reproduces the published +0.455. Never rank on the rounded field. */
+    cptX: {l:'commits per ticket (live)',f:r=>r.cptX},
     cpt:  {l:'commits per ticket (frozen)',f:r=>r.cpt},
     commits:{l:'commits scanned',        f:r=>r.commits},
     tickets:{l:'tracker tickets (live)', f:r=>r.tickets},
@@ -1865,7 +1871,7 @@ const GLOSS = {"csr":{"t":"commit-side rate","g":"core","a":["commit-side rate",
     ['csr','trrF','33','−0.010','the § IV-C headline: a strong positive relationship is ruled out'],
     ['csr','trrL','12','+0.518','the live measurement, opposite in sign'],
     ['csr','cpt','33','−0.717','half of the DIRECTION_TENSION decomposition'],
-    ['csr','cptL','12','+0.455','the other half — the sign flips with the population, not the estimator']
+    ['csr','cptX','12','+0.455','the other half — the sign flips with the population, not the estimator']
   ];
   let fState={x:'csr', y:'trrF', pop:'33', log:false};
   function chartFree(){

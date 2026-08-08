@@ -17,7 +17,7 @@ ticket realisation rate, and the first does not imply the second — Hive is 97.
 one way and 55.8% the other (TRR_live). But the more useful advice is the
 ceiling (§3.1.4):
 **below one commit per ticket the two rates are not commensurable at all**, and
-every project in our eligible corpus is below it except Ranger and Knox. Report
+every project in our eligible corpus is below it. Report
 `commits / tickets`; it costs nothing, it bounds the ticket-side rate before any
 measurement, and no published linkage rate carries it.
 

@@ -10,7 +10,7 @@ issues, both GitHub-issue counts (`paper/PRIOR_WORK.md`).
 | 1 | **GitHub Issues displaced Jira** | ShardingSphere: **5** Jira citations in 49,111 commits, against 30,746 GitHub-issue references | `paper/traceability_probe.json` |
 | 2 | **No source repository exists** | RedHat RHBRMS, 86.00% estimate coverage on 2,400 issues — a product/documentation tracker with no code | `estimates_by_org.json`; repo resolution failed |
 | 3 | **Tracker is downstream of the upstream repo** | kata-containers: **zero** `KATA-` keys in 19,807 commits; the Red Hat Jira tracks a product built from an upstream nobody asks to cite it | `paper/intersection.json` (excluded, not scored) |
-| 4 | **Convention changed mid-history** | spring-batch: `BATCH-` in 4,046 of 7,034 commits, but none in the 20 most recent sampled — a single rate averages two regimes | hand-sample + prefix scan |
+| 4 | **Convention changed mid-history** | spring-batch: `BATCH-` in **45.6%** of 7,035 commits, **0 of the most recent 1,000** (back to 2021-06), and **0% in every year since 2020** — a single rate averages two regimes | `scripts/springbatch_recency.py` |
 | 5 | **Monorepo needs multi-key matching** | Hadoop: **26.2%** single-key → **92.3%** four-key → **97.8%** seven-key, same 28,290 commits | `scripts/citation_rate.py` |
 | 6 | **The cited key has no project record in the tracker** | Evergreen: commits cite `DEVPROD` (2,785) but the tracker holds only `EVG`. DataLab: commits cite `EPMCDLAB` (3,900) and `DLAB` (3,547); the tracker holds only `DATALAB`. `kiegroup/optaplanner` HTTP-redirects to `apache/incubator-kie-optaplanner` | `paper/intersection.json` |
 

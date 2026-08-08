@@ -348,3 +348,60 @@ The 38 pinned clones and the spring-batch clone are `--filter=tree:0 --bare`
 mirrors in a scratch directory outside the repository; every read is `git log`
 over commit messages, with `GIT_NO_LAZY_FETCH=1` so nothing can touch the network
 silently.
+
+---
+
+# Correction pass, 2026-08-08
+
+A separate pass from the 08-05 MSR revision above, recorded under §VI's own
+rule: corrections are recorded, not quietly applied. One row per correction,
+each with what the text said, what it says now, and the artifact that settles
+it. Section files are the source of truth; `PAPER.md` and both `.tex` are
+regenerated, so each row lists the authored file only.
+
+| # | what it said | what it says now | artifact that settles it |
+|---:|---|---|---|
+| D1 | "below one commit per ticket the two rates are not commensurable at all, and every project in our eligible corpus is below it **except Ranger and Knox**" (`discussion.md`, and the same sentence on both site pages) | the same sentence ending "**and every project in our eligible corpus is below it**" | `paper/ticket_coverage.json`: on the live basis all twelve are below 1.0, Ranger highest at **0.9458**, Knox **0.9419** — Table I already printed these as 0.95 and 0.94, so the paper contradicted its own table. On the frozen basis the exception set is **three** (Ozone 1.79, Ranger 1.51, Knox 1.19), not two, so the claim was false under either reading |
+| D2 | the site computed its "cross to the right of it" list from the unsuffixed frozen field `r.cpt` under the identifier `aboveF`, beside a live-basis count named `belowL` | `aboveOneFrozen` and `belowOneLive`, with a comment naming which field carries which basis | no measurement changed; the readout already labelled both bases. The identifiers did not, which is how a frozen-derived list came to sit unremarked beside a live one (`docs/index.html`, `docs/traceability-explainer.html`) |
+| D3 | spring-batch cites `BATCH-` "at exactly **0% in every year since 2019**" (`taxonomy.md`, both site pages) | "**0% in every year since 2020**" | `paper/springbatch_recency.json` `by_year`: 2019 is **34 of 133 = 25.6%**, and the zero run begins in 2020. This aligns the manuscript with **C8 above**, which already recorded "0% every year since 2020, last used 2019" — the determination existed in this repository and the manuscript had not been brought to it |
+| D4 | "spring-batch: `BATCH-` in **4,046 of 7,034** commits, none in the recent 20 sampled" (`README.md` §5, `paper/eligibility_failure_modes.md` mode 4) | "`BATCH-` in **45.6%** of 7,035 commits, **0 of the most recent 1,000** (back to 2021-06), and **0% in every year since 2020**", evidence column now `scripts/springbatch_recency.py` | `paper/numbers.md` §10e already ruled "**Do not quote 4,046**" — no reading of the repository reproduces it. These two files were the last places still quoting it as fact |
+| D5 | `paper/numbers.md` gave the default-branch scan as **3,210/7,020** while the table above it and the manuscript used 7,035 | a dated reconciliation block: **7,035** at `head_sha 9286ba16…`, `by_year` summing to 7,035, no HEAD recorded for the 7,020 readings, rate unchanged to reported precision (45.6% against 45.7%), **7,035 is the denominator to quote** | `paper/springbatch_recency.json` — the only one of the two figures with a recorded HEAD and a series that sums to its own total |
+| D6 | "96 emails span multiple author names covering 27,307 commits, **35.2% of the corpus**" (`threats.md` §6.7, `numbers.md`) — a denominator of ~77,577, impossible against either the 8,919 mined or the 28,290 probed | the same counts, with the denominator named inline: **35.2% of Hadoop's full `git log --all` history of 77,529 commits**, the universe `scripts/sui/identity.py` scans, "neither the 8,919 mined nor the 28,290 probed on trunk" | 27,307 / **77,529** = 35.22%. The 77,529 total is recorded independently in `SLICE_LOG.md` line 133, `prereg/coverage_feasibility.md` §4 and `prereg/gate_diagnosis.md`, and `identity.py` line 42 scans `log --all`. Established from committed artifacts, so nothing was added to `UNSOURCED.md` |
+| D7 | "a committed history spanning **19–25 July 2026** and this completion pass on 30 July" (`threats.md` §6.8); `README.md` §1 "spans 19–25 July 2026" | "spanning **19 July – 8 August 2026**": the three sessions of 19–25 July, the completion pass on 30 July, the MSR major revision of 5 August and this correction pass on 8 August | `git log --reverse --format=%ad \| head -1` → **2026-07-19**; `git log -1 --format=%ad` → this pass. The old range also contradicted §6.5's own "(Corrected 2026-08-05: …)" and `README.md` §7. `DISCLOSURE_VERIFICATION.md` and `deposit/ARXIV_CHECKLIST.md` were **left unchanged**: both describe which sessions predate the readable record, which is a different claim |
+| D8 | `README.md` §2 and §3 led with Kylin, 83.9% against 12.0% | both lead with **Hive, 97.0% against 55.8%**, at 0.61 commits/ticket, ceiling 59.6%, fill 0.94; the 12.0–69.0% corpus range is kept, and Kylin appears in §3 flagged as withdrawn | §4.2.1 withdrew Kylin as the example — its pinned commit reaches 968 commits, **7.5% of the 12,937 on the repository's refs**. `README.md` had not followed the withdrawal |
+| D9 | Table III's association note stopped at "21 dropped projects have a higher ticket realisation rate than the worst passing one" — the worst passing is Kylin at 0.04%, which the paper itself calls an artifact | the same sentence plus the robustness: against **sqoop at 21.0%**, the next-worst passing project, **21 of 21** dropped projects are still higher, so the claim does not rest on the artifact | `paper/ticket_side_38.json`: lowest dropped is karaf at **29.47%**, above sqoop's 21.03%. Computed in `scripts/ticket_side_38.py`, not hardcoded, so the note and its generator cannot drift |
+
+## Defects fixed in the tooling, which changed no claim
+
+| # | defect | cause | fix |
+|---:|---|---|---|
+| T1 | the site reported the fourth published coefficient as **+0.473** against a published **+0.455**, and blamed "almost certainly a different commits-per-ticket basis" | the page's own rounding. It ranked on the 2-decimal column, where Phoenix (0.5376) and Drill (0.5400) both read 0.54 and tie. That tie does not exist in the data and was the entire discrepancy | both pages now rank on the exact field in every path — the correlation preset, the ladder sort, the decomposition sort, the ceiling scatter and the below-one count. All four coefficients reproduce; the note says so and the flag is deleted |
+| T2 | §6.1's "Four further things can break the estimator" rendered **1, 2, 1, 2** in both PDFs | `read_list` in `scripts/make_latex.py` ended an item at a blank line unless the next line was a *deeper list marker*. An indented continuation paragraph therefore closed the list, printed at top level, and items 3–4 opened a second `enumerate`. The markdown source was correct throughout | the parser now also continues an item across a blank line into an indented continuation paragraph. `make_latex.py --test` carries a case that fails if the two-list rendering returns |
+| T3 | Table I's † ‡ legend printed on the page **after** the table, and the "Tables" heading sat alone on a 115-character page | `emit_table` opened `\begin{landscape}` per table, so the legend — a paragraph following the rows — fell outside it, and the heading fell before it | the appendix opens one landscape per table **file**, so heading, both halves and legend stay in one flow. Verified from the rendered PDF: legend and Table I share a page in both builds |
+| T4 | a 324-character page 2 in the IEEE build | a forced `\clearpage` after the reader's map, which overruns page 1 by a few lines | the break is removed and Section 1 follows on the same page. IEEE build: **26 pages, no page under 500 characters** |
+
+**Rebuilt and verified from the PDFs, not the source.** `pdflatex ×3 + bibtex`
+on both. "Ranger and Knox" and "every year since 2019" appear in neither PDF;
+the §6.1 list numbers 1–4 in both; Table I's legend shares Table I's page in
+both; the IEEE build has no page under 500 characters.
+
+**One residual, stated rather than hidden.** In the single-column `preprint.pdf`
+only, the last line of the Table III appendix ("Missing clones, if any: none.")
+falls alone on page 38. The other two short pages in that build are the
+full-page Figure 1 and the tail of the references, which are text-sparse rather
+than empty. The IEEE build, which is the submission target, is clean.
+
+## Commands run, 2026-08-08
+
+```
+python3 scripts/make_latex.py --test
+python3 scripts/assemble_manuscript.py
+python3 scripts/make_latex.py --out paper/preprint/preprint.tex      --class article --selfcheck
+python3 scripts/make_latex.py --out paper/preprint/preprint-ieee.tex --class ieee    --selfcheck
+cd paper/preprint && pdflatex X && bibtex X && pdflatex X && pdflatex X   # both
+```
+
+`scripts/ticket_side_38.py` was **not** re-run: it needs the 38 pinned clones,
+which live outside the repository. Its D9 change was verified by evaluating the
+new expressions against the committed `paper/ticket_side_38.json`, and the text
+written into `paper/table3_ticket_side.md` is the text the generator now emits.

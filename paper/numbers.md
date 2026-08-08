@@ -497,7 +497,7 @@ throughout; only counts and proportions are used in the manuscript, never a test
 |---|---|---|---|
 | Hadoop keys on git author **name** (`%an`) | — | `scripts/social_centrality.py` | `93056ae` |
 | Hadoop raw aliasing | **1,035** emails → **797** identities (**238** merged) | `scripts/sui/ALIASING_NOTE.md`, `scripts/sui/identity.py` | `50bb6df` |
-| emails spanning multiple names | **96**, covering **27,307** commits = **35.2%** of the corpus | same | `50bb6df` |
+| emails spanning multiple names | **96**, covering **27,307** commits = **35.2%** of Hadoop's `git log --all` history, **77,529** commits — the universe `scripts/sui/identity.py` scans, not the 8,919 mined or the 28,290 probed on trunk (`SLICE_LOG.md` line 133, `prereg/coverage_feasibility.md` §4) | same | `50bb6df` |
 | impact on the measures — **null** | mean `top1_share` **0.1545** by name vs **0.1495** by email; `bus_factor` 8.46 vs 8.56; `n_authors` 87.2 vs 91.0; **112** modules ≥20 commits; paired Wilcoxon **p=0.3651** | same | `50bb6df` |
 | start-ui-web, by contrast | 59 → 50 identities; top-author share **58.1% → 67.2%** | same | `50bb6df` |
 | `reviewer_pool` is null | `triage~reviewer_pool` rho **0.0010**, p **0.988** | `social_centrality.json` | `93056ae` |
@@ -762,6 +762,18 @@ The commit total is consistent with 7,034 at an earlier HEAD; the numerator gap 
 roughly 800 is not. **Do not quote 4,046.** The original statement is left
 standing in §9e per the additive-correction rule; the manuscript uses 45.6% and
 the by-year series, which are stronger evidence for mode 4 than the original pair.
+
+**Denominator reconciliation (2026-08-08).** The three default-branch readings
+above are written against 7,020 while the table immediately preceding them, and
+the manuscript, use 7,035. The committed artifact is the one with a recorded
+provenance: `paper/springbatch_recency.json` gives **7,035** commits at
+`head_sha 9286ba1618450bfaa15e2c4bed35bde6c301321c`, oldest 2007-03-28, newest
+2026-08-01, and its `by_year` series sums to 7,035. No HEAD was recorded for the
+7,020 readings, so they cannot be re-derived and are treated as taken at an
+earlier HEAD. The numerators are unaffected — 3,210 and 3,263 are the artifact's
+own `citing_BATCH_only` and `citing_any_key` — and the quoted rate is unchanged
+to the reported precision: 3,210/7,035 = 45.6%, against 45.7% on 7,020. **7,035
+is the denominator to quote.**
 
 ### 10f. Remaining tokens the rebuilt checker asked for
 

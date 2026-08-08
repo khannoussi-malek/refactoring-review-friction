@@ -991,7 +991,7 @@ is below, and it is the one this paper uses.
 | 1 | **GitHub Issues displaced Jira** | ShardingSphere: **5** Jira citations in 49,111 commits, against 30,746 GitHub-issue references | `paper/traceability_probe.json` |
 | 2 | **No source repository exists** | RedHat RHBRMS: 86.00% estimate coverage on 2,400 issues — a product/documentation tracker with no code | `estimates_by_org.json`; repo resolution failed |
 | 3 | **The tracker is downstream of the upstream repo** | kata-containers: **zero** `KATA-` keys in 19,807 commits; the Red Hat Jira tracks a product built from an upstream nobody asks to cite | `paper/intersection.json` (excluded, not scored) |
-| 4 | **Convention changed mid-history** | spring-batch: `BATCH-` in **45.6%** of 7,035 commits overall, in **0 of the most recent 1,000** (back to 2021-06), and at exactly **0% in every year since 2019** — a single rate averages two regimes | full scan, `scripts/springbatch_recency.py` |
+| 4 | **Convention changed mid-history** | spring-batch: `BATCH-` in **45.6%** of 7,035 commits overall, in **0 of the most recent 1,000** (back to 2021-06), and at exactly **0% in every year since 2020** — a single rate averages two regimes | full scan, `scripts/springbatch_recency.py` |
 | 5 | **Monorepo needs multi-key matching** | Hadoop: **26.2%** single-key → **92.3%** four-key → **97.8%** seven-key, same 28,290 commits | `scripts/citation_rate.py` |
 | 6 | **The cited key has no project record in the tracker** | Evergreen: commits cite `DEVPROD` (2,785) but the tracker holds only `EVG`. DataLab: commits cite `EPMCDLAB` (3,900) and `DLAB` (3,547); the tracker holds only `DATALAB` | `paper/intersection.json` |
 
@@ -1252,7 +1252,10 @@ pass. The obvious question is whether the Hadoop analysis has the same defect.
 `scripts/social_centrality.py` keys on the git author **name** (`%an`), so the
 two-emails-one-person case is merged by construction. Hadoop's *raw* aliasing is
 worse than the pilot's — 1,035 emails resolve to 797 identities, and 96 emails
-span multiple author names covering 27,307 commits, 35.2% of the corpus — but the
+span multiple author names covering 27,307 commits, 35.2% of Hadoop's full
+`git log --all` history of 77,529 commits, which is the universe
+`scripts/sui/identity.py` scans and is neither the 8,919 mined nor the 28,290
+probed on trunk — but the
 effect on the derived measures is null: mean `top1_share` 0.1545 by name against
 0.1495 by email over 112 modules, **paired Wilcoxon p=0.3651**, no systematic
 direction. Aliasing severity scales inversely with contributor count, so the same
@@ -1404,8 +1407,10 @@ obvious extension. Note also that the 25%-precision codebook figure measures
 ## 6.8 Provenance of the work itself
 
 **Built by one person in three working sessions alongside full-time employment**,
-with a committed history spanning 19–25 July 2026 and this completion pass on
-30 July. That is what set corpus depth at one project and left no second rater; it
+with a committed history spanning 19 July – 8 August 2026: the three sessions of
+19–25 July, a completion pass on 30 July, the MSR major revision of 5 August and
+a correction pass on 8 August. That is what set corpus depth at one project and
+left no second rater; it
 is stated because it explains the shape of the limitations above rather than
 excusing them.
 
@@ -1454,7 +1459,7 @@ ticket realisation rate, and the first does not imply the second — Hive is 97.
 one way and 55.8% the other (TRR_live). But the more useful advice is the
 ceiling (§3.1.4):
 **below one commit per ticket the two rates are not commensurable at all**, and
-every project in our eligible corpus is below it except Ranger and Knox. Report
+every project in our eligible corpus is below it. Report
 `commits / tickets`; it costs nothing, it bounds the ticket-side rate before any
 measurement, and no published linkage rate carries it.
 

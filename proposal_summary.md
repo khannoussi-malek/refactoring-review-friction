@@ -1,5 +1,15 @@
 # Preliminary Study Summary — Architectural Refactoring Friction in Apache Hadoop
 
+> **Superseded 2026-08-08.** This document records the state of the work as of
+> its date. Several of its conclusions were later retracted or corrected. The
+> current account is `README.md` §3 and §4; the retraction record is
+> `PROJECT_STATE.md` §2.
+>
+> It is the same vintage as `research_prospectus.md` and `advisor_brief.md` and
+> carries the same withdrawn headline — *harder to build, not harder to merge*
+> (withdrawn 2026-07-25, `4b8c3af`) — and the same superseded estimate claim
+> (corrected to 2.557% / 1.449% / 0 of 323, `eee902f`).
+
 *Proposal-ready synthesis with figures. Full detail: [results_dossier.md](results_dossier.md);
 method + commands: [SLICE_LOG.md](SLICE_LOG.md).*
 

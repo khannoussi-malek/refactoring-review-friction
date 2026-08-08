@@ -1,4 +1,17 @@
 # RQ1 — Where the friction in architectural refactoring actually lives
+
+> **Superseded 2026-08-08.** This document records the state of the work as of
+> its date. Several of its conclusions were later retracted or corrected. The
+> current account is `README.md` §3 and §4; the retraction record is
+> `PROJECT_STATE.md` §2.
+>
+> Specifically: the subtitle finding — *harder to build, not harder to merge* —
+> was **withdrawn on 2026-07-25** (`4b8c3af`); the review-phase half is p=0.61
+> fully adjusted. "Apache records no effort estimates, 0 of 345" was
+> **corrected** to 2.557% Apache-wide / 1.449% in the Hadoop corpus / **0 of
+> 323** architectural tickets (`eee902f`) — and the denominator is 323 tickets,
+> not the 345 episodes this document uses (`9b4e384`).
+
 ### Architectural refactorings are harder to *build*, not harder to merge — and they are the one class of work a decade of tooling did not make cheaper
 
 **Author:** (independent pre-PhD study) · **Date:** 2026-07-22 · **Corpus:** Apache Hadoop

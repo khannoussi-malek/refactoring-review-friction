@@ -302,6 +302,21 @@ def main():
             p["project"] for p in dropped
             if passing and p["ticket_side_frozen"] > min(
                 q["ticket_side_frozen"] for q in passing)),
+        # The worst passing project is Kylin, whose rate the paper itself calls
+        # a truncation artifact, so "higher than the worst passing one" invites
+        # the objection that it rests on that artifact. Recompute the same
+        # comparison against the worst passing project OTHER than the weakest,
+        # so the claim can be stated with its own robustness attached.
+        "dropped_above_second_worst_passing": sorted(
+            p["project"] for p in dropped
+            if len(passing) > 1 and p["ticket_side_frozen"] > sorted(
+                q["ticket_side_frozen"] for q in passing)[1]),
+        "second_worst_passing": (
+            sorted(passing, key=lambda q: q["ticket_side_frozen"])[1]["project"]
+            if len(passing) > 1 else None),
+        "second_worst_passing_rate": (
+            sorted(q["ticket_side_frozen"] for q in passing)[1]
+            if len(passing) > 1 else None),
     }
     # Sensitivity: drop the projects where most cited keys postdate the snapshot.
     # For those the repository barely overlaps the ticket population the
@@ -458,7 +473,14 @@ def write_table(out, path):
           f"{a['dropped']['max']*100:.1f}% (median {a['dropped']['median']*100:.1f}%). "
           f"**{len(a['dropped_above_worst_passing'])} dropped projects have a higher "
           f"ticket realisation rate than the worst passing one**: "
-          f"{', '.join(a['dropped_above_worst_passing']) or 'none'}.",
+          f"{', '.join(a['dropped_above_worst_passing']) or 'none'}. "
+          f"The worst passing project is the one this paper calls a truncation "
+          f"artifact, so the comparison is also run without it: against "
+          f"{a['second_worst_passing']} at "
+          f"{a['second_worst_passing_rate']*100:.1f}%, the next-worst passing "
+          f"project, **{len(a['dropped_above_second_worst_passing'])} of "
+          f"{a['dropped']['n']} dropped projects are still higher**. The claim "
+          f"does not rest on the artifact.",
           "",
           "**Excluded from the association.** Denominator under 500 issues: "
           f"{', '.join(a['excluded_small_denominator']) or 'none'}. No tracker "

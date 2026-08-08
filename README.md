@@ -15,7 +15,7 @@ project's own records precedes the decision to restructure code. The corpus is
 (Zenodo 15719919) across 16 organisations and 2,686,282 issues. It was built by
 one person in three working sessions, alongside full-time employment, which set
 the corpus depth at one project and left no second rater. The committed history
-spans 19–25 July 2026.
+spans 19 July – 8 August 2026; the three sessions themselves ran 19–25 July.
 
 ## 2. Headline
 
@@ -25,17 +25,20 @@ itself became the finding. Traceability is published one way and needed the
 other way: the **commit-side** rate — what fraction of commits cite a ticket —
 is what the literature reports and what selection criteria use, while the
 **ticket-side** rate — what fraction of tickets ever receive a commit — is what
-a ticket-anchored study depends on. They diverge sharply. Kylin cites a ticket
-in **83.9%** of commits while only **12.0%** of its tickets are ever touched by
+a ticket-anchored study depends on. They diverge sharply. Hive cites a ticket
+in **97.0%** of commits while only **55.8%** of its tickets are ever touched by
 one, and across the 12 eligible projects the ticket-side rate runs
-**12.0%–69.0%**, none above 69%.
+**12.0%–69.0%**, none above 69%. The divergence is not a hygiene failure but an
+arithmetic one: Hive supplies **0.61** commits per ticket, which caps its
+ticket-side rate at **59.6%** whatever its commit-side rate is, and it reaches
+**0.94** of that ceiling.
 
 ## 3. What holds
 
 | Finding | Number | Bound | Source |
 |---|---|---|---|
 | Corpus eligibility is the binding constraint | **12 of 38** clear a pre-registered 0.80 commit-side bar; **all 12 are Hadoop-ecosystem** | Apache + Maven + Jira only; bar fixed before any clone | `scripts/traceability_probe.py` `da74465` |
-| Commit-side and ticket-side diverge | Kylin **83.9% vs 12.0%**; range **12.0–69.0%** | Computed only for the 12 that passed, so this is within-passing variation, not a general correlation | `scripts/ticket_coverage.py` `e0d76ef` |
+| Commit-side and ticket-side diverge | Hive **97.0% vs 55.8%** at **0.61** commits/ticket — ceiling **59.6%**, fill **0.94**; range **12.0–69.0%** | Computed only for the 12 that passed, so this is within-passing variation, not a general correlation. Kylin is the sharper number (83.9% vs 12.0%) but is **withdrawn as the example** — its pinned commit reaches 7.5% of the repository's refs (§4.2.1) | `scripts/ticket_coverage.py` `e0d76ef` |
 | The measure replicates independently | 4 of 5 overlapping projects within **3.3pp** of SEOSS 33 (Hadoop 97.13→97.8, Hive 96.34→97.0, HBase 90.06→92.5, ZooKeeper 87.12→90.4) | Corpora 7 years apart; Flink differs 24.1pp, scope not error — their snapshot 12,419 commits, ours 38,219 | `paper/PRIOR_WORK.md` `215b10f` |
 | Monorepo key matching decides the answer | **26.2%** single-key → **92.3%** four-key → **97.8%** seven-key | Same 28,290 Hadoop commits in all three | `scripts/citation_rate.py` `de657c3` |
 | Jira status hygiene decays; CI verdicts terminate | status `Patch Available` **93.5% → 15.5%**; CI verdicts **96.7% → 50.8% → 0 of 43** | ≤2018 / 2019–21 / ≥2022; no ticket after 2021 carries a CI verdict | `paper/ERA_AUDIT.md` `e0d76ef` |
@@ -76,7 +79,7 @@ deficit is suggestive on thin evidence.
 | 1 | GitHub Issues displaced Jira | ShardingSphere: 5 Jira citations in 49,111 commits, 30,746 GitHub refs |
 | 2 | No source repository exists | RedHat RHBRMS: 86.00% estimates, product tracker, no code |
 | 3 | Tracker downstream of the upstream repo | kata-containers: zero `KATA-` keys in 19,807 commits |
-| 4 | Convention changed mid-history | spring-batch: `BATCH-` in 4,046 of 7,034 commits, none in the recent 20 sampled |
+| 4 | Convention changed mid-history | spring-batch: `BATCH-` in 45.6% of 7,035 commits, 0 of the most recent 1,000 (back to 2021-06), and 0% in every year since 2020 |
 | 5 | Monorepo needs multi-key matching | Hadoop: 26.2% → 92.3% on the same commits |
 | 6 | Repository migrated across organisations | Evergreen: Jira key `EVG`, recent commits use `DEVPROD` |
 

@@ -152,7 +152,10 @@ pass. The obvious question is whether the Hadoop analysis has the same defect.
 `scripts/social_centrality.py` keys on the git author **name** (`%an`), so the
 two-emails-one-person case is merged by construction. Hadoop's *raw* aliasing is
 worse than the pilot's — 1,035 emails resolve to 797 identities, and 96 emails
-span multiple author names covering 27,307 commits, 35.2% of the corpus — but the
+span multiple author names covering 27,307 commits, 35.2% of Hadoop's full
+`git log --all` history of 77,529 commits, which is the universe
+`scripts/sui/identity.py` scans and is neither the 8,919 mined nor the 28,290
+probed on trunk — but the
 effect on the derived measures is null: mean `top1_share` 0.1545 by name against
 0.1495 by email over 112 modules, **paired Wilcoxon p=0.3651**, no systematic
 direction. Aliasing severity scales inversely with contributor count, so the same
@@ -304,8 +307,10 @@ obvious extension. Note also that the 25%-precision codebook figure measures
 ## 6.8 Provenance of the work itself
 
 **Built by one person in three working sessions alongside full-time employment**,
-with a committed history spanning 19–25 July 2026 and this completion pass on
-30 July. That is what set corpus depth at one project and left no second rater; it
+with a committed history spanning 19 July – 8 August 2026: the three sessions of
+19–25 July, a completion pass on 30 July, the MSR major revision of 5 August and
+a correction pass on 8 August. That is what set corpus depth at one project and
+left no second rater; it
 is stated because it explains the shape of the limitations above rather than
 excusing them.
 

@@ -1,5 +1,15 @@
 # RQ1 on Apache Hadoop — decision memo
 
+> **Superseded 2026-08-08.** This document records the state of the work as of
+> its date. Several of its conclusions were later retracted or corrected. The
+> current account is `README.md` §3 and §4; the retraction record is
+> `PROJECT_STATE.md` §2.
+>
+> Specifically: the one-line finding below — *harder to build, not harder to
+> merge* — was **withdrawn on 2026-07-25** (`4b8c3af`); the review-phase half is
+> p=0.61 fully adjusted. The body is left exactly as written, per the 07-25
+> decision not to rewrite dated working logs (`PROJECT_STATE.md` §2, `eee902f`).
+
 **For:** Maalej group meeting · **From:** independent pre-PhD study · **Date:** 2026-07-22
 **One line:** Feasibility is settled and a defended finding exists — architectural refactorings are
 harder to **build**, not harder to merge, and they are the one class of work a decade of tooling did

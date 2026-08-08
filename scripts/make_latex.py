@@ -644,10 +644,18 @@ def read_list(lines, i):
             while i < n:
                 nxt = lines[i]
                 if not nxt.strip():
-                    if i + 1 < n and (BULLET.match(lines[i + 1])
-                                      or NUMBER.match(lines[i + 1])) \
-                            and len((BULLET.match(lines[i + 1])
-                                     or NUMBER.match(lines[i + 1])).group(1)) > base:
+                    # A blank line ends the item only if what follows belongs to
+                    # nobody. A deeper list marker continues it -- and so does an
+                    # indented continuation paragraph, which is the case that used
+                    # to escape: it closed the list, emitted itself at top level,
+                    # and the following items opened a SECOND enumerate, so
+                    # "Four further things" rendered 1, 2, 1, 2.
+                    nx = lines[i + 1] if i + 1 < n else ""
+                    m3 = BULLET.match(nx) or NUMBER.match(nx)
+                    deeper_list = bool(m3) and len(m3.group(1)) > base
+                    indented_para = bool(nx.strip()) and not m3 \
+                        and (len(nx) - len(nx.lstrip())) > base
+                    if deeper_list or indented_para:
                         sub.append("")
                         i += 1
                         continue
@@ -727,7 +735,7 @@ RAGGED = []
 
 
 def emit_table(rows, caption=None, label=None, unmapped=None,
-               continued=False, caption_raw=None):
+               continued=False, caption_raw=None, no_landscape=False):
     if not rows:
         return []
     ncol = max(len(r) for r in rows)
@@ -743,7 +751,12 @@ def emit_table(rows, caption=None, label=None, unmapped=None,
     spec = "".join(r">{\raggedright\arraybackslash}p{\dimexpr "
                    f"{w:.4f}" + r"\linewidth-2\tabcolsep\relax}"
                    for w in widths)
-    landscape = ncol >= 8
+    # A per-table landscape block starts and ends its own page, which put the
+    # dagger legend -- a plain paragraph following the rows -- on the page AFTER
+    # the table it explains, and stranded the "Tables" heading on a page of its
+    # own. The appendix therefore opens one landscape per table FILE and passes
+    # no_landscape here, so heading, rows and legend stay in one flow.
+    landscape = ncol >= 8 and not no_landscape
     size = r"\scriptsize" if ncol >= 8 else r"\footnotesize"
 
     # In a two-column body longtable simply refuses ("longtable not in 1-column
@@ -1042,10 +1055,21 @@ def table_appendix(unmapped, cls="article"):
     out = [r"\clearpage"]
     if cls == "ieee":
         out.append(r"\onecolumn")
-    out += [r"\section*{Tables}",
-            r"\addcontentsline{toc}{section}{Tables}", ""]
+    header = [r"\section*{Tables}",
+              r"\addcontentsline{toc}{section}{Tables}", ""]
     for path, label, caption, n_data in TABLES:
         blocks = parse((ROOT / path).read_text(encoding="utf-8").split("\n"))
+        # One landscape per FILE, not per table. Opening it around the whole
+        # file keeps the heading, both halves of a split table and the legend
+        # in a single flow, so the legend cannot orphan onto the next page.
+        wide = any(k == "table" and max(len(r) for r in p) >= 8
+                   for k, p in blocks)
+        body = []
+        if wide:
+            body.append(r"\begin{landscape}")
+        if header:
+            body += header
+            header = []
         seen, dropped_h1 = 0, False
         for kind, payload in blocks:
             # the file's own h1 repeats the caption verbatim; one title is enough
@@ -1060,19 +1084,24 @@ def table_appendix(unmapped, cls="article"):
             if kind == "table":
                 seen += 1
                 if seen == 1:
-                    out += emit_table(payload, caption=caption, label=label,
-                                      unmapped=unmapped)
+                    body += emit_table(payload, caption=caption, label=label,
+                                       unmapped=unmapped, no_landscape=wide)
                 elif seen <= n_data:
                     # second half of the same table: same number, no new float
-                    out += emit_table(
+                    body += emit_table(
                         payload, continued=True, unmapped=unmapped,
+                        no_landscape=wide,
                         caption_raw=r"\textbf{Table~\ref{" + label
                         + r"}}, \emph{continued.}")
                 else:
                     # provenance, not data: no caption and no number at all
-                    out += emit_table(payload, unmapped=unmapped)
+                    body += emit_table(payload, unmapped=unmapped,
+                                       no_landscape=wide)
             else:
-                out += emit([(kind, payload)], starred=True, unmapped=unmapped)
+                body += emit([(kind, payload)], starred=True, unmapped=unmapped)
+        if wide:
+            body.append(r"\end{landscape}")
+        out += body
         out.append("")
     if cls == "ieee":
         out.append(r"\twocolumn")
@@ -1185,6 +1214,15 @@ def demo():
     # the old h1/h2 -> section map is what ran the document to 56 sections
     flat = [("section", n, t) for _, n, t in heads]
     assert check_numbering(flat), "flattening h2 to section must be detected"
+
+    # an indented continuation paragraph must stay INSIDE its item. It used to
+    # close the list, so a four-item list with a continuation after item 2
+    # rendered as two lists numbered 1, 2, 1, 2.
+    lst = convert("1. one\n2. two\n\n   still two, indented\n3. three\n4. four\n")
+    assert lst.count(r"\begin{enumerate}") == 1, lst
+    assert lst.count(r"\item") == 4, lst
+    assert "still two, indented" in lst, lst
+    assert lst.index("still two, indented") < lst.index(r"\item three"), lst
     print("demo: ok")
 
 
@@ -1229,7 +1267,11 @@ def main():
              r"\end{abstract}"]
     if args.cls == "ieee":
         body.append(KEYWORDS)
-    body += [frontmatter(figure_ok), r"\clearpage"]
+    # No \clearpage after the reader's map: the map overruns page 1 by a few
+    # lines, and forcing a break there left those lines alone on a 324-character
+    # page. Letting Section 1 follow on the same page costs nothing and the rule
+    # under the map still separates them.
+    body += [frontmatter(figure_ok)]
 
     for i, name in enumerate(ORDER[1:]):
         body.append(convert((SRC / name).read_text(encoding="utf-8"), headings=headings,

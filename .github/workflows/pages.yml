@@ -24,8 +24,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      # marked "DRAFT. NOT SENT." — keep it out of the public site
-      - run: rm -f docs/DRAFT_dataset_authors_query.md
+      # Kept in the repository as part of the record, but not published:
+      # the draft is marked "DRAFT. NOT SENT."; the specs restate a withdrawn
+      # finding as established and describe the tooling §VIII-B draws a line about.
+      - run: |
+          rm -f docs/DRAFT_dataset_authors_query.md
+          rm -rf docs/superpowers
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
