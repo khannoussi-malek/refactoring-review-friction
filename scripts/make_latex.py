@@ -128,6 +128,10 @@ SECTION_NUMBERS = set()
 # set once in main(); emit_table needs it and threading it through every
 # emit() call site would touch a dozen signatures for one boolean
 DOCCLASS = ['article']
+# Classes whose body is two-column. longtable cannot typeset there, and the
+# table appendix drops to one column for these. acmart's sigconf belongs here
+# just as much as IEEEtran does; omitting it is what broke the ACM build.
+TWO_COLUMN = {"ieee", "acm"}
 UNRESOLVED_REFS = []
 EXTERNAL_REFS = []
 CITED_KEYS = set()
@@ -764,7 +768,7 @@ def emit_table(rows, caption=None, label=None, unmapped=None,
     # mode"). The body tables are all 3 to 7 rows, so they fit a float; table*
     # spans both columns, which the widest of them needs. The three big tables
     # go to the appendix, which drops to one column so longtable works there.
-    floated = DOCCLASS[0] == "ieee" and not caption and not caption_raw
+    floated = DOCCLASS[0] in TWO_COLUMN and not caption and not caption_raw
 
     out = []
     if floated:
@@ -1150,7 +1154,7 @@ def emit_figure(unmapped):
         return []
     cap = (r"\caption{" + inline(FIGURE[2], unmapped) + r"}\label{"
            + FIGURE[1] + "}")
-    if DOCCLASS[0] == "ieee":
+    if DOCCLASS[0] in TWO_COLUMN:
         # figure* spans both columns, which is 18cm against the article build's
         # 16cm. Rotating it as well would fight the two-column output routine
         # for no gain, and did: it left an 828pt overfull box.
@@ -1164,10 +1168,17 @@ def emit_figure(unmapped):
             cap, r"\end{figure}", r"\end{landscape}", ""]
 
 
-def bibliography():
-    """IEEEtran numeric style in both builds, so [1], [2] means the same thing
-    whichever class is used."""
-    return ["", r"\bibliographystyle{IEEEtran}", r"\bibliography{refs}", ""]
+def bibliography(cls="article"):
+    """IEEEtran numeric style for the arXiv and IEEE builds, so [1], [2] means
+    the same thing in both.
+
+    acmart ships its own style and does NOT ship IEEEtran.bst. Emitting
+    IEEEtran here made bibtex abort with "I couldn't open style file
+    IEEEtran.bst", which leaves a zero-byte .bbl -- so every \\cite rendered as
+    "[?]" and the reference list was absent from the PDF entirely, while
+    pdflatex still produced a plausible-looking document."""
+    style = "ACM-Reference-Format" if cls == "acm" else "IEEEtran"
+    return ["", r"\bibliographystyle{" + style + "}", r"\bibliography{refs}", ""]
 
 
 def table_appendix(unmapped, cls="article", keep=None):
@@ -1181,8 +1192,12 @@ def table_appendix(unmapped, cls="article", keep=None):
     # longtable works and landscape gives the measure. No row or column is lost,
     # which is the constraint that decides this: the ceiling and fill columns
     # are the paper's mechanism.
+    # Both ieee and acm(sigconf) set two columns, and longtable refuses to
+    # typeset there ("longtable not in 1-column mode"). Keying this to "ieee"
+    # alone sent nine such errors into the ACM build, which still produced a
+    # PDF, so the damage was only visible in the log.
     out = [r"\clearpage"]
-    if cls == "ieee":
+    if cls in TWO_COLUMN:
         out.append(r"\onecolumn")
     header = [r"\section*{Tables}",
               r"\addcontentsline{toc}{section}{Tables}", ""]
@@ -1236,7 +1251,7 @@ def table_appendix(unmapped, cls="article", keep=None):
             body.append(r"\end{landscape}")
         out += body
         out.append("")
-    if cls == "ieee":
+    if cls in TWO_COLUMN:
         out.append(r"\twocolumn")
     return out
 
@@ -1471,7 +1486,7 @@ def main():
                  f"(target {tname!r}); the text was NOT cut")
 
     body += table_appendix(unmapped, args.cls, keep=tspec.get("tables"))
-    body += bibliography()
+    body += bibliography(args.cls)
     body.append(r"\end{document}")
     text = "\n\n".join(body)
 

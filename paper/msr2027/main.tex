@@ -114,26 +114,22 @@ Drafted from \texttt{paper/\allowbreak{}PRIOR\_\allowbreak{}WORK.\allowbreak{}md
 
 \textbf{Rath \& M\"ader 2019, SEOSS 33} \cite{rath2019seoss} (\emph{Data in Brief} 25:104005) publishes, per project, change-set count and \textbf{``Linked Change Sets [\%]''} for 33 projects --- the same quantity as our commit-side rate. Their spread is 8.11\%--97.13\%; ours is 0.01\%--98.3\% across 38. Four of five overlapping projects agree within \textbf{3.3pp} on corpora seven years apart:
 
+\begin{table*}[htbp]
+\centering
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.1911\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3056\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2920\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2113\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.1911\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3056\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2920\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2113\linewidth-2\tabcolsep\relax}}
 \toprule
 \textbf{project} & \textbf{SEOSS 2019} & \textbf{this probe 2026} & \textbf{$\Delta$} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{project} & \textbf{SEOSS 2019} & \textbf{this probe 2026} & \textbf{$\Delta$} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
 Hadoop & 97.13\% (27,776 commits) & 97.8\% (28,290, 7-key) & +0.7pp \\
 Hive & 96.34\% (11,179) & 97.0\% (18,213) & +0.7pp \\
 HBase & 90.06\% (14,331) & 92.5\% (21,220) & +2.5pp \\
 ZooKeeper & 87.12\% (1,600) & 90.4\% (2,718) & +3.3pp \\
 Flink & 41.98\% (12,419) & 66.0\% (38,219) & \textbf{+24.1pp} \\
-\end{longtable}
-\addtocounter{table}{-1}
+\bottomrule
+\end{tabular}
 \endgroup
+\end{table*}
 
 That agreement is \textbf{independent cross-corpus validation of the measure} and is treated here as such. Flink's 24.1pp gap is scope rather than error, and unlike in earlier drafts this is now tested rather than asserted: restricting our probe to the \textbf{earliest 12,419 commits} --- the change-set count SEOSS publishes, and the only quantity the two studies share --- gives \textbf{5,214 / 12,419 = 41.9841\%} against their \textbf{41.98\%}, a gap of \textbf{+0.0041pp}. All five overlapping projects agree once scope is matched.
 
@@ -247,23 +243,19 @@ TRR compares a tracker read at T against a repository read at $H_p$. \textbf{The
 
 Two instantiations are used, and both satisfy the constraint:
 
+\begin{table*}[htbp]
+\centering
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.1585\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4223\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2118\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2075\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.1585\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4223\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2118\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2075\linewidth-2\tabcolsep\relax}}
 \toprule
 \textbf{} & \textbf{tracker snapshot T} & \textbf{repository $H_p$} & \textbf{coverage} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{} & \textbf{tracker snapshot T} & \textbf{repository $H_p$} & \textbf{coverage} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
 \textbf{$\mathrm{TRR}_\mathrm{live}$} & Apache Jira read 2026-\allowbreak{}07-\allowbreak{}25, issue \textbf{keys only} & pinned shas of 2026-\allowbreak{}07-\allowbreak{}25 & the 12 eligible projects \\
 \textbf{$\mathrm{TRR}_\mathrm{frozen}$} & the Public Jira Dataset \cite{montgomery2025jira} (Zenodo 15719919), a snapshot predating every pinned sha & the same pinned shas & all 38 probed projects \\
-\end{longtable}
-\addtocounter{table}{-1}
+\bottomrule
+\end{tabular}
 \endgroup
+\end{table*}
 
 For \textbf{$\mathrm{TRR}_\mathrm{live}$}, T $\approx$ date($H_p$): the two were read the same day, so the newest tickets are the censored ones and $\mathrm{TRR}_\mathrm{live}$ is a slight underestimate. The restriction to issue keys is enforced mechanically, not by care --- the field list sent to the API is asserted to be \texttt{["key"]}, every returned issue is screened against a forbidden-field set and a hit aborts the run rather than being filtered out, and only the key string survives the parse loop. That is what makes the measurement admissible over a held-out corpus: key existence is not an outcome and nothing in it can be turned into a duration.
 
@@ -331,24 +323,20 @@ No project outside the Hadoop ecosystem clears it. The best of them, James, reac
 
 \textbf{The ecosystem label is a hand classification, and we tested whether a measured variable does the same work. It does not.} ``Hadoop-ecosystem'' is not a field in any dataset; one of the authors assigned it. The natural replacement is project generation --- free metadata, no judgment, and a mechanism, since projects predating the 2019--20 migration of ASF development to GitHub pull requests had longer under the Jira-citation convention. Two generational variables were tried (\texttt{scripts/\allowbreak{}era\_\allowbreak{}separation.\allowbreak{}py}):
 
+\begin{table*}[htbp]
+\centering
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.3782\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1891\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4328\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.3782\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1891\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4328\linewidth-2\tabcolsep\relax}}
 \toprule
 \textbf{variable} & \textbf{coverage} & \textbf{separation} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{variable} & \textbf{coverage} & \textbf{separation} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
 Hadoop-\allowbreak{}ecosystem label (hand) & 38 of 38 & accuracy \textbf{0.868}, recall 1.000, precision 0.706, Fisher $p = 2.3$ $\times$ 10$^{-\allowbreak{}}$$^{6}$ \\
 repository start year (computed from the clones) & 38 of 38 & AUC \textbf{0.611}, $p = 0.279$, best-\allowbreak{}threshold accuracy 0.711 \\
 Apache Incubator graduation date & \textbf{24 of 38} & AUC 0.289, $p = 0.098$, best-\allowbreak{}threshold accuracy 0.625 \\
-\end{longtable}
-\addtocounter{table}{-1}
+\bottomrule
+\end{tabular}
 \endgroup
+\end{table*}
 
 Neither generational variable separates the corpus as well as the hand label, and the graduation date is \textbf{missing precisely where it would be needed}: four of the twelve passing projects --- Hive, HBase, ZooKeeper and Ozone --- entered the ASF as Hadoop subprojects rather than as incubator podlings and have no graduation date at all. The free metadata is not free for the group that matters.
 
@@ -406,24 +394,20 @@ Reporting \S\kern0.13em \ref{sec:4.2} on the twelve that passed leaves the obvio
 
 \textbf{The estimator, and the honest version of its validation.} Two approximations are stacked here: \emph{number-capping} (using \texttt{|\{cited keys $\leq$ N\}| /\allowbreak{} N} rather than intersecting with the real key set) and \emph{snapshot substitution} (using the frozen tracker's N rather than a live one). Earlier drafts reported \textbf{0.45pp mean / 2.14pp max}, which validates only the first. \textbf{Table~\ref{tab:ticketside} uses both}, and the end-to-end error against the twelve published exact rates is:
 
+\begin{table*}[htbp]
+\centering
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.4218\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1711\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2359\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1711\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.4218\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1711\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2359\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1711\linewidth-2\tabcolsep\relax}}
 \toprule
 \textbf{} & \textbf{mean} & \textbf{max} & \textbf{within 3pp} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{} & \textbf{mean} & \textbf{max} & \textbf{within 3pp} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
 number-\allowbreak{}capping alone & 0.45pp & 2.14pp & 12 of 12 \\
 \textbf{number-capping + snapshot substitution (what Table~\ref{tab:ticketside} uses)} & \textbf{1.76pp} & \textbf{11.91pp} (Kylin) & 11 of 12 \\
 the same, excluding Kylin & 0.84pp & 2.93pp & 11 of 11 \\
-\end{longtable}
-\addtocounter{table}{-1}
+\bottomrule
+\end{tabular}
 \endgroup
+\end{table*}
 
 \textbf{Quote 1.76pp / 11.91pp for anything in Table~\ref{tab:ticketside}.} The favourable reading is also true and is the one to lead with: eleven of twelve land within 2.93pp, and the twelfth is Kylin, whose branch truncation (\S\kern0.13em \ref{sec:4.2.1}) is the same defect showing up a second time.
 
@@ -431,23 +415,19 @@ the same, excluding Kylin & 0.84pp & 2.93pp & 11 of 11 \\
 
 \textbf{Result.} Over the 33 projects with a usable denominator, Spearman's $\rho$ between the commit-side rate and the ticket realisation rate is \textbf{$-0.010$} (95\% CI \textbf{$[-0.352, +0.335]$}, permutation p = \textbf{0.958}, 200,000 relabellings). Excluding the three projects whose repositories barely overlap the snapshot era, it is \textbf{$-0.062$} on 30 (95\% CI $[-0.413, +0.305]$).
 
+\begin{table*}[htbp]
+\centering
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.4048\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1280\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4672\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.4048\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1280\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4672\linewidth-2\tabcolsep\relax}}
 \toprule
 \textbf{} & \textbf{n} & \textbf{ticket realisation rate} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{} & \textbf{n} & \textbf{ticket realisation rate} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
 cleared the 0.80 bar & 12 & 0.04--68.6\%, \textbf{median 52.6\%} ($\mathrm{TRR}_\mathrm{frozen}$) \\
 the bar dropped & 21 & 29.5--84.8\%, \textbf{median 53.2\%} \\
-\end{longtable}
-\addtocounter{table}{-1}
+\bottomrule
+\end{tabular}
 \endgroup
+\end{table*}
 
 The passing group's median is \textbf{0.6pp below} the dropped group's --- the bar selects for nothing on this axis (Mann-Whitney $p = 0.94$). \textbf{The highest ticket realisation rate in the entire probe --- Syncope at 84.8\% --- belongs to a project the bar rejected at 36.0\% commit-side.}
 
@@ -481,19 +461,15 @@ A researcher sampling with GHS therefore gets stars, commits, contributors and l
 
 
 
-\begin{landscape}
-
-\begin{figure}[p]
+\begin{figure*}[t]
 
 \centering
 
-\includegraphics[width=\linewidth]{figures/eligibility_funnel.png}
+\includegraphics[width=\textwidth]{figures/eligibility_funnel.png}
 
 \caption{Corpus attrition: 38 probed projects to 12 eligible to a single ecosystem, with the six operationalisations that were tested and closed.}\label{fig:funnel}
 
-\end{figure}
-
-\end{landscape}
+\end{figure*}
 
 
 
@@ -506,27 +482,23 @@ Drafted from \texttt{paper/\allowbreak{}eligibility\_\allowbreak{}failure\_\allo
 
 \emph{Note on mode 6.} \texttt{README.\allowbreak{}md} \S\kern0.13em 5 labels mode 6 ``repository migrated across organisations''. That framing was \textbf{superseded on 2026-07-25} once id$\rightarrow$key stability was measured (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 2, \texttt{5179907}). The current statement is below, and it is the one this paper uses.
 
+\begin{table*}[htbp]
+\centering
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.0372\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2660\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4461\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2507\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.0372\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2660\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4461\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2507\linewidth-2\tabcolsep\relax}}
 \toprule
 \textbf{\#} & \textbf{mode} & \textbf{worked example} & \textbf{evidence} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{\#} & \textbf{mode} & \textbf{worked example} & \textbf{evidence} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
 1 & \textbf{GitHub Issues displaced Jira} & ShardingSphere: \textbf{5} Jira citations in 49,111 commits, against 30,746 GitHub-\allowbreak{}issue references & \texttt{paper/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}json} \\
 2 & \textbf{No source repository exists} & RedHat RHBRMS: 86.00\% estimate coverage on 2,400 issues --- a product/\allowbreak{}documentation tracker with no code & \texttt{estimates\_\allowbreak{}by\_\allowbreak{}org.\allowbreak{}json}; repo resolution failed \\
 3 & \textbf{The tracker is downstream of the upstream repo} & kata-\allowbreak{}containers: \textbf{zero} \texttt{KATA-\allowbreak{}} keys in 19,807 commits; the Red Hat Jira tracks a product built from an upstream nobody asks to cite & \texttt{paper/\allowbreak{}intersection.\allowbreak{}json} (excluded, not scored) \\
 4 & \textbf{Convention changed mid-\allowbreak{}history} & spring-\allowbreak{}batch: \texttt{BATCH-\allowbreak{}} in \textbf{45.6\%} of 7,035 commits overall, in \textbf{0 of the most recent 1,000} (back to 2021-06), and at exactly \textbf{0\% in every year since 2020} --- a single rate averages two regimes & full scan, \texttt{scripts/\allowbreak{}springbatch\_\allowbreak{}recency.\allowbreak{}py} \\
 5 & \textbf{Monorepo needs multi-key matching} & Hadoop: \textbf{26.2\%} single-\allowbreak{}key $\rightarrow$ \textbf{92.3\%} four-key $\rightarrow$ \textbf{97.8\%} seven-\allowbreak{}key, same 28,290 commits & \texttt{scripts/\allowbreak{}citation\_\allowbreak{}rate.\allowbreak{}py} \\
 6 & \textbf{The cited key has no project record in the tracker} & Evergreen: commits cite \texttt{DEVPROD} (2,785) but the tracker holds only \texttt{EVG}. DataLab: commits cite \texttt{EPMCDLAB} (3,900) and \texttt{DLAB} (3,547); the tracker holds only \texttt{DATALAB} & \texttt{paper/\allowbreak{}intersection.\allowbreak{}json} \\
-\end{longtable}
-\addtocounter{table}{-1}
+\bottomrule
+\end{tabular}
 \endgroup
+\end{table*}
 
 \subsection{The distinction that makes this a taxonomy rather than a list}
 \label{sec:5.1}
@@ -555,27 +527,23 @@ A related instance is a repository that resolves elsewhere: \texttt{kiegroup/\al
 
 The probed key sets were derived empirically from commit messages (\S\kern0.13em \ref{sec:3.2}), and the frozen public Jira corpus records every Apache project that existed at its snapshot. Intersecting the two turns mode 6 from an anecdote into a count: \textbf{\textbf{six} of the keys this study probes have no project record in that corpus at all}, and five of them are actually cited by commits.
 
+\begin{table*}[htbp]
+\centering
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.2648\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3608\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3744\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.2648\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3608\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.3744\linewidth-2\tabcolsep\relax}}
 \toprule
 \textbf{project} & \textbf{key with no tracker record} & \textbf{distinct keys cited under it} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{project} & \textbf{key with no tracker record} & \textbf{distinct keys cited under it} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
 pinot & \texttt{THIRDEYE} & 327 \\
 calcite & \texttt{OPTIQ} & 85 \\
 rocketmq & \texttt{RIP} & 35 \\
 skywalking & \texttt{SWIP} & 11 \\
 shardingsphere & \texttt{RS} & 8 \\
 ozone & \texttt{OZONE} & 0 --- probed, never cited \\
-\end{longtable}
-\addtocounter{table}{-1}
+\bottomrule
+\end{tabular}
 \endgroup
+\end{table*}
 
 Calcite is the clearest instance: \texttt{OPTIQ} was the project's name before it was renamed, its keys are cited 85 distinct times in the repository's history, and \textbf{no OPTIQ project exists in the tracker corpus}. Enumerating the tracker's projects cannot recover that key. It exists only in git, and a probe that derived its key set from the tracker --- the natural thing to do --- would silently miss every commit that cites it.
 
@@ -750,6 +718,8 @@ No funding was received. The authors declare no competing interests.
 
 
 \clearpage
+
+\onecolumn
 
 \begin{landscape}
 
@@ -955,9 +925,11 @@ Sources: \texttt{scripts/\allowbreak{}traceability\_\allowbreak{}probe.\allowbre
 
 
 
+\twocolumn
 
 
-\bibliographystyle{IEEEtran}
+
+\bibliographystyle{ACM-Reference-Format}
 
 \bibliography{refs}
 
