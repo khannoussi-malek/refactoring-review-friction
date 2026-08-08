@@ -102,7 +102,8 @@ sample's, and higher ICC is what makes the study impossible.
 
 Three ways out, with their costs. **Lower the bar and model the measurement
 error** — at 60% another nine projects qualify, at the cost of a biased sample of
-tickets *within* each project, which §7.3 shows is real rather than hypothetical.
+tickets *within* each project, which the bug-side linkage literature (§2.4) shows
+is real rather than hypothetical.
 **This is the one to avoid drifting into silently.** **Change the outcome so it
 needs no tickets** — anything computed purely from git dissolves both the
 traceability filter and the ecosystem clustering, at the cost of the

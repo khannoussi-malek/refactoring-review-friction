@@ -65,6 +65,4 @@ its conclusions bounded. No claim in this paper depends on it.
 
 ## 8.4 Funding and competing interests
 
-No funding was received. The author declares no competing interests. The work was
-carried out independently, alongside full-time employment, which is stated in
-Section 6.8 because it explains the shape of the study's limitations.
+No funding was received. The authors declare no competing interests.

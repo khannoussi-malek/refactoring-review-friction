@@ -27,11 +27,15 @@ tracked issues that are ever cited by at least one commit:
 
 > **TRR(p) = |{ k ∈ Tickets(p, T) : ∃ c ⟶ H_p, k ∈ cites(c) }| / |Tickets(p, T)|**
 
-The name is introduced here because the quantity has been reported without one.
-Rath et al. (ICSE'18) [@rath2018traceability] measure it — "approximately 43.3% of improvements and 42.4%
-of bugs have no commits associated with them" — as a property of an issue type
-rather than as a project-level rate with a name, and the divergence between it
-and CSR is not framed anywhere as a constraint on corpus selection.
+TRR is a label of convenience for this paper. It is not a claim to have named the
+quantity first, and nothing here depends on the name being new. The quantity has
+been measured before: Rath et al. (ICSE'18) [@rath2018traceability] report that
+"approximately 43.3% of improvements and 42.4% of bugs have no commits associated
+with them", as a property of an issue type rather than as a project-level rate,
+and Bachmann et al. (FSE'10) [@bachmann2010missing] measure the completeness of
+the bug-side link against expert ground truth. What is new here is the use made
+of the quantity rather than the quantity itself: the divergence between TRR and
+CSR is not framed anywhere as a constraint on corpus selection.
 
 **"Realisation" is a claim about the record, not about the work.** TRR counts a
 ticket as realised when the repository's own record points back to it. A ticket

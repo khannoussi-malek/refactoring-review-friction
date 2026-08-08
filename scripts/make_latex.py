@@ -43,6 +43,7 @@ Usage:
     cd paper/preprint && pdflatex preprint.tex && pdflatex preprint.tex
 """
 import argparse
+import json
 import pathlib
 import re
 import sys
@@ -812,6 +813,49 @@ def emit_table(rows, caption=None, label=None, unmapped=None,
     return out
 
 
+def load_targets():
+    """Per-target section manifest. Absent file means every target takes every
+    section, so the generator still runs in a checkout that predates it."""
+    path = SRC / "targets.json"
+    if not path.exists():
+        return {}
+    return {k: v for k, v in json.loads(path.read_text(encoding="utf-8")).items()
+            if not k.startswith("_")}
+
+
+def target_for(cls, targets):
+    for name, spec in targets.items():
+        if cls in spec.get("applies_to", []):
+            return name, spec
+    return None, {"exclude": [], "figure": True, "front_matter": True}
+
+
+def drop_excluded(blocks, excluded):
+    """Remove each excluded section and everything under it.
+
+    A section ends at the next heading of the same or a shallower level, so
+    excluding 6.3 also removes a 6.3.1 nested beneath it without that number
+    having to be listed. Returns the kept blocks and the numbers actually seen,
+    which lets the caller fail on a manifest entry that matches nothing rather
+    than silently keeping a section it was told to cut."""
+    if not excluded:
+        return list(blocks), set()
+    kept, hit, cutting_at = [], set(), None
+    for kind, payload in blocks:
+        if kind == "head":
+            lvl, txt = payload
+            m = NUMBERED.match(txt)
+            number = m.group(1) if m else None
+            if cutting_at is not None and lvl <= cutting_at:
+                cutting_at = None          # this heading closes the cut
+            if cutting_at is None and number in excluded:
+                cutting_at, _ = lvl, hit.add(number)
+                continue
+        if cutting_at is None:
+            kept.append((kind, payload))
+    return kept, hit
+
+
 def emit(blocks, starred=False, headings=None, unmapped=None, depth=0):
     out = []
     for kind, payload in blocks:
@@ -867,6 +911,10 @@ def convert(md, starred=False, headings=None, unmapped=None):
     return "\n".join(emit(parse(md.split("\n")), starred, headings, unmapped))
 
 
+def convert_blocks(blocks, starred=False, headings=None, unmapped=None):
+    return "\n".join(emit(blocks, starred, headings, unmapped))
+
+
 # --------------------------------------------------------------------------
 # document
 # --------------------------------------------------------------------------
@@ -879,6 +927,18 @@ AUTHOR = "Malek Khannoussi"
 # SHA-256 manifest that re-dates itself on every compile is contradicting its own
 # claim to be reproducible.
 BUILD_DATE = "5 August 2026"
+
+# MSR asks that a submission not share a title with anything already public, and
+# the preprint and its repository are public under the title below. The
+# submission therefore carries its own, which also states the claim the short
+# paper leads with. The preprint title is left alone so outreach already sent
+# still resolves. PROJECT_STATE.md records the decision.
+TITLE = {
+    "default": "Traceability and estimate coverage as corpus-eligibility "
+               "constraints: a probe of 38 Apache projects",
+    "acm": "An arithmetic ceiling on issue--commit linkage, and what it means "
+           "for corpus selection",
+}
 
 COMMON = r"""
 \usepackage{amsmath}
@@ -973,14 +1033,83 @@ repositories
 \end{IEEEkeywords}
 """
 
+# --------------------------------------------------------------------------
+# ACM target -- MSR 2027 submission
+# --------------------------------------------------------------------------
+# acmart already loads amsmath, amssymb, booktabs, graphicx, microtype, caption
+# and hyperref. Re-loading them is at best a duplicate and at worst an option
+# clash, so this preamble adds only what acmart leaves out. It must also NOT
+# reuse COMMON: COMMON's hyperref call hard-codes pdfauthor and pdftitle, which
+# would put the author's name in the metadata of a double-anonymous submission.
+# `pdfinfo` is the check, and it is part of the verification list.
+ACM = r"""\documentclass[sigconf,review,anonymous]{acmart}
+
+%% acmart does not load these three.
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\graphicspath{{../../}{./}}
+
+%% No author, title or creator metadata keys are set here. acmart drives
+%% hyperref itself, and anything set in this preamble reaches the PDF metadata,
+%% where it would survive every source-level anonymisation check.
+
+%% A submission carries no DOI, ISBN or price.
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\acmConference[MSR 2027]{22nd International Conference on Mining Software
+Repositories}{April 26--27, 2027}{Dublin, Ireland}
+
+\widowpenalty=10000
+\clubpenalty=10000
+\setlength{\emergencystretch}{2em}
+
+\title{TITLETEXT}
+
+%% The anonymous option suppresses this block; it is kept minimal regardless so
+%% there is nothing to leak if the option is ever dropped by accident.
+\author{Anonymous Author(s)}
+
+\begin{document}
+"""
+
+# acmart wants the CCS block and the keywords between the abstract and
+# \maketitle, which is why the ACM path emits \maketitle itself rather than
+# taking it from the preamble the way IEEE and article do.
+ACM_TOPMATTER = r"""
+\begin{CCSXML}
+<ccs2012>
+<concept>
+<concept_id>10011007.10011074.10011099</concept_id>
+<concept_desc>Software and its engineering~Software verification and
+validation</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+<concept>
+<concept_id>10011007.10011074.10011134</concept_id>
+<concept_desc>Software and its engineering~Software evolution</concept_desc>
+<concept_significance>300</concept_significance>
+</concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Software verification and validation}
+\ccsdesc[300]{Software and its engineering~Software evolution}
+
+\keywords{traceability, corpus eligibility, issue linkage, sampling frames,
+mining software repositories}
+
+\maketitle
+"""
+
 
 def preamble(cls):
     """The document class is a parameter because the venues in this area are
     split: arXiv takes the single-column article, IEEE conferences take the
-    two-column IEEEtran, and ACM venues take acmart, which slots in here the
-    same way."""
-    src = IEEE if cls == "ieee" else ARTICLE
-    return src.replace("BUILDDATE", BUILD_DATE)
+    two-column IEEEtran, and ACM venues take acmart."""
+    src = {"ieee": IEEE, "acm": ACM}.get(cls, ARTICLE)
+    return (src.replace("BUILDDATE", BUILD_DATE)
+               .replace("TITLETEXT", TITLE[cls if cls in TITLE else "default"]))
 
 
 def frontmatter(figure_ok):
@@ -1041,7 +1170,7 @@ def bibliography():
     return ["", r"\bibliographystyle{IEEEtran}", r"\bibliography{refs}", ""]
 
 
-def table_appendix(unmapped, cls="article"):
+def table_appendix(unmapped, cls="article", keep=None):
     """Each table file carries its own headings, its data table and a prose
     caption. The headings are starred so the appendix cannot renumber the
     paper's sections, and the first data table in each file takes the caption
@@ -1058,6 +1187,10 @@ def table_appendix(unmapped, cls="article"):
     header = [r"\section*{Tables}",
               r"\addcontentsline{toc}{section}{Tables}", ""]
     for path, label, caption, n_data in TABLES:
+        # A target that names its tables gets only those; the rest move to the
+        # replication package and are cited there, not deleted.
+        if keep is not None and label not in keep:
+            continue
         blocks = parse((ROOT / path).read_text(encoding="utf-8").split("\n"))
         # One landscape per FILE, not per table. Opening it around the whole
         # file keeps the heading, both halves of a split table and the legend
@@ -1154,8 +1287,16 @@ def digits(s):
     return re.findall(r"\d+(?:\.\d+)?", s)
 
 
-def selfcheck(text, headings, unmapped=None, ragged=None):
+def selfcheck(text, headings, unmapped=None, ragged=None, renumbers=False):
     problems = []
+    # Every cross-reference is a \ref keyed on the authored number, so a target
+    # that cuts sections renumbers correctly by construction. What it must not
+    # do is point at a section that is no longer there.
+    labels = set(re.findall(r"\\label\{sec:([^}]+)\}", text))
+    dangling = sorted(set(re.findall(r"\\ref\{sec:([^}]+)\}", text)) - labels)
+    if dangling:
+        problems.append("reference to a section this target cut, would print "
+                        "'??': " + ", ".join(dangling))
     # a character with no mapping is silently printed as "?", so the build has
     # to fail on it rather than only mention it
     if unmapped:
@@ -1170,9 +1311,14 @@ def selfcheck(text, headings, unmapped=None, ragged=None):
         hits = rx.findall(scan)
         if hits:
             problems.append(f"{name}: {len(hits)} occurrence(s), first {hits[0]!r}")
-    for authored, got, title in check_numbering(headings):
-        problems.append(f"section number drift: source says {authored}, "
-                        f"LaTeX will print {got} -- {title!r}")
+    # Drift between the authored number and the printed one is a defect only
+    # when every section is present; when the manifest cuts sections the
+    # renumbering is the point, and the dangling-\ref check above is what
+    # guards correctness instead.
+    if not renumbers:
+        for authored, got, title in check_numbering(headings):
+            problems.append(f"section number drift: source says {authored}, "
+                            f"LaTeX will print {got} -- {title!r}")
     for env in ("longtable", "itemize", "enumerate", "quote", "verbatim",
                 "figure", "landscape"):
         o = len(re.findall(r"\\begin\{" + env + r"\}", text))
@@ -1223,6 +1369,27 @@ def demo():
     assert lst.count(r"\item") == 4, lst
     assert "still two, indented" in lst, lst
     assert lst.index("still two, indented") < lst.index(r"\item three"), lst
+
+    # The ACM path: acmart, all three options, and no author identity anywhere
+    # in the preamble. pdfauthor in particular would survive into the metadata
+    # of a double-anonymous submission.
+    acm = preamble("acm")
+    assert r"\documentclass[sigconf,review,anonymous]{acmart}" in acm, acm[:200]
+    for leak in ("Khannoussi", "Tunisia", "khannoussimalek", "pdfauthor"):
+        assert leak not in acm, f"ACM preamble leaks {leak!r}"
+    assert r"\begin{CCSXML}" in ACM_TOPMATTER and r"\keywords{" in ACM_TOPMATTER
+    assert TITLE["acm"] != TITLE["default"], "submission must not reuse the preprint title"
+
+    # Excluding a section takes its subsections with it, and stops at the next
+    # heading of the same level.
+    doc = ("# 6. Threats\n\n## 6.2 Keep me\n\nkeep A\n\n## 6.3 Cut me\n\n"
+           "cut B\n\n### 6.3.1 Cut me too\n\ncut C\n\n## 6.4 Keep me also\n\nkeep D\n")
+    kept, hit = drop_excluded(parse(doc.split("\n")), {"6.3"})
+    flat = convert_blocks(kept)
+    assert hit == {"6.3"}, hit
+    assert "keep A" in flat and "keep D" in flat, flat
+    for gone in ("cut B", "cut C", "6.3.1"):
+        assert gone not in flat, f"{gone!r} survived the cut"
     print("demo: ok")
 
 
@@ -1232,10 +1399,11 @@ def main():
     ap.add_argument("--selfcheck", action="store_true",
                     help="fail the build on leaked markdown or number drift")
     ap.add_argument("--test", action="store_true", help="run demo() and exit")
-    ap.add_argument("--class", dest="cls", default="article",
-                    choices=["article", "ieee"],
+    ap.add_argument("--class", "--template", dest="cls", default="article",
+                    choices=["article", "ieee", "acm"],
                     help="article = single-column arXiv preprint; "
-                         "ieee = two-column IEEEtran conference layout")
+                         "ieee = two-column IEEEtran conference layout; "
+                         "acm = acmart sigconf, review + anonymous (MSR)")
     args = ap.parse_args()
 
     if args.test:
@@ -1245,20 +1413,26 @@ def main():
     unmapped, headings = set(), []
     figure_ok = (ROOT / FIGURE[0]).exists()
 
-    # Collect every authored section number BEFORE converting anything, so a
-    # reference in section 2 to a section defined in section 7 still resolves.
+    DOCCLASS[0] = args.cls
+    tname, tspec = target_for(args.cls, load_targets())
+
+    # Collect the section numbers this target actually KEEPS, before converting
+    # anything, so a reference in section 2 to a section defined in section 7
+    # still resolves. Sections the manifest cuts are deliberately left out: a
+    # reference into a cut section must be reported as unresolved rather than
+    # emitted as a \ref with no \label, which prints "??" in the PDF.
     SECTION_NUMBERS.clear()
     UNRESOLVED_REFS.clear()
     CITED_KEYS.clear()
     for name in ORDER[1:]:
-        for line in (SRC / name).read_text(encoding="utf-8").split("\n"):
-            m = HEADING.match(line.strip())
-            if m:
-                n = NUMBERED.match(m.group(2))
+        blocks, _ = drop_excluded(
+            parse((SRC / name).read_text(encoding="utf-8").split("\n")),
+            set(tspec.get("exclude", [])))
+        for kind, payload in blocks:
+            if kind == "head":
+                n = NUMBERED.match(payload[1])
                 if n:
                     SECTION_NUMBERS.add(n.group(1))
-
-    DOCCLASS[0] = args.cls
     body = [preamble(args.cls)]
 
     abstract_md = re.sub(r"^#\s+Abstract\s*$", "",
@@ -1267,19 +1441,36 @@ def main():
              r"\end{abstract}"]
     if args.cls == "ieee":
         body.append(KEYWORDS)
-    # No \clearpage after the reader's map: the map overruns page 1 by a few
-    # lines, and forcing a break there left those lines alone on a 324-character
-    # page. Letting Section 1 follow on the same page costs nothing and the rule
-    # under the map still separates them.
-    body += [frontmatter(figure_ok)]
+    if args.cls == "acm":
+        # acmart wants the CCS block and the keywords between the abstract and
+        # \maketitle. The reader's map is dropped for this target: it costs most
+        # of a column and ten pages is a desk-reject criterion, not a guideline.
+        body.append(ACM_TOPMATTER)
+    else:
+        # No \clearpage after the reader's map: the map overruns page 1 by a few
+        # lines, and forcing a break there left those lines alone on a
+        # 324-character page. Letting Section 1 follow on the same page costs
+        # nothing and the rule under the map still separates them.
+        body += [frontmatter(figure_ok)]
 
+    excluded = set(tspec.get("exclude", []))
+    seen_excluded = set()
     for i, name in enumerate(ORDER[1:]):
-        body.append(convert((SRC / name).read_text(encoding="utf-8"), headings=headings,
-                            unmapped=unmapped))
-        if name == "results.md":
+        blocks = parse((SRC / name).read_text(encoding="utf-8").split("\n"))
+        blocks, hit = drop_excluded(blocks, excluded)
+        seen_excluded |= hit
+        body.append("\n".join(emit(blocks, headings=headings, unmapped=unmapped)))
+        if name == "results.md" and tspec.get("figure", True):
             body += emit_figure(unmapped)
 
-    body += table_appendix(unmapped, args.cls)
+    # A manifest entry that matches no heading is a silent cut that never
+    # happened. Fail loudly rather than ship the section it was meant to remove.
+    missing = excluded - seen_excluded
+    if missing:
+        sys.exit(f"targets.json: no section matches {sorted(missing)} "
+                 f"(target {tname!r}); the text was NOT cut")
+
+    body += table_appendix(unmapped, args.cls, keep=tspec.get("tables"))
     body += bibliography()
     body.append(r"\end{document}")
     text = "\n\n".join(body)
@@ -1303,7 +1494,8 @@ def main():
     if not figure_ok:
         print(f"NOTE: {FIGURE[0]} not found; figure omitted")
 
-    problems = selfcheck(text, headings, unmapped, RAGGED)
+    problems = selfcheck(text, headings, unmapped, RAGGED,
+                         renumbers=bool(tspec.get("exclude")))
     missing = CITED_KEYS - bib_keys(ROOT / 'paper' / 'preprint' / 'refs.bib')
     if missing:
         problems.append('cited but not in refs.bib: ' + ', '.join(sorted(missing)))

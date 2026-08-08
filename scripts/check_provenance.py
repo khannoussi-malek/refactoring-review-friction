@@ -379,7 +379,49 @@ def main():
         for tok, (t_, files, _) in sorted(tiers.items()):
             if t_ == "ARTIFACT_NO_ROW":
                 print(f"    ARTIFACT_NO_ROW {tok}  ({', '.join(sorted(files))})")
-    sys.exit(1 if (counts["UNSOURCED"] or counts["ARTIFACT_NO_ROW"]) else 0)
+    drift = cross_target_numbers()
+    if not a.quiet:
+        print(f"  TARGET_DRIFT {len(drift)}")
+        for d in drift:
+            print(f"    {d}")
+    sys.exit(1 if (counts["UNSOURCED"] or counts["ARTIFACT_NO_ROW"] or drift)
+             else 0)
+
+
+NUM = re.compile(r"(?<![\w.])\d[\d,]*(?:\.\d+)?%?")
+
+
+def cross_target_numbers():
+    """Fail if a number in the short paper disagrees with the long one.
+
+    Both targets are generated from the same section files and the short one is
+    a strict subset, so every number it prints must also appear in the preprint.
+    A number that appears only in the short paper means the two versions have
+    started to diverge, which is the failure this project is a paper about.
+    Missing builds are skipped rather than guessed at.
+
+    Returns a list of problems; empty means the two agree.
+    """
+    short = ROOT / "paper" / "msr2027" / "main.tex"
+    long_ = ROOT / "paper" / "preprint" / "preprint.tex"
+    if not (short.exists() and long_.exists()):
+        return []
+
+    def nums(path):
+        text = path.read_text(encoding="utf-8")
+        # Venue boilerplate is not a claim: CCS concept ids, the ccsdesc
+        # significance weights and the conference name and dates are fixed by
+        # the template, carry no evidence, and have no counterpart to drift
+        # from in the preprint.
+        text = re.sub(r"\\begin\{CCSXML\}.*?\\end\{CCSXML\}", "", text,
+                      flags=re.S)
+        text = re.sub(r"\\ccsdesc\[?\d*\]?\{[^}]*\}", "", text)
+        text = re.sub(r"\\acmConference\[[^\]]*\](\{[^}]*\}){3}", "", text)
+        return {m.group(0) for m in NUM.finditer(text)}
+
+    drift = sorted(nums(short) - nums(long_))
+    return [f"number in the MSR paper that the preprint does not carry: {d}"
+            for d in drift]
 
 
 if __name__ == "__main__":

@@ -405,3 +405,45 @@ cd paper/preprint && pdflatex X && bibtex X && pdflatex X && pdflatex X   # both
 which live outside the repository. Its D9 change was verified by evaluating the
 new expressions against the committed `paper/ticket_side_38.json`, and the text
 written into `paper/table3_ticket_side.md` is the text the generator now emits.
+
+---
+
+# MSR 2027 submission, branch `msr2027`, opened 2026-08-08
+
+The preprint on `version2` is unchanged and stays the public artifact. This
+branch builds a separate ten-page anonymous submission from the same section
+files. Rows below cover claims that changed **meaning**; a claim merely cut from
+the short version gets no row, per the pass's own rule.
+
+| # | what it said | what it says now | why |
+|---:|---|---|---|
+| M1 | §2.2 contribution 5 ended "(Whether the quantity is also newly **named** depends on the Bachmann determination in §2.4 and is **[PENDING]**.)", and §2.4 carried a `[DETERMINATION PENDING]` block | contribution 5 rests on coverage and states "the contribution is the coverage, not the name". §3.1 introduces the label with "not a claim to have named the quantity first, and nothing here depends on the name being new". §2.4 states what each measurement conditions on and says the paper "does not adjudicate" the difference | The GATE required reading Bachmann directly and forbade inferring from a summary; the paper was not available, so the question is still open. A submission cannot ship a pending determination, and no contribution rested on the name. The claim was dropped rather than guessed at |
+| M2 | §3.1 "The name is introduced here because the quantity has been reported without one" | "TRR is a label of convenience for this paper", followed by the two prior measurements (Rath et al. per issue type, Bachmann et al. against expert ground truth) and the actual novelty: "the divergence between TRR and CSR is not framed anywhere as a constraint on corpus selection" | Same determination. The measurement claim survives; only the priority claim goes |
+| M3 | §8.4 "The work was carried out independently, alongside full-time employment, which is stated in Section 6.8" | "No funding was received. The authors declare no competing interests." | §6.8 is cut from the submission as identifying, and this sentence repeated the same identifying detail in the acknowledgements, where the section cut would not have reached it |
+| M4 | §2.4 "This is the same argument **our §7.3** makes for architectural change" | "the same argument **this paper** makes" | §7.3 is cut from the short version. Removing the section pointer rather than repointing it keeps one sentence correct in both targets |
+| M5 | §7.4 "a biased sample of tickets *within* each project, which **§7.3** shows is real" | "which **the bug-side linkage literature (§2.4)** shows is real" | Same cut. The evidence for the claim is Bird et al., which §2.4 carries and both targets keep |
+
+## Tooling added, which changed no claim
+
+| # | what | why |
+|---:|---|---|
+| N1 | `--template acm`, emitting `\documentclass[sigconf,review,anonymous]{acmart}` with a CCS concept block and `\keywords` | MSR requires the ACM template. The ACM preamble deliberately does **not** reuse `COMMON`: `COMMON` sets author and title keys on hyperref, which would put the author's name in the metadata of a double-anonymous PDF, where no source-level check would find it. `--test` asserts the preamble carries no author identity |
+| N2 | `paper/manuscript/targets.json`, a per-target section manifest | The short paper is a subset of the long one, not a copy. Excluding a section takes its subsections with it. A manifest entry that matches no heading is a build error, so a cut that silently did not happen cannot ship |
+| N3 | dangling-cross-reference check | Cutting a section renumbers everything after it, and the prose cites section numbers. Every reference is a `\ref` keyed on the authored number, so numbering self-corrects; what does not self-correct is a reference **into** a cut section, which would print "??". The self-check now fails on those, and it found three (M3, M4, M5) |
+| N4 | `TARGET_DRIFT` in `scripts/check_provenance.py` | Fails if a number appears in the short paper that the preprint does not carry. The short paper is a strict subset of the same sources, so any such number means the two versions have begun to diverge |
+
+## State at the end of 2026-08-08
+
+Both targets build. The IEEE preprint is 26 pages with the author intact. The
+ACM submission is **17 pages against a 12-page ceiling** (ten of main text plus
+two of references), so the remaining work is the prose compression the spec
+schedules for weeks 3 to 7, not further section removal.
+
+Anonymity, checked against the built PDF rather than the source: "Khannoussi",
+"Malek", "Tunisia", "khannoussi", "gmail" and "Independent Researcher" all
+return zero in both `main.tex` and the extracted PDF text; `pdfinfo` reports no
+author; no `github.com` URL, no RefactoringMiner issue number and no bracketed
+placeholder survives. The last three were carried by sections the cut removed.
+
+Not started, and each needs something this branch cannot supply: the Zenodo
+deposit and its DOI, the ORCID, and the data availability statement naming it.

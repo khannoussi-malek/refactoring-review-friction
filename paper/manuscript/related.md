@@ -96,9 +96,9 @@ Positioned against the above rather than against an assumed gap:
    commensurable when they are not.
 5. **The ticket-side rate measured across the whole probe**, including the 26
    projects the bar **rejected** — Rath 2018 reports it per issue *type*, and only
-   for the six projects it selected. *(Whether the quantity is also newly
-   **named** depends on the Bachmann determination in §2.4 and is
-   **[PENDING]**.)*
+   for the six projects it selected. The contribution is the coverage, not the
+   name: §3.1 introduces "ticket realisation rate" as a label for the paper's own
+   use and claims no priority for it.
 6. **The six-mode taxonomy**, and that none of it is expressible in any published
    frame.
 
@@ -136,19 +136,18 @@ project over one window; ours is a per-project rate over a whole tracker,
 established mechanically. Their design is far stronger on ground truth and far
 narrower in scope; ours is the reverse.
 
-> **[DETERMINATION PENDING]** Whether the ticket realisation rate of §3.1 is the
-> same quantity Bachmann et al. measured, or a distinct one, is **not settled in
-> this draft**. The argument for distinctness is that §3.1.1 admits every issue
-> type and every status and conditions on nothing, whereas Bachmann conditions on
-> bugs and bug-fix commits. That argument has not been adjudicated against the
-> paper's own text, and the naming claim in §3.1 stands or falls with it. See
-> `paper/REVISION_LOG.md`, GATE.
+The two measurements are not identical in what they condition on: Bachmann et al.
+restrict attention to bugs and bug-fix commits, whereas §3.1.1 admits every issue
+type and every status and conditions on nothing. This paper does not adjudicate
+whether that difference makes the quantities distinct, and no claim it makes
+depends on the answer. Bachmann et al. is cited here as the prior measurement of
+link completeness, and §3.1 claims no priority for the name it uses.
 
 **Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** [@bird2009fair] — C.
 Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu — is
 the reason any of this matters. Missing links are not missing at random, so a
 dataset built from linked records is a biased sample of the work, and models
-fitted to it inherit the bias. **This is the same argument our §7.3 makes for
+fitted to it inherit the bias. **This is the same argument this paper makes for
 architectural change**, arrived at independently and seventeen years later, and
 we cite it as the prior statement of the principle rather than as a parallel.
 
