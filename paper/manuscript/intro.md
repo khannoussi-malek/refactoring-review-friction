@@ -5,8 +5,15 @@ messages, issue trackers, pull requests — and assumes the record is a reasonab
 faithful trace of the work. Studies of refactoring motivation, of technical-debt
 repayment, of architectural erosion and of review effort are all built on that
 assumption, and it is rarely stated, still more rarely measured. This paper
+<!-- only: preprint -->
 measures it, in three record channels across two ecosystems, and finds it false in
 every channel tested.
+<!-- /only -->
+<!-- only: msr2027 -->
+measures it on 38 Apache projects, and finds that the record traces the work far
+less often than a ticket-anchored design needs, for a reason that is arithmetic
+rather than cultural.
+<!-- /only -->
 
 **How we arrived at a methods paper.** The study began as an attempt to measure
 signal-to-action latency: what, if anything, in a project's records precedes the
@@ -81,10 +88,12 @@ withdrawn (§2.1).
 6. **A six-mode taxonomy of the ways a project silently fails to support an
    issue-linked study**, three of them disqualifying and three of them producing a
    plausible wrong number rather than an error.
+<!-- only: preprint -->
 7. **A second ecosystem and two further channels**, which is what makes the
    result more than an Apache artifact: in a TypeScript corpus, 3 of 96
    architectural commits mention refactoring, 7% link an issue, and 69% never
    pass through code review at all.
+<!-- /only -->
 
 **What this paper is not.** It is not a study of refactoring friction; the
 exploratory Hadoop results live in the replication package and none of them is

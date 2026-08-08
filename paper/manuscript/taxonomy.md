@@ -1,18 +1,11 @@
 # 5. Six ways a project cannot support an issue-linked study
 
-Drafted from `paper/eligibility_failure_modes.md` (`5179907`).
-
 **Every mode below was discovered *after* selecting the project, by probing it.
 None is expressible in any published sampling frame.** GHS indexed 735,669
 repositories as published in 2021 and exposes 35 fields per record today, of
 which only `totalIssues` and `openIssues` touch issues, and both are
 GitHub-issue counts (§2.3). All six were found the same way:
 by reading commit messages, project by project.
-
-*Note on mode 6.* `README.md` §5 labels mode 6 "repository migrated across
-organisations". That framing was **superseded on 2026-07-25** once id→key
-stability was measured (`PROJECT_STATE.md` §2, `5179907`). The current statement
-is below, and it is the one this paper uses.
 
 | # | mode | worked example | evidence |
 |---:|---|---|---|

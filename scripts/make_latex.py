@@ -125,6 +125,17 @@ FLOAT_LABELS = {"Table 1": "tab:eligibility", "Table 2": "tab:visibility",
 # was never authored is left as literal text and reported rather than pointed at
 # a label that does not exist.
 SECTION_NUMBERS = set()
+# Floats a target does not carry. The prose still needs to make its claim, so a
+# reference to one is rendered as a pointer into the replication package rather
+# than a \ref with no \label, which prints "??". Populated per target in main().
+ABSENT_FLOATS = {}
+# What to call a table that moved to the replication package. The wording has to
+# read as a noun phrase in mid-sentence, because that is where the prose puts it
+# ("Table 3 computes ..." becomes "the 38-project table computes ...").
+ARTIFACT_TABLE = {
+    "Table 2": "the three-channel table in the artifact",
+    "Table 3": "the artifact's 38-project table",
+}
 # set once in main(); emit_table needs it and threading it through every
 # emit() call site would touch a dozen signatures for one boolean
 DOCCLASS = ['article']
@@ -465,6 +476,8 @@ def inline(s, unmapped=None):
     s = re.sub(r"(§|Section~|Section )\s?(\d+(?:\.\d+)*)", do_section, s)
 
     def do_float(m):
+        if m.group(0) in ABSENT_FLOATS:
+            return stash_raw(ABSENT_FLOATS[m.group(0)])
         label = FLOAT_LABELS.get(m.group(0))
         if not label:
             UNRESOLVED_REFS.append(m.group(0))
@@ -475,7 +488,13 @@ def inline(s, unmapped=None):
     def do_float_pair(m):
         kind, a, b = m.group(1), m.group(2), m.group(3)
         sing = kind[:-1]                       # Tables -> Table
-        la, lb = FLOAT_LABELS.get(f"{sing} {a}"), FLOAT_LABELS.get(f"{sing} {b}")
+        ka, kb = f"{sing} {a}", f"{sing} {b}"
+        if ka in ABSENT_FLOATS or kb in ABSENT_FLOATS:
+            # one of the pair is not in this target: emit each side on its own
+            side = lambda k: (ABSENT_FLOATS[k] if k in ABSENT_FLOATS
+                              else sing + "~" + r"\ref{" + FLOAT_LABELS[k] + "}")
+            return stash_raw(side(ka) + " and " + side(kb))
+        la, lb = FLOAT_LABELS.get(ka), FLOAT_LABELS.get(kb)
         if not (la and lb):
             UNRESOLVED_REFS.append(m.group(0))
             return m.group(0)
@@ -739,6 +758,28 @@ def breakable(s):
 RAGGED = []
 
 
+def drop_columns(rows, drop):
+    """Remove columns by header text.
+
+    The IEEE build sets the eligibility table in landscape, where thirteen
+    columns fit. sigconf is narrower and portrait, and the same thirteen
+    columns rendered clipped: words vanished mid-caption and header cells ran
+    into data. Shrinking the type would not have fixed it, so the short version
+    carries fewer columns instead. Matching is on the header cell so the
+    manifest names what a reader sees, not a column index that shifts.
+    """
+    if not rows or not drop:
+        return rows
+    def norm(c): return re.sub(r"[*`\s]+", " ", c).strip().lower()
+    header = [norm(c) for c in rows[0]]
+    keep = [i for i, h in enumerate(header) if h not in {norm(d) for d in drop}]
+    missing = {norm(d) for d in drop} - set(header)
+    if missing:
+        raise SystemExit("targets.json drops a column that does not exist: "
+                         + ", ".join(sorted(missing)))
+    return [[r[i] for i in keep if i < len(r)] for r in rows]
+
+
 def emit_table(rows, caption=None, label=None, unmapped=None,
                continued=False, caption_raw=None, no_landscape=False):
     if not rows:
@@ -815,6 +856,55 @@ def emit_table(rows, caption=None, label=None, unmapped=None,
     if landscape:
         out.append(r"\end{landscape}")
     return out
+
+
+ONLY_OPEN = re.compile(r"<!--\s*only:\s*([\w,\s-]+?)\s*-->")
+ONLY_CLOSE = re.compile(r"<!--\s*/only\s*-->")
+
+
+def select_spans(lines, target, where=""):
+    """Keep only the spans this target is entitled to.
+
+    Section-level exclusion in targets.json cannot express a difference of a
+    paragraph, and the two papers genuinely differ below section granularity:
+    the short one is single-ecosystem and carries its own abstract. The
+    alternative is a second copy of the prose, which is the drift this project
+    exists to describe, so the two variants sit adjacent in one file instead:
+
+        <!-- only: preprint -->
+        ...text only the long version gets...
+        <!-- /only -->
+
+    An unbalanced marker silently swallows the rest of a file, so it raises.
+    """
+    out, allowed, depth = [], None, 0
+    for i, ln in enumerate(lines, 1):
+        m = ONLY_OPEN.search(ln)
+        if m:
+            if depth:
+                raise SystemExit(f"{where}:{i}: nested <!-- only: --> is not supported")
+            allowed = {x.strip() for x in m.group(1).split(",") if x.strip()}
+            depth = 1
+            continue
+        if ONLY_CLOSE.search(ln):
+            if not depth:
+                raise SystemExit(f"{where}:{i}: <!-- /only --> with no opening marker")
+            allowed, depth = None, 0
+            continue
+        if depth and target not in allowed:
+            continue
+        out.append(ln)
+    if depth:
+        raise SystemExit(f"{where}: unclosed <!-- only: --> marker")
+    return out
+
+
+def read_section(name, target):
+    """One place where a source file is read, so span selection cannot be
+    forgotten at one of the call sites."""
+    path = SRC / name if not isinstance(name, pathlib.Path) else name
+    return select_spans(path.read_text(encoding="utf-8").split("\n"),
+                        target, where=path.name)
 
 
 def load_targets():
@@ -1181,7 +1271,8 @@ def bibliography(cls="article"):
     return ["", r"\bibliographystyle{" + style + "}", r"\bibliography{refs}", ""]
 
 
-def table_appendix(unmapped, cls="article", keep=None):
+def table_appendix(unmapped, cls="article", keep=None, tgt=None, drop_cols=None,
+                   tspec_parts=None):
     """Each table file carries its own headings, its data table and a prose
     caption. The headings are starred so the appendix cannot renumber the
     paper's sections, and the first data table in each file takes the caption
@@ -1206,10 +1297,11 @@ def table_appendix(unmapped, cls="article", keep=None):
         # replication package and are cited there, not deleted.
         if keep is not None and label not in keep:
             continue
-        blocks = parse((ROOT / path).read_text(encoding="utf-8").split("\n"))
+        blocks = parse(read_section(ROOT / path, tgt))
         # One landscape per FILE, not per table. Opening it around the whole
         # file keeps the heading, both halves of a split table and the legend
         # in a single flow, so the legend cannot orphan onto the next page.
+        parts = (tspec_parts or {}).get(label)
         wide = any(k == "table" and max(len(r) for r in p) >= 8
                    for k, p in blocks)
         body = []
@@ -1218,7 +1310,7 @@ def table_appendix(unmapped, cls="article", keep=None):
         if header:
             body += header
             header = []
-        seen, dropped_h1 = 0, False
+        seen, dropped_h1, head_start = 0, False, None
         for kind, payload in blocks:
             # the file's own h1 repeats the caption verbatim; one title is enough
             # "Caption" and "Sources" are structural markers in the source
@@ -1231,9 +1323,21 @@ def table_appendix(unmapped, cls="article", keep=None):
                 continue
             if kind == "table":
                 seen += 1
+                hs, head_start = head_start, None
+
                 if seen == 1:
-                    body += emit_table(payload, caption=caption, label=label,
-                                       unmapped=unmapped, no_landscape=wide)
+                    body += emit_table(
+                        drop_columns(payload, (drop_cols or {}).get(label)),
+                        caption=caption, label=label,
+                        unmapped=unmapped, no_landscape=wide)
+                elif parts is not None and seen > parts:
+                    # a heading emitted just above introduced only this table
+                    if hs is not None:
+                        del body[hs:]
+                    # This target takes only the first `parts` data tables of
+                    # the file. Everything after them, including the headings
+                    # that introduce them, belongs to the artifact.
+                    break
                 elif seen <= n_data:
                     # second half of the same table: same number, no new float
                     body += emit_table(
@@ -1246,6 +1350,8 @@ def table_appendix(unmapped, cls="article", keep=None):
                     body += emit_table(payload, unmapped=unmapped,
                                        no_landscape=wide)
             else:
+                if kind == "head" and head_start is None:
+                    head_start = len(body)
                 body += emit([(kind, payload)], starred=True, unmapped=unmapped)
         if wide:
             body.append(r"\end{landscape}")
@@ -1306,12 +1412,18 @@ def selfcheck(text, headings, unmapped=None, ragged=None, renumbers=False):
     problems = []
     # Every cross-reference is a \ref keyed on the authored number, so a target
     # that cuts sections renumbers correctly by construction. What it must not
-    # do is point at a section that is no longer there.
-    labels = set(re.findall(r"\\label\{sec:([^}]+)\}", text))
-    dangling = sorted(set(re.findall(r"\\ref\{sec:([^}]+)\}", text)) - labels)
+    # do is point at something that is no longer there.
+    #
+    # This check was written for sec: only, and passed a build carrying twenty
+    # broken tab: references that printed as "??". A check narrower than its
+    # own success message is worse than no check, so it now covers every
+    # reference command and every prefix, and demo() breaks each one.
+    labels = set(re.findall(r"\\label\{([^}]+)\}", text))
+    used = set(re.findall(r"\\(?:ref|eqref|autoref|Cref|cref)\{([^}]+)\}", text))
+    dangling = sorted(used - labels)
     if dangling:
-        problems.append("reference to a section this target cut, would print "
-                        "'??': " + ", ".join(dangling))
+        problems.append("reference with no matching label, would print '??': "
+                        + ", ".join(dangling))
     # a character with no mapping is silently printed as "?", so the build has
     # to fail on it rather than only mention it
     if unmapped:
@@ -1395,6 +1507,30 @@ def demo():
     assert r"\begin{CCSXML}" in ACM_TOPMATTER and r"\keywords{" in ACM_TOPMATTER
     assert TITLE["acm"] != TITLE["default"], "submission must not reuse the preprint title"
 
+    # The dangling-reference check must catch EVERY prefix and EVERY reference
+    # command. It previously covered sec: alone and reported success over
+    # twenty broken tab: references. Break each one and require a complaint.
+    ok = r"\label{sec:1}\label{tab:x}\label{fig:y}\label{eq:z}" \
+         r"\ref{sec:1}\ref{tab:x}\ref{fig:y}\eqref{eq:z}"
+    assert not selfcheck(ok, [], renumbers=True), selfcheck(ok, [], renumbers=True)
+    for broken, why in [(r"\ref{tab:gone}", "tab"), (r"\ref{fig:gone}", "fig"),
+                        (r"\eqref{eq:gone}", "eq"), (r"\ref{sec:gone}", "sec"),
+                        (r"\autoref{tab:gone}", "autoref")]:
+        found = selfcheck(ok + broken, [], renumbers=True)
+        assert any("no matching label" in p for p in found), \
+            f"dangling {why} reference not detected: {found}"
+
+    # Per-target spans: each target sees its own text and nobody sees both.
+    src = ["shared", "<!-- only: preprint -->", "long", "<!-- /only -->",
+           "<!-- only: msr2027 -->", "short", "<!-- /only -->", "tail"]
+    assert select_spans(src, "preprint") == ["shared", "long", "tail"]
+    assert select_spans(src, "msr2027") == ["shared", "short", "tail"]
+    for bad in (["<!-- only: x -->", "a"], ["<!-- /only -->"]):
+        try:
+            select_spans(bad, "x"); raise AssertionError("unbalanced marker accepted")
+        except SystemExit:
+            pass
+
     # Excluding a section takes its subsections with it, and stops at the next
     # heading of the same level.
     doc = ("# 6. Threats\n\n## 6.2 Keep me\n\nkeep A\n\n## 6.3 Cut me\n\n"
@@ -1431,6 +1567,16 @@ def main():
     DOCCLASS[0] = args.cls
     tname, tspec = target_for(args.cls, load_targets())
 
+    # A table this target does not print is still a real artifact, and the
+    # prose still needs to point somewhere. Name the artifact rather than
+    # emitting a reference with no label.
+    ABSENT_FLOATS.clear()
+    keep_tabs = tspec.get("tables")
+    if keep_tabs is not None:
+        for prose, label in FLOAT_LABELS.items():
+            if label.startswith("tab:") and label not in keep_tabs:
+                ABSENT_FLOATS[prose] = ARTIFACT_TABLE.get(prose, "the artifact")
+
     # Collect the section numbers this target actually KEEPS, before converting
     # anything, so a reference in section 2 to a section defined in section 7
     # still resolves. Sections the manifest cuts are deliberately left out: a
@@ -1441,7 +1587,7 @@ def main():
     CITED_KEYS.clear()
     for name in ORDER[1:]:
         blocks, _ = drop_excluded(
-            parse((SRC / name).read_text(encoding="utf-8").split("\n")),
+            parse(read_section(name, tname)),
             set(tspec.get("exclude", [])))
         for kind, payload in blocks:
             if kind == "head":
@@ -1451,7 +1597,7 @@ def main():
     body = [preamble(args.cls)]
 
     abstract_md = re.sub(r"^#\s+Abstract\s*$", "",
-                         (SRC / "abstract.md").read_text(encoding="utf-8"), flags=re.M)
+                         "\n".join(read_section("abstract.md", tname)), flags=re.M)
     body += [r"\begin{abstract}", convert(abstract_md, unmapped=unmapped),
              r"\end{abstract}"]
     if args.cls == "ieee":
@@ -1471,7 +1617,7 @@ def main():
     excluded = set(tspec.get("exclude", []))
     seen_excluded = set()
     for i, name in enumerate(ORDER[1:]):
-        blocks = parse((SRC / name).read_text(encoding="utf-8").split("\n"))
+        blocks = parse(read_section(name, tname))
         blocks, hit = drop_excluded(blocks, excluded)
         seen_excluded |= hit
         body.append("\n".join(emit(blocks, headings=headings, unmapped=unmapped)))
@@ -1485,7 +1631,9 @@ def main():
         sys.exit(f"targets.json: no section matches {sorted(missing)} "
                  f"(target {tname!r}); the text was NOT cut")
 
-    body += table_appendix(unmapped, args.cls, keep=tspec.get("tables"))
+    body += table_appendix(unmapped, args.cls, keep=tspec.get("tables"), tgt=tname,
+                           drop_cols=tspec.get("drop_columns"),
+                           tspec_parts=tspec.get("table_parts"))
     body += bibliography(args.cls)
     body.append(r"\end{document}")
     text = "\n\n".join(body)

@@ -31,21 +31,13 @@ Repositories}{April 26--27, 2027}{Dublin, Ireland}
 
 \begin{abstract}
 
-Empirical studies of architectural change read a project's own records and assume the record traces the work. We measure that assumption in three record channels across two ecosystems and find it fails in every one.
+Empirical studies of architectural change read a project's own records and assume the record traces the work. We measure that assumption on 38 Apache projects.
 
-We probed 38 Apache projects against a traceability bar of 0.80, pre-registered before any project was cloned and never moved. \textbf{Twelve passed, and no project outside the Hadoop ecosystem cleared the bar} --- the best reaching 74.8\%, against a median of 63.6\% across all 38 and 44.8\% across the 26 rejected. The ecosystem label is a hand classification; we tested two measured generational variables in its place and neither separates the corpus as well, so the label is reported as a judgment rather than a finding. The channel the literature publishes is not the channel a ticket-anchored study needs. The \textbf{commit-side rate} --- what fraction of commits cite a ticket --- runs 82.6--98.3\% across the eligible twelve, while the \textbf{ticket realisation rate} --- what fraction of tickets ever receive a citing commit --- runs 12.0--69.0\% under $\mathrm{TRR}_\mathrm{live}$. Apache Hive cites a ticket in 97.0\% of its 18,213 commits and realises 55.8\% of its 29,635 tickets, again $\mathrm{TRR}_\mathrm{live}$; Table~\ref{tab:ticketside} reports the same project at 56.1\% under $\mathrm{TRR}_\mathrm{frozen}$, which counts a different ticket denominator (\S\kern0.13em \ref{sec:3.1.3}).
+Two traceability rates diverge. The commit-side rate, the one the literature reports, asks whether a commit cites a ticket. The ticket-side rate asks whether a ticket ever receives a commit, which is what a ticket-anchored design actually needs. Hive cites a ticket in \textbf{97.0\%} of its commits while only \textbf{55.8\%} of its tickets are ever cited by one.
 
-\textbf{Most of that gap is arithmetic, not discipline.} A citing commit adds at most one new distinct ticket, so the ticket-side rate cannot exceed \texttt{commit-\allowbreak{}side $\times$ commits /\allowbreak{} tickets}. Under the live measurement $\mathrm{ceiling}_\mathrm{live}$ binds for all twelve eligible projects, ranging 13.7--81.6\%, and every project reaches 80--95\% of it: the $5.8\times$ spread in the ticket-side rate is a $6.0\times$ spread in the ceiling and only a $1.19\times$ spread in what is left. A tracker accumulates tickets faster than a repository accumulates commits, and below one commit per ticket the two rates are not commensurable.
+The divergence is arithmetic rather than a matter of discipline. A project supplying \emph{c} commits per ticket cannot realise more than a \emph{c} fraction of its tickets whatever its commit-side rate. Across the twelve eligible projects this ceiling varies \textbf{6.0-fold} while the share of it actually reached varies \textbf{1.19-fold}, so nearly all the spread is supply rather than behaviour. No published linkage rate reports commits per ticket beside it.
 
-Extending the computation to all 38 projects, including the 26 the bar rejected, the two rates show \textbf{no detectable association} --- Spearman $\rho = -0.010$ over the 33 with a usable denominator, 95\% CI $[-0.35, +0.34]$, and the study can detect $\lvert \rho \rvert \geq 0.47$ at 80\% power. \textbf{A strong positive relationship is ruled out; a null is not established.} Median realisation is 52.6\% among projects the bar accepted and 53.2\% among those it rejected, and the highest rate in the probe (84.8\%) belongs to a project rejected at 36.0\% commit-side. On the twelve projects measured exactly and live the same correlation is \textbf{$+0.518$}, and we report the disagreement rather than resolving it.
-
-The same invisibility appears in a second ecosystem and two further channels: in a TypeScript corpus, 3 of 96 architectural commits mention refactoring, 7\% link an issue, and 69\% never pass through code review --- and the 31\% that do are five times larger and four times more abstraction-heavy than those that do not, so the visible minority is not a random sample of the whole.
-
-We give a taxonomy of six mechanisms by which a project silently fails to support an issue-linked study. Three are disqualifying --- the tracker is displaced by GitHub Issues, no source repository exists, the tracker is downstream of the repository. Three are \textbf{silent}: a convention that changed mid-history, a monorepo needing multi-key matching, and a cited key with no project record in the tracker each yield a plausible low number rather than an error. A single-key probe reads Hadoop at 26.2\% where a seven-key probe of the same commits reads 97.8\%, and nothing in the first result signals the key set is wrong.
-
-\textbf{None of the six is expressible in any published sampling frame.} GHS indexed 735,669 repositories when it was published in 2021, and a record carries 35 fields today, of which only two touch issues and both are GitHub-issue counts. Project eligibility for issue-linked research cannot be established from metadata; it requires reading commit messages from the project itself, per project, before any outcome is measured.
-
-We make no first-to-measure claim: per-project linkage rates are published by SEOSS 33 \cite{rath2019seoss} for 33 projects and by Rath et al. (ICSE'18) \cite{rath2018traceability} for six. What is new is a pre-registered numeric bar with reported attrition and named rejections, both reference channels counted together, the ticket realisation rate named and measured across a whole probe rather than its survivors, and the six-mode taxonomy.
+Against a bar of 0.80 pre-registered before any project was cloned, \textbf{12 of 38} qualified and none outside a single ecosystem cleared it. We give six mechanisms by which a project silently fails to support an issue-linked study, and none of them is expressible in any published sampling frame.
 
 
 \end{abstract}
@@ -79,13 +71,13 @@ mining software repositories}
 \section{Introduction}
 \label{sec:1}
 
-Empirical work on architectural change reads a project's own records --- commit messages, issue trackers, pull requests --- and assumes the record is a reasonably faithful trace of the work. Studies of refactoring motivation, of technical-debt repayment, of architectural erosion and of review effort are all built on that assumption, and it is rarely stated, still more rarely measured. This paper measures it, in three record channels across two ecosystems, and finds it false in every channel tested.
+Empirical work on architectural change reads a project's own records --- commit messages, issue trackers, pull requests --- and assumes the record is a reasonably faithful trace of the work. Studies of refactoring motivation, of technical-debt repayment, of architectural erosion and of review effort are all built on that assumption, and it is rarely stated, still more rarely measured. This paper measures it on 38 Apache projects, and finds that the record traces the work far less often than a ticket-anchored design needs, for a reason that is arithmetic rather than cultural.
 
 \textbf{How we arrived at a methods paper.} The study began as an attempt to measure signal-to-action latency: what, if anything, in a project's records precedes the decision to restructure code. Six operationalisations were tested and closed, each with a named cause --- a Cox model on review discussion, retracted as a discussion-volume confound; module centrality as a predictor of hesitation, null once the module tier is controlled; maintainer concentration, collinear with module size at $\rho = -0.86$; an abstraction-versus-relocation split, $\times$1.54 $[0.97, 2.43]$ fully adjusted; a decade-long process-improvement trend that holds to 2019 and dissolves after 2020; and a portable module-tier rule that replicated 0 of 3 in a held-out corpus. The details are in the replication package and are not results of this paper. What survived is the observation that made all six fragile: \textbf{the sampling frame itself is the finding.} We could not assemble a corpus that could carry any of those tests, and the reasons why turned out to be measurable, general, and absent from every published sampling tool.
 
 \textbf{The core measurement.} Traceability between issues and commits is published one way and needed the other way. The \textbf{commit-side rate} --- what fraction of a project's commits cite a ticket --- is what the literature reports and what selection criteria use. The \textbf{ticket realisation rate} --- what fraction of a project's tickets ever receive a citing commit --- is what a ticket-anchored study actually depends on, because such a study samples tickets and then looks for the work. The two diverge sharply and in a direction that flatters the corpus. Apache Hive cites a ticket in \textbf{97.0\%} of its 18,213 commits --- nearly perfect by any selection criterion --- and realises \textbf{55.8\%} of its 29,635 tickets ($\mathrm{TRR}_\mathrm{live}$).
 
-\textbf{And most of that gap turns out to be arithmetic.} A commit that cites a ticket adds at most one \emph{new} distinct ticket, so the ticket-side rate is capped at \texttt{commit-\allowbreak{}side $\times$ commits /\allowbreak{} tickets}. Under the live measurement $\mathrm{ceiling}_\mathrm{live}$ binds for every eligible project, running 13.7--81.6\%, and every one of them reaches 80--95\% of it. Under the frozen snapshot three ceilings exceed 100\% and stop binding (\S\kern0.13em \ref{sec:4.2}, Table~\ref{tab:ticketside}). What reads as a discipline gap is mostly a tracker accumulating tickets faster than a repository accumulates commits --- which is a fact about the two artifacts, not about the people using them, and which no published linkage rate exposes.
+\textbf{And most of that gap turns out to be arithmetic.} A commit that cites a ticket adds at most one \emph{new} distinct ticket, so the ticket-side rate is capped at \texttt{commit-\allowbreak{}side $\times$ commits /\allowbreak{} tickets}. Under the live measurement $\mathrm{ceiling}_\mathrm{live}$ binds for every eligible project, running 13.7--81.6\%, and every one of them reaches 80--95\% of it. Under the frozen snapshot three ceilings exceed 100\% and stop binding (\S\kern0.13em \ref{sec:4.2}, the artifact's 38-project table). What reads as a discipline gap is mostly a tracker accumulating tickets faster than a repository accumulates commits --- which is a fact about the two artifacts, not about the people using them, and which no published linkage rate exposes.
 
 \textbf{Contributions.} Stated against what is already published rather than against an assumed gap. We make \textbf{no first-to-measure claim}: Rath \& M\"ader's SEOSS 33 \cite{rath2019seoss} publishes per-project linkage as an explicit table column for 33 projects, and Rath et al. (ICSE'18) \cite{rath2018traceability} publishes both directions for six. An earlier version of this work claimed novelty on that ground; the claim was checked, found false, and withdrawn (\S\kern0.13em \ref{sec:2.1}).
 
@@ -96,7 +88,6 @@ Empirical work on architectural change reads a project's own records --- commit 
 \item \textbf{The arithmetic ceiling that bounds the ticket-side rate}, and the decomposition of that rate into a ceiling set by commits-per-ticket and a residual that measures citation discipline. In this corpus the residual is nearly constant, which is what the divergence actually consists of.
 \item \textbf{The ticket-side rate measured across the whole probe rather than only the survivors} --- including the 26 projects that failed the commit-side bar. A strong positive association between the two rates is ruled out; a null is not established, and the live and frozen measurements disagree in sign (\texttt{paper/\allowbreak{}DIRECTION\_\allowbreak{}TENSION.\allowbreak{}md}).
 \item \textbf{A six-mode taxonomy of the ways a project silently fails to support an issue-linked study}, three of them disqualifying and three of them producing a plausible wrong number rather than an error.
-\item \textbf{A second ecosystem and two further channels}, which is what makes the result more than an Apache artifact: in a TypeScript corpus, 3 of 96 architectural commits mention refactoring, 7\% link an issue, and 69\% never pass through code review at all.
 \end{enumerate}
 
 \textbf{What this paper is not.} It is not a study of refactoring friction; the exploratory Hadoop results live in the replication package and none of them is claimed here. It does not propose the successor design the corpus limits point towards. And it does not argue that the projects it drops are badly run --- a project that moved to GitHub Issues is not failing at anything except a convention this kind of research happens to need.
@@ -104,8 +95,6 @@ Empirical work on architectural change reads a project's own records --- commit 
 
 \section{Related work}
 \label{sec:2}
-
-Drafted from \texttt{paper/\allowbreak{}PRIOR\_\allowbreak{}WORK.\allowbreak{}md} (\texttt{215b10f}) and \texttt{paper/\allowbreak{}SATD\_\allowbreak{}NOVELTY.\allowbreak{}md} (\texttt{5b50ef1}). Reorganisation of verified findings, not new argument.
 
 \subsection{Per-project linkage rates are already published}
 \label{sec:2.1}
@@ -167,26 +156,12 @@ The consequence is the actionable one: a researcher sampling with GHS gets stars
 \subsection{The bug-side linkage literature, and what it already settled}
 \label{sec:2.4}
 
-The commit-side/ticket-side asymmetry this paper measures was studied on the bug-side a decade and a half ago, and that literature is the direct ancestor of \S\kern0.13em \ref{sec:4.2}. It is set out here rather than merely listed, because two of its findings bound what this paper can claim.
-
-\textbf{Bachmann et al. (FSE'10), \emph{The Missing Links: Bugs and Bug-fix Commits}} \cite{bachmann2010missing} --- Adrian Bachmann, Christian Bird, Foyzur Rahman, Premkumar Devanbu and Abraham Bernstein --- is the closest ancestor. They engaged a core Apache HTTP Server developer to annotate \textbf{493 commits over a six-week period} exhaustively, using a purpose-built tool (Linkster \cite{bird2010linkster}), to establish ground truth rather than infer it from commit messages. Against that ground truth they found that \textbf{only 47.6\% of bug-fix-related commits are documented in the bug tracking database}. Their target is the completeness of the \emph{link}, established by expert annotation on one project over one window; ours is a per-project rate over a whole tracker, established mechanically. Their design is far stronger on ground truth and far narrower in scope; ours is the reverse.
-
-The two measurements are not identical in what they condition on: Bachmann et al. restrict attention to bugs and bug-fix commits, whereas \S\kern0.13em \ref{sec:3.1.1} admits every issue type and every status and conditions on nothing. This paper does not adjudicate whether that difference makes the quantities distinct, and no claim it makes depends on the answer. Bachmann et al. is cited here as the prior measurement of link completeness, and \S\kern0.13em \ref{sec:3.1} claims no priority for the name it uses.
-
-\textbf{Bird et al. (ESEC/FSE'09), \emph{Fair and Balanced? Bias in Bug-Fix Datasets}} \cite{bird2009fair} --- C. Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu --- is the reason any of this matters. Missing links are not missing at random, so a dataset built from linked records is a biased sample of the work, and models fitted to it inherit the bias. \textbf{This is the same argument this paper makes for architectural change}, arrived at independently and seventeen years later, and we cite it as the prior statement of the principle rather than as a parallel.
-
-\textbf{Nguyen, Adams and Hassan (WCRE'10) \cite{nguyen2010case}, \emph{A Case Study of Bias in Bug-Fix Datasets}} replicates that bias analysis. \emph{(The review that prompted this revision cited this work as MSR'10 and characterised it as a replication on a system with near-perfect linkage; the venue is WCRE'10, and the near-perfect-linkage characterisation could not be verified from an accessible copy, so it is not asserted here --- see \texttt{paper/\allowbreak{}REVISION\_\allowbreak{}LOG.\allowbreak{}md}.)}
-
-\textbf{Herzig, Just and Zeller (ICSE'13) \cite{herzig2013not}, \emph{It's not a bug, it's a feature: how misclassification impacts bug prediction}} bears directly on \S\kern0.13em \ref{sec:3.1.1}'s decision to admit all issue types. In a manual examination of \textbf{more than 7,000 issue reports across five open-source projects they found 33.8\% misclassified} --- filed as bugs but resolving to a feature, a documentation update or an internal refactoring --- and \textbf{39\% of files marked defective never had a bug}. Our denominator admits every type precisely so that no misclassification can move a ticket in or out of it. That immunises the ticket realisation rate against the Herzig effect, and it is also why our rate is \emph{not} comparable to any rate computed on a resolution-filtered or type-filtered population, including Vieira et al.'s.
-
-\textbf{Automated link recovery is the standing partial answer to modes 4--6.} ReLink \cite{wu2011relink} (Wu, Zhang, Kim and Cheung, ESEC/FSE'11) learns the features of explicit links --- time proximity, author identity, textual similarity between the bug report and the change --- and recovers missing ones at accuracy well above the traditional regex heuristics, and a substantial literature has followed it. \S\kern0.13em \ref{sec:5.5} and \S\kern0.13em \ref{sec:7.2} argue that a project's key set cannot be recovered from its tracker, which remains true: ReLink and its successors recover \emph{links}, not \emph{key sets}, and they operate on a project already known to be a candidate. But the unqualified claim that missing links are unrecoverable would overstate the gap, and \S\kern0.13em \ref{sec:5.5} is qualified accordingly.
+The commit-side/ticket-side asymmetry measured here was studied on the bug side a decade and a half ago. \textbf{Bachmann et al. (FSE'10)} \cite{bachmann2010missing} had a core Apache HTTP Server developer annotate \textbf{493 commits} exhaustively with a purpose-built tool \cite{bird2010linkster}, establishing ground truth rather than inferring it, and found only \textbf{47.6\%} of bug-fix-related commits documented in the tracker; their target is the completeness of the link on one project over one window, ours a per-project rate over a whole tracker, established mechanically. \textbf{Bird et al. (ESEC/FSE'09)} \cite{bird2009fair} is why it matters: missing links are not missing at random, so a dataset built from linked records is a biased sample and models fitted to it inherit the bias, which is the same argument this paper makes for architectural change. Around them, Herzig et al. (ICSE'13) \cite{herzig2013not} show the reports themselves are misclassified, Nguyen et al. (WCRE'10) \cite{nguyen2010case} replicate the bias result, and a line of work beginning with ReLink \cite{wu2011relink} recovers missing links from time proximity, author identity and textual similarity. The two measurements do not condition on the same thing: Bachmann et al. restrict attention to bugs and bug-fix commits, whereas \S\kern0.13em \ref{sec:3.1.1} admits every issue type and conditions on nothing. This paper does not adjudicate whether that makes the quantities distinct, and no claim it makes depends on the answer.
 
 \subsection{Refactoring and self-admitted technical debt}
 \label{sec:2.5}
 
-Included because it bounds what this paper claims. \textbf{Iammarino et al. (2021, JSS)} \cite{iammarino2021empirical} and \textbf{Esfandiari \& Sami (ICCKE 2023)} \cite{esfandiari2023exploratory} both study SATD and refactoring strictly at same-commit co-occurrence --- Iammarino over four projects with no temporal analysis, its tightest cut being same-file at $n=201$; Esfandiari over 77 projects, already reporting \emph{move class} as the refactoring most associated with debt activity. Neither measures an interval. An architectural-debt time-to-fix literature is separately active (arXiv:2605.16133 \cite{sutoyo2026dangers}, arXiv:2501.15387 \cite{sutoyo2025tracing}).
-
-Two things follow. The record channels this paper measures are the channels that literature depends on, so its exposure is ours. And the successor design this study points to is \textbf{not proposed here}; it is a separate registered report gated on external judgment (\texttt{paper/\allowbreak{}SATD\_\allowbreak{}NOVELTY.\allowbreak{}md}).
+The successor design this corpus limit points towards is a self-admitted technical debt anchor, and its novelty margin rests on three simultaneous choices that the prior work does not combine. That design is not proposed here.
 
 
 \section{Method}
@@ -284,16 +259,16 @@ Second, it decomposes TRR into a part that is arithmetic and a part that is beha
 
 \[\mathrm{fill}(p) = \frac{\mathrm{TRR}(p)}{\mathrm{ceiling}(p)} \in [0, 1]\]
 
-\texttt{fill} is the share of the attainable maximum actually reached --- how efficiently a project's citing commits spread across distinct tickets rather than piling onto a few. \textbf{\texttt{fill} is the quantity a claim about citation discipline needs}; \texttt{ceiling} is a property of how much code the project writes per ticket it files. Tables~\ref{tab:eligibility} and~\ref{tab:ticketside} report both. \S\kern0.13em \ref{sec:4.2} shows that in this corpus almost all of the ticket-side variation is ceiling and almost none of it is fill.
+\texttt{fill} is the share of the attainable maximum actually reached --- how efficiently a project's citing commits spread across distinct tickets rather than piling onto a few. \textbf{\texttt{fill} is the quantity a claim about citation discipline needs}; \texttt{ceiling} is a property of how much code the project writes per ticket it files. Both are reported for every eligible project (Table~\ref{tab:eligibility}). \S\kern0.13em \ref{sec:4.2} shows that in this corpus almost all of the ticket-side variation is ceiling and almost none of it is fill.
 
-\textbf{The subscript propagates, and it matters.} \texttt{ceiling} and \texttt{fill} are both functions of TRR and of the ticket denominator, so each inherits whichever instantiation of \S\kern0.13em \ref{sec:3.1.3} produced it: $\mathrm{ceiling}_\mathrm{live}$ and $\mathrm{fill}_\mathrm{live}$ are computed against the live Jira read of 2026-07-25, $\mathrm{ceiling}_\mathrm{frozen}$ and $\mathrm{fill}_\mathrm{frozen}$ against the frozen snapshot. The two are not interchangeable and they do not always agree about whether the bound binds at all --- three projects have $\mathrm{ceiling}_\mathrm{frozen}$ at or above 100\% while every $\mathrm{ceiling}_\mathrm{live}$ is below it (\S\kern0.13em \ref{sec:4.2}, Table~\ref{tab:ticketside}). \textbf{Throughout this paper an unsubscripted \texttt{TRR}, \texttt{ceiling} or \texttt{fill} means the quantity in general rather than a measured value; every measured value carries its subscript}, in the prose, in the abstract and in the table captions. Where a project appears with two numbers for what looks like one quantity, the subscripts are the difference.
+\textbf{The subscript propagates, and it matters.} \texttt{ceiling} and \texttt{fill} are both functions of TRR and of the ticket denominator, so each inherits whichever instantiation of \S\kern0.13em \ref{sec:3.1.3} produced it: $\mathrm{ceiling}_\mathrm{live}$ and $\mathrm{fill}_\mathrm{live}$ are computed against the live Jira read of 2026-07-25, $\mathrm{ceiling}_\mathrm{frozen}$ and $\mathrm{fill}_\mathrm{frozen}$ against the frozen snapshot. The two are not interchangeable and they do not always agree about whether the bound binds at all --- three projects have $\mathrm{ceiling}_\mathrm{frozen}$ at or above 100\% while every $\mathrm{ceiling}_\mathrm{live}$ is below it (\S\kern0.13em \ref{sec:4.2}, the artifact's 38-project table). \textbf{Throughout this paper an unsubscripted \texttt{TRR}, \texttt{ceiling} or \texttt{fill} means the quantity in general rather than a measured value; every measured value carries its subscript}, in the prose, in the abstract and in the table captions. Where a project appears with two numbers for what looks like one quantity, the subscripts are the difference.
 
 \subsection{Corpus construction}
 \label{sec:3.2}
 
 \textbf{38 Apache candidates}, each Maven-built, Jira-tracked and multi-module. Each was cloned \texttt{-\allowbreak{}-\allowbreak{}filter=blob:none -\allowbreak{}-\allowbreak{}no-\allowbreak{}checkout} --- the probe needs \texttt{git log} and nothing else, so a working tree is pure cost --- and probed with \texttt{scripts/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}py}. Per-project HEAD shas are pinned in \texttt{paper/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}json}, so any re-run is exactly diffable against this one.
 
-\textbf{Hadoop itself is not one of the 38.} It is the corpus the exploratory work was done on, and it is used here only as the worked example for multi-key matching. Every rate in Tables~\ref{tab:eligibility} and~\ref{tab:ticketside} is from a project Hadoop is not.
+\textbf{Hadoop itself is not one of the 38.} It is the corpus the exploratory work was done on, and it is used here only as the worked example for multi-key matching. Every rate reported for the eligible corpus is from a project Hadoop is not.
 
 \textbf{Key prefixes were detected empirically from commit messages, not assumed.} This is not a refinement; it decides the answer. A single-key probe reads Hadoop at \textbf{26.2\%}, against \textbf{92.3\%} on a four-key probe and \textbf{97.8\%} on a seven-key probe of the same 28,290 commits (\S\kern0.13em \ref{sec:5}, modes 5 and 6). The three figures are the same measurement under three key sets, not a rate and a correction to it; 97.8\% is the most complete of them, and the paper quotes whichever key set it names. Evergreen reads 71.7\% under a single-key probe for the same reason. Seven of the 38 needed a second key (\texttt{CALCITE,OPTIQ}, \texttt{HDDS,OZONE}, \texttt{KARAF,FELIX}, \texttt{PINOT,THIRDEYE}, \texttt{ROCKETMQ,RIP}, \texttt{TOMEE,OPENEJB}, \texttt{JAMES,MAILBOX}).
 
@@ -317,7 +292,7 @@ The same discipline was applied where it hurt more. A separate frozen threshold 
 \subsection{Corpus eligibility is the binding constraint}
 \label{sec:4.1}
 
-\textbf{Twelve of 38 Apache candidates clear the pre-registered 0.80 commit-side bar, and every one of them is Hadoop-ecosystem under the classification set out below} (Table~\ref{tab:eligibility}; \texttt{figures/\allowbreak{}eligibility\_\allowbreak{}funnel.\allowbreak{}png} panel A). The bar was fixed before any project was cloned and never moved.
+\textbf{Twelve of 38 Apache candidates clear the pre-registered 0.80 commit-side bar, and every one of them is Hadoop-ecosystem under the classification set out below} (Table~\ref{tab:eligibility}, Figure~\ref{fig:funnel}). The bar was fixed before any project was cloned and never moved.
 
 No project outside the Hadoop ecosystem clears it. The best of them, James, reaches \textbf{74.8\%}. The spread runs from ShardingSphere at 0.01\% to Ozone at 98.3\%, with a median of \textbf{63.6\%} across all 38 and \textbf{44.8\%} across the 26 the bar rejected.
 
@@ -344,7 +319,7 @@ Neither generational variable separates the corpus as well as the hand label, an
 
 Ecosystem adjacency is not sufficient either --- \textbf{Parquet fails at 29.1\% and Accumulo at 43.0\%}, both squarely inside the Hadoop dependency graph. What the bar selects is a specific commit-hygiene convention, not a dependency relationship and not a quality level.
 
-\textbf{The drop reasons are measured rather than inferred}, because both reference channels are counted per repository. Nine projects are dropped with \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate}, meaning the GitHub-issue count exceeds the Jira-key count in that repository --- ShardingSphere carries 30,746 GitHub-issue references against 5 Jira keys in 49,111 commits. Four fall in \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} ($\geq$70\%) and the remainder in \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene}. The industry-donated projects are the sharpest case: ShardingSphere 0.01\%, SkyWalking 0.3\%, Pinot 5.2\%, RocketMQ 5.7\%, Dubbo 11.0\%. They never adopted the Jira-citation convention, and the attrition is therefore concentrated in the newest projects --- which is the direction that matters for anyone building a corpus now.
+\textbf{The drop reasons are measured rather than inferred}, because both reference channels are counted per repository. Nine projects are dropped with \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate}, meaning the GitHub-issue count exceeds the Jira-key count in that repository --- ShardingSphere carries 30,746 GitHub-issue references against 5 Jira keys in 49,111 commits. Four fall in \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} ($\geq$70\%) and the remaining thirteen in \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene}. Across all 26 the commit-side rate runs \textbf{0.0\%--78.1\%} with a median of \textbf{44.8\%}; the per-project rows are in the replication package. The industry-donated projects are the sharpest case: ShardingSphere 0.01\%, SkyWalking 0.3\%, Pinot 5.2\%, RocketMQ 5.7\%, Dubbo 11.0\%. They never adopted the Jira-citation convention, and the attrition is therefore concentrated in the newest projects --- which is the direction that matters for anyone building a corpus now.
 
 \subsection{The channel that is published is not the channel that is needed --- and the gap is mostly arithmetic}
 \label{sec:4.2}
@@ -364,7 +339,7 @@ Across the same twelve projects, the \textbf{commit-side rate runs 82.6--98.3\%}
 \item so the $5.8\times$ spread in $\mathrm{TRR}_\mathrm{live}$ is \textbf{$6.0\times$ ceiling and $1.19\times$ fill}.
 \end{itemize}
 
-\textbf{Every ceiling in this section is $\mathrm{ceiling}_\mathrm{live}$, and the frozen estimator does not agree that the bound binds.} Table~\ref{tab:ticketside} computes $\mathrm{ceiling}_\mathrm{frozen}$ against the frozen Jira snapshot and puts three of the twelve at or above 100\% --- Ozone \textbf{176.0\%}, Ranger \textbf{130.4\%}, Knox \textbf{100.0\%} --- where a bound above 100\% does not constrain anything. That is not a disagreement about the projects. It is what a 2026 commit window measured against an older tracker produces: the repository holds more citing commits than the snapshot holds tickets, so the arithmetic ceiling exceeds one and stops being a ceiling. The two estimators bound different denominators, and Table~\ref{tab:ticketside}'s own note says so. Neither figure is withdrawn.
+\textbf{Every ceiling in this section is $\mathrm{ceiling}_\mathrm{live}$, and the frozen estimator does not agree that the bound binds.} the artifact's 38-project table computes $\mathrm{ceiling}_\mathrm{frozen}$ against the frozen Jira snapshot and puts three of the twelve at or above 100\% --- Ozone \textbf{176.0\%}, Ranger \textbf{130.4\%}, Knox \textbf{100.0\%} --- where a bound above 100\% does not constrain anything. That is not a disagreement about the projects. It is what a 2026 commit window measured against an older tracker produces: the repository holds more citing commits than the snapshot holds tickets, so the arithmetic ceiling exceeds one and stops being a ceiling. The two estimators bound different denominators, and the note accompanying that measurement says so. Neither figure is withdrawn.
 
 Ranked by fill rather than by rate, the ordering changes almost completely: Drill (43.2\%, fill 0.95) sits above Ranger (65.4\%, fill 0.80). \emph{Every project in the corpus is reaching most of what its commit supply permits.}
 
@@ -379,7 +354,7 @@ Earlier drafts led with Kylin --- 83.9\% commit-side against 12.0\% ticket-side,
 
 So Kylin's 12.0\% is measured over a \textbf{four-year commit window against a twelve-year, 5,931-issue tracker}, and its 0.16 commits per ticket --- the lowest in the corpus by a factor of two --- is a fact about the branch, not about Kylin's traceability. Its $\mathrm{fill}_\mathrm{live}$ is \textbf{0.87}, squarely at the corpus median: \emph{by the measure that isolates discipline, Kylin is unremarkable.}
 
-Table~\ref{tab:ticketside} reports the same project at \textbf{$\mathrm{fill}_\mathrm{frozen}$ 0.00}, and the two are not in conflict. Under the frozen snapshot Kylin's $\mathrm{TRR}_\mathrm{frozen}$ is \textbf{0.04\%} --- two cited keys against a tracker of 4,989 --- because \textbf{99.72\% of its cited keys postdate the snapshot}, so the number cap removes almost the whole numerator. Its $\mathrm{ceiling}_\mathrm{frozen}$ is 16.3\%, well under the bound. The frozen estimator is registering the same truncated branch this section is about, from the other side: live, the window is too short for the tracker; frozen, the tracker is too old for the window. Kylin is the worst end-to-end case in the corpus at 11.91pp (Table~\ref{tab:ticketside}), and it is flagged in both tables for that reason.
+the artifact's 38-project table reports the same project at \textbf{$\mathrm{fill}_\mathrm{frozen}$ 0.00}, and the two are not in conflict. Under the frozen snapshot Kylin's $\mathrm{TRR}_\mathrm{frozen}$ is \textbf{0.04\%} --- two cited keys against a tracker of 4,989 --- because \textbf{99.72\% of its cited keys postdate the snapshot}, so the number cap removes almost the whole numerator. Its $\mathrm{ceiling}_\mathrm{frozen}$ is 16.3\%, well under the bound. The frozen estimator is registering the same truncated branch this section is about, from the other side: live, the window is too short for the tracker; frozen, the tracker is too old for the window. Kylin is the worst end-to-end case in the corpus at 11.91pp (the artifact's 38-project table), and it is flagged in both tables for that reason.
 
 Three other projects have a pinned branch that starts after their repository does --- Jena (49.0\% of refs), Karaf (45.4\%) and James (89.4\%, by eight days) --- and none is near Kylin's severity. The clone-depth column is in \texttt{paper/\allowbreak{}revision\_\allowbreak{}metrics.\allowbreak{}json}; the check is \texttt{scripts/\allowbreak{}revision\_\allowbreak{}metrics.\allowbreak{}py}.
 
@@ -388,59 +363,7 @@ Three other projects have a pinned branch that starts after their repository doe
 \subsection{The divergence is a property of the population, not of the survivors}
 \label{sec:4.3}
 
-Reporting \S\kern0.13em \ref{sec:4.2} on the twelve that passed leaves the obvious objection open: the range 12.0--69.0\% is \emph{within-passing variation} in $\mathrm{TRR}_\mathrm{live}$, and says nothing about the 26 projects below the bar, whose ticket realisation rates were never measured. That objection is answered here by measuring all 38. \textbf{Table~\ref{tab:ticketside} (\texttt{paper/\allowbreak{}table3\_\allowbreak{}ticket\_\allowbreak{}side.\allowbreak{}md}) is the result}: one row per probed project, with the commit-side rate, commits per ticket, the \S\kern0.13em \ref{sec:3.1.4} ceiling, the ticket realisation rate, and the fill, plus a note column recording every reason a row should not be read at face value.
-
-\textbf{Method.} The ticket realisation rate needs a tracker snapshot. Re-reading the live tracker for 26 more projects would have dated those denominators weeks after the twelve already measured, so the extended computation instead takes its denominators from the frozen public Jira corpus and aligns numerator and denominator in issue-number space (\S\kern0.13em \ref{sec:3.1.3}). \textbf{The estimator is validated before it is used}: run against the live denominators for the twelve projects where the exact rate is already known, it reproduces that rate to a \textbf{mean absolute error of 0.45pp} across all twelve, with a \textbf{worst case of 2.14pp} (Kylin, where the tracker's issue numbering has enough gaps that number-capping undercounts). All 38 projects were then measured at their pinned shas.
-
-\textbf{The estimator, and the honest version of its validation.} Two approximations are stacked here: \emph{number-capping} (using \texttt{|\{cited keys $\leq$ N\}| /\allowbreak{} N} rather than intersecting with the real key set) and \emph{snapshot substitution} (using the frozen tracker's N rather than a live one). Earlier drafts reported \textbf{0.45pp mean / 2.14pp max}, which validates only the first. \textbf{Table~\ref{tab:ticketside} uses both}, and the end-to-end error against the twelve published exact rates is:
-
-\begin{table*}[htbp]
-\centering
-\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.4218\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1711\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2359\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1711\linewidth-2\tabcolsep\relax}}
-\toprule
-\textbf{} & \textbf{mean} & \textbf{max} & \textbf{within 3pp} \\
-\midrule
-number-\allowbreak{}capping alone & 0.45pp & 2.14pp & 12 of 12 \\
-\textbf{number-capping + snapshot substitution (what Table~\ref{tab:ticketside} uses)} & \textbf{1.76pp} & \textbf{11.91pp} (Kylin) & 11 of 12 \\
-the same, excluding Kylin & 0.84pp & 2.93pp & 11 of 11 \\
-\bottomrule
-\end{tabular}
-\endgroup
-\end{table*}
-
-\textbf{Quote 1.76pp / 11.91pp for anything in Table~\ref{tab:ticketside}.} The favourable reading is also true and is the one to lead with: eleven of twelve land within 2.93pp, and the twelfth is Kylin, whose branch truncation (\S\kern0.13em \ref{sec:4.2.1}) is the same defect showing up a second time.
-
-\textbf{And the estimator is applied entirely outside the range it was validated on.} The twelve validation projects span commit-side \textbf{82.6--98.3\%}; the twenty-one projects that carry the association below span \textbf{10.5--78.1\%}. The ranges are \textbf{disjoint --- 0 of 21} applied projects fall inside the validated one. There is a plausible argument that this does not matter, since the error mechanism is tracker-numbering density rather than commit hygiene, and within the twelve the error does not track the commit-side rate ($\rho = -0.16$). That is an argument, not a validation, and we make it as such. \textbf{Any claim below whose margin is smaller than 11.91pp is not safe on this estimator.}
-
-\textbf{Result.} Over the 33 projects with a usable denominator, Spearman's $\rho$ between the commit-side rate and the ticket realisation rate is \textbf{$-0.010$} (95\% CI \textbf{$[-0.352, +0.335]$}, permutation p = \textbf{0.958}, 200,000 relabellings). Excluding the three projects whose repositories barely overlap the snapshot era, it is \textbf{$-0.062$} on 30 (95\% CI $[-0.413, +0.305]$).
-
-\begin{table*}[htbp]
-\centering
-\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.4048\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1280\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4672\linewidth-2\tabcolsep\relax}}
-\toprule
-\textbf{} & \textbf{n} & \textbf{ticket realisation rate} \\
-\midrule
-cleared the 0.80 bar & 12 & 0.04--68.6\%, \textbf{median 52.6\%} ($\mathrm{TRR}_\mathrm{frozen}$) \\
-the bar dropped & 21 & 29.5--84.8\%, \textbf{median 53.2\%} \\
-\bottomrule
-\end{tabular}
-\endgroup
-\end{table*}
-
-The passing group's median is \textbf{0.6pp below} the dropped group's --- the bar selects for nothing on this axis (Mann-Whitney $p = 0.94$). \textbf{The highest ticket realisation rate in the entire probe --- Syncope at 84.8\% --- belongs to a project the bar rejected at 36.0\% commit-side.}
-
-\begin{quote}
-\textbf{What this does and does not establish.} At $n = 33$ this study can detect $\lvert \rho \rvert$ $\geq$ \textbf{0.47} at 80\% power. The interval admits everything from a moderate negative to a moderate positive association. \textbf{A strong positive relationship --- the assumption that a high commit-side rate implies a usable ticket-side rate --- is ruled out. A null is not established.} Earlier drafts said the two rates are ``uncorrelated'' and that commit-side ``carries essentially no information''; both overstate what $n = 33$ supports and are withdrawn.
-
-\end{quote}
-
-\textbf{And the live measurement points the other way.} On the twelve projects where both rates are measured exactly and live --- no frozen snapshot, no number-capping --- Spearman's $\rho$ is \textbf{$+0.518$} (95\% CI $[-0.080, +0.841]$, permutation $p = 0.088$). That is the opposite sign from the frozen estimate on 33. The two intervals overlap and the pair is not formally contradictory, but \textbf{the paper does not have one answer to give here}, and manufacturing one would be worse than saying so. \texttt{paper/\allowbreak{}DIRECTION\_\allowbreak{}TENSION.\allowbreak{}md} sets out both measurements, the populations they are taken over, and the decomposition that explains the difference --- the correlation between commit-side rate and commits-per-ticket is \textbf{$+0.455$} within the eligible twelve and \textbf{$-0.717$} across the 33, so the sign of the composite flips with the population rather than with the estimator.
-
-\textbf{What the extension converts, and what it does not.} \S\kern0.13em \ref{sec:4.2}'s range was \emph{within-passing variation} and licensed no claim about the projects below the bar. It now licenses a bounded one: across the whole probe, a high commit-side rate does not predict a high ticket-side rate, and the bar selects for neither. \textbf{The caveat on Table~\ref{tab:eligibility} is not withdrawn} --- it remains true of the live measurement, and this is a different estimator against a different snapshot, reported alongside rather than merged into it.
-
-Five projects have no usable rate and are excluded rather than scored zero, which is itself the taxonomy at work. Pinot (14 tracker issues), Dubbo (78) and RocketMQ (384) have denominators too small to carry a rate. ShardingSphere and SkyWalking have \textbf{no project record for their probed key at all} --- mode 1 and mode 6, a category rather than a low number (\S\kern0.13em \ref{sec:5.3}).
+Extending the ticket-side measurement to all 38 probed projects, against a frozen tracker snapshot and with an estimator whose end-to-end error is \textbf{1.76pp mean and 11.91pp maximum}, gives \textbf{no detectable association} between the two rates: $\rho$ = \textbf{$-0.010$} over the 33 projects with a usable denominator, 95\% CI \textbf{$[-0.35, +0.34]$}, permutation $p = 0.958$. That rules out the strong positive relationship a selection bar implicitly assumes, but at 80\% power this study detects only $\lvert \rho \rvert$ $\geq$ \textbf{0.47}, so \textbf{a null is not established}. On the twelve projects measured exactly and live the same correlation is \textbf{$+0.518$}, a disagreement in sign we report rather than resolve, and the per-project rows, the estimator's validation and the sensitivity analyses are in the replication package.
 
 \subsection{The measure replicates independently across corpora seven years apart}
 \label{sec:4.4}
@@ -476,11 +399,7 @@ A researcher sampling with GHS therefore gets stars, commits, contributors and l
 \section{Six ways a project cannot support an issue-linked study}
 \label{sec:5}
 
-Drafted from \texttt{paper/\allowbreak{}eligibility\_\allowbreak{}failure\_\allowbreak{}modes.\allowbreak{}md} (\texttt{5179907}).
-
 \textbf{Every mode below was discovered \emph{after} selecting the project, by probing it. None is expressible in any published sampling frame.} GHS indexed 735,669 repositories as published in 2021 and exposes 35 fields per record today, of which only \texttt{totalIssues} and \texttt{openIssues} touch issues, and both are GitHub-issue counts (\S\kern0.13em \ref{sec:2.3}). All six were found the same way: by reading commit messages, project by project.
-
-\emph{Note on mode 6.} \texttt{README.\allowbreak{}md} \S\kern0.13em 5 labels mode 6 ``repository migrated across organisations''. That framing was \textbf{superseded on 2026-07-25} once id$\rightarrow$key stability was measured (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 2, \texttt{5179907}). The current statement is below, and it is the one this paper uses.
 
 \begin{table*}[htbp]
 \centering
@@ -563,7 +482,7 @@ None of the six is derivable from repository metadata. Expressing them requires,
 \section{Threats to validity}
 \label{sec:6}
 
-Assembled from \texttt{paper/\allowbreak{}ERA\_\allowbreak{}AUDIT.\allowbreak{}md} (\texttt{e0d76ef}), \texttt{paper/\allowbreak{}ALIASING\_\allowbreak{}HADOOP.\allowbreak{}md}, \texttt{paper/\allowbreak{}matcher\_\allowbreak{}validation.\allowbreak{}md}, \texttt{SUI\_\allowbreak{}FINDINGS.\allowbreak{}md}, \texttt{paper/\allowbreak{}numbers.\allowbreak{}md} and \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 7. Several of the items below are things this study got wrong and corrected. \textbf{They are stated as the paper's credibility, not as its embarrassments} --- a methods paper about record quality that concealed its own record would be self-refuting.
+Several of the items below are things this study got wrong and corrected. \textbf{They are stated as the paper's credibility, not as its embarrassments} --- a methods paper about record quality that concealed its own record would be self-refuting.
 
 \subsection{Construct validity}
 \label{sec:6.1}
@@ -574,15 +493,15 @@ Assembled from \texttt{paper/\allowbreak{}ERA\_\allowbreak{}AUDIT.\allowbreak{}m
 
 \textbf{Ticket-side coverage counts keys that resolve in the tracker.} Sqoop cites 790 distinct keys of which 122 have no tracker record, so its ticket-side rate rests on the 668 that resolve (\S\kern0.13em \ref{sec:5.3}). This is mode 6 inside a passing project, and it means ticket-side rates are, strictly, coverage of \emph{resolvable} tickets.
 
-\textbf{The 38-project extension uses a different denominator source, and the validation figure the earlier draft quoted was for a different approximation.} \S\kern0.13em \ref{sec:4.3} measures the ticket realisation rate for all 38 projects against the frozen public Jira corpus rather than a second live fetch, aligning numerator and denominator in issue-number space (\S\kern0.13em \ref{sec:3.1.3}). \textbf{Two approximations are stacked}: number-capping, and substituting a frozen snapshot for the live tracker. The 0.45pp / 2.14pp figure earlier drafts quoted validates only the first. The end-to-end error of the combination Table~\ref{tab:ticketside} actually uses is \textbf{1.76pp mean / 11.91pp max}, the worst case being Kylin; excluding Kylin it is 0.84pp mean and \textbf{2.93pp max, with 11 of 12 inside 3pp}. \textbf{Quote the end-to-end figure.}
+\textbf{The 38-project extension uses a different denominator source, and the validation figure the earlier draft quoted was for a different approximation.} \S\kern0.13em \ref{sec:4.3} measures the ticket realisation rate for all 38 projects against the frozen public Jira corpus rather than a second live fetch, aligning numerator and denominator in issue-number space (\S\kern0.13em \ref{sec:3.1.3}). \textbf{Two approximations are stacked}: number-capping, and substituting a frozen snapshot for the live tracker. The 0.45pp / 2.14pp figure earlier drafts quoted validates only the first. The end-to-end error of the combination the artifact's 38-project table actually uses is \textbf{1.76pp mean / 11.91pp max}, the worst case being Kylin; excluding Kylin it is 0.84pp mean and \textbf{2.93pp max, with 11 of 12 inside 3pp}. \textbf{Quote the end-to-end figure.}
 
-\textbf{And the estimator is applied entirely outside its validated range.} The twelve validation projects span commit-side \textbf{82.6--98.3\%}; the twenty-one that carry the \S\kern0.13em \ref{sec:4.3} association span \textbf{10.5--78.1\%}. The ranges are \textbf{disjoint --- 0 of 21} applied projects fall inside the validated one. The error mechanism is tracker-numbering density rather than commit hygiene, and within the twelve the error does not track the commit-side rate ($\rho = -0.16$, $n = 12$), so there is a reason to expect the extrapolation to hold --- but it is a reason, not a validation, and \textbf{any claim whose margin is smaller than 11.91pp is not safe on this estimator.} The claims that are: the ceiling identity (exact arithmetic, not estimated); the eligibility result (commit-side only); the taxonomy. The claims that are not: any per-project ticket-side comparison in Table~\ref{tab:ticketside} closer than \textasciitilde{}12pp, and the passing-versus-dropped median gap of 0.6pp, which is far inside the noise and is reported as such.
+\textbf{And the estimator is applied entirely outside its validated range.} The twelve validation projects span commit-side \textbf{82.6--98.3\%}; the twenty-one that carry the \S\kern0.13em \ref{sec:4.3} association span \textbf{10.5--78.1\%}. The ranges are \textbf{disjoint --- 0 of 21} applied projects fall inside the validated one. The error mechanism is tracker-numbering density rather than commit hygiene, and within the twelve the error does not track the commit-side rate ($\rho = -0.16$, $n = 12$), so there is a reason to expect the extrapolation to hold --- but it is a reason, not a validation, and \textbf{any claim whose margin is smaller than 11.91pp is not safe on this estimator.} The claims that are: the ceiling identity (exact arithmetic, not estimated); the eligibility result (commit-side only); the taxonomy. The claims that are not: any per-project ticket-side comparison in the artifact's 38-project table closer than \textasciitilde{}12pp, and the passing-versus-dropped median gap of 0.6pp, which is far inside the noise and is reported as such.
 
 Four further things can break the estimator, and all four occur in this corpus:
 
 \begin{enumerate}
 \item \textbf{Trackers with gaps.} Number-capping assumes a tracker holding N issues holds approximately the first N numbers. Issues moved or deleted break that, and the estimator then undercounts. This is the largest single validation error in the set and the direction is always downward.
-\item \textbf{Repositories whose history does not span the snapshot era.} Where a repository has been truncated or re-initialised, almost none of its cited keys fall inside the frozen range and the estimated rate collapses towards zero. That is a \emph{true} statement about what is recoverable from the repository as it now stands, and a badly misleading one if read as a statement about whether the project's tickets were ever worked. Affected projects are flagged in Table~\ref{tab:ticketside} with the share of cited keys that postdate the snapshot --- \textbf{99.72\% for Kylin (709 of 711), not 100\%}; an earlier draft printed 100\%, which contradicts the non-zero numerator that produces Kylin's 0.04\%.
+\item \textbf{Repositories whose history does not span the snapshot era.} Where a repository has been truncated or re-initialised, almost none of its cited keys fall inside the frozen range and the estimated rate collapses towards zero. That is a \emph{true} statement about what is recoverable from the repository as it now stands, and a badly misleading one if read as a statement about whether the project's tickets were ever worked. Affected projects are flagged in the artifact's 38-project table with the share of cited keys that postdate the snapshot --- \textbf{99.72\% for Kylin (709 of 711), not 100\%}; an earlier draft printed 100\%, which contradicts the non-zero numerator that produces Kylin's 0.04\%.
 \textbf{This defect is not confined to the frozen arm, and that is the more serious finding.} Kylin's pinned commit reaches \textbf{968 commits beginning 2022-08-01}, \textbf{7.5\% of the 12,937 on the repository's refs}, against a tracker of 5,931 issues and a repository that begins 2014-05-13. Its \emph{live} 12.0\% is therefore also measured over a four-year window against a twelve-year tracker. Earlier drafts made that 12.0\% the paper's flagship example while dismissing the frozen 0.04\% as an artefact; \textbf{both are the same artefact}, and the example has been moved to Hive (\S\kern0.13em \ref{sec:4.2.1}). Three other projects have a pinned branch starting after their repository --- Jena (49.0\% of refs), Karaf (45.4\%), James (89.4\%, by eight days) --- and none approaches Kylin's severity (\texttt{scripts/\allowbreak{}revision\_\allowbreak{}metrics.\allowbreak{}py}).
 
 \item \textbf{Denominators too small to carry a rate.} Several trackers hold only a handful of issues in the frozen corpus. Projects with fewer than 500 are excluded from the association statistic and shown in the table with the exclusion marked.
@@ -602,10 +521,9 @@ Four further things can break the estimator, and all four occur in this corpus:
 
 \begin{itemize}
 \item the codebook's keyword rule for structural review discussion --- \textbf{$\approx$25\% precise} (5 of 20 flagged comments genuinely structural), $\approx$5\% miss (1 of 20 unflagged), on a 40-comment single-rater pass, with no $\kappa$;
-\item the TypeScript commit-message rule --- \textbf{recall 3 of 96 = 3.1\%}, \textbf{precision 3 of 10 = 30\%}.
 \end{itemize}
 
-Their role is to establish that keyword-based detection over-counts roughly fourfold and finds 3\% of the work, which is a validity result about a method other studies use.
+Its role is to establish that keyword-based detection over-counts roughly fourfold, which is a validity result about a method other studies use.
 
 \textbf{The exception is argued rather than asserted.} The 200-commit matcher check is a mechanical determination against a written rule with categories fixed before labelling, not a coded judgment where the construct lives in the rater's head. It is made \textbf{auditable rather than agreed}: \texttt{paper/\allowbreak{}matcher\_\allowbreak{}sample.\allowbreak{}json} carries all 200 messages and \texttt{paper/\allowbreak{}matcher\_\allowbreak{}labels.\allowbreak{}json} every label, so any reader can re-check the sample without redrawing it.
 
@@ -621,12 +539,6 @@ Their role is to establish that keyword-based detection over-counts roughly four
 \textbf{One mined project, one ecosystem.} All 12 eligible projects are Hadoop-ecosystem, and depth beyond Hadoop was not reachable. The corpus bound is therefore a finding and a limit at once: results about Apache/Jira/Java traceability generalise to Apache/Jira/Java.
 
 \textbf{At 12 projects the design is not powered, whatever the corpus size.} Effective n is capped at P/ICC by between-project correlation --- a ceiling of 600 at ICC 0.02 against the 769 the effect needs. The direction of the bias is bad: these twelve share contributors, committers, review norms and in several cases build and CI infrastructure, so this sample's ICC is higher than a random sample's. \textbf{The ICC itself is unmeasured, and was deliberately not estimated from the four available clusters}, because between-cluster variance is not estimable at $n=4$ and the estimate must come from the pooled study as a first stage (\texttt{replication/\allowbreak{}CORPUS\_\allowbreak{}FEASIBILITY.\allowbreak{}md}).
-
-\textbf{The TypeScript column is one repository, one company, and exploratory.} \texttt{BearStudio/\allowbreak{}start-\allowbreak{}ui-\allowbreak{}web}, 1,199 commits, 93\% detector coverage, \textbf{$n=28$ architectural PRs}. \texttt{SUI\_\allowbreak{}FINDINGS.\allowbreak{}md} is marked EXPLORATORY throughout and every p-value in it is uncorrected and hypothesis-generating. \textbf{Only counts and proportions from it are used here} --- 3 of 96, 7\%, 30 of 96 --- never a test. The repository is also a starter template whose product is tracking the frontend stack, so migration-driven churn is unusually large (architectural commits co-occurring with a dependency-manifest change are $13\times$ larger).
-
-\textbf{PR routing there is not arbitrary}, which bounds what the 31\% means: architectural commits that go through a PR are five times larger and four times more abstraction-heavy than those pushed to main. The 69\%-unreviewed figure is a statement about that repository's workflow, not a general rate.
-
-\textbf{The Apache commit-message cell of Table~\ref{tab:visibility} is empty because this study did not instrument it.} The Hadoop architectural corpus was built by AST-level detection and never compared against message text, so no recall figure comparable to the TypeScript column's 3.1\% exists. It is computable in principle and is the most obvious extension. Note also that the 25\%-precision codebook figure measures \textbf{review comments}, a fourth channel, and is not a commit-message result (\texttt{paper/\allowbreak{}table2\_\allowbreak{}visibility.\allowbreak{}md}).
 
 
 \section{Discussion}
@@ -681,13 +593,18 @@ And it does not offer a fix. The six modes are diagnosable, not repairable: a pr
 \section{Acknowledgements and disclosures}
 \label{sec:8}
 
-\subsection{Data and tools}
+\subsection{Data availability}
 \label{sec:8.1}
 
-This study is built on artifacts other people made public. The Apache Software Foundation publishes the issue trackers and repositories the whole corpus is drawn from. Lloyd Montgomery, Clara L\"uders and Walid Maalej deposited the Public Jira Dataset (Zenodo 15719919, CC BY 4.0), which supplies every estimate-coverage base rate and every frozen ticket denominator in Table~\ref{tab:ticketside}. Michael Rath and Patrick M\"ader's SEOSS 33 provides the independent measurement this study's probe is validated against, and the agreement between them at matched scope (Section~\ref{sec:4.4}) is the strongest external check the work has. Nikolaos Tsantalis and the RefactoringMiner contributors built the detector. None of them is responsible for what is done with their work here.
+Every artifact this paper rests on is archived and citable: the 38 pinned repository shas, the frozen tracker caches, the per-project measurements, the full 38-row eligibility table, the three-channel visibility table, every script that produced a number here, and the audit report against which the numbers were re-derived. \textbf{Replication package: ANONYMISED-ARTIFACT-DOI.} Nothing needed to reproduce a figure in this paper lives only in a version-control host.
+
+\subsection{Data and tools}
+\label{sec:8.2}
+
+This study is built on artifacts other people made public. The Apache Software Foundation publishes the issue trackers and repositories the whole corpus is drawn from. Lloyd Montgomery, Clara L\"uders and Walid Maalej deposited the Public Jira Dataset (Zenodo 15719919, CC BY 4.0), which supplies every estimate-coverage base rate and every frozen ticket denominator in the artifact's 38-project table. Michael Rath and Patrick M\"ader's SEOSS 33 provides the independent measurement this study's probe is validated against, and the agreement between them at matched scope (Section~\ref{sec:4.4}) is the strongest external check the work has. Nikolaos Tsantalis and the RefactoringMiner contributors built the detector. None of them is responsible for what is done with their work here.
 
 \subsection{Use of AI tools}
-\label{sec:8.2}
+\label{sec:8.3}
 
 \textbf{Declared in full, because a paper about the trustworthiness of records should be candid about how its own were produced.}
 
@@ -707,12 +624,12 @@ Large language model assistants (Anthropic's Claude) were used across parts of t
 \textbf{Errors that assistance introduced and review caught} are recorded rather than quietly fixed, because they bound how much the audit trail is worth: a median computed as the upper-middle value at even \emph{n}; a validation figure quoted for a different approximation than the one in use; a provenance checker that could not fail, and a first rebuild of it that reproduced the same defect by another route. Each is in \texttt{paper/\allowbreak{}REVISION\_\allowbreak{}LOG.\allowbreak{}md} with what it changed.
 
 \subsection{A separate matter: the LLM used as a rater}
-\label{sec:8.3}
+\label{sec:8.4}
 
 Section~\ref{sec:6.5} reports a pilot in which a language model applied this study's codebook as a second rater. \textbf{That is an object of study here, not a method the paper's claims rest on}, and it is reported with its contamination disclosed and its conclusions bounded. No claim in this paper depends on it.
 
 \subsection{Funding and competing interests}
-\label{sec:8.4}
+\label{sec:8.5}
 
 No funding was received. The authors declare no competing interests.
 
@@ -739,15 +656,15 @@ No funding was received. The authors declare no competing interests.
 
 
 
-\begingroup\scriptsize\setlength{\tabcolsep}{3pt}
+\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.0349\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0779\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0814\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0814\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0910\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0743\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0705\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0847\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0879\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0622\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0847\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0910\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0779\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.0664\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1557\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1408\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1756\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1242\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1818\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1557\linewidth-2\tabcolsep\relax}}
 
 \caption{Corpus eligibility across the 38 probed projects, both traceability channels, with commits per ticket, the arithmetic ceiling of Section~\ref{sec:3.1.4} and the share of it reached. All quantities are the live measurement: $\mathrm{TRR}_\mathrm{live}$, $\mathrm{ceiling}_\mathrm{live}$, $\mathrm{fill}_\mathrm{live}$ (Section~\ref{sec:3.1.3}).}\label{tab:eligibility}\\
 
 \toprule
 
-\textbf{\#} & \textbf{project} & \textbf{Jira key(s)} & \textbf{HEAD} & \textbf{commits scanned} & \textbf{single-\allowbreak{}key} & \textbf{multi-key} & \textbf{tickets total} & \textbf{commits/\allowbreak{}ticket} & \textbf{ceiling} & \textbf{tickets cited} & \textbf{\textbf{ticket-side}} & \textbf{TRR/\allowbreak{}ceiling} \\
+\textbf{\#} & \textbf{project} & \textbf{multi-key} & \textbf{commits/\allowbreak{}ticket} & \textbf{ceiling} & \textbf{\textbf{ticket-side}} & \textbf{TRR/\allowbreak{}ceiling} \\
 
 \midrule
 
@@ -757,7 +674,7 @@ No funding was received. The authors declare no competing interests.
 
 \toprule
 
-\textbf{\#} & \textbf{project} & \textbf{Jira key(s)} & \textbf{HEAD} & \textbf{commits scanned} & \textbf{single-\allowbreak{}key} & \textbf{multi-key} & \textbf{tickets total} & \textbf{commits/\allowbreak{}ticket} & \textbf{ceiling} & \textbf{tickets cited} & \textbf{\textbf{ticket-side}} & \textbf{TRR/\allowbreak{}ceiling} \\
+\textbf{\#} & \textbf{project} & \textbf{multi-key} & \textbf{commits/\allowbreak{}ticket} & \textbf{ceiling} & \textbf{\textbf{ticket-side}} & \textbf{TRR/\allowbreak{}ceiling} \\
 
 \midrule
 
@@ -767,157 +684,35 @@ No funding was received. The authors declare no competing interests.
 
 \endlastfoot
 
-1 & ozone \textdagger{} & \texttt{HDDS,OZONE} & \texttt{4f5ae5454f} & 10,962 & 98.3\% & \textbf{98.3\%} & 15,909 & 0.69 & 67.7\% & 10,162 & \textbf{63.9\%} & 0.94 \\
+1 & ozone \textdagger{} & \textbf{98.3\%} & 0.69 & 67.7\% & \textbf{63.9\%} & 0.94 \\
 
-2 & tez \textdagger{} & \texttt{TEZ} & \texttt{dd8137f4c1} & 3,123 & 97.4\% & \textbf{97.4\%} & 4,724 & 0.66 & 64.4\% & 2,774 & \textbf{58.7\%} & 0.91 \\
+2 & tez \textdagger{} & \textbf{97.4\%} & 0.66 & 64.4\% & \textbf{58.7\%} & 0.91 \\
 
-3 & hive & \texttt{HIVE} & \texttt{6730aadd18} & 18,213 & 97.0\% & \textbf{97.0\%} & 29,635 & 0.61 & 59.6\% & 16,529 & \textbf{55.8\%} & 0.94 \\
+3 & hive & \textbf{97.0\%} & 0.61 & 59.6\% & \textbf{55.8\%} & 0.94 \\
 
-4 & hbase \textdaggerdbl{} & \texttt{HBASE} & \texttt{4d417aacea} & 21,220 & 92.5\% & \textbf{92.5\%} & 30,063 & 0.71 & 65.3\% & 16,704 & \textbf{55.6\%} & 0.85 \\
+4 & hbase \textdaggerdbl{} & \textbf{92.5\%} & 0.71 & 65.3\% & \textbf{55.6\%} & 0.85 \\
 
-5 & phoenix \textdaggerdbl{} & \texttt{PHOENIX} & \texttt{1b55fb4b33} & 4,264 & 92.0\% & \textbf{92.0\%} & 7,931 & 0.54 & 49.5\% & 3,277 & \textbf{41.3\%} & 0.84 \\
+5 & phoenix \textdaggerdbl{} & \textbf{92.0\%} & 0.54 & 49.5\% & \textbf{41.3\%} & 0.84 \\
 
-6 & zookeeper \textdagger{} & \texttt{ZOOKEEPER} & \texttt{53a78e36f9} & 2,718 & 90.4\% & \textbf{90.4\%} & 4,875 & 0.56 & 50.4\% & 2,291 & \textbf{47.0\%} & 0.93 \\
+6 & zookeeper \textdagger{} & \textbf{90.4\%} & 0.56 & 50.4\% & \textbf{47.0\%} & 0.93 \\
 
-7 & ranger \textdagger{} & \texttt{RANGER} & \texttt{f133c21389} & 5,390 & 86.3\% & \textbf{86.3\%} & 5,699 & 0.95 & 81.6\% & 3,725 & \textbf{65.4\%} & 0.80 \\
+7 & ranger \textdagger{} & \textbf{86.3\%} & 0.95 & 81.6\% & \textbf{65.4\%} & 0.80 \\
 
-8 & oozie \textdagger{} & \texttt{OOZIE} & \texttt{8bdac8be4f} & 2,412 & 85.2\% & \textbf{85.2\%} & 3,727 & 0.65 & 55.1\% & 1,851 & \textbf{49.7\%} & 0.90 \\
+8 & oozie \textdagger{} & \textbf{85.2\%} & 0.65 & 55.1\% & \textbf{49.7\%} & 0.90 \\
 
-9 & knox \textdagger{} & \texttt{KNOX} & \texttt{6bdf64cdfd} & 3,194 & 84.3\% & \textbf{84.3\%} & 3,391 & 0.94 & 79.4\% & 2,340 & \textbf{69.0\%} & 0.87 \\
+9 & knox \textdagger{} & \textbf{84.3\%} & 0.94 & 79.4\% & \textbf{69.0\%} & 0.87 \\
 
-10 & drill & \texttt{DRILL} & \texttt{86e9b82f16} & 4,594 & 84.2\% & \textbf{84.2\%} & 8,507 & 0.54 & 45.4\% & 3,676 & \textbf{43.2\%} & 0.95 \\
+10 & drill & \textbf{84.2\%} & 0.54 & 45.4\% & \textbf{43.2\%} & 0.95 \\
 
-11 & kylin & \texttt{KYLIN} & \texttt{b5b94b51ab} & 968 & 83.9\% & \textbf{83.9\%} & 5,931 & 0.16 & 13.7\% & 709 & \textbf{12.0\%} & 0.87 \\
+11 & kylin & \textbf{83.9\%} & 0.16 & 13.7\% & \textbf{12.0\%} & 0.87 \\
 
-12 & sqoop \textdagger{} & \texttt{SQOOP} & \texttt{f8beae32a0} & 969 & 82.6\% & \textbf{82.6\%} & 3,152 & 0.31 & 25.4\% & 668 & \textbf{21.2\%} & 0.84 \\
+12 & sqoop \textdagger{} & \textbf{82.6\%} & 0.31 & 25.4\% & \textbf{21.2\%} & 0.84 \\
 
 \end{longtable}
 
 \endgroup
 
 \textdagger{} held-out corpus: coverage and existence counts only, no outcome ever observed (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 3). \textdaggerdbl{} quarantined 2026-07-30, dropped from the held-out corpus; coverage retained, outcome inputs sequestered in \texttt{spent/\allowbreak{}} (\texttt{spent/\allowbreak{}README.\allowbreak{}md}).
-
-
-
-\subsection*{Dropped (26)}
-
-\addcontentsline{toc}{subsection}{Dropped (26)}
-
-
-
-\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.0665\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2305\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1630\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1245\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1411\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2743\linewidth-2\tabcolsep\relax}}
-
-\caption*{\textbf{Table~\ref{tab:eligibility}}, \emph{continued.}}\\
-
-\toprule
-
-\textbf{\#} & \textbf{project} & \textbf{HEAD} & \textbf{commits} & \textbf{multi-key} & \textbf{drop reason (measured)} \\
-
-\midrule
-
-\endfirsthead
-
-\toprule
-
-\textbf{\#} & \textbf{project} & \textbf{HEAD} & \textbf{commits} & \textbf{multi-key} & \textbf{drop reason (measured)} \\
-
-\midrule
-
-\endhead
-
-\bottomrule
-
-\endlastfoot
-
-13 & atlas & \texttt{b45faecc96} & 4,140 & 78.1\% & \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} \\
-
-14 & james-\allowbreak{}project & \texttt{f4b8d37110} & 17,374 & 74.8\% & \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} \\
-
-15 & flume & \texttt{9acf154361} & 2,084 & 73.9\% & \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} \\
-
-16 & karaf & \texttt{d3a178529f} & 10,058 & 71.8\% & \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} \\
-
-17 & calcite & \texttt{8447eda2f2} & 6,746 & 67.7\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-18 & flink & \texttt{1ea8cb0e4e} & 38,219 & 66.0\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-19 & hudi & \texttt{26b1ebc4e9} & 7,659 & 65.2\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-20 & oodt & \texttt{f3dda2591b} & 2,251 & 62.0\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-21 & zeppelin & \texttt{597652e4c2} & 5,708 & 60.7\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-22 & servicecomb-\allowbreak{}java-\allowbreak{}chassis & \texttt{ac4a6991e6} & 4,668 & 56.2\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-23 & tika & \texttt{379b32246f} & 10,543 & 54.8\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-24 & struts & \texttt{73f17c1be7} & 8,353 & 54.1\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-25 & storm & \texttt{cca249f181} & 11,871 & 46.7\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-26 & accumulo & \texttt{5c7d96deb6} & 15,069 & 43.0\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-27 & cxf & \texttt{1695c05def} & 19,763 & 37.5\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-28 & syncope & \texttt{21d513d1c3} & 9,422 & 36.0\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-29 & tomee & \texttt{a3e8806a9d} & 16,228 & 32.2\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-30 & wicket & \texttt{34ef6da88d} & 22,260 & 30.9\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-31 & parquet-\allowbreak{}java & \texttt{83c2c80d49} & 2,990 & 29.1\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-32 & jena & \texttt{fbe7bfcb1e} & 13,091 & 24.4\% & \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} \\
-
-33 & dubbo & \texttt{eb1d8abaeb} & 8,892 & 11.0\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-34 & helix & \texttt{0902505fda} & 4,926 & 10.5\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-35 & rocketmq & \texttt{b37e2bbacd} & 9,165 & 5.7\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-36 & pinot & \texttt{2bcbdfed0a} & 15,639 & 5.2\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-37 & skywalking & \texttt{dddc3b51be} & 8,577 & 0.3\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-38 & shardingsphere & \texttt{b6ff1fb56d} & 49,111 & 0.0\% & \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} \\
-
-\end{longtable}
-
-\addtocounter{table}{-1}
-
-\endgroup
-
-\textbf{The two traceability channels diverge, and the one the literature publishes is not the one an issue-linked study needs.} The commit-side rate --- what fraction of commits cite a ticket --- is what SEOSS 33 reports and what selection criteria use. The ticket-side rate --- what fraction of tickets ever receive a citing commit --- is what a ticket-anchored study depends on. \textbf{Apache Hive cites a ticket in 97.0\% of its 18,213 commits, while 55.8\% of its 29,635 tickets are ever touched by one} --- near perfect commit-side hygiene, and still close to half the tracker invisible to a ticket-anchored design. Across the 12 eligible projects the commit-side rate runs 82.6--98.3\% while $\mathrm{TRR}_\mathrm{live}$ runs \textbf{12.0\%--69.0\%, with none above 69.0\%}.
-
-
-
-\textbf{Kylin's row is flagged, not featured.} At 83.9\% commit-side against 12.0\% ticket-side it is the sharpest divergence in the table, and earlier drafts led with it. \textbf{That example is withdrawn (\S\kern0.13em \ref{sec:4.2.1}.)} The pinned commit reaches 968 commits beginning 2022-08-01, 7.5\% of the 12,937 on the repository's refs, so the ticket-side figure is a four-year commit window measured against a twelve-year tracker. The row is retained because the measurement is correct for the branch that was pinned; it should not be read as a fact about Kylin's traceability.
-
-
-
-\textbf{The ceiling, and why it reframes the divergence.} A commit that cites a ticket contributes at most one NEW distinct ticket to the ticket-side numerator, so the rate cannot exceed \texttt{commit-\allowbreak{}side x commits /\allowbreak{} tickets} (method \S\kern0.13em \ref{sec:3.1.4}). Every quantity in this table is the live measurement, so the bound here is $\mathrm{ceiling}_\mathrm{live}$, and it BINDS for all twelve: it runs 13.7\% (kylin) to 81.6\% (ranger), and every project reaches 80--95\% of it. The ticket-side spread is therefore almost entirely a spread in commits per ticket, not in citation discipline --- $\mathrm{fill}_\mathrm{live}$ has a median of 0.89 and a range of only 1.19x across the twelve, against a 5.8x spread in the rate itself. Table~\ref{tab:ticketside} computes $\mathrm{ceiling}_\mathrm{frozen}$ instead and puts three projects at or above 100\%, where the bound does not bind at all; the two are different denominators, not a disagreement (\S\kern0.13em \ref{sec:3.1.3}, \S\kern0.13em \ref{sec:4.2}).
-
-
-
-\textbf{Truncation caveat, load-bearing.} Ticket-side coverage was computed only for the 12 projects that had already cleared the commit-side bar. The 12.0\%--69.0\% range is therefore \emph{within-passing variation} and licenses no claim about the 26 dropped projects, whose ticket-side rates were never measured, nor about any correlation between the two channels in general.
-
-
-
-\textbf{The caveat above is not withdrawn by Table~\ref{tab:ticketside}.} \texttt{paper/\allowbreak{}table3\_\allowbreak{}ticket\_\allowbreak{}side.\allowbreak{}md} computes a ticket realisation rate for every probed project, including the dropped ones, but it does so with a \emph{different denominator source} -- the frozen public Jira corpus rather than the live tracker read for this table -- and a different alignment (issue-number rather than date). It is reported alongside this table, never merged into it.
-
-
-
-\textbf{Drop reasons are measured, not inferred.} The probe counts GitHub-issue references (\texttt{\#NNN}, \texttt{GH-\allowbreak{}NNN}) alongside Jira keys, so \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} means the GitHub count exceeds the Jira count in that repository. \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} ($\geq$70\%) and \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene} are threshold labels on the measured rate.
-
-
-
-\textbf{No timing column exists in this table and none may be added for a \textdagger{} row.} Every quantity above is a coverage or existence count, which is what the held-out rule permits (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 3).
-
-
-
-Sources: \texttt{scripts/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}py} $\rightarrow$ \texttt{paper/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}json}; \texttt{scripts/\allowbreak{}ticket\_\allowbreak{}coverage.\allowbreak{}py} $\rightarrow$ \texttt{paper/\allowbreak{}ticket\_\allowbreak{}coverage.\allowbreak{}json}. Generated by \texttt{scripts/\allowbreak{}make\_\allowbreak{}table1.\allowbreak{}py}.
 
 
 

@@ -1,9 +1,6 @@
 # 6. Threats to validity
 
-Assembled from `paper/ERA_AUDIT.md` (`e0d76ef`), `paper/ALIASING_HADOOP.md`,
-`paper/matcher_validation.md`, `SUI_FINDINGS.md`, `paper/numbers.md` and
-`PROJECT_STATE.md` §7. Several of the items below are things this study got wrong
-and corrected. **They are stated as the paper's credibility, not as its
+Several of the items below are things this study got wrong and corrected. **They are stated as the paper's credibility, not as its
 embarrassments** — a methods paper about record quality that concealed its own
 record would be self-refuting.
 
@@ -203,12 +200,19 @@ paper's claims rest on:
 * the codebook's keyword rule for structural review discussion — **≈25% precise**
   (5 of 20 flagged comments genuinely structural), ≈5% miss (1 of 20 unflagged),
   on a 40-comment single-rater pass, with no κ;
+<!-- only: preprint -->
 * the TypeScript commit-message rule — **recall 3 of 96 = 3.1%**, **precision 3 of
   10 = 30%**.
 
 Their role is to establish that keyword-based detection over-counts roughly
 fourfold and finds 3% of the work, which is a validity result about a method other
 studies use.
+<!-- /only -->
+<!-- only: msr2027 -->
+
+Its role is to establish that keyword-based detection over-counts roughly
+fourfold, which is a validity result about a method other studies use.
+<!-- /only -->
 
 **The exception is argued rather than asserted.** The 200-commit matcher check is a
 mechanical determination against a written rule with categories fixed before
@@ -282,6 +286,7 @@ clusters**, because between-cluster variance is not estimable at n=4 and the
 estimate must come from the pooled study as a first stage
 (`replication/CORPUS_FEASIBILITY.md`).
 
+<!-- only: preprint -->
 **The TypeScript column is one repository, one company, and exploratory.**
 `BearStudio/start-ui-web`, 1,199 commits, 93% detector coverage, **n=28
 architectural PRs**. `SUI_FINDINGS.md` is marked EXPLORATORY throughout and every
@@ -303,6 +308,7 @@ TypeScript column's 3.1% exists. It is computable in principle and is the most
 obvious extension. Note also that the 25%-precision codebook figure measures
 **review comments**, a fourth channel, and is not a commit-message result
 (`paper/table2_visibility.md`).
+<!-- /only -->
 
 ## 6.8 Provenance of the work itself
 

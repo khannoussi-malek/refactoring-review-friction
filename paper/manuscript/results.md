@@ -4,8 +4,7 @@
 
 **Twelve of 38 Apache candidates clear the pre-registered 0.80 commit-side bar,
 and every one of them is Hadoop-ecosystem under the classification set out
-below** (Table 1;
-`figures/eligibility_funnel.png` panel A). The bar was fixed before any project
+below** (Table 1, Figure 1). The bar was fixed before any project
 was cloned and never moved.
 
 No project outside the Hadoop ecosystem clears it. The best of them, James,
@@ -51,7 +50,10 @@ channels are counted per repository. Nine projects are dropped with
 `github_issue_references_dominate`, meaning the GitHub-issue count exceeds the
 Jira-key count in that repository — ShardingSphere carries 30,746 GitHub-issue
 references against 5 Jira keys in 49,111 commits. Four fall in
-`below_bar_narrowly` (≥70%) and the remainder in `low_commit_message_hygiene`.
+`below_bar_narrowly` (≥70%) and the remaining thirteen in
+`low_commit_message_hygiene`. Across all 26 the commit-side rate runs
+**0.0%–78.1%** with a median of **44.8%**; the per-project rows are in the
+replication package.
 The industry-donated projects are the sharpest case: ShardingSphere 0.01%,
 SkyWalking 0.3%, Pinot 5.2%, RocketMQ 5.7%, Dubbo 11.0%. They never adopted the
 Jira-citation convention, and the attrition is therefore concentrated in the
@@ -87,7 +89,8 @@ constrain anything. That is not a disagreement about the projects. It is what a
 2026 commit window measured against an older tracker produces: the repository
 holds more citing commits than the snapshot holds tickets, so the arithmetic
 ceiling exceeds one and stops being a ceiling. The two estimators bound different
-denominators, and Table 3's own note says so. Neither figure is withdrawn.
+denominators, and the note accompanying that measurement says so.
+Neither figure is withdrawn.
 
 Ranked by fill rather than by rate, the ordering changes almost completely: Drill
 (43.2%, fill 0.95) sits above Ranger (65.4%, fill 0.80). *Every project in the
@@ -142,6 +145,22 @@ of this was known and removing it now would be selection on the outcome. It is
 flagged wherever it appears, and no claim in this paper rests on it.
 
 ## 4.3 The divergence is a property of the population, not of the survivors
+
+<!-- only: msr2027 -->
+Extending the ticket-side measurement to all 38 probed projects, against a frozen
+tracker snapshot and with an estimator whose end-to-end error is **1.76pp mean
+and 11.91pp maximum**, gives **no detectable association** between the two rates:
+rho = **−0.010** over the 33 projects with a usable denominator, 95% CI
+**[−0.35, +0.34]**, permutation p = 0.958. That rules out the strong positive
+relationship a selection bar implicitly assumes, but at 80% power this study
+detects only |rho| ≥ **0.47**, so **a null is not established**. On the twelve
+projects measured exactly and live the same correlation is **+0.518**, a
+disagreement in sign we report rather than resolve, and the per-project rows,
+the estimator's validation and the sensitivity analyses are in the replication
+package.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 Reporting §4.2 on the twelve that passed leaves the obvious objection open: the
 range 12.0–69.0% is *within-passing variation* in TRR_live, and says nothing about the 26
@@ -241,6 +260,7 @@ is itself the taxonomy at work. Pinot (14 tracker issues), Dubbo (78) and Rocket
 have **no project record for their probed key at all** — mode 1 and mode 6, a
 category rather than a low number (§5.3).
 
+<!-- /only -->
 ## 4.4 The measure replicates independently across corpora seven years apart
 
 The commit-side rate is not a novel measure, and its agreement with an

@@ -447,3 +447,48 @@ placeholder survives. The last three were carried by sections the cut removed.
 
 Not started, and each needs something this branch cannot supply: the Zenodo
 deposit and its DOI, the ORCID, and the data availability statement naming it.
+
+---
+
+# MSR content and layout pass, branch `msr2027`, 2026-08-08
+
+The short paper became a different paper in this pass, not a shorter one. Rows
+below cover claims that changed meaning. A claim merely cut gets no row.
+
+| # | what it said | what it says now | why |
+|---:|---|---|---|
+| S1 | the paper measured invisibility "in three record channels across two ecosystems" and contribution 7 promised "a second ecosystem and two further channels" with the TypeScript figures (3 of 96, 7%, 69%) | **the short paper is single-ecosystem.** The abstract's TypeScript paragraph, the two-ecosystem framing in the abstract and §1, contribution 7, and the §6 paragraphs discussing the TypeScript column are all absent from this target | The manifest had already cut §2.6, §3.4, §4.5 and §6.4, which is where the TypeScript *evidence* lived, and left every *claim* about it standing. The paper promised a result it no longer contained. The claims now match the evidence |
+| S2 | abstract, 713 words, describing the two-ecosystem paper | abstract, **201 words**, carrying the measurement (Hive 97.0% against 55.8%), the mechanism (6.0-fold ceiling spread against 1.19-fold fill), the population finding (12 of 38, one ecosystem, pre-registered bar) and the taxonomy | ACM abstracts run 150 to 250 words. The old one also described a paper this target no longer is |
+| S3 | §4.3, 993 words on the 38-project frozen extension | 121 words: no detectable association (rho = −0.010, n = 33, CI, permutation p), a strong positive relationship ruled out, a null **not** established at 80% power, and the live arm disagreeing in sign at +0.518. Estimator validation and per-project rows move to the artifact | The result survives; the apparatus behind it does not fit ten pages. Nothing quantitative was dropped without being restated |
+| S4 | §2.4, 659 words on the bug-side linkage literature | 218 words. Bachmann and Bird keep their full statements because they bound what this paper may claim; Herzig, Nguyen and ReLink become single clauses | The bound is what matters, not the survey |
+| S5 | §2.5, 121 words on the SATD successor design | 36 words stating that the design exists and is not proposed here | It is not this paper's argument |
+| S6 | Table 1 printed 13 columns and the full 26-row dropped table | 7 columns (project, multi-key, commits/ticket, ceiling, ticket-side, TRR/ceiling) and the eligible twelve only. The 26 dropped projects are one sentence: 0.0%–78.1%, median 44.8%, 13/9/4 by drop reason | In sigconf the 13-column table **rendered clipped**: words vanished mid-caption and header cells ran into data. Verified fixed by rendering the page to an image and reading it, not by compiling successfully |
+| S7 | no data availability statement | §8.1 Data availability, naming the archived replication package, with the DOI as a placeholder pending deposit | The open science policy requires it and names Zenodo and figshare; it explicitly rejects version-control hosts |
+
+## Tooling added, which changed no claim
+
+| # | what | why |
+|---:|---|---|
+| P1 | `<!-- only: target -->` spans | Section-level exclusion cannot express a paragraph, and the two papers differ below section granularity. The variants sit adjacent in one file so no prose exists twice |
+| P2 | `ABSENT_FLOATS` | A table this target does not print now resolves to a named artifact pointer instead of a `\ref` with no `\label`. This is what removed all 20 `??` |
+| P3 | `drop_columns` and `table_parts` in the manifest | Columns are dropped by header text, so the manifest names what a reader sees. A column named that does not exist is a build error |
+| P4 | the dangling-reference check now covers **every** prefix and every reference command | It was written for `sec:` and passed a build carrying twenty broken `tab:` references. `demo()` now breaks `tab:`, `fig:`, `eq:`, `sec:` and `\autoref` and requires a complaint for each. Third instance of a check narrower than its message |
+
+## Measured state, 2026-08-08
+
+| | at pass start | now | limit |
+|---|---:|---:|---:|
+| main text | 17 | **14** | 10 |
+| references | 1 | 1 | 2 |
+| unresolved `??` | 20 | **0** | 0 |
+| unresolved citations | 0 | 0 | 0 |
+| log errors | 0 | **0** | 0 |
+| abstract words | 713 | **201** | 150–250 |
+
+Anonymity unchanged and re-checked against the built PDF: no surname, given
+name, "tunisia", "khannoussi", "gmail", "independent researcher", "orcid",
+"version2" or old title, and no "typescript".
+
+**Still four pages over.** What has not been done is listed in the response that
+accompanied this pass, not hidden here: the §1 narrative compression, §7.4, the
+six uncaptioned tables, and the repository-path conversion.

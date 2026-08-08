@@ -1,8 +1,5 @@
 # 2. Related work
 
-Drafted from `paper/PRIOR_WORK.md` (`215b10f`) and `paper/SATD_NOVELTY.md`
-(`5b50ef1`). Reorganisation of verified findings, not new argument.
-
 ## 2.1 Per-project linkage rates are already published
 
 **This paper makes no first-to-measure claim, and the claim it originally made was
@@ -119,6 +116,30 @@ candidates are unusable. That is what happened here.
 
 ## 2.4 The bug-side linkage literature, and what it already settled
 
+<!-- only: msr2027 -->
+The commit-side/ticket-side asymmetry measured here was studied on the bug side a
+decade and a half ago. **Bachmann et al. (FSE'10)** [@bachmann2010missing] had a
+core Apache HTTP Server developer annotate **493 commits** exhaustively with a
+purpose-built tool [@bird2010linkster], establishing ground truth rather than
+inferring it, and found only **47.6%** of bug-fix-related commits documented in
+the tracker; their target is the completeness of the link on one project over one
+window, ours a per-project rate over a whole tracker, established mechanically.
+**Bird et al. (ESEC/FSE'09)** [@bird2009fair] is why it matters: missing links are
+not missing at random, so a dataset built from linked records is a biased sample
+and models fitted to it inherit the bias, which is the same argument this paper
+makes for architectural change. Around them, Herzig et al. (ICSE'13)
+[@herzig2013not] show the reports themselves are misclassified, Nguyen et al.
+(WCRE'10) [@nguyen2010case] replicate the bias result, and a line of work
+beginning with ReLink [@wu2011relink] recovers missing links from time proximity,
+author identity and textual similarity. The two measurements do not condition on
+the same thing: Bachmann et al. restrict attention to bugs and bug-fix commits,
+whereas §3.1.1 admits every issue type and conditions on nothing. This paper does
+not adjudicate whether that makes the quantities distinct, and no claim it makes
+depends on the answer.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 The commit-side/ticket-side asymmetry this paper measures was studied on the
 bug-side a decade and a half ago, and that literature is the direct ancestor of
 §4.2. It is set out here rather than merely listed, because two of its findings
@@ -180,7 +201,16 @@ operate on a project already known to be a candidate. But the unqualified claim
 that missing links are unrecoverable would overstate the gap, and §5.5 is
 qualified accordingly.
 
+<!-- /only -->
 ## 2.5 Refactoring and self-admitted technical debt
+
+<!-- only: msr2027 -->
+The successor design this corpus limit points towards is a self-admitted
+technical debt anchor, and its novelty margin rests on three simultaneous choices
+that the prior work does not combine. That design is not proposed here.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 Included because it bounds what this paper claims. **Iammarino et al. (2021,
 JSS)** [@iammarino2021empirical] and **Esfandiari & Sami (ICCKE 2023)**
@@ -197,6 +227,7 @@ literature depends on, so its exposure is ours. And the successor design this
 study points to is **not proposed here**; it is a separate registered report
 gated on external judgment (`paper/SATD_NOVELTY.md`).
 
+<!-- /only -->
 ## 2.6 Detector validity
 
 RefactoringMiner [@tsantalis2026refactoringminer] is the detector. Its TypeScript support was complete

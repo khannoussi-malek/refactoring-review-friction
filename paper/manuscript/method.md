@@ -167,7 +167,7 @@ behaviour:
 a project's citing commits spread across distinct tickets rather than piling onto
 a few. **`fill` is the quantity a claim about citation discipline needs**;
 `ceiling` is a property of how much code the project writes per ticket it files.
-Tables 1 and 3 report both. §4.2 shows that in this corpus almost all of the
+Both are reported for every eligible project (Table 1). §4.2 shows that in this corpus almost all of the
 ticket-side variation is ceiling and almost none of it is fill.
 
 **The subscript propagates, and it matters.** `ceiling` and `fill` are both
@@ -194,7 +194,7 @@ one.
 
 **Hadoop itself is not one of the 38.** It is the corpus the exploratory work was
 done on, and it is used here only as the worked example for multi-key matching.
-Every rate in Tables 1 and 3 is from a project Hadoop is not.
+Every rate reported for the eligible corpus is from a project Hadoop is not.
 
 **Key prefixes were detected empirically from commit messages, not assumed.**
 This is not a refinement; it decides the answer. A single-key probe reads Hadoop

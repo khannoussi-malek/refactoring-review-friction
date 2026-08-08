@@ -13,17 +13,24 @@
     "Section numbers here are the ones in the markdown. The IEEE build renders",
     "them as Roman, so 6.3 is the section a reviewer would cite as VI-C."
   ],
-
   "preprint": {
-    "applies_to": ["article", "ieee"],
+    "applies_to": [
+      "article",
+      "ieee"
+    ],
     "exclude": [],
-    "tables": ["tab:eligibility", "tab:visibility", "tab:ticketside"],
+    "tables": [
+      "tab:eligibility",
+      "tab:visibility",
+      "tab:ticketside"
+    ],
     "figure": true,
     "front_matter": true
   },
-
   "msr2027": {
-    "applies_to": ["acm"],
+    "applies_to": [
+      "acm"
+    ],
     "note": "Ten pages including tables and figures is a desk-reject criterion.",
     "exclude": [
       "2.6",
@@ -47,8 +54,25 @@
       "6.8": "provenance of the work itself: identifying under double-anonymous",
       "7.3": "for the field: the selection-effect argument rests on TypeScript"
     },
-    "tables": ["tab:eligibility"],
+    "tables": [
+      "tab:eligibility"
+    ],
     "figure": true,
-    "front_matter": false
+    "front_matter": false,
+    "drop_columns": {
+      "tab:eligibility": [
+        "Jira key(s)",
+        "HEAD",
+        "commits scanned",
+        "single-key",
+        "tickets total",
+        "tickets cited"
+      ]
+    },
+    "drop_columns_why": "sigconf is portrait and narrower than the IEEE landscape appendix; thirteen columns rendered clipped. Pinned shas, the single-key rate (identical to multi-key for all twelve) and the raw ticket counts are in the artifact.",
+    "table_parts": {
+      "tab:eligibility": 1
+    },
+    "table_parts_why": "only the eligible-12 half is printed; the 26-row dropped half is summarised in one sentence in 4.1 and lives in the artifact."
   }
 }

@@ -1,6 +1,15 @@
 # 8. Acknowledgements and disclosures
 
-## 8.1 Data and tools
+## 8.1 Data availability
+
+Every artifact this paper rests on is archived and citable: the 38 pinned
+repository shas, the frozen tracker caches, the per-project measurements, the
+full 38-row eligibility table, the three-channel visibility table, every script
+that produced a number here, and the audit report against which the numbers were
+re-derived. **Replication package: ANONYMISED-ARTIFACT-DOI.** Nothing needed to
+reproduce a figure in this paper lives only in a version-control host.
+
+## 8.2 Data and tools
 
 This study is built on artifacts other people made public. The Apache Software
 Foundation publishes the issue trackers and repositories the whole corpus is
@@ -13,7 +22,7 @@ is validated against, and the agreement between them at matched scope
 and the RefactoringMiner contributors built the detector. None of them is
 responsible for what is done with their work here.
 
-## 8.2 Use of AI tools
+## 8.3 Use of AI tools
 
 **Declared in full, because a paper about the trustworthiness of records should
 be candid about how its own were produced.**
@@ -56,13 +65,13 @@ different approximation than the one in use; a provenance checker that could not
 fail, and a first rebuild of it that reproduced the same defect by another route.
 Each is in `paper/REVISION_LOG.md` with what it changed.
 
-## 8.3 A separate matter: the LLM used as a rater
+## 8.4 A separate matter: the LLM used as a rater
 
 Section 6.5 reports a pilot in which a language model applied this study's
 codebook as a second rater. **That is an object of study here, not a method the
 paper's claims rest on**, and it is reported with its contamination disclosed and
 its conclusions bounded. No claim in this paper depends on it.
 
-## 8.4 Funding and competing interests
+## 8.5 Funding and competing interests
 
 No funding was received. The authors declare no competing interests.
