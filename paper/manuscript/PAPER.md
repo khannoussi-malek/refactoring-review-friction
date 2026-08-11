@@ -17,6 +17,32 @@ audit. Tables referenced as Table 1 and Table 2 are
 
 # Abstract
 
+<!-- only: msr2027 -->
+Empirical studies of architectural change read a project's own records and
+assume the record traces the work. We measure that assumption on 38 Apache
+projects.
+
+Two traceability rates diverge. The commit-side rate, the one the literature
+reports, asks whether a commit cites a ticket. The ticket-side rate asks whether
+a ticket ever receives a commit, which is what a ticket-anchored design actually
+needs. Hive cites a ticket in **97.0%** of its commits while only **55.8%** of
+its tickets are ever cited by one.
+
+The divergence is arithmetic rather than a matter of discipline. A project
+supplying *c* commits per ticket cannot realise more than a *c* fraction of its
+tickets whatever its commit-side rate. Across the twelve eligible projects this
+ceiling varies **6.0-fold** while the share of it actually reached varies
+**1.19-fold**, so nearly all the spread is supply rather than behaviour. No
+published linkage rate reports commits per ticket beside it.
+
+Against a bar of 0.80 pre-registered before any project was cloned, **12 of 38**
+qualified and none outside a single ecosystem cleared it. We give six mechanisms
+by which a project silently fails to support an issue-linked study, and none of
+them is expressible in any published sampling frame.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 Empirical studies of architectural change read a project's own records and assume
 the record traces the work. We measure that assumption in three record channels
 across two ecosystems and find it fails in every one.
@@ -86,6 +112,9 @@ reference channels counted together, the ticket realisation rate named and
 measured across a whole probe rather than its survivors, and the six-mode
 taxonomy.
 
+
+<!-- /only -->
+
 ---
 
 # 1. Introduction
@@ -95,9 +124,26 @@ messages, issue trackers, pull requests — and assumes the record is a reasonab
 faithful trace of the work. Studies of refactoring motivation, of technical-debt
 repayment, of architectural erosion and of review effort are all built on that
 assumption, and it is rarely stated, still more rarely measured. This paper
+<!-- only: preprint -->
 measures it, in three record channels across two ecosystems, and finds it false in
 every channel tested.
+<!-- /only -->
+<!-- only: msr2027 -->
+measures it on 38 Apache projects, and finds that the record traces the work far
+less often than a ticket-anchored design needs, for a reason that is arithmetic
+rather than cultural.
+<!-- /only -->
 
+<!-- only: msr2027 -->
+**How we arrived at a methods paper.** This study set out to measure
+signal-to-action latency: what in a project's records precedes a decision to
+restructure code. Six operationalisations were tried and closed, and Figure 1
+records them. The sampling frame turned out to be the finding, and this paper
+reports that rather than the latency result it went looking for.
+
+<!-- /only -->
+
+<!-- only: preprint -->
 **How we arrived at a methods paper.** The study began as an attempt to measure
 signal-to-action latency: what, if anything, in a project's records precedes the
 decision to restructure code. Six operationalisations were tested and closed, each
@@ -132,6 +178,9 @@ binding (§4.2, Table 3). What reads as a
 discipline gap is mostly a tracker accumulating tickets faster than a repository
 accumulates commits — which is a fact about the two artifacts, not about the
 people using them, and which no published linkage rate exposes.
+
+<!-- /only -->
+
 
 **Contributions.** Stated against what is already published rather than against an
 assumed gap. We make **no first-to-measure claim**: Rath & Mäder's SEOSS 33 [@rath2019seoss]
@@ -171,11 +220,14 @@ withdrawn (§2.1).
 6. **A six-mode taxonomy of the ways a project silently fails to support an
    issue-linked study**, three of them disqualifying and three of them producing a
    plausible wrong number rather than an error.
+<!-- only: preprint -->
 7. **A second ecosystem and two further channels**, which is what makes the
    result more than an Apache artifact: in a TypeScript corpus, 3 of 96
    architectural commits mention refactoring, 7% link an issue, and 69% never
    pass through code review at all.
+<!-- /only -->
 
+<!-- only: preprint -->
 **What this paper is not.** It is not a study of refactoring friction; the
 exploratory Hadoop results live in the replication package and none of them is
 claimed here. It does not propose the successor design the corpus limits point
@@ -183,12 +235,11 @@ towards. And it does not argue that the projects it drops are badly run — a
 project that moved to GitHub Issues is not failing at anything except a
 convention this kind of research happens to need.
 
+<!-- /only -->
+
 ---
 
 # 2. Related work
-
-Drafted from `paper/PRIOR_WORK.md` (`215b10f`) and `paper/SATD_NOVELTY.md`
-(`5b50ef1`). Reorganisation of verified findings, not new argument.
 
 ## 2.1 Per-project linkage rates are already published
 
@@ -218,6 +269,7 @@ only quantity the two studies share — gives **5,214 / 12,419 = 41.9841%** agai
 their **41.98%**, a gap of **+0.0041pp**. All five overlapping projects agree once
 scope is matched.
 
+<!-- only: preprint -->
 **On the exactness of that match, which invites suspicion and should not.** The
 quantity is a deterministic count — commits whose message matches a key pattern,
 over a fixed and identically bounded commit range — not an estimate, and it
@@ -228,6 +280,8 @@ that have sampling error, and this has none. The two figures also reach us by
 independent paths: SEOSS's 41.98% is transcribed from their published table, and
 41.9841% is a fresh scan of a clone at a pinned sha. **What the match confirms is
 scope alignment, and nothing beyond it.**
+
+<!-- /only -->
 
 SEOSS's selection criteria matter for our argument: a project must "continuously
 capture vertical and horizontal trace links among these artifacts". So a
@@ -250,6 +304,7 @@ qualitatively in 2018.
 Selection there was also informal: the six were chosen because each "largely
 followed the practice of tagging commits with issue IDs". Again no threshold.
 
+<!-- only: preprint -->
 **Vieira et al. 2019** [@vieira2019reports] (PROMISE'19, 55 Apache projects, >70,000 bug reports) may
 or may not report per-project linkage. **Unverified:** ACM DL, ResearchGate and
 figshare all returned 403 to unauthenticated fetches, so neither the paper body
@@ -257,6 +312,8 @@ nor the package manifest could be read. Recorded as unverified rather than
 characterised. Note its selection is already conditioned on *resolution = Fixed*,
 which pre-selects tickets that were worked, so any rate it reports would not be
 comparable to ours without care.
+
+<!-- /only -->
 
 ## 2.2 What is therefore new here
 
@@ -283,9 +340,9 @@ Positioned against the above rather than against an assumed gap:
    commensurable when they are not.
 5. **The ticket-side rate measured across the whole probe**, including the 26
    projects the bar **rejected** — Rath 2018 reports it per issue *type*, and only
-   for the six projects it selected. *(Whether the quantity is also newly
-   **named** depends on the Bachmann determination in §2.4 and is
-   **[PENDING]**.)*
+   for the six projects it selected. The contribution is the coverage, not the
+   name: §3.1 introduces "ticket realisation rate" as a label for the paper's own
+   use and claims no priority for it.
 6. **The six-mode taxonomy**, and that none of it is expressible in any published
    frame.
 
@@ -306,6 +363,30 @@ candidates are unusable. That is what happened here.
 
 ## 2.4 The bug-side linkage literature, and what it already settled
 
+<!-- only: msr2027 -->
+The commit-side/ticket-side asymmetry measured here was studied on the bug side a
+decade and a half ago. **Bachmann et al. (FSE'10)** [@bachmann2010missing] had a
+core Apache HTTP Server developer annotate **493 commits** exhaustively with a
+purpose-built tool [@bird2010linkster], establishing ground truth rather than
+inferring it, and found only **47.6%** of bug-fix-related commits documented in
+the tracker; their target is the completeness of the link on one project over one
+window, ours a per-project rate over a whole tracker, established mechanically.
+**Bird et al. (ESEC/FSE'09)** [@bird2009fair] is why it matters: missing links are
+not missing at random, so a dataset built from linked records is a biased sample
+and models fitted to it inherit the bias, which is the same argument this paper
+makes for architectural change. Around them, Herzig et al. (ICSE'13)
+[@herzig2013not] show the reports themselves are misclassified, Nguyen et al.
+(WCRE'10) [@nguyen2010case] replicate the bias result, and a line of work
+beginning with ReLink [@wu2011relink] recovers missing links from time proximity,
+author identity and textual similarity. The two measurements do not condition on
+the same thing: Bachmann et al. restrict attention to bugs and bug-fix commits,
+whereas §3.1.1 admits every issue type and conditions on nothing. This paper does
+not adjudicate whether that makes the quantities distinct, and no claim it makes
+depends on the answer.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 The commit-side/ticket-side asymmetry this paper measures was studied on the
 bug-side a decade and a half ago, and that literature is the direct ancestor of
 §4.2. It is set out here rather than merely listed, because two of its findings
@@ -323,19 +404,18 @@ project over one window; ours is a per-project rate over a whole tracker,
 established mechanically. Their design is far stronger on ground truth and far
 narrower in scope; ours is the reverse.
 
-> **[DETERMINATION PENDING]** Whether the ticket realisation rate of §3.1 is the
-> same quantity Bachmann et al. measured, or a distinct one, is **not settled in
-> this draft**. The argument for distinctness is that §3.1.1 admits every issue
-> type and every status and conditions on nothing, whereas Bachmann conditions on
-> bugs and bug-fix commits. That argument has not been adjudicated against the
-> paper's own text, and the naming claim in §3.1 stands or falls with it. See
-> `paper/REVISION_LOG.md`, GATE.
+The two measurements are not identical in what they condition on: Bachmann et al.
+restrict attention to bugs and bug-fix commits, whereas §3.1.1 admits every issue
+type and every status and conditions on nothing. This paper does not adjudicate
+whether that difference makes the quantities distinct, and no claim it makes
+depends on the answer. Bachmann et al. is cited here as the prior measurement of
+link completeness, and §3.1 claims no priority for the name it uses.
 
 **Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** [@bird2009fair] — C.
 Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu — is
 the reason any of this matters. Missing links are not missing at random, so a
 dataset built from linked records is a biased sample of the work, and models
-fitted to it inherit the bias. **This is the same argument our §7.3 makes for
+fitted to it inherit the bias. **This is the same argument this paper makes for
 architectural change**, arrived at independently and seventeen years later, and
 we cite it as the prior statement of the principle rather than as a parallel.
 
@@ -368,7 +448,16 @@ operate on a project already known to be a candidate. But the unqualified claim
 that missing links are unrecoverable would overstate the gap, and §5.5 is
 qualified accordingly.
 
+<!-- /only -->
 ## 2.5 Refactoring and self-admitted technical debt
+
+<!-- only: msr2027 -->
+The successor design this corpus limit points towards is a self-admitted
+technical debt anchor, and its novelty margin rests on three simultaneous choices
+that the prior work does not combine. That design is not proposed here.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 Included because it bounds what this paper claims. **Iammarino et al. (2021,
 JSS)** [@iammarino2021empirical] and **Esfandiari & Sami (ICCKE 2023)**
@@ -385,6 +474,7 @@ literature depends on, so its exposure is ours. And the successor design this
 study points to is **not proposed here**; it is a separate registered report
 gated on external judgment (`paper/SATD_NOVELTY.md`).
 
+<!-- /only -->
 ## 2.6 Detector validity
 
 RefactoringMiner [@tsantalis2026refactoringminer] is the detector. Its TypeScript support was complete
@@ -427,11 +517,15 @@ tracked issues that are ever cited by at least one commit:
 
 > **TRR(p) = |{ k ∈ Tickets(p, T) : ∃ c ⟶ H_p, k ∈ cites(c) }| / |Tickets(p, T)|**
 
-The name is introduced here because the quantity has been reported without one.
-Rath et al. (ICSE'18) [@rath2018traceability] measure it — "approximately 43.3% of improvements and 42.4%
-of bugs have no commits associated with them" — as a property of an issue type
-rather than as a project-level rate with a name, and the divergence between it
-and CSR is not framed anywhere as a constraint on corpus selection.
+TRR is a label of convenience for this paper. It is not a claim to have named the
+quantity first, and nothing here depends on the name being new. The quantity has
+been measured before: Rath et al. (ICSE'18) [@rath2018traceability] report that
+"approximately 43.3% of improvements and 42.4% of bugs have no commits associated
+with them", as a property of an issue type rather than as a project-level rate,
+and Bachmann et al. (FSE'10) [@bachmann2010missing] measure the completeness of
+the bug-side link against expert ground truth. What is new here is the use made
+of the quantity rather than the quantity itself: the divergence between TRR and
+CSR is not framed anywhere as a constraint on corpus selection.
 
 **"Realisation" is a claim about the record, not about the work.** TRR counts a
 ticket as realised when the repository's own record points back to it. A ticket
@@ -489,6 +583,24 @@ and is disclosed here instead of being assigned an invented category.
 
 ### 3.1.3 How the denominator is bounded in time
 
+<!-- only: msr2027 -->
+TRR compares a tracker read at T against a repository read at H_p, and **the
+measure requires T ≤ date(H_p)** so that every ticket in the denominator has had
+the whole interval to date(H_p) in which to receive a commit. A tracker read
+ahead of the repository makes the newest tickets structurally incapable of being
+realised and biases TRR downward by an amount that depends on the project's
+filing rate, which looks exactly like poor traceability. Two instantiations are
+used and both satisfy it: **TRR_live** reads Apache Jira and the pinned shas on
+the same day, 2026-07-25, restricted mechanically to issue keys so that nothing
+in it can be turned into a duration; **TRR_frozen** uses the Public Jira Dataset
+[@montgomery2025jira], a snapshot predating every pinned sha, with membership
+defined in issue-number space because the snapshot's per-project date is not
+recoverable. Throughout, an unsubscripted `TRR`, `ceiling` or `fill` means the
+live measurement.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 This is the definitional detail that decides whether TRR is interpretable, and it
 is the one most easily got wrong.
 
@@ -524,6 +636,8 @@ numbers, and the denominator is N_p while the numerator counts only cited keys
 numbered ≤ N_p. The two definitions coincide except for issues moved between
 projects, which perturb the correspondence between count and highest number.
 §4.3 measures the size of that perturbation rather than assuming it away.
+
+<!-- /only -->
 
 ### 3.1.4 The arithmetic ceiling, and what is left once it is removed
 
@@ -563,7 +677,7 @@ behaviour:
 a project's citing commits spread across distinct tickets rather than piling onto
 a few. **`fill` is the quantity a claim about citation discipline needs**;
 `ceiling` is a property of how much code the project writes per ticket it files.
-Tables 1 and 3 report both. §4.2 shows that in this corpus almost all of the
+Both are reported for every eligible project (Table 1). §4.2 shows that in this corpus almost all of the
 ticket-side variation is ceiling and almost none of it is fill.
 
 **The subscript propagates, and it matters.** `ceiling` and `fill` are both
@@ -590,7 +704,7 @@ one.
 
 **Hadoop itself is not one of the 38.** It is the corpus the exploratory work was
 done on, and it is used here only as the worked example for multi-key matching.
-Every rate in Tables 1 and 3 is from a project Hadoop is not.
+Every rate reported for the eligible corpus is from a project Hadoop is not.
 
 **Key prefixes were detected empirically from commit messages, not assumed.**
 This is not a refinement; it decides the answer. A single-key probe reads Hadoop
@@ -606,9 +720,9 @@ Evergreen reads 71.7% under a single-key probe for the same reason. Seven of the
 key set and is cited by **zero** commits; every Jira reference in that repository
 is an `HDDS` key. It is retained in the probe because the key set was fixed from
 a prefix scan before the counts were read, and removing it afterwards would be
-selection on the outcome. §5.3 counts it among the six probed keys with no
-project record in the frozen tracker corpus, which is a different fact about the
-same key: it is neither cited in git nor present in the tracker.
+selection on the outcome. It is also one of **six** probed keys with no project
+record in the frozen tracker corpus, which is a different fact about the same
+key: it is neither cited in git nor present in the tracker.
 
 **Both reference channels are counted.** GitHub-issue references (`#NNN`,
 `GH-NNN`) are counted per repository alongside Jira keys. This is what turns each
@@ -660,8 +774,7 @@ a false positive (160 instances in one commit, upstream issue #1124).
 
 **Twelve of 38 Apache candidates clear the pre-registered 0.80 commit-side bar,
 and every one of them is Hadoop-ecosystem under the classification set out
-below** (Table 1;
-`figures/eligibility_funnel.png` panel A). The bar was fixed before any project
+below** (Table 1, Figure 1). The bar was fixed before any project
 was cloned and never moved.
 
 No project outside the Hadoop ecosystem clears it. The best of them, James,
@@ -671,7 +784,7 @@ bar rejected.
 
 **The ecosystem label is a hand classification, and we tested whether a measured
 variable does the same work. It does not.** "Hadoop-ecosystem" is not a field in
-any dataset; one of the authors assigned it. The natural replacement is project
+any dataset; it was assigned by hand. The natural replacement is project
 generation — free metadata, no judgment, and a mechanism, since projects
 predating the 2019–20 migration of ASF development to GitHub pull requests had
 longer under the Jira-citation convention. Two generational variables were tried
@@ -689,6 +802,7 @@ twelve passing projects — Hive, HBase, ZooKeeper and Ozone — entered the ASF
 Hadoop subprojects rather than as incubator podlings and have no graduation date
 at all. The free metadata is not free for the group that matters.
 
+<!-- only: preprint -->
 **We therefore keep the hand label and mark it as a judgment.** The claim that
 survives without it is the measured one: 12 of 38 pass, and the twelve are
 concentrated in a way no available metadata field predicts. Reclassifying **Drill**
@@ -702,17 +816,25 @@ either — **Parquet fails at 29.1% and Accumulo at 43.0%**, both squarely insid
 the Hadoop dependency graph. What the bar selects is a specific commit-hygiene
 convention, not a dependency relationship and not a quality level.
 
+<!-- /only -->
+
 **The drop reasons are measured rather than inferred**, because both reference
 channels are counted per repository. Nine projects are dropped with
 `github_issue_references_dominate`, meaning the GitHub-issue count exceeds the
 Jira-key count in that repository — ShardingSphere carries 30,746 GitHub-issue
 references against 5 Jira keys in 49,111 commits. Four fall in
-`below_bar_narrowly` (≥70%) and the remainder in `low_commit_message_hygiene`.
+`below_bar_narrowly` (≥70%) and the remaining thirteen in
+`low_commit_message_hygiene`. Across all 26 the commit-side rate runs
+**0.0%–78.1%** with a median of **44.8%**; the per-project rows are in the
+replication package.
+<!-- only: preprint -->
 The industry-donated projects are the sharpest case: ShardingSphere 0.01%,
 SkyWalking 0.3%, Pinot 5.2%, RocketMQ 5.7%, Dubbo 11.0%. They never adopted the
 Jira-citation convention, and the attrition is therefore concentrated in the
 newest projects — which is the direction that matters for anyone building a
 corpus now.
+
+<!-- /only -->
 
 ## 4.2 The channel that is published is not the channel that is needed — and the gap is mostly arithmetic
 
@@ -743,7 +865,8 @@ constrain anything. That is not a disagreement about the projects. It is what a
 2026 commit window measured against an older tracker produces: the repository
 holds more citing commits than the snapshot holds tickets, so the arithmetic
 ceiling exceeds one and stops being a ceiling. The two estimators bound different
-denominators, and Table 3's own note says so. Neither figure is withdrawn.
+denominators, and the note accompanying that measurement says so.
+Neither figure is withdrawn.
 
 Ranked by fill rather than by rate, the ordering changes almost completely: Drill
 (43.2%, fill 0.95) sits above Ranger (65.4%, fill 0.80). *Every project in the
@@ -757,13 +880,28 @@ ticket the ticket-side rate is capped below the commit-side rate by construction
 The two rates were never commensurable, and reporting one as though it licensed
 the other is the error, not the projects' behaviour.
 
+<!-- only: preprint -->
 **The consequence for design is unchanged and now has a reason.** A study that
 samples commits and looks up their tickets can work in any of these twelve. A
 study that samples tickets and looks for the work is bounded by
 `commit-side × commits / tickets` before it begins, and that quantity is not
 reported anywhere in the literature — including by us, until now.
 
+<!-- /only -->
+
 ### 4.2.1 Kylin: the sharpest number in the corpus, and why it is withdrawn as the example
+
+<!-- only: msr2027 -->
+Earlier drafts led with Kylin, at 83.9% commit-side against 12.0% ticket-side,
+and **that example is withdrawn**: its pinned commit reaches 968 commits
+beginning 2022-08-01, **7.5% of the 12,937 on the repository's refs**, against a
+tracker running since 2014. Its 12.0% is therefore measured over a four-year
+commit window and its 0.16 commits per ticket is a fact about the branch rather
+than about Kylin. By fill, the measure that isolates discipline, Kylin sits at
+**0.87**, the corpus median, and is unremarkable.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 Earlier drafts led with Kylin — 83.9% commit-side against 12.0% ticket-side,
 "seven of every eight tickets with no commit at all". **That example is
@@ -797,7 +935,25 @@ is near Kylin's severity. The clone-depth column is in
 of this was known and removing it now would be selection on the outcome. It is
 flagged wherever it appears, and no claim in this paper rests on it.
 
+<!-- /only -->
+
 ## 4.3 The divergence is a property of the population, not of the survivors
+
+<!-- only: msr2027 -->
+Extending the ticket-side measurement to all 38 probed projects, against a frozen
+tracker snapshot and with an estimator whose end-to-end error is **1.76pp mean
+and 11.91pp maximum**, gives **no detectable association** between the two rates:
+rho = **−0.010** over the 33 projects with a usable denominator, 95% CI
+**[−0.35, +0.34]**, permutation p = 0.958. That rules out the strong positive
+relationship a selection bar implicitly assumes, but at 80% power this study
+detects only |rho| ≥ **0.47**, so **a null is not established**. On the twelve
+projects measured exactly and live the same correlation is **+0.518**, a
+disagreement in sign we report rather than resolve, and the per-project rows,
+the estimator's validation and the sensitivity analyses are in the replication
+package.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 Reporting §4.2 on the twelve that passed leaves the obvious objection open: the
 range 12.0–69.0% is *within-passing variation* in TRR_live, and says nothing about the 26
@@ -897,6 +1053,7 @@ is itself the taxonomy at work. Pinot (14 tracker issues), Dubbo (78) and Rocket
 have **no project record for their probed key at all** — mode 1 and mode 6, a
 category rather than a low number (§5.3).
 
+<!-- /only -->
 ## 4.4 The measure replicates independently across corpora seven years apart
 
 The commit-side rate is not a novel measure, and its agreement with an
@@ -972,19 +1129,12 @@ what happened here, and §5 is the taxonomy of the ways it happens.
 
 # 5. Six ways a project cannot support an issue-linked study
 
-Drafted from `paper/eligibility_failure_modes.md` (`5179907`).
-
 **Every mode below was discovered *after* selecting the project, by probing it.
 None is expressible in any published sampling frame.** GHS indexed 735,669
 repositories as published in 2021 and exposes 35 fields per record today, of
 which only `totalIssues` and `openIssues` touch issues, and both are
 GitHub-issue counts (§2.3). All six were found the same way:
 by reading commit messages, project by project.
-
-*Note on mode 6.* `README.md` §5 labels mode 6 "repository migrated across
-organisations". That framing was **superseded on 2026-07-25** once id→key
-stability was measured (`PROJECT_STATE.md` §2, `5179907`). The current statement
-is below, and it is the one this paper uses.
 
 | # | mode | worked example | evidence |
 |---:|---|---|---|
@@ -1100,15 +1250,13 @@ prior question.
 
 # 6. Threats to validity
 
-Assembled from `paper/ERA_AUDIT.md` (`e0d76ef`), `paper/ALIASING_HADOOP.md`,
-`paper/matcher_validation.md`, `SUI_FINDINGS.md`, `paper/numbers.md` and
-`PROJECT_STATE.md` §7. Several of the items below are things this study got wrong
-and corrected. **They are stated as the paper's credibility, not as its
+Several of the items below are things this study got wrong and corrected. **They are stated as the paper's credibility, not as its
 embarrassments** — a methods paper about record quality that concealed its own
 record would be self-refuting.
 
 ## 6.1 Construct validity
 
+<!-- only: preprint -->
 **The measure is 97.5% precise, and two of its failure modes were untestable.**
 Key matching was validated on a seeded 200-commit manual sample across the 12
 eligible projects: precision **195 of 200 = 97.5%** (Wilson 95% CI 94.3–98.9%),
@@ -1131,8 +1279,10 @@ recorded here rather than assigned an invented category.
 
 **Ticket-side coverage counts keys that resolve in the tracker.** Sqoop cites 790
 distinct keys of which 122 have no tracker record, so its ticket-side rate rests
-on the 668 that resolve (§5.3). This is mode 6 inside a passing project, and it
+on the 668 that resolve. This is mode 6 inside a passing project, and it
 means ticket-side rates are, strictly, coverage of *resolvable* tickets.
+
+<!-- /only -->
 
 **The 38-project extension uses a different denominator source, and the
 validation figure the earlier draft quoted was for a different approximation.**
@@ -1201,6 +1351,7 @@ had already cleared the bar. §4.3 does not extend that measurement; it is a
 different estimator against a different snapshot, and it is reported alongside
 rather than merged into it.
 
+<!-- only: preprint -->
 **"345 of 349 episodes traceable to 323 tickets" — the unit matters.** An estimate
 is a property of a ticket, not an episode; several episodes share a ticket. An
 earlier draft used 0/345 where 0/323 is correct (`PROJECT_STATE.md` §7).
@@ -1210,6 +1361,8 @@ traceability (26,125 / 28,290 Hadoop commits citing a key, four-key probe);
 92.3%-B is RefactoringMiner chunk coverage (3,175 / 3,440). Different numerators,
 denominators, scopes and claims. This paper uses **92.3%-A only**
 (`paper/numbers.md` §2).
+
+<!-- /only -->
 
 ## 6.2 Internal validity — instruments that decay, and one that terminates
 
@@ -1303,12 +1456,19 @@ paper's claims rest on:
 * the codebook's keyword rule for structural review discussion — **≈25% precise**
   (5 of 20 flagged comments genuinely structural), ≈5% miss (1 of 20 unflagged),
   on a 40-comment single-rater pass, with no κ;
+<!-- only: preprint -->
 * the TypeScript commit-message rule — **recall 3 of 96 = 3.1%**, **precision 3 of
   10 = 30%**.
 
 Their role is to establish that keyword-based detection over-counts roughly
 fourfold and finds 3% of the work, which is a validity result about a method other
 studies use.
+<!-- /only -->
+<!-- only: msr2027 -->
+
+Its role is to establish that keyword-based detection over-counts roughly
+fourfold, which is a validity result about a method other studies use.
+<!-- /only -->
 
 **The exception is argued rather than asserted.** The 200-commit matcher check is a
 mechanical determination against a written rule with categories fixed before
@@ -1382,6 +1542,7 @@ clusters**, because between-cluster variance is not estimable at n=4 and the
 estimate must come from the pooled study as a first stage
 (`replication/CORPUS_FEASIBILITY.md`).
 
+<!-- only: preprint -->
 **The TypeScript column is one repository, one company, and exploratory.**
 `BearStudio/start-ui-web`, 1,199 commits, 93% detector coverage, **n=28
 architectural PRs**. `SUI_FINDINGS.md` is marked EXPLORATORY throughout and every
@@ -1403,6 +1564,7 @@ TypeScript column's 3.1% exists. It is computable in principle and is the most
 obvious extension. Note also that the 25%-precision codebook figure measures
 **review comments**, a fourth channel, and is not a commit-message result
 (`paper/table2_visibility.md`).
+<!-- /only -->
 
 ## 6.8 Provenance of the work itself
 
@@ -1497,6 +1659,7 @@ shallow clone and a tracker listing:
 4. **the rate recomputed over recent history**, which exposes a convention that
    changed mid-history (mode 4).
 
+<!-- only: preprint -->
 **What the four fields would cost.** All four come from a `--filter=tree:0`
 bare clone plus one tracker listing. On this corpus those 38 clones came to
 **228 MB, a mean of 6.0 MB per project**, against the 4.3 GB the original
@@ -1507,6 +1670,8 @@ scale of 735,669 repositories, the marginal cost is the clone, and the clone is
 the cheapest kind there is. We are not claiming it is free at that scale; we are
 claiming it is the same order as what GHS already does per repository, and that
 nobody has to guess.
+
+<!-- /only -->
 
 This study spent 38 clones and 4.3 GB to keep 12. That cost is paid again by every
 group that attempts the same kind of corpus, and none of it is recoverable from
@@ -1530,6 +1695,19 @@ larger, more deliberate and more discussed than it is.
 
 ## 7.4 What follows from the corpus limit, without softening it
 
+<!-- only: msr2027 -->
+A corpus bounded to one ecosystem cannot support the between-ecosystem
+comparison the design wanted, and there are three ways out, each with a cost:
+**lower the bar and model the measurement error**, which buys nine more
+projects at the price of a biased sample of tickets within each; **change the
+outcome so it needs no tickets**, which dissolves the problem and the
+creation-to-first-commit clock with it; or **accept ecosystem-bounded scope and
+say so**. The third is the honest one and is what we do.
+
+<!-- /only -->
+
+<!-- only: preprint -->
+
 Twelve projects is not enough, and more projects would not fix it.
 Between-project correlation caps the effective sample at **P/ICC** whatever the
 corpus size: at P = 12 and ICC = 0.02 the ceiling is 600 against the 769
@@ -1544,7 +1722,8 @@ sample's, and higher ICC is what makes the study impossible.
 
 Three ways out, with their costs. **Lower the bar and model the measurement
 error** — at 60% another nine projects qualify, at the cost of a biased sample of
-tickets *within* each project, which §7.3 shows is real rather than hypothetical.
+tickets *within* each project, which the bug-side linkage literature (§2.4) shows
+is real rather than hypothetical.
 **This is the one to avoid drifting into silently.** **Change the outcome so it
 needs no tickets** — anything computed purely from git dissolves both the
 traceability filter and the ecosystem clustering, at the cost of the
@@ -1553,6 +1732,8 @@ creation-to-first-commit clock and with it the ability to measure waiting at all
 ecosystem, twelve projects, and state the boundary as a finding rather than
 discovering it in review. The second is the strongest study and the largest
 rebuild; the third is honest and immediately actionable.
+
+<!-- /only -->
 
 ## 7.5 What this paper does not claim
 
@@ -1575,7 +1756,33 @@ because a researcher would like it to.
 
 # 8. Acknowledgements and disclosures
 
-## 8.1 Data and tools
+## 8.1 Data availability
+
+Every artifact this paper rests on is archived and citable: the 38 pinned
+repository shas, the frozen tracker caches, the per-project measurements, the
+full 38-row eligibility table, the three-channel visibility table, every script
+that produced a number here, and the audit report against which the numbers were
+re-derived.
+<!-- only: preprint -->
+**Replication package:
+[https://doi.org/10.5281/zenodo.21846139](https://doi.org/10.5281/zenodo.21846139).**
+<!-- /only -->
+<!-- only: msr2027 -->
+**Replication package: ANONYMISED-ARTIFACT-DOI.**
+<!-- /only -->
+Nothing needed to
+reproduce a figure in this paper lives only in a version-control host.
+
+## 8.2 Data and tools
+
+<!-- only: msr2027 -->
+The Apache Software Foundation publishes the trackers and repositories the corpus
+is drawn from. The Public Jira Dataset (Zenodo 15719919, CC BY 4.0) supplies
+every frozen ticket denominator, SEOSS 33 provides the independent measurement
+the probe is validated against, and RefactoringMiner is the detector.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 This study is built on artifacts other people made public. The Apache Software
 Foundation publishes the issue trackers and repositories the whole corpus is
@@ -1588,7 +1795,24 @@ is validated against, and the agreement between them at matched scope
 and the RefactoringMiner contributors built the detector. None of them is
 responsible for what is done with their work here.
 
-## 8.2 Use of AI tools
+<!-- /only -->
+
+## 8.3 Use of AI tools
+
+<!-- only: msr2027 -->
+Large language model assistants (Anthropic's Claude) were used in this work: to
+write and run the analysis code, every script of which is committed and
+re-runnable; to draft prose from the author's outlines, findings and decisions;
+to check citations against source texts; and to conduct an adversarial audit
+that re-derived the load-bearing results with separately written code and
+reported the errors it found, unedited, in the replication package. The research
+questions, the study design, the pre-registered bar and its commitment before
+any project was cloned, the six retractions, and the judgment of what the
+results mean are the author's. **The author takes full responsibility for all
+content, including any error a tool introduced and the author did not catch.**
+<!-- /only -->
+
+<!-- only: preprint -->
 
 **Declared in full, because a paper about the trustworthiness of records should
 be candid about how its own were produced.**
@@ -1631,15 +1855,15 @@ different approximation than the one in use; a provenance checker that could not
 fail, and a first rebuild of it that reproduced the same defect by another route.
 Each is in `paper/REVISION_LOG.md` with what it changed.
 
-## 8.3 A separate matter: the LLM used as a rater
+<!-- /only -->
+
+## 8.4 A separate matter: the LLM used as a rater
 
 Section 6.5 reports a pilot in which a language model applied this study's
 codebook as a second rater. **That is an object of study here, not a method the
 paper's claims rest on**, and it is reported with its contamination disclosed and
 its conclusions bounded. No claim in this paper depends on it.
 
-## 8.4 Funding and competing interests
+## 8.5 Funding and competing interests
 
-No funding was received. The author declares no competing interests. The work was
-carried out independently, alongside full-time employment, which is stated in
-Section 6.8 because it explains the shape of the study's limitations.
+No funding was received. The author declares no competing interests.
