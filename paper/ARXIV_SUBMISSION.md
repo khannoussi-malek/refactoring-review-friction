@@ -49,8 +49,11 @@ more restrictively licensed than the artifacts it points at.
 
 ## Comments field
 
+Written to foreground the measurement rather than the argument, for the reason
+set out under "Moderator risk" below.
+
 ```
-40 pages, 3 tables, 1 figure. Replication package: https://doi.org/10.5281/zenodo.21846139
+38 Apache projects probed against a pre-registered 0.80 issue-commit linkage threshold; per-project commit-side and ticket-side rates reported for all 38. 40 pages, 3 tables, 1 figure. Replication package with data, scripts and pinned commit shas: https://doi.org/10.5281/zenodo.21846139
 ```
 
 ---
@@ -133,3 +136,47 @@ Verified: no `\write18`, no shell-escape, no `\input` or `\include` reaching
 outside the submission directory. Packages used are all stock TeX Live:
 amsmath, amssymb, array, babel, booktabs, caption, fontenc, geometry, graphicx,
 hyperref, inputenc, lmodern, longtable, microtype, parskip, pdflscape.
+
+
+---
+
+## Moderator risk: this is not a position paper, but parts of it skim like one
+
+Since October 2025 arXiv CS rejects review articles and position papers that
+lack documentation of completed peer review. This paper is original empirical
+research and should not be caught by that, but three things could read
+otherwise to someone skimming:
+
+* §1 carries the heading "How we arrived at a methods paper", and "methods
+  paper" is a phrase a moderator may read as "not primary research".
+* §5 is a taxonomy, and taxonomies are a review-article shape.
+* §7 is three subsections of advice, one of them titled "For the field".
+
+**I did not change any of it.** All three are accurate descriptions of a paper
+that also probes 38 projects, pre-registers a threshold, and reports per-project
+measurements for every one of them.
+
+What I did instead: the comments line above now leads with the corpus size, the
+pre-registered threshold, and the fact that per-project rates are reported for
+all 38, so the first thing a moderator reads is the measurement.
+
+### Phrasing scan of the title and abstract
+
+Scanned for advocacy vocabulary: *should*, *must*, *we argue*, *we call for*,
+*recommend*, *advocate*, *the field*, *lessons*, *guidelines*, *position*,
+*implications*, *needs to*, *ought*. **Zero hits** in either the title or the
+abstract. The title is measurement-shaped already: it names the corpus and calls
+the work a probe.
+
+The abstract's first two sentences are "Empirical studies of architectural
+change read a project's own records and assume the record traces the work. We
+measure that assumption in three record channels across two ecosystems and find
+it fails in every one." That is a measurement claim, and the corpus size, the
+0.80 bar and the words "pre-registered before any project was cloned" all arrive
+in the sentence immediately after.
+
+**One thing to weigh.** If you use Version B, the corpus size and the
+pre-registered bar appear in sentence three, which is early enough. If you ever
+trim further, keep paragraph 2. Cutting it would leave an abstract whose first
+paragraph is entirely framing, and that is the version that reads like a
+position paper.
