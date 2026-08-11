@@ -541,3 +541,23 @@ One page of headroom remains under the limit. It is deliberately not spent.
 **Outstanding, and not something this branch can supply:** the Zenodo deposit.
 §8.1 carries `ANONYMISED-ARTIFACT-DOI` as a placeholder and will fail the
 "resolvable DOI" check until the deposit exists.
+
+---
+
+# Deposit assembly, 2026-08-11
+
+Defects found while assembling the Zenodo record. No number, claim, hedge or
+caveat in the paper changes; these repair artifacts the paper points at.
+
+| # | what was wrong | what was done | why it is not a claim change |
+|---:|---|---|---|
+| Z1 | `deposit/MANIFEST-v1.md` stated "Per-file SHA-256 digests are in the JSON manifest alongside this file". **They were absent.** The JSON carried totals, per-directory counts and one archive-level hash only. §6.8 describes the archive as 2,491 files with a per-file SHA-256 manifest and §8.3 says the audit verified all 2,491 against their manifest; neither reading had support | Per-file digests were **generated from `jira-caches-v1.tar.gz` at its already-recorded hash** `fcb705b6…1b9a95`, which was re-confirmed before deriving anything, so the provenance chain is unbroken. Written to `deposit/MANIFEST-v1.json` under `files`, with a `files_provenance` block recording when and from what. Verification then re-run end to end: **2,491 checked, 2,491 matched, 0 mismatches** | The artifact was made to match the sentences. No cache file was modified: every digest was computed from the archive whose hash the manifest already recorded, and all 2,491 still match the working tree byte for byte |
+| Z2 | The deposit copy of `paper/matcher_sample.json` carried **40 real developer email addresses** from Apache commit metadata, plus `ivan@dalmet.fr` in five files as the aliasing worked example, and `stevel@apache.org` in `paper/llm_rater_labels.json` | Pseudonymized in the **deposit copies only**, using `scripts/pseudonymize.py`, whose aliases are salted HMAC and therefore deterministic: the same address maps to the same pseudonym in every file. The working tree is untouched | §6.5's claim that a reader can re-check all 200 labels is unaffected. The matcher reads `%H`, `%s` and `%b` only, so author identity was never part of the determination. Verified after: 200 sample entries and 200 labels still correspond one to one, all 212 sha-keyed values identical, and only the `body` field changed, in 30 of 200 entries |
+| Z3 | `paper/FINAL_BRIEF_LOG.md` held third-party institutional contact addresses and is not research data | Excluded from the deposit, kept in the working tree | It is not among the 73 cited paths. The path audit after the drop is unchanged: **73 cited, 73 present, 0 missing** |
+| Z4 | — | `spent/` is **kept** in the deposit, deliberately | §6.6's claim that a threshold was held when lowering it would have rescued two projects is only checkable if the sequestered inputs are public. No outcome was ever observed for HBase or Phoenix, so publishing them is consistent with the held-out rule |
+
+Two format templates in `scripts/sui/identity.py` were **preserved** rather than
+pseudonymized: `ID+login@users.noreply.github.com` and
+`login@users.noreply.github.com` describe GitHub's noreply address scheme and
+are matched by the regex on line 27. Replacing them would have left the
+docstring contradicting the code it documents.
