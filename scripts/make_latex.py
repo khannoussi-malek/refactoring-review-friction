@@ -809,11 +809,17 @@ def emit_table(rows, caption=None, label=None, unmapped=None,
     # mode"). The body tables are all 3 to 7 rows, so they fit a float; table*
     # spans both columns, which the widest of them needs. The three big tables
     # go to the appendix, which drops to one column so longtable works there.
-    floated = DOCCLASS[0] in TWO_COLUMN and not caption and not caption_raw
+    # A captioned table narrow enough to set as a float belongs in the body as a
+    # table*, not in a one-column appendix behind a \clearpage. Table 1 at seven
+    # columns cost a whole page that way, of which it filled a sixth.
+    floated = DOCCLASS[0] in TWO_COLUMN and ncol < 8 and (
+        (not caption and not caption_raw) or (caption and not continued))
 
     out = []
     if floated:
-        out += [r"\begin{table*}[htbp]", r"\centering",
+        cap = ([r"\caption{" + inline(caption, unmapped) + "}"
+                + (r"\label{" + label + "}" if label else "")] if caption else [])
+        out += [r"\begin{table*}[htbp]", r"\centering"] + cap + [
                 r"\begingroup" + size + r"\setlength{\tabcolsep}{3pt}",
                 r"\begin{tabular}{" + spec + "}", r"\toprule",
                 " & ".join(r"\textbf{" + breakable(inline(c, unmapped)) + "}"
@@ -1272,7 +1278,7 @@ def bibliography(cls="article"):
 
 
 def table_appendix(unmapped, cls="article", keep=None, tgt=None, drop_cols=None,
-                   tspec_parts=None):
+                   tspec_parts=None, force_appendix=None):
     """Each table file carries its own headings, its data table and a prose
     caption. The headings are starred so the appendix cannot renumber the
     paper's sections, and the first data table in each file takes the caption
@@ -1287,8 +1293,33 @@ def table_appendix(unmapped, cls="article", keep=None, tgt=None, drop_cols=None,
     # typeset there ("longtable not in 1-column mode"). Keying this to "ieee"
     # alone sent nine such errors into the ACM build, which still produced a
     # PDF, so the damage was only visible in the log.
-    out = [r"\clearpage"]
-    if cls in TWO_COLUMN:
+    # The one-column appendix exists only because longtable cannot typeset in
+    # two columns. If every table this target keeps fits a float, the appendix
+    # costs a forced page break and buys nothing.
+    # Width must be judged AFTER the manifest drops columns, or a table cut down
+    # to seven columns still drags in the one-column appendix it no longer needs.
+    def _kept_tables():
+        for path, label, _c, n_data in TABLES:
+            if keep is not None and label not in keep:
+                continue
+            seen = 0
+            for k, pl in parse(read_section(ROOT / path, tgt)):
+                if k != "table":
+                    continue
+                seen += 1
+                lim = (tspec_parts or {}).get(label)
+                if lim is not None and seen > lim:
+                    break
+                yield (drop_columns(pl, (drop_cols or {}).get(label))
+                       if seen == 1 else pl)
+    # Measured, not assumed: for the MSR target the one-column appendix came out
+    # at 12 pages and the same table set as body floats at 13, because a wide
+    # float displaces more text than the page break costs. The manifest records
+    # the choice so it is not re-litigated from intuition.
+    needs_onecol = (force_appendix if force_appendix is not None
+                    else any(max(len(r) for r in pl) >= 8 for pl in _kept_tables()))
+    out = [r"\clearpage"] if needs_onecol else []
+    if cls in TWO_COLUMN and needs_onecol:
         out.append(r"\onecolumn")
     header = [r"\section*{Tables}",
               r"\addcontentsline{toc}{section}{Tables}", ""]
@@ -1357,7 +1388,7 @@ def table_appendix(unmapped, cls="article", keep=None, tgt=None, drop_cols=None,
             body.append(r"\end{landscape}")
         out += body
         out.append("")
-    if cls in TWO_COLUMN:
+    if cls in TWO_COLUMN and needs_onecol:
         out.append(r"\twocolumn")
     return out
 
@@ -1633,7 +1664,8 @@ def main():
 
     body += table_appendix(unmapped, args.cls, keep=tspec.get("tables"), tgt=tname,
                            drop_cols=tspec.get("drop_columns"),
-                           tspec_parts=tspec.get("table_parts"))
+                           tspec_parts=tspec.get("table_parts"),
+                           force_appendix=tspec.get("table_appendix"))
     body += bibliography(args.cls)
     body.append(r"\end{document}")
     text = "\n\n".join(body)

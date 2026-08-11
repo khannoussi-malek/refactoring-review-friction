@@ -28,6 +28,7 @@ only quantity the two studies share — gives **5,214 / 12,419 = 41.9841%** agai
 their **41.98%**, a gap of **+0.0041pp**. All five overlapping projects agree once
 scope is matched.
 
+<!-- only: preprint -->
 **On the exactness of that match, which invites suspicion and should not.** The
 quantity is a deterministic count — commits whose message matches a key pattern,
 over a fixed and identically bounded commit range — not an estimate, and it
@@ -38,6 +39,8 @@ that have sampling error, and this has none. The two figures also reach us by
 independent paths: SEOSS's 41.98% is transcribed from their published table, and
 41.9841% is a fresh scan of a clone at a pinned sha. **What the match confirms is
 scope alignment, and nothing beyond it.**
+
+<!-- /only -->
 
 SEOSS's selection criteria matter for our argument: a project must "continuously
 capture vertical and horizontal trace links among these artifacts". So a
@@ -60,6 +63,7 @@ qualitatively in 2018.
 Selection there was also informal: the six were chosen because each "largely
 followed the practice of tagging commits with issue IDs". Again no threshold.
 
+<!-- only: preprint -->
 **Vieira et al. 2019** [@vieira2019reports] (PROMISE'19, 55 Apache projects, >70,000 bug reports) may
 or may not report per-project linkage. **Unverified:** ACM DL, ResearchGate and
 figshare all returned 403 to unauthenticated fetches, so neither the paper body
@@ -67,6 +71,8 @@ nor the package manifest could be read. Recorded as unverified rather than
 characterised. Note its selection is already conditioned on *resolution = Fixed*,
 which pre-selects tickets that were worked, so any rate it reports would not be
 comparable to ours without care.
+
+<!-- /only -->
 
 ## 2.2 What is therefore new here
 

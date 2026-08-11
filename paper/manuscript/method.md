@@ -210,9 +210,9 @@ Evergreen reads 71.7% under a single-key probe for the same reason. Seven of the
 key set and is cited by **zero** commits; every Jira reference in that repository
 is an `HDDS` key. It is retained in the probe because the key set was fixed from
 a prefix scan before the counts were read, and removing it afterwards would be
-selection on the outcome. §5.3 counts it among the six probed keys with no
-project record in the frozen tracker corpus, which is a different fact about the
-same key: it is neither cited in git nor present in the tracker.
+selection on the outcome. It is also one of **six** probed keys with no project
+record in the frozen tracker corpus, which is a different fact about the same
+key: it is neither cited in git nor present in the tracker.
 
 **Both reference channels are counted.** GitHub-issue references (`#NNN`,
 `GH-NNN`) are counted per repository alongside Jira keys. This is what turns each

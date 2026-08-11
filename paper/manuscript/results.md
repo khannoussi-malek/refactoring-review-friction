@@ -32,6 +32,7 @@ twelve passing projects — Hive, HBase, ZooKeeper and Ozone — entered the ASF
 Hadoop subprojects rather than as incubator podlings and have no graduation date
 at all. The free metadata is not free for the group that matters.
 
+<!-- only: preprint -->
 **We therefore keep the hand label and mark it as a judgment.** The claim that
 survives without it is the measured one: 12 of 38 pass, and the twelve are
 concentrated in a way no available metadata field predicts. Reclassifying **Drill**
@@ -45,6 +46,8 @@ either — **Parquet fails at 29.1% and Accumulo at 43.0%**, both squarely insid
 the Hadoop dependency graph. What the bar selects is a specific commit-hygiene
 convention, not a dependency relationship and not a quality level.
 
+<!-- /only -->
+
 **The drop reasons are measured rather than inferred**, because both reference
 channels are counted per repository. Nine projects are dropped with
 `github_issue_references_dominate`, meaning the GitHub-issue count exceeds the
@@ -54,11 +57,14 @@ references against 5 Jira keys in 49,111 commits. Four fall in
 `low_commit_message_hygiene`. Across all 26 the commit-side rate runs
 **0.0%–78.1%** with a median of **44.8%**; the per-project rows are in the
 replication package.
+<!-- only: preprint -->
 The industry-donated projects are the sharpest case: ShardingSphere 0.01%,
 SkyWalking 0.3%, Pinot 5.2%, RocketMQ 5.7%, Dubbo 11.0%. They never adopted the
 Jira-citation convention, and the attrition is therefore concentrated in the
 newest projects — which is the direction that matters for anyone building a
 corpus now.
+
+<!-- /only -->
 
 ## 4.2 The channel that is published is not the channel that is needed — and the gap is mostly arithmetic
 

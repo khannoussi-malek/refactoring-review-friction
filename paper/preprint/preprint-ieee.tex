@@ -326,7 +326,7 @@ Second, it decomposes TRR into a part that is arithmetic and a part that is beha
 
 \textbf{Key prefixes were detected empirically from commit messages, not assumed.} This is not a refinement; it decides the answer. A single-key probe reads Hadoop at \textbf{26.2\%}, against \textbf{92.3\%} on a four-key probe and \textbf{97.8\%} on a seven-key probe of the same 28,290 commits (\S\kern0.13em \ref{sec:5}, modes 5 and 6). The three figures are the same measurement under three key sets, not a rate and a correction to it; 97.8\% is the most complete of them, and the paper quotes whichever key set it names. Evergreen reads 71.7\% under a single-key probe for the same reason. Seven of the 38 needed a second key (\texttt{CALCITE,OPTIQ}, \texttt{HDDS,OZONE}, \texttt{KARAF,FELIX}, \texttt{PINOT,THIRDEYE}, \texttt{ROCKETMQ,RIP}, \texttt{TOMEE,OPENEJB}, \texttt{JAMES,MAILBOX}).
 
-\textbf{One of those second keys was never used.} \texttt{OZONE} appears in Ozone's probed key set and is cited by \textbf{zero} commits; every Jira reference in that repository is an \texttt{HDDS} key. It is retained in the probe because the key set was fixed from a prefix scan before the counts were read, and removing it afterwards would be selection on the outcome. \S\kern0.13em \ref{sec:5.3} counts it among the six probed keys with no project record in the frozen tracker corpus, which is a different fact about the same key: it is neither cited in git nor present in the tracker.
+\textbf{One of those second keys was never used.} \texttt{OZONE} appears in Ozone's probed key set and is cited by \textbf{zero} commits; every Jira reference in that repository is an \texttt{HDDS} key. It is retained in the probe because the key set was fixed from a prefix scan before the counts were read, and removing it afterwards would be selection on the outcome. It is also one of \textbf{six} probed keys with no project record in the frozen tracker corpus, which is a different fact about the same key: it is neither cited in git nor present in the tracker.
 
 \textbf{Both reference channels are counted.} GitHub-issue references (\texttt{\#NNN}, \texttt{GH-\allowbreak{}NNN}) are counted per repository alongside Jira keys. This is what turns each drop reason from an inference into a measurement: \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} means the GitHub count exceeds the Jira count in that repository, and nine projects qualify.
 
@@ -611,7 +611,7 @@ Several of the items below are things this study got wrong and corrected. \textb
 
 \textbf{A key matched from a branch name is counted as a genuine reference.} Two mechanisms occur in the sample: merge subjects (\texttt{Merge branch 'master' into KNOX-\allowbreak{}998-\allowbreak{}Package\_\allowbreak{}Restructuring}) and svn trailers naming a branch (\texttt{.\allowbreak{}.\allowbreak{}.\allowbreak{}/\allowbreak{}branches/\allowbreak{}TEZ-\allowbreak{}1@1471779}). The ticket association is correct even though the commit does not implement the ticket. The five failure categories were fixed before labelling and do not cover this case, so it was counted genuine and is recorded here rather than assigned an invented category.
 
-\textbf{Ticket-side coverage counts keys that resolve in the tracker.} Sqoop cites 790 distinct keys of which 122 have no tracker record, so its ticket-side rate rests on the 668 that resolve (\S\kern0.13em \ref{sec:5.3}). This is mode 6 inside a passing project, and it means ticket-side rates are, strictly, coverage of \emph{resolvable} tickets.
+\textbf{Ticket-side coverage counts keys that resolve in the tracker.} Sqoop cites 790 distinct keys of which 122 have no tracker record, so its ticket-side rate rests on the 668 that resolve. This is mode 6 inside a passing project, and it means ticket-side rates are, strictly, coverage of \emph{resolvable} tickets.
 
 \textbf{The 38-project extension uses a different denominator source, and the validation figure the earlier draft quoted was for a different approximation.} \S\kern0.13em \ref{sec:4.3} measures the ticket realisation rate for all 38 projects against the frozen public Jira corpus rather than a second live fetch, aligning numerator and denominator in issue-number space (\S\kern0.13em \ref{sec:3.1.3}). \textbf{Two approximations are stacked}: number-capping, and substituting a frozen snapshot for the live tracker. The 0.45pp / 2.14pp figure earlier drafts quoted validates only the first. The end-to-end error of the combination Table~\ref{tab:ticketside} actually uses is \textbf{1.76pp mean / 11.91pp max}, the worst case being Kylin; excluding Kylin it is 0.84pp mean and \textbf{2.93pp max, with 11 of 12 inside 3pp}. \textbf{Quote the end-to-end figure.}
 
@@ -1047,33 +1047,21 @@ Rows are \textbf{record channels} --- the three places an empirical software eng
 
 
 
+\begin{table*}[htbp]
+
+\centering
+
+\caption{Three-channel visibility of architectural change across two ecosystems. Every cell is a different quantity with its own denominator and no statistic is computed across them.}\label{tab:visibility}
+
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.1050\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4705\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4245\linewidth-2\tabcolsep\relax}}
-
-\caption{Three-channel visibility of architectural change across two ecosystems. Every cell is a different quantity with its own denominator and no statistic is computed across them.}\label{tab:visibility}\\
+\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.1050\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4705\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4245\linewidth-2\tabcolsep\relax}}
 
 \toprule
 
 \textbf{channel} & \textbf{Apache / Jira / Java (Hadoop)} & \textbf{start-\allowbreak{}ui-\allowbreak{}web / GitHub / TypeScript} \\
 
 \midrule
-
-\endfirsthead
-
-\caption[]{\emph{(continued)}}\\
-
-\toprule
-
-\textbf{channel} & \textbf{Apache / Jira / Java (Hadoop)} & \textbf{start-\allowbreak{}ui-\allowbreak{}web / GitHub / TypeScript} \\
-
-\midrule
-
-\endhead
-
-\bottomrule
-
-\endlastfoot
 
 \textbf{commit message} & \textbf{not measured} --- no commit-\allowbreak{}message keyword instrument was built for this corpus. Architectural episodes were detected from ASTs (RefactoringMiner over 8,919 commits), never from message text, so no recall or precision figure against message text exists. See the note below: the 25\%-precision codebook figure is a \emph{review-comment} instrument and does not belong in this cell. & \textbf{recall 3 of 96 = 3.1\%} of architectural commits mention refactoring; \textbf{93 of 96 are silent}. \textbf{Precision 3 of 10 = 30\%} --- of 10 commits whose message claims refactoring, 7 are not architectural.\allowbreak{} Denominators: 96 architectural commits (recall), 10 refactoring-\allowbreak{}claiming messages (precision).\allowbreak{} \\
 
@@ -1081,9 +1069,13 @@ Rows are \textbf{record channels} --- the three places an empirical software eng
 
 \textbf{pull request} & \textbf{n/a} --- pre-\allowbreak{}migration Jira workflow. Hadoop's review record lived in Jira via the githubbot relay, not in pull requests, so there is no PR-level architectural-\allowbreak{}visibility measurement to make. The Jira-side proxy for it does not survive the 2019--20 GitHub migration either: architectural tickets carrying a CI verdict run \textbf{145 of 150 (96.7\%) $\leq$2018 $\rightarrow$ 66 of 130 (50.8\%) 2019--21 $\rightarrow$ 0 of 43 (0.0\%) $\geq$2022} (\texttt{paper/\allowbreak{}ERA\_\allowbreak{}AUDIT.\allowbreak{}md}). The channel is absent by workflow, not merely thin. & \textbf{30 of 96 = 31\%} of architectural commits are visible at PR level; \textbf{66 of 96 = 69\% never pass through code review at all}. Denominator = 96 architectural commits. \\
 
-\end{longtable}
+\bottomrule
+
+\end{tabular}
 
 \endgroup
+
+\end{table*}
 
 \textbf{This table demonstrates convergent invisibility across non-comparable measures. It is not a single metric measured six times.}
 

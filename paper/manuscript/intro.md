@@ -15,6 +15,16 @@ less often than a ticket-anchored design needs, for a reason that is arithmetic
 rather than cultural.
 <!-- /only -->
 
+<!-- only: msr2027 -->
+**How we arrived at a methods paper.** This study set out to measure
+signal-to-action latency: what in a project's records precedes a decision to
+restructure code. Six operationalisations were tried and closed, and Figure 1
+records them. The sampling frame turned out to be the finding, and this paper
+reports that rather than the latency result it went looking for.
+
+<!-- /only -->
+
+<!-- only: preprint -->
 **How we arrived at a methods paper.** The study began as an attempt to measure
 signal-to-action latency: what, if anything, in a project's records precedes the
 decision to restructure code. Six operationalisations were tested and closed, each
@@ -49,6 +59,9 @@ binding (§4.2, Table 3). What reads as a
 discipline gap is mostly a tracker accumulating tickets faster than a repository
 accumulates commits — which is a fact about the two artifacts, not about the
 people using them, and which no published linkage rate exposes.
+
+<!-- /only -->
+
 
 **Contributions.** Stated against what is already published rather than against an
 assumed gap. We make **no first-to-measure claim**: Rath & Mäder's SEOSS 33 [@rath2019seoss]

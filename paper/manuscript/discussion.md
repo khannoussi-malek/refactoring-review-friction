@@ -88,6 +88,19 @@ larger, more deliberate and more discussed than it is.
 
 ## 7.4 What follows from the corpus limit, without softening it
 
+<!-- only: msr2027 -->
+A corpus bounded to one ecosystem cannot support the between-ecosystem
+comparison the design wanted, and there are three ways out, each with a cost:
+**lower the bar and model the measurement error**, which buys nine more
+projects at the price of a biased sample of tickets within each; **change the
+outcome so it needs no tickets**, which dissolves the problem and the
+creation-to-first-commit clock with it; or **accept ecosystem-bounded scope and
+say so**. The third is the honest one and is what we do.
+
+<!-- /only -->
+
+<!-- only: preprint -->
+
 Twelve projects is not enough, and more projects would not fix it.
 Between-project correlation caps the effective sample at **P/ICC** whatever the
 corpus size: at P = 12 and ICC = 0.02 the ceiling is 600 against the 769
@@ -112,6 +125,8 @@ creation-to-first-commit clock and with it the ability to measure waiting at all
 ecosystem, twelve projects, and state the boundary as a finding rather than
 discovering it in review. The second is the strongest study and the largest
 rebuild; the third is honest and immediately actionable.
+
+<!-- /only -->
 
 ## 7.5 What this paper does not claim
 

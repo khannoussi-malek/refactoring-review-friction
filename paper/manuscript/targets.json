@@ -36,6 +36,9 @@
       "2.6",
       "3.4",
       "4.5",
+      "5.2",
+      "5.3",
+      "5.4",
       "6.2",
       "6.3",
       "6.4",
@@ -52,7 +55,10 @@
       "6.4": "detector coverage repair: goes with TypeScript",
       "6.6": "post-hoc definitions: cut to hold section 6 to one column",
       "6.8": "provenance of the work itself: identifying under double-anonymous",
-      "7.3": "for the field: the selection-effect argument rests on TypeScript"
+      "7.3": "for the field: the selection-effect argument rests on TypeScript",
+      "5.2": "mode 6 worked detail: the six-mode table and 5.1/5.5 carry the argument",
+      "5.3": "mode 6 across the whole probe: the count is stated in 5.1",
+      "5.4": "the Sqoop instance inside the eligible corpus"
     },
     "tables": [
       "tab:eligibility"
@@ -73,6 +79,8 @@
     "table_parts": {
       "tab:eligibility": 1
     },
-    "table_parts_why": "only the eligible-12 half is printed; the 26-row dropped half is summarised in one sentence in 4.1 and lives in the artifact."
+    "table_parts_why": "only the eligible-12 half is printed; the 26-row dropped half is summarised in one sentence in 4.1 and lives in the artifact.",
+    "table_appendix": true,
+    "table_appendix_why": "measured: appendix 12 pages, body floats 13. A table* spanning both columns displaces more text than the forced break costs."
   }
 }

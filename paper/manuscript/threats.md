@@ -6,6 +6,7 @@ record would be self-refuting.
 
 ## 6.1 Construct validity
 
+<!-- only: preprint -->
 **The measure is 97.5% precise, and two of its failure modes were untestable.**
 Key matching was validated on a seeded 200-commit manual sample across the 12
 eligible projects: precision **195 of 200 = 97.5%** (Wilson 95% CI 94.3–98.9%),
@@ -28,8 +29,10 @@ recorded here rather than assigned an invented category.
 
 **Ticket-side coverage counts keys that resolve in the tracker.** Sqoop cites 790
 distinct keys of which 122 have no tracker record, so its ticket-side rate rests
-on the 668 that resolve (§5.3). This is mode 6 inside a passing project, and it
+on the 668 that resolve. This is mode 6 inside a passing project, and it
 means ticket-side rates are, strictly, coverage of *resolvable* tickets.
+
+<!-- /only -->
 
 **The 38-project extension uses a different denominator source, and the
 validation figure the earlier draft quoted was for a different approximation.**
@@ -98,6 +101,7 @@ had already cleared the bar. §4.3 does not extend that measurement; it is a
 different estimator against a different snapshot, and it is reported alongside
 rather than merged into it.
 
+<!-- only: preprint -->
 **"345 of 349 episodes traceable to 323 tickets" — the unit matters.** An estimate
 is a property of a ticket, not an episode; several episodes share a ticket. An
 earlier draft used 0/345 where 0/323 is correct (`PROJECT_STATE.md` §7).
@@ -107,6 +111,8 @@ traceability (26,125 / 28,290 Hadoop commits citing a key, four-key probe);
 92.3%-B is RefactoringMiner chunk coverage (3,175 / 3,440). Different numerators,
 denominators, scopes and claims. This paper uses **92.3%-A only**
 (`paper/numbers.md` §2).
+
+<!-- /only -->
 
 ## 6.2 Internal validity — instruments that decay, and one that terminates
 
