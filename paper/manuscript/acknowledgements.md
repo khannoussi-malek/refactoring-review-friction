@@ -6,7 +6,15 @@ Every artifact this paper rests on is archived and citable: the 38 pinned
 repository shas, the frozen tracker caches, the per-project measurements, the
 full 38-row eligibility table, the three-channel visibility table, every script
 that produced a number here, and the audit report against which the numbers were
-re-derived. **Replication package: ANONYMISED-ARTIFACT-DOI.** Nothing needed to
+re-derived.
+<!-- only: preprint -->
+**Replication package:
+[https://doi.org/10.5281/zenodo.21846139](https://doi.org/10.5281/zenodo.21846139).**
+<!-- /only -->
+<!-- only: msr2027 -->
+**Replication package: ANONYMISED-ARTIFACT-DOI.**
+<!-- /only -->
+Nothing needed to
 reproduce a figure in this paper lives only in a version-control host.
 
 ## 8.2 Data and tools
@@ -102,4 +110,4 @@ its conclusions bounded. No claim in this paper depends on it.
 
 ## 8.5 Funding and competing interests
 
-No funding was received. The authors declare no competing interests.
+No funding was received. The author declares no competing interests.

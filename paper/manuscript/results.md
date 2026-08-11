@@ -14,7 +14,7 @@ bar rejected.
 
 **The ecosystem label is a hand classification, and we tested whether a measured
 variable does the same work. It does not.** "Hadoop-ecosystem" is not a field in
-any dataset; one of the authors assigned it. The natural replacement is project
+any dataset; I assigned it. The natural replacement is project
 generation — free metadata, no judgment, and a mechanism, since projects
 predating the 2019–20 migration of ASF development to GitHub pull requests had
 longer under the Jira-citation convention. Two generational variables were tried

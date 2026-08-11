@@ -76,7 +76,7 @@ SECTION = re.compile(r"^#{2,4}\s+(\d+(?:\.\d+)*)", re.M)
 NOT_MEASUREMENTS = {
     # DOI / arXiv / dataset identifiers
     "104005", "1804.02433", "2404.01950", "2501.15387", "2605.16133",
-    "15719919", "1882291.1882308", "2025113.2025120", "1882308", "2025120",
+    "15719919", "21846139", "1882291.1882308", "2025113.2025120", "1882308", "2025120",
     # upstream issue, PR and branch identifiers, and one commit hash in prose
     "1124", "998", "1471779", "256", "5179907",
     # detector version 3.1.4 tokenises as "3.1"; licence versions CC BY 4.0
