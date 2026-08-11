@@ -55,6 +55,7 @@ shallow clone and a tracker listing:
 4. **the rate recomputed over recent history**, which exposes a convention that
    changed mid-history (mode 4).
 
+<!-- only: preprint -->
 **What the four fields would cost.** All four come from a `--filter=tree:0`
 bare clone plus one tracker listing. On this corpus those 38 clones came to
 **228 MB, a mean of 6.0 MB per project**, against the 4.3 GB the original
@@ -65,6 +66,8 @@ scale of 735,669 repositories, the marginal cost is the clone, and the clone is
 the cheapest kind there is. We are not claiming it is free at that scale; we are
 claiming it is the same order as what GHS already does per repository, and that
 nobody has to guess.
+
+<!-- /only -->
 
 This study spent 38 clones and 4.3 GB to keep 12. That cost is paid again by every
 group that attempts the same kind of corpus, and none of it is recoverable from

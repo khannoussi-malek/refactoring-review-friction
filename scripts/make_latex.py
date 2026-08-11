@@ -1333,8 +1333,20 @@ def table_appendix(unmapped, cls="article", keep=None, tgt=None, drop_cols=None,
         # file keeps the heading, both halves of a split table and the legend
         # in a single flow, so the legend cannot orphan onto the next page.
         parts = (tspec_parts or {}).get(label)
-        wide = any(k == "table" and max(len(r) for r in p) >= 8
-                   for k, p in blocks)
+        # Judge width AFTER the manifest drops columns, for the same reason the
+        # one-column decision does: a table cut to seven columns does not need
+        # a landscape page, and taking one leaves two thirds of it white.
+        wide = False
+        _seen = 0
+        for _k, _pl in blocks:
+            if _k != "table":
+                continue
+            _seen += 1
+            if parts is not None and _seen > parts:
+                break
+            _p2 = drop_columns(_pl, (drop_cols or {}).get(label)) if _seen == 1 else _pl
+            if max(len(r) for r in _p2) >= 8:
+                wide = True
         body = []
         if wide:
             body.append(r"\begin{landscape}")

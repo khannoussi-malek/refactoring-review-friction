@@ -492,3 +492,52 @@ name, "tunisia", "khannoussi", "gmail", "independent researcher", "orcid",
 **Still four pages over.** What has not been done is listed in the response that
 accompanied this pass, not hidden here: the §1 narrative compression, §7.4, the
 six uncaptioned tables, and the repository-path conversion.
+
+## Reaching ten pages, 2026-08-08
+
+Acting on the decision to cut both the taxonomy detail and the threats detail.
+Sequence measured after every step: **17 → 14 → 12 → 11 → 10 → 9**.
+
+| what | why |
+|---|---|
+| §5.2–5.4 excluded | the six-mode table, §5.1 and §5.5 carry the argument. Three references into §5.3 were restated inline rather than repointed |
+| §6.1 matcher detail, failure categories, branch-name limit → preprint only | the 11.91pp margin rule and the disjoint validated range stay; those are what §6 earns its space with |
+| §2.2 excluded | its six numbered contributions restated §1's list almost line for line. Duplication removed rather than content |
+| §4.2.1 Kylin → three sentences | the withdrawal is a credibility asset and survives at that length: 7.5% of refs, four-year window, fill 0.87 at the corpus median |
+| §3.1.3 → one paragraph | the T ≤ date(H_p) constraint, why violating it looks like poor traceability, and both instantiations |
+| §1 narrative → four sentences; §7.4 → a short list; §7.2 cost-of-fields, §4.2 design-consequence, §2.1 exactness defence, §2.1 Vieira note, §4.1 hand-label exposure and industry tail → preprint only | |
+| §8.3 AI disclosure → 150 words for this target | policy requires disclosure of what was used and by whom it is owned, not an essay. The full version stays in the preprint. **This one is a judgment call and is easy to revert** |
+
+### The table decision was measured three times, and reversed
+
+At 13 columns the one-column landscape appendix beat body floats, 12 pages
+against 13: a table spanning both columns displaces more text than a forced
+break costs. After `drop_columns` cut the table to 7, the same comparison
+reversed, 9 pages against 10. Two generator defects were behind it, both the
+same shape: `needs_onecol` and `wide` judged the table's width **before** the
+manifest dropped its columns, so a 7-column table still claimed a landscape
+page and a one-column appendix. Both now judge after. The manifest records the
+measurement so the choice is not re-litigated from intuition.
+
+### Final state
+
+| | value | limit |
+|---|---:|---:|
+| main text | **9** | 10 |
+| references | 1 | 2 |
+| abstract | 193 words | 150–250 |
+| unresolved `??` | 0 | 0 |
+| unresolved citations | 0 | 0 |
+| log errors | 0 | 0 |
+
+Eleven anonymity greps clean across the built PDF and the generated LaTeX.
+`sigconf,review,anonymous` all active, line numbers present, CCS and keywords
+present, no bracketed placeholder, data availability statement present.
+`check_provenance.py`: UNSOURCED 0, TARGET_DRIFT 0. The IEEE preprint still
+builds at 26 pages with the author's name intact.
+
+One page of headroom remains under the limit. It is deliberately not spent.
+
+**Outstanding, and not something this branch can supply:** the Zenodo deposit.
+§8.1 carries `ANONYMISED-ARTIFACT-DOI` as a placeholder and will fail the
+"resolvable DOI" check until the deposit exists.

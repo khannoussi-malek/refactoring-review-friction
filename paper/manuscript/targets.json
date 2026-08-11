@@ -33,6 +33,7 @@
     ],
     "note": "Ten pages including tables and figures is a desk-reject criterion.",
     "exclude": [
+      "2.2",
       "2.6",
       "3.4",
       "4.5",
@@ -58,7 +59,8 @@
       "7.3": "for the field: the selection-effect argument rests on TypeScript",
       "5.2": "mode 6 worked detail: the six-mode table and 5.1/5.5 carry the argument",
       "5.3": "mode 6 across the whole probe: the count is stated in 5.1",
-      "5.4": "the Sqoop instance inside the eligible corpus"
+      "5.4": "the Sqoop instance inside the eligible corpus",
+      "2.2": "its six numbered contributions restate section 1's contribution list almost line for line; section 1 keeps them"
     },
     "tables": [
       "tab:eligibility"
@@ -80,7 +82,7 @@
       "tab:eligibility": 1
     },
     "table_parts_why": "only the eligible-12 half is printed; the 26-row dropped half is summarised in one sentence in 4.1 and lives in the artifact.",
-    "table_appendix": true,
-    "table_appendix_why": "measured: appendix 12 pages, body floats 13. A table* spanning both columns displaces more text than the forced break costs."
+    "table_appendix": false,
+    "table_appendix_why": "measured three times as the table changed. At 13 columns the one-column landscape appendix won (12 pages against 13 as a float). Once drop_columns cut it to 7 the float wins instead: 9 pages against 10, because a portrait 7-column table* displaces less than a forced page break costs. Re-measure before changing the column set again."
   }
 }

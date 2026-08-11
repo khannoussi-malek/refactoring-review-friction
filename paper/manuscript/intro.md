@@ -108,9 +108,12 @@ withdrawn (§2.1).
    pass through code review at all.
 <!-- /only -->
 
+<!-- only: preprint -->
 **What this paper is not.** It is not a study of refactoring friction; the
 exploratory Hadoop results live in the replication package and none of them is
 claimed here. It does not propose the successor design the corpus limits point
 towards. And it does not argue that the projects it drops are badly run — a
 project that moved to GitHub Issues is not failing at anything except a
 convention this kind of research happens to need.
+
+<!-- /only -->

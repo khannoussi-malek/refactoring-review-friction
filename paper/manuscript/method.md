@@ -93,6 +93,24 @@ and is disclosed here instead of being assigned an invented category.
 
 ### 3.1.3 How the denominator is bounded in time
 
+<!-- only: msr2027 -->
+TRR compares a tracker read at T against a repository read at H_p, and **the
+measure requires T ≤ date(H_p)** so that every ticket in the denominator has had
+the whole interval to date(H_p) in which to receive a commit. A tracker read
+ahead of the repository makes the newest tickets structurally incapable of being
+realised and biases TRR downward by an amount that depends on the project's
+filing rate, which looks exactly like poor traceability. Two instantiations are
+used and both satisfy it: **TRR_live** reads Apache Jira and the pinned shas on
+the same day, 2026-07-25, restricted mechanically to issue keys so that nothing
+in it can be turned into a duration; **TRR_frozen** uses the Public Jira Dataset
+[@montgomery2025jira], a snapshot predating every pinned sha, with membership
+defined in issue-number space because the snapshot's per-project date is not
+recoverable. Throughout, an unsubscripted `TRR`, `ceiling` or `fill` means the
+live measurement.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 This is the definitional detail that decides whether TRR is interpretable, and it
 is the one most easily got wrong.
 
@@ -128,6 +146,8 @@ numbers, and the denominator is N_p while the numerator counts only cited keys
 numbered ≤ N_p. The two definitions coincide except for issues moved between
 projects, which perturb the correspondence between count and highest number.
 §4.3 measures the size of that perturbation rather than assuming it away.
+
+<!-- /only -->
 
 ### 3.1.4 The arithmetic ceiling, and what is left once it is removed
 

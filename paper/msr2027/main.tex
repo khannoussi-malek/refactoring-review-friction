@@ -86,8 +86,6 @@ Empirical work on architectural change reads a project's own records --- commit 
 \item \textbf{A six-mode taxonomy of the ways a project silently fails to support an issue-linked study}, three of them disqualifying and three of them producing a plausible wrong number rather than an error.
 \end{enumerate}
 
-\textbf{What this paper is not.} It is not a study of refactoring friction; the exploratory Hadoop results live in the replication package and none of them is claimed here. It does not propose the successor design the corpus limits point towards. And it does not argue that the projects it drops are badly run --- a project that moved to GitHub Issues is not failing at anything except a convention this kind of research happens to need.
-
 
 \section{Related work}
 \label{sec:2}
@@ -123,20 +121,6 @@ SEOSS's selection criteria matter for our argument: a project must ``continuousl
 \textbf{Rath et al., ICSE 2018} \cite{rath2018traceability} (\emph{Traceability in the Wild}, arXiv:1804.02433) publishes \textbf{both directions} for six Git+Jira projects, and is the closest precedent to our divergence result. Commit side: ``approximately 48\% of the commits were not linked to any issue'', with a per-project spread from 15\% unlinked in Derby to \textasciitilde{}76\% in Maven. Ticket side: ``approximately 43.3\% of improvements and 42.4\% of bugs have no commits associated with them'' --- Derby works out to 51.8\% ticket-side coverage. Our 12 passing projects run 12.0\%--69.0\% ticket-side, straddling their figure. Their sentence --- ``different practices exist across different projects, leading to huge disparities in the extent to which issue tags are added to commit messages'' --- is our corpus-feasibility finding stated qualitatively in 2018.
 
 Selection there was also informal: the six were chosen because each ``largely followed the practice of tagging commits with issue IDs''. Again no threshold.
-
-\subsection{What is therefore new here}
-\label{sec:2.2}
-
-Positioned against the above rather than against an assumed gap:
-
-\begin{enumerate}
-\item \textbf{A pre-registered numeric bar applied before any outcome, with reported attrition.} Both prior works select on trace links informally and report the rate afterwards; neither states a threshold, an attrition count, or which candidates were rejected. Ours is fixed in \texttt{predictions/\allowbreak{}PREDICTIONS.\allowbreak{}md} (\texttt{ca076a9}) before any project was cloned, and never moved.
-\item \textbf{The population finding.} 12 of 38 pass and no project outside one ecosystem clears the bar. SEOSS's own table contains the ingredients --- Apache at the top, JBoss at the bottom --- but does not draw the inference. The ecosystem label is a hand classification and \S\kern0.13em \ref{sec:4.1} reports the measured variables that failed to replace it.
-\item \textbf{Both reference channels measured together.} No prior work counts GitHub-issue references alongside Jira keys, which is what shows the bar selects a \emph{tracker} rather than a discipline.
-\item \textbf{The arithmetic ceiling.} The bound TRR $\leq$ CSR $\times$ commits / tickets, the decomposition of the ticket-side rate into that ceiling and a residual, and the finding that in this corpus the residual is nearly constant while the ceiling varies six-fold (\S\kern0.13em \ref{sec:3.1.4}, \S\kern0.13em \ref{sec:4.2}). No prior work reports commits per ticket alongside a linkage rate, which is what makes the two rates look commensurable when they are not.
-\item \textbf{The ticket-side rate measured across the whole probe}, including the 26 projects the bar \textbf{rejected} --- Rath 2018 reports it per issue \emph{type}, and only for the six projects it selected. The contribution is the coverage, not the name: \S\kern0.13em \ref{sec:3.1} introduces ``ticket realisation rate'' as a label for the paper's own use and claims no priority for it.
-\item \textbf{The six-mode taxonomy}, and that none of it is expressible in any published frame.
-\end{enumerate}
 
 \subsection{The standard sampling frame cannot express the criterion}
 \label{sec:2.3}
@@ -204,29 +188,7 @@ One construct limit is recorded rather than corrected: \textbf{a key matched fro
 \subsubsection{How the denominator is bounded in time}
 \label{sec:3.1.3}
 
-This is the definitional detail that decides whether TRR is interpretable, and it is the one most easily got wrong.
-
-TRR compares a tracker read at T against a repository read at $H_p$. \textbf{The measure requires T $\leq$ date($H_p$)}, so that every ticket in the denominator has had the whole interval from its creation to date($H_p$) in which to receive a commit. If T runs ahead of the repository, the last tickets filed are structurally incapable of being realised and TRR is biased downward by an amount that depends on the project's filing rate --- an artefact that looks exactly like poor traceability.
-
-Two instantiations are used, and both satisfy the constraint:
-
-\begin{table*}[htbp]
-\centering
-\begingroup\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{\dimexpr 0.1585\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4223\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2118\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2075\linewidth-2\tabcolsep\relax}}
-\toprule
-\textbf{} & \textbf{tracker snapshot T} & \textbf{repository $H_p$} & \textbf{coverage} \\
-\midrule
-\textbf{$\mathrm{TRR}_\mathrm{live}$} & Apache Jira read 2026-\allowbreak{}07-\allowbreak{}25, issue \textbf{keys only} & pinned shas of 2026-\allowbreak{}07-\allowbreak{}25 & the 12 eligible projects \\
-\textbf{$\mathrm{TRR}_\mathrm{frozen}$} & the Public Jira Dataset \cite{montgomery2025jira} (Zenodo 15719919), a snapshot predating every pinned sha & the same pinned shas & all 38 probed projects \\
-\bottomrule
-\end{tabular}
-\endgroup
-\end{table*}
-
-For \textbf{$\mathrm{TRR}_\mathrm{live}$}, T $\approx$ date($H_p$): the two were read the same day, so the newest tickets are the censored ones and $\mathrm{TRR}_\mathrm{live}$ is a slight underestimate. The restriction to issue keys is enforced mechanically, not by care --- the field list sent to the API is asserted to be \texttt{["key"]}, every returned issue is screened against a forbidden-field set and a hit aborts the run rather than being filtered out, and only the key string survives the parse loop. That is what makes the measurement admissible over a held-out corpus: key existence is not an outcome and nothing in it can be turned into a duration.
-
-For \textbf{$\mathrm{TRR}_\mathrm{frozen}$}, T is years behind $H_p$, which is the safe direction but introduces a different problem: the snapshot's date is not recoverable per project from the parsed artifact. Membership is therefore defined in \textbf{issue-number space} rather than in date space. Jira numbers issues sequentially from 1 within a project, so a tracker holding $N_p$ issues at T holds approximately the first $N_p$ numbers, and the denominator is $N_p$ while the numerator counts only cited keys numbered $\leq$ $N_p$. The two definitions coincide except for issues moved between projects, which perturb the correspondence between count and highest number. \S\kern0.13em \ref{sec:4.3} measures the size of that perturbation rather than assuming it away.
+TRR compares a tracker read at T against a repository read at $H_p$, and \textbf{the measure requires T $\leq$ date($H_p$)} so that every ticket in the denominator has had the whole interval to date($H_p$) in which to receive a commit. A tracker read ahead of the repository makes the newest tickets structurally incapable of being realised and biases TRR downward by an amount that depends on the project's filing rate, which looks exactly like poor traceability. Two instantiations are used and both satisfy it: \textbf{$\mathrm{TRR}_\mathrm{live}$} reads Apache Jira and the pinned shas on the same day, 2026-07-25, restricted mechanically to issue keys so that nothing in it can be turned into a duration; \textbf{$\mathrm{TRR}_\mathrm{frozen}$} uses the Public Jira Dataset \cite{montgomery2025jira}, a snapshot predating every pinned sha, with membership defined in issue-number space because the snapshot's per-project date is not recoverable. Throughout, an unsubscripted \texttt{TRR}, \texttt{ceiling} or \texttt{fill} means the live measurement.
 
 \subsubsection{The arithmetic ceiling, and what is left once it is removed}
 \label{sec:3.1.4}
@@ -333,20 +295,10 @@ Ranked by fill rather than by rate, the ordering changes almost completely: Dril
 
 \textbf{This is a mechanism, and it replaces the reading the divergence invites.} The tempting story --- ``these projects file tickets they never work on'' --- is not what the numbers show. What they show is that \textbf{a tracker accumulates tickets faster than a repository accumulates commits}, and once fewer than one commit exists per ticket the ticket-side rate is capped below the commit-side rate by construction. The two rates were never commensurable, and reporting one as though it licensed the other is the error, not the projects' behaviour.
 
-\textbf{The consequence for design is unchanged and now has a reason.} A study that samples commits and looks up their tickets can work in any of these twelve. A study that samples tickets and looks for the work is bounded by \texttt{commit-\allowbreak{}side $\times$ commits /\allowbreak{} tickets} before it begins, and that quantity is not reported anywhere in the literature --- including by us, until now.
-
 \subsubsection{Kylin: the sharpest number in the corpus, and why it is withdrawn as the example}
 \label{sec:4.2.1}
 
-Earlier drafts led with Kylin --- 83.9\% commit-side against 12.0\% ticket-side, ``seven of every eight tickets with no commit at all''. \textbf{That example is withdrawn.} The pinned commit reaches \textbf{968 commits beginning 2022-08-01}, which is \textbf{7.5\% of the 12,937 commits on the repository's refs}, and the repository itself begins 2014-05-13. The \texttt{apache/\allowbreak{}kylin} default branch was re-initialised for Kylin 5; the earlier history is on other branches.
-
-So Kylin's 12.0\% is measured over a \textbf{four-year commit window against a twelve-year, 5,931-issue tracker}, and its 0.16 commits per ticket --- the lowest in the corpus by a factor of two --- is a fact about the branch, not about Kylin's traceability. Its $\mathrm{fill}_\mathrm{live}$ is \textbf{0.87}, squarely at the corpus median: \emph{by the measure that isolates discipline, Kylin is unremarkable.}
-
-the artifact's 38-project table reports the same project at \textbf{$\mathrm{fill}_\mathrm{frozen}$ 0.00}, and the two are not in conflict. Under the frozen snapshot Kylin's $\mathrm{TRR}_\mathrm{frozen}$ is \textbf{0.04\%} --- two cited keys against a tracker of 4,989 --- because \textbf{99.72\% of its cited keys postdate the snapshot}, so the number cap removes almost the whole numerator. Its $\mathrm{ceiling}_\mathrm{frozen}$ is 16.3\%, well under the bound. The frozen estimator is registering the same truncated branch this section is about, from the other side: live, the window is too short for the tracker; frozen, the tracker is too old for the window. Kylin is the worst end-to-end case in the corpus at 11.91pp (the artifact's 38-project table), and it is flagged in both tables for that reason.
-
-Three other projects have a pinned branch that starts after their repository does --- Jena (49.0\% of refs), Karaf (45.4\%) and James (89.4\%, by eight days) --- and none is near Kylin's severity. The clone-depth column is in \texttt{paper/\allowbreak{}revision\_\allowbreak{}metrics.\allowbreak{}json}; the check is \texttt{scripts/\allowbreak{}revision\_\allowbreak{}metrics.\allowbreak{}py}.
-
-\textbf{Kylin is retained in every table}, because the bar was applied to it before any of this was known and removing it now would be selection on the outcome. It is flagged wherever it appears, and no claim in this paper rests on it.
+Earlier drafts led with Kylin, at 83.9\% commit-side against 12.0\% ticket-side, and \textbf{that example is withdrawn}: its pinned commit reaches 968 commits beginning 2022-08-01, \textbf{7.5\% of the 12,937 on the repository's refs}, against a tracker running since 2014. Its 12.0\% is therefore measured over a four-year commit window and its 0.16 commits per ticket is a fact about the branch rather than about Kylin. By fill, the measure that isolates discipline, Kylin sits at \textbf{0.87}, the corpus median, and is unremarkable.
 
 \subsection{The divergence is a property of the population, not of the survivors}
 \label{sec:4.3}
@@ -504,8 +456,6 @@ Four fields would close most of the gap, and all four are cheap to compute from 
 \item \textbf{the rate recomputed over recent history}, which exposes a convention that changed mid-history (mode 4).
 \end{enumerate}
 
-\textbf{What the four fields would cost.} All four come from a \texttt{-\allowbreak{}-\allowbreak{}filter=tree:0} bare clone plus one tracker listing. On this corpus those 38 clones came to \textbf{228 MB, a mean of 6.0 MB per project}, against the 4.3 GB the original working-tree sweep took --- a 19x reduction. Fields 1, 3 and 4 need only \texttt{git log} over commit messages --- no trees, no blobs, no working tree. Field 2 is one paginated tracker call for issue keys. For a frame that already crawls repository metadata at the scale of 735,669 repositories, the marginal cost is the clone, and the clone is the cheapest kind there is. We are not claiming it is free at that scale; we are claiming it is the same order as what GHS already does per repository, and that nobody has to guess.
-
 This study spent 38 clones and 4.3 GB to keep 12. That cost is paid again by every group that attempts the same kind of corpus, and none of it is recoverable from published metadata.
 
 \subsection{What follows from the corpus limit, without softening it}
@@ -534,27 +484,12 @@ Every artifact this paper rests on is archived and citable: the 38 pinned reposi
 \subsection{Data and tools}
 \label{sec:8.2}
 
-This study is built on artifacts other people made public. The Apache Software Foundation publishes the issue trackers and repositories the whole corpus is drawn from. Lloyd Montgomery, Clara L\"uders and Walid Maalej deposited the Public Jira Dataset (Zenodo 15719919, CC BY 4.0), which supplies every estimate-coverage base rate and every frozen ticket denominator in the artifact's 38-project table. Michael Rath and Patrick M\"ader's SEOSS 33 provides the independent measurement this study's probe is validated against, and the agreement between them at matched scope (Section~\ref{sec:4.4}) is the strongest external check the work has. Nikolaos Tsantalis and the RefactoringMiner contributors built the detector. None of them is responsible for what is done with their work here.
+The Apache Software Foundation publishes the trackers and repositories the corpus is drawn from. The Public Jira Dataset (Zenodo 15719919, CC BY 4.0) supplies every frozen ticket denominator, SEOSS 33 provides the independent measurement the probe is validated against, and RefactoringMiner is the detector.
 
 \subsection{Use of AI tools}
 \label{sec:8.3}
 
-\textbf{Declared in full, because a paper about the trustworthiness of records should be candid about how its own were produced.}
-
-Large language model assistants (Anthropic's Claude) were used across parts of this work. Their role was:
-
-\begin{itemize}
-\item \textbf{writing and running analysis code.} Every script in \texttt{scripts/\allowbreak{}} that produced a number in this paper was drafted with assistance. The scripts are committed, the artifacts they emit are committed, and each is re-runnable --- that is what makes the assistance auditable rather than something the reader must take on trust.
-\item \textbf{drafting prose.} The manuscript sections were drafted with assistance from the author's outlines, findings and decisions, and revised by the author.
-\item \textbf{literature verification.} Citations were checked against source texts --- authors, venue, year, identifier, and whether the source says what is attributed to it. The record of those checks is in the replication package.
-\item \textbf{an adversarial audit of this work's own numbers.} An independent AI-conducted pass re-derived the load-bearing results from primary artifacts with separately written code, exhaustively enumerated the $\kappa$ bounds, verified all 2,491 frozen cache files against their manifest, and reported what it found --- including several errors that were then corrected. Its report is in the replication package under \texttt{audit/\allowbreak{}}, unedited.
-\end{itemize}
-
-\textbf{What the tools did not do.} The research questions, the study design, the pre-registered 0.80 bar and its commitment before any project was cloned, the decision to hold that bar and the vendor-share threshold when moving them would have helped, the six retractions, and the judgment of what the results mean are the author's. \textbf{The author takes full responsibility for all content, including any error a tool introduced and the author did not catch.}
-
-\emph{A line-by-line verification checklist for this section, separating what is observable in the repository's record from what is inferred about the sessions that predate it, is at \texttt{paper/\allowbreak{}DISCLOSURE\_\allowbreak{}VERIFICATION.\allowbreak{}md}.}
-
-\textbf{Errors that assistance introduced and review caught} are recorded rather than quietly fixed, because they bound how much the audit trail is worth: a median computed as the upper-middle value at even \emph{n}; a validation figure quoted for a different approximation than the one in use; a provenance checker that could not fail, and a first rebuild of it that reproduced the same defect by another route. Each is in \texttt{paper/\allowbreak{}REVISION\_\allowbreak{}LOG.\allowbreak{}md} with what it changed.
+Large language model assistants (Anthropic's Claude) were used in this work: to write and run the analysis code, every script of which is committed and re-runnable; to draft prose from the author's outlines, findings and decisions; to check citations against source texts; and to conduct an adversarial audit that re-derived the load-bearing results with separately written code and reported the errors it found, unedited, in the replication package. The research questions, the study design, the pre-registered bar and its commitment before any project was cloned, the six retractions, and the judgment of what the results mean are the author's. \textbf{The author takes full responsibility for all content, including any error a tool introduced and the author did not catch.}
 
 \subsection{A separate matter: the LLM used as a rater}
 \label{sec:8.4}
@@ -566,12 +501,6 @@ Section~\ref{sec:6.5} reports a pilot in which a language model applied this stu
 
 No funding was received. The authors declare no competing interests.
 
-
-\clearpage
-
-\onecolumn
-
-\begin{landscape}
 
 \section*{Tables}
 
@@ -641,11 +570,7 @@ No funding was received. The authors declare no competing interests.
 
 
 
-\end{landscape}
 
-
-
-\twocolumn
 
 
 

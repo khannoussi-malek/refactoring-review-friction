@@ -110,13 +110,28 @@ ticket the ticket-side rate is capped below the commit-side rate by construction
 The two rates were never commensurable, and reporting one as though it licensed
 the other is the error, not the projects' behaviour.
 
+<!-- only: preprint -->
 **The consequence for design is unchanged and now has a reason.** A study that
 samples commits and looks up their tickets can work in any of these twelve. A
 study that samples tickets and looks for the work is bounded by
 `commit-side × commits / tickets` before it begins, and that quantity is not
 reported anywhere in the literature — including by us, until now.
 
+<!-- /only -->
+
 ### 4.2.1 Kylin: the sharpest number in the corpus, and why it is withdrawn as the example
+
+<!-- only: msr2027 -->
+Earlier drafts led with Kylin, at 83.9% commit-side against 12.0% ticket-side,
+and **that example is withdrawn**: its pinned commit reaches 968 commits
+beginning 2022-08-01, **7.5% of the 12,937 on the repository's refs**, against a
+tracker running since 2014. Its 12.0% is therefore measured over a four-year
+commit window and its 0.16 commits per ticket is a fact about the branch rather
+than about Kylin. By fill, the measure that isolates discipline, Kylin sits at
+**0.87**, the corpus median, and is unremarkable.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 Earlier drafts led with Kylin — 83.9% commit-side against 12.0% ticket-side,
 "seven of every eight tickets with no commit at all". **That example is
@@ -149,6 +164,8 @@ is near Kylin's severity. The clone-depth column is in
 **Kylin is retained in every table**, because the bar was applied to it before any
 of this was known and removing it now would be selection on the outcome. It is
 flagged wherever it appears, and no claim in this paper rests on it.
+
+<!-- /only -->
 
 ## 4.3 The divergence is a property of the population, not of the survivors
 
