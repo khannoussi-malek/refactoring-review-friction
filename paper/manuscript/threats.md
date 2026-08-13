@@ -1,14 +1,12 @@
 # 6. Threats to validity
 
-Assembled from `paper/ERA_AUDIT.md` (`e0d76ef`), `paper/ALIASING_HADOOP.md`,
-`paper/matcher_validation.md`, `SUI_FINDINGS.md`, `paper/numbers.md` and
-`PROJECT_STATE.md` §7. Several of the items below are things this study got wrong
-and corrected. **They are stated as the paper's credibility, not as its
+Several of the items below are things this study got wrong and corrected. **They are stated as the paper's credibility, not as its
 embarrassments** — a methods paper about record quality that concealed its own
 record would be self-refuting.
 
 ## 6.1 Construct validity
 
+<!-- only: preprint -->
 **The measure is 97.5% precise, and two of its failure modes were untestable.**
 Key matching was validated on a seeded 200-commit manual sample across the 12
 eligible projects: precision **195 of 200 = 97.5%** (Wilson 95% CI 94.3–98.9%),
@@ -31,8 +29,10 @@ recorded here rather than assigned an invented category.
 
 **Ticket-side coverage counts keys that resolve in the tracker.** Sqoop cites 790
 distinct keys of which 122 have no tracker record, so its ticket-side rate rests
-on the 668 that resolve (§5.3). This is mode 6 inside a passing project, and it
+on the 668 that resolve. This is mode 6 inside a passing project, and it
 means ticket-side rates are, strictly, coverage of *resolvable* tickets.
+
+<!-- /only -->
 
 **The 38-project extension uses a different denominator source, and the
 validation figure the earlier draft quoted was for a different approximation.**
@@ -101,6 +101,7 @@ had already cleared the bar. §4.3 does not extend that measurement; it is a
 different estimator against a different snapshot, and it is reported alongside
 rather than merged into it.
 
+<!-- only: preprint -->
 **"345 of 349 episodes traceable to 323 tickets" — the unit matters.** An estimate
 is a property of a ticket, not an episode; several episodes share a ticket. An
 earlier draft used 0/345 where 0/323 is correct (`PROJECT_STATE.md` §7).
@@ -110,6 +111,8 @@ traceability (26,125 / 28,290 Hadoop commits citing a key, four-key probe);
 92.3%-B is RefactoringMiner chunk coverage (3,175 / 3,440). Different numerators,
 denominators, scopes and claims. This paper uses **92.3%-A only**
 (`paper/numbers.md` §2).
+
+<!-- /only -->
 
 ## 6.2 Internal validity — instruments that decay, and one that terminates
 
@@ -203,12 +206,19 @@ paper's claims rest on:
 * the codebook's keyword rule for structural review discussion — **≈25% precise**
   (5 of 20 flagged comments genuinely structural), ≈5% miss (1 of 20 unflagged),
   on a 40-comment single-rater pass, with no κ;
+<!-- only: preprint -->
 * the TypeScript commit-message rule — **recall 3 of 96 = 3.1%**, **precision 3 of
   10 = 30%**.
 
 Their role is to establish that keyword-based detection over-counts roughly
 fourfold and finds 3% of the work, which is a validity result about a method other
 studies use.
+<!-- /only -->
+<!-- only: msr2027 -->
+
+Its role is to establish that keyword-based detection over-counts roughly
+fourfold, which is a validity result about a method other studies use.
+<!-- /only -->
 
 **The exception is argued rather than asserted.** The 200-commit matcher check is a
 mechanical determination against a written rule with categories fixed before
@@ -282,6 +292,7 @@ clusters**, because between-cluster variance is not estimable at n=4 and the
 estimate must come from the pooled study as a first stage
 (`replication/CORPUS_FEASIBILITY.md`).
 
+<!-- only: preprint -->
 **The TypeScript column is one repository, one company, and exploratory.**
 `BearStudio/start-ui-web`, 1,199 commits, 93% detector coverage, **n=28
 architectural PRs**. `SUI_FINDINGS.md` is marked EXPLORATORY throughout and every
@@ -303,6 +314,7 @@ TypeScript column's 3.1% exists. It is computable in principle and is the most
 obvious extension. Note also that the 25%-precision codebook figure measures
 **review comments**, a fourth channel, and is not a commit-message result
 (`paper/table2_visibility.md`).
+<!-- /only -->
 
 ## 6.8 Provenance of the work itself
 

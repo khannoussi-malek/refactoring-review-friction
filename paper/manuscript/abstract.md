@@ -1,5 +1,31 @@
 # Abstract
 
+<!-- only: msr2027 -->
+Empirical studies of architectural change read a project's own records and
+assume the record traces the work. We measure that assumption on 38 Apache
+projects.
+
+Two traceability rates diverge. The commit-side rate, the one the literature
+reports, asks whether a commit cites a ticket. The ticket-side rate asks whether
+a ticket ever receives a commit, which is what a ticket-anchored design actually
+needs. Hive cites a ticket in **97.0%** of its commits while only **55.8%** of
+its tickets are ever cited by one.
+
+The divergence is arithmetic rather than a matter of discipline. A project
+supplying *c* commits per ticket cannot realise more than a *c* fraction of its
+tickets whatever its commit-side rate. Across the twelve eligible projects this
+ceiling varies **6.0-fold** while the share of it actually reached varies
+**1.19-fold**, so nearly all the spread is supply rather than behaviour. No
+published linkage rate reports commits per ticket beside it.
+
+Against a bar of 0.80 pre-registered before any project was cloned, **12 of 38**
+qualified and none outside a single ecosystem cleared it. We give six mechanisms
+by which a project silently fails to support an issue-linked study, and none of
+them is expressible in any published sampling frame.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 Empirical studies of architectural change read a project's own records and assume
 the record traces the work. We measure that assumption in three record channels
 across two ecosystems and find it fails in every one.
@@ -69,3 +95,5 @@ reference channels counted together, the ticket realisation rate named and
 measured across a whole probe rather than its survivors, and the six-mode
 taxonomy.
 
+
+<!-- /only -->

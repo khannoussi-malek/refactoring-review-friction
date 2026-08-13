@@ -121,9 +121,13 @@ are still usable.
 ## MSR major revision, 2026-08-05
 
 `paper/REVISION_LOG.md` is the full record. The GATE on MAJOR-5 (whether the
-ticket realisation rate is the quantity Bachmann et al. measured) is **not
-satisfied** — `paper/BACHMANN_DETERMINATION.md` does not exist, neither branch was
-implemented, and §2.4 carries a visible `[DETERMINATION PENDING]` block.
+ticket realisation rate is the quantity Bachmann et al. measured) was **closed on
+2026-08-08 by dropping the claim that depended on it**, not by answering it. A
+submission cannot carry a pending determination, and the GATE's own standard
+required reading Bachmann directly rather than inferring from a summary, which
+was not possible. §3.1 now introduces the name as a label for the paper's use and
+claims no priority; §2.4 states what the two measurements condition on and
+declines to adjudicate. No claim in the paper depends on the answer.
 
 Nine claim changes are listed at the head of the revision log. The three that
 change what a reader should take away: the headline association is now "no

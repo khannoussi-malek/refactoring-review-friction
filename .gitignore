@@ -50,3 +50,4 @@ deposit/*.tar.gz
 # LaTeX build intermediates
 paper/preprint/*.blg
 paper/preprint/*.log
+private/

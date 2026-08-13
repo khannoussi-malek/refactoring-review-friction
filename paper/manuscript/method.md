@@ -27,11 +27,15 @@ tracked issues that are ever cited by at least one commit:
 
 > **TRR(p) = |{ k ∈ Tickets(p, T) : ∃ c ⟶ H_p, k ∈ cites(c) }| / |Tickets(p, T)|**
 
-The name is introduced here because the quantity has been reported without one.
-Rath et al. (ICSE'18) [@rath2018traceability] measure it — "approximately 43.3% of improvements and 42.4%
-of bugs have no commits associated with them" — as a property of an issue type
-rather than as a project-level rate with a name, and the divergence between it
-and CSR is not framed anywhere as a constraint on corpus selection.
+TRR is a label of convenience for this paper. It is not a claim to have named the
+quantity first, and nothing here depends on the name being new. The quantity has
+been measured before: Rath et al. (ICSE'18) [@rath2018traceability] report that
+"approximately 43.3% of improvements and 42.4% of bugs have no commits associated
+with them", as a property of an issue type rather than as a project-level rate,
+and Bachmann et al. (FSE'10) [@bachmann2010missing] measure the completeness of
+the bug-side link against expert ground truth. What is new here is the use made
+of the quantity rather than the quantity itself: the divergence between TRR and
+CSR is not framed anywhere as a constraint on corpus selection.
 
 **"Realisation" is a claim about the record, not about the work.** TRR counts a
 ticket as realised when the repository's own record points back to it. A ticket
@@ -89,6 +93,24 @@ and is disclosed here instead of being assigned an invented category.
 
 ### 3.1.3 How the denominator is bounded in time
 
+<!-- only: msr2027 -->
+TRR compares a tracker read at T against a repository read at H_p, and **the
+measure requires T ≤ date(H_p)** so that every ticket in the denominator has had
+the whole interval to date(H_p) in which to receive a commit. A tracker read
+ahead of the repository makes the newest tickets structurally incapable of being
+realised and biases TRR downward by an amount that depends on the project's
+filing rate, which looks exactly like poor traceability. Two instantiations are
+used and both satisfy it: **TRR_live** reads Apache Jira and the pinned shas on
+the same day, 2026-07-25, restricted mechanically to issue keys so that nothing
+in it can be turned into a duration; **TRR_frozen** uses the Public Jira Dataset
+[@montgomery2025jira], a snapshot predating every pinned sha, with membership
+defined in issue-number space because the snapshot's per-project date is not
+recoverable. Throughout, an unsubscripted `TRR`, `ceiling` or `fill` means the
+live measurement.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 This is the definitional detail that decides whether TRR is interpretable, and it
 is the one most easily got wrong.
 
@@ -124,6 +146,8 @@ numbers, and the denominator is N_p while the numerator counts only cited keys
 numbered ≤ N_p. The two definitions coincide except for issues moved between
 projects, which perturb the correspondence between count and highest number.
 §4.3 measures the size of that perturbation rather than assuming it away.
+
+<!-- /only -->
 
 ### 3.1.4 The arithmetic ceiling, and what is left once it is removed
 
@@ -163,7 +187,7 @@ behaviour:
 a project's citing commits spread across distinct tickets rather than piling onto
 a few. **`fill` is the quantity a claim about citation discipline needs**;
 `ceiling` is a property of how much code the project writes per ticket it files.
-Tables 1 and 3 report both. §4.2 shows that in this corpus almost all of the
+Both are reported for every eligible project (Table 1). §4.2 shows that in this corpus almost all of the
 ticket-side variation is ceiling and almost none of it is fill.
 
 **The subscript propagates, and it matters.** `ceiling` and `fill` are both
@@ -190,7 +214,7 @@ one.
 
 **Hadoop itself is not one of the 38.** It is the corpus the exploratory work was
 done on, and it is used here only as the worked example for multi-key matching.
-Every rate in Tables 1 and 3 is from a project Hadoop is not.
+Every rate reported for the eligible corpus is from a project Hadoop is not.
 
 **Key prefixes were detected empirically from commit messages, not assumed.**
 This is not a refinement; it decides the answer. A single-key probe reads Hadoop
@@ -206,9 +230,9 @@ Evergreen reads 71.7% under a single-key probe for the same reason. Seven of the
 key set and is cited by **zero** commits; every Jira reference in that repository
 is an `HDDS` key. It is retained in the probe because the key set was fixed from
 a prefix scan before the counts were read, and removing it afterwards would be
-selection on the outcome. §5.3 counts it among the six probed keys with no
-project record in the frozen tracker corpus, which is a different fact about the
-same key: it is neither cited in git nor present in the tracker.
+selection on the outcome. It is also one of **six** probed keys with no project
+record in the frozen tracker corpus, which is a different fact about the same
+key: it is neither cited in git nor present in the tracker.
 
 **Both reference channels are counted.** GitHub-issue references (`#NNN`,
 `GH-NNN`) are counted per repository alongside Jira keys. This is what turns each

@@ -405,3 +405,159 @@ cd paper/preprint && pdflatex X && bibtex X && pdflatex X && pdflatex X   # both
 which live outside the repository. Its D9 change was verified by evaluating the
 new expressions against the committed `paper/ticket_side_38.json`, and the text
 written into `paper/table3_ticket_side.md` is the text the generator now emits.
+
+---
+
+# MSR 2027 submission, branch `msr2027`, opened 2026-08-08
+
+The preprint on `version2` is unchanged and stays the public artifact. This
+branch builds a separate ten-page anonymous submission from the same section
+files. Rows below cover claims that changed **meaning**; a claim merely cut from
+the short version gets no row, per the pass's own rule.
+
+| # | what it said | what it says now | why |
+|---:|---|---|---|
+| M1 | §2.2 contribution 5 ended "(Whether the quantity is also newly **named** depends on the Bachmann determination in §2.4 and is **[PENDING]**.)", and §2.4 carried a `[DETERMINATION PENDING]` block | contribution 5 rests on coverage and states "the contribution is the coverage, not the name". §3.1 introduces the label with "not a claim to have named the quantity first, and nothing here depends on the name being new". §2.4 states what each measurement conditions on and says the paper "does not adjudicate" the difference | The GATE required reading Bachmann directly and forbade inferring from a summary; the paper was not available, so the question is still open. A submission cannot ship a pending determination, and no contribution rested on the name. The claim was dropped rather than guessed at |
+| M2 | §3.1 "The name is introduced here because the quantity has been reported without one" | "TRR is a label of convenience for this paper", followed by the two prior measurements (Rath et al. per issue type, Bachmann et al. against expert ground truth) and the actual novelty: "the divergence between TRR and CSR is not framed anywhere as a constraint on corpus selection" | Same determination. The measurement claim survives; only the priority claim goes |
+| M3 | §8.4 "The work was carried out independently, alongside full-time employment, which is stated in Section 6.8" | "No funding was received. The authors declare no competing interests." | §6.8 is cut from the submission as identifying, and this sentence repeated the same identifying detail in the acknowledgements, where the section cut would not have reached it |
+| M4 | §2.4 "This is the same argument **our §7.3** makes for architectural change" | "the same argument **this paper** makes" | §7.3 is cut from the short version. Removing the section pointer rather than repointing it keeps one sentence correct in both targets |
+| M5 | §7.4 "a biased sample of tickets *within* each project, which **§7.3** shows is real" | "which **the bug-side linkage literature (§2.4)** shows is real" | Same cut. The evidence for the claim is Bird et al., which §2.4 carries and both targets keep |
+
+## Tooling added, which changed no claim
+
+| # | what | why |
+|---:|---|---|
+| N1 | `--template acm`, emitting `\documentclass[sigconf,review,anonymous]{acmart}` with a CCS concept block and `\keywords` | MSR requires the ACM template. The ACM preamble deliberately does **not** reuse `COMMON`: `COMMON` sets author and title keys on hyperref, which would put the author's name in the metadata of a double-anonymous PDF, where no source-level check would find it. `--test` asserts the preamble carries no author identity |
+| N2 | `paper/manuscript/targets.json`, a per-target section manifest | The short paper is a subset of the long one, not a copy. Excluding a section takes its subsections with it. A manifest entry that matches no heading is a build error, so a cut that silently did not happen cannot ship |
+| N3 | dangling-cross-reference check | Cutting a section renumbers everything after it, and the prose cites section numbers. Every reference is a `\ref` keyed on the authored number, so numbering self-corrects; what does not self-correct is a reference **into** a cut section, which would print "??". The self-check now fails on those, and it found three (M3, M4, M5) |
+| N4 | `TARGET_DRIFT` in `scripts/check_provenance.py` | Fails if a number appears in the short paper that the preprint does not carry. The short paper is a strict subset of the same sources, so any such number means the two versions have begun to diverge |
+
+## State at the end of 2026-08-08
+
+Both targets build. The IEEE preprint is 26 pages with the author intact. The
+ACM submission is **17 pages against a 12-page ceiling** (ten of main text plus
+two of references), so the remaining work is the prose compression the spec
+schedules for weeks 3 to 7, not further section removal.
+
+Anonymity, checked against the built PDF rather than the source: "Khannoussi",
+"Malek", "Tunisia", "khannoussi", "gmail" and "Independent Researcher" all
+return zero in both `main.tex` and the extracted PDF text; `pdfinfo` reports no
+author; no `github.com` URL, no RefactoringMiner issue number and no bracketed
+placeholder survives. The last three were carried by sections the cut removed.
+
+Not started, and each needs something this branch cannot supply: the Zenodo
+deposit and its DOI, the ORCID, and the data availability statement naming it.
+
+---
+
+# MSR content and layout pass, branch `msr2027`, 2026-08-08
+
+The short paper became a different paper in this pass, not a shorter one. Rows
+below cover claims that changed meaning. A claim merely cut gets no row.
+
+| # | what it said | what it says now | why |
+|---:|---|---|---|
+| S1 | the paper measured invisibility "in three record channels across two ecosystems" and contribution 7 promised "a second ecosystem and two further channels" with the TypeScript figures (3 of 96, 7%, 69%) | **the short paper is single-ecosystem.** The abstract's TypeScript paragraph, the two-ecosystem framing in the abstract and §1, contribution 7, and the §6 paragraphs discussing the TypeScript column are all absent from this target | The manifest had already cut §2.6, §3.4, §4.5 and §6.4, which is where the TypeScript *evidence* lived, and left every *claim* about it standing. The paper promised a result it no longer contained. The claims now match the evidence |
+| S2 | abstract, 713 words, describing the two-ecosystem paper | abstract, **201 words**, carrying the measurement (Hive 97.0% against 55.8%), the mechanism (6.0-fold ceiling spread against 1.19-fold fill), the population finding (12 of 38, one ecosystem, pre-registered bar) and the taxonomy | ACM abstracts run 150 to 250 words. The old one also described a paper this target no longer is |
+| S3 | §4.3, 993 words on the 38-project frozen extension | 121 words: no detectable association (rho = −0.010, n = 33, CI, permutation p), a strong positive relationship ruled out, a null **not** established at 80% power, and the live arm disagreeing in sign at +0.518. Estimator validation and per-project rows move to the artifact | The result survives; the apparatus behind it does not fit ten pages. Nothing quantitative was dropped without being restated |
+| S4 | §2.4, 659 words on the bug-side linkage literature | 218 words. Bachmann and Bird keep their full statements because they bound what this paper may claim; Herzig, Nguyen and ReLink become single clauses | The bound is what matters, not the survey |
+| S5 | §2.5, 121 words on the SATD successor design | 36 words stating that the design exists and is not proposed here | It is not this paper's argument |
+| S6 | Table 1 printed 13 columns and the full 26-row dropped table | 7 columns (project, multi-key, commits/ticket, ceiling, ticket-side, TRR/ceiling) and the eligible twelve only. The 26 dropped projects are one sentence: 0.0%–78.1%, median 44.8%, 13/9/4 by drop reason | In sigconf the 13-column table **rendered clipped**: words vanished mid-caption and header cells ran into data. Verified fixed by rendering the page to an image and reading it, not by compiling successfully |
+| S7 | no data availability statement | §8.1 Data availability, naming the archived replication package, with the DOI as a placeholder pending deposit | The open science policy requires it and names Zenodo and figshare; it explicitly rejects version-control hosts |
+
+## Tooling added, which changed no claim
+
+| # | what | why |
+|---:|---|---|
+| P1 | `<!-- only: target -->` spans | Section-level exclusion cannot express a paragraph, and the two papers differ below section granularity. The variants sit adjacent in one file so no prose exists twice |
+| P2 | `ABSENT_FLOATS` | A table this target does not print now resolves to a named artifact pointer instead of a `\ref` with no `\label`. This is what removed all 20 `??` |
+| P3 | `drop_columns` and `table_parts` in the manifest | Columns are dropped by header text, so the manifest names what a reader sees. A column named that does not exist is a build error |
+| P4 | the dangling-reference check now covers **every** prefix and every reference command | It was written for `sec:` and passed a build carrying twenty broken `tab:` references. `demo()` now breaks `tab:`, `fig:`, `eq:`, `sec:` and `\autoref` and requires a complaint for each. Third instance of a check narrower than its message |
+
+## Measured state, 2026-08-08
+
+| | at pass start | now | limit |
+|---|---:|---:|---:|
+| main text | 17 | **14** | 10 |
+| references | 1 | 1 | 2 |
+| unresolved `??` | 20 | **0** | 0 |
+| unresolved citations | 0 | 0 | 0 |
+| log errors | 0 | **0** | 0 |
+| abstract words | 713 | **201** | 150–250 |
+
+Anonymity unchanged and re-checked against the built PDF: no surname, given
+name, "tunisia", "khannoussi", "gmail", "independent researcher", "orcid",
+"version2" or old title, and no "typescript".
+
+**Still four pages over.** What has not been done is listed in the response that
+accompanied this pass, not hidden here: the §1 narrative compression, §7.4, the
+six uncaptioned tables, and the repository-path conversion.
+
+## Reaching ten pages, 2026-08-08
+
+Acting on the decision to cut both the taxonomy detail and the threats detail.
+Sequence measured after every step: **17 → 14 → 12 → 11 → 10 → 9**.
+
+| what | why |
+|---|---|
+| §5.2–5.4 excluded | the six-mode table, §5.1 and §5.5 carry the argument. Three references into §5.3 were restated inline rather than repointed |
+| §6.1 matcher detail, failure categories, branch-name limit → preprint only | the 11.91pp margin rule and the disjoint validated range stay; those are what §6 earns its space with |
+| §2.2 excluded | its six numbered contributions restated §1's list almost line for line. Duplication removed rather than content |
+| §4.2.1 Kylin → three sentences | the withdrawal is a credibility asset and survives at that length: 7.5% of refs, four-year window, fill 0.87 at the corpus median |
+| §3.1.3 → one paragraph | the T ≤ date(H_p) constraint, why violating it looks like poor traceability, and both instantiations |
+| §1 narrative → four sentences; §7.4 → a short list; §7.2 cost-of-fields, §4.2 design-consequence, §2.1 exactness defence, §2.1 Vieira note, §4.1 hand-label exposure and industry tail → preprint only | |
+| §8.3 AI disclosure → 150 words for this target | policy requires disclosure of what was used and by whom it is owned, not an essay. The full version stays in the preprint. **This one is a judgment call and is easy to revert** |
+
+### The table decision was measured three times, and reversed
+
+At 13 columns the one-column landscape appendix beat body floats, 12 pages
+against 13: a table spanning both columns displaces more text than a forced
+break costs. After `drop_columns` cut the table to 7, the same comparison
+reversed, 9 pages against 10. Two generator defects were behind it, both the
+same shape: `needs_onecol` and `wide` judged the table's width **before** the
+manifest dropped its columns, so a 7-column table still claimed a landscape
+page and a one-column appendix. Both now judge after. The manifest records the
+measurement so the choice is not re-litigated from intuition.
+
+### Final state
+
+| | value | limit |
+|---|---:|---:|
+| main text | **9** | 10 |
+| references | 1 | 2 |
+| abstract | 193 words | 150–250 |
+| unresolved `??` | 0 | 0 |
+| unresolved citations | 0 | 0 |
+| log errors | 0 | 0 |
+
+Eleven anonymity greps clean across the built PDF and the generated LaTeX.
+`sigconf,review,anonymous` all active, line numbers present, CCS and keywords
+present, no bracketed placeholder, data availability statement present.
+`check_provenance.py`: UNSOURCED 0, TARGET_DRIFT 0. The IEEE preprint still
+builds at 26 pages with the author's name intact.
+
+One page of headroom remains under the limit. It is deliberately not spent.
+
+**Outstanding, and not something this branch can supply:** the Zenodo deposit.
+§8.1 carries `ANONYMISED-ARTIFACT-DOI` as a placeholder and will fail the
+"resolvable DOI" check until the deposit exists.
+
+---
+
+# Deposit assembly, 2026-08-11
+
+Defects found while assembling the Zenodo record. No number, claim, hedge or
+caveat in the paper changes; these repair artifacts the paper points at.
+
+| # | what was wrong | what was done | why it is not a claim change |
+|---:|---|---|---|
+| Z1 | `deposit/MANIFEST-v1.md` stated "Per-file SHA-256 digests are in the JSON manifest alongside this file". **They were absent.** The JSON carried totals, per-directory counts and one archive-level hash only. §6.8 describes the archive as 2,491 files with a per-file SHA-256 manifest and §8.3 says the audit verified all 2,491 against their manifest; neither reading had support | Per-file digests were **generated from `jira-caches-v1.tar.gz` at its already-recorded hash** `fcb705b6…1b9a95`, which was re-confirmed before deriving anything, so the provenance chain is unbroken. Written to `deposit/MANIFEST-v1.json` under `files`, with a `files_provenance` block recording when and from what. Verification then re-run end to end: **2,491 checked, 2,491 matched, 0 mismatches** | The artifact was made to match the sentences. No cache file was modified: every digest was computed from the archive whose hash the manifest already recorded, and all 2,491 still match the working tree byte for byte |
+| Z2 | The deposit copy of `paper/matcher_sample.json` carried **40 real developer email addresses** from Apache commit metadata, plus `ivan@dalmet.fr` in five files as the aliasing worked example, and `stevel@apache.org` in `paper/llm_rater_labels.json` | Pseudonymized in the **deposit copies only**, using `scripts/pseudonymize.py`, whose aliases are salted HMAC and therefore deterministic: the same address maps to the same pseudonym in every file. The working tree is untouched | §6.5's claim that a reader can re-check all 200 labels is unaffected. The matcher reads `%H`, `%s` and `%b` only, so author identity was never part of the determination. Verified after: 200 sample entries and 200 labels still correspond one to one, all 212 sha-keyed values identical, and only the `body` field changed, in 30 of 200 entries |
+| Z3 | `paper/FINAL_BRIEF_LOG.md` held third-party institutional contact addresses and is not research data | Excluded from the deposit, kept in the working tree | It is not among the 73 cited paths. The path audit after the drop is unchanged: **73 cited, 73 present, 0 missing** |
+| Z4 | — | `spent/` is **kept** in the deposit, deliberately | §6.6's claim that a threshold was held when lowering it would have rescued two projects is only checkable if the sequestered inputs are public. No outcome was ever observed for HBase or Phoenix, so publishing them is consistent with the held-out rule |
+
+Two format templates in `scripts/sui/identity.py` were **preserved** rather than
+pseudonymized: `ID+login@users.noreply.github.com` and
+`login@users.noreply.github.com` describe GitHub's noreply address scheme and
+are matched by the regex on line 27. Replacing them would have left the
+docstring contradicting the code it documents.

@@ -1,8 +1,5 @@
 # 2. Related work
 
-Drafted from `paper/PRIOR_WORK.md` (`215b10f`) and `paper/SATD_NOVELTY.md`
-(`5b50ef1`). Reorganisation of verified findings, not new argument.
-
 ## 2.1 Per-project linkage rates are already published
 
 **This paper makes no first-to-measure claim, and the claim it originally made was
@@ -31,6 +28,7 @@ only quantity the two studies share — gives **5,214 / 12,419 = 41.9841%** agai
 their **41.98%**, a gap of **+0.0041pp**. All five overlapping projects agree once
 scope is matched.
 
+<!-- only: preprint -->
 **On the exactness of that match, which invites suspicion and should not.** The
 quantity is a deterministic count — commits whose message matches a key pattern,
 over a fixed and identically bounded commit range — not an estimate, and it
@@ -41,6 +39,8 @@ that have sampling error, and this has none. The two figures also reach us by
 independent paths: SEOSS's 41.98% is transcribed from their published table, and
 41.9841% is a fresh scan of a clone at a pinned sha. **What the match confirms is
 scope alignment, and nothing beyond it.**
+
+<!-- /only -->
 
 SEOSS's selection criteria matter for our argument: a project must "continuously
 capture vertical and horizontal trace links among these artifacts". So a
@@ -63,6 +63,7 @@ qualitatively in 2018.
 Selection there was also informal: the six were chosen because each "largely
 followed the practice of tagging commits with issue IDs". Again no threshold.
 
+<!-- only: preprint -->
 **Vieira et al. 2019** [@vieira2019reports] (PROMISE'19, 55 Apache projects, >70,000 bug reports) may
 or may not report per-project linkage. **Unverified:** ACM DL, ResearchGate and
 figshare all returned 403 to unauthenticated fetches, so neither the paper body
@@ -70,6 +71,8 @@ nor the package manifest could be read. Recorded as unverified rather than
 characterised. Note its selection is already conditioned on *resolution = Fixed*,
 which pre-selects tickets that were worked, so any rate it reports would not be
 comparable to ours without care.
+
+<!-- /only -->
 
 ## 2.2 What is therefore new here
 
@@ -96,9 +99,9 @@ Positioned against the above rather than against an assumed gap:
    commensurable when they are not.
 5. **The ticket-side rate measured across the whole probe**, including the 26
    projects the bar **rejected** — Rath 2018 reports it per issue *type*, and only
-   for the six projects it selected. *(Whether the quantity is also newly
-   **named** depends on the Bachmann determination in §2.4 and is
-   **[PENDING]**.)*
+   for the six projects it selected. The contribution is the coverage, not the
+   name: §3.1 introduces "ticket realisation rate" as a label for the paper's own
+   use and claims no priority for it.
 6. **The six-mode taxonomy**, and that none of it is expressible in any published
    frame.
 
@@ -119,6 +122,30 @@ candidates are unusable. That is what happened here.
 
 ## 2.4 The bug-side linkage literature, and what it already settled
 
+<!-- only: msr2027 -->
+The commit-side/ticket-side asymmetry measured here was studied on the bug side a
+decade and a half ago. **Bachmann et al. (FSE'10)** [@bachmann2010missing] had a
+core Apache HTTP Server developer annotate **493 commits** exhaustively with a
+purpose-built tool [@bird2010linkster], establishing ground truth rather than
+inferring it, and found only **47.6%** of bug-fix-related commits documented in
+the tracker; their target is the completeness of the link on one project over one
+window, ours a per-project rate over a whole tracker, established mechanically.
+**Bird et al. (ESEC/FSE'09)** [@bird2009fair] is why it matters: missing links are
+not missing at random, so a dataset built from linked records is a biased sample
+and models fitted to it inherit the bias, which is the same argument this paper
+makes for architectural change. Around them, Herzig et al. (ICSE'13)
+[@herzig2013not] show the reports themselves are misclassified, Nguyen et al.
+(WCRE'10) [@nguyen2010case] replicate the bias result, and a line of work
+beginning with ReLink [@wu2011relink] recovers missing links from time proximity,
+author identity and textual similarity. The two measurements do not condition on
+the same thing: Bachmann et al. restrict attention to bugs and bug-fix commits,
+whereas §3.1.1 admits every issue type and conditions on nothing. This paper does
+not adjudicate whether that makes the quantities distinct, and no claim it makes
+depends on the answer.
+<!-- /only -->
+
+<!-- only: preprint -->
+
 The commit-side/ticket-side asymmetry this paper measures was studied on the
 bug-side a decade and a half ago, and that literature is the direct ancestor of
 §4.2. It is set out here rather than merely listed, because two of its findings
@@ -136,19 +163,18 @@ project over one window; ours is a per-project rate over a whole tracker,
 established mechanically. Their design is far stronger on ground truth and far
 narrower in scope; ours is the reverse.
 
-> **[DETERMINATION PENDING]** Whether the ticket realisation rate of §3.1 is the
-> same quantity Bachmann et al. measured, or a distinct one, is **not settled in
-> this draft**. The argument for distinctness is that §3.1.1 admits every issue
-> type and every status and conditions on nothing, whereas Bachmann conditions on
-> bugs and bug-fix commits. That argument has not been adjudicated against the
-> paper's own text, and the naming claim in §3.1 stands or falls with it. See
-> `paper/REVISION_LOG.md`, GATE.
+The two measurements are not identical in what they condition on: Bachmann et al.
+restrict attention to bugs and bug-fix commits, whereas §3.1.1 admits every issue
+type and every status and conditions on nothing. This paper does not adjudicate
+whether that difference makes the quantities distinct, and no claim it makes
+depends on the answer. Bachmann et al. is cited here as the prior measurement of
+link completeness, and §3.1 claims no priority for the name it uses.
 
 **Bird et al. (ESEC/FSE'09), *Fair and Balanced? Bias in Bug-Fix Datasets*** [@bird2009fair] — C.
 Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu — is
 the reason any of this matters. Missing links are not missing at random, so a
 dataset built from linked records is a biased sample of the work, and models
-fitted to it inherit the bias. **This is the same argument our §7.3 makes for
+fitted to it inherit the bias. **This is the same argument this paper makes for
 architectural change**, arrived at independently and seventeen years later, and
 we cite it as the prior statement of the principle rather than as a parallel.
 
@@ -181,7 +207,16 @@ operate on a project already known to be a candidate. But the unqualified claim
 that missing links are unrecoverable would overstate the gap, and §5.5 is
 qualified accordingly.
 
+<!-- /only -->
 ## 2.5 Refactoring and self-admitted technical debt
+
+<!-- only: msr2027 -->
+The successor design this corpus limit points towards is a self-admitted
+technical debt anchor, and its novelty margin rests on three simultaneous choices
+that the prior work does not combine. That design is not proposed here.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 Included because it bounds what this paper claims. **Iammarino et al. (2021,
 JSS)** [@iammarino2021empirical] and **Esfandiari & Sami (ICCKE 2023)**
@@ -198,6 +233,7 @@ literature depends on, so its exposure is ours. And the successor design this
 study points to is **not proposed here**; it is a separate registered report
 gated on external judgment (`paper/SATD_NOVELTY.md`).
 
+<!-- /only -->
 ## 2.6 Detector validity
 
 RefactoringMiner [@tsantalis2026refactoringminer] is the detector. Its TypeScript support was complete

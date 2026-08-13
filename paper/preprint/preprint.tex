@@ -127,8 +127,6 @@ Empirical work on architectural change reads a project's own records --- commit 
 \section{Related work}
 \label{sec:2}
 
-Drafted from \texttt{paper/\allowbreak{}PRIOR\_\allowbreak{}WORK.\allowbreak{}md} (\texttt{215b10f}) and \texttt{paper/\allowbreak{}SATD\_\allowbreak{}NOVELTY.\allowbreak{}md} (\texttt{5b50ef1}). Reorganisation of verified findings, not new argument.
-
 \subsection{Per-project linkage rates are already published}
 \label{sec:2.1}
 
@@ -179,7 +177,7 @@ Positioned against the above rather than against an assumed gap:
 \item \textbf{The population finding.} 12 of 38 pass and no project outside one ecosystem clears the bar. SEOSS's own table contains the ingredients --- Apache at the top, JBoss at the bottom --- but does not draw the inference. The ecosystem label is a hand classification and \S\kern0.13em \ref{sec:4.1} reports the measured variables that failed to replace it.
 \item \textbf{Both reference channels measured together.} No prior work counts GitHub-issue references alongside Jira keys, which is what shows the bar selects a \emph{tracker} rather than a discipline.
 \item \textbf{The arithmetic ceiling.} The bound TRR $\leq$ CSR $\times$ commits / tickets, the decomposition of the ticket-side rate into that ceiling and a residual, and the finding that in this corpus the residual is nearly constant while the ceiling varies six-fold (\S\kern0.13em \ref{sec:3.1.4}, \S\kern0.13em \ref{sec:4.2}). No prior work reports commits per ticket alongside a linkage rate, which is what makes the two rates look commensurable when they are not.
-\item \textbf{The ticket-side rate measured across the whole probe}, including the 26 projects the bar \textbf{rejected} --- Rath 2018 reports it per issue \emph{type}, and only for the six projects it selected. \emph{(Whether the quantity is also newly \textbf{named} depends on the Bachmann determination in \S\kern0.13em \ref{sec:2.4} and is \textbf{[PENDING]}.)}
+\item \textbf{The ticket-side rate measured across the whole probe}, including the 26 projects the bar \textbf{rejected} --- Rath 2018 reports it per issue \emph{type}, and only for the six projects it selected. The contribution is the coverage, not the name: \S\kern0.13em \ref{sec:3.1} introduces ``ticket realisation rate'' as a label for the paper's own use and claims no priority for it.
 \item \textbf{The six-mode taxonomy}, and that none of it is expressible in any published frame.
 \end{enumerate}
 
@@ -197,12 +195,9 @@ The commit-side/ticket-side asymmetry this paper measures was studied on the bug
 
 \textbf{Bachmann et al. (FSE'10), \emph{The Missing Links: Bugs and Bug-fix Commits}} \cite{bachmann2010missing} --- Adrian Bachmann, Christian Bird, Foyzur Rahman, Premkumar Devanbu and Abraham Bernstein --- is the closest ancestor. They engaged a core Apache HTTP Server developer to annotate \textbf{493 commits over a six-week period} exhaustively, using a purpose-built tool (Linkster \cite{bird2010linkster}), to establish ground truth rather than infer it from commit messages. Against that ground truth they found that \textbf{only 47.6\% of bug-fix-related commits are documented in the bug tracking database}. Their target is the completeness of the \emph{link}, established by expert annotation on one project over one window; ours is a per-project rate over a whole tracker, established mechanically. Their design is far stronger on ground truth and far narrower in scope; ours is the reverse.
 
-\begin{quote}
-\textbf{[DETERMINATION PENDING]} Whether the ticket realisation rate of \S\kern0.13em \ref{sec:3.1} is the same quantity Bachmann et al. measured, or a distinct one, is \textbf{not settled in this draft}. The argument for distinctness is that \S\kern0.13em \ref{sec:3.1.1} admits every issue type and every status and conditions on nothing, whereas Bachmann conditions on bugs and bug-fix commits. That argument has not been adjudicated against the paper's own text, and the naming claim in \S\kern0.13em \ref{sec:3.1} stands or falls with it. See \texttt{paper/\allowbreak{}REVISION\_\allowbreak{}LOG.\allowbreak{}md}, GATE.
+The two measurements are not identical in what they condition on: Bachmann et al. restrict attention to bugs and bug-fix commits, whereas \S\kern0.13em \ref{sec:3.1.1} admits every issue type and every status and conditions on nothing. This paper does not adjudicate whether that difference makes the quantities distinct, and no claim it makes depends on the answer. Bachmann et al. is cited here as the prior measurement of link completeness, and \S\kern0.13em \ref{sec:3.1} claims no priority for the name it uses.
 
-\end{quote}
-
-\textbf{Bird et al. (ESEC/FSE'09), \emph{Fair and Balanced? Bias in Bug-Fix Datasets}} \cite{bird2009fair} --- C. Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu --- is the reason any of this matters. Missing links are not missing at random, so a dataset built from linked records is a biased sample of the work, and models fitted to it inherit the bias. \textbf{This is the same argument our \S\kern0.13em \ref{sec:7.3} makes for architectural change}, arrived at independently and seventeen years later, and we cite it as the prior statement of the principle rather than as a parallel.
+\textbf{Bird et al. (ESEC/FSE'09), \emph{Fair and Balanced? Bias in Bug-Fix Datasets}} \cite{bird2009fair} --- C. Bird, A. Bachmann, E. Aune, J. Duffy, A. Bernstein, V. Filkov and P. Devanbu --- is the reason any of this matters. Missing links are not missing at random, so a dataset built from linked records is a biased sample of the work, and models fitted to it inherit the bias. \textbf{This is the same argument this paper makes for architectural change}, arrived at independently and seventeen years later, and we cite it as the prior statement of the principle rather than as a parallel.
 
 \textbf{Nguyen, Adams and Hassan (WCRE'10) \cite{nguyen2010case}, \emph{A Case Study of Bias in Bug-Fix Datasets}} replicates that bias analysis. \emph{(The review that prompted this revision cited this work as MSR'10 and characterised it as a replication on a system with near-perfect linkage; the venue is WCRE'10, and the near-perfect-linkage characterisation could not be verified from an accessible copy, so it is not asserted here --- see \texttt{paper/\allowbreak{}REVISION\_\allowbreak{}LOG.\allowbreak{}md}.)}
 
@@ -243,7 +238,7 @@ This is the quantity Rath \& M\"ader publish per project as \emph{``Linked Chang
 
 \[\mathrm{TRR}(p) = \frac{\bigl\lvert\{ k \in \mathrm{Tickets}(p, T) : \exists c \longrightarrow H_p, k \in \mathrm{cites}(c) \}\bigr\rvert}{\lvert \mathrm{Tickets}(p, T)\rvert}\]
 
-The name is introduced here because the quantity has been reported without one. Rath et al. (ICSE'18) \cite{rath2018traceability} measure it --- ``approximately 43.3\% of improvements and 42.4\% of bugs have no commits associated with them'' --- as a property of an issue type rather than as a project-level rate with a name, and the divergence between it and CSR is not framed anywhere as a constraint on corpus selection.
+TRR is a label of convenience for this paper. It is not a claim to have named the quantity first, and nothing here depends on the name being new. The quantity has been measured before: Rath et al. (ICSE'18) \cite{rath2018traceability} report that ``approximately 43.3\% of improvements and 42.4\% of bugs have no commits associated with them'', as a property of an issue type rather than as a project-level rate, and Bachmann et al. (FSE'10) \cite{bachmann2010missing} measure the completeness of the bug-side link against expert ground truth. What is new here is the use made of the quantity rather than the quantity itself: the divergence between TRR and CSR is not framed anywhere as a constraint on corpus selection.
 
 \textbf{``Realisation'' is a claim about the record, not about the work.} TRR counts a ticket as realised when the repository's own record points back to it. A ticket can be resolved, implemented and shipped without any commit naming it, and such a ticket is counted as unrealised. That is the intended reading: the measure is of what a researcher can \emph{recover}, not of what a project \emph{did}.
 
@@ -322,7 +317,7 @@ Second, it decomposes TRR into a part that is arithmetic and a part that is beha
 
 \[\mathrm{fill}(p) = \frac{\mathrm{TRR}(p)}{\mathrm{ceiling}(p)} \in [0, 1]\]
 
-\texttt{fill} is the share of the attainable maximum actually reached --- how efficiently a project's citing commits spread across distinct tickets rather than piling onto a few. \textbf{\texttt{fill} is the quantity a claim about citation discipline needs}; \texttt{ceiling} is a property of how much code the project writes per ticket it files. Tables~\ref{tab:eligibility} and~\ref{tab:ticketside} report both. \S\kern0.13em \ref{sec:4.2} shows that in this corpus almost all of the ticket-side variation is ceiling and almost none of it is fill.
+\texttt{fill} is the share of the attainable maximum actually reached --- how efficiently a project's citing commits spread across distinct tickets rather than piling onto a few. \textbf{\texttt{fill} is the quantity a claim about citation discipline needs}; \texttt{ceiling} is a property of how much code the project writes per ticket it files. Both are reported for every eligible project (Table~\ref{tab:eligibility}). \S\kern0.13em \ref{sec:4.2} shows that in this corpus almost all of the ticket-side variation is ceiling and almost none of it is fill.
 
 \textbf{The subscript propagates, and it matters.} \texttt{ceiling} and \texttt{fill} are both functions of TRR and of the ticket denominator, so each inherits whichever instantiation of \S\kern0.13em \ref{sec:3.1.3} produced it: $\mathrm{ceiling}_\mathrm{live}$ and $\mathrm{fill}_\mathrm{live}$ are computed against the live Jira read of 2026-07-25, $\mathrm{ceiling}_\mathrm{frozen}$ and $\mathrm{fill}_\mathrm{frozen}$ against the frozen snapshot. The two are not interchangeable and they do not always agree about whether the bound binds at all --- three projects have $\mathrm{ceiling}_\mathrm{frozen}$ at or above 100\% while every $\mathrm{ceiling}_\mathrm{live}$ is below it (\S\kern0.13em \ref{sec:4.2}, Table~\ref{tab:ticketside}). \textbf{Throughout this paper an unsubscripted \texttt{TRR}, \texttt{ceiling} or \texttt{fill} means the quantity in general rather than a measured value; every measured value carries its subscript}, in the prose, in the abstract and in the table captions. Where a project appears with two numbers for what looks like one quantity, the subscripts are the difference.
 
@@ -331,11 +326,11 @@ Second, it decomposes TRR into a part that is arithmetic and a part that is beha
 
 \textbf{38 Apache candidates}, each Maven-built, Jira-tracked and multi-module. Each was cloned \texttt{-\allowbreak{}-\allowbreak{}filter=blob:none -\allowbreak{}-\allowbreak{}no-\allowbreak{}checkout} --- the probe needs \texttt{git log} and nothing else, so a working tree is pure cost --- and probed with \texttt{scripts/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}py}. Per-project HEAD shas are pinned in \texttt{paper/\allowbreak{}traceability\_\allowbreak{}probe.\allowbreak{}json}, so any re-run is exactly diffable against this one.
 
-\textbf{Hadoop itself is not one of the 38.} It is the corpus the exploratory work was done on, and it is used here only as the worked example for multi-key matching. Every rate in Tables~\ref{tab:eligibility} and~\ref{tab:ticketside} is from a project Hadoop is not.
+\textbf{Hadoop itself is not one of the 38.} It is the corpus the exploratory work was done on, and it is used here only as the worked example for multi-key matching. Every rate reported for the eligible corpus is from a project Hadoop is not.
 
 \textbf{Key prefixes were detected empirically from commit messages, not assumed.} This is not a refinement; it decides the answer. A single-key probe reads Hadoop at \textbf{26.2\%}, against \textbf{92.3\%} on a four-key probe and \textbf{97.8\%} on a seven-key probe of the same 28,290 commits (\S\kern0.13em \ref{sec:5}, modes 5 and 6). The three figures are the same measurement under three key sets, not a rate and a correction to it; 97.8\% is the most complete of them, and the paper quotes whichever key set it names. Evergreen reads 71.7\% under a single-key probe for the same reason. Seven of the 38 needed a second key (\texttt{CALCITE,OPTIQ}, \texttt{HDDS,OZONE}, \texttt{KARAF,FELIX}, \texttt{PINOT,THIRDEYE}, \texttt{ROCKETMQ,RIP}, \texttt{TOMEE,OPENEJB}, \texttt{JAMES,MAILBOX}).
 
-\textbf{One of those second keys was never used.} \texttt{OZONE} appears in Ozone's probed key set and is cited by \textbf{zero} commits; every Jira reference in that repository is an \texttt{HDDS} key. It is retained in the probe because the key set was fixed from a prefix scan before the counts were read, and removing it afterwards would be selection on the outcome. \S\kern0.13em \ref{sec:5.3} counts it among the six probed keys with no project record in the frozen tracker corpus, which is a different fact about the same key: it is neither cited in git nor present in the tracker.
+\textbf{One of those second keys was never used.} \texttt{OZONE} appears in Ozone's probed key set and is cited by \textbf{zero} commits; every Jira reference in that repository is an \texttt{HDDS} key. It is retained in the probe because the key set was fixed from a prefix scan before the counts were read, and removing it afterwards would be selection on the outcome. It is also one of \textbf{six} probed keys with no project record in the frozen tracker corpus, which is a different fact about the same key: it is neither cited in git nor present in the tracker.
 
 \textbf{Both reference channels are counted.} GitHub-issue references (\texttt{\#NNN}, \texttt{GH-\allowbreak{}NNN}) are counted per repository alongside Jira keys. This is what turns each drop reason from an inference into a measurement: \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate} means the GitHub count exceeds the Jira count in that repository, and nine projects qualify.
 
@@ -360,11 +355,11 @@ Architectural episodes in the Apache corpus were detected with \textbf{Refactori
 \subsection{Corpus eligibility is the binding constraint}
 \label{sec:4.1}
 
-\textbf{Twelve of 38 Apache candidates clear the pre-registered 0.80 commit-side bar, and every one of them is Hadoop-ecosystem under the classification set out below} (Table~\ref{tab:eligibility}; \texttt{figures/\allowbreak{}eligibility\_\allowbreak{}funnel.\allowbreak{}png} panel A). The bar was fixed before any project was cloned and never moved.
+\textbf{Twelve of 38 Apache candidates clear the pre-registered 0.80 commit-side bar, and every one of them is Hadoop-ecosystem under the classification set out below} (Table~\ref{tab:eligibility}, Figure~\ref{fig:funnel}). The bar was fixed before any project was cloned and never moved.
 
 No project outside the Hadoop ecosystem clears it. The best of them, James, reaches \textbf{74.8\%}. The spread runs from ShardingSphere at 0.01\% to Ozone at 98.3\%, with a median of \textbf{63.6\%} across all 38 and \textbf{44.8\%} across the 26 the bar rejected.
 
-\textbf{The ecosystem label is a hand classification, and we tested whether a measured variable does the same work. It does not.} ``Hadoop-ecosystem'' is not a field in any dataset; one of the authors assigned it. The natural replacement is project generation --- free metadata, no judgment, and a mechanism, since projects predating the 2019--20 migration of ASF development to GitHub pull requests had longer under the Jira-citation convention. Two generational variables were tried (\texttt{scripts/\allowbreak{}era\_\allowbreak{}separation.\allowbreak{}py}):
+\textbf{The ecosystem label is a hand classification, and we tested whether a measured variable does the same work. It does not.} ``Hadoop-ecosystem'' is not a field in any dataset; it was assigned by hand. The natural replacement is project generation --- free metadata, no judgment, and a mechanism, since projects predating the 2019--20 migration of ASF development to GitHub pull requests had longer under the Jira-citation convention. Two generational variables were tried (\texttt{scripts/\allowbreak{}era\_\allowbreak{}separation.\allowbreak{}py}):
 
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.3782\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1891\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4328\linewidth-2\tabcolsep\relax}}
@@ -391,7 +386,7 @@ Neither generational variable separates the corpus as well as the hand label, an
 
 Ecosystem adjacency is not sufficient either --- \textbf{Parquet fails at 29.1\% and Accumulo at 43.0\%}, both squarely inside the Hadoop dependency graph. What the bar selects is a specific commit-hygiene convention, not a dependency relationship and not a quality level.
 
-\textbf{The drop reasons are measured rather than inferred}, because both reference channels are counted per repository. Nine projects are dropped with \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate}, meaning the GitHub-issue count exceeds the Jira-key count in that repository --- ShardingSphere carries 30,746 GitHub-issue references against 5 Jira keys in 49,111 commits. Four fall in \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} ($\geq$70\%) and the remainder in \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene}. The industry-donated projects are the sharpest case: ShardingSphere 0.01\%, SkyWalking 0.3\%, Pinot 5.2\%, RocketMQ 5.7\%, Dubbo 11.0\%. They never adopted the Jira-citation convention, and the attrition is therefore concentrated in the newest projects --- which is the direction that matters for anyone building a corpus now.
+\textbf{The drop reasons are measured rather than inferred}, because both reference channels are counted per repository. Nine projects are dropped with \texttt{github\_\allowbreak{}issue\_\allowbreak{}references\_\allowbreak{}dominate}, meaning the GitHub-issue count exceeds the Jira-key count in that repository --- ShardingSphere carries 30,746 GitHub-issue references against 5 Jira keys in 49,111 commits. Four fall in \texttt{below\_\allowbreak{}bar\_\allowbreak{}narrowly} ($\geq$70\%) and the remaining thirteen in \texttt{low\_\allowbreak{}commit\_\allowbreak{}message\_\allowbreak{}hygiene}. Across all 26 the commit-side rate runs \textbf{0.0\%--78.1\%} with a median of \textbf{44.8\%}; the per-project rows are in the replication package. The industry-donated projects are the sharpest case: ShardingSphere 0.01\%, SkyWalking 0.3\%, Pinot 5.2\%, RocketMQ 5.7\%, Dubbo 11.0\%. They never adopted the Jira-citation convention, and the attrition is therefore concentrated in the newest projects --- which is the direction that matters for anyone building a corpus now.
 
 \subsection{The channel that is published is not the channel that is needed --- and the gap is mostly arithmetic}
 \label{sec:4.2}
@@ -411,7 +406,7 @@ Across the same twelve projects, the \textbf{commit-side rate runs 82.6--98.3\%}
 \item so the $5.8\times$ spread in $\mathrm{TRR}_\mathrm{live}$ is \textbf{$6.0\times$ ceiling and $1.19\times$ fill}.
 \end{itemize}
 
-\textbf{Every ceiling in this section is $\mathrm{ceiling}_\mathrm{live}$, and the frozen estimator does not agree that the bound binds.} Table~\ref{tab:ticketside} computes $\mathrm{ceiling}_\mathrm{frozen}$ against the frozen Jira snapshot and puts three of the twelve at or above 100\% --- Ozone \textbf{176.0\%}, Ranger \textbf{130.4\%}, Knox \textbf{100.0\%} --- where a bound above 100\% does not constrain anything. That is not a disagreement about the projects. It is what a 2026 commit window measured against an older tracker produces: the repository holds more citing commits than the snapshot holds tickets, so the arithmetic ceiling exceeds one and stops being a ceiling. The two estimators bound different denominators, and Table~\ref{tab:ticketside}'s own note says so. Neither figure is withdrawn.
+\textbf{Every ceiling in this section is $\mathrm{ceiling}_\mathrm{live}$, and the frozen estimator does not agree that the bound binds.} Table~\ref{tab:ticketside} computes $\mathrm{ceiling}_\mathrm{frozen}$ against the frozen Jira snapshot and puts three of the twelve at or above 100\% --- Ozone \textbf{176.0\%}, Ranger \textbf{130.4\%}, Knox \textbf{100.0\%} --- where a bound above 100\% does not constrain anything. That is not a disagreement about the projects. It is what a 2026 commit window measured against an older tracker produces: the repository holds more citing commits than the snapshot holds tickets, so the arithmetic ceiling exceeds one and stops being a ceiling. The two estimators bound different denominators, and the note accompanying that measurement says so. Neither figure is withdrawn.
 
 Ranked by fill rather than by rate, the ordering changes almost completely: Drill (43.2\%, fill 0.95) sits above Ranger (65.4\%, fill 0.80). \emph{Every project in the corpus is reaching most of what its commit supply permits.}
 
@@ -544,11 +539,7 @@ A researcher sampling with GHS therefore gets stars, commits, contributors and l
 \section{Six ways a project cannot support an issue-linked study}
 \label{sec:5}
 
-Drafted from \texttt{paper/\allowbreak{}eligibility\_\allowbreak{}failure\_\allowbreak{}modes.\allowbreak{}md} (\texttt{5179907}).
-
 \textbf{Every mode below was discovered \emph{after} selecting the project, by probing it. None is expressible in any published sampling frame.} GHS indexed 735,669 repositories as published in 2021 and exposes 35 fields per record today, of which only \texttt{totalIssues} and \texttt{openIssues} touch issues, and both are GitHub-issue counts (\S\kern0.13em \ref{sec:2.3}). All six were found the same way: by reading commit messages, project by project.
-
-\emph{Note on mode 6.} \texttt{README.\allowbreak{}md} \S\kern0.13em 5 labels mode 6 ``repository migrated across organisations''. That framing was \textbf{superseded on 2026-07-25} once id$\rightarrow$key stability was measured (\texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 2, \texttt{5179907}). The current statement is below, and it is the one this paper uses.
 
 \begingroup\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 0.0372\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2660\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.4461\linewidth-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.2507\linewidth-2\tabcolsep\relax}}
@@ -639,7 +630,7 @@ None of the six is derivable from repository metadata. Expressing them requires,
 \section{Threats to validity}
 \label{sec:6}
 
-Assembled from \texttt{paper/\allowbreak{}ERA\_\allowbreak{}AUDIT.\allowbreak{}md} (\texttt{e0d76ef}), \texttt{paper/\allowbreak{}ALIASING\_\allowbreak{}HADOOP.\allowbreak{}md}, \texttt{paper/\allowbreak{}matcher\_\allowbreak{}validation.\allowbreak{}md}, \texttt{SUI\_\allowbreak{}FINDINGS.\allowbreak{}md}, \texttt{paper/\allowbreak{}numbers.\allowbreak{}md} and \texttt{PROJECT\_\allowbreak{}STATE.\allowbreak{}md} \S\kern0.13em 7. Several of the items below are things this study got wrong and corrected. \textbf{They are stated as the paper's credibility, not as its embarrassments} --- a methods paper about record quality that concealed its own record would be self-refuting.
+Several of the items below are things this study got wrong and corrected. \textbf{They are stated as the paper's credibility, not as its embarrassments} --- a methods paper about record quality that concealed its own record would be self-refuting.
 
 \subsection{Construct validity}
 \label{sec:6.1}
@@ -648,7 +639,7 @@ Assembled from \texttt{paper/\allowbreak{}ERA\_\allowbreak{}AUDIT.\allowbreak{}m
 
 \textbf{A key matched from a branch name is counted as a genuine reference.} Two mechanisms occur in the sample: merge subjects (\texttt{Merge branch 'master' into KNOX-\allowbreak{}998-\allowbreak{}Package\_\allowbreak{}Restructuring}) and svn trailers naming a branch (\texttt{.\allowbreak{}.\allowbreak{}.\allowbreak{}/\allowbreak{}branches/\allowbreak{}TEZ-\allowbreak{}1@1471779}). The ticket association is correct even though the commit does not implement the ticket. The five failure categories were fixed before labelling and do not cover this case, so it was counted genuine and is recorded here rather than assigned an invented category.
 
-\textbf{Ticket-side coverage counts keys that resolve in the tracker.} Sqoop cites 790 distinct keys of which 122 have no tracker record, so its ticket-side rate rests on the 668 that resolve (\S\kern0.13em \ref{sec:5.3}). This is mode 6 inside a passing project, and it means ticket-side rates are, strictly, coverage of \emph{resolvable} tickets.
+\textbf{Ticket-side coverage counts keys that resolve in the tracker.} Sqoop cites 790 distinct keys of which 122 have no tracker record, so its ticket-side rate rests on the 668 that resolve. This is mode 6 inside a passing project, and it means ticket-side rates are, strictly, coverage of \emph{resolvable} tickets.
 
 \textbf{The 38-project extension uses a different denominator source, and the validation figure the earlier draft quoted was for a different approximation.} \S\kern0.13em \ref{sec:4.3} measures the ticket realisation rate for all 38 projects against the frozen public Jira corpus rather than a second live fetch, aligning numerator and denominator in issue-number space (\S\kern0.13em \ref{sec:3.1.3}). \textbf{Two approximations are stacked}: number-capping, and substituting a frozen snapshot for the live tracker. The 0.45pp / 2.14pp figure earlier drafts quoted validates only the first. The end-to-end error of the combination Table~\ref{tab:ticketside} actually uses is \textbf{1.76pp mean / 11.91pp max}, the worst case being Kylin; excluding Kylin it is 0.84pp mean and \textbf{2.93pp max, with 11 of 12 inside 3pp}. \textbf{Quote the end-to-end figure.}
 
@@ -820,7 +811,7 @@ That is a selection effect on the dependent variable, and it points the same way
 
 Twelve projects is not enough, and more projects would not fix it. Between-project correlation caps the effective sample at \textbf{P/ICC} whatever the corpus size: at P = 12 and ICC = 0.02 the ceiling is 600 against the 769 independent tickets the effect needed at 80\% power. \textbf{The ICC is unmeasured}, and was deliberately not estimated from the four clusters available --- between-cluster variance has 3 degrees of freedom at $n = 4$, and the decision turns on the difference between 0.015 and 0.02, which four clusters cannot resolve. It must come from the pooled study as a first stage. The direction of the bias is also bad: these twelve share contributors, committers, review norms and in several cases build and CI infrastructure, so this sample's ICC exceeds a random sample's, and higher ICC is what makes the study impossible.
 
-Three ways out, with their costs. \textbf{Lower the bar and model the measurement error} --- at 60\% another nine projects qualify, at the cost of a biased sample of tickets \emph{within} each project, which \S\kern0.13em \ref{sec:7.3} shows is real rather than hypothetical. \textbf{This is the one to avoid drifting into silently.} \textbf{Change the outcome so it needs no tickets} --- anything computed purely from git dissolves both the traceability filter and the ecosystem clustering, at the cost of the creation-to-first-commit clock and with it the ability to measure waiting at all. \textbf{Accept ecosystem-bounded scope and say so} --- register as a study of one ecosystem, twelve projects, and state the boundary as a finding rather than discovering it in review. The second is the strongest study and the largest rebuild; the third is honest and immediately actionable.
+Three ways out, with their costs. \textbf{Lower the bar and model the measurement error} --- at 60\% another nine projects qualify, at the cost of a biased sample of tickets \emph{within} each project, which the bug-side linkage literature (\S\kern0.13em \ref{sec:2.4}) shows is real rather than hypothetical. \textbf{This is the one to avoid drifting into silently.} \textbf{Change the outcome so it needs no tickets} --- anything computed purely from git dissolves both the traceability filter and the ecosystem clustering, at the cost of the creation-to-first-commit clock and with it the ability to measure waiting at all. \textbf{Accept ecosystem-bounded scope and say so} --- register as a study of one ecosystem, twelve projects, and state the boundary as a finding rather than discovering it in review. The second is the strongest study and the largest rebuild; the third is honest and immediately actionable.
 
 \subsection{What this paper does not claim}
 \label{sec:7.5}
@@ -835,13 +826,18 @@ And it does not offer a fix. The six modes are diagnosable, not repairable: a pr
 \section{Acknowledgements and disclosures}
 \label{sec:8}
 
-\subsection{Data and tools}
+\subsection{Data availability}
 \label{sec:8.1}
+
+Every artifact this paper rests on is archived and citable: the 38 pinned repository shas, the frozen tracker caches, the per-project measurements, the full 38-row eligibility table, the three-channel visibility table, every script that produced a number here, and the audit report against which the numbers were re-derived. \textbf{Replication package: \href{https://doi.org/10.5281/zenodo.21846139}{https://doi.org/10.5281/zenodo.21846139}.} Nothing needed to reproduce a figure in this paper lives only in a version-control host.
+
+\subsection{Data and tools}
+\label{sec:8.2}
 
 This study is built on artifacts other people made public. The Apache Software Foundation publishes the issue trackers and repositories the whole corpus is drawn from. Lloyd Montgomery, Clara L\"uders and Walid Maalej deposited the Public Jira Dataset (Zenodo 15719919, CC BY 4.0), which supplies every estimate-coverage base rate and every frozen ticket denominator in Table~\ref{tab:ticketside}. Michael Rath and Patrick M\"ader's SEOSS 33 provides the independent measurement this study's probe is validated against, and the agreement between them at matched scope (Section~\ref{sec:4.4}) is the strongest external check the work has. Nikolaos Tsantalis and the RefactoringMiner contributors built the detector. None of them is responsible for what is done with their work here.
 
 \subsection{Use of AI tools}
-\label{sec:8.2}
+\label{sec:8.3}
 
 \textbf{Declared in full, because a paper about the trustworthiness of records should be candid about how its own were produced.}
 
@@ -861,14 +857,14 @@ Large language model assistants (Anthropic's Claude) were used across parts of t
 \textbf{Errors that assistance introduced and review caught} are recorded rather than quietly fixed, because they bound how much the audit trail is worth: a median computed as the upper-middle value at even \emph{n}; a validation figure quoted for a different approximation than the one in use; a provenance checker that could not fail, and a first rebuild of it that reproduced the same defect by another route. Each is in \texttt{paper/\allowbreak{}REVISION\_\allowbreak{}LOG.\allowbreak{}md} with what it changed.
 
 \subsection{A separate matter: the LLM used as a rater}
-\label{sec:8.3}
+\label{sec:8.4}
 
 Section~\ref{sec:6.5} reports a pilot in which a language model applied this study's codebook as a second rater. \textbf{That is an object of study here, not a method the paper's claims rest on}, and it is reported with its contamination disclosed and its conclusions bounded. No claim in this paper depends on it.
 
 \subsection{Funding and competing interests}
-\label{sec:8.4}
+\label{sec:8.5}
 
-No funding was received. The author declares no competing interests. The work was carried out independently, alongside full-time employment, which is stated in Section~\ref{sec:6.8} because it explains the shape of the study's limitations.
+No funding was received. The author declares no competing interests.
 
 
 \clearpage

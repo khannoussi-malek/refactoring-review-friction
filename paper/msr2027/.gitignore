@@ -1,0 +1,10 @@
+# acmart and its dependencies are fetched at build time, not vendored.
+acmart/
+acmart.zip
+acmart.cls
+ACM-Reference-Format.bst
+*.aux
+*.log
+*.out
+*.bbl
+*.blg

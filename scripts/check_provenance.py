@@ -76,7 +76,7 @@ SECTION = re.compile(r"^#{2,4}\s+(\d+(?:\.\d+)*)", re.M)
 NOT_MEASUREMENTS = {
     # DOI / arXiv / dataset identifiers
     "104005", "1804.02433", "2404.01950", "2501.15387", "2605.16133",
-    "15719919", "1882291.1882308", "2025113.2025120", "1882308", "2025120",
+    "15719919", "21846139", "1882291.1882308", "2025113.2025120", "1882308", "2025120",
     # upstream issue, PR and branch identifiers, and one commit hash in prose
     "1124", "998", "1471779", "256", "5179907",
     # detector version 3.1.4 tokenises as "3.1"; licence versions CC BY 4.0
@@ -379,7 +379,54 @@ def main():
         for tok, (t_, files, _) in sorted(tiers.items()):
             if t_ == "ARTIFACT_NO_ROW":
                 print(f"    ARTIFACT_NO_ROW {tok}  ({', '.join(sorted(files))})")
-    sys.exit(1 if (counts["UNSOURCED"] or counts["ARTIFACT_NO_ROW"]) else 0)
+    drift = cross_target_numbers()
+    if not a.quiet:
+        print(f"  TARGET_DRIFT {len(drift)}")
+        for d in drift:
+            print(f"    {d}")
+    sys.exit(1 if (counts["UNSOURCED"] or counts["ARTIFACT_NO_ROW"] or drift)
+             else 0)
+
+
+NUM = re.compile(r"(?<![\w.])\d[\d,]*(?:\.\d+)?%?")
+
+
+def cross_target_numbers():
+    """Fail if a number in the short paper disagrees with the long one.
+
+    Both targets are generated from the same section files and the short one is
+    a strict subset, so every number it prints must also appear in the preprint.
+    A number that appears only in the short paper means the two versions have
+    started to diverge, which is the failure this project is a paper about.
+    Missing builds are skipped rather than guessed at.
+
+    Returns a list of problems; empty means the two agree.
+    """
+    short = ROOT / "paper" / "msr2027" / "main.tex"
+    long_ = ROOT / "paper" / "preprint" / "preprint.tex"
+    if not (short.exists() and long_.exists()):
+        return []
+
+    def nums(path):
+        text = path.read_text(encoding="utf-8")
+        # Venue boilerplate is not a claim: CCS concept ids, the ccsdesc
+        # significance weights and the conference name and dates are fixed by
+        # the template, carry no evidence, and have no counterpart to drift
+        # from in the preprint.
+        text = re.sub(r"\\begin\{CCSXML\}.*?\\end\{CCSXML\}", "", text,
+                      flags=re.S)
+        text = re.sub(r"\\ccsdesc\[?\d*\]?\{[^}]*\}", "", text)
+        text = re.sub(r"\\acmConference\[[^\]]*\](\{[^}]*\}){3}", "", text)
+        # Tabular column widths are computed from the column COUNT, so they
+        # necessarily differ once a target drops columns. They are typesetting,
+        # not claims, and leaving them in made the check cry wolf.
+        text = re.sub(r"p\{\\dimexpr[^}]*\}", "", text)
+        text = re.sub(r"\\(?:setlength|kern|hspace|vspace)\s*\{[^}]*\}", "", text)
+        return {m.group(0) for m in NUM.finditer(text)}
+
+    drift = sorted(nums(short) - nums(long_))
+    return [f"number in the MSR paper that the preprint does not carry: {d}"
+            for d in drift]
 
 
 if __name__ == "__main__":

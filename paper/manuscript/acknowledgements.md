@@ -1,6 +1,32 @@
 # 8. Acknowledgements and disclosures
 
-## 8.1 Data and tools
+## 8.1 Data availability
+
+Every artifact this paper rests on is archived and citable: the 38 pinned
+repository shas, the frozen tracker caches, the per-project measurements, the
+full 38-row eligibility table, the three-channel visibility table, every script
+that produced a number here, and the audit report against which the numbers were
+re-derived.
+<!-- only: preprint -->
+**Replication package:
+[https://doi.org/10.5281/zenodo.21846139](https://doi.org/10.5281/zenodo.21846139).**
+<!-- /only -->
+<!-- only: msr2027 -->
+**Replication package: ANONYMISED-ARTIFACT-DOI.**
+<!-- /only -->
+Nothing needed to
+reproduce a figure in this paper lives only in a version-control host.
+
+## 8.2 Data and tools
+
+<!-- only: msr2027 -->
+The Apache Software Foundation publishes the trackers and repositories the corpus
+is drawn from. The Public Jira Dataset (Zenodo 15719919, CC BY 4.0) supplies
+every frozen ticket denominator, SEOSS 33 provides the independent measurement
+the probe is validated against, and RefactoringMiner is the detector.
+<!-- /only -->
+
+<!-- only: preprint -->
 
 This study is built on artifacts other people made public. The Apache Software
 Foundation publishes the issue trackers and repositories the whole corpus is
@@ -13,7 +39,24 @@ is validated against, and the agreement between them at matched scope
 and the RefactoringMiner contributors built the detector. None of them is
 responsible for what is done with their work here.
 
-## 8.2 Use of AI tools
+<!-- /only -->
+
+## 8.3 Use of AI tools
+
+<!-- only: msr2027 -->
+Large language model assistants (Anthropic's Claude) were used in this work: to
+write and run the analysis code, every script of which is committed and
+re-runnable; to draft prose from the author's outlines, findings and decisions;
+to check citations against source texts; and to conduct an adversarial audit
+that re-derived the load-bearing results with separately written code and
+reported the errors it found, unedited, in the replication package. The research
+questions, the study design, the pre-registered bar and its commitment before
+any project was cloned, the six retractions, and the judgment of what the
+results mean are the author's. **The author takes full responsibility for all
+content, including any error a tool introduced and the author did not catch.**
+<!-- /only -->
+
+<!-- only: preprint -->
 
 **Declared in full, because a paper about the trustworthiness of records should
 be candid about how its own were produced.**
@@ -56,15 +99,15 @@ different approximation than the one in use; a provenance checker that could not
 fail, and a first rebuild of it that reproduced the same defect by another route.
 Each is in `paper/REVISION_LOG.md` with what it changed.
 
-## 8.3 A separate matter: the LLM used as a rater
+<!-- /only -->
+
+## 8.4 A separate matter: the LLM used as a rater
 
 Section 6.5 reports a pilot in which a language model applied this study's
 codebook as a second rater. **That is an object of study here, not a method the
 paper's claims rest on**, and it is reported with its contamination disclosed and
 its conclusions bounded. No claim in this paper depends on it.
 
-## 8.4 Funding and competing interests
+## 8.5 Funding and competing interests
 
-No funding was received. The author declares no competing interests. The work was
-carried out independently, alongside full-time employment, which is stated in
-Section 6.8 because it explains the shape of the study's limitations.
+No funding was received. The author declares no competing interests.
