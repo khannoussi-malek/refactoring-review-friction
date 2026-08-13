@@ -1,0 +1,22 @@
+# Generated from the actual imports across scripts/ and scripts/replication/
+# (scripts/traceability_probe.py --help lists none of these: the traceability
+# probe is pure stdlib and needs no virtualenv at all).
+#
+# Pinned to the versions the committed results were produced with, on
+# Python 3.9.6. Regenerate with:
+#     grep -rhoE "^(import|from) [a-z_]+" scripts/*.py scripts/replication/*.py
+#
+# lifelines is deliberately ABSENT. scripts/setup.sh installed it for the Cox
+# survival model; that result was retracted (results_dossier.md §10) and nothing
+# has imported lifelines since. Do not reinstate it without a model to run.
+
+pandas==2.3.3
+numpy==2.0.2
+scipy==1.13.1
+statsmodels==0.14.6
+matplotlib==3.9.4
+
+# bson, for reading the Zenodo Jira dump straight out of its zip without a
+# running mongod. Ships inside pymongo; there is a separate PyPI package called
+# "bson" that is NOT compatible and must not be installed instead.
+pymongo==4.17.0

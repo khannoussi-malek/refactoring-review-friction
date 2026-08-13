@@ -1,0 +1,666 @@
+{
+  "project": "drill",
+  "prefix": "org.apache.drill",
+  "n_modules": 60,
+  "tau": 0.05,
+  "cut": 0.4,
+  "guard": "dependents < 90th percentile",
+  "flagged": [
+    "drill-java-exec",
+    "drill-paimon-format",
+    "drill-udfs"
+  ],
+  "modules": {
+    "distribution": {
+      "vendor_share": 0.1667,
+      "n_deps": 18,
+      "dependents": 0,
+      "rare_groups": [
+        "com.amazonaws",
+        "com.oracle.oci.sdk",
+        "software.amazon.awssdk"
+      ],
+      "dir": "distribution",
+      "flagged": false
+    },
+    "drill-common": {
+      "vendor_share": 0.4286,
+      "n_deps": 14,
+      "dependents": 47,
+      "rare_groups": [
+        "com.fasterxml.jackson.core",
+        "com.typesafe",
+        "io.dropwizard.metrics",
+        "org.javassist",
+        "org.msgpack",
+        "org.reflections"
+      ],
+      "dir": "common",
+      "flagged": false
+    },
+    "drill-contrib-data-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "contrib/data",
+      "flagged": false
+    },
+    "drill-contrib-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "contrib",
+      "flagged": false
+    },
+    "drill-contrib-storage-hive-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "contrib/storage-hive",
+      "flagged": false
+    },
+    "drill-deltalake-format": {
+      "vendor_share": 0.1111,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "io.delta"
+      ],
+      "dir": "contrib/format-deltalake",
+      "flagged": false
+    },
+    "drill-druid-storage": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "contrib/storage-druid",
+      "flagged": false
+    },
+    "drill-fmpp-maven-plugin": {
+      "vendor_share": 0.3333,
+      "n_deps": 9,
+      "dependents": 0,
+      "rare_groups": [
+        "com.googlecode.fmpp-maven-plugin",
+        "org.apache.maven",
+        "org.freemarker"
+      ],
+      "dir": "tools/fmpp",
+      "flagged": false
+    },
+    "drill-format-daffodil": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.daffodil"
+      ],
+      "dir": "contrib/format-daffodil",
+      "flagged": false
+    },
+    "drill-format-esri": {
+      "vendor_share": 0.2222,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "com.esri.geometry",
+        "org.jamel.dbf"
+      ],
+      "dir": "contrib/format-esri",
+      "flagged": false
+    },
+    "drill-format-excel": {
+      "vendor_share": 0.2,
+      "n_deps": 10,
+      "dependents": 1,
+      "rare_groups": [
+        "com.github.pjfanning",
+        "org.apache.poi"
+      ],
+      "dir": "contrib/format-excel",
+      "flagged": false
+    },
+    "drill-format-hdf5": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "io.jhdf"
+      ],
+      "dir": "contrib/format-hdf5",
+      "flagged": false
+    },
+    "drill-format-httpd": {
+      "vendor_share": 0.2,
+      "n_deps": 10,
+      "dependents": 1,
+      "rare_groups": [
+        "nl.basjes.parse.httpdlog",
+        "nl.basjes.parse.useragent"
+      ],
+      "dir": "contrib/format-httpd",
+      "flagged": false
+    },
+    "drill-format-image": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "com.drewnoakes"
+      ],
+      "dir": "contrib/format-image",
+      "flagged": false
+    },
+    "drill-format-log": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "contrib/format-log",
+      "flagged": false
+    },
+    "drill-format-ltsv": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "com.github.lonely-lockley"
+      ],
+      "dir": "contrib/format-ltsv",
+      "flagged": false
+    },
+    "drill-format-msaccess": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "com.healthmarketscience.jackcess"
+      ],
+      "dir": "contrib/format-access",
+      "flagged": false
+    },
+    "drill-format-pcapng": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "fr.bmartel"
+      ],
+      "dir": "contrib/format-pcapng",
+      "flagged": false
+    },
+    "drill-format-pdf": {
+      "vendor_share": 0.2222,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.pdfbox",
+        "technology.tabula"
+      ],
+      "dir": "contrib/format-pdf",
+      "flagged": false
+    },
+    "drill-format-sas": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "com.epam"
+      ],
+      "dir": "contrib/format-sas",
+      "flagged": false
+    },
+    "drill-format-spss": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "com.bedatadriven.spss"
+      ],
+      "dir": "contrib/format-spss",
+      "flagged": false
+    },
+    "drill-format-syslog": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "org.realityforge.jsyslog-message"
+      ],
+      "dir": "contrib/format-syslog",
+      "flagged": false
+    },
+    "drill-format-xml": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 2,
+      "rare_groups": [
+        "org.apache.ws.xmlschema"
+      ],
+      "dir": "contrib/format-xml",
+      "flagged": false
+    },
+    "drill-hive-exec-shaded": {
+      "vendor_share": 0.1429,
+      "n_deps": 7,
+      "dependents": 2,
+      "rare_groups": [
+        "org.apache.hive"
+      ],
+      "dir": "contrib/storage-hive/hive-exec-shade",
+      "flagged": false
+    },
+    "drill-iceberg-format": {
+      "vendor_share": 0.1111,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.iceberg"
+      ],
+      "dir": "contrib/format-iceberg",
+      "flagged": false
+    },
+    "drill-iceberg-metastore": {
+      "vendor_share": 0.1667,
+      "n_deps": 12,
+      "dependents": 1,
+      "rare_groups": [
+        "com.github.ben-manes.caffeine",
+        "org.apache.iceberg"
+      ],
+      "dir": "metastore/iceberg-metastore",
+      "flagged": false
+    },
+    "drill-java-exec": {
+      "vendor_share": 0.7222,
+      "n_deps": 54,
+      "dependents": 38,
+      "rare_groups": [
+        "com.bettercloud",
+        "com.beust",
+        "com.box",
+        "com.carrotsearch",
+        "com.clearspring.analytics",
+        "com.dropbox.core",
+        "com.fasterxml.jackson.jakarta.rs",
+        "com.fasterxml.jackson.module",
+        "com.squareup.okhttp3",
+        "com.sun.codemodel",
+        "com.tdunning",
+        "com.thoughtworks.paranamer",
+        "com.univocity",
+        "io.airlift",
+        "io.swagger.core.v3",
+        "jakarta.ws.rs",
+        "javax.inject",
+        "net.sf.jpam",
+        "nl.basjes.parse.httpdlog",
+        "org.apache.avro",
+        "org.apache.calcite.avatica",
+        "org.apache.curator",
+        "org.apache.httpcomponents",
+        "org.bouncycastle",
+        "org.codehaus.janino",
+        "org.eclipse.jetty",
+        "org.eclipse.jetty.ee10",
+        "org.freemarker",
+        "org.glassfish.jersey.containers",
+        "org.glassfish.jersey.ext",
+        "org.glassfish.jersey.inject",
+        "org.glassfish.jersey.media",
+        "org.honton.chas.hocon",
+        "org.kohsuke",
+        "org.openjdk.nashorn",
+        "org.ow2.asm",
+        "org.owasp.encoder",
+        "sqlline",
+        "xerces"
+      ],
+      "dir": "exec/java-exec",
+      "flagged": true
+    },
+    "drill-jdbc": {
+      "vendor_share": 0.3333,
+      "n_deps": 12,
+      "dependents": 2,
+      "rare_groups": [
+        "javax.validation",
+        "net.hydromatic",
+        "org.apache.calcite.avatica",
+        "xerces"
+      ],
+      "dir": "exec/jdbc",
+      "flagged": false
+    },
+    "drill-jdbc-all": {
+      "vendor_share": 0.0,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "exec/jdbc-all",
+      "flagged": false
+    },
+    "drill-jdbc-storage": {
+      "vendor_share": 0.1111,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "com.zaxxer"
+      ],
+      "dir": "contrib/storage-jdbc",
+      "flagged": false
+    },
+    "drill-kudu-storage": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.kudu"
+      ],
+      "dir": "contrib/storage-kudu",
+      "flagged": false
+    },
+    "drill-logical": {
+      "vendor_share": 0.2308,
+      "n_deps": 13,
+      "dependents": 43,
+      "rare_groups": [
+        "com.fasterxml.jackson.core",
+        "com.typesafe",
+        "org.antlr"
+      ],
+      "dir": "logical",
+      "flagged": false
+    },
+    "drill-memory-base": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 45,
+      "rare_groups": [
+        "com.carrotsearch"
+      ],
+      "dir": "exec/memory/base",
+      "flagged": false
+    },
+    "drill-metastore-api": {
+      "vendor_share": 0.1,
+      "n_deps": 10,
+      "dependents": 42,
+      "rare_groups": [
+        "com.fasterxml.jackson.datatype"
+      ],
+      "dir": "metastore/metastore-api",
+      "flagged": false
+    },
+    "drill-mongo-metastore": {
+      "vendor_share": 0.1111,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "org.mongodb"
+      ],
+      "dir": "metastore/mongo-metastore",
+      "flagged": false
+    },
+    "drill-mongo-storage": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "org.mongodb"
+      ],
+      "dir": "contrib/storage-mongo",
+      "flagged": false
+    },
+    "drill-opentsdb-storage": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [
+        "com.squareup.retrofit2"
+      ],
+      "dir": "contrib/storage-opentsdb",
+      "flagged": false
+    },
+    "drill-paimon-format": {
+      "vendor_share": 0.4167,
+      "n_deps": 12,
+      "dependents": 1,
+      "rare_groups": [
+        "at.yawk.lz4",
+        "com.github.luben",
+        "io.airlift",
+        "org.apache.paimon",
+        "org.xerial.snappy"
+      ],
+      "dir": "contrib/format-paimon",
+      "flagged": true
+    },
+    "drill-protocol": {
+      "vendor_share": 0.125,
+      "n_deps": 8,
+      "dependents": 48,
+      "rare_groups": [
+        "io.protostuff"
+      ],
+      "dir": "protocol",
+      "flagged": false
+    },
+    "drill-rdbms-metastore": {
+      "vendor_share": 0.3846,
+      "n_deps": 13,
+      "dependents": 1,
+      "rare_groups": [
+        "com.zaxxer",
+        "org.jooq",
+        "org.liquibase",
+        "org.xerial",
+        "org.yaml"
+      ],
+      "dir": "metastore/rdbms-metastore",
+      "flagged": false
+    },
+    "drill-root": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": ".",
+      "flagged": false
+    },
+    "drill-rpc": {
+      "vendor_share": 0.0,
+      "n_deps": 10,
+      "dependents": 39,
+      "rare_groups": [],
+      "dir": "exec/rpc",
+      "flagged": false
+    },
+    "drill-storage": {
+      "vendor_share": 0.0,
+      "n_deps": 7,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "contrib/storage-drill",
+      "flagged": false
+    },
+    "drill-storage-cassandra": {
+      "vendor_share": 0.2,
+      "n_deps": 10,
+      "dependents": 1,
+      "rare_groups": [
+        "com.scylladb",
+        "org.ow2.asm"
+      ],
+      "dir": "contrib/storage-cassandra",
+      "flagged": false
+    },
+    "drill-storage-elasticsearch": {
+      "vendor_share": 0.1111,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "org.elasticsearch.client"
+      ],
+      "dir": "contrib/storage-elasticsearch",
+      "flagged": false
+    },
+    "drill-storage-googlesheets": {
+      "vendor_share": 0.3636,
+      "n_deps": 11,
+      "dependents": 1,
+      "rare_groups": [
+        "com.google.api-client",
+        "com.google.apis",
+        "com.google.auth",
+        "com.google.oauth-client"
+      ],
+      "dir": "contrib/storage-googlesheets",
+      "flagged": false
+    },
+    "drill-storage-hbase": {
+      "vendor_share": 0.0,
+      "n_deps": 8,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "contrib/storage-hbase",
+      "flagged": false
+    },
+    "drill-storage-hive-core": {
+      "vendor_share": 0.0769,
+      "n_deps": 13,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.hive"
+      ],
+      "dir": "contrib/storage-hive/core",
+      "flagged": false
+    },
+    "drill-storage-http": {
+      "vendor_share": 0.1111,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "com.squareup.okhttp3"
+      ],
+      "dir": "contrib/storage-http",
+      "flagged": false
+    },
+    "drill-storage-kafka": {
+      "vendor_share": 0.2222,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "io.confluent",
+        "org.apache.kafka"
+      ],
+      "dir": "contrib/storage-kafka",
+      "flagged": false
+    },
+    "drill-storage-phoenix": {
+      "vendor_share": 0.2,
+      "n_deps": 10,
+      "dependents": 1,
+      "rare_groups": [
+        "org.apache.phoenix",
+        "org.apache.zookeeper"
+      ],
+      "dir": "contrib/storage-phoenix",
+      "flagged": false
+    },
+    "drill-storage-splunk": {
+      "vendor_share": 0.2222,
+      "n_deps": 9,
+      "dependents": 1,
+      "rare_groups": [
+        "com.github.ben-manes.caffeine",
+        "com.splunk"
+      ],
+      "dir": "contrib/storage-splunk",
+      "flagged": false
+    },
+    "drill-udfs": {
+      "vendor_share": 0.4286,
+      "n_deps": 14,
+      "dependents": 1,
+      "rare_groups": [
+        "com.esri.geometry",
+        "commons-net",
+        "commons-validator",
+        "dnsjava",
+        "nl.basjes.parse.useragent",
+        "org.osgeo"
+      ],
+      "dir": "contrib/udfs",
+      "flagged": true
+    },
+    "drill-yarn": {
+      "vendor_share": 0.1818,
+      "n_deps": 11,
+      "dependents": 1,
+      "rare_groups": [
+        "com.typesafe",
+        "org.apache.curator"
+      ],
+      "dir": "drill-yarn",
+      "flagged": false
+    },
+    "exec-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "exec",
+      "flagged": false
+    },
+    "memory-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "exec/memory",
+      "flagged": false
+    },
+    "metastore-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "metastore",
+      "flagged": false
+    },
+    "tools-parent": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 0,
+      "rare_groups": [],
+      "dir": "tools",
+      "flagged": false
+    },
+    "tpch-sample-data": {
+      "vendor_share": 0.0,
+      "n_deps": 6,
+      "dependents": 1,
+      "rare_groups": [],
+      "dir": "contrib/data/tpch-sample-data",
+      "flagged": false
+    },
+    "vector": {
+      "vendor_share": 0.2857,
+      "n_deps": 14,
+      "dependents": 43,
+      "rare_groups": [
+        "com.carrotsearch",
+        "com.fasterxml.jackson.core",
+        "com.fasterxml.jackson.datatype",
+        "org.antlr"
+      ],
+      "dir": "exec/vector",
+      "flagged": false
+    }
+  }
+}

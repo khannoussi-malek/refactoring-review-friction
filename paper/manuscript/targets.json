@@ -1,0 +1,88 @@
+{
+  "_README": [
+    "Per-target section manifest. The short MSR paper is NOT a copy of the long",
+    "one: both targets read the same section files, and this file records only",
+    "what each target leaves out. Nothing is duplicated, so no fact can drift",
+    "between the two versions, which is the failure mode this paper is about.",
+    "",
+    "'exclude' holds section numbers as the sources write them ('6.3'). A",
+    "listed number drops that heading and everything under it up to the next",
+    "heading at the same or a shallower level, so excluding '6.3' also drops",
+    "any 6.3.1 beneath it.",
+    "",
+    "Section numbers here are the ones in the markdown. The IEEE build renders",
+    "them as Roman, so 6.3 is the section a reviewer would cite as VI-C."
+  ],
+  "preprint": {
+    "applies_to": [
+      "article",
+      "ieee"
+    ],
+    "exclude": [],
+    "tables": [
+      "tab:eligibility",
+      "tab:visibility",
+      "tab:ticketside"
+    ],
+    "figure": true,
+    "front_matter": true
+  },
+  "msr2027": {
+    "applies_to": [
+      "acm"
+    ],
+    "note": "Ten pages including tables and figures is a desk-reject criterion.",
+    "exclude": [
+      "2.2",
+      "2.6",
+      "3.4",
+      "4.5",
+      "5.2",
+      "5.3",
+      "5.4",
+      "6.2",
+      "6.3",
+      "6.4",
+      "6.6",
+      "6.8",
+      "7.3"
+    ],
+    "exclude_why": {
+      "2.6": "detector validity: goes with the TypeScript ecosystem",
+      "3.4": "the detector and the second ecosystem: TypeScript",
+      "4.5": "convergent invisibility across two ecosystems: TypeScript, Table 2",
+      "6.2": "714/714 and the instrument-decay detail",
+      "6.3": "author identity aliasing",
+      "6.4": "detector coverage repair: goes with TypeScript",
+      "6.6": "post-hoc definitions: cut to hold section 6 to one column",
+      "6.8": "provenance of the work itself: identifying under double-anonymous",
+      "7.3": "for the field: the selection-effect argument rests on TypeScript",
+      "5.2": "mode 6 worked detail: the six-mode table and 5.1/5.5 carry the argument",
+      "5.3": "mode 6 across the whole probe: the count is stated in 5.1",
+      "5.4": "the Sqoop instance inside the eligible corpus",
+      "2.2": "its six numbered contributions restate section 1's contribution list almost line for line; section 1 keeps them"
+    },
+    "tables": [
+      "tab:eligibility"
+    ],
+    "figure": true,
+    "front_matter": false,
+    "drop_columns": {
+      "tab:eligibility": [
+        "Jira key(s)",
+        "HEAD",
+        "commits scanned",
+        "single-key",
+        "tickets total",
+        "tickets cited"
+      ]
+    },
+    "drop_columns_why": "sigconf is portrait and narrower than the IEEE landscape appendix; thirteen columns rendered clipped. Pinned shas, the single-key rate (identical to multi-key for all twelve) and the raw ticket counts are in the artifact.",
+    "table_parts": {
+      "tab:eligibility": 1
+    },
+    "table_parts_why": "only the eligible-12 half is printed; the 26-row dropped half is summarised in one sentence in 4.1 and lives in the artifact.",
+    "table_appendix": false,
+    "table_appendix_why": "measured three times as the table changed. At 13 columns the one-column landscape appendix won (12 pages against 13 as a float). Once drop_columns cut it to 7 the float wins instead: 9 pages against 10, because a portrait 7-column table* displaces less than a forced page break costs. Re-measure before changing the column set again."
+  }
+}

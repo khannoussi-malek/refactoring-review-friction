@@ -1,0 +1,103 @@
+{
+ "verdict": {
+  "testable": true,
+  "n_flagged": 5,
+  "n_rest": 10,
+  "median_flagged": 6.171886574074074,
+  "median_rest": 5.884155092592593,
+  "p": 0.3096903096903097,
+  "replicates": false
+ },
+ "modules": [
+  {
+   "module": "kylin-query-service",
+   "n_tickets": 10,
+   "median_days": 8.162534722222222,
+   "flagged": true
+  },
+  {
+   "module": "kylin-core-metadata",
+   "n_tickets": 59,
+   "median_days": 6.80318287037037,
+   "flagged": false
+  },
+  {
+   "module": "kylin-modeling-service",
+   "n_tickets": 33,
+   "median_days": 6.516099537037037,
+   "flagged": false
+  },
+  {
+   "module": "kylin-common-service",
+   "n_tickets": 37,
+   "median_days": 6.254143518518519,
+   "flagged": true
+  },
+  {
+   "module": "kylin-query-common",
+   "n_tickets": 27,
+   "median_days": 6.171886574074074,
+   "flagged": true
+  },
+  {
+   "module": "kylin-query",
+   "n_tickets": 23,
+   "median_days": 6.1595254629629625,
+   "flagged": false
+  },
+  {
+   "module": "kylin-sparder",
+   "n_tickets": 24,
+   "median_days": 6.140625,
+   "flagged": false
+  },
+  {
+   "module": "kylin-it",
+   "n_tickets": 39,
+   "median_days": 6.118657407407407,
+   "flagged": true
+  },
+  {
+   "module": "kylin-metadata-server",
+   "n_tickets": 19,
+   "median_days": 6.0760300925925925,
+   "flagged": false
+  },
+  {
+   "module": "kylin-engine-spark",
+   "n_tickets": 48,
+   "median_days": 5.6922800925925925,
+   "flagged": false
+  },
+  {
+   "module": "kylin-tool",
+   "n_tickets": 18,
+   "median_days": 5.595619212962964,
+   "flagged": false
+  },
+  {
+   "module": "kylin-spark-common",
+   "n_tickets": 10,
+   "median_days": 5.467065972222223,
+   "flagged": false
+  },
+  {
+   "module": "kylin-core-job",
+   "n_tickets": 23,
+   "median_days": 4.966018518518519,
+   "flagged": true
+  },
+  {
+   "module": "kylin-core-common",
+   "n_tickets": 101,
+   "median_days": 4.933668981481482,
+   "flagged": false
+  },
+  {
+   "module": "kylin-datasource-service",
+   "n_tickets": 12,
+   "median_days": 4.89755787037037,
+   "flagged": false
+  }
+ ]
+}

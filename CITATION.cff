@@ -1,0 +1,111 @@
+cff-version: 1.2.0
+message: >-
+  If you use this repository, cite it as below. If you use the frozen Jira cache
+  archive, cite the Zenodo deposit instead, once minted — see
+  deposit/DEPOSIT_CHECKLIST.md.
+title: >-
+  Traceability and estimate coverage as corpus-eligibility constraints:
+  a probe of 38 Apache projects
+abstract: >-
+  An independent pre-doctoral empirical study of what precedes a developer's
+  decision to refactor. 38 Apache projects were probed against a pre-registered
+  0.80 commit-side traceability bar; 12 passed, and every one of them was
+  incubated at the Apache Software Foundation before the 2019-20 migration of
+  ASF projects to GitHub pull requests. The channel the literature publishes —
+  what fraction of commits cite a ticket — diverges from the one an
+  issue-anchored study needs: what fraction of tickets ever receive a commit.
+  The repository carries pre-registered predictions, six hypotheses that failed
+  with named causes, a retracted Cox model, a self-corrected aggregation error,
+  and an independent adversarial audit of its own numbers.
+type: software
+authors:
+  - family-names: Khannoussi
+    given-names: Malek
+    email: khannoussimalek@gmail.com
+    # orcid: https://orcid.org/0000-0000-0000-0000   # TODO: author to supply
+repository-code: https://github.com/khannoussi-malek/refactoring-review-friction
+url: https://github.com/khannoussi-malek/refactoring-review-friction
+license:
+  - MIT
+  - CC-BY-4.0
+license-url: https://github.com/khannoussi-malek/refactoring-review-friction/blob/main/LICENSE
+version: "1.0.0"
+date-released: "2026-08-05"
+keywords:
+  - mining software repositories
+  - empirical software engineering
+  - refactoring
+  - reproducibility
+  - traceability
+  - issue tracking
+  - corpus selection
+  - Apache
+references:
+  # CFF 1.2.0 has no `dataset` type; `data` is the correct enum value. The three
+  # authors are required by the schema and by the deposit's CC BY 4.0 licence,
+  # which this repository's `estimates_by_org.json` derives from.
+  - type: data
+    authors:
+      - family-names: Montgomery
+        given-names: Lloyd
+        orcid: https://orcid.org/0000-0002-8249-1418
+        affiliation: University of Hamburg
+      - family-names: Lüders
+        given-names: Clara
+        affiliation: University of Hamburg
+      - family-names: Maalej
+        given-names: Walid
+        affiliation: University of Hamburg
+    title: The Public Jira Dataset
+    doi: 10.5281/zenodo.15719919
+    license: CC-BY-4.0
+    notes: >-
+      Source of the Apache-wide estimate-coverage base rates and the per-project
+      issue counts used as ticket-side denominators.
+  - type: article
+    authors:
+      - family-names: Rath
+        given-names: Michael
+      - family-names: Mäder
+        given-names: Patrick
+    title: >-
+      The SEOSS 33 dataset — Requirements, bug reports, code history, and trace
+      links for entire projects
+    journal: Data in Brief
+    volume: 25
+    year: 2019
+    doi: 10.1016/j.dib.2019.104005
+    notes: >-
+      Publishes per-project linked-change-set percentages for 33 projects; the
+      cross-corpus validation in paper/PRIOR_WORK.md is against this table.
+  - type: conference-paper
+    authors:
+      - family-names: Bachmann
+        given-names: Adrian
+      - family-names: Bird
+        given-names: Christian
+      - family-names: Rahman
+        given-names: Foyzur
+      - family-names: Devanbu
+        given-names: Premkumar
+      - family-names: Bernstein
+        given-names: Abraham
+    title: "The missing links: bugs and bug-fix commits"
+    collection-title: >-
+      Proceedings of the 18th ACM SIGSOFT International Symposium on Foundations
+      of Software Engineering (FSE '10)
+    year: 2010
+    doi: 10.1145/1882291.1882308
+    notes: >-
+      Measures the bug-side complement of commit-side linkage. Whether the
+      ticket realisation rate defined in paper/manuscript/method.md §3.1 is the
+      same quantity is UNDETERMINED — see paper/REVISION_LOG.md, GATE.
+  - type: software
+    authors:
+      - family-names: Tsantalis
+        given-names: Nikolaos
+    title: RefactoringMiner
+    repository-code: https://github.com/tsantalis/RefactoringMiner
+    version: "3.1.4"
+    license: MIT
+    notes: The refactoring detector used throughout.

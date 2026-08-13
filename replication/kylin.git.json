@@ -1,0 +1,4234 @@
+{
+ "KYLIN-6090": {
+  "ts": 1781164343,
+  "sha": "2647930f5224312b43b572ceaf4193d049fb433a",
+  "module": "kylin-core-job",
+  "n_files": 17,
+  "n_in_module": 9,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6089": {
+  "ts": 1776842363,
+  "sha": "f274934caf1d071ccd226043f064a6e9016730d7",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6086": {
+  "ts": 1764660282,
+  "sha": "8a7dee004087a577d650f967736c75887fe30adf",
+  "module": "kylin-engine-spark",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6085": {
+  "ts": 1760940044,
+  "sha": "6167a3577d6b95495fff3853ebe40e0f69020147",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6078": {
+  "ts": 1758523259,
+  "sha": "d692f9848f3321667e9df3044ef2b91e82771496",
+  "module": "kylin-engine-spark",
+  "n_files": 13,
+  "n_in_module": 4,
+  "n_modules_touched": 6
+ },
+ "KYLIN-6084": {
+  "ts": 1760928833,
+  "sha": "a5e084ffa131ad1cec5f52b24e3a0a008db624a2",
+  "module": "kylin-engine-spark",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6076": {
+  "ts": 1756291285,
+  "sha": "b715b530e344c81de8259cc93e3f8e36557d0b38",
+  "module": "kylin-core-common",
+  "n_files": 10,
+  "n_in_module": 3,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5475": {
+  "ts": 1743584957,
+  "sha": "7fe50b2d5833ad4b8a09d6a27027563dedce8287",
+  "module": "kylin-query-common",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6071": {
+  "ts": 1740653069,
+  "sha": "a5b294ebb0d19462053c949177fbc0e374287a8c",
+  "module": "kylin-server",
+  "n_files": 23,
+  "n_in_module": 13,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6073": {
+  "ts": 1740638492,
+  "sha": "4c5c695ae2cf2b7e077c45670c435e3e38993f70",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6072": {
+  "ts": 1740637907,
+  "sha": "5ab14df77fca1dd0469a3ea3bd63ac2581c68194",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6070": {
+  "ts": 1740637734,
+  "sha": "d82470092e09334bd9cc9b5f3e915ed8c1b5958e",
+  "module": "kylin-common-service",
+  "n_files": 19,
+  "n_in_module": 4,
+  "n_modules_touched": 6
+ },
+ "KYLIN-6069": {
+  "ts": 1740637720,
+  "sha": "2ee024e38c497b7d9ebfb147c2115a087ebc2bfb",
+  "module": "kylin-engine-spark",
+  "n_files": 15,
+  "n_in_module": 5,
+  "n_modules_touched": 8
+ },
+ "KYLIN-6068": {
+  "ts": 1740636839,
+  "sha": "1662fc41892ace1987d827bc8061023a4ae5c264",
+  "module": "kylin-common-service",
+  "n_files": 9,
+  "n_in_module": 5,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6067": {
+  "ts": 1740636830,
+  "sha": "1cff0dcdd41621c8845608be8c500f04a7796593",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6066": {
+  "ts": 1740636821,
+  "sha": "1a5415c8b5e94a74b734342a3e3ca64969c33899",
+  "module": "kylin-tool",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6065": {
+  "ts": 1740636813,
+  "sha": "6db399f9fa35e348b866f8e4bacc8bd145812aea",
+  "module": "kylin-data-loading-server",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6064": {
+  "ts": 1740636805,
+  "sha": "aae297338259e9d1ca9e50671a2320555314261e",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6063": {
+  "ts": 1740636794,
+  "sha": "d0433ae8cbeb1860592c38fc9cbaa42303342558",
+  "module": "kylin-it",
+  "n_files": 26,
+  "n_in_module": 17,
+  "n_modules_touched": 5
+ },
+ "KYLIN-6062": {
+  "ts": 1740636786,
+  "sha": "b744b9bd20ad254cd77bdebb6964a42b7fb3046a",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6061": {
+  "ts": 1740626785,
+  "sha": "40ddcf8a30aa1ce8259349c7984780e80dcee219",
+  "module": "kylin-engine-spark",
+  "n_files": 20,
+  "n_in_module": 10,
+  "n_modules_touched": 6
+ },
+ "KYLIN-6060": {
+  "ts": 1740626777,
+  "sha": "201b73a0276d1304b625bafc445cd35b556f7217",
+  "module": "kylin-engine-spark",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6059": {
+  "ts": 1740626769,
+  "sha": "f467d1faddb1a90ce05b4aee16ca2a116533ebf7",
+  "module": "kylin-core-job",
+  "n_files": 7,
+  "n_in_module": 2,
+  "n_modules_touched": 5
+ },
+ "KYLIN-6058": {
+  "ts": 1740626762,
+  "sha": "41be8ee436f464e0fcfc10fb4ba5483d8ab28dd2",
+  "module": "kylin-engine-spark",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6057": {
+  "ts": 1740626754,
+  "sha": "e9d6ee50ab20216b2e42c1ee7190c1a459dea4b0",
+  "module": "kylin-engine-spark",
+  "n_files": 17,
+  "n_in_module": 12,
+  "n_modules_touched": 6
+ },
+ "KYLIN-6056": {
+  "ts": 1740626745,
+  "sha": "7a4355734db4652376912647d2760239996cb6ba",
+  "module": "kylin-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6055": {
+  "ts": 1740626740,
+  "sha": "485a720871e8ce69f66e98295fbf6cecdf205337",
+  "module": "kylin-engine-spark",
+  "n_files": 12,
+  "n_in_module": 7,
+  "n_modules_touched": 5
+ },
+ "KYLIN-6054": {
+  "ts": 1740626655,
+  "sha": "19435d61aaa75cdaa7018a629b617066cda28834",
+  "module": "kylin-spark-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6052": {
+  "ts": 1740622870,
+  "sha": "0c5ad437e656e6f537fc07924ae0c6decf115d51",
+  "module": "kylin-sparder",
+  "n_files": 7,
+  "n_in_module": 3,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6051": {
+  "ts": 1740622844,
+  "sha": "552eb42be75f76203cde00ea341bf0ce4a55af60",
+  "module": "kylin-engine-spark",
+  "n_files": 945,
+  "n_in_module": 275,
+  "n_modules_touched": 37
+ },
+ "KYLIN-6050": {
+  "ts": 1740471805,
+  "sha": "c5d9939366c081994880af10e07d60390904a48c",
+  "module": "kylin-core-common",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6049": {
+  "ts": 1740471771,
+  "sha": "a7c4bfc336c263391b4e080072f76fb94c4bbd96",
+  "module": "kylin-core-common",
+  "n_files": 1242,
+  "n_in_module": 621,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6048": {
+  "ts": 1740471007,
+  "sha": "0327be455c33fb67f2f2c98a61cfd9b29ab8b736",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 11,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6047": {
+  "ts": 1740470996,
+  "sha": "ac82fff263808e666567f3b8800da2f4b36b09a3",
+  "module": "kylin-it",
+  "n_files": 9,
+  "n_in_module": 7,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6046": {
+  "ts": 1740470987,
+  "sha": "68b269d2ed5ee1ffb042f6ffaf0cb58aef1710b3",
+  "module": "kylin-query",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6045": {
+  "ts": 1740470979,
+  "sha": "21630ba2bd85d2e1441ad8554939c6a12e5fddcf",
+  "module": "kylin-query",
+  "n_files": 32,
+  "n_in_module": 17,
+  "n_modules_touched": 5
+ },
+ "KYLIN-6044": {
+  "ts": 1740470972,
+  "sha": "a03fbf8e7eb1b438b921aec9eb92aed8b8ac4075",
+  "module": "kylin-spark-common",
+  "n_files": 9,
+  "n_in_module": 3,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6043": {
+  "ts": 1740470851,
+  "sha": "8a16f6c02d6cbad000afe5b40c7c4670ed902b0e",
+  "module": "kylin-sparder",
+  "n_files": 5,
+  "n_in_module": 5,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6042": {
+  "ts": 1740470757,
+  "sha": "f477844343892748c24207a51431857e5be4d39a",
+  "module": "kylin-rec-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6041": {
+  "ts": 1740470723,
+  "sha": "ce8e04aff866fa743dde9a7c106e8a5805fd186b",
+  "module": "kylin-rec-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6040": {
+  "ts": 1740470696,
+  "sha": "9fd82c01b0fe846a49ff69abbfef8909a013c5d3",
+  "module": "kylin-sparder",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6039": {
+  "ts": 1740470631,
+  "sha": "aa4952218a9e9d9caca1e365da75945a04d9c57c",
+  "module": "kylin-query",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6038": {
+  "ts": 1740470590,
+  "sha": "1536a747046a8b9def579e32da8a2c3be0f4fdec",
+  "module": "kylin-core-metadata",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6037": {
+  "ts": 1740470474,
+  "sha": "771d3c6b99258546ab10c119daaaff5440dba367",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6053": {
+  "ts": 1740470435,
+  "sha": "2ced2498338c7894cc6fdd115ce37121576472c6",
+  "module": "kylin-metadata-server",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6036": {
+  "ts": 1740470364,
+  "sha": "721b7a5e02696e9ce6398b9537579586937539b8",
+  "module": "kylin-core-common",
+  "n_files": 14,
+  "n_in_module": 6,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6035": {
+  "ts": 1740467055,
+  "sha": "7dbdb7263b9418cf8c5c4b3c0092873f20a6511e",
+  "module": "kylin-common-service",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6034": {
+  "ts": 1740467019,
+  "sha": "4a6e1893f5fc0dd9b332e63be268e32587ae1c99",
+  "module": "kylin-it",
+  "n_files": 9,
+  "n_in_module": 7,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6033": {
+  "ts": 1740466945,
+  "sha": "847d1362a80f2875430001ef9c159edd4f535a27",
+  "module": "kylin-query",
+  "n_files": 14,
+  "n_in_module": 4,
+  "n_modules_touched": 7
+ },
+ "KYLIN-6032": {
+  "ts": 1740466835,
+  "sha": "01cf36329197a8bef81e5297dc0329573bb0c5f2",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5934": {
+  "ts": 1721640111,
+  "sha": "90a390f4e362064bf4c92c17d838eff98f2b55bd",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6031": {
+  "ts": 1740465398,
+  "sha": "9db7d8de0a6743077fcb1bb11d75e081b89e8c34",
+  "module": "kylin-datasource-service",
+  "n_files": 9,
+  "n_in_module": 3,
+  "n_modules_touched": 5
+ },
+ "KYLIN-6030": {
+  "ts": 1740465257,
+  "sha": "9284fa96a5b343e183036977de2076bbea187d03",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6029": {
+  "ts": 1740465098,
+  "sha": "b11c5de8e53b18f7c9b86c461dd04e8bfd0d46ab",
+  "module": "kylin-tool",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6028": {
+  "ts": 1740465026,
+  "sha": "103a087051ca8259f99ed7b13b909b9d48879cae",
+  "module": "kylin-core-common",
+  "n_files": 6,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-6027": {
+  "ts": 1740464962,
+  "sha": "a7fd8bc2cf633e5fa8681187a004cdb53e8a12fe",
+  "module": "kylin-spark-it",
+  "n_files": 22,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6026": {
+  "ts": 1740464915,
+  "sha": "83cab86ac4ee74f9d0c60e9ded305e47255ccade",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6025": {
+  "ts": 1740464882,
+  "sha": "1b3d5d56ce8612e228c0807536033ffaad60fa16",
+  "module": "kylin-core-metadata",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6024": {
+  "ts": 1740462474,
+  "sha": "1fd2a65180437ec607f0011367544446008a4017",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6023": {
+  "ts": 1740462465,
+  "sha": "d9bf2a9dc458103575729f8614178a66711883a5",
+  "module": "kylin-modeling-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6022": {
+  "ts": 1740462457,
+  "sha": "1ddc347b314643bea77bba144052f89c44279594",
+  "module": "kylin-core-job",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6021": {
+  "ts": 1740462447,
+  "sha": "fa490cb879a5c032a9e65bc91ac4f1f8f217c81d",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6020": {
+  "ts": 1740462435,
+  "sha": "3760d942708fb2b98c1c5e9f10f38d2af3b810f3",
+  "module": "kylin-common-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6019": {
+  "ts": 1740123419,
+  "sha": "73f2091f75157ca4d782de9a7080338fd3d07cab",
+  "module": "kylin-sparder",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6018": {
+  "ts": 1740108726,
+  "sha": "0bdc1886e84671d1ed07f9b0f77f4deedb14534f",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6017": {
+  "ts": 1740108716,
+  "sha": "871f9b893fb066f665a0e69b9077eff6943b658c",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6016": {
+  "ts": 1740108705,
+  "sha": "e7a8207d61cdfd12033db74ffaca08789533bbc0",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6013": {
+  "ts": 1740108692,
+  "sha": "e7ca74ecc60c0005388063473d2ba5d8133ff7b6",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-6011": {
+  "ts": 1740108683,
+  "sha": "aeef1338b004e213ae92fa10fea1f181694afe19",
+  "module": "kylin-core-job",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6010": {
+  "ts": 1740108668,
+  "sha": "5082123921f2ef5f3a25dabc3adb4e0dd2226ccf",
+  "module": "kylin-core-job",
+  "n_files": 18,
+  "n_in_module": 4,
+  "n_modules_touched": 8
+ },
+ "KYLIN-6009": {
+  "ts": 1740106374,
+  "sha": "56a189a5856cf979135065b1385760ea414db6b8",
+  "module": "kylin-core-metadata",
+  "n_files": 104,
+  "n_in_module": 25,
+  "n_modules_touched": 19
+ },
+ "KYLIN-6008": {
+  "ts": 1740106362,
+  "sha": "60545c35ac77d6dbbac393f028270ddf8f2328e5",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6007": {
+  "ts": 1740106350,
+  "sha": "f9d16bf869c4e739313be3ea931244f921d1fb04",
+  "module": "kylin-core-common",
+  "n_files": 53,
+  "n_in_module": 15,
+  "n_modules_touched": 12
+ },
+ "KYLIN-6005": {
+  "ts": 1740106336,
+  "sha": "492870a3aef0185171baec6d286b5bb9436494b2",
+  "module": "kylin-core-metadata",
+  "n_files": 15,
+  "n_in_module": 5,
+  "n_modules_touched": 7
+ },
+ "KYLIN-6004": {
+  "ts": 1740105022,
+  "sha": "ba4659c2c2c40629f61c636f8730032a7022aa81",
+  "module": "kylin-core-common",
+  "n_files": 9,
+  "n_in_module": 7,
+  "n_modules_touched": 2
+ },
+ "KYLIN-6003": {
+  "ts": 1740105011,
+  "sha": "99b0fc235e6341a88ad5111b298c81b3218e5ec7",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6002": {
+  "ts": 1740105001,
+  "sha": "92058344f4080b63ced0554fb11264c34f2a9b1f",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-6001": {
+  "ts": 1740104993,
+  "sha": "57b84223e76a793ea4068c1bf5055732e802b33b",
+  "module": "kylin-core-job",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5999": {
+  "ts": 1740104984,
+  "sha": "b0f79656554ff415f4c9a4dcf945505e9004f6f5",
+  "module": "kylin-it",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5994": {
+  "ts": 1740071855,
+  "sha": "21d98f3ef29f71b50dacabbf039905f9f0f71b95",
+  "module": "kylin-datasource-sdk",
+  "n_files": 12,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5997": {
+  "ts": 1740032263,
+  "sha": "bd86f44d597640d64e4a5789a54c1a3f2aa7786d",
+  "module": "kylin-it",
+  "n_files": 47,
+  "n_in_module": 23,
+  "n_modules_touched": 11
+ },
+ "KYLIN-5986": {
+  "ts": 1739949276,
+  "sha": "b3cac1013a6548aac44fb1d43d7366a14f000d0f",
+  "module": "kylin-query-server",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5982": {
+  "ts": 1737513233,
+  "sha": "5f3ef471b47768cf00e9ce31abb3bd8db640065d",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5980": {
+  "ts": 1734318726,
+  "sha": "6477527d9f3924ce3ff7ae7d6ba892658bff89bf",
+  "module": "kylin-metadata-server",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5979": {
+  "ts": 1734314670,
+  "sha": "a6a37e813da3c52632192be4af4e804538de2dab",
+  "module": "kylin-core-common",
+  "n_files": 53,
+  "n_in_module": 10,
+  "n_modules_touched": 15
+ },
+ "KYLIN-5977": {
+  "ts": 1734314486,
+  "sha": "66e47dad274cc8d0149120bf5c2aae7cfd98d3d5",
+  "module": "kylin-it",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5978": {
+  "ts": 1734017104,
+  "sha": "b2a47f2f4617f12aa291ba33066fc440c43fea42",
+  "module": "kylin-spark-it",
+  "n_files": 11,
+  "n_in_module": 3,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5973": {
+  "ts": 1726219078,
+  "sha": "1d76d143341b70fcc326782e8111bfbd28cdc21c",
+  "module": "kylin-core-common",
+  "n_files": 41,
+  "n_in_module": 29,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5967": {
+  "ts": 1725521992,
+  "sha": "7a5671095683a96a486bd4568e6ce5c02107ef87",
+  "module": "kylin-core-common",
+  "n_files": 14,
+  "n_in_module": 5,
+  "n_modules_touched": 8
+ },
+ "KYLIN-5966": {
+  "ts": 1725518494,
+  "sha": "bdda09744da19b06a9aade8b95615b51766f81d1",
+  "module": "kylin-assembly",
+  "n_files": 7,
+  "n_in_module": 1,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5962": {
+  "ts": 1725518484,
+  "sha": "31919b223c9306b3cc74d9c36b68d0a45dc2c9e1",
+  "module": "kylin-query-service",
+  "n_files": 34,
+  "n_in_module": 12,
+  "n_modules_touched": 8
+ },
+ "KYLIN-5964": {
+  "ts": 1725456590,
+  "sha": "2f429bdf49e65a531e4ce5a064e260930b0a6bb2",
+  "module": "kylin-modeling-service",
+  "n_files": 9,
+  "n_in_module": 4,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5963": {
+  "ts": 1725442178,
+  "sha": "831f9a6892778d27f1c15ba7be1995bb8a8f5212",
+  "module": "kylin-tool",
+  "n_files": 19,
+  "n_in_module": 12,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5957": {
+  "ts": 1725009076,
+  "sha": "d4ce488cd17fd4a0bb1011655cc9d0ea23195fab",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5952": {
+  "ts": 1724924969,
+  "sha": "220a2dffd639af5a333b21e933f841791af5fc1e",
+  "module": "kylin-it",
+  "n_files": 2063,
+  "n_in_module": 1411,
+  "n_modules_touched": 25
+ },
+ "KYLIN-5954": {
+  "ts": 1724924940,
+  "sha": "4d5328930bc2dcfd14fb3c3f250d6fd3da3c5342",
+  "module": "kylin-core-common",
+  "n_files": 10,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5953": {
+  "ts": 1724295805,
+  "sha": "508fe2e366da5382ee5b388a97347c0ff33ccb3d",
+  "module": "kylin-datasource-service",
+  "n_files": 9,
+  "n_in_module": 3,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5948": {
+  "ts": 1723025244,
+  "sha": "a0e06936a5171735d163b29c6bfb0eff0a7f90f6",
+  "module": "kylin-query-common",
+  "n_files": 174,
+  "n_in_module": 23,
+  "n_modules_touched": 21
+ },
+ "KYLIN-5949": {
+  "ts": 1722853719,
+  "sha": "64408cefd76fdc1a4d82e9c8f32d2e11aa09a016",
+  "module": "kylin-engine-spark",
+  "n_files": 202,
+  "n_in_module": 33,
+  "n_modules_touched": 15
+ },
+ "KYLIN-5950": {
+  "ts": 1722848717,
+  "sha": "e2d4e6c7c2b8b3c7fd552450c4363a3a53bba978",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5946": {
+  "ts": 1722569356,
+  "sha": "5a4dc93b8bff1b00988439a6b498b0fc72f9b568",
+  "module": "kylin-it",
+  "n_files": 82,
+  "n_in_module": 39,
+  "n_modules_touched": 12
+ },
+ "KYLIN-5945": {
+  "ts": 1722470112,
+  "sha": "03e5a29ee23763446ce4f6310265ac2304c11ed0",
+  "module": "kylin-it",
+  "n_files": 4498,
+  "n_in_module": 1127,
+  "n_modules_touched": 33
+ },
+ "KYLIN-5944": {
+  "ts": 1722470112,
+  "sha": "3a30dcb098bb68c641eceb34ad8429d7ea4629a1",
+  "module": "kylin-modeling-service",
+  "n_files": 229,
+  "n_in_module": 20,
+  "n_modules_touched": 24
+ },
+ "KYLIN-5915": {
+  "ts": 1721640111,
+  "sha": "cf19f57f664d7213ae98a35d23e6a284e3eb8136",
+  "module": "kylin-core-job",
+  "n_files": 4,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5942": {
+  "ts": 1721640111,
+  "sha": "4de56d5290e42e617b0b2fce54596b58e0b345e3",
+  "module": "kylin-core-metadata",
+  "n_files": 4,
+  "n_in_module": 4,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5941": {
+  "ts": 1721640111,
+  "sha": "f8440531c51d33499104a22b6e56467db71a0eed",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5940": {
+  "ts": 1721640111,
+  "sha": "bc045fd15c5e12a847a3b2dbb3b197a0d08f1563",
+  "module": "kylin-soft-affinity-cache",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5939": {
+  "ts": 1721640111,
+  "sha": "b925bc299071f575b38e4d78b176a535ce0e2be3",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5938": {
+  "ts": 1721640111,
+  "sha": "c66d460ac9335230184719e023b21e285037c9ea",
+  "module": "kylin-common-booter",
+  "n_files": 6,
+  "n_in_module": 1,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5937": {
+  "ts": 1721640111,
+  "sha": "f3c06b446ba22027fff610adb367140ddd5034c0",
+  "module": "kylin-query",
+  "n_files": 8,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5936": {
+  "ts": 1721640111,
+  "sha": "8032e5b75b458eae9b18c2425f4a3f7ace1bd5f1",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5935": {
+  "ts": 1721640111,
+  "sha": "b4ad246976b95e1035fab6c44e629e266d7dd65f",
+  "module": "kylin-data-loading-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5933": {
+  "ts": 1721640111,
+  "sha": "b61da78d6210ba123b4266bf5355955bd86fd873",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5932": {
+  "ts": 1721640111,
+  "sha": "c8990ea264cd0c09fe5fba2decfaba4de9acb585",
+  "module": "kylin-common-service",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5917": {
+  "ts": 1721640111,
+  "sha": "c71e00c5b4576fd42c62b0ffc7723121c5f01647",
+  "module": "kylin-query-common",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5931": {
+  "ts": 1721640111,
+  "sha": "3d8b5de3c98cbba70ea1e94ef95472da0b0849d8",
+  "module": "kylin-query-common",
+  "n_files": 16,
+  "n_in_module": 4,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5930": {
+  "ts": 1721640111,
+  "sha": "5a9da8d1686050105f91dcb4983bbb5c5bcce87d",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 5,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5929": {
+  "ts": 1721640111,
+  "sha": "d5c3af09e16764bd73aa17827b710e7c4f07ba79",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5928": {
+  "ts": 1721640111,
+  "sha": "4961330fdfd831918f4b64deada29d72ff450f77",
+  "module": "kylin-it",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5927": {
+  "ts": 1721640111,
+  "sha": "e0985109c9791d47262c64e1575f5e94d6d86acb",
+  "module": "kylin-data-loading-server",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5926": {
+  "ts": 1721640111,
+  "sha": "9eb11b2617b54a2a88a4dc5045268ef430cce2ed",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5925": {
+  "ts": 1721640111,
+  "sha": "85f5c72430a68238034664525897da292261bf53",
+  "module": "kylin-common-service",
+  "n_files": 9,
+  "n_in_module": 4,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5923": {
+  "ts": 1721640111,
+  "sha": "b60db130c84fd9f1de8e0a2c596649b56993171c",
+  "module": "kylin-modeling-service",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5924": {
+  "ts": 1721640111,
+  "sha": "2f06a0dff8dbebdd0775e1d9c569f908c97b7d9d",
+  "module": "kylin-datasource-service",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5916": {
+  "ts": 1721640111,
+  "sha": "884f705e997995f317d729c6a327491bc807db2e",
+  "module": "kylin-modeling-service",
+  "n_files": 9,
+  "n_in_module": 5,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5918": {
+  "ts": 1721640111,
+  "sha": "f3c101f90637feec549ce73be2f456d4d791409b",
+  "module": "kylin-metadata-server",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5919": {
+  "ts": 1721640111,
+  "sha": "b6e66ef037c8b2f460583cd5a097b077e3943cc5",
+  "module": "kylin-sparder",
+  "n_files": 14,
+  "n_in_module": 5,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5922": {
+  "ts": 1721640111,
+  "sha": "5bea1e40f9bc6bd9221fbd8125fcd500afabf85c",
+  "module": "kylin-modeling-service",
+  "n_files": 7,
+  "n_in_module": 4,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5921": {
+  "ts": 1721640111,
+  "sha": "5491e9af4ef7394891cdd0c93a9e6b5ef7b92b08",
+  "module": "kylin-modeling-service",
+  "n_files": 10,
+  "n_in_module": 5,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5920": {
+  "ts": 1721640111,
+  "sha": "35c0c5a6b6e9044fd417d3829a71fa3d6803fa83",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5914": {
+  "ts": 1721640111,
+  "sha": "17587144e49656b1f142c60cffaafc4c671a58b6",
+  "module": "kylin-query",
+  "n_files": 202,
+  "n_in_module": 89,
+  "n_modules_touched": 13
+ },
+ "KYLIN-5913": {
+  "ts": 1721640111,
+  "sha": "e4293223d50c29ebd20537fe37f957aabbda8a53",
+  "module": "kylin-sparder",
+  "n_files": 14,
+  "n_in_module": 5,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5912": {
+  "ts": 1721640111,
+  "sha": "13529299f3538a1f8a4adfd903a637c5e5a18981",
+  "module": "kylin-engine-spark",
+  "n_files": 34,
+  "n_in_module": 11,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5911": {
+  "ts": 1721640111,
+  "sha": "c423d868a8421746c3a0d9310c2813f3768dad58",
+  "module": "kylin-core-common",
+  "n_files": 6,
+  "n_in_module": 5,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5910": {
+  "ts": 1721640111,
+  "sha": "7229c6157285f4a7da28b7948a89cb2d1bf4f464",
+  "module": "kylin-core-metadata",
+  "n_files": 20,
+  "n_in_module": 5,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5909": {
+  "ts": 1721640111,
+  "sha": "15f11114bbc8a032082e224bbba5d410e21871ce",
+  "module": "kylin-query",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5908": {
+  "ts": 1721640111,
+  "sha": "30108b22b7ac54f6e6714316515d06c57afda598",
+  "module": "kylin-sparder",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5907": {
+  "ts": 1721640111,
+  "sha": "00f02da532e42ac04c7f16b4e7d09a56735fd70e",
+  "module": "kylin-modeling-service",
+  "n_files": 20,
+  "n_in_module": 9,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5906": {
+  "ts": 1721640111,
+  "sha": "9758ae05130366aea1fbc10b607fdb4ec05e5b23",
+  "module": "kylin-sparder",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5904": {
+  "ts": 1721640111,
+  "sha": "e9a3bf6c8d95b35c55fec759418cce80b1e974de",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5903": {
+  "ts": 1721640111,
+  "sha": "f335159ee4cb82a030adbb85f744db20bb420980",
+  "module": "kylin-source-jdbc",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5902": {
+  "ts": 1721640111,
+  "sha": "8f60cb738b7126dade9eab465e8ad2b417a8dac1",
+  "module": "kylin-it",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5901": {
+  "ts": 1721640111,
+  "sha": "e146e6e7c6b19ee4d24b471bbff37b8d073fb95b",
+  "module": "kylin-sparder",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5900": {
+  "ts": 1721640111,
+  "sha": "673249c3b829f271913c63bc2322080bd1fc1296",
+  "module": "kylin-metadata-server",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5899": {
+  "ts": 1721640111,
+  "sha": "205a100e174a0481b9ae1404adaac838295713be",
+  "module": "kylin-core-job",
+  "n_files": 23,
+  "n_in_module": 10,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5898": {
+  "ts": 1721640111,
+  "sha": "0dea2d3ae2445ac77cdd03dd4a45989d9b678778",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5897": {
+  "ts": 1721640111,
+  "sha": "34a6057b822f67ff84630c00115cb22c82fe8a35",
+  "module": "kylin-engine-spark",
+  "n_files": 12,
+  "n_in_module": 5,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5896": {
+  "ts": 1721640111,
+  "sha": "6fe1b4b43e6b751dbc99c05dc2d9827ac34a2731",
+  "module": "kylin-core-common",
+  "n_files": 6,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5895": {
+  "ts": 1721640111,
+  "sha": "32a2cbac595e6e2b848a9e4cb836b6c1cdf58f9a",
+  "module": "kylin-modeling-service",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5894": {
+  "ts": 1721640111,
+  "sha": "954d66aaa40daf269b4b1a8109196393a5514174",
+  "module": "kylin-engine-spark",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5893": {
+  "ts": 1721640111,
+  "sha": "2b5aca4152742b01ab5f1afdaab9c2536c98b1b1",
+  "module": "kylin-core-common",
+  "n_files": 10,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5892": {
+  "ts": 1721640111,
+  "sha": "3468db9ad671a494da8e0bfe4977b811d1ea4e75",
+  "module": "kylin-query",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5891": {
+  "ts": 1721640111,
+  "sha": "d8fcfb595f02cf67c99bda5d28437c53e551319d",
+  "module": "kylin-core-common",
+  "n_files": 8,
+  "n_in_module": 5,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5890": {
+  "ts": 1721640111,
+  "sha": "6a5ecd6967302d56aff2cd14346f35a4960b3159",
+  "module": "kylin-engine-spark",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5889": {
+  "ts": 1721640111,
+  "sha": "e30b72d60f03c70002a1d10ac698f6d011252c4f",
+  "module": "kylin-query",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5888": {
+  "ts": 1721640111,
+  "sha": "4bb994180fcade069e12fafea37509489a4a9859",
+  "module": "kylin-sparder",
+  "n_files": 9,
+  "n_in_module": 4,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5887": {
+  "ts": 1721640111,
+  "sha": "01ba8e4acebd648a38a96c481d1a00b0dbc45bde",
+  "module": "kylin-query",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5886": {
+  "ts": 1721640111,
+  "sha": "cdbd25aacfbf3ed586d87d3980738b0e2fb79e4f",
+  "module": "kylin-metadata-server",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5885": {
+  "ts": 1721640111,
+  "sha": "25e2bd61282662d62c4d88a842733e2a0423717b",
+  "module": "kylin-it",
+  "n_files": 14,
+  "n_in_module": 10,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5884": {
+  "ts": 1721640111,
+  "sha": "0fcd768a62f00bb2245df77cda98b36778f12d17",
+  "module": "kylin-datasource-sdk",
+  "n_files": 12,
+  "n_in_module": 4,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5883": {
+  "ts": 1721640111,
+  "sha": "dd79a6731792e66719a25b48e63796a066ca73cc",
+  "module": "kylin-it",
+  "n_files": 13,
+  "n_in_module": 9,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5882": {
+  "ts": 1721640111,
+  "sha": "98f6b1fd4cb0beb67278e42cbf28cb699a9b9621",
+  "module": "kylin-query-common",
+  "n_files": 5,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5881": {
+  "ts": 1721640111,
+  "sha": "76d840fc3da84b44d0bcf7f664d731d5a0a84881",
+  "module": "kylin-core-metadata",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5880": {
+  "ts": 1721640111,
+  "sha": "94355492ba2cc6d7a5770f2af3406de0face11fb",
+  "module": "kylin-spark-common",
+  "n_files": 10,
+  "n_in_module": 8,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5879": {
+  "ts": 1721032218,
+  "sha": "41d541a6cf599c8dac68f9f265fcbd327aa44362",
+  "module": "kylin-sparder",
+  "n_files": 12,
+  "n_in_module": 4,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5878": {
+  "ts": 1721032218,
+  "sha": "46e6637071172e287aaf1b630aad7989952e3549",
+  "module": "kylin-it",
+  "n_files": 13,
+  "n_in_module": 5,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5877": {
+  "ts": 1721032218,
+  "sha": "ad294fde01a6e512ad4d3e2943fff21ec85a118c",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5876": {
+  "ts": 1721032218,
+  "sha": "c4e45aa956f83dbf9da78537abc8475871869586",
+  "module": "kylin-query",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5875": {
+  "ts": 1721032218,
+  "sha": "3914626750dab422929767e7652971589a3061be",
+  "module": "kylin-query-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5874": {
+  "ts": 1721032218,
+  "sha": "0bfe5f075fe1e2cdecd369d0875dc43f037123cd",
+  "module": "kylin-core-job",
+  "n_files": 23,
+  "n_in_module": 13,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5873": {
+  "ts": 1721032218,
+  "sha": "3ef254379f6a93f1208d4610fc85f6d30bc30621",
+  "module": "kylin-core-metadata",
+  "n_files": 22,
+  "n_in_module": 4,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5872": {
+  "ts": 1721032218,
+  "sha": "e5e3f482e4eab41fc79f4928d3d2f089bb439462",
+  "module": "kylin-query-service",
+  "n_files": 30,
+  "n_in_module": 5,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5871": {
+  "ts": 1721032218,
+  "sha": "51c2df947547e0ea9158bd49435c282b6741c615",
+  "module": "kylin-metadata-server",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5870": {
+  "ts": 1721032218,
+  "sha": "64c7941daa20e140d58fae1d442599fb7b14c011",
+  "module": "kylin-core-common",
+  "n_files": 12,
+  "n_in_module": 6,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5869": {
+  "ts": 1721032218,
+  "sha": "2561a21bd3d04b58706fc2444d7597a0a0271db6",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5868": {
+  "ts": 1721032218,
+  "sha": "9e9f13582c1c1110e1dbeca385eebbdc62e66b45",
+  "module": "kylin-core-common",
+  "n_files": 15,
+  "n_in_module": 4,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5867": {
+  "ts": 1721032218,
+  "sha": "dfbc63fc1d0b02f98c83cc8f01312bf9b8cbd93f",
+  "module": "kylin-metadata-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5866": {
+  "ts": 1721032218,
+  "sha": "091e4709f3d405ee764b2da176a483f63a7b4e97",
+  "module": "kylin-tool",
+  "n_files": 6,
+  "n_in_module": 5,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5865": {
+  "ts": 1721032218,
+  "sha": "f2d5f586ad87196621d3a93d5133f3595cfc5b4b",
+  "module": "kylin-it",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5864": {
+  "ts": 1721032218,
+  "sha": "d2176edd575f51c8a05f06d0f476f93644306b5f",
+  "module": "kylin-query",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5863": {
+  "ts": 1721032218,
+  "sha": "098862e0b9d9eb3bd89a5d7d12f927a6ae2c5efe",
+  "module": "kylin-core-metadata",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5862": {
+  "ts": 1721032218,
+  "sha": "132f4367b1220dac0206e0054f4c4bf9c52dbca4",
+  "module": "kylin-it",
+  "n_files": 86,
+  "n_in_module": 28,
+  "n_modules_touched": 12
+ },
+ "KYLIN-5861": {
+  "ts": 1721032218,
+  "sha": "aedb70fbed7a81a120929af5cdff766ed526cec5",
+  "module": "kylin-query",
+  "n_files": 133,
+  "n_in_module": 97,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5860": {
+  "ts": 1721032218,
+  "sha": "dac9c8dd2912eee71a118974aca2398740412e12",
+  "module": "kylin-core-metadata",
+  "n_files": 151,
+  "n_in_module": 23,
+  "n_modules_touched": 26
+ },
+ "KYLIN-5859": {
+  "ts": 1721032218,
+  "sha": "b2e847a0e3ba72b556546552a0c8523c120b8a3a",
+  "module": "kylin-core-metadata",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5858": {
+  "ts": 1721032218,
+  "sha": "a354fbe23e2b3aa2cd80d9f4c0cd9a9be22e579f",
+  "module": "kylin-query",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5857": {
+  "ts": 1721032218,
+  "sha": "d34d6761c718bd34fa83bfc7f00038aacaf5bc22",
+  "module": "kylin-core-job",
+  "n_files": 22,
+  "n_in_module": 12,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5856": {
+  "ts": 1721032218,
+  "sha": "11af676016846efe197d2ce749e6bd802d87f98f",
+  "module": "kylin-query-common",
+  "n_files": 215,
+  "n_in_module": 79,
+  "n_modules_touched": 13
+ },
+ "KYLIN-5855": {
+  "ts": 1721032218,
+  "sha": "410698dc3de7d9f308c27aba09914496145b61bd",
+  "module": "kylin-common-booter",
+  "n_files": 7,
+  "n_in_module": 1,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5854": {
+  "ts": 1721032218,
+  "sha": "fb02c2bf8316a0cbe721c733e4b02ad45568d86e",
+  "module": "kylin-query-server",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5853": {
+  "ts": 1721032218,
+  "sha": "a072088cc247e1080e4b96fd8c23dcf64f9d14a7",
+  "module": "kylin-core-job",
+  "n_files": 21,
+  "n_in_module": 16,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5852": {
+  "ts": 1721032218,
+  "sha": "705fc2d1ea31b067cff56eed35eeb83129e70727",
+  "module": "kylin-core-job",
+  "n_files": 49,
+  "n_in_module": 11,
+  "n_modules_touched": 16
+ },
+ "KYLIN-5851": {
+  "ts": 1721032218,
+  "sha": "b03278ad46af7432bdb0a875e9054386bcb088a4",
+  "module": "kylin-common-booter",
+  "n_files": 11,
+  "n_in_module": 2,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5850": {
+  "ts": 1721032218,
+  "sha": "cf32aa5cc23772fbfe553c87ce2026380fb08482",
+  "module": "kylin-core-common",
+  "n_files": 943,
+  "n_in_module": 122,
+  "n_modules_touched": 40
+ },
+ "KYLIN-5848": {
+  "ts": 1718353967,
+  "sha": "926e4d2b9a5427947ceefe3f960ab2849c97e80c",
+  "module": "kylin-core-job",
+  "n_files": 861,
+  "n_in_module": 117,
+  "n_modules_touched": 34
+ },
+ "KYLIN-5845": {
+  "ts": 1712910236,
+  "sha": "0bbb74ee794beb17a8a501f5df5dfcc421bfd2a1",
+  "module": "kylin-core-metadata",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5844": {
+  "ts": 1712910236,
+  "sha": "e804eee81eff19424ea61c6899c226ba3d5fcf59",
+  "module": "kylin-it",
+  "n_files": 16,
+  "n_in_module": 3,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5843": {
+  "ts": 1712910236,
+  "sha": "e804eee81eff19424ea61c6899c226ba3d5fcf59",
+  "module": "kylin-it",
+  "n_files": 16,
+  "n_in_module": 3,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5839": {
+  "ts": 1712910236,
+  "sha": "be22ca0de7e512df5dc443b99ed6df63635f9dfe",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5382": {
+  "ts": 1672277954,
+  "sha": "651db7f0fe5b9354f8c3f6bd1cafa081f907e286",
+  "module": "kylin-query-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5831": {
+  "ts": 1712910236,
+  "sha": "be22ca0de7e512df5dc443b99ed6df63635f9dfe",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5838": {
+  "ts": 1712910236,
+  "sha": "eacb62b8aa9c23a627ec5803d18b245420222f4c",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5837": {
+  "ts": 1712910236,
+  "sha": "148d8f61aaafbca0c207d76f0747a85ed0b11fbb",
+  "module": "kylin-core-common",
+  "n_files": 7,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5836": {
+  "ts": 1712910236,
+  "sha": "e49c2f15a645cb33a0f04a0b894af8be24613bf5",
+  "module": "kylin-engine-spark",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5833": {
+  "ts": 1712910236,
+  "sha": "412eff5c73908508e3967412a2dbffd76d171b30",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5832": {
+  "ts": 1712910236,
+  "sha": "d7f37675e2de44478da78d5ae7b4b70fd043b13f",
+  "module": "kylin-query-service",
+  "n_files": 9,
+  "n_in_module": 4,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5830": {
+  "ts": 1712910236,
+  "sha": "191d08c272b48d04441783290459291f70c2e9e6",
+  "module": "kylin-it",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5829": {
+  "ts": 1712910236,
+  "sha": "f9255a515d38edafd099c81712c0b6ff8e7038d7",
+  "module": "kylin-tool",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5828": {
+  "ts": 1712910236,
+  "sha": "c61dc4189968f29f8e56e98f72a16f100e9d6e2b",
+  "module": "kylin-engine-spark",
+  "n_files": 18,
+  "n_in_module": 9,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5817": {
+  "ts": 1712910236,
+  "sha": "00352e8c2d53307b4cf3f847fc6bbf2a869c4520",
+  "module": "kylin-sparder",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5816": {
+  "ts": 1712910236,
+  "sha": "2159699d8e54588d879e0ebdbb1f2ed11380bb23",
+  "module": "kylin-engine-spark",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5815": {
+  "ts": 1712910236,
+  "sha": "768a5ececcd855b0f796881d42b36b17088c61d5",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5814": {
+  "ts": 1712910236,
+  "sha": "ebd2f3d6704a566896b60f7a3c67bf7226c67348",
+  "module": "kylin-common-service",
+  "n_files": 17,
+  "n_in_module": 8,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5811": {
+  "ts": 1712910236,
+  "sha": "5092e7a239146305197ad6fb5fda28fdc090b376",
+  "module": "kylin-core-metadata",
+  "n_files": 59,
+  "n_in_module": 24,
+  "n_modules_touched": 10
+ },
+ "KYLIN-5810": {
+  "ts": 1712910236,
+  "sha": "dcfa26067ff19352e064801d191f27c98fe1e6d2",
+  "module": "kylin-query",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5809": {
+  "ts": 1712910236,
+  "sha": "630a3aa7cef2e2c36653d2d92915b01c201d1ae6",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5808": {
+  "ts": 1712910236,
+  "sha": "c4aad6e78b24c36cad6ce18a2d00dfd86527be0d",
+  "module": "kylin-engine-spark",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5807": {
+  "ts": 1712910236,
+  "sha": "a212350a518cde5fa1fe0357a71b806f5533e2c3",
+  "module": "kylin-query-service",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5805": {
+  "ts": 1712910236,
+  "sha": "085d7072167bf199094833ef73f0d9cc5741b075",
+  "module": "kylin-core-common",
+  "n_files": 173,
+  "n_in_module": 63,
+  "n_modules_touched": 18
+ },
+ "KYLIN-5803": {
+  "ts": 1712910236,
+  "sha": "bfff6d002c9a314cd5df87ab16ff58f4a6f41fdb",
+  "module": "kylin-soft-affinity-cache",
+  "n_files": 92,
+  "n_in_module": 29,
+  "n_modules_touched": 16
+ },
+ "KYLIN-5802": {
+  "ts": 1712910236,
+  "sha": "9b8050e00af23094104bf35439a5fd36470aa23a",
+  "module": "kylin-core-common",
+  "n_files": 6,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5791": {
+  "ts": 1712910236,
+  "sha": "e33ef57cce3f3865ca9b4a6f132a170257d46be2",
+  "module": "kylin-sparder",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5801": {
+  "ts": 1712910236,
+  "sha": "e33ef57cce3f3865ca9b4a6f132a170257d46be2",
+  "module": "kylin-sparder",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5800": {
+  "ts": 1712910236,
+  "sha": "dc344ce2fff2b2ca1ece1955b98c4e4130fecbd3",
+  "module": "kylin-it",
+  "n_files": 28,
+  "n_in_module": 21,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5812": {
+  "ts": 1712910236,
+  "sha": "dc344ce2fff2b2ca1ece1955b98c4e4130fecbd3",
+  "module": "kylin-it",
+  "n_files": 28,
+  "n_in_module": 21,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5799": {
+  "ts": 1712910236,
+  "sha": "deb209f5319bc6d2dc0fe727d65202e3b834f55c",
+  "module": "kylin-query",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5798": {
+  "ts": 1712910236,
+  "sha": "4d3418c237d4a839a85573712d0111d81086a477",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5797": {
+  "ts": 1712910236,
+  "sha": "82ee25fdf1a66601a3cebcab4ca86c1664da57c4",
+  "module": "kylin-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5796": {
+  "ts": 1712910236,
+  "sha": "e824503ecaeca7f657de11bf12113ab5fd1eadb3",
+  "module": "kylin-metadata-server",
+  "n_files": 18,
+  "n_in_module": 8,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5795": {
+  "ts": 1712910236,
+  "sha": "91383f54d5c70bf6ce0f3f641dcd186de193029b",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5793": {
+  "ts": 1712910236,
+  "sha": "07354967d424f3ba76d87ea562948f8b5f69a3a5",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5792": {
+  "ts": 1712910236,
+  "sha": "d6285db6ab757a13ce83d119001a8ef37944522e",
+  "module": "kylin-tool",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5786": {
+  "ts": 1712674194,
+  "sha": "30c4f28a1616dc80e674c4c4f7017b6cc63114b4",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5790": {
+  "ts": 1712674194,
+  "sha": "2695c5da83d9ccfb2a3177b9947e6eda4e6c1715",
+  "module": "kylin-datasource-service",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5789": {
+  "ts": 1712674194,
+  "sha": "ca370d2dad5855941ebb699c1ff3d3eb343414f6",
+  "module": "kylin-tool",
+  "n_files": 47,
+  "n_in_module": 31,
+  "n_modules_touched": 9
+ },
+ "KYLIN-5788": {
+  "ts": 1712674194,
+  "sha": "775efe62b525a7f9188c2c478c44e57ed4b8dc48",
+  "module": "kylin-spark-common",
+  "n_files": 8,
+  "n_in_module": 5,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5774": {
+  "ts": 1712674194,
+  "sha": "9db3502f80265753b38b4ecbb0ee57f7871b6466",
+  "module": "kylin-sparder",
+  "n_files": 39,
+  "n_in_module": 23,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5787": {
+  "ts": 1712674194,
+  "sha": "dd16079c42e4f6eb446945ec42980891934a20c6",
+  "module": "kylin-sparder",
+  "n_files": 10,
+  "n_in_module": 4,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5785": {
+  "ts": 1712674194,
+  "sha": "d7d80985987a344c0a49909cd8d8584829015082",
+  "module": "kylin-query",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5784": {
+  "ts": 1712674194,
+  "sha": "1367e9ccff65ece51e57c654380d526c472ed2fb",
+  "module": "kylin-query-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5783": {
+  "ts": 1712674194,
+  "sha": "8aaa87cbb3f6b9e247ced8ac34d72fb1365a39f1",
+  "module": "kylin-sparder",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5782": {
+  "ts": 1712674194,
+  "sha": "1b63eefbc92e570572b5e7d92ff3d9130a5dec63",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5781": {
+  "ts": 1712674194,
+  "sha": "cb2a11d503f4d857b236ea62152d606d5c8d5fe7",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5780": {
+  "ts": 1712674194,
+  "sha": "8929bb820c881e7172eddbc5f6606d04f62a0dd3",
+  "module": "kylin-modeling-service",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5779": {
+  "ts": 1712674194,
+  "sha": "9f269b527f33911dbad4395f7e8395dc9fdbec96",
+  "module": "kylin-common-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5777": {
+  "ts": 1712674194,
+  "sha": "a67e854a1d598eead4d39c10ae4295c70a94e74d",
+  "module": "kylin-common-booter",
+  "n_files": 5,
+  "n_in_module": 1,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5771": {
+  "ts": 1711949745,
+  "sha": "64b52dea660fc5feba34b8650557f1323d55b28b",
+  "module": "kylin-core-metadata",
+  "n_files": 7,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5769": {
+  "ts": 1711949745,
+  "sha": "738cf4af01fca030751eaff0b1ea3a59340d83eb",
+  "module": "kylin-engine-spark",
+  "n_files": 13,
+  "n_in_module": 4,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5768": {
+  "ts": 1711949745,
+  "sha": "60da9e0ce1fa789ad580ca62ae4d47162f9d3201",
+  "module": "kylin-core-metadata",
+  "n_files": 41,
+  "n_in_module": 15,
+  "n_modules_touched": 10
+ },
+ "KYLIN-5745": {
+  "ts": 1711949745,
+  "sha": "180ff07afeaf64da8e565b7aa5882c3a89f1c268",
+  "module": "kylin-tool",
+  "n_files": 21,
+  "n_in_module": 10,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5767": {
+  "ts": 1711949745,
+  "sha": "d3b4469484a79102071db26114f6602b30d70f43",
+  "module": "kylin-source-jdbc",
+  "n_files": 7,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5766": {
+  "ts": 1711949745,
+  "sha": "a8ad269b3c37d8670f0c5205ecef9d60a2796df3",
+  "module": "kylin-common-service",
+  "n_files": 4,
+  "n_in_module": 1,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5765": {
+  "ts": 1711949745,
+  "sha": "b7615c56bb618fc1133d156d12df9fd00ea04a2d",
+  "module": "kylin-query-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5764": {
+  "ts": 1711949745,
+  "sha": "cd09148868fd2b4cb5a08d236e1a0c0e8dd5eaea",
+  "module": "kylin-it",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5759": {
+  "ts": 1711949745,
+  "sha": "046c97f54c5fa582f8983c794bf0d5a4a0cfd15e",
+  "module": "kylin-core-job",
+  "n_files": 10,
+  "n_in_module": 4,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5763": {
+  "ts": 1711949745,
+  "sha": "71a7a52d669f3c33b6efd7f9bbc80a5b1dfd894a",
+  "module": "kylin-core-metadata",
+  "n_files": 9,
+  "n_in_module": 4,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5757": {
+  "ts": 1711949745,
+  "sha": "d977ce7bfc9a244d7dbb568ba75a58ab29648908",
+  "module": "kylin-core-metadata",
+  "n_files": 7,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5746": {
+  "ts": 1711708322,
+  "sha": "3cbcead2ed5cb3046647ef2a6617c9480254b1b9",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5741": {
+  "ts": 1711708322,
+  "sha": "227e7a068360978133f8188cff859723cea458bf",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 1,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5744": {
+  "ts": 1711708322,
+  "sha": "d13199db7407552226a58060ceb9b41a7f859c36",
+  "module": "kylin-query-common",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5747": {
+  "ts": 1711708322,
+  "sha": "572d78a45b6e0cabb248b6772a9b434221d9f323",
+  "module": "kylin-common-service",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5756": {
+  "ts": 1711708322,
+  "sha": "572d78a45b6e0cabb248b6772a9b434221d9f323",
+  "module": "kylin-common-service",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5743": {
+  "ts": 1711708322,
+  "sha": "553219830193ec43f7b6d68fe626b04456633120",
+  "module": "kylin-it",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5740": {
+  "ts": 1711708322,
+  "sha": "0e3354414d89c4b4b81d0ec1db8d39705e760a40",
+  "module": "kylin-core-metadata",
+  "n_files": 17,
+  "n_in_module": 3,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5762": {
+  "ts": 1711708322,
+  "sha": "1d665a82829a82fc9a51181378aa87de1a98dea2",
+  "module": "kylin-core-common",
+  "n_files": 8,
+  "n_in_module": 3,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5737": {
+  "ts": 1711708322,
+  "sha": "d008c28156b0b2cfea530b08f765613575b2c60e",
+  "module": "kylin-it",
+  "n_files": 5,
+  "n_in_module": 1,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5760": {
+  "ts": 1711708322,
+  "sha": "b15367e3e2682b195966f5b59dbf09f8867a792e",
+  "module": "kylin-data-loading-server",
+  "n_files": 9,
+  "n_in_module": 4,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5733": {
+  "ts": 1711708322,
+  "sha": "387e68d0a669b84d269341a8a4127c5b70d6bf55",
+  "module": "kylin-modeling-service",
+  "n_files": 18,
+  "n_in_module": 18,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5730": {
+  "ts": 1701829608,
+  "sha": "d7c58474ae334ec98a884295328b423b554fd750",
+  "module": "kylin-core-common",
+  "n_files": 77,
+  "n_in_module": 5,
+  "n_modules_touched": 10
+ },
+ "KYLIN-5725": {
+  "ts": 1700548969,
+  "sha": "6f5030377d588d0180e5e050e65e2827ed9b7a03",
+  "module": "kylin-common-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5723": {
+  "ts": 1700548969,
+  "sha": "4753eb92cd72d548aeef89f673262c90fe6c717e",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5722": {
+  "ts": 1700548969,
+  "sha": "75ce83ad6693a94c140917c83059d375e381f598",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5719": {
+  "ts": 1700548969,
+  "sha": "bc00ef2ab5ccfc85542c31e375f222bd32a0e0b5",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5720": {
+  "ts": 1700548969,
+  "sha": "db19826dd51bc441ed5b19a5b2e8e253e522a377",
+  "module": "kylin-common-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5718": {
+  "ts": 1700548969,
+  "sha": "13366b6fb43bec19defaa1542745278ff0bf4622",
+  "module": "kylin-engine-spark",
+  "n_files": 11,
+  "n_in_module": 4,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5717": {
+  "ts": 1700548969,
+  "sha": "ab9b3dab31394013ab27c6fa5e8d81ccf9a0b7d2",
+  "module": "kylin-query",
+  "n_files": 6,
+  "n_in_module": 4,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5714": {
+  "ts": 1700548969,
+  "sha": "becc65b6c9be26d2865198aa6d4b4847b5c031ff",
+  "module": "kylin-tool",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5713": {
+  "ts": 1700548969,
+  "sha": "3400c96600dffabfb337f5362e33b9f73789beff",
+  "module": "kylin-query",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5712": {
+  "ts": 1700548969,
+  "sha": "6697caabeac14e13b2b3ffea95a2bc1a7d335a35",
+  "module": "kylin-metadata-server",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5711": {
+  "ts": 1700548969,
+  "sha": "4fb83dd59397dc1e5598ef6cfe03064830b6a2ee",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5710": {
+  "ts": 1700548969,
+  "sha": "220d272532a4b2cd519337a2a83586eac22fdfcf",
+  "module": "kylin-tool",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5709": {
+  "ts": 1700548969,
+  "sha": "d39787c91cf70e8c6b7c137a8b607c46ea89d804",
+  "module": "kylin-core-metadata",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5706": {
+  "ts": 1700548969,
+  "sha": "cf5fc3b9007d0c8fe0a5d106dd778535564c0363",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5708": {
+  "ts": 1700548969,
+  "sha": "443adfc16293bbe5dc2576897fa04d96f9dd33be",
+  "module": "kylin-common-service",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5704": {
+  "ts": 1700548969,
+  "sha": "1b9d519bbb87268d20248dec27819c793b368c28",
+  "module": "kylin-it",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5700": {
+  "ts": 1694076422,
+  "sha": "f9b65d350d55d078e0d2776cb6384e357ef0bddc",
+  "module": "kylin-tool",
+  "n_files": 10,
+  "n_in_module": 5,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5699": {
+  "ts": 1694076422,
+  "sha": "352e7f68bc16da256d8202770f5c578b8ed91aae",
+  "module": "kylin-engine-spark",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5698": {
+  "ts": 1694076422,
+  "sha": "38280f3b4d9ecfc10dd7adc3ad96ec50218c7767",
+  "module": "kylin-modeling-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5695": {
+  "ts": 1694076422,
+  "sha": "da5b7a1471eee88e56f7ba2e168166743797ecdf",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5697": {
+  "ts": 1694076422,
+  "sha": "794a63c8542843b398e178dec7a2e1356726486b",
+  "module": "kylin-common-service",
+  "n_files": 5,
+  "n_in_module": 5,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5696": {
+  "ts": 1694076422,
+  "sha": "66c16e04f3005fa4fed407daca11df85d3ca3e37",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5694": {
+  "ts": 1694076422,
+  "sha": "6e29706df4b6f0edd60c6d0b5e26f4162d28665e",
+  "module": "kylin-query",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5633": {
+  "ts": 1690195325,
+  "sha": "e722aa6722bf3daae3bee9289441d7bc00144975",
+  "module": "kylin-it",
+  "n_files": 12,
+  "n_in_module": 10,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5692": {
+  "ts": 1694076422,
+  "sha": "0eea09e8cd369d82ba1dd16c25f2d236db0c66c9",
+  "module": "kylin-modeling-service",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5691": {
+  "ts": 1694076422,
+  "sha": "779bc03ed9b75a26d9bf8d3d40fb7ca98d54ec9a",
+  "module": "kylin-it",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5690": {
+  "ts": 1694076422,
+  "sha": "db02b7f93b74b52662466983660bfda59d0a5dd9",
+  "module": "kylin-common-service",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5689": {
+  "ts": 1694076422,
+  "sha": "b05930e845bf8aa3c0e38324117c2f9694a6b7ba",
+  "module": "kylin-common-service",
+  "n_files": 11,
+  "n_in_module": 3,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5688": {
+  "ts": 1694076422,
+  "sha": "e96a233e082bd77d0ec30c8bd77f46d14656ae12",
+  "module": "kylin-common-service",
+  "n_files": 9,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5687": {
+  "ts": 1694076422,
+  "sha": "0ef5cac4bc748f6f9c2550e0191bce44245fdc44",
+  "module": "kylin-engine-spark",
+  "n_files": 8,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5681": {
+  "ts": 1691563374,
+  "sha": "4093d3f0acb4b29788e20248f4d78eff321a7f17",
+  "module": "kylin-modeling-service",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5649": {
+  "ts": 1690195325,
+  "sha": "00a739080f7b85f9d5b0950fee7a91d415c96293",
+  "module": "kylin-spark-it",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5653": {
+  "ts": 1690195325,
+  "sha": "c22a0aeb594990060688eb5726fd1d4bc8210886",
+  "module": "kylin-spark-common",
+  "n_files": 11,
+  "n_in_module": 2,
+  "n_modules_touched": 9
+ },
+ "KYLIN-5639": {
+  "ts": 1690195325,
+  "sha": "84a6afb3892ac98f6a5fdfc1f07d39f6d3af4760",
+  "module": "kylin-tool",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5652": {
+  "ts": 1690195325,
+  "sha": "f79e9fd1e323560d686182cdbad055227d85a5f4",
+  "module": "kylin-core-common",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5651": {
+  "ts": 1690195325,
+  "sha": "fd87fe92fe48d09b5b362b7566dd0686d3777605",
+  "module": "kylin-engine-spark",
+  "n_files": 10,
+  "n_in_module": 5,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5650": {
+  "ts": 1690195325,
+  "sha": "56ddf4c1127289ee703d7b1c29e0865f08e86653",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5643": {
+  "ts": 1690195325,
+  "sha": "ee8ac2cb017a97c898829d2b3d64d6246447a00f",
+  "module": "kylin-metadata-server",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5648": {
+  "ts": 1690195325,
+  "sha": "fea906f2327141492bc96f16251c13813975a521",
+  "module": "kylin-sparder",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5647": {
+  "ts": 1690195325,
+  "sha": "7973ad7139f018294b76cf690e52f4e4df107d50",
+  "module": "kylin-tool",
+  "n_files": 6,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5646": {
+  "ts": 1690195325,
+  "sha": "6dc5c992b65fdfac107db5ab970260dc06603c91",
+  "module": "kylin-engine-spark",
+  "n_files": 8,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5645": {
+  "ts": 1690195325,
+  "sha": "eee97ea91b644ffbc43e317f95500586587f230e",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5644": {
+  "ts": 1690195325,
+  "sha": "4e6a5acd799ae7543c7161e72ef1019c74d5b4ad",
+  "module": "kylin-common-server",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5642": {
+  "ts": 1690195325,
+  "sha": "a6d1278f0e920612fe8daae93e5027bf48c0e803",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5641": {
+  "ts": 1690195325,
+  "sha": "ed8b34665df96225ea949643cdbe48a3934f738e",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5640": {
+  "ts": 1690195325,
+  "sha": "3dc5bfd19c347441efea29b630972f3e950ec20d",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5638": {
+  "ts": 1690195325,
+  "sha": "92d08f19282263f70140fd93bfa7ae5a4c0d652b",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5637": {
+  "ts": 1690195325,
+  "sha": "3436ae7b9b6e4f99ac7704775cb05be6ea058337",
+  "module": "kylin-sparder",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5636": {
+  "ts": 1690195325,
+  "sha": "e62f6ea42fc420045597b4d9d35b06a9a1606f52",
+  "module": "kylin-engine-spark",
+  "n_files": 5,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5635": {
+  "ts": 1690195325,
+  "sha": "24801c50f048b33aa99f5ef560ddc10ae83befcb",
+  "module": "kylin-datasource-service",
+  "n_files": 6,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5634": {
+  "ts": 1690195325,
+  "sha": "ada7c4ee26cba3523d2af78039b1f72e5becc507",
+  "module": "kylin-query-server",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5632": {
+  "ts": 1690195325,
+  "sha": "b2859b0f6deab08fd6304387a9a864f82a8a75f0",
+  "module": "kylin-query-common",
+  "n_files": 10,
+  "n_in_module": 8,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5608": {
+  "ts": 1688622792,
+  "sha": "927fcaf56933be0cee4b60927d2010620d5ca540",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5607": {
+  "ts": 1688622792,
+  "sha": "2d6356bb2b33580e8311445ca4291f5c8cdae3e7",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5606": {
+  "ts": 1688622792,
+  "sha": "43c2fba01f7414f832679a3a401b0ed863abf97e",
+  "module": "kylin-metadata-server",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5599": {
+  "ts": 1688622792,
+  "sha": "ca7e40563392286daefd3773284db4b2092cd9d4",
+  "module": "kylin-metadata-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5604": {
+  "ts": 1688622792,
+  "sha": "04a956f3983c3873fe38dfa2f597f8cab7681afa",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5603": {
+  "ts": 1688622792,
+  "sha": "12b23b44e2372db8c95b0391c2e99d3b30adbdbf",
+  "module": "kylin-engine-spark",
+  "n_files": 9,
+  "n_in_module": 7,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5602": {
+  "ts": 1688622792,
+  "sha": "609deb43a06370bee98a5f6e8e8dcb32867ccba8",
+  "module": "kylin-spark-common",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5601": {
+  "ts": 1688622792,
+  "sha": "931854ad7cf7053366eb54877f6358eeae0d7343",
+  "module": "kylin-engine-spark",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5600": {
+  "ts": 1688622792,
+  "sha": "97f3b8f27466e6a9e557572e24f1fe7108c5cc3b",
+  "module": "kylin-common-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5598": {
+  "ts": 1688622792,
+  "sha": "aeb44b823d194784be609b56bc37b8eeeeb51d9d",
+  "module": "distributed-lock-ext",
+  "n_files": 11,
+  "n_in_module": 4,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5596": {
+  "ts": 1688118811,
+  "sha": "eb3da3e9853dda12dea91e5db02f57e1867622c2",
+  "module": "kylin-query-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5465": {
+  "ts": 1688108135,
+  "sha": "9bc9a36829f272d2049a3a4691be9c696306f9e0",
+  "module": "kylin-core-metadata",
+  "n_files": 31,
+  "n_in_module": 8,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5595": {
+  "ts": 1688106190,
+  "sha": "d11b664759f7d85b7f5f29eaad00e220b66a1780",
+  "module": "kylin-common-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5580": {
+  "ts": 1686644948,
+  "sha": "00b3a17c2af9392f799d390bdc98ac5dfc8f31b1",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5585": {
+  "ts": 1686644948,
+  "sha": "3df1d8d3a324f93b212c16d2ea6937901fc4245f",
+  "module": "kylin-datasource-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5584": {
+  "ts": 1686644948,
+  "sha": "4dc173fda7a135830890eb3ffa9bd997fb5bcf03",
+  "module": "kylin-it",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5583": {
+  "ts": 1686644948,
+  "sha": "3075031c16d76ce381d68a80c616642768abbcd7",
+  "module": "kylin-query-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5582": {
+  "ts": 1686644948,
+  "sha": "bec0b64913bb53f2b836d9978a262a241b762d10",
+  "module": "kylin-spark-common",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5581": {
+  "ts": 1686644948,
+  "sha": "85590405dd674305a87cdb87c656f8f7f1d315b4",
+  "module": "kylin-it",
+  "n_files": 10,
+  "n_in_module": 7,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5578": {
+  "ts": 1686644948,
+  "sha": "b548c90edc1d43d62126f4eb2b6df5c8305cb21a",
+  "module": "kylin-it",
+  "n_files": 43,
+  "n_in_module": 30,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5577": {
+  "ts": 1686644948,
+  "sha": "e35d6a147aaf20a70d70f766398069f1d324c3d8",
+  "module": "kylin-modeling-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5576": {
+  "ts": 1686644948,
+  "sha": "ee0b0ec92bdb73d13f306549dbb1b22cdbac6226",
+  "module": "kylin-engine-spark",
+  "n_files": 6,
+  "n_in_module": 5,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5575": {
+  "ts": 1686644948,
+  "sha": "6dc56d7315ae187e433da50748432abd00ec1f18",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5574": {
+  "ts": 1686644948,
+  "sha": "7ddcd87169d4e5abeb196fbdcc8fce28a5f3466a",
+  "module": "kylin-engine-spark",
+  "n_files": 6,
+  "n_in_module": 6,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5573": {
+  "ts": 1686644948,
+  "sha": "d4454d1eb783635d681599b2526eaab38ad66be6",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5572": {
+  "ts": 1686644948,
+  "sha": "1612a76dfafaaab68354b6050beb28ae9cff5c6b",
+  "module": "kylin-core-common",
+  "n_files": 10,
+  "n_in_module": 6,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5571": {
+  "ts": 1686644948,
+  "sha": "b43fa19ae5ee0af889c8c263150ccffadc49e5a6",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 4,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5570": {
+  "ts": 1686644948,
+  "sha": "17e2ca0f1a408a1ab598e28ea71d8c344a7bdc5f",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5569": {
+  "ts": 1686644948,
+  "sha": "c0b66e0eabeb4b09fb8b5ce13e82c12bc599e73c",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5568": {
+  "ts": 1686644948,
+  "sha": "e4642ae8f2bb54e396182d1f71c34b393cc8b817",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5567": {
+  "ts": 1686644948,
+  "sha": "83d71b03b45f4124740987b592f66d0366d21583",
+  "module": "kylin-core-metadata",
+  "n_files": 1144,
+  "n_in_module": 235,
+  "n_modules_touched": 30
+ },
+ "KYLIN-5566": {
+  "ts": 1686644948,
+  "sha": "4556d12103ca2f77b666adf2233318e3305eadc1",
+  "module": "kylin-modeling-service",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5564": {
+  "ts": 1686644948,
+  "sha": "03a44dc0c0da5030fdef47ca53abe3e6d77f6b23",
+  "module": "kylin-it",
+  "n_files": 23,
+  "n_in_module": 8,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5563": {
+  "ts": 1686644948,
+  "sha": "9ee8b057cb38ef5a62c533452cf5949b03eee8b0",
+  "module": "kylin-common-server",
+  "n_files": 8,
+  "n_in_module": 2,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5562": {
+  "ts": 1686644948,
+  "sha": "eb1dfe51f171819b56bb62ef4626b2dd51b0d4c2",
+  "module": "kylin-core-job",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5561": {
+  "ts": 1686644948,
+  "sha": "b51378390b1a113928127ed7f4aa53d91eb0bc1b",
+  "module": "kylin-it",
+  "n_files": 47,
+  "n_in_module": 18,
+  "n_modules_touched": 8
+ },
+ "KYLIN-5560": {
+  "ts": 1686644948,
+  "sha": "d858fe017054c49c1e8e7bb18e8e6025d170fb31",
+  "module": "kylin-server",
+  "n_files": 14,
+  "n_in_module": 2,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5558": {
+  "ts": 1686644948,
+  "sha": "d9c37f7bcb61d2dfd1e04e99b1f586dad2bfcea1",
+  "module": "kylin-common-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5557": {
+  "ts": 1686644948,
+  "sha": "134ddb0e3087f74b00fbf5fe2e8f7d4937431861",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5556": {
+  "ts": 1686644948,
+  "sha": "116718225ba01ad239ba0924e507503bdeb2e562",
+  "module": "kylin-core-common",
+  "n_files": 12,
+  "n_in_module": 6,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5555": {
+  "ts": 1686644948,
+  "sha": "1a286ea3342be8292bd6238d3a32935627d15366",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5527": {
+  "ts": 1683356332,
+  "sha": "59a2e21034f7ccbf859e3aee94668a5ce8a4ec1a",
+  "module": "kylin-engine-spark",
+  "n_files": 68,
+  "n_in_module": 25,
+  "n_modules_touched": 11
+ },
+ "KYLIN-5546": {
+  "ts": 1686644948,
+  "sha": "3297beff726784e70753c8a2cf5b0bba48fdfdca",
+  "module": "kylin-it",
+  "n_files": 9,
+  "n_in_module": 3,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5545": {
+  "ts": 1686644948,
+  "sha": "07a4be3795fbad66a66f92dfdb96462eccaa1061",
+  "module": "kylin-core-common",
+  "n_files": 27,
+  "n_in_module": 5,
+  "n_modules_touched": 10
+ },
+ "KYLIN-5530": {
+  "ts": 1683356332,
+  "sha": "b10a87b65d4e2127f2975baacd9792128c8f5fd9",
+  "module": "kylin-engine-spark",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5523": {
+  "ts": 1683356332,
+  "sha": "cb3f4e604f1caa8d13de7987912d5638d408bced",
+  "module": "kylin-query-common",
+  "n_files": 18,
+  "n_in_module": 5,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5534": {
+  "ts": 1683356332,
+  "sha": "9af54c048448711da88658430af2bd147bc8989b",
+  "module": "kylin-modeling-service",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5533": {
+  "ts": 1683356332,
+  "sha": "c8a464d2cadc72f56fe51d98f2914eecdfe00e22",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5536": {
+  "ts": 1683356332,
+  "sha": "5d251e313959b13cb15c2789eb69b6bb9b72c6b5",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5535": {
+  "ts": 1683356332,
+  "sha": "9bf63e01838fee5eb2fc50332c43a14bc0ea824d",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5521": {
+  "ts": 1683356332,
+  "sha": "625c4b6c7e86aa8402e450c085f8332b0f5fc8b2",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5532": {
+  "ts": 1683356332,
+  "sha": "96d806eae898e912494df714b03f3b12ce2a21ba",
+  "module": "kylin-query-service",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5531": {
+  "ts": 1683356332,
+  "sha": "e39b34cb4667430134d6054123acf34eb9992daf",
+  "module": "kylin-engine-spark",
+  "n_files": 18,
+  "n_in_module": 17,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5529": {
+  "ts": 1683356332,
+  "sha": "620a6ad5bfd6ef06e1bd082deec6bc5e0d74d3cb",
+  "module": "kylin-modeling-service",
+  "n_files": 7,
+  "n_in_module": 5,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5528": {
+  "ts": 1683356332,
+  "sha": "842a0601a643ac83d894ec8a248673c8fd13cfb5",
+  "module": "kylin-sparder",
+  "n_files": 32,
+  "n_in_module": 23,
+  "n_modules_touched": 9
+ },
+ "KYLIN-5526": {
+  "ts": 1683356332,
+  "sha": "4a889f08ab94df6bccb5743cdc51d32a5d1b2b66",
+  "module": "kylin-query-service",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5525": {
+  "ts": 1683356332,
+  "sha": "09ea4572781fcc0ea9da76204e3fdce52d8f85c6",
+  "module": "kylin-core-metadata",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5524": {
+  "ts": 1683356332,
+  "sha": "f929bd876ed54afbd1490d2717894288fd197ec6",
+  "module": "kylin-query",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5522": {
+  "ts": 1683356332,
+  "sha": "2cf578b0fa0c93292597e291f11ccead7c217762",
+  "module": "kylin-core-metadata",
+  "n_files": 221,
+  "n_in_module": 37,
+  "n_modules_touched": 26
+ },
+ "KYLIN-5497": {
+  "ts": 1682229631,
+  "sha": "75db3c0b2c1d63e328ce33db8b1735619073fdbb",
+  "module": "kylin-tool",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5499": {
+  "ts": 1682229631,
+  "sha": "08dc9f9b35c314e5a97f4b23b3e383d12417e2bb",
+  "module": "kylin-it",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5498": {
+  "ts": 1682229631,
+  "sha": "b61ce536d05446a230b735472027511f463b6d7a",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5454": {
+  "ts": 1677484831,
+  "sha": "db624c3e89e5444a3462893e6c86973f3fb72790",
+  "module": "kylin-core-common",
+  "n_files": 20,
+  "n_in_module": 7,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5496": {
+  "ts": 1682229631,
+  "sha": "8f38936d58f198d60f7bde8ff233b26b015754f8",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5495": {
+  "ts": 1682229631,
+  "sha": "552f8f8fd40ab7bc23e568136ef50fcaaff8a7b3",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5494": {
+  "ts": 1682229631,
+  "sha": "bcdbf5fb080da26b54908f2337f2f68105defc86",
+  "module": "kylin-common-server",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5493": {
+  "ts": 1682229631,
+  "sha": "d8cd3cd95c06598ffd464ec2761dda9a537074c8",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5492": {
+  "ts": 1682229631,
+  "sha": "187bb21fa888e4abc751bfc163d2ca9bf2a30858",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5491": {
+  "ts": 1682229631,
+  "sha": "dded9d64a5a1f958502dfcb137499d0eb307dcc7",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5490": {
+  "ts": 1682229631,
+  "sha": "0152ac9e042eedbeca53a25c7fdcfb46604b1f58",
+  "module": "kylin-common-booter",
+  "n_files": 7,
+  "n_in_module": 1,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5519": {
+  "ts": 1682066899,
+  "sha": "e5a526ee1ede46f50059ac2e730d818efa283b94",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-3614": {
+  "ts": 1677822626,
+  "sha": "b0169af73c77f32908d3dda18ca22c7699b663dd",
+  "module": "kylin-common-service",
+  "n_files": 19,
+  "n_in_module": 14,
+  "n_modules_touched": 3
+ },
+ "KYLIN-3526": {
+  "ts": 1677822626,
+  "sha": "b0169af73c77f32908d3dda18ca22c7699b663dd",
+  "module": "kylin-common-service",
+  "n_files": 19,
+  "n_in_module": 14,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5280": {
+  "ts": 1677822626,
+  "sha": "b0169af73c77f32908d3dda18ca22c7699b663dd",
+  "module": "kylin-common-service",
+  "n_files": 19,
+  "n_in_module": 14,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5388": {
+  "ts": 1677822626,
+  "sha": "b0169af73c77f32908d3dda18ca22c7699b663dd",
+  "module": "kylin-common-service",
+  "n_files": 19,
+  "n_in_module": 14,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5450": {
+  "ts": 1677484831,
+  "sha": "7fe52b87411451debd40f2b92eee6111f764de6c",
+  "module": "kylin-metadata-server",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5461": {
+  "ts": 1677484831,
+  "sha": "a81cecac2c0fd775777df64dfe64ed7546ef6088",
+  "module": "kylin-datasource-service",
+  "n_files": 8,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5457": {
+  "ts": 1677484831,
+  "sha": "1cebc04393638587e22631016ceb3cbf9bf6adba",
+  "module": "kylin-common-service",
+  "n_files": 4,
+  "n_in_module": 4,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5449": {
+  "ts": 1677484831,
+  "sha": "19be14f9e67c42b3787176ecab9d2ba32beff938",
+  "module": "kylin-core-metadata",
+  "n_files": 8,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5460": {
+  "ts": 1677484831,
+  "sha": "f27ee335285670a745d3d4032f313f436acaa878",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5459": {
+  "ts": 1677484831,
+  "sha": "858d0ae6da67e5ba1d418df4043af91f28611190",
+  "module": "kylin-engine-spark",
+  "n_files": 67,
+  "n_in_module": 42,
+  "n_modules_touched": 11
+ },
+ "KYLIN-5458": {
+  "ts": 1677484831,
+  "sha": "299bb6707734dd2164392b594a5ff47dcfa6b65c",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 5,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5447": {
+  "ts": 1677484831,
+  "sha": "3aff4aa461340b709694a8ac610c24188b954ac9",
+  "module": "kylin-datasource-service",
+  "n_files": 9,
+  "n_in_module": 5,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5456": {
+  "ts": 1677484831,
+  "sha": "eeaa487d31f11b628be01846be54ede2cac21aa3",
+  "module": "kylin-modeling-service",
+  "n_files": 11,
+  "n_in_module": 11,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5455": {
+  "ts": 1677484831,
+  "sha": "cf0b7a83d01c647a2d416c71c1117ad41452154e",
+  "module": "kylin-core-metadata",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5452": {
+  "ts": 1677484831,
+  "sha": "89b96f474351d2dbaf9ca5bb756a127ae0b46e85",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5451": {
+  "ts": 1677484831,
+  "sha": "b0c258904464eff63deea05c738a655a657f8ed6",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5446": {
+  "ts": 1677484831,
+  "sha": "8be8d54aa1c8ff915fd4afc3c7feabce4fc3875b",
+  "module": "kylin-core-metadata",
+  "n_files": 143,
+  "n_in_module": 40,
+  "n_modules_touched": 15
+ },
+ "KYLIN-5445": {
+  "ts": 1677484831,
+  "sha": "306af607b27c7c996efd6af7202c3971b035c8d8",
+  "module": "kylin-core-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5387": {
+  "ts": 1677127448,
+  "sha": "b2b3a6a8d290e05543da4a43225829a78e5b3bbb",
+  "module": "kylin-core-metadata",
+  "n_files": 64,
+  "n_in_module": 28,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5442": {
+  "ts": 1676354058,
+  "sha": "c16c2e712ccc98c74bed7368d44fedcd05a66584",
+  "module": "kylin-streaming",
+  "n_files": 16,
+  "n_in_module": 10,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5441": {
+  "ts": 1676354058,
+  "sha": "5d1ed563bb1c9cf1dd8185335f8ed14cce6a19ac",
+  "module": "kylin-spark-common",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5440": {
+  "ts": 1676354058,
+  "sha": "0f0f149bd5b77571c6fa10ce2dc5dea78e57bb99",
+  "module": "kylin-metadata-server",
+  "n_files": 20,
+  "n_in_module": 6,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5439": {
+  "ts": 1676354058,
+  "sha": "2e4167126c04b6eec2948d30d328be2af80fc8ed",
+  "module": "kylin-datasource-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5437": {
+  "ts": 1676354058,
+  "sha": "ea4c009b6563f863b6a5184a6b83c25953c98391",
+  "module": "kylin-core-job",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5436": {
+  "ts": 1676354058,
+  "sha": "ac3459718de13b189523fd272b91a300ad60814f",
+  "module": "kylin-core-job",
+  "n_files": 5,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5434": {
+  "ts": 1676354058,
+  "sha": "be6f0fd65b89dabf172e07b71fc924fe47e41289",
+  "module": "kylin-core-job",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5433": {
+  "ts": 1676354058,
+  "sha": "fd95ac41cffc70441c50eef70b8ca0a462eca760",
+  "module": "kylin-core-metadata",
+  "n_files": 13,
+  "n_in_module": 7,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5431": {
+  "ts": 1676354058,
+  "sha": "f0e2b90331b8732c019312aa48f1f7c808618d56",
+  "module": "kylin-it",
+  "n_files": 56,
+  "n_in_module": 42,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5430": {
+  "ts": 1676354058,
+  "sha": "1e08d51b758c5f8975a743c14fecc42c39931ba8",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5428": {
+  "ts": 1676354058,
+  "sha": "f67bc74bd63ce2a06d2842357a160c4e56e8bffe",
+  "module": "kylin-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5427": {
+  "ts": 1676354058,
+  "sha": "9006fc9236e064578626228112eaa00a80d56c4d",
+  "module": "kylin-metadata-server",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5426": {
+  "ts": 1676354058,
+  "sha": "4be76ac572027e8f481ffcc82a70b520639f878c",
+  "module": "kylin-datasource-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5425": {
+  "ts": 1676354058,
+  "sha": "e4e59cd6b07a09d68cc860251519a5cc0ade3b39",
+  "module": "kylin-common-booter",
+  "n_files": 7,
+  "n_in_module": 1,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5422": {
+  "ts": 1676354058,
+  "sha": "76dc3a616ac382768a58841fdabc240f85ec659f",
+  "module": "kylin-sparder",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5421": {
+  "ts": 1676354058,
+  "sha": "6d642e7f051b5e807144b6920af6d4387115b9b2",
+  "module": "kylin-common-service",
+  "n_files": 10,
+  "n_in_module": 4,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5420": {
+  "ts": 1676354058,
+  "sha": "82685b39a53cf8ab6a79e66eb15200ae933883df",
+  "module": "kylin-common-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5417": {
+  "ts": 1675823173,
+  "sha": "2e0d1a2e9a1de1b6a7607f0b3271de440b59e11c",
+  "module": "kylin-streaming",
+  "n_files": 76,
+  "n_in_module": 36,
+  "n_modules_touched": 11
+ },
+ "KYLIN-5416": {
+  "ts": 1675753760,
+  "sha": "5e55b761ea30e00c4488b9ef7deac3f9cc5e4a6d",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5415": {
+  "ts": 1675753760,
+  "sha": "15ff1d04cbe015317bb4828fd0eb09c60e4247f8",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5409": {
+  "ts": 1675753760,
+  "sha": "b34babb851439bca4a068aed21d2ba5d5f40914f",
+  "module": "kylin-engine-spark",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5413": {
+  "ts": 1675753760,
+  "sha": "79b7b13a3859052765c81471140545a2abc10378",
+  "module": "kylin-datasource-service",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5412": {
+  "ts": 1675753760,
+  "sha": "090e3a6c7f70339c3a3549856de3bfcc05ea1936",
+  "module": "kylin-it",
+  "n_files": 6,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5408": {
+  "ts": 1675753760,
+  "sha": "5506681519dd5da6c06a8e98667680e39989a9d5",
+  "module": "kylin-spark-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5406": {
+  "ts": 1675753760,
+  "sha": "774ae7d5cc372bfebc8773d86d9dffb813a1b93c",
+  "module": "kylin-core-job",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5309": {
+  "ts": 1674984694,
+  "sha": "59a9b46a2cc33334b296361efb7f0e89dcba9b5e",
+  "module": "kylin-core-metadata",
+  "n_files": 78,
+  "n_in_module": 23,
+  "n_modules_touched": 11
+ },
+ "KYLIN-5398": {
+  "ts": 1673515667,
+  "sha": "d3ecc5a0847da26178e84cf13d55c0378764452e",
+  "module": "kylin-core-common",
+  "n_files": 32,
+  "n_in_module": 17,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5400": {
+  "ts": 1674984694,
+  "sha": "4a971ae0912ea399cb032787d7ebda8d1fdd19f0",
+  "module": "kylin-query-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5403": {
+  "ts": 1674984694,
+  "sha": "f2788dee93974338ca0e6fb1a3e325259ff5459d",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5402": {
+  "ts": 1674984694,
+  "sha": "618c2e37c72a40774cbfdb2222676b06210f4319",
+  "module": "kylin-modeling-service",
+  "n_files": 7,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5391": {
+  "ts": 1673589753,
+  "sha": "80ff2285027d1c55aa07bb07c0afd64c823a71ea",
+  "module": "kylin-tool",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5361": {
+  "ts": 1673589753,
+  "sha": "1270d6f15e69b47c549beba22594a75603a408b7",
+  "module": "kylin-core-job",
+  "n_files": 42,
+  "n_in_module": 18,
+  "n_modules_touched": 8
+ },
+ "KYLIN-5399": {
+  "ts": 1673515667,
+  "sha": "1a00e9ac57de03d3436e153dbc535a5ee5809cd2",
+  "module": "kylin-core-common",
+  "n_files": 149,
+  "n_in_module": 55,
+  "n_modules_touched": 19
+ },
+ "KYLIN-5397": {
+  "ts": 1673515667,
+  "sha": "60ad2aa86de528209b898c2d2bb343bcec1c3d7e",
+  "module": "kylin-core-metadata",
+  "n_files": 33,
+  "n_in_module": 7,
+  "n_modules_touched": 10
+ },
+ "KYLIN-5396": {
+  "ts": 1673515667,
+  "sha": "a3a709853c2260ba4a8f113604f3b89bfc52a560",
+  "module": "kylin-common-service",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5353": {
+  "ts": 1671174083,
+  "sha": "466263216e1007156438c719c54feab67c907aff",
+  "module": "kylin-modeling-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5395": {
+  "ts": 1673515667,
+  "sha": "ae22f91de94d4e399f4498e51876e6ca9cd28712",
+  "module": "kylin-modeling-service",
+  "n_files": 7,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5394": {
+  "ts": 1673515667,
+  "sha": "4bb90cbab34f4168aa6be1050388d10413dd0816",
+  "module": "kylin-sparder",
+  "n_files": 11,
+  "n_in_module": 6,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5393": {
+  "ts": 1673515667,
+  "sha": "bbcf3df8d7e1eafa0ccc2914e76ff8ac122d0215",
+  "module": "kylin-query-common",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5392": {
+  "ts": 1673515667,
+  "sha": "4d3f892b27755ce35015a24fb7ac349fe88495e7",
+  "module": "kylin-query-common",
+  "n_files": 59,
+  "n_in_module": 16,
+  "n_modules_touched": 12
+ },
+ "KYLIN-5390": {
+  "ts": 1673515667,
+  "sha": "a9de3a2a27169a9695684a7dd1c2f7c5f807e10d",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 4,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5389": {
+  "ts": 1673515667,
+  "sha": "a410bd0c08f3d6f130e52f9dba581e52486998b9",
+  "module": "kylin-query-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5357": {
+  "ts": 1673003397,
+  "sha": "236172adece9da6506dd8e2a542dfe02524b95bd",
+  "module": "kylin-it",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5356": {
+  "ts": 1673003397,
+  "sha": "be5e5fa209fb26f8f5747ca3469403a46c8c6a13",
+  "module": "kylin-common-service",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5349": {
+  "ts": 1673003397,
+  "sha": "5bca044690dabb78e18e86890d4283bd67b015ae",
+  "module": "kylin-core-job",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5348": {
+  "ts": 1673003397,
+  "sha": "eade3c6e1e5e30ef91ab73eb1b80590a97f98fdd",
+  "module": "kylin-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5347": {
+  "ts": 1673003397,
+  "sha": "7bd187ae0d6dc88c3518d61b8afd665f4ee13797",
+  "module": "kylin-engine-spark",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5372": {
+  "ts": 1672214342,
+  "sha": "0f81c131fc2e11b654b7dd2e7290213e41a6ff90",
+  "module": "kylin-engine-spark",
+  "n_files": 4,
+  "n_in_module": 4,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5346": {
+  "ts": 1673003397,
+  "sha": "bda0206639c03fb124959e48e346894adb4881f2",
+  "module": "kylin-common-service",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5345": {
+  "ts": 1673003397,
+  "sha": "4af690015ccb02897ede8a89fa441d3523892fdc",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5344": {
+  "ts": 1673003397,
+  "sha": "dea257ad3b1140d8f9b1b4c706739428ff6fae60",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5343": {
+  "ts": 1673003397,
+  "sha": "f241d43dca49719c9848510ca936ecc63c06bab1",
+  "module": "kylin-core-metadata",
+  "n_files": 16,
+  "n_in_module": 13,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5368": {
+  "ts": 1672799689,
+  "sha": "c0290399fcd514b05aafdc792dd01b9773176f06",
+  "module": "kylin-core-metadata",
+  "n_files": 6,
+  "n_in_module": 2,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5369": {
+  "ts": 1672799689,
+  "sha": "aaa1debe72f3f9ab915b54b4bb4c5d399842852d",
+  "module": "kylin-common-service",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5370": {
+  "ts": 1672799689,
+  "sha": "676fdf7691e530052ef6f11d67a21335307e64ec",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5367": {
+  "ts": 1672797924,
+  "sha": "2e29cffe56bf8a9511cc86fabe6bcea6b8d8a260",
+  "module": "kylin-core-metadata",
+  "n_files": 14,
+  "n_in_module": 6,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5385": {
+  "ts": 1672278015,
+  "sha": "42849e9e9470df939e2f49dd88acb4c680956093",
+  "module": "kylin-query",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5384": {
+  "ts": 1672278001,
+  "sha": "2dfacf690597004174c2e5e9a3858119b9f45c85",
+  "module": "kylin-common-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5383": {
+  "ts": 1672277976,
+  "sha": "5733024b945affd7d5f9496c207bb7136c8cd59b",
+  "module": "kylin-modeling-service",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5381": {
+  "ts": 1672277939,
+  "sha": "cd339658bd37822b720ced6526c3356d3938b068",
+  "module": "kylin-core-metadata",
+  "n_files": 8,
+  "n_in_module": 7,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5380": {
+  "ts": 1672214972,
+  "sha": "2bcfea7d782fead9360e005cb256216e21344200",
+  "module": "kylin-it",
+  "n_files": 5,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5375": {
+  "ts": 1672214862,
+  "sha": "2d7070afee5ce29cad369827df6e5f1a25a8d4dd",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5374": {
+  "ts": 1672214795,
+  "sha": "db8cb0e9022911c6a907a584b434c9102b51c265",
+  "module": "kylin-core-common",
+  "n_files": 23,
+  "n_in_module": 6,
+  "n_modules_touched": 6
+ },
+ "KYLIN-5373": {
+  "ts": 1672214462,
+  "sha": "2f010f808a3c0ab5f7d3c9ad82805c2845d2434e",
+  "module": "kylin-common-service",
+  "n_files": 4,
+  "n_in_module": 4,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5376": {
+  "ts": 1672024159,
+  "sha": "21d4282c719f87f5f0cb14603310ef6cdffadea5",
+  "module": "kylin-data-loading-server",
+  "n_files": 11,
+  "n_in_module": 4,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5377": {
+  "ts": 1672024123,
+  "sha": "ea119412aa082999b7c8881e4828778e1955ff81",
+  "module": "kylin-core-metadata",
+  "n_files": 12,
+  "n_in_module": 6,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5378": {
+  "ts": 1672024093,
+  "sha": "f7a86ae6611e762f7c2a0b819c9b96817a8be104",
+  "module": "kylin-job-service",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5379": {
+  "ts": 1672024073,
+  "sha": "5ef08ffc564c66e9a95525ff4360ab7bde950778",
+  "module": "kylin-server",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5362": {
+  "ts": 1671174083,
+  "sha": "76d574818f142c81ae4a4a6176222241c36f6578",
+  "module": "kylin-core-metadata",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5363": {
+  "ts": 1671174083,
+  "sha": "6cb5d889e7d3961460ba8374f0fac82a97153012",
+  "module": "kylin-core-job",
+  "n_files": 9,
+  "n_in_module": 3,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5364": {
+  "ts": 1671174083,
+  "sha": "03c6a0f4ea53de09b17f54109d844e3b8a8c6518",
+  "module": "kylin-datasource-service",
+  "n_files": 2,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5365": {
+  "ts": 1671174083,
+  "sha": "e23c37715bd712a3d27a68199bc64e4e280c1f46",
+  "module": "kylin-tool",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5354": {
+  "ts": 1671174083,
+  "sha": "b7fff5be2ac0fa10688d378cfd73a0c984fb2662",
+  "module": "kylin-common-booter",
+  "n_files": 4,
+  "n_in_module": 1,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5352": {
+  "ts": 1671174083,
+  "sha": "4ab0273f45054ae7712689d456615f7658419cdd",
+  "module": "kylin-modeling-service",
+  "n_files": 3,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5333": {
+  "ts": 1670927098,
+  "sha": "1174339344bdf720713047f19fd8df6ca1f7acc7",
+  "module": "kylin-metadata-server",
+  "n_files": 17,
+  "n_in_module": 4,
+  "n_modules_touched": 9
+ },
+ "KYLIN-5351": {
+  "ts": 1671174083,
+  "sha": "21c31f4556853d16a8cb9336e7887f2afeaae14b",
+  "module": "kylin-data-loading-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5355": {
+  "ts": 1671174083,
+  "sha": "0e83e2291af1de9632e822405fed5cd6b8ea3fc0",
+  "module": "kylin-query",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5314": {
+  "ts": 1670235642,
+  "sha": "f4f2b21ee8127424f13f3739b4324a7bcfcc8f53",
+  "module": "kylin-core-common",
+  "n_files": 33,
+  "n_in_module": 7,
+  "n_modules_touched": 7
+ },
+ "KYLIN-5279": {
+  "ts": 1668132083,
+  "sha": "1fa73daee7fff8e912bcff9aaf859b66f5ebf94a",
+  "module": "kylin-query-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5274": {
+  "ts": 1665643586,
+  "sha": "88b5a43813af205171c6bd30bce20f9d58fbff3a",
+  "module": "kylin-core-common",
+  "n_files": 6,
+  "n_in_module": 6,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5318": {
+  "ts": 1670235642,
+  "sha": "8b31539dab85375937597d7bfff8ef17a89a27bc",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5338": {
+  "ts": 1670927098,
+  "sha": "8138fe481edcfe44a9a31c0c4a43016c3b2e6173",
+  "module": "kylin-metadata-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5308": {
+  "ts": 1669786604,
+  "sha": "0408501504b954f731017a48b2ef76f41e9b9f8e",
+  "module": "kylin-core-common",
+  "n_files": 11,
+  "n_in_module": 9,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5335": {
+  "ts": 1670927098,
+  "sha": "ae851e66eb3ee7993346a765d8ff240f9c7ce889",
+  "module": "kylin-core-common",
+  "n_files": 5,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5334": {
+  "ts": 1670927098,
+  "sha": "e7842ce0fc5b96cd9687e4622ee203a1d5658b88",
+  "module": "kylin-data-loading-server",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5341": {
+  "ts": 1670927098,
+  "sha": "387df712548044216a4ec0ba3990e93dff60b6dc",
+  "module": "kylin-sparder",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5332": {
+  "ts": 1670927098,
+  "sha": "82516523250251fbf6ed6a1570eb3789b54b7e13",
+  "module": "kylin-core-metadata",
+  "n_files": 5,
+  "n_in_module": 3,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5331": {
+  "ts": 1670927098,
+  "sha": "b9891b1395314606b6e36b653d4742f86fd3d57b",
+  "module": "kylin-query-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5330": {
+  "ts": 1670927098,
+  "sha": "9353a978e21536a3823d9051190ef612e6767dbe",
+  "module": "kylin-spark-common",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5310": {
+  "ts": 1670384266,
+  "sha": "6496e014f0ef0f48b5d66cdb8ab3e6ed8d2830ec",
+  "module": "kylin-metadata-server",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5326": {
+  "ts": 1670235642,
+  "sha": "21a6b9f7f611d8d4a23a8003abbcc139e687c394",
+  "module": "kylin-core-common",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5325": {
+  "ts": 1670235642,
+  "sha": "c35921431951f41bb5c4a645835d0fd10747c786",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5324": {
+  "ts": 1670235642,
+  "sha": "a5875f29c1d168d447d41f68622ed78045ea133f",
+  "module": "kylin-core-metadata",
+  "n_files": 7,
+  "n_in_module": 4,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5323": {
+  "ts": 1670235642,
+  "sha": "5c8bb0101796c48091a7e9faecea9e479c4ca6a9",
+  "module": "kylin-core-metadata",
+  "n_files": 3,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5322": {
+  "ts": 1670235642,
+  "sha": "6cba5e63396e1e2e56703b4c334e7a4df7a23dda",
+  "module": "kylin-sparder",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5320": {
+  "ts": 1670235642,
+  "sha": "294895e4eec2a99dd22635bf41e51fac7d509465",
+  "module": "kylin-common-service",
+  "n_files": 6,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5319": {
+  "ts": 1670235642,
+  "sha": "19232aba8f01b42360199c481ed08856f4e65522",
+  "module": "kylin-core-metadata",
+  "n_files": 6,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5317": {
+  "ts": 1670235642,
+  "sha": "a79a9b487df43b2f6b8acf1a476d94520d0532e9",
+  "module": "kylin-core-common",
+  "n_files": 4,
+  "n_in_module": 2,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5316": {
+  "ts": 1670235642,
+  "sha": "6836fba58026aaa913808259facc13863e83f17d",
+  "module": "kylin-core-metadata",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5315": {
+  "ts": 1670235642,
+  "sha": "275d57dea54a3752cf621e86b7660d4a7eddb13e",
+  "module": "kylin-data-loading-service",
+  "n_files": 15,
+  "n_in_module": 12,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5313": {
+  "ts": 1670235642,
+  "sha": "3937edeaa09154ace480bf8138e506d2722632af",
+  "module": "kylin-tool",
+  "n_files": 4,
+  "n_in_module": 3,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5312": {
+  "ts": 1670235642,
+  "sha": "4989854945e1ba3dfe3b49e51a5c921c71227e31",
+  "module": "kylin-metadata-server",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5311": {
+  "ts": 1670235642,
+  "sha": "c583f433242f482168db596abd1183bac23f4d72",
+  "module": "kylin-core-common",
+  "n_files": 7,
+  "n_in_module": 7,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5304": {
+  "ts": 1669601351,
+  "sha": "140f2792b9bf7ccfb4f560a52f805434800af02b",
+  "module": "kylin-query-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5297": {
+  "ts": 1669021934,
+  "sha": "ef3ccfa03dd11e41e74129a4834953dc0d965e2a",
+  "module": "kylin-jdbc",
+  "n_files": 38,
+  "n_in_module": 36,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5289": {
+  "ts": 1668588319,
+  "sha": "d9397c6540f61e1317a9f3c4a454cd54d3f2fd6b",
+  "module": "kylin-it",
+  "n_files": 4699,
+  "n_in_module": 2847,
+  "n_modules_touched": 32
+ },
+ "KYLIN-5256": {
+  "ts": 1664330647,
+  "sha": "ce5c40393a73664344a9275e9f31af4722d651f7",
+  "module": "kylin-core-common",
+  "n_files": 13,
+  "n_in_module": 4,
+  "n_modules_touched": 8
+ },
+ "KYLIN-5269": {
+  "ts": 1663745706,
+  "sha": "259d0ca533b0227741bb1f19158cdf44a6578d1e",
+  "module": "kylin-core-job",
+  "n_files": 19,
+  "n_in_module": 2,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5249": {
+  "ts": 1662427145,
+  "sha": "2e294b5eea0d3f3b522ccb726aa75d6918ac5ab3",
+  "module": "kylin-core-common",
+  "n_files": 8,
+  "n_in_module": 1,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5244": {
+  "ts": 1661943023,
+  "sha": "59a31fef97d67063f0d3ec3872ba3d11a1d74bd6",
+  "module": "kylin-core-common",
+  "n_files": 36,
+  "n_in_module": 12,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5240": {
+  "ts": 1661510222,
+  "sha": "0a85d6f528f0a75e5d363f2166ac9363982cbc2e",
+  "module": "kylin-data-loading-service",
+  "n_files": 1,
+  "n_in_module": 1,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5229": {
+  "ts": 1661321425,
+  "sha": "b2781a7076bf99fe413d8e9e57525de77122f6d0",
+  "module": "kylin-common-service",
+  "n_files": 3,
+  "n_in_module": 1,
+  "n_modules_touched": 3
+ },
+ "KYLIN-5234": {
+  "ts": 1661248209,
+  "sha": "b24d97c64f7ff0a32046d9e32201de75bd4fec8c",
+  "module": "kylin-common-service",
+  "n_files": 7,
+  "n_in_module": 1,
+  "n_modules_touched": 5
+ },
+ "KYLIN-5232": {
+  "ts": 1660820165,
+  "sha": "cfc55f348bfb1b87533c8ed8637e19f91a26b4e0",
+  "module": "kylin-query-common",
+  "n_files": 18,
+  "n_in_module": 7,
+  "n_modules_touched": 4
+ },
+ "KYLIN-5228": {
+  "ts": 1660614904,
+  "sha": "bb2772794f587ba4d0e38b2111fb13ce8e5015b8",
+  "module": "kylin-core-common",
+  "n_files": 2,
+  "n_in_module": 2,
+  "n_modules_touched": 1
+ },
+ "KYLIN-5225": {
+  "ts": 1660268227,
+  "sha": "06ba9dc5d62a4802b325e2250178331230c5a058",
+  "module": "kylin-tool",
+  "n_files": 21,
+  "n_in_module": 4,
+  "n_modules_touched": 2
+ },
+ "KYLIN-5217": {
+  "ts": 1659342815,
+  "sha": "edab8698b6a9770ddc4cd00d9788d718d032b5e8",
+  "module": "kylin-core-metadata",
+  "n_files": 5115,
+  "n_in_module": 695,
+  "n_modules_touched": 31
+ },
+ "KYLIN-5218": {
+  "ts": 1659408982,
+  "sha": "21ec2f4f4d4cf723aa2464650afffd0930aa9d11",
+  "module": "kylin-engine-spark",
+  "n_files": 25,
+  "n_in_module": 4,
+  "n_modules_touched": 8
+ }
+}

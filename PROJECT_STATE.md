@@ -1,0 +1,149 @@
+# Project state — decision log
+
+Internal record. `README.md` is the outward-facing account. This exists so a
+future session can reconstruct *why* without re-reading chat. Every row carries a
+commit hash **and** an evidence file. Rows once carried a marker for reasoning
+that existed only in chat; the last of them — the 07-25 refusal to run ICC on
+four clusters — was written up on 07-30, and the marker is retired.
+
+## 1. Current state
+
+RQ1's first operationalisation (effort estimates) is tested and closed; the
+second (review discussion) was retracted as a volume confound; the third (the
+external-wrapper tier rule) failed held-out replication 0 of 3. The methods paper
+— traceability and estimate coverage as corpus-eligibility constraints — is near
+complete and is the only shippable output. The SATD-interval design was
+superseded on 07-26 without being started. **The current RQ1 anchor is the
+violation-symptom interval**: an architecture violation symptom raised in code
+review → a later, separate architectural refactoring of the flagged entity
+(`paper/ANCHOR_HISTORY.md`). It is at the feasibility-gate stage, not the design
+stage: `prereg/RESOLUTION_GATE.md` fixes a 20-comment resolution gate on Hadoop
+before any commitment. Task 18 (entity tracking across Move Class / Move Package)
+still gates it, and inherits unchanged from the SATD design. Blocking: the gate
+outcome, and a branch layout decision.
+
+## 2. Decision log
+
+| Date | Decision | Evidence | Commit | Reversed? |
+|---|---|---|---|---|
+| 07-19 | Corpus = Apache Hadoop, 8,919 commits, RefactoringMiner | `results_dossier.md` §2 | `de657c3` | no |
+| 07-19 | **Retract structural-review finding** — Cox HR 0.69 (p=0.003) → HR 1.10 (p=0.51); discussion volume is the real predictor | `results_dossier.md` §10 | `b8d1476` | **yes — reversal of `4e84bcf`** |
+| 07-19 | Adopt arch-vs-ordinary as primary finding | `results_dossier.md` §4 | `475fb5b` | superseded by `4b8c3af` |
+| 07-22 | Split architectural work into abstraction vs relocation — defined *after* seeing §4 triage numbers, so post-hoc | `results_dossier.md` §5 | `22ec902` | qualified by `4b8c3af` |
+| 07-22 | **Kill blast radius** — centrality does not predict triage, p=0.33 with tier controlled, raw association negative | `results_dossier.md` §9a | `6d1ed8d` | no |
+| 07-22 | **Kill maintainer concentration** — collinear with module size, rho = −0.86 | `results_dossier.md` §9b | `93056ae` | no |
+| 07-22 | Phase decomposition: friction is in building, not merging | `results_dossier.md` §5a | `986a3ae` | qualified by `4b8c3af` |
+| 07-22 | Decade divergence via workflow-independent git clock | `results_dossier.md` §5c | `a6accaf` | qualified by `4b8c3af` |
+| 07-22 | **Retract start-ui-web rework finding** — "commits per PR" is a duration proxy, not rework | `SUI_FINDINGS.md` | `1b51128` | **yes — reversal of `1ecbbee`** |
+| 07-22 | Chunk-loss bias hypothesis rejected; lost commits are *smaller* | `SUI_FINDINGS.md` | `4839cd4` | no |
+| 07-25 | **Full-adjustment pass**: abstraction ×1.54 [0.97, 2.43] p=0.068 — five nested models were never one equation | `full_adjustment.json` | `4b8c3af` | **yes — weakens `22ec902`** |
+| 07-25 | **Withdraw "abstraction pays twice"** — review-phase half p=0.61 adjusted | `results_dossier.md` §5a | `4b8c3af` | **yes — reversal of `986a3ae`** |
+| 07-25 | **Decade trend bounded** — post-2020 p=0.44, control arm 394 → 145 → 101 | `full_adjustment.json` | `4b8c3af` | **yes — bounds `a6accaf`** |
+| 07-25 | Freeze tier rule at vendor share ≥0.40 + 90th-pct dependents guard | `scripts/external_wrapper_tier.py` | `314845c` | no — frozen by design |
+| 07-25 | Pre-register held-out predictions before any outcome data | `predictions/PREDICTIONS.md` | `ca076a9` | no |
+| 07-25 | **Hold the 0.40 threshold during the failed replication.** Lowering it would have rescued HBase (max 0.33) and Phoenix; not lowered | `replication/REPLICATION.md` | `48caf14` | no — deliberate |
+| 07-25 | **Kill the tier rule** — 0 of 3 replicate (Hive p=0.210, Drill p=1.000 wrong direction, Kylin p=0.310) | `replication/*.test.json` | `48caf14` | no |
+| 07-25 | **Abandon dependency-based tier rules entirely** — v2 scored 0.608 pooled vs v1's 0.617 on its own development data | `wrapper_rule_v2_dev.json` | `0216b64` | no |
+| 07-25 | **Decline to run ICC on four clusters** — between-cluster variance not estimable at n=4; must come from the pooled study as a first stage | `replication/CORPUS_FEASIBILITY.md` §"Correction (2026-07-25)" — 3 df on the between-cluster component cannot resolve 0.015 from 0.02, and the four available clusters bias it downward | `0a81339` | no |
+| 07-25 | Corpus eligibility: 12 of 38, all Hadoop-ecosystem | `paper/traceability_probe.json` | `0a81339`, `b878131` | no |
+| 07-25 | **Freeze Jira caches rather than write a rebuild script** — Jira is live, a re-fetch returns different state, so a rebuild script would imply reproducibility that does not exist | `deposit/MANIFEST-v1.md` | `ce4bf7d` | no |
+| 07-25 | **Do not rewrite dated working logs** (`SLICE_LOG.md`, `worksheet.md`, `advisor_brief.md`) — they record what was believed when; rewriting would falsify the record | `README.md` §10 | `eee902f` | no |
+| 07-25 | Drop `lifelines`; pin requirements from actual imports | `requirements.txt` | `dd27103` | no |
+| 07-25 | **Estimate conclusion was drawn at the wrong aggregation level** — "absent in Apache" replaced by 2.557% Apache-wide / 1.449% Hadoop corpus / 0 of 323 architectural (expected 4.7, P≈0.009) | `estimates_by_org.json` | `eee902f` | **yes — reversal of `de657c3` §3** |
+| 07-25 | Read the mongodump archive as a stream rather than restoring it (~60 GB expanded vs 10.5 GB free) | `scripts/jira_archive.py` | `eee902f` | no |
+| 07-25 | **Switch RQ1 from tier rule to SATD-interval design** — dependency channel closed, tier rule dead, estimate signal too thin | `paper/SATD_NOVELTY.md` | `5b50ef1` | **yes — superseded by the 07-26 row below** |
+| 07-25 | Record the SATD novelty risk as three simultaneous legs, any one of which collapses it | `paper/SATD_NOVELTY.md` | `5b50ef1` | no |
+| 07-25 | Entity identifiers recoverable from `refminer_all.json` without re-mining 8,919 commits | `paper/ENTITY_IDENTIFIERS.md` | `2259129` | no |
+| 07-25 | Project count: report 1,276 (key-based) / 2,506 (name-union) / 1,822 (published, not reproducible); never quote 1,822 beside a per-project number | `paper/numbers.md` | `0f116aa` | no |
+| 07-25 | **id→key measured: 0 ids carry >1 key, 0 keys map to >1 id, against 326 ids with >1 name.** Supersedes the earlier key-vs-name framing: keys are 1:1 with ids *within a snapshot*, and the multi-key requirement is caused by concurrent siblings or superseded records, not key instability | `paper/eligibility_failure_modes.md` mode 6 | `5179907` | **yes — supersedes the `0f116aa` framing** |
+| 07-25 | Attic skew is on the estimate dimension, not traceability: 9/23 estimate-ranked Apache in Attic, 5/8 among ≥10%; traceability skew n.s. (Fisher p=0.229) | `paper/intersection.json` | `5179907` | no |
+| 07-25 | Estimate × traceability intersection: 3 of 27 clear both; 4 of 27 clear traceability at all | `paper/intersection.json` | `63f4231` | no |
+| 07-26 | **Switch RQ1 from the SATD-interval design to the violation-symptom-interval design** — anchor is now an architecture violation symptom raised in code review, and the interval from that symptom to a later, separate architectural refactoring of the flagged entity. The SATD design was never started and is superseded unstarted, not failed: it remained gated on Task 18 and on external judgement of a three-legged novelty margin | `paper/ANCHOR_HISTORY.md` | `4f32824` | no |
+| 07-30 | **Drop to a seven-project held-out corpus.** HBase and Phoenix quarantined in `spent/`; their aligned `git.json` + `jira.json` are one subtraction from per-ticket latency, so held-out status was not defensible even though no outcome was ever observed | `spent/README.md` | `a2e87ba` | **yes — resolves the `5179907` flag** |
+| 08-08 | **Banner the superseded conclusion documents, do not edit them.** `research_prospectus.md`, `advisor_brief.md` and `proposal_summary.md` each assert findings this repository has since withdrawn — "harder to build, not harder to merge" (withdrawn 07-25, `4b8c3af`) and "0 of 345" estimates (corrected to 2.557% / 1.449% / 0 of 323, `eee902f`) — and carried no marker. The 07-25 no-rewrite rule protects the *bodies*: they record what was believed when, and rewriting would falsify the record. It does not protect a reader's ability to tell they are stale. A dated banner at the top satisfies both: nothing in any body is edited, and no one reads a withdrawn headline as current | `paper/REVISION_LOG.md` "Correction pass, 2026-08-08" | this pass | no |
+| 08-08 | **Close the Bachmann GATE by dropping the claim, not by answering it.** MAJOR-5 asked whether the ticket realisation rate is the quantity Bachmann et al. measured. The GATE's own standard was to read Bachmann directly and forbade inferring from summaries; the paper's text was not available, so the question stays unanswered. A submission cannot carry a pending determination on a naming claim, and the claim was worth almost nothing: §3.1 now presents "ticket realisation rate" as a label for the paper's own use with no priority claimed, §2.4 states what each measurement conditions on (Bachmann restricts to bugs and bug-fix commits; §3.1.1 conditions on nothing) and declines to adjudicate, and contribution 5 now rests on coverage rather than on the name. Both `[PENDING]` markers are gone | `paper/manuscript/related.md`, `method.md`; `paper/REVISION_LOG.md` | msr2027 branch | no |
+| 08-08 | **What the ten-page MSR paper contains, and what it does not.** The spine is the two rates, the arithmetic ceiling, the eligibility result, the divergence, the taxonomy and the GHS gap. Cut: the TypeScript ecosystem and everything downstream of it (§2.6, §3.4, §4.5, §6.4, §7.3), author aliasing (§6.3), instrument-decay detail (§6.2), post-hoc definitions (§6.6) and provenance of the work (§6.8, also identifying). The cut is expressed as a section manifest the generator reads, **not** as a second copy of the prose: both targets read the same section files, so no fact can drift between the preprint and the submission. `scripts/check_provenance.py` fails if a number appears in the short paper that the long one does not carry | `paper/manuscript/targets.json` | msr2027 branch | no |
+| 08-08 | **Retitle the submission, leave the preprint alone.** MSR asks that a submission not be publicly disclosed under its own title, and the preprint plus its repository are already public. Retitling the submission costs nothing and keeps outreach already sent resolvable; retitling the public artifact would break links other people hold. The submission is "An arithmetic ceiling on issue-commit linkage, and what it means for corpus selection", which also states the claim the short paper leads with | `scripts/make_latex.py` `TITLE` | msr2027 branch | no |
+| 08-08 | **The MSR submission is single-ecosystem.** The section manifest had already cut the TypeScript evidence (§2.6, §3.4, §4.5, §6.4) while every claim resting on it stayed: the abstract promised a second ecosystem, §1 said "three record channels across two ecosystems", contribution 7 quoted 3 of 96, and §6 discussed a TypeScript column the reader could not see. A paper claiming evidence it does not contain is a worse defect than a narrower paper, so the claims were removed to match. The preprint on `version2` keeps both ecosystems and is unaffected: the two versions differ by `only:` spans in one source, not by a second copy | `paper/manuscript/targets.json`, `paper/REVISION_LOG.md` | msr2027 branch | no |
+| 08-08 | **The published site is narrower than `docs/`.** The Pages workflow uploads the whole directory, which put `docs/superpowers/specs/*` online — one restates the withdrawn abstraction finding (+0.20, p=0.003) as established, the other opens "Audience: an AI coding agent with repo write access", which cuts against the line §8.2 draws about what the tooling did and did not do. They are deleted at build time and **kept in the repository**: they are part of the record, they are not part of the site. `docs/github-pages-docs.zip` was deleted outright — it was byte-identical to the site it lived inside, and had already gone stale (it still carried a `.nojekyll` removed two commits earlier) | `.github/workflows/pages.yml`, `paper/REVISION_LOG.md` | this pass | no |
+
+The 07-26 row is out of order against its commit hash and deliberately so: the
+decision was taken on 07-26 and written up on 08-01, the same pattern as the
+07-25 ICC refusal recorded in §1. The hash is the commit that added
+`paper/ANCHOR_HISTORY.md`, backfilled one commit later; `git log --diff-filter=A
+-- paper/ANCHOR_HISTORY.md` is the check.
+
+## 3. What is held out and why
+
+**Rule: outcome data unobserved. Coverage and existence counts permitted.**
+A citation rate, a ticket count or an estimate-field count says nothing about how
+long anything took; a triage latency, resolution time or status duration does.
+Observing an outcome spends the project.
+
+**The held-out corpus is seven projects.**
+
+| project | observed | NOT observed |
+|---|---|---|
+| Ozone, Tez, ZooKeeper, Ranger, Oozie, Knox, Sqoop | commit-side traceability; ticket-side coverage; GitHub-ref counts; key-matcher precision sample (`paper/matcher_validation.md`, messages only, no timestamps) | any timing, latency or status duration |
+
+**HBase and Phoenix were dropped from the corpus on 07-30 and quarantined in
+`spent/`.** No outcome was ever observed for either — the frozen rule flagged
+zero modules, so the test stage never ran, and no `.test.json` exists — but their
+`git.json` + `jira.json` align on ticket key and are one subtraction apart from
+per-ticket latencies. Held-out status is a claim about what a future analyst can
+still learn, and two projects with their outcome inputs committed cannot support
+it. Quarantined rather than deleted, because the files are evidence that the rule
+fired on nothing (`replication/REPLICATION.md`, coverage failure). Rationale in
+`spent/README.md`. Their coverage numbers remain permitted and are reported in
+`paper/table1_eligibility.md`.
+
+## 4. What was spent
+
+| project | what was observed | artifact |
+|---|---|---|
+| **Hadoop** | everything — triage, resolution, phase durations, CI verdicts, module medians | `results_dossier.md` |
+| **Hive, Drill, Kylin** | per-module median days-to-first-commit; full replication test | `replication/{hive,drill,kylin}.test.json` |
+| **27 estimate-ranked projects** | commit-side traceability, both reference channels, HEAD sha. **No timing.** | `paper/intersection.json` |
+
+The 27: Apache STDCXX, USERGRID, MESOS, IOTDB, MXNET, SLIDER, LIBCLOUD, SHINDIG,
+AURORA, MATH, TRINIDAD, REEF, MAHOUT, OPENNLP, OWB, CONNECTORS, AXIS2, CMIS,
+OPENJPA, LANG, HAMA, THRIFT, DATALAB; RedHat PLANNER; IntelDAOS DAOS; MongoDB
+EVG; Spring BATCH. These are spent for *traceability* purposes only — their
+outcomes remain unobserved, so they are still usable as held-out data for a
+timing study.
+
+## 5. Open decisions
+
+| decision | state |
+|---|---|
+| Branch layout — four branches separating methods paper / SATD design / exploratory Hadoop | proposed, awaiting decision; nothing created. Constraint: `ca076a9` must remain an ancestor of `48caf14` or the pre-registration evidence is destroyed |
+| ~~Whether the three-legged SATD novelty margin justifies a registered report~~ | **moot 07-26** — the SATD design was superseded before the judgement arrived. The question is not answered, only no longer load-bearing (`5b50ef1`) |
+| ~~Which RQ1 design proceeds~~ | **resolved 07-26** — violation-symptom interval (`paper/ANCHOR_HISTORY.md`). Whether it *survives* is the feasibility gate, `prereg/RESOLUTION_GATE.md` |
+| Whether the violation-symptom novelty margin holds against Li et al. and the ATD time-to-fix literature | **not assessed.** No equivalent of `paper/SATD_NOVELTY.md` exists for this anchor; no external paper on it is present in the repo |
+| ~~HBase/Phoenix held-out status~~ | **resolved 07-30** — dropped to a seven-project corpus, both quarantined in `spent/` |
+
+## 6. Outstanding tasks
+
+| task | gating |
+|---|---|
+| **16** — Flink truncation test (first 12,419 commits, matching SEOSS 33) | none. `paper/numbers.md` §1b currently asserts the 24.1pp gap is "scope, not error" and flags it untested. Clone on disk, ~10 min |
+| **18** — entity-tracking prototype, 10 cases | none. Decides whether the entity-level leg of the SATD design is achievable |
+| **14** — SATD feasibility count | gated on 18 passing |
+
+## 7. Corrections made to own work
+
+| what was reported | what was true | commit |
+|---|---|---|
+| "Survives size, volume, experience, tier and era controls" | Five nested models in three scripts, never one equation, no CI ever reported. Joint model ×1.54 [0.97, 2.43], p=0.068 | `4b8c3af` |
+| "Abstraction pays twice" — ~2× review cost, p=0.0003 | Connector-controlled only; fully adjusted p=0.61 | `4b8c3af` |
+| Decade divergence as a decade-long trend | Holds to 2019; post-2020 p=0.44 | `4b8c3af` |
+| "12 of 34 projects pass"; TomEE listed twice (23.8% and 32.2%) | 38 probed; 23.8% was single-key, 32.2% multi-key | `abdfb40` |
+| Probe discrepancies at knox (84.3→84.4) and helix (10.5→10.4) attributed to HEAD advancing | My own double-rounding: `round(rate,4)` then `.1f`. Identical HEAD, identical counts | `da74465` |
+| ShardingSphere "not one Jira citation" in 49,109 commits | 5 citations in 49,111 (0.01%) | `6e6586e` |
+| "Effort estimates absent in Apache (0%)" | 2.557% Apache-wide, 1.449% Hadoop corpus, 0/323 architectural — a deficit, not an absence | `eee902f` |
+| "observing 0 is unsurprising (P≈0.009)" | Self-contradictory: P=0.009 *is* the deficit | `eee902f` |
+| 0/345 as the estimate denominator | 345 is episodes; 323 is tickets, and an estimate is a ticket property | `9b4e384` |
+| "394 → 101 control-arm collapse" paired with post-2020 p=0.44 | Two different windows: 394 (2016+), 145 (2020+), 101 (2021+) | `53826c8` |
+| Step 2: `kiegroup/optaplanner` "misresolved, build-config repo" | HTTP-redirects to `apache/incubator-kie-optaplanner`; identical history, PLANNER 1,629 both. Verdict came from reading 20 post-archive CI commits | `63f4231` |
+| **`paper/estimate_field_schema.md` reported as written** | Did not exist. Created later | `eee902f` |
+| **`estimates_by_org.json` reported as committed with per-project data** | Committed copy had an empty `projects` map; the 1,276 entries were uncommitted | `dcea7c0` |

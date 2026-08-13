@@ -1,0 +1,548 @@
+[
+ {
+  "project": "hadoop",
+  "module": "hadoop-aws",
+  "days": 42.00875,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hadoop",
+  "module": "hadoop-azure",
+  "days": 60.26567708333333,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hadoop",
+  "module": "hadoop-common",
+  "days": 15.919490740740741,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hadoop",
+  "module": "hadoop-hdfs",
+  "days": 1.0303587962962963,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hadoop",
+  "module": "hadoop-hdfs-client",
+  "days": 0.008877314814814815,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hadoop",
+  "module": "hadoop-yarn-server-resourcemanager",
+  "days": 11.97295138888889,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-accumulo-handler",
+  "days": 16.441122685185185,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-webhcat-java-client",
+  "days": 16.23279513888889,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-standalone-metastore-common",
+  "days": 15.831927083333333,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-jdbc",
+  "days": 15.078043981481482,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "kafka-handler",
+  "days": 14.420613425925925,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-storage-api",
+  "days": 14.116076388888889,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-standalone-metastore-rest-catalog",
+  "days": 13.943993055555556,
+  "v2": true,
+  "v1": true
+ },
+ {
+  "project": "hive",
+  "module": "hive-standalone-metastore-server",
+  "days": 13.783622685185184,
+  "v2": false,
+  "v1": true
+ },
+ {
+  "project": "hive",
+  "module": "hive-serde",
+  "days": 13.603055555555555,
+  "v2": false,
+  "v1": true
+ },
+ {
+  "project": "hive",
+  "module": "hive-hcatalog-server-extensions",
+  "days": 12.573900462962962,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-hbase-handler",
+  "days": 12.526163194444445,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-shims-aggregator",
+  "days": 12.47095486111111,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-hcatalog-core",
+  "days": 12.059699074074073,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-webhcat",
+  "days": 12.013038194444444,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-service",
+  "days": 11.847314814814816,
+  "v2": true,
+  "v1": true
+ },
+ {
+  "project": "hive",
+  "module": "hive-standalone-metastore",
+  "days": 10.977256944444445,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-hplsql",
+  "days": 10.278096064814815,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-contrib",
+  "days": 9.899212962962963,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-metastore",
+  "days": 9.64832175925926,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-beeline",
+  "days": 8.967789351851852,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-exec",
+  "days": 8.209126157407407,
+  "v2": true,
+  "v1": true
+ },
+ {
+  "project": "hive",
+  "module": "hive-cli",
+  "days": 7.867349537037037,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-jdbc-handler",
+  "days": 7.8067013888888885,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-streaming",
+  "days": 7.7499768518518515,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-common",
+  "days": 7.580115740740741,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-iceberg-handler",
+  "days": 7.5028703703703705,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-hcatalog-pig-adapter",
+  "days": 7.084953703703704,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-hcatalog",
+  "days": 6.961469907407407,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-druid-handler",
+  "days": 6.0820081018518515,
+  "v2": true,
+  "v1": true
+ },
+ {
+  "project": "hive",
+  "module": "hive-parser",
+  "days": 6.025260416666667,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-llap-client",
+  "days": 5.815983796296297,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-shims-common",
+  "days": 5.814421296296296,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-llap-server",
+  "days": 5.7938425925925925,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-packaging",
+  "days": 5.6422337962962965,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-shims-0.23",
+  "days": 5.073263888888889,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-llap-tez",
+  "days": 4.928599537037037,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-iceberg-catalog",
+  "days": 3.401452546296296,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-llap-ext-client",
+  "days": 3.0100925925925925,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-iceberg",
+  "days": 2.996886574074074,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "hive",
+  "module": "hive-llap-common",
+  "days": 1.8389236111111111,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-mongo-storage",
+  "days": 39.69555555555556,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-jdbc-all",
+  "days": 28.18451388888889,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-storage-kafka",
+  "days": 20.532141203703702,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "vector",
+  "days": 14.047048611111112,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-jdbc",
+  "days": 13.043032407407408,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-contrib-parent",
+  "days": 12.300833333333333,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-java-exec",
+  "days": 11.03704861111111,
+  "v2": false,
+  "v1": true
+ },
+ {
+  "project": "drill",
+  "module": "drill-storage-hive-core",
+  "days": 9.894502314814815,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-protocol",
+  "days": 9.725966435185185,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-common",
+  "days": 7.040972222222223,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-udfs",
+  "days": 6.545150462962963,
+  "v2": false,
+  "v1": true
+ },
+ {
+  "project": "drill",
+  "module": "distribution",
+  "days": 5.689085648148148,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-jdbc-storage",
+  "days": 5.452592592592593,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-storage-hbase",
+  "days": 4.21900462962963,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-storage-splunk",
+  "days": 2.2010300925925925,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-format-excel",
+  "days": 1.9084722222222221,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "drill",
+  "module": "drill-storage-http",
+  "days": 1.702777777777778,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-query-service",
+  "days": 8.162534722222222,
+  "v2": true,
+  "v1": true
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-core-metadata",
+  "days": 6.80318287037037,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-modeling-service",
+  "days": 6.516099537037037,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-common-service",
+  "days": 6.254143518518519,
+  "v2": true,
+  "v1": true
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-query-common",
+  "days": 6.171886574074074,
+  "v2": false,
+  "v1": true
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-query",
+  "days": 6.1595254629629625,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-sparder",
+  "days": 6.140625,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-it",
+  "days": 6.118657407407407,
+  "v2": true,
+  "v1": true
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-metadata-server",
+  "days": 6.0760300925925925,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-engine-spark",
+  "days": 5.6922800925925925,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-tool",
+  "days": 5.595619212962964,
+  "v2": true,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-spark-common",
+  "days": 5.467065972222223,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-core-job",
+  "days": 4.966018518518519,
+  "v2": false,
+  "v1": true
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-core-common",
+  "days": 4.933668981481482,
+  "v2": false,
+  "v1": false
+ },
+ {
+  "project": "kylin",
+  "module": "kylin-datasource-service",
+  "days": 4.89755787037037,
+  "v2": true,
+  "v1": false
+ }
+]

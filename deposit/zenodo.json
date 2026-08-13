@@ -1,0 +1,61 @@
+{
+ "_comment": [
+  "Zenodo deposition metadata for the frozen Jira cache archive. NOT PUBLISHED.",
+  "This file is prepared metadata only; see DEPOSIT_CHECKLIST.md for what remains",
+  "manual. It is deliberately NOT named `.zenodo.json` and NOT placed at the",
+  "repository root, because a root `.zenodo.json` is picked up automatically by",
+  "Zenodo's GitHub integration and would describe a release of the whole",
+  "repository rather than this archive."
+ ],
+ "upload_type": "dataset",
+ "title": "Frozen Apache Jira response caches for the architectural-refactoring study (v1)",
+ "description": "<p>2,491 Apache Jira REST API v2 responses, pulled 2026-07-19, covering 323 architectural tickets in the Apache Hadoop ecosystem (HADOOP, HDFS, YARN, MAPREDUCE, HDDS, OZONE, SUBMARINE) plus their status changelogs, issue properties, assignee records and a matched control set.</p><p><strong>Why this is deposited rather than scripted.</strong> Jira is live. Issues are edited, reopened and occasionally deleted, so a re-fetch returns a different state and no rebuild script can reproduce this snapshot. Every statistical result in <code>results_dossier.md</code> is computed from these files. The archive ships with a per-file SHA-256 manifest and no rebuild script, deliberately: a rebuild script would imply a reproducibility that does not exist.</p><p><strong>Contents.</strong> <code>.jira_cache</code> 323 files (raw issues, 31.12 MB); <code>.jira_changelog</code> 323 (status transition histories); <code>.jira_control</code> 400 (matched ordinary-ticket control arm); <code>.jira_props</code> 722; <code>.jira_assignee</code> 723. Uncompressed 32.11 MB.</p><p><strong>Integrity.</strong> Archive SHA-256 <code>fcb705b664c248d0c4d32f69b854e10fd8b11c907a19c40333322e06d31b9a95</code>. Per-file digests in <code>MANIFEST-v1.json</code>.</p><p><strong>Personal data.</strong> Records carry Jira author and assignee display names, which are public on issues.apache.org. <code>scripts/pseudonymize.py</code> in the code repository removes them if a pseudonymised copy is wanted.</p><p><strong>Analysis code and results</strong> are at https://github.com/khannoussi-malek/refactoring-review-friction, which also carries the pre-registered predictions, the six failed hypotheses with named causes, the retracted Cox result, and a provenance row for every number.</p>",
+ "creators": [
+  {
+   "name": "Khannoussi, Malek",
+   "affiliation": "Independent researcher"
+  }
+ ],
+ "access_right": "open",
+ "license": "cc-by-4.0",
+ "keywords": [
+  "mining software repositories",
+  "empirical software engineering",
+  "refactoring",
+  "reproducibility",
+  "traceability",
+  "issue tracking",
+  "Jira",
+  "Apache Hadoop"
+ ],
+ "publication_date": "2026-08-05",
+ "version": "v1",
+ "language": "eng",
+ "related_identifiers": [
+  {
+   "identifier": "https://github.com/khannoussi-malek/refactoring-review-friction",
+   "relation": "isSupplementTo",
+   "resource_type": "software",
+   "scheme": "url"
+  },
+  {
+   "identifier": "10.5281/zenodo.15719919",
+   "relation": "references",
+   "resource_type": "dataset",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1016/j.dib.2019.104005",
+   "relation": "references",
+   "resource_type": "publication-article",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "https://issues.apache.org/jira",
+   "relation": "isDerivedFrom",
+   "resource_type": "dataset",
+   "scheme": "url"
+  }
+ ],
+ "notes": "Source: Apache Software Foundation public Jira, https://issues.apache.org/jira. API pulls 2026-07-19T00:27:37Z to 2026-07-19T20:04:44Z; archive created 2026-07-25T04:49:20Z. Apache Jira content is contributed under the Apache Contributor Licence Agreement and is redistributed here for reproducibility. The CC-BY-4.0 licence applies to this compilation and its manifest, not to the underlying Apache issue content."
+}

@@ -1,0 +1,115 @@
+{
+ "verdict": {
+  "testable": true,
+  "n_flagged": 2,
+  "n_rest": 15,
+  "median_flagged": 8.791099537037036,
+  "median_rest": 9.725966435185185,
+  "p": 1.0,
+  "replicates": false
+ },
+ "modules": [
+  {
+   "module": "drill-mongo-storage",
+   "n_tickets": 37,
+   "median_days": 39.69555555555556,
+   "flagged": false
+  },
+  {
+   "module": "drill-jdbc-all",
+   "n_tickets": 19,
+   "median_days": 28.18451388888889,
+   "flagged": false
+  },
+  {
+   "module": "drill-storage-kafka",
+   "n_tickets": 21,
+   "median_days": 20.532141203703702,
+   "flagged": false
+  },
+  {
+   "module": "vector",
+   "n_tickets": 38,
+   "median_days": 14.047048611111112,
+   "flagged": false
+  },
+  {
+   "module": "drill-jdbc",
+   "n_tickets": 81,
+   "median_days": 13.043032407407408,
+   "flagged": false
+  },
+  {
+   "module": "drill-contrib-parent",
+   "n_tickets": 138,
+   "median_days": 12.300833333333333,
+   "flagged": false
+  },
+  {
+   "module": "drill-java-exec",
+   "n_tickets": 2525,
+   "median_days": 11.03704861111111,
+   "flagged": true
+  },
+  {
+   "module": "drill-storage-hive-core",
+   "n_tickets": 101,
+   "median_days": 9.894502314814815,
+   "flagged": false
+  },
+  {
+   "module": "drill-protocol",
+   "n_tickets": 20,
+   "median_days": 9.725966435185185,
+   "flagged": false
+  },
+  {
+   "module": "drill-common",
+   "n_tickets": 72,
+   "median_days": 7.040972222222223,
+   "flagged": false
+  },
+  {
+   "module": "drill-udfs",
+   "n_tickets": 17,
+   "median_days": 6.545150462962963,
+   "flagged": true
+  },
+  {
+   "module": "distribution",
+   "n_tickets": 103,
+   "median_days": 5.689085648148148,
+   "flagged": false
+  },
+  {
+   "module": "drill-jdbc-storage",
+   "n_tickets": 35,
+   "median_days": 5.452592592592593,
+   "flagged": false
+  },
+  {
+   "module": "drill-storage-hbase",
+   "n_tickets": 56,
+   "median_days": 4.21900462962963,
+   "flagged": false
+  },
+  {
+   "module": "drill-storage-splunk",
+   "n_tickets": 13,
+   "median_days": 2.2010300925925925,
+   "flagged": false
+  },
+  {
+   "module": "drill-format-excel",
+   "n_tickets": 32,
+   "median_days": 1.9084722222222221,
+   "flagged": false
+  },
+  {
+   "module": "drill-storage-http",
+   "n_tickets": 44,
+   "median_days": 1.702777777777778,
+   "flagged": false
+  }
+ ]
+}

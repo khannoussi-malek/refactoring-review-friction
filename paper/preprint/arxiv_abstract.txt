@@ -1,0 +1,29 @@
+Empirical studies of architectural change read a project's own records and assume
+the record traces the work. We measure that assumption across three record
+channels and two ecosystems.
+
+We probed 38 Apache projects against a traceability bar of 0.80, pre-registered
+before any project was cloned and never moved. Twelve passed, and no project
+outside the Hadoop ecosystem cleared the bar. The channel the literature
+publishes is not the channel an issue-anchored study needs: the commit-side rate
+(what fraction of commits cite a ticket) runs 82.6-98.3% across the eligible
+twelve, while the ticket-side rate (what fraction of tickets ever receive a
+citing commit) runs 12.0-69.0%. Apache Hive cites a ticket in 97.0% of its 18,213
+commits and realises 55.8% of its 29,635 tickets.
+
+Most of that gap is arithmetic rather than a difference in discipline. A citing
+commit adds at most one new distinct ticket, so the ticket-side rate cannot
+exceed commit-side x commits / tickets. That ceiling binds for all twelve
+eligible projects, ranging 13.7-81.6%, and every project reaches 80-95% of it: a
+5.8x spread in the ticket-side rate is a 6.0x spread in the ceiling and a 1.19x
+spread in what remains. Extending the measurement to all 38 projects, including
+the 26 the bar rejected, we find no detectable association between the two rates
+(Spearman rho = -0.010, n = 33, 95% CI [-0.35, +0.34]); the study can detect
+|rho| >= 0.47 at 80% power, so a strong positive association is ruled out but a
+null is not established.
+
+We give a taxonomy of six mechanisms by which a project silently fails to support
+an issue-linked study. Three are disqualifying; three produce a plausible wrong
+number rather than an error, and none is expressible in any published sampling
+frame. Project eligibility for issue-linked research cannot be established from
+metadata.

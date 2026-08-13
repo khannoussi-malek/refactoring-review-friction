@@ -1,0 +1,1201 @@
+{
+ "projects": {
+  "hive": {
+   "commit_side_rate": 0.9701861307857025,
+   "commits_scanned": 18213,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 18213,
+    "commits_all_refs": 23776,
+    "pinned_share_of_all_refs": 0.7660245625841184,
+    "first_commit_on_pinned_branch": "2008-09-02",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2008-09-02",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 29635,
+    "trr": 0.5577526573308588,
+    "commits_per_ticket": 0.614577357853889,
+    "ceiling": 0.5962544288847647,
+    "fill": 0.9354272778720996,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 25731,
+    "trr": 0.5606855543896467,
+    "commits_per_ticket": 0.707823248221989,
+    "ceiling": 0.6867202984726595,
+    "fill": 0.8164685908319185,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.12743437764606266
+   }
+  },
+  "hbase": {
+   "commit_side_rate": 0.9252120640904806,
+   "commits_scanned": 21220,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 21220,
+    "commits_all_refs": 62255,
+    "pinned_share_of_all_refs": 0.34085615613203757,
+    "first_commit_on_pinned_branch": "2007-04-03",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2007-04-03",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 30063,
+    "trr": 0.5556331703422812,
+    "commits_per_ticket": 0.7058510461364468,
+    "ceiling": 0.6530619033363271,
+    "fill": 0.8508124076809453,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 26421,
+    "trr": 0.5552779985617501,
+    "commits_per_ticket": 0.8031490102569926,
+    "ceiling": 0.7430831535520988,
+    "fill": 0.7472622625171903,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.12170737547892721
+   }
+  },
+  "flink": {
+   "commit_side_rate": 0.6604045108453911,
+   "commits_scanned": 38219,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 38219,
+    "commits_all_refs": 51542,
+    "pinned_share_of_all_refs": 0.7415117768033836,
+    "first_commit_on_pinned_branch": "2010-12-15",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2010-12-15",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 25492,
+    "trr": 0.5316177624352738,
+    "commits_per_ticket": 1.4992546681311785,
+    "ceiling": 0.9901145457398401,
+    "fill": 0.5369255150554674,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.27564273878881823
+   }
+  },
+  "phoenix": {
+   "commit_side_rate": 0.9200281425891182,
+   "commits_scanned": 4264,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 4264,
+    "commits_all_refs": 15655,
+    "pinned_share_of_all_refs": 0.2723730437559885,
+    "first_commit_on_pinned_branch": "2014-01-27",
+    "last_commit_on_pinned_branch": "2026-07-17",
+    "first_commit_any_ref": "2014-01-27",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 7931,
+    "trr": 0.41318875299457825,
+    "commits_per_ticket": 0.537637120161392,
+    "ceiling": 0.49464128104904803,
+    "fill": 0.8353301045118532,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 6593,
+    "trr": 0.4070984377369938,
+    "commits_per_ticket": 0.6467465493705445,
+    "ceiling": 0.5950250265433035,
+    "fill": 0.6841702778485853,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.18120805369127516
+   }
+  },
+  "drill": {
+   "commit_side_rate": 0.8415324336090553,
+   "commits_scanned": 4594,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 4594,
+    "commits_all_refs": 4861,
+    "pinned_share_of_all_refs": 0.9450730302406912,
+    "first_commit_on_pinned_branch": "2012-09-03",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2012-09-03",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 8507,
+    "trr": 0.4321147290466674,
+    "commits_per_ticket": 0.5400258610556012,
+    "ceiling": 0.4544492770659457,
+    "fill": 0.9508535954474909,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 8069,
+    "trr": 0.4157888214152931,
+    "commits_per_ticket": 0.5693394472673193,
+    "ceiling": 0.47911761060850167,
+    "fill": 0.8678220382824625,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.08757138971988034
+   }
+  },
+  "kylin": {
+   "commit_side_rate": 0.8388429752066116,
+   "commits_scanned": 968,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 968,
+    "commits_all_refs": 12937,
+    "pinned_share_of_all_refs": 0.07482414779315143,
+    "first_commit_on_pinned_branch": "2022-08-01",
+    "last_commit_on_pinned_branch": "2026-05-15",
+    "first_commit_any_ref": "2014-05-13",
+    "branch_starts_after_repo": true
+   },
+   "live": {
+    "tickets": 5931,
+    "trr": 0.1195413926825156,
+    "commits_per_ticket": 0.16321025122239083,
+    "ceiling": 0.13690777271960883,
+    "fill": 0.873152709359606,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 4989,
+    "trr": 0.0004008819402685909,
+    "commits_per_ticket": 0.194026859089998,
+    "ceiling": 0.1627580677490479,
+    "fill": 0.0024630541871921183,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.9971870604781997
+   }
+  },
+  "accumulo": {
+   "commit_side_rate": 0.42969009224235183,
+   "commits_scanned": 15069,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 15069,
+    "commits_all_refs": 15300,
+    "pinned_share_of_all_refs": 0.9849019607843137,
+    "first_commit_on_pinned_branch": "2011-10-04",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2011-10-04",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 4745,
+    "trr": 0.6109589041095891,
+    "commits_per_ticket": 3.1757639620653317,
+    "ceiling": 1.3645943097997892,
+    "fill": 0.44772200772200776,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.019945909398242055
+   }
+  },
+  "atlas": {
+   "commit_side_rate": 0.7811594202898551,
+   "commits_scanned": 4140,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 4140,
+    "commits_all_refs": 7065,
+    "pinned_share_of_all_refs": 0.5859872611464968,
+    "first_commit_on_pinned_branch": "2014-11-19",
+    "last_commit_on_pinned_branch": "2026-07-22",
+    "first_commit_any_ref": "2014-11-19",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 4469,
+    "trr": 0.5415081673752518,
+    "commits_per_ticket": 0.926381740881629,
+    "ceiling": 0.7236518236742,
+    "fill": 0.7482993197278912,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.16551724137931034
+   }
+  },
+  "calcite": {
+   "commit_side_rate": 0.676697302104951,
+   "commits_scanned": 6746,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 6746,
+    "commits_all_refs": 7057,
+    "pinned_share_of_all_refs": 0.9559302819895139,
+    "first_commit_on_pinned_branch": "2012-04-19",
+    "last_commit_on_pinned_branch": "2026-06-20",
+    "first_commit_any_ref": "2012-04-19",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 4968,
+    "trr": 0.5324074074074074,
+    "commits_per_ticket": 1.357890499194847,
+    "ceiling": 0.9188808373590982,
+    "fill": 0.579408543263965,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.37969043151969983
+   }
+  },
+  "cxf": {
+   "commit_side_rate": 0.37458887820674996,
+   "commits_scanned": 19763,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 19763,
+    "commits_all_refs": 43778,
+    "pinned_share_of_all_refs": 0.45143679473708254,
+    "first_commit_on_pinned_branch": "2008-04-23",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2008-04-23",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 8531,
+    "trr": 0.5389755011135857,
+    "commits_per_ticket": 2.3166100105497596,
+    "ceiling": 0.8677763450943617,
+    "fill": 0.6210995542347697,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.07689219032322826
+   }
+  },
+  "flume": {
+   "commit_side_rate": 0.7389635316698656,
+   "commits_scanned": 2084,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 2084,
+    "commits_all_refs": 2963,
+    "pinned_share_of_all_refs": 0.7033412082348971,
+    "first_commit_on_pinned_branch": "2011-08-09",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2011-08-09",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 3380,
+    "trr": 0.4242603550295858,
+    "commits_per_ticket": 0.6165680473372781,
+    "ceiling": 0.4556213017751479,
+    "fill": 0.9311688311688312,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.029769959404600813
+   }
+  },
+  "helix": {
+   "commit_side_rate": 0.1045473000406009,
+   "commits_scanned": 4926,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 4926,
+    "commits_all_refs": 5322,
+    "pinned_share_of_all_refs": 0.9255918827508456,
+    "first_commit_on_pinned_branch": "2011-06-21",
+    "last_commit_on_pinned_branch": "2026-07-09",
+    "first_commit_any_ref": "2011-06-21",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 857,
+    "trr": 0.4282380396732789,
+    "commits_per_ticket": 5.747957992998833,
+    "ceiling": 0.6009334889148191,
+    "fill": 0.712621359223301,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.07323232323232323
+   }
+  },
+  "hudi": {
+   "commit_side_rate": 0.6524350437393915,
+   "commits_scanned": 7659,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 7659,
+    "commits_all_refs": 12432,
+    "pinned_share_of_all_refs": 0.6160714285714286,
+    "first_commit_on_pinned_branch": "2016-12-16",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2016-12-16",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 3172,
+    "trr": 0.4646910466582598,
+    "commits_per_ticket": 2.4145649432534677,
+    "ceiling": 1.5753467843631779,
+    "fill": 0.29497698619171503,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.6828061114697654
+   }
+  },
+  "karaf": {
+   "commit_side_rate": 0.7180353947106781,
+   "commits_scanned": 10058,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 10058,
+    "commits_all_refs": 22138,
+    "pinned_share_of_all_refs": 0.4543319179691029,
+    "first_commit_on_pinned_branch": "2007-11-26",
+    "last_commit_on_pinned_branch": "2026-07-16",
+    "first_commit_any_ref": "2005-07-19",
+    "branch_starts_after_repo": true
+   },
+   "frozen": {
+    "tickets": 13537,
+    "trr": 0.29474772844795744,
+    "commits_per_ticket": 0.7430006648445002,
+    "ceiling": 0.533500775651917,
+    "fill": 0.5524785378011631,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.10558170813718896
+   }
+  },
+  "knox": {
+   "commit_side_rate": 0.8434564809016907,
+   "commits_scanned": 3194,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 3194,
+    "commits_all_refs": 3675,
+    "pinned_share_of_all_refs": 0.8691156462585033,
+    "first_commit_on_pinned_branch": "2012-10-24",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2012-10-24",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 3391,
+    "trr": 0.690061928634621,
+    "commits_per_ticket": 0.9419050427602477,
+    "ceiling": 0.7944559127101151,
+    "fill": 0.8685968819599108,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 2694,
+    "trr": 0.6863400148478099,
+    "commits_per_ticket": 1.1855976243504083,
+    "ceiling": 1.0,
+    "fill": 0.6863400148478099,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.20982905982905983
+   }
+  },
+  "oozie": {
+   "commit_side_rate": 0.851575456053068,
+   "commits_scanned": 2412,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 2412,
+    "commits_all_refs": 3187,
+    "pinned_share_of_all_refs": 0.756824599937245,
+    "first_commit_on_pinned_branch": "2011-08-19",
+    "last_commit_on_pinned_branch": "2025-01-27",
+    "first_commit_any_ref": "2011-08-19",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 3727,
+    "trr": 0.49664609605580895,
+    "commits_per_ticket": 0.6471693050711028,
+    "ceiling": 0.5511134961094715,
+    "fill": 0.9011684518013631,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 3646,
+    "trr": 0.49670872188699944,
+    "commits_per_ticket": 0.6615469007131103,
+    "ceiling": 0.5633571036752606,
+    "fill": 0.8816942551119765,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.021609940572663425
+   }
+  },
+  "ozone": {
+   "commit_side_rate": 0.9828498449188104,
+   "commits_scanned": 10962,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 10962,
+    "commits_all_refs": 11998,
+    "pinned_share_of_all_refs": 0.9136522753792299,
+    "first_commit_on_pinned_branch": "2018-03-15",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2018-03-15",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 15909,
+    "trr": 0.6387579357596329,
+    "commits_per_ticket": 0.689043937393928,
+    "ceiling": 0.6772267270098686,
+    "fill": 0.943196584369779,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 6121,
+    "trr": 0.6611664760660023,
+    "commits_per_ticket": 1.7908838425093938,
+    "ceiling": 1.760169906877961,
+    "fill": 0.3756265082606275,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.6017516236961228
+   }
+  },
+  "parquet-java": {
+   "commit_side_rate": 0.29063545150501674,
+   "commits_scanned": 2990,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 2990,
+    "commits_all_refs": 3404,
+    "pinned_share_of_all_refs": 0.8783783783783784,
+    "first_commit_on_pinned_branch": "2012-08-31",
+    "last_commit_on_pinned_branch": "2026-07-22",
+    "first_commit_any_ref": "2012-08-31",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 2092,
+    "trr": 0.3078393881453155,
+    "commits_per_ticket": 1.4292543021032504,
+    "ceiling": 0.41539196940726575,
+    "fill": 0.7410817031070196,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.23877068557919623
+   }
+  },
+  "ranger": {
+   "commit_side_rate": 0.862708719851577,
+   "commits_scanned": 5390,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 5390,
+    "commits_all_refs": 8731,
+    "pinned_share_of_all_refs": 0.6173405108235025,
+    "first_commit_on_pinned_branch": "2014-08-14",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2014-08-14",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 5699,
+    "trr": 0.6536234427092472,
+    "commits_per_ticket": 0.9457799613967363,
+    "ceiling": 0.8159326197578523,
+    "fill": 0.8010752688172043,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 3567,
+    "trr": 0.6829268292682927,
+    "commits_per_ticket": 1.5110737314269695,
+    "ceiling": 1.3036164844407065,
+    "fill": 0.5238709677419355,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.3462157809983897
+   }
+  },
+  "tez": {
+   "commit_side_rate": 0.9743836055075248,
+   "commits_scanned": 3123,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 3123,
+    "commits_all_refs": 4407,
+    "pinned_share_of_all_refs": 0.7086453369639211,
+    "first_commit_on_pinned_branch": "2013-03-15",
+    "last_commit_on_pinned_branch": "2026-07-22",
+    "first_commit_any_ref": "2013-03-15",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 4724,
+    "trr": 0.5872142252328535,
+    "commits_per_ticket": 0.6610922946655376,
+    "ceiling": 0.6441574936494496,
+    "fill": 0.9116003943476831,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 4347,
+    "trr": 0.5861513687600645,
+    "commits_per_ticket": 0.7184265010351967,
+    "ceiling": 0.7000230043708304,
+    "fill": 0.8373315806769637,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.0818018018018018
+   }
+  },
+  "tika": {
+   "commit_side_rate": 0.5480413544531917,
+   "commits_scanned": 10543,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 10543,
+    "commits_all_refs": 14580,
+    "pinned_share_of_all_refs": 0.7231138545953361,
+    "first_commit_on_pinned_branch": "2007-03-31",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2007-03-31",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 3633,
+    "trr": 0.5843655381227636,
+    "commits_per_ticket": 2.9020093586567577,
+    "ceiling": 1.5904211395540875,
+    "fill": 0.3674281758393908,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.24742998936547322
+   }
+  },
+  "zookeeper": {
+   "commit_side_rate": 0.9043414275202355,
+   "commits_scanned": 2718,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 2718,
+    "commits_all_refs": 5343,
+    "pinned_share_of_all_refs": 0.5087029758562606,
+    "first_commit_on_pinned_branch": "2008-05-19",
+    "last_commit_on_pinned_branch": "2026-07-18",
+    "first_commit_any_ref": "2008-05-19",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 4875,
+    "trr": 0.46994871794871795,
+    "commits_per_ticket": 0.5575384615384615,
+    "ceiling": 0.5042051282051282,
+    "fill": 0.9320585842148088,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 4263,
+    "trr": 0.4618813042458363,
+    "commits_per_ticket": 0.6375791695988741,
+    "ceiling": 0.576589256392212,
+    "fill": 0.8010577705451587,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.14092495636998253
+   }
+  },
+  "james-project": {
+   "commit_side_rate": 0.7480142742028318,
+   "commits_scanned": 17374,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 17374,
+    "commits_all_refs": 19424,
+    "pinned_share_of_all_refs": 0.8944604612850082,
+    "first_commit_on_pinned_branch": "2006-09-30",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2006-09-22",
+    "branch_starts_after_repo": true
+   },
+   "frozen": {
+    "tickets": 4018,
+    "trr": 0.42732702837232456,
+    "commits_per_ticket": 4.32404181184669,
+    "ceiling": 3.2344449975111997,
+    "fill": 0.13211757463835025,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.21633957097215883
+   }
+  },
+  "jena": {
+   "commit_side_rate": 0.2440608051332977,
+   "commits_scanned": 13091,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 13091,
+    "commits_all_refs": 26732,
+    "pinned_share_of_all_refs": 0.48971270387550503,
+    "first_commit_on_pinned_branch": "2012-05-08",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2002-12-19",
+    "branch_starts_after_repo": true
+   },
+   "frozen": {
+    "tickets": 2238,
+    "trr": 0.629579982126899,
+    "commits_per_ticket": 5.849419124218052,
+    "ceiling": 1.4276139410187667,
+    "fill": 0.44100156494522696,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.05117845117845118
+   }
+  },
+  "oodt": {
+   "commit_side_rate": 0.6197245668591737,
+   "commits_scanned": 2251,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 2251,
+    "commits_all_refs": 2912,
+    "pinned_share_of_all_refs": 0.7730082417582418,
+    "first_commit_on_pinned_branch": "2010-05-03",
+    "last_commit_on_pinned_branch": "2022-01-07",
+    "first_commit_any_ref": "2010-05-03",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 1040,
+    "trr": 0.6153846153846154,
+    "commits_per_ticket": 2.164423076923077,
+    "ceiling": 1.3413461538461537,
+    "fill": 0.4587813620071685,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.0
+   }
+  },
+  "pinot": {
+   "commit_side_rate": 0.05249696272140163,
+   "commits_scanned": 15639,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 15639,
+    "commits_all_refs": 15861,
+    "pinned_share_of_all_refs": 0.986003404577265,
+    "first_commit_on_pinned_branch": "2014-10-31",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2014-10-31",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 14,
+    "trr": 0.07142857142857142,
+    "commits_per_ticket": 1117.0714285714287,
+    "ceiling": 58.642857142857146,
+    "fill": 0.001218026796589525,
+    "ceiling_binds": false,
+    "small_denominator": true,
+    "share_cited_above_snapshot": 0.9983739837398374
+   }
+  },
+  "sqoop": {
+   "commit_side_rate": 0.8255933952528379,
+   "commits_scanned": 969,
+   "passes_bar": true,
+   "depth": {
+    "commits_at_pinned_sha": 969,
+    "commits_all_refs": 2286,
+    "pinned_share_of_all_refs": 0.4238845144356955,
+    "first_commit_on_pinned_branch": "2011-06-14",
+    "last_commit_on_pinned_branch": "2021-03-16",
+    "first_commit_any_ref": "2011-06-14",
+    "branch_starts_after_repo": false
+   },
+   "live": {
+    "tickets": 3152,
+    "trr": 0.21192893401015228,
+    "commits_per_ticket": 0.3074238578680203,
+    "ceiling": 0.25380710659898476,
+    "fill": 0.8350000000000001,
+    "ceiling_binds": true
+   },
+   "frozen": {
+    "tickets": 3152,
+    "trr": 0.21034263959390864,
+    "commits_per_ticket": 0.3074238578680203,
+    "ceiling": 0.25380710659898476,
+    "fill": 0.8287500000000001,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.16075949367088607
+   }
+  },
+  "storm": {
+   "commit_side_rate": 0.4665992755454469,
+   "commits_scanned": 11871,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 11871,
+    "commits_all_refs": 15663,
+    "pinned_share_of_all_refs": 0.7579007852901744,
+    "first_commit_on_pinned_branch": "2011-09-15",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2011-09-15",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 3762,
+    "trr": 0.557150451887294,
+    "commits_per_ticket": 3.1555023923444976,
+    "ceiling": 1.4723551302498672,
+    "fill": 0.37840765481133776,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.10580204778156997
+   }
+  },
+  "struts": {
+   "commit_side_rate": 0.541003232371603,
+   "commits_scanned": 8353,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 8353,
+    "commits_all_refs": 9613,
+    "pinned_share_of_all_refs": 0.8689274940185165,
+    "first_commit_on_pinned_branch": "2006-02-22",
+    "last_commit_on_pinned_branch": "2026-07-22",
+    "first_commit_any_ref": "2006-02-22",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 5093,
+    "trr": 0.35970940506577653,
+    "commits_per_ticket": 1.640094247005694,
+    "ceiling": 0.8872962890241508,
+    "fill": 0.40539942465147155,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.1649954421148587
+   }
+  },
+  "syncope": {
+   "commit_side_rate": 0.3597962216090002,
+   "commits_scanned": 9422,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 9422,
+    "commits_all_refs": 15544,
+    "pinned_share_of_all_refs": 0.6061502830674215,
+    "first_commit_on_pinned_branch": "2010-04-29",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2010-04-29",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 1650,
+    "trr": 0.8478787878787879,
+    "commits_per_ticket": 5.71030303030303,
+    "ceiling": 2.0545454545454547,
+    "fill": 0.4126843657817109,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.18520675596971461
+   }
+  },
+  "tomee": {
+   "commit_side_rate": 0.32222085284693125,
+   "commits_scanned": 16228,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 16228,
+    "commits_all_refs": 19979,
+    "pinned_share_of_all_refs": 0.8122528655087842,
+    "first_commit_on_pinned_branch": "2006-01-02",
+    "last_commit_on_pinned_branch": "2026-07-20",
+    "first_commit_any_ref": "2006-01-02",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 5417,
+    "trr": 0.540520583348717,
+    "commits_per_ticket": 2.9957541074395424,
+    "ceiling": 0.9652944434188665,
+    "fill": 0.5599541021227769,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.16055045871559634
+   }
+  },
+  "wicket": {
+   "commit_side_rate": 0.30858041329739444,
+   "commits_scanned": 22260,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 22260,
+    "commits_all_refs": 35104,
+    "pinned_share_of_all_refs": 0.6341157702825889,
+    "first_commit_on_pinned_branch": "2004-09-21",
+    "last_commit_on_pinned_branch": "2026-07-20",
+    "first_commit_any_ref": "2004-09-21",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 6933,
+    "trr": 0.6042117409490841,
+    "commits_per_ticket": 3.2107312851579404,
+    "ceiling": 0.9907687869609115,
+    "fill": 0.6098413160576504,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.037675166551803356
+   }
+  },
+  "zeppelin": {
+   "commit_side_rate": 0.6072179397337071,
+   "commits_scanned": 5708,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 5708,
+    "commits_all_refs": 7680,
+    "pinned_share_of_all_refs": 0.7432291666666667,
+    "first_commit_on_pinned_branch": "2013-06-18",
+    "last_commit_on_pinned_branch": "2026-07-25",
+    "first_commit_any_ref": "2013-06-18",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 5614,
+    "trr": 0.5016031350195939,
+    "commits_per_ticket": 1.0167438546490914,
+    "ceiling": 0.6173851086569291,
+    "fill": 0.812463935372187,
+    "ceiling_binds": true,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.14563106796116504
+   }
+  },
+  "dubbo": {
+   "commit_side_rate": 0.11021142600089968,
+   "commits_scanned": 8892,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 8892,
+    "commits_all_refs": 10347,
+    "pinned_share_of_all_refs": 0.8593795302986373,
+    "first_commit_on_pinned_branch": "2011-10-20",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2011-10-20",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 78,
+    "trr": 0.6153846153846154,
+    "commits_per_ticket": 114.0,
+    "ceiling": 12.564102564102564,
+    "fill": 0.0489795918367347,
+    "ceiling_binds": false,
+    "small_denominator": true,
+    "share_cited_above_snapshot": 0.8778625954198473
+   }
+  },
+  "rocketmq": {
+   "commit_side_rate": 0.05739225313693399,
+   "commits_scanned": 9165,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 9165,
+    "commits_all_refs": 9905,
+    "pinned_share_of_all_refs": 0.9252902574457345,
+    "first_commit_on_pinned_branch": "2013-05-14",
+    "last_commit_on_pinned_branch": "2026-07-23",
+    "first_commit_any_ref": "2013-05-14",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 384,
+    "trr": 0.3619791666666667,
+    "commits_per_ticket": 23.8671875,
+    "ceiling": 1.3697916666666667,
+    "fill": 0.26425855513307983,
+    "ceiling_binds": false,
+    "small_denominator": true,
+    "share_cited_above_snapshot": 0.2057142857142857
+   }
+  },
+  "servicecomb-java-chassis": {
+   "commit_side_rate": 0.5616966580976864,
+   "commits_scanned": 4668,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 4668,
+    "commits_all_refs": 4972,
+    "pinned_share_of_all_refs": 0.9388576025744167,
+    "first_commit_on_pinned_branch": "2017-05-18",
+    "last_commit_on_pinned_branch": "2026-06-10",
+    "first_commit_any_ref": "2017-05-18",
+    "branch_starts_after_repo": false
+   },
+   "frozen": {
+    "tickets": 2326,
+    "trr": 0.39724849527085127,
+    "commits_per_ticket": 2.006878761822872,
+    "ceiling": 1.12725709372313,
+    "fill": 0.35240274599542326,
+    "ceiling_binds": false,
+    "small_denominator": false,
+    "share_cited_above_snapshot": 0.2764291307752545
+   }
+  },
+  "shardingsphere": {
+   "commit_side_rate": 0.0001018101850909165,
+   "commits_scanned": 49111,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 49111,
+    "commits_all_refs": 49415,
+    "pinned_share_of_all_refs": 0.9938480218557119,
+    "first_commit_on_pinned_branch": "2016-01-18",
+    "last_commit_on_pinned_branch": "2026-07-25",
+    "first_commit_any_ref": "2016-01-18",
+    "branch_starts_after_repo": false
+   }
+  },
+  "skywalking": {
+   "commit_side_rate": 0.002564999417045587,
+   "commits_scanned": 8577,
+   "passes_bar": false,
+   "depth": {
+    "commits_at_pinned_sha": 8577,
+    "commits_all_refs": 8809,
+    "pinned_share_of_all_refs": 0.9736632988988534,
+    "first_commit_on_pinned_branch": "2015-11-07",
+    "last_commit_on_pinned_branch": "2026-07-24",
+    "first_commit_any_ref": "2015-11-07",
+    "branch_starts_after_repo": false
+   }
+  }
+ },
+ "medians": {
+  "method": "statistics.median (mean of the two middle values at even n)",
+  "passing_n": 12,
+  "passing_median": 0.5259933602243747,
+  "dropped_n": 21,
+  "dropped_median": 0.5324074074074074,
+  "gap_pp": -0.6414047183032734,
+  "published_passing_median_v_len_over_2": 0.5552779985617501,
+  "passing_median_excluding_kylin": 0.5552779985617501
+ },
+ "frozen_association": {
+  "n": 33,
+  "spearman": -0.009692513368983958,
+  "ci95": [
+   -0.3518307842305251,
+   0.334730308096099
+  ],
+  "permutation_p_two_sided": 0.957840210798946,
+  "detectable_at_80pc_power": 0.4711108770728469,
+  "projects": [
+   "hive",
+   "hbase",
+   "flink",
+   "phoenix",
+   "drill",
+   "kylin",
+   "accumulo",
+   "atlas",
+   "calcite",
+   "cxf",
+   "flume",
+   "helix",
+   "hudi",
+   "karaf",
+   "knox",
+   "oozie",
+   "ozone",
+   "parquet-java",
+   "ranger",
+   "tez",
+   "tika",
+   "zookeeper",
+   "james-project",
+   "jena",
+   "oodt",
+   "sqoop",
+   "storm",
+   "struts",
+   "syncope",
+   "tomee",
+   "wicket",
+   "zeppelin",
+   "servicecomb-java-chassis"
+  ],
+  "commit_side_spread_ratio": 9.401006477805943,
+  "commits_per_ticket_spread_ratio": 30.147471085458534
+ },
+ "live_association": {
+  "n": 12,
+  "spearman": 0.5174825174825175,
+  "ci95": [
+   -0.08025294436266214,
+   0.841478452690011
+  ],
+  "permutation_p_two_sided": 0.08817955910220449,
+  "detectable_at_80pc_power": 0.7323892904160966,
+  "projects": [
+   "hive",
+   "hbase",
+   "phoenix",
+   "drill",
+   "kylin",
+   "knox",
+   "oozie",
+   "ozone",
+   "ranger",
+   "tez",
+   "zookeeper",
+   "sqoop"
+  ],
+  "commit_side_spread_ratio": 1.1904768746579093,
+  "commits_per_ticket_spread_ratio": 5.794856354384342
+ },
+ "estimator": {
+  "n": 12,
+  "number_capping_only": {
+   "mean_pp": 0.4503212621823714,
+   "max_pp": 2.1412915191367383,
+   "worst": "kylin"
+  },
+  "end_to_end": {
+   "mean_pp": 1.758815279548797,
+   "max_pp": 11.9140510742247,
+   "worst": "kylin",
+   "mean_pp_excluding_worst": 0.8356120254873519,
+   "max_pp_excluding_worst": 2.930338655904552,
+   "n_within_3pp": 11
+  },
+  "ratio_mean": 3.9056900645222274,
+  "ratio_max": 5.563955663088718,
+  "rows": [
+   {
+    "project": "kylin",
+    "published_exact_live": 0.1195413926825156,
+    "number_capped_live": 0.09812847749114821,
+    "number_capped_frozen": 0.0004008819402685909,
+    "err_number_capping_pp": 2.1412915191367383,
+    "err_end_to_end_pp": 11.9140510742247
+   },
+   {
+    "project": "ranger",
+    "published_exact_live": 0.6536234427092472,
+    "number_capped_live": 0.6536234427092472,
+    "number_capped_frozen": 0.6829268292682927,
+    "err_number_capping_pp": 0.0,
+    "err_end_to_end_pp": 2.930338655904552
+   },
+   {
+    "project": "ozone",
+    "published_exact_live": 0.6387579357596329,
+    "number_capped_live": 0.6385693632535043,
+    "number_capped_frozen": 0.6611664760660023,
+    "err_number_capping_pp": 0.018857250612858145,
+    "err_end_to_end_pp": 2.2408540306369407
+   },
+   {
+    "project": "drill",
+    "published_exact_live": 0.4321147290466674,
+    "number_capped_live": 0.4295286234865405,
+    "number_capped_frozen": 0.4157888214152931,
+    "err_number_capping_pp": 0.258610556012695,
+    "err_end_to_end_pp": 1.6325907631374315
+   },
+   {
+    "project": "zookeeper",
+    "published_exact_live": 0.46994871794871795,
+    "number_capped_live": 0.4512820512820513,
+    "number_capped_frozen": 0.4618813042458363,
+    "err_number_capping_pp": 1.8666666666666665,
+    "err_end_to_end_pp": 0.8067413702881665
+   },
+   {
+    "project": "phoenix",
+    "published_exact_live": 0.41318875299457825,
+    "number_capped_live": 0.4123061404614803,
+    "number_capped_frozen": 0.4070984377369938,
+    "err_number_capping_pp": 0.08826125330979595,
+    "err_end_to_end_pp": 0.6090315257584467
+   },
+   {
+    "project": "knox",
+    "published_exact_live": 0.690061928634621,
+    "number_capped_live": 0.690061928634621,
+    "number_capped_frozen": 0.6863400148478099,
+    "err_number_capping_pp": 0.0,
+    "err_end_to_end_pp": 0.3721913786811082
+   },
+   {
+    "project": "hive",
+    "published_exact_live": 0.5577526573308588,
+    "number_capped_live": 0.5564029019740172,
+    "number_capped_frozen": 0.5606855543896467,
+    "err_number_capping_pp": 0.13497553568415643,
+    "err_end_to_end_pp": 0.29328970587879644
+   },
+   {
+    "project": "sqoop",
+    "published_exact_live": 0.21192893401015228,
+    "number_capped_live": 0.21034263959390864,
+    "number_capped_frozen": 0.21034263959390864,
+    "err_number_capping_pp": 0.15862944162436388,
+    "err_end_to_end_pp": 0.15862944162436388
+   },
+   {
+    "project": "tez",
+    "published_exact_live": 0.5872142252328535,
+    "number_capped_live": 0.5846740050804403,
+    "number_capped_frozen": 0.5861513687600645,
+    "err_number_capping_pp": 0.2540220152413175,
+    "err_end_to_end_pp": 0.1062856472789031
+   },
+   {
+    "project": "hbase",
+    "published_exact_live": 0.5556331703422812,
+    "number_capped_live": 0.5510760735788178,
+    "number_capped_frozen": 0.5552779985617501,
+    "err_number_capping_pp": 0.45570967634633863,
+    "err_end_to_end_pp": 0.03551717805311272
+   },
+   {
+    "project": "oozie",
+    "published_exact_live": 0.49664609605580895,
+    "number_capped_live": 0.4963777837402737,
+    "number_capped_frozen": 0.49670872188699944,
+    "err_number_capping_pp": 0.026831231553525736,
+    "err_end_to_end_pp": 0.006262583119048815
+   }
+  ],
+  "validated_commit_side_range": [
+   0.8255933952528379,
+   0.9828498449188104
+  ],
+  "applied_only_commit_side_range": [
+   0.1045473000406009,
+   0.7811594202898551
+  ],
+  "applied_inside_validated_range": 0,
+  "applied_n": 21
+ }
+}

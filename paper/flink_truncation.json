@@ -1,0 +1,548 @@
+{
+ "seoss_reference": {
+  "project": "Flink",
+  "commits": 12419,
+  "linked_change_sets": 0.4198,
+  "source": "Rath & M\u00e4der 2019, SEOSS 33, Table 2"
+ },
+ "clone_depth": {
+  "hive": {
+   "commits_at_pinned_sha": 18213,
+   "commits_all_refs": 23776,
+   "pinned_share_of_all_refs": 0.7660245625841184,
+   "first_commit_on_pinned_branch": "2008-09-02",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2008-09-02",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 18213,
+   "probe_matches_pinned": true
+  },
+  "hbase": {
+   "commits_at_pinned_sha": 21220,
+   "commits_all_refs": 62255,
+   "pinned_share_of_all_refs": 0.34085615613203757,
+   "first_commit_on_pinned_branch": "2007-04-03",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2007-04-03",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 21220,
+   "probe_matches_pinned": true
+  },
+  "flink": {
+   "commits_at_pinned_sha": 38219,
+   "commits_all_refs": 51542,
+   "pinned_share_of_all_refs": 0.7415117768033836,
+   "first_commit_on_pinned_branch": "2010-12-15",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2010-12-15",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 38219,
+   "probe_matches_pinned": true
+  },
+  "phoenix": {
+   "commits_at_pinned_sha": 4264,
+   "commits_all_refs": 15655,
+   "pinned_share_of_all_refs": 0.2723730437559885,
+   "first_commit_on_pinned_branch": "2014-01-27",
+   "last_commit_on_pinned_branch": "2026-07-17",
+   "first_commit_any_ref": "2014-01-27",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 4264,
+   "probe_matches_pinned": true
+  },
+  "drill": {
+   "commits_at_pinned_sha": 4594,
+   "commits_all_refs": 4861,
+   "pinned_share_of_all_refs": 0.9450730302406912,
+   "first_commit_on_pinned_branch": "2012-09-03",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2012-09-03",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 4594,
+   "probe_matches_pinned": true
+  },
+  "kylin": {
+   "commits_at_pinned_sha": 968,
+   "commits_all_refs": 12937,
+   "pinned_share_of_all_refs": 0.07482414779315143,
+   "first_commit_on_pinned_branch": "2022-08-01",
+   "last_commit_on_pinned_branch": "2026-05-15",
+   "first_commit_any_ref": "2014-05-13",
+   "branch_starts_after_repo": true,
+   "commits_scanned_in_probe": 968,
+   "probe_matches_pinned": true
+  },
+  "accumulo": {
+   "commits_at_pinned_sha": 15069,
+   "commits_all_refs": 15300,
+   "pinned_share_of_all_refs": 0.9849019607843137,
+   "first_commit_on_pinned_branch": "2011-10-04",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2011-10-04",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 15069,
+   "probe_matches_pinned": true
+  },
+  "atlas": {
+   "commits_at_pinned_sha": 4140,
+   "commits_all_refs": 7065,
+   "pinned_share_of_all_refs": 0.5859872611464968,
+   "first_commit_on_pinned_branch": "2014-11-19",
+   "last_commit_on_pinned_branch": "2026-07-22",
+   "first_commit_any_ref": "2014-11-19",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 4140,
+   "probe_matches_pinned": true
+  },
+  "calcite": {
+   "commits_at_pinned_sha": 6746,
+   "commits_all_refs": 7057,
+   "pinned_share_of_all_refs": 0.9559302819895139,
+   "first_commit_on_pinned_branch": "2012-04-19",
+   "last_commit_on_pinned_branch": "2026-06-20",
+   "first_commit_any_ref": "2012-04-19",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 6746,
+   "probe_matches_pinned": true
+  },
+  "cxf": {
+   "commits_at_pinned_sha": 19763,
+   "commits_all_refs": 43778,
+   "pinned_share_of_all_refs": 0.45143679473708254,
+   "first_commit_on_pinned_branch": "2008-04-23",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2008-04-23",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 19763,
+   "probe_matches_pinned": true
+  },
+  "flume": {
+   "commits_at_pinned_sha": 2084,
+   "commits_all_refs": 2963,
+   "pinned_share_of_all_refs": 0.7033412082348971,
+   "first_commit_on_pinned_branch": "2011-08-09",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2011-08-09",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 2084,
+   "probe_matches_pinned": true
+  },
+  "helix": {
+   "commits_at_pinned_sha": 4926,
+   "commits_all_refs": 5322,
+   "pinned_share_of_all_refs": 0.9255918827508456,
+   "first_commit_on_pinned_branch": "2011-06-21",
+   "last_commit_on_pinned_branch": "2026-07-09",
+   "first_commit_any_ref": "2011-06-21",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 4926,
+   "probe_matches_pinned": true
+  },
+  "hudi": {
+   "commits_at_pinned_sha": 7659,
+   "commits_all_refs": 12432,
+   "pinned_share_of_all_refs": 0.6160714285714286,
+   "first_commit_on_pinned_branch": "2016-12-16",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2016-12-16",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 7659,
+   "probe_matches_pinned": true
+  },
+  "karaf": {
+   "commits_at_pinned_sha": 10058,
+   "commits_all_refs": 22138,
+   "pinned_share_of_all_refs": 0.4543319179691029,
+   "first_commit_on_pinned_branch": "2007-11-26",
+   "last_commit_on_pinned_branch": "2026-07-16",
+   "first_commit_any_ref": "2005-07-19",
+   "branch_starts_after_repo": true,
+   "commits_scanned_in_probe": 10058,
+   "probe_matches_pinned": true
+  },
+  "knox": {
+   "commits_at_pinned_sha": 3194,
+   "commits_all_refs": 3675,
+   "pinned_share_of_all_refs": 0.8691156462585033,
+   "first_commit_on_pinned_branch": "2012-10-24",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2012-10-24",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 3194,
+   "probe_matches_pinned": true
+  },
+  "oozie": {
+   "commits_at_pinned_sha": 2412,
+   "commits_all_refs": 3187,
+   "pinned_share_of_all_refs": 0.756824599937245,
+   "first_commit_on_pinned_branch": "2011-08-19",
+   "last_commit_on_pinned_branch": "2025-01-27",
+   "first_commit_any_ref": "2011-08-19",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 2412,
+   "probe_matches_pinned": true
+  },
+  "ozone": {
+   "commits_at_pinned_sha": 10962,
+   "commits_all_refs": 11998,
+   "pinned_share_of_all_refs": 0.9136522753792299,
+   "first_commit_on_pinned_branch": "2018-03-15",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2018-03-15",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 10962,
+   "probe_matches_pinned": true
+  },
+  "parquet-java": {
+   "commits_at_pinned_sha": 2990,
+   "commits_all_refs": 3404,
+   "pinned_share_of_all_refs": 0.8783783783783784,
+   "first_commit_on_pinned_branch": "2012-08-31",
+   "last_commit_on_pinned_branch": "2026-07-22",
+   "first_commit_any_ref": "2012-08-31",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 2990,
+   "probe_matches_pinned": true
+  },
+  "ranger": {
+   "commits_at_pinned_sha": 5390,
+   "commits_all_refs": 8731,
+   "pinned_share_of_all_refs": 0.6173405108235025,
+   "first_commit_on_pinned_branch": "2014-08-14",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2014-08-14",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 5390,
+   "probe_matches_pinned": true
+  },
+  "tez": {
+   "commits_at_pinned_sha": 3123,
+   "commits_all_refs": 4407,
+   "pinned_share_of_all_refs": 0.7086453369639211,
+   "first_commit_on_pinned_branch": "2013-03-15",
+   "last_commit_on_pinned_branch": "2026-07-22",
+   "first_commit_any_ref": "2013-03-15",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 3123,
+   "probe_matches_pinned": true
+  },
+  "tika": {
+   "commits_at_pinned_sha": 10543,
+   "commits_all_refs": 14580,
+   "pinned_share_of_all_refs": 0.7231138545953361,
+   "first_commit_on_pinned_branch": "2007-03-31",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2007-03-31",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 10543,
+   "probe_matches_pinned": true
+  },
+  "zookeeper": {
+   "commits_at_pinned_sha": 2718,
+   "commits_all_refs": 5343,
+   "pinned_share_of_all_refs": 0.5087029758562606,
+   "first_commit_on_pinned_branch": "2008-05-19",
+   "last_commit_on_pinned_branch": "2026-07-18",
+   "first_commit_any_ref": "2008-05-19",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 2718,
+   "probe_matches_pinned": true
+  },
+  "james-project": {
+   "commits_at_pinned_sha": 17374,
+   "commits_all_refs": 19424,
+   "pinned_share_of_all_refs": 0.8944604612850082,
+   "first_commit_on_pinned_branch": "2006-09-30",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2006-09-22",
+   "branch_starts_after_repo": true,
+   "commits_scanned_in_probe": 17374,
+   "probe_matches_pinned": true
+  },
+  "jena": {
+   "commits_at_pinned_sha": 13091,
+   "commits_all_refs": 26732,
+   "pinned_share_of_all_refs": 0.48971270387550503,
+   "first_commit_on_pinned_branch": "2012-05-08",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2002-12-19",
+   "branch_starts_after_repo": true,
+   "commits_scanned_in_probe": 13091,
+   "probe_matches_pinned": true
+  },
+  "oodt": {
+   "commits_at_pinned_sha": 2251,
+   "commits_all_refs": 2912,
+   "pinned_share_of_all_refs": 0.7730082417582418,
+   "first_commit_on_pinned_branch": "2010-05-03",
+   "last_commit_on_pinned_branch": "2022-01-07",
+   "first_commit_any_ref": "2010-05-03",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 2251,
+   "probe_matches_pinned": true
+  },
+  "pinot": {
+   "commits_at_pinned_sha": 15639,
+   "commits_all_refs": 15861,
+   "pinned_share_of_all_refs": 0.986003404577265,
+   "first_commit_on_pinned_branch": "2014-10-31",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2014-10-31",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 15639,
+   "probe_matches_pinned": true
+  },
+  "sqoop": {
+   "commits_at_pinned_sha": 969,
+   "commits_all_refs": 2286,
+   "pinned_share_of_all_refs": 0.4238845144356955,
+   "first_commit_on_pinned_branch": "2011-06-14",
+   "last_commit_on_pinned_branch": "2021-03-16",
+   "first_commit_any_ref": "2011-06-14",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 969,
+   "probe_matches_pinned": true
+  },
+  "storm": {
+   "commits_at_pinned_sha": 11871,
+   "commits_all_refs": 15663,
+   "pinned_share_of_all_refs": 0.7579007852901744,
+   "first_commit_on_pinned_branch": "2011-09-15",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2011-09-15",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 11871,
+   "probe_matches_pinned": true
+  },
+  "struts": {
+   "commits_at_pinned_sha": 8353,
+   "commits_all_refs": 9613,
+   "pinned_share_of_all_refs": 0.8689274940185165,
+   "first_commit_on_pinned_branch": "2006-02-22",
+   "last_commit_on_pinned_branch": "2026-07-22",
+   "first_commit_any_ref": "2006-02-22",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 8353,
+   "probe_matches_pinned": true
+  },
+  "syncope": {
+   "commits_at_pinned_sha": 9422,
+   "commits_all_refs": 15544,
+   "pinned_share_of_all_refs": 0.6061502830674215,
+   "first_commit_on_pinned_branch": "2010-04-29",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2010-04-29",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 9422,
+   "probe_matches_pinned": true
+  },
+  "tomee": {
+   "commits_at_pinned_sha": 16228,
+   "commits_all_refs": 19979,
+   "pinned_share_of_all_refs": 0.8122528655087842,
+   "first_commit_on_pinned_branch": "2006-01-02",
+   "last_commit_on_pinned_branch": "2026-07-20",
+   "first_commit_any_ref": "2006-01-02",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 16228,
+   "probe_matches_pinned": true
+  },
+  "wicket": {
+   "commits_at_pinned_sha": 22260,
+   "commits_all_refs": 35104,
+   "pinned_share_of_all_refs": 0.6341157702825889,
+   "first_commit_on_pinned_branch": "2004-09-21",
+   "last_commit_on_pinned_branch": "2026-07-20",
+   "first_commit_any_ref": "2004-09-21",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 22260,
+   "probe_matches_pinned": true
+  },
+  "zeppelin": {
+   "commits_at_pinned_sha": 5708,
+   "commits_all_refs": 7680,
+   "pinned_share_of_all_refs": 0.7432291666666667,
+   "first_commit_on_pinned_branch": "2013-06-18",
+   "last_commit_on_pinned_branch": "2026-07-25",
+   "first_commit_any_ref": "2013-06-18",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 5708,
+   "probe_matches_pinned": true
+  },
+  "dubbo": {
+   "commits_at_pinned_sha": 8892,
+   "commits_all_refs": 10347,
+   "pinned_share_of_all_refs": 0.8593795302986373,
+   "first_commit_on_pinned_branch": "2011-10-20",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2011-10-20",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 8892,
+   "probe_matches_pinned": true
+  },
+  "rocketmq": {
+   "commits_at_pinned_sha": 9165,
+   "commits_all_refs": 9905,
+   "pinned_share_of_all_refs": 0.9252902574457345,
+   "first_commit_on_pinned_branch": "2013-05-14",
+   "last_commit_on_pinned_branch": "2026-07-23",
+   "first_commit_any_ref": "2013-05-14",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 9165,
+   "probe_matches_pinned": true
+  },
+  "servicecomb-java-chassis": {
+   "commits_at_pinned_sha": 4668,
+   "commits_all_refs": 4972,
+   "pinned_share_of_all_refs": 0.9388576025744167,
+   "first_commit_on_pinned_branch": "2017-05-18",
+   "last_commit_on_pinned_branch": "2026-06-10",
+   "first_commit_any_ref": "2017-05-18",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 4668,
+   "probe_matches_pinned": true
+  },
+  "shardingsphere": {
+   "commits_at_pinned_sha": 49111,
+   "commits_all_refs": 49415,
+   "pinned_share_of_all_refs": 0.9938480218557119,
+   "first_commit_on_pinned_branch": "2016-01-18",
+   "last_commit_on_pinned_branch": "2026-07-25",
+   "first_commit_any_ref": "2016-01-18",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 49111,
+   "probe_matches_pinned": true
+  },
+  "skywalking": {
+   "commits_at_pinned_sha": 8577,
+   "commits_all_refs": 8809,
+   "pinned_share_of_all_refs": 0.9736632988988534,
+   "first_commit_on_pinned_branch": "2015-11-07",
+   "last_commit_on_pinned_branch": "2026-07-24",
+   "first_commit_any_ref": "2015-11-07",
+   "branch_starts_after_repo": false,
+   "commits_scanned_in_probe": 8577,
+   "probe_matches_pinned": true
+  }
+ },
+ "truncated_branches": [
+  "kylin",
+  "karaf",
+  "jena",
+  "james-project"
+ ],
+ "flink": {
+  "head_sha": "1ea8cb0e4e53462d3196cee35eba954930847bb0",
+  "commits_total": 38219,
+  "rate_full": 0.6604045108453911,
+  "rate_published_in_probe": 0.6604045108453911,
+  "earliest_seoss_window": {
+   "n": 12419,
+   "citing": 5214,
+   "rate": 0.41984056687333926,
+   "first_date": "2010-12-15",
+   "last_date": "2017-11-17"
+  },
+  "remainder_after_seoss_window": {
+   "n": 25800,
+   "citing": 20026,
+   "rate": 0.7762015503875969,
+   "first_date": "2017-11-20",
+   "last_date": "2026-07-24"
+  },
+  "by_year": {
+   "2010": {
+    "n": 37,
+    "citing": 0,
+    "rate": 0.0
+   },
+   "2011": {
+    "n": 1880,
+    "citing": 0,
+    "rate": 0.0
+   },
+   "2012": {
+    "n": 1518,
+    "citing": 0,
+    "rate": 0.0
+   },
+   "2013": {
+    "n": 509,
+    "citing": 0,
+    "rate": 0.0
+   },
+   "2014": {
+    "n": 2084,
+    "citing": 404,
+    "rate": 0.19385796545105566
+   },
+   "2015": {
+    "n": 2146,
+    "citing": 1416,
+    "rate": 0.6598322460391426
+   },
+   "2016": {
+    "n": 2035,
+    "citing": 1595,
+    "rate": 0.7837837837837838
+   },
+   "2017": {
+    "n": 2541,
+    "citing": 2036,
+    "rate": 0.8012593467138922
+   },
+   "2018": {
+    "n": 2703,
+    "citing": 1888,
+    "rate": 0.6984831668516464
+   },
+   "2019": {
+    "n": 4588,
+    "citing": 3215,
+    "rate": 0.7007410636442895
+   },
+   "2020": {
+    "n": 5235,
+    "citing": 4109,
+    "rate": 0.784909264565425
+   },
+   "2021": {
+    "n": 4213,
+    "citing": 3318,
+    "rate": 0.7875623071445526
+   },
+   "2022": {
+    "n": 3092,
+    "citing": 2472,
+    "rate": 0.7994825355756792
+   },
+   "2023": {
+    "n": 2085,
+    "citing": 1740,
+    "rate": 0.8345323741007195
+   },
+   "2024": {
+    "n": 1657,
+    "citing": 1457,
+    "rate": 0.8792999396499698
+   },
+   "2025": {
+    "n": 1064,
+    "citing": 886,
+    "rate": 0.8327067669172933
+   },
+   "2026": {
+    "n": 832,
+    "citing": 704,
+    "rate": 0.8461538461538461
+   }
+  },
+  "verdict": {
+   "seoss_rate": 0.4198,
+   "our_rate_over_the_same_commit_count": 0.41984056687333926,
+   "gap_pp": 0.004056687333925391,
+   "gap_pp_full_history": 24.060451084539107,
+   "scope_explanation_supported": true
+  }
+ }
+}

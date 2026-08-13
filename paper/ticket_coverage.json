@@ -1,0 +1,167 @@
+{
+ "api_fields_requested": [
+  "key"
+ ],
+ "forbidden_fields_screened": [
+  "aggregatetimespent",
+  "changelog",
+  "created",
+  "duedate",
+  "lastViewed",
+  "resolution",
+  "resolutiondate",
+  "status",
+  "statuscategorychangedate",
+  "timeestimate",
+  "timeoriginalestimate",
+  "timespent",
+  "updated"
+ ],
+ "jira": "https://issues.apache.org/jira/rest/api/2/search",
+ "projects": [
+  {
+   "project": "ozone",
+   "jira_project": "HDDS",
+   "jira_tickets_total": 15909,
+   "jira_reported_total": 15909,
+   "tickets_cited_by_a_commit": 10162,
+   "ticket_side_rate": 0.6387579357596329,
+   "commit_side_rate": 0.9828498449188104,
+   "commits_scanned": 10962,
+   "distinct_keys_cited_in_commits": 10162,
+   "cited_keys_not_in_jira": 0
+  },
+  {
+   "project": "tez",
+   "jira_project": "TEZ",
+   "jira_tickets_total": 4724,
+   "jira_reported_total": 4724,
+   "tickets_cited_by_a_commit": 2774,
+   "ticket_side_rate": 0.5872142252328535,
+   "commit_side_rate": 0.9743836055075248,
+   "commits_scanned": 3123,
+   "distinct_keys_cited_in_commits": 2775,
+   "cited_keys_not_in_jira": 1
+  },
+  {
+   "project": "hive",
+   "jira_project": "HIVE",
+   "jira_tickets_total": 29635,
+   "jira_reported_total": 29635,
+   "tickets_cited_by_a_commit": 16529,
+   "ticket_side_rate": 0.5577526573308588,
+   "commit_side_rate": 0.9701861307857025,
+   "commits_scanned": 18213,
+   "distinct_keys_cited_in_commits": 16534,
+   "cited_keys_not_in_jira": 5
+  },
+  {
+   "project": "hbase",
+   "jira_project": "HBASE",
+   "jira_tickets_total": 30063,
+   "jira_reported_total": 30063,
+   "tickets_cited_by_a_commit": 16704,
+   "ticket_side_rate": 0.5556331703422812,
+   "commit_side_rate": 0.9252120640904806,
+   "commits_scanned": 21220,
+   "distinct_keys_cited_in_commits": 16704,
+   "cited_keys_not_in_jira": 0
+  },
+  {
+   "project": "phoenix",
+   "jira_project": "PHOENIX",
+   "jira_tickets_total": 7931,
+   "jira_reported_total": 7931,
+   "tickets_cited_by_a_commit": 3277,
+   "ticket_side_rate": 0.41318875299457825,
+   "commit_side_rate": 0.9200281425891182,
+   "commits_scanned": 4264,
+   "distinct_keys_cited_in_commits": 3278,
+   "cited_keys_not_in_jira": 1
+  },
+  {
+   "project": "zookeeper",
+   "jira_project": "ZOOKEEPER",
+   "jira_tickets_total": 4875,
+   "jira_reported_total": 4875,
+   "tickets_cited_by_a_commit": 2291,
+   "ticket_side_rate": 0.46994871794871795,
+   "commit_side_rate": 0.9043414275202355,
+   "commits_scanned": 2718,
+   "distinct_keys_cited_in_commits": 2292,
+   "cited_keys_not_in_jira": 1
+  },
+  {
+   "project": "ranger",
+   "jira_project": "RANGER",
+   "jira_tickets_total": 5699,
+   "jira_reported_total": 5699,
+   "tickets_cited_by_a_commit": 3725,
+   "ticket_side_rate": 0.6536234427092472,
+   "commit_side_rate": 0.862708719851577,
+   "commits_scanned": 5390,
+   "distinct_keys_cited_in_commits": 3726,
+   "cited_keys_not_in_jira": 1
+  },
+  {
+   "project": "oozie",
+   "jira_project": "OOZIE",
+   "jira_tickets_total": 3727,
+   "jira_reported_total": 3727,
+   "tickets_cited_by_a_commit": 1851,
+   "ticket_side_rate": 0.49664609605580895,
+   "commit_side_rate": 0.851575456053068,
+   "commits_scanned": 2412,
+   "distinct_keys_cited_in_commits": 1851,
+   "cited_keys_not_in_jira": 0
+  },
+  {
+   "project": "knox",
+   "jira_project": "KNOX",
+   "jira_tickets_total": 3391,
+   "jira_reported_total": 3391,
+   "tickets_cited_by_a_commit": 2340,
+   "ticket_side_rate": 0.690061928634621,
+   "commit_side_rate": 0.8434564809016907,
+   "commits_scanned": 3194,
+   "distinct_keys_cited_in_commits": 2340,
+   "cited_keys_not_in_jira": 0
+  },
+  {
+   "project": "drill",
+   "jira_project": "DRILL",
+   "jira_tickets_total": 8507,
+   "jira_reported_total": 8507,
+   "tickets_cited_by_a_commit": 3676,
+   "ticket_side_rate": 0.4321147290466674,
+   "commit_side_rate": 0.8415324336090553,
+   "commits_scanned": 4594,
+   "distinct_keys_cited_in_commits": 3677,
+   "cited_keys_not_in_jira": 1
+  },
+  {
+   "project": "kylin",
+   "jira_project": "KYLIN",
+   "jira_tickets_total": 5931,
+   "jira_reported_total": 5931,
+   "tickets_cited_by_a_commit": 709,
+   "ticket_side_rate": 0.1195413926825156,
+   "commit_side_rate": 0.8388429752066116,
+   "commits_scanned": 968,
+   "distinct_keys_cited_in_commits": 711,
+   "cited_keys_not_in_jira": 2
+  },
+  {
+   "project": "sqoop",
+   "jira_project": "SQOOP",
+   "jira_tickets_total": 3152,
+   "jira_reported_total": 3152,
+   "tickets_cited_by_a_commit": 668,
+   "ticket_side_rate": 0.21192893401015228,
+   "commit_side_rate": 0.8255933952528379,
+   "commits_scanned": 969,
+   "distinct_keys_cited_in_commits": 790,
+   "cited_keys_not_in_jira": 122
+  }
+ ]
+}

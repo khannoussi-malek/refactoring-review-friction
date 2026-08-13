@@ -1,97 +1,190 @@
-# RQ1 — a feasibility study, a retracted candidate result, and a sharpened question
-### Do architectural refactorings that attract structural review discussion take longer to resolve?
+# RQ1 — Where the friction in architectural refactoring actually lives
 
-**Author:** (independent pre-PhD study) · **Date:** 2026-07-19 · **Corpus:** Apache Hadoop
-**Status:** feasibility established; a candidate association was found and then **retracted** as a
-discussion-volume confound (§4). No structural-specific effect is currently demonstrated. The
-contribution is the pipeline, the feasibility results, and the design for a proper test.
+> **Superseded 2026-08-08.** This document records the state of the work as of
+> its date. Several of its conclusions were later retracted or corrected. The
+> current account is `README.md` §3 and §4; the retraction record is
+> `PROJECT_STATE.md` §2.
+>
+> Specifically: the subtitle finding — *harder to build, not harder to merge* —
+> was **withdrawn on 2026-07-25** (`4b8c3af`); the review-phase half is p=0.61
+> fully adjusted. "Apache records no effort estimates, 0 of 345" was
+> **corrected** to 2.557% Apache-wide / 1.449% in the Hadoop corpus / **0 of
+> 323** architectural tickets (`eee902f`) — and the denominator is 323 tickets,
+> not the 345 episodes this document uses (`9b4e384`).
+
+### Architectural refactorings are harder to *build*, not harder to merge — and they are the one class of work a decade of tooling did not make cheaper
+
+**Author:** (independent pre-PhD study) · **Date:** 2026-07-22 · **Corpus:** Apache Hadoop
+**Status:** feasibility established; a mechanism-level finding demonstrated and defended against five
+controls plus a phase decomposition; three competing explanations tested and rejected; one earlier
+claim corrected and one retracted. Full detail in `results_dossier.md`; every command in `SLICE_LOG.md`.
 
 ---
 
-## 1. The question and why it was reframed
+## 1. The question, and how the data reframed it
 
-RQ1 originally asked whether *effort estimates* on issue tickets relate to architectural
-refactoring. The first thing this study did was test that assumption on real data — and it fails:
+RQ1 originally asked whether *effort estimates* on issue tickets relate to architectural refactoring.
+The first thing this study did was test that assumption, and it fails outright:
 
 > **Apache records no effort estimates.** 0 of 345 architectural-episode tickets carry one. A
-> developer states it outright on HADOOP-18679: *"no actual time allocated to implement it."*
+> developer says so directly on HADOOP-18679: *"no actual time allocated to implement it."*
 
-So RQ1 was **reframed** around a signal that *is* in the data: **structural review discussion** —
-reviewers arguing about code shape (extract/split/move/interface/coupling). With estimates gone,
-**ticket cycle-time (open→resolve)** stands in as the effort/overrun proxy.
+That is a property of the process, not a data-collection problem, so the question was reframed around
+signals that *are* present: **issue-tracker state transitions, review discussion, and commit history**.
+The current question is:
 
-## 2. Data & method (fully reproducible — see `SLICE_LOG.md`)
+> **Do architectural refactorings carry measurably more development friction than ordinary changes —
+> and at which point in the work does that friction actually occur?**
 
-- **Detection:** RefactoringMiner over **8,919 commits** across 4 Hadoop release ranges (3.1.0→3.4.3),
-  parallelised 8–16× on a 12-core machine with a self-healing runner (`scripts/run_rm_safe.sh`) that
-  auto-skips commits RM hangs on (minified-JS dependency bumps). 90–99% coverage per range.
-- **Episodes:** 51,861 refactorings → **349 architectural episodes** (package-level + cross-module
-  moves, extract class/interface/superclass) via `scripts/filter_architectural.py`.
-- **Signals, mined from public Apache Jira** (`scripts/pr_review_signal.py`): githubbot mirrors the
-  full GitHub PR review — including inline code comments — into the ticket, so the review discussion
-  is available without a GitHub token.
-- **Outcome:** ticket cycle-time (created→resolutiondate), with unresolved tickets right-censored.
+The second half is what makes it answerable rather than rhetorical.
 
-## 3. Feasibility results (n = 345 traceable episodes)
+## 2. Method and scale (fully reproducible)
 
-| Filter | Result | Meaning |
-|---|---|---|
-| **Traceability** (commit→ticket) | **99%** (345/349) | excellent — Hadoop is highly minable |
-| **Effort estimate present** | **0%** | absent — original framing not viable |
-| **Structural review discussion** | **31%** (operational) | present in a substantial minority |
+- **Detection:** RefactoringMiner over **8,919 commits**, Hadoop v3.1.0→v3.4.3, parallelised 8–16× with
+  a self-healing runner (`run_rm_safe.sh`) that auto-skips the minified-JS commits RM hangs on.
+  90–99% coverage → **51,861 refactorings**.
+- **Episodes:** package-level and cross-package structural refactorings → **349 architectural episodes**
+  (323 tickets). Architectural refactoring is rare: 349 of 51,861.
+- **Control:** **400 ordinary refactoring tickets** — the comparison that makes every claim below a
+  difference rather than a description.
+- **Signals:** public Apache Jira (status changelog, review discussion via the `githubbot` PR relay,
+  issue properties) plus git (commit clock, per-ticket change size, authorship).
+- **Traceability: 99%** (345/349) — but only when every monorepo subproject key is matched; a
+  single-key probe misreads it as 26%.
 
-The F2 rate is set at **31%** deliberately. A first-pass codebook labeling (`codebook_results.md`)
-found the naive keyword rule is only **25% precise** — most "refactor" mentions are approvals or
-task-planning — so the naive 62% is an inflated upper bound. Honest range: **25–35%**.
+## 3. Headline finding — the friction is in **abstraction**, and specifically in **building** it
 
-## 4. Candidate finding — and why it was retracted
+Architectural refactorings are not uniform. Split by what they *do*:
 
-Splitting the 345 episodes by whether their review discussion is structural:
-
-| Group | n | Median time-to-resolve | Median review size |
+| Measure (medians) | Relocation (move/rename) | **Abstraction** (extract interface/superclass/class) | p |
 |---|---|---|---|
-| **Structural review** | 106 | 67 days | 30 comments |
-| Other | 239 | 23 days | 10 comments |
+| Triage latency (days) | 2.8 | **7.2** | 0.004 |
+| Resolution time (days) | 18.0 | **34.5** | 0.0001 |
 
-- Kaplan–Meier / log-rank: p = 0.0001; Cox controlling for change size (refactoring count, files,
-  churn): F2 hazard ratio 0.66 → 0.69, p = 0.003 — the effect *appeared* robust to size.
-- **But a discussion-volume control retracts it.** Adding log(comment-count) as a covariate collapses
-  the F2 effect to **HR 1.10, 95% CI [0.83–1.46], p = 0.51** — no independent effect. Discussion
-  volume itself is the strong predictor (HR 0.70 per log-comment, p ≈ 1e-9). A volume-independent
-  operationalization (structural *density* = structural comments ÷ total comments) is also null
-  (HR 1.50, p = 0.26).
+**Relocating code is no harder than ordinary work** (2.8 vs 2.1 days); **creating a new abstraction is
+~2.5× slower to start and ~2× slower to resolve.** The effect survives controls for change size,
+discussion volume, contributor experience, module tier, and era.
 
-**In one line:** the structural signal as currently measured is confounded with *how much was said*;
-once discussion volume is accounted for, no structural-specific association with resolution time
-remains. The result does not stand. This is reported deliberately — the value here is the
-demonstrated ability to detect and retract a spurious result before publishing it.
+**Decomposing the status changelog localises it.** Apache's workflow separates *doing the work*
+(created → first `Patch Available`) from *getting it accepted* (time held in `Patch Available`):
 
-## 5. Threats to validity (honest)
+| Phase | Architectural | Ordinary | p | n |
+|---|---|---|---|---|
+| Days to first patch | **3.86** | 1.00 | 0.002 | 251 / 294 |
+| Days in review | 8.52 | 8.37 | 0.52 (n.s.) | 251 / 294 |
+| **Active coding time** (`In Progress`) | **4.87** | 1.13 | 0.037 | 92 / 91 |
 
-- **Association, not causation.** Unmeasured confounders remain (module, contributor experience,
-  review contentiousness). Cox rules out *size*, not everything.
-- **Cycle-time ≠ effort** — it includes idle waiting between activity.
-- **F2 is a heuristic** (keyword-based, 25% precise); the codebook is drafted but not yet dual-rated
-  to κ. The 31% figure will move with a validated classifier.
-- **Non-independence:** some episodes share a ticket (clustering not modelled).
-- **External validity:** one project, one release-line window.
+*Rows 1–2 use the full-workflow sub-corpus (tickets that reached `Patch Available`); row 3 uses the
+tickets that log `In Progress` at all. The review-phase null holds in the whole corpus too
+(5.63 vs 4.03, p=0.14), so it does not depend on the restriction.*
 
-## 6. Why this is worth a full study
+Architectural work is **~4× slower to produce a patch and ~4× longer in logged active coding**, yet is
+**merged as fast as ordinary work**. Reviewers are not the bottleneck; construction is.
 
-The feasibility gate is passed on a real corpus, and the pilot analysis demonstrated the full method
-end to end — including the discipline to *retract* a candidate result once a confound was found. The
-hypothesis is untested, not disproven: the keyword signal is only 25% precise and inseparable from
-discussion volume, so a validated, volume-independent structural measure is exactly what a proper
-test needs. The full RQ1 would: (a) validate the codebook (dual-rater κ) to get a quality-based,
-volume-independent signal, (b) replace cycle-time with
-better effort proxies from the changelog, (c) add covariates and a proper survival model with
-clustering, (d) replicate across Kafka/HBase/Camel for generality.
+**Why this matters more than the raw timing gap:** time logged as `In Progress` is time somebody is
+demonstrably working. It cannot be volunteer queueing. This converts the study's biggest threat —
+"maybe Apache timings just measure volunteers being slow" — from an unbounded caveat into a measured
+one. The core effect is **intrinsic construction difficulty** and should be expected to replicate
+outside open source.
 
-## 7. Reproduce
+**Abstraction uniquely pays twice.** Within architectural work (full-workflow sub-corpus, n=251):
+4.95 vs 1.11 days to build (p=0.009) **and** 12.15 vs 5.46 days in review (p=0.0003). A shared
+abstraction is both harder to construct and harder to get others to agree to.
+
+## 4. Second finding — the one class of work that did not get cheaper
+
+Tracked across the decade with a **workflow-independent clock** (ticket → first commit citing it, from
+git — necessary because Jira status hygiene collapsed from 93% to 16% at the GitHub migration):
+
+| | Architectural | Ordinary (control) |
+|---|---|---|
+| Year vs days-to-first-commit | rho = +0.04, p = 0.45 — **flat** | rho = **−0.21**, p = 3e-05 — **improving** |
+
+Difference-in-differences interaction **+0.20, p = 0.003**, controlling for abstraction and
+connector-tier composition, and stable at +0.19 under every truncation window. The gap widens from
+~1.6× to ~10×.
+
+A decade of process investment — CI, PR review, Yetus automation — made routine change substantially
+cheaper and left structural change untouched. That is **architectural debt compounding relative to
+everything else**, and it reframes the stakes: the problem is not that architectural work is slow, but
+that it is **the one category not getting better**. The ordinary-refactoring control is what makes
+this interpretable — a shrinking or ageing community would slow *both* groups.
+
+## 5. Supporting results
+
+- **Entanglement:** architectural tickets link to ~2× more other issues (1.53 vs 0.76, p=0.001), and it
+  holds within sub-tasks. Issue-links are a structural ticket property, immune to the volume confound.
+- **Quality is a null, twice defended.** Reopen rates are equal (~7%, p=0.97). Under a much stronger
+  test — pre-commit CI runs ≈ patch revisions — architectural tickets need more attempts (5 vs 3,
+  p<1e-4) and that survives a discussion-volume control, but **not** a change-size control (p=0.07):
+  architectural patches are simply far bigger (**1,178 vs 213 java lines churned**). Refined claim:
+  architectural work is **not more error-prone per unit of code changed**; it involves more code.
+
+## 6. What was tested and rejected — the method's credibility
+
+Four candidate explanations were constructed and then failed against our own data. Each is reported.
+
+| Claim | Test | Outcome |
+|---|---|---|
+| Structural review discussion → slower resolution | Cox, + discussion-volume control | **Retracted** — HR 0.69 (p=0.003) → **1.10 (p=0.51)**; it was volume in disguise |
+| **Blast radius**: touching a depended-upon module invites hesitation | Maven dependency graph, 117 modules | **Refuted** — centrality does not predict triage (p=0.33); raw association runs *negative* |
+| **Maintainer concentration** explains the slow module tier | Prior-window authorship from git | **Failed to establish** — collinear with module size (rho=−0.86); dies under a size control |
+| Friction concentrates in foundational `hadoop-common` | Decomposed the Jira-prefix aggregate | **Corrected** — 62% of those tickets are cloud connectors; `hadoop-common` alone is 24.8 days, not 39.1 |
+
+This is the asymmetry the study rests on: the abstraction finding has survived five controls (change
+size, discussion volume, contributor experience, module tier, era), the full-workflow restriction, and a
+phase decomposition, while **every competing explanation we could construct died.** That is harder to
+attack than a study in which everything happened to work.
+
+## 7. A methodological contribution — three instruments that decay at once
+
+Jira status comparability, status hygiene over time, and CI verdict visibility **all collapse at
+Hadoop's 2019–20 GitHub migration** (e.g. CI verdicts: 84.6% of pre-2019 tickets carry them, **0%**
+after 2022). Status-derived durations therefore change meaning mid-corpus, and are not comparable
+across module tiers that drive different workflows. This is one structural fact about mining Apache
+Jira rather than three coincidences, and it is why every decade-spanning claim here is built on
+**git-derived instruments** instead. Any study mining Apache issue trackers across 2019 inherits this
+problem; most will not have checked for it.
+
+## 8. Threats to validity
+
+Descriptive and associational, not causal. Single project, single release-line window; groups are not
+matched on module or time. Survivorship bias toward changes that landed, so *abandonment* is not
+observable. `In Progress` is logged by only ~25% of tickets, so active-time results rest on that
+sub-corpus. Several results are necessarily era-bounded (§7). The self-assignment effect (2.05 vs
+31.66 days to patch) is **endogenous** and reported as mechanism description, not causal estimate. The
+keyword-based structural signal is only **25% precise** and has no dual-rater κ. 26% of episodes could
+not be mapped to a Maven module because Ozone and Submarine left the repository.
+
+## 9. Why this warrants a full study, and what it would do
+
+The feasibility gate is passed on a real corpus, the pipeline is reproducible, and the pilot produced
+a defended, mechanism-level finding plus four documented rejections. Three things follow directly:
+
+1. **Separate intrinsic from open-source-specific effects.** §3 shows the *build-phase* cost is
+   intrinsic; the *review-phase* cost and the question of who volunteers are not. A
+   **commercial/industrial codebase contrast** tests a specific pre-stated prediction rather than the
+   whole result. (Identity-firewall tooling for reporting a private subject under pseudonym is
+   already in place.)
+2. **Break the collinearity.** In one project, "peripheral module" — small, few-authored,
+   low-centrality, vendor-specific — is a *single* variable (§6, row 3). Only a **multi-project
+   corpus** can separate these, which makes replication on Kafka/HBase/Camel a precondition for any
+   attention-based claim rather than optional generality work. It also carries pre-registered
+   predictions from this pilot.
+3. **Validate the structural signal** (dual-rater κ), then re-test the retracted result properly —
+   it is untested, not disproven.
+
+Plus: better effort proxies for the ~75% of tickets that never log `In Progress` (GitHub PR timestamps
+give a workflow-independent clock), and reverts/follow-up fixes — the one rework channel that does not
+decay at the migration, because it lives in git.
+
+## 10. Reproduce
+
 ```
-SLICE_LOG.md            every command, end to end
-scripts/                citation probe, parallel + self-healing RM, arch filter, review miner
-worksheet.md            the manual 5-episode trace + go/no-go
-codebook*.md            F2 definition, labeling set, first-pass results
-*_all.json              349 episodes, review signals, outcomes, Cox dataset
+SLICE_LOG.md              every command, end to end
+results_dossier.md        full results, including everything retracted or corrected
+proposal_summary.md       proposal-ready synthesis with figures
+scripts/                  RM pipeline, arch filter, review miner, phase decomposition,
+                          blast-radius + social-centrality tests, temporal clock, CI rework
+*_all.json, *.json        349 episodes, review signals, outcomes, and every result artifact
 ```

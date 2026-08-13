@@ -1,0 +1,1914 @@
+{
+ "seed": 20260730,
+ "n_sample": 200,
+ "allocation": "equal per project, remainder to the largest strata",
+ "matcher": "\\b(?:KEY[,KEY2...])-\\d+\\b over subject + body",
+ "fields_read_from_git": [
+  "%H",
+  "%s",
+  "%b"
+ ],
+ "timestamps_read": "none -- see R1 note in the script docstring",
+ "quota": {
+  "drill": 17,
+  "hbase": 17,
+  "hive": 17,
+  "knox": 17,
+  "kylin": 16,
+  "oozie": 16,
+  "ozone": 17,
+  "phoenix": 17,
+  "ranger": 17,
+  "sqoop": 16,
+  "tez": 17,
+  "zookeeper": 16
+ },
+ "verified_against_probe": [
+  {
+   "project": "drill",
+   "commits_scanned": 4594,
+   "jira_key_refs": 3866,
+   "head_sha": "86e9b82f164c5849312580cf2c4cbdd617622722"
+  },
+  {
+   "project": "hbase",
+   "commits_scanned": 21220,
+   "jira_key_refs": 19633,
+   "head_sha": "4d417aacea684a9871931a8d30cf029127bb9c28"
+  },
+  {
+   "project": "hive",
+   "commits_scanned": 18213,
+   "jira_key_refs": 17670,
+   "head_sha": "6730aadd1895690b653f3c2260ce5328b61af1ae"
+  },
+  {
+   "project": "knox",
+   "commits_scanned": 3194,
+   "jira_key_refs": 2694,
+   "head_sha": "6bdf64cdfd3cd10a0dc806d182171631d566a218"
+  },
+  {
+   "project": "kylin",
+   "commits_scanned": 968,
+   "jira_key_refs": 812,
+   "head_sha": "b5b94b51abaf83d68088e4fcab606d2a6530e54d"
+  },
+  {
+   "project": "oozie",
+   "commits_scanned": 2412,
+   "jira_key_refs": 2054,
+   "head_sha": "8bdac8be4fa719a99612a83dcba86748486f9408"
+  },
+  {
+   "project": "ozone",
+   "commits_scanned": 10962,
+   "jira_key_refs": 10774,
+   "head_sha": "4f5ae5454fef0ecb9fbec8750af6204f4ee28540"
+  },
+  {
+   "project": "phoenix",
+   "commits_scanned": 4264,
+   "jira_key_refs": 3923,
+   "head_sha": "1b55fb4b330f53df464edc96074fef208bda1806"
+  },
+  {
+   "project": "ranger",
+   "commits_scanned": 5390,
+   "jira_key_refs": 4650,
+   "head_sha": "f133c2138963fbbff22a93965567db0021e3290d"
+  },
+  {
+   "project": "sqoop",
+   "commits_scanned": 969,
+   "jira_key_refs": 800,
+   "head_sha": "f8beae32a067d72bf9ed6e903b041ad347ca5491"
+  },
+  {
+   "project": "tez",
+   "commits_scanned": 3123,
+   "jira_key_refs": 3043,
+   "head_sha": "dd8137f4c13f71f55b975445d02140686b931664"
+  },
+  {
+   "project": "zookeeper",
+   "commits_scanned": 2718,
+   "jira_key_refs": 2458,
+   "head_sha": "53a78e36f99602162643303ab330377fc383b41f"
+  }
+ ],
+ "categories": {
+  "genuine": "the matched key is a genuine reference to work done in this commit",
+  "version_string": "a version or release number resembling a key",
+  "changelog_paste": "a key pasted from a changelog, release note, or copied file",
+  "backport": "a backport or cherry-pick mention referring to other work",
+  "revert": "a revert referencing the reverted commit's key",
+  "foreign_key": "a key belonging to a different project in the monorepo"
+ },
+ "commits": [
+  {
+   "project": "drill",
+   "sha": "09b805aea4dafe50555b23945302cf8f6c491de8",
+   "keys_matched": [
+    "DRILL-7576"
+   ],
+   "subject": "DRILL-7576: Fail fast for operator errors",
+   "body": "Converts operators to fail with a UserException rather than using\nthe STOP iterator status. The result is clearer error messages\nand simpler code.\n\ncloses #1975"
+  },
+  {
+   "project": "drill",
+   "sha": "10866cf06294842fce13c122724cee99c3f27a86",
+   "keys_matched": [
+    "DRILL-214"
+   ],
+   "subject": "DRILL-214: if HADOOP_HOME is set, add jars in hadoop lib directory to classpath. Minor packaging and script fixes.",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "2d10e8b8feaf48429d7fa7324b15ba9949f41378",
+   "keys_matched": [
+    "DRILL-1236"
+   ],
+   "subject": "DRILL-1236: Create script to verify release artifacts",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "2e2ce7a6882c18e192ef71034d4a67ad66809ca0",
+   "keys_matched": [
+    "DRILL-6"
+   ],
+   "subject": "DRILL-6 - ignore target",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "2f2338f3f8b66921d6db223064bb23ff41894486",
+   "keys_matched": [
+    "DRILL-2442"
+   ],
+   "subject": "DRILL-2442: Initial implementation of C++ client support for impersonation.",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "4442e162a0c9d92281e52f66319abf6eba1dde97",
+   "keys_matched": [
+    "DRILL-4549"
+   ],
+   "subject": "DRILL-4549: Add support for more truncation units in date_trunc function",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "58391fecd165665141402ccedf8d2789a1014751",
+   "keys_matched": [
+    "DRILL-8220"
+   ],
+   "subject": "DRILL-8220: Add User Translation Support for OAuth Enabled Plugins (#2544)",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "6a55b2b21e047ba44f8f2d19381f18ae44263e26",
+   "keys_matched": [
+    "DRILL-6099"
+   ],
+   "subject": "DRILL-6099: Push limit past flatten(project) without pushdown into scan",
+   "body": "closes #1096"
+  },
+  {
+   "project": "drill",
+   "sha": "8ec2dc64175648103a5ec51f8ad98387496692a9",
+   "keys_matched": [
+    "DRILL-6545"
+   ],
+   "subject": "DRILL-6545: Projection Push down into Lateral Join operator.",
+   "body": "closes #1347"
+  },
+  {
+   "project": "drill",
+   "sha": "90b8fcb8f01277de10d1cdb8c3ecca3ad8a6294d",
+   "keys_matched": [
+    "DRILL-7103"
+   ],
+   "subject": "DRILL-7103: Incorrect conversion to integer in BsonRecordReader#writeTimeStamp",
+   "body": "closes #1695"
+  },
+  {
+   "project": "drill",
+   "sha": "97a63168e93a70c7ed88d2e801dd2ea2e5f1dd74",
+   "keys_matched": [
+    "DRILL-3069"
+   ],
+   "subject": "DRILL-3069: Fix StreamingAggBatch to appropriately set current index when it receives empty batches",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "97a9a4c155da4f5a3604c24db7e8ab5ec47797ce",
+   "keys_matched": [
+    "DRILL-1166"
+   ],
+   "subject": "DRILL-1166: Session option to enable/disable debug information in runtime generated Java code",
+   "body": "+ By default, debug options are enabled but can be disabled by setting the session option `exec.java_compiler_debug` to false.\n+ Allow the defaults for compiler options to be set through configuration."
+  },
+  {
+   "project": "drill",
+   "sha": "99eba727fe2a38d3bf15dd5c3fc390adfdabd1bb",
+   "keys_matched": [
+    "DRILL-5395"
+   ],
+   "subject": "DRILL-5395: Query on MapR-DB table fails with NPE due to an issue with assignment logic closes #803",
+   "body": ""
+  },
+  {
+   "project": "drill",
+   "sha": "9ffd6d933cdd16e10a5818991dd80ab3c36cf88f",
+   "keys_matched": [
+    "DRILL-7157"
+   ],
+   "subject": "DRILL-7157: Wrap SchemaParsingException into UserException when creating schema",
+   "body": "closes #1740"
+  },
+  {
+   "project": "drill",
+   "sha": "a13608b8d1f8110d7bd944c10259b2252dfbf18b",
+   "keys_matched": [
+    "DRILL-6096"
+   ],
+   "subject": "DRILL-6096: Provide mechanism to configure text writer configuration",
+   "body": "1. Usage of format plugin configuration allows to specify line and field delimiters, quotes and escape characters.\n2. Usage of system / session options allows to specify if writer should add headers, force quotes.\n\ncloses #1873"
+  },
+  {
+   "project": "drill",
+   "sha": "be43a9edd148ef3af6f92c5ce7cda235c5ac1ad6",
+   "keys_matched": [
+    "DRILL-5514"
+   ],
+   "subject": "DRILL-5514: Enhance VectorContainer to merge two row sets",
+   "body": "Adds ability to merge two schemas and to merge two vector containers,\nin each case producing a new, merged result. See DRILL-5514 for details.\n\nAlso provides a handy constructor to create a vector container given a\npre-defined schema.\n\ncloses #837"
+  },
+  {
+   "project": "drill",
+   "sha": "c8a08c3e793d53ae4c445f07caa639269c8b51b7",
+   "keys_matched": [
+    "DRILL-665"
+   ],
+   "subject": "DRILL-665: Handle null values in case expressions (contd).",
+   "body": "1. Added functions for converting REQUIRED holder into NULLABLE holder where the minorType is same.\n2. Update in Optiq->Drill literal conversion. First check if it null type, before parsing the literal value. Parsing literal value will cause NPE if the type is NULL.\n3. Changed getReturnType of IfExpression to consider the nullable types of THEN and ELSE expressions.\n4. Added testcases."
+  },
+  {
+   "project": "hbase",
+   "sha": "1c477b2df9f3cb10063d66d8f14ba9eb83bf9f4c",
+   "keys_matched": [
+    "HBASE-17387"
+   ],
+   "subject": "HBASE-17387 Reduce the overhead of exception report in RegionActionResult for multi()",
+   "body": ""
+  },
+  {
+   "project": "hbase",
+   "sha": "1df7e7ac77080be90fd939fd71cea2e96c478c26",
+   "keys_matched": [
+    "HBASE-3506"
+   ],
+   "subject": "HBASE-3506 Ability to disable, drop and enable tables using regex expression   Joey Echeverria via Ted Yu",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hbase/trunk@1138707 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hbase",
+   "sha": "1ed35e4cb64f99cfde9ec3871dd7860980245dbc",
+   "keys_matched": [
+    "HBASE-9090"
+   ],
+   "subject": "HBASE-9090 cleanup snapshot tests setup/teardown code",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hbase/trunk@1508801 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hbase",
+   "sha": "553373671b736540a6f53de4f57fc5e0ca7373a7",
+   "keys_matched": [
+    "HBASE-16871"
+   ],
+   "subject": "HBASE-16871 Procedure v2 - add waiting procs back to the queue after restart",
+   "body": ""
+  },
+  {
+   "project": "hbase",
+   "sha": "620e5c6d0af57ddb67e18bb97725e1d87ffb5fe5",
+   "keys_matched": [
+    "HBASE-26545"
+   ],
+   "subject": "HBASE-26545 Implement tracing of scan",
+   "body": "* on `AsyncTable`, both `scan` and `scanAll` methods should result in `SCAN` table operations.\n* the span of the `SCAN` table operation should have children representing all the RPC calls\n  involved in servicing the scan.\n* when a user provides custom implementation of `AdvancedScanResultConsumer`, any spans emitted\n  from the callback methods should also be tied to the span that represents the `SCAN` table\n  operation. This is easily done because these callbacks are executed on the RPC thread.\n* when a user provides a custom implementation of `ScanResultConsumer`, any spans emitted from the\n  callback methods should be also be tied to the span that represents the `SCAN` table\n  operation. This accomplished by carefully passing the span instance around after it is created.\n\nSigned-off-by: Andrew Purtell <apurtell@apache.org>\nSigned-off-by: Duo Zhang <zhangduo@apache.org>"
+  },
+  {
+   "project": "hbase",
+   "sha": "69a6ef5a9a8c09d8cf918751473240c5d77cfaae",
+   "keys_matched": [
+    "HBASE-2062"
+   ],
+   "subject": "HBASE-2062  Metrics documentation outdated",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hadoop/hbase/trunk@894216 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hbase",
+   "sha": "6ace9b895954a0fac67f70180078658c20b565da",
+   "keys_matched": [
+    "HBASE-29645"
+   ],
+   "subject": "HBASE-29645 AsyncBufferedMutatorImpl concurrency improvement",
+   "body": "Close #7516\nClose #7363\n\nCo-authored-by: Duo Zhang <zhangduo@apache.org>\nCo-authored-by: David Manning <david.manning@salesforce.com>\n\nSigned-off-by: Duo Zhang <zhangduo@apache.org>"
+  },
+  {
+   "project": "hbase",
+   "sha": "77e95dc37c5737804aeaba8b2de417cfd40d008f",
+   "keys_matched": [
+    "HBASE-29168"
+   ],
+   "subject": "HBASE-29168 Update doc section for CacheAwareLoadBalancer to reflect changes from HBASE-29168 (#6870)",
+   "body": "Signed-off-by: Peter Somogyi <psomogyi@apache.org>"
+  },
+  {
+   "project": "hbase",
+   "sha": "7eefd0cbed094b188c0e68d3ee99d937fa6942b0",
+   "keys_matched": [
+    "HBASE-12464"
+   ],
+   "subject": "HBASE-12464 meta table region assignment stuck in the FAILED_OPEN state due to region server not fully ready to serve (Stephen Jiang)",
+   "body": ""
+  },
+  {
+   "project": "hbase",
+   "sha": "988ea870ed1760976d1596a56a75216b2d9d2762",
+   "keys_matched": [
+    "HBASE-18309"
+   ],
+   "subject": "HBASE-18309 (addendum) fix NPE in LogCleaner",
+   "body": ""
+  },
+  {
+   "project": "hbase",
+   "sha": "9a1aff447e908c9de351a4f45b869b016ad7821b",
+   "keys_matched": [
+    "HBASE-17514"
+   ],
+   "subject": "HBASE-17514 emit a warning if thrift1 proxy user is configured but hbase.regionserver.thrift.http is not",
+   "body": "Signed-off-by: Sean Busbey <busbey@apache.org>"
+  },
+  {
+   "project": "hbase",
+   "sha": "acbc3a225338fd1ff82226ebbd937f7b15ef5b60",
+   "keys_matched": [
+    "HBASE-20530"
+   ],
+   "subject": "HBASE-20530 Composition of backup directory containing namespace when restoring is different from the actual hfile location",
+   "body": "Signed-off-by: tedyu <yuzhihong@gmail.com>"
+  },
+  {
+   "project": "hbase",
+   "sha": "c8c7aecbee942284ccc54d72794de1ce48d48f05",
+   "keys_matched": [
+    "HBASE-23655"
+   ],
+   "subject": "HBASE-23655 Fix flaky TestRSGroupsKillRS: should wait the SCP to finish (#996)",
+   "body": "Signed-off-by: Duo Zhang <zhangduo@apache.org>"
+  },
+  {
+   "project": "hbase",
+   "sha": "ccc24e39f942ebbcb09966f39e4e12f57fc8d062",
+   "keys_matched": [
+    "HBASE-5615"
+   ],
+   "subject": "HBASE-5615 revert due to race condition in case master dies",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hbase/trunk@1310324 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hbase",
+   "sha": "d6fd85945130516ba10fe4854ce080e5a2329983",
+   "keys_matched": [
+    "HBASE-15538"
+   ],
+   "subject": "HBASE-15538 Implement secure async protobuf wal writer",
+   "body": ""
+  },
+  {
+   "project": "hbase",
+   "sha": "de4f4aa9e4b105175940718081020f823b380939",
+   "keys_matched": [
+    "HBASE-4213",
+    "HBASE-5715"
+   ],
+   "subject": "HBASE-5715 Revert 'Instant schema alter' for now, HBASE-4213",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hbase/trunk@1310012 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hbase",
+   "sha": "fcfcec06c5b89d5c8c9c8dd9f58e3fc95611b93d",
+   "keys_matched": [
+    "HBASE-896"
+   ],
+   "subject": "HBASE-896 Update jruby from 1.1.2 to 1.1.4; Reverted",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hadoop/hbase/trunk@697983 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hive",
+   "sha": "15039c05b75ddd955dac0fe66b9aef486a45f1a1",
+   "keys_matched": [
+    "HIVE-14889"
+   ],
+   "subject": "HIVE-14889: Beeline leaks sensitive environment variables of HiveServer2 when you type set; (Vihang Karajgaonkar, reviewed by Sergio Pena)",
+   "body": ""
+  },
+  {
+   "project": "hive",
+   "sha": "2e56c499a11f106c303c155c612b5dba286c08cd",
+   "keys_matched": [
+    "HIVE-9916"
+   ],
+   "subject": "HIVE-9916 - Fix TestSparkSessionManagerImpl [Spark Branch] (Chao via Xuefu)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hive/branches/spark@1666034 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hive",
+   "sha": "3a5507437a8447b4c195f888bad670a53444beb5",
+   "keys_matched": [
+    "HIVE-11422"
+   ],
+   "subject": "HIVE-11422: Join a ACID table with non-ACID table fail with MR",
+   "body": ""
+  },
+  {
+   "project": "hive",
+   "sha": "3be1eedb1860173cd2f90631fb2a29edefa4e89e",
+   "keys_matched": [
+    "HIVE-16672"
+   ],
+   "subject": "HIVE-16672: Parquet vectorization doesn't work for tables with partition info (Colin Ma, reviewed by Ferdinand Xu)",
+   "body": ""
+  },
+  {
+   "project": "hive",
+   "sha": "6c3ca4cd82e7caddc8486fb2c88875e1c746ba0d",
+   "keys_matched": [
+    "HIVE-9486"
+   ],
+   "subject": "HIVE-9486 : Use session classloader instead of application loader (Navis via Szehon Ho)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hive/trunk@1663832 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hive",
+   "sha": "727a3dfcda43972b5947b8351223506e2bdfb4c0",
+   "keys_matched": [
+    "HIVE-16776"
+   ],
+   "subject": "HIVE-16776: Strange cast behavior for table backed by druid (Jesus Camacho Rodriguez, reviewed by Ashutosh Chauhan)",
+   "body": ""
+  },
+  {
+   "project": "hive",
+   "sha": "7938668b40e4785175ee2278bde033e15d804767",
+   "keys_matched": [
+    "HIVE-14364"
+   ],
+   "subject": "HIVE-14364. Update timeouts for llap comparator tests. (Siddharth Seth, reviewed by Gunther Hagleitner)",
+   "body": ""
+  },
+  {
+   "project": "hive",
+   "sha": "7ef0f1f8c30dd374bf80ad40d8ee16aef89502cc",
+   "keys_matched": [
+    "HIVE-9025"
+   ],
+   "subject": "HIVE-9025 : join38.q (without map join) produces incorrect result when testing w ith multiple reducers (Ted Xu via Ashutosh Chauhan) merged from trunk, r1644717",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hive/branches/spark@1644721 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hive",
+   "sha": "a41e99aba29bf2a0a8436546d2ab72b3d4ef6ff5",
+   "keys_matched": [
+    "HIVE-23210"
+   ],
+   "subject": "HIVE-23210: Fix shortestjobcomparator when jobs submitted have 1 task their vertices (Panagiotis Garefalakis via Rajesh Balamohan)",
+   "body": "Signed-off-by: Laszlo Bodor <bodorlaszlo0202@gmail.com>"
+  },
+  {
+   "project": "hive",
+   "sha": "a6e93633dc15aba179fb6ad422be4cbc88adf071",
+   "keys_matched": [
+    "HIVE-26059"
+   ],
+   "subject": "HIVE-26059: Eventually clean compactions in \"refused\" state from compaction history (Laszlo Vegh, reviewed by Denys Kuzmenko and Karen Coppage)",
+   "body": "Closes #3127"
+  },
+  {
+   "project": "hive",
+   "sha": "b4b821e0acdda7fe4729a5dd9f8655431c90109a",
+   "keys_matched": [
+    "HIVE-13552"
+   ],
+   "subject": "HIVE-13552 : Templeton job does not write out log files on InterruptedException (Dennis Chan via Ashutosh Chauhan)",
+   "body": "Signed-off-by: Ashutosh Chauhan <hashutosh@apache.org>"
+  },
+  {
+   "project": "hive",
+   "sha": "b9e4fe856fcf3bb4339c8efebab1138c9dc1e732",
+   "keys_matched": [
+    "HIVE-13565"
+   ],
+   "subject": "HIVE-13565: Auto-gather column stats thrift change (Pengcheng Xiong, reviewed by Ashutosh Chauhan)",
+   "body": ""
+  },
+  {
+   "project": "hive",
+   "sha": "bb0521adb78046da7cdcd4bc197af29301e60e5e",
+   "keys_matched": [
+    "HIVE-1298"
+   ],
+   "subject": "HIVE-1298. unit test symlink_text_input_format.q needs ORDER BY for determinism (Ning Zhang via namit)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hadoop/hive/trunk@933772 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hive",
+   "sha": "c57a1272f2cf50f835417efd08578a49d01ba2cb",
+   "keys_matched": [
+    "HIVE-11544",
+    "HIVE-13876"
+   ],
+   "subject": "HIVE-13876: Vectorization: Port HIVE-11544 to LazySimpleDeserializeRead (Gopal V, reviewed by Sergey Shelukhin)",
+   "body": ""
+  },
+  {
+   "project": "hive",
+   "sha": "d2e5a21251996ade26375e6da5550b3ed8f53dc4",
+   "keys_matched": [
+    "HIVE-6438"
+   ],
+   "subject": "HIVE-6438 : Sort query result for test, removing order by clause (Navis via Ashutosh Chauhan)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hive/trunk@1598678 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hive",
+   "sha": "e7300063d90b515cfb0974bb9737bf553b777526",
+   "keys_matched": [
+    "HIVE-9500"
+   ],
+   "subject": "HIVE-9500: Support nested structs over 24 levels (Aihua via Xuefu) added new files that were missed in previous commit",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hive/trunk@1659411 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "hive",
+   "sha": "feccb31a7ef1ebada17cdea23a97a205818aae9a",
+   "keys_matched": [
+    "HIVE-28789"
+   ],
+   "subject": "HIVE-28789: Session-level metrics from Tez sessions (#5813)",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "0105554ab4f921afe010e3d6a56b82671fb1b63a",
+   "keys_matched": [
+    "KNOX-451"
+   ],
+   "subject": "KNOX-451: WebHDFS HA failover does not account for URL of unsuccessful request",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "1bc09836ce8a1cbeb8d4a51283d4974be486210e",
+   "keys_matched": [
+    "KNOX-826"
+   ],
+   "subject": "KNOX-826 added the icon to the source project as well",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "20561b7c516617702213a292c8f64a8300c39ddd",
+   "keys_matched": [
+    "KNOX-1899"
+   ],
+   "subject": "KNOX-1899 - Upgrade shiro to 1.4.1",
+   "body": "Signed-off-by: Kevin Risden <krisden@apache.org>"
+  },
+  {
+   "project": "knox",
+   "sha": "3004ba8b9b78d603e04d8c6f2313b0b527fdd252",
+   "keys_matched": [
+    "KNOX-965"
+   ],
+   "subject": "KNOX-965 - SecureQueryDecryptProcessor decode call could return null thus it would get a NPE (Jeffrey E Rodriguez via lmccay)",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "488e94a361ce84e90666bee1a3741be545f74f1a",
+   "keys_matched": [
+    "KNOX-3326"
+   ],
+   "subject": "KNOX-3326: Add TCPS support for Oracle DB (#1237)",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "6a4d5dfb4cca531a3adda0e6330cc806d0192249",
+   "keys_matched": [
+    "KNOX-2839"
+   ],
+   "subject": "KNOX-2839 - Identity assertion provider handles Hadoop ProxyUser auth using the 'doAs' query parameter (#681)",
+   "body": "With this change, the previously added ProxyUser configuration for KnoxToken impersonation is removed becuase the same can be achieved with the appropriate identity-assertion configuration.\n\nAnother very important change is that Knox's HadoopAuth filter no longer sets the 'doAs' user as primary principal. Instead, it's passed down as an ImpersonatedPrincipal and the original user (real user) remains the PrimaryPrincipal in the underlying security context (Subject)."
+  },
+  {
+   "project": "knox",
+   "sha": "7bce170df14d26afb4fb0a3ae6d3799568471e87",
+   "keys_matched": [
+    "KNOX-147"
+   ],
+   "subject": "KNOX-147 throw ServiceLifecycleException if certificate is not valid for the current date",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "8affbc0226fb2e587bdadaac9270b071d52b8062",
+   "keys_matched": [
+    "KNOX-998"
+   ],
+   "subject": "Merge branch 'master' into KNOX-998-Package_Restructuring",
+   "body": "# Conflicts:\n#\tgateway-discovery-ambari/src/main/java/org/apache/knox/gateway/topology/discovery/ambari/AmbariServiceURLCreator.java\n#\tgateway-discovery-ambari/src/main/resources/ambari-service-discovery-component-config-mapping.properties\n#\tgateway-provider-security-picketlink/src/main/java/org/apache/knox/gateway/picketlink/PicketlinkMessages.java\n#\tgateway-provider-security-picketlink/src/main/java/org/apache/knox/gateway/picketlink/deploy/PicketlinkConf.java\n#\tgateway-provider-security-picketlink/src/main/java/org/apache/knox/gateway/picketlink/deploy/PicketlinkFederationProviderContributor.java\n#\tgateway-provider-security-picketlink/src/main/java/org/apache/knox/gateway/picketlink/filter/CaptureOriginalURLFilter.java\n#\tgateway-provider-security-picketlink/src/main/java/org/apache/knox/gateway/picketlink/filter/PicketlinkIdentityAdapter.java\n#\tgateway-provider-security-picketlink/src/test/java/org/apache/knox/gateway/picketlink/PicketlinkTest.java\n#\tgateway-server/src/main/java/org/apache/knox/gateway/topology/simple/SimpleDescriptorHandler.java\n#\tgateway-server/src/test/java/org/apache/knox/gateway/topology/simple/SimpleDescriptorHandlerTest.java\n#\tgateway-service-knoxtoken/src/test/java/org/apache/knox/gateway/service/knoxtoken/TokenServiceResourceTest.java"
+  },
+  {
+   "project": "knox",
+   "sha": "912c53602a409e4361a73130e4dbc55a7b73c8ea",
+   "keys_matched": [
+    "KNOX-998"
+   ],
+   "subject": "Merge branch 'master' into KNOX-998-Package_Restructuring",
+   "body": "# Conflicts:\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayAdminFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayAdminTopologyFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayAppFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayDeployFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayLdapDynamicGroupFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayLdapGroupFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayLdapPosixGroupFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayLocalServiceFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewayMultiFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewaySampleFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/GatewaySslFuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/Knox242FuncTest.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/KnoxCliLdapFuncTestNegative.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/KnoxCliLdapFuncTestPositive.java\n#\tgateway-test/src/test/java/org/apache/knox/gateway/KnoxCliSysBindTest.java"
+  },
+  {
+   "project": "knox",
+   "sha": "a85cdcbe1c69cf7e84a4820c5cb44cfeb57d1d98",
+   "keys_matched": [
+    "KNOX-3096"
+   ],
+   "subject": "KNOX-3096 - Remote Authentication Provider for Levaraging other Knox Instances (#994)",
+   "body": "* KNOX-3096 - Remote Auth Provider initial commit"
+  },
+  {
+   "project": "knox",
+   "sha": "b395dfe3bb065b8f980b9e8ba438ac3bb89a9af3",
+   "keys_matched": [
+    "KNOX-68"
+   ],
+   "subject": "KNOX-68: Fix start/stop script for gateway to work with more platforms (e.g. macos).",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "be2b9a41e4a7d89e96870da9cd8928df2d8aa04a",
+   "keys_matched": [
+    "KNOX-3279"
+   ],
+   "subject": "KNOX-3279 - REST Catalog dispatch implementation for including configurable metadata as outbound request headers (#1182)",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "bfe4ce7e799a540a732ad0008e14620d48ee9a01",
+   "keys_matched": [
+    "KNOX-303"
+   ],
+   "subject": "KNOX-303 - invalid configuration should result in 500 and appropriate error message.",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "e2ea842e4638eeeedf6c4484483937b14e451964",
+   "keys_matched": [
+    "KNOX-2266"
+   ],
+   "subject": "KNOX-2266 - Tokens Should Include a Unique Identifier (#284)",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "e9612fcc9c9d278bef06bc1ad9a59bf87799d535",
+   "keys_matched": [
+    "KNOX-1401"
+   ],
+   "subject": "KNOX-1401 - Add HAL+JSON To the List of JSON Content Types (William Watson via Sandeep More)",
+   "body": ""
+  },
+  {
+   "project": "knox",
+   "sha": "f745a08ad39f0fa3bfcb87c87324bcdb3cc74b0a",
+   "keys_matched": [
+    "KNOX-1755"
+   ],
+   "subject": "KNOX-1755 - Revert upgrade httpclient to 4.5.7 due to HTTPCLIENT-1968",
+   "body": "Signed-off-by: Kevin Risden <krisden@apache.org>"
+  },
+  {
+   "project": "knox",
+   "sha": "f81a5b85dc928348663ac175abad8c789e5899ae",
+   "keys_matched": [
+    "KNOX-3284"
+   ],
+   "subject": "KNOX-3284 - knox.token.hash.key will be available in Knox Docker image (#1184)",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "0e83e2291af1de9632e822405fed5cd6b8ea3fc0",
+   "keys_matched": [
+    "KYLIN-5355"
+   ],
+   "subject": "KYLIN-5355  support constant query like `select max(1) from t`",
+   "body": "Co-authored-by: fanshu.kong <1714585117@qq.com>"
+  },
+  {
+   "project": "kylin",
+   "sha": "4742188bdee5c4300fb810b4cbdb2622123a6305",
+   "keys_matched": [
+    "KYLIN-5445"
+   ],
+   "subject": "KYLIN-5445 minor fix isPrimaryKeyExists throw exception when using low version mysql driver",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "552506255480218524bea16bac3be7d879557194",
+   "keys_matched": [
+    "KYLIN-5221"
+   ],
+   "subject": "KYLIN-5221 Create document based on docusaurus",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "597a9367ec12cfe18c8878a548f07db514ce7e7c",
+   "keys_matched": [
+    "KYLIN-5530"
+   ],
+   "subject": "KYLIN-5530 remove repartition write KYLIN-5530 Optimized snapshot builds KYLIN-5530 Flat Table Repartition before writing data source tables/directories",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "68aa668a4c5d01e91cac6386c17ca03960f85f30",
+   "keys_matched": [
+    "KYLIN-5438"
+   ],
+   "subject": "KYLIN-5438 remove systools module",
+   "body": "* refactor engine spark pom\nrefactor sys-tools\nremove BadRequestException\nmove PasswordDecryptionException\nremove integration-service module\nrefactor common-service\nrefactor Broadcaster\n\nCo-authored-by: qhzhou <qianhao.zhou@kyligence.io>"
+  },
+  {
+   "project": "kylin",
+   "sha": "7f143a8bef5bc1df735024de43e48994c887fadb",
+   "keys_matched": [
+    "KYLIN-5707"
+   ],
+   "subject": "KYLIN-5707 update calcite to 1.116.0-kylin-4.x-r028",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "80feb3dfddaff0915ec95e102c5c7e537449ccfc",
+   "keys_matched": [
+    "KYLIN-5411"
+   ],
+   "subject": "KYLIN-5411 Move zstd lib checking to check-1700 stage",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "82685b39a53cf8ab6a79e66eb15200ae933883df",
+   "keys_matched": [
+    "KYLIN-5420"
+   ],
+   "subject": "KYLIN-5420 ops plan query metric add constant tag",
+   "body": "* KYLIN-5420 ops plan query metric add constant tag\n\n* KYLIN-5420 add monitor metrics for long running jobs, fix rules\n\nCo-authored-by: liang.hua <liang.hua@kyligence.io>"
+  },
+  {
+   "project": "kylin",
+   "sha": "aedb70fbed7a81a120929af5cdff766ed526cec5",
+   "keys_matched": [
+    "KYLIN-5861"
+   ],
+   "subject": "KYLIN-5861 Change package of query optimization rules",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "bc9ae6188e6632ba57899cf9e57e1ac9a5ce66d3",
+   "keys_matched": [
+    "KYLIN-5505"
+   ],
+   "subject": "KYLIN-5505 remove cc column when delete fact tabel",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "c583f433242f482168db596abd1183bac23f4d72",
+   "keys_matched": [
+    "KYLIN-5311"
+   ],
+   "subject": "KYLIN-5311 Improve performance of getSubstitutor",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "c72fe0bd0cc503287bd69b515790bf2266c4f2b8",
+   "keys_matched": [
+    "KYLIN-5485"
+   ],
+   "subject": "KYLIN-5485 auto complete editor keywords",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "cb2a11d503f4d857b236ea62152d606d5c8d5fe7",
+   "keys_matched": [
+    "KYLIN-5781"
+   ],
+   "subject": "KYLIN-5781 Adjust the query result order of sql with union",
+   "body": "Co-authored-by: Zhiting Guo <zhiting.guo@kyligence.io>"
+  },
+  {
+   "project": "kylin",
+   "sha": "deabeb4ea67073fc5ee3bc96fb85fd6ea1a18b49",
+   "keys_matched": [
+    "KYLIN-5947"
+   ],
+   "subject": "KYLIN-5947 remove useless phantomjs-prebuilt",
+   "body": ""
+  },
+  {
+   "project": "kylin",
+   "sha": "f2d5f586ad87196621d3a93d5133f3595cfc5b4b",
+   "keys_matched": [
+    "KYLIN-5865"
+   ],
+   "subject": "KYLIN-5865 Supports OlapFilterJoinRule.FILTER_ON_JOIN",
+   "body": "Co-authored-by: hao.chen <hao.chen@kyligence.io>"
+  },
+  {
+   "project": "kylin",
+   "sha": "fa610e989aad0b0ab82c0e6b250cbcbef3110973",
+   "keys_matched": [
+    "KYLIN-5565"
+   ],
+   "subject": "KYLIN-5565 Upgrade netty-all & netty-codec version to 4.1.89.Final (#30118)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "04d5cd89db8fd5cdacece8dc897d27c0536ab4a9",
+   "keys_matched": [
+    "OOZIE-904"
+   ],
+   "subject": "OOZIE-904 TestBundleStartX Failing (virag)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/incubator/oozie/trunk@1362748 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "oozie",
+   "sha": "310c588ebb1f5c3c258d60ee9f74b5ac6ec1bd2a",
+   "keys_matched": [
+    "OOZIE-3538"
+   ],
+   "subject": "OOZIE-3538 Invalid <perCoreThreadCount> value is pom.xml (nobigo via asalamon74)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "33c90dd3483921af108dacdd073dcbe3b780348b",
+   "keys_matched": [
+    "OOZIE-3728"
+   ],
+   "subject": "OOZIE-3728 Upgrade Hadoop to 2.8.5",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "3dd5044a2835cf21f0aa4d3626cacbfaea5886c8",
+   "keys_matched": [
+    "OOZIE-3694"
+   ],
+   "subject": "OOZIE-3694 [sharelib-hive] Fix current SpotBugs discovered issues in Oozie's sharelib-hive module (jmakai via dionusos)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "493cdb88913d056edcc902ab30070477f1d299bc",
+   "keys_matched": [
+    "OOZIE-1071"
+   ],
+   "subject": "OOZIE-1071 latest EL function is based on action materialization time (rohini via virag)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/oozie/trunk@1419632 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "oozie",
+   "sha": "65cf99afc68bda61633d49fcdfe84fa7b0c8e16e",
+   "keys_matched": [
+    "OOZIE-1704"
+   ],
+   "subject": "missed commit as part of OOZIE-1704",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "70e136298f0a3fa81062dd6194ee42c87cfe747e",
+   "keys_matched": [
+    "OOZIE-1280"
+   ],
+   "subject": "OOZIE-1280 CoordPushDependencyCheck queued by Recovery Services doesn't remove dependencies from cache (rohini via virag)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/oozie/trunk@1459512 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "oozie",
+   "sha": "71b668fbe5c538b1651adf9168f9ffc440ad4332",
+   "keys_matched": [
+    "OOZIE-3242"
+   ],
+   "subject": "OOZIE-3242 Flaky test TestXCommand#testXCommandLifecycleLockingFailingToLock (pbacsko via gezapeti)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "7c15406f020f0d7631bfd24ebf4f2dffc387fcb4",
+   "keys_matched": [
+    "OOZIE-1935"
+   ],
+   "subject": "OOZIE-1935 Log level (ActionStartXCommand) and Doc fix (CoordinatorFunctionalSpec)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "8cf8a78d14e579b091a95c510fe8c61db5c46876",
+   "keys_matched": [
+    "OOZIE-3397"
+   ],
+   "subject": "OOZIE-3397 Improve logging in NotificationXCommand (kmarton)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "c47ce546835ef6e1fa3e2a65119c1b72f2db0d30",
+   "keys_matched": [
+    "OOZIE-1470"
+   ],
+   "subject": "OOZIE-1470 BundleStatusUpdateXCommand should get lock for bundle job (virag)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/oozie/trunk@1507516 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "oozie",
+   "sha": "ca01c28362ede63bac17e32af42809b1c90c5ce9",
+   "keys_matched": [
+    "OOZIE-2666"
+   ],
+   "subject": "OOZIE-2666 Support embedding Jetty into Oozie (asasvari via rkanter)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "cab20408e54b10c8a4c90a4e0ba6df2e99db45f9",
+   "keys_matched": [
+    "OOZIE-1401"
+   ],
+   "subject": "OOZIE-1401 PurgeCommand should purge the workflow jobs w/o end_time (asasvari)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "dec013093ae5277711a3f59a15d564bcdfb8d35f",
+   "keys_matched": [
+    "OOZIE-2474"
+   ],
+   "subject": "OOZIE-2474 <job-xml> is not being applied to the launcher job (rkanter)",
+   "body": ""
+  },
+  {
+   "project": "oozie",
+   "sha": "edc97183b2f07b33cfcd05a4306c1b358265a840",
+   "keys_matched": [
+    "OOZIE-1549"
+   ],
+   "subject": "Revert \"Amending release-log for OOZIE-1549\"",
+   "body": "This reverts commit 29b2780f54abf825dc1624dc1ec53ffc2716c9a2."
+  },
+  {
+   "project": "oozie",
+   "sha": "ff9e43fa8612f4d099c45518e0f553595e7e0671",
+   "keys_matched": [
+    "OOZIE-1754"
+   ],
+   "subject": "OOZIE-1754 add order(sort) option and exclude filter for coord job Info (ryota)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "00d955c8e52f19cbf37c47f30afd19eb161931e3",
+   "keys_matched": [
+    "HDDS-14385"
+   ],
+   "subject": "HDDS-14385. Incorrect net.topology.node.switch.mapping.impl default value (#9622)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "2930ecc69c556111cb312c349f9999f3251873ef",
+   "keys_matched": [
+    "HDDS-10791"
+   ],
+   "subject": "HDDS-10791. Duplicated instanceof checks in OzoneOutputStream (#9370)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "2ae8d6da2849286b044e9877a90fdd919c3653c4",
+   "keys_matched": [
+    "HDDS-13379"
+   ],
+   "subject": "HDDS-13379. Document SCM Safe Mode and its configuration properties. (#8737)",
+   "body": "Generated-by: Google Gemini 2.5 Pro/Flash, + Gemini Cli"
+  },
+  {
+   "project": "ozone",
+   "sha": "361ad068ed56d2cb8e1343f0d14969792f118228",
+   "keys_matched": [
+    "HDDS-9719"
+   ],
+   "subject": "HDDS-9719. Add performance audit log for Datanode (#5660)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "68265b8be85826f86cd60b12b397c4df5452359c",
+   "keys_matched": [
+    "HDDS-4925"
+   ],
+   "subject": "HDDS-4925. Introduce ContainerBalancer in SCM with start/stop capabilities. (#2097)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "6b24c188df038f1ab404acace20a4060fe2114fd",
+   "keys_matched": [
+    "HDDS-4976"
+   ],
+   "subject": "HDDS-4976. Add container replica related commands to debug (#2070)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "7e3ee2bc7566670e2ebd4ed87a019d4ceb5e8fcd",
+   "keys_matched": [
+    "HDDS-812"
+   ],
+   "subject": "HDDS-812. TestEndPoint#testCheckVersionResponse is failing. Contributed by Hanisha Koneru.",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "968942ccd95afcb41999889af1a2fcda944082f9",
+   "keys_matched": [
+    "HDDS-1830"
+   ],
+   "subject": "HDDS-1830 OzoneManagerDoubleBuffer#stop should wait for daemon thread to die (#1156)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "acf5150666862e92257420282423310bf50fe539",
+   "keys_matched": [
+    "HDDS-1775"
+   ],
+   "subject": "HDDS-1775. Make OM KeyDeletingService compatible with HA model (#1063)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "ad37f0310b51a6e2cfec7bba1e6cce250782b958",
+   "keys_matched": [
+    "HDDS-2011"
+   ],
+   "subject": "HDDS-2011. Ignore TestRandomKeyGenerator.bigFileThan2GB",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "b1ac520ed95fe35b454e55695a05ed71299d8797",
+   "keys_matched": [
+    "HDDS-2498"
+   ],
+   "subject": "HDDS-2498. Fix sonar issues found in StorageContainerManager. (#178)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "b981afbf89e28e8fb182ec9ba4e1025b9e7ea405",
+   "keys_matched": [
+    "HDDS-15508"
+   ],
+   "subject": "HDDS-15508. Add 2.2.0 to compatibility/upgrade test (#10782)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "bc19a4c18afe44154f16b546a06df717ddfcd7c3",
+   "keys_matched": [
+    "HDDS-12711"
+   ],
+   "subject": "HDDS-12711. Limit number of excluded SST files logged at info level (#8186)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "e6ed46a2629561b82692bbb811a493ce33f4711e",
+   "keys_matched": [
+    "HDDS-9085"
+   ],
+   "subject": "HDDS-9085. Recon Directories Pending for Deletion Inside OMDB Insight (#5521)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "ebdf76736cd52ad16d602a04232d38506d3fbbbe",
+   "keys_matched": [
+    "HDDS-11316"
+   ],
+   "subject": "HDDS-11316. Improve Create Key and Chunk IO Dashboards (#7075)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "ecd2de095ef4de1d50ab069bdd500992f5df1056",
+   "keys_matched": [
+    "HDDS-12409"
+   ],
+   "subject": "HDDS-12409. Log an error before increasing the sequence id of a CLOSED container in SCM (#7964)",
+   "body": ""
+  },
+  {
+   "project": "ozone",
+   "sha": "ff41ce6092ac244cb30b75e2d5bc10835c5789e5",
+   "keys_matched": [
+    "HDDS-13849"
+   ],
+   "subject": "HDDS-13849. Refactor getTablePrefix function in SnapshotDiff flow (#9235)",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "336a82d410057d10c16d0bfef6aebd94c63026f5",
+   "keys_matched": [
+    "PHOENIX-3706"
+   ],
+   "subject": "PHOENIX-3706 RenewLeaseTask should give up and reattempt later to renewlease if lock cannot be acquired",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "3dddd37fbd789e33c457214c5869cadc7713b54d",
+   "keys_matched": [
+    "PHOENIX-6302"
+   ],
+   "subject": "Merge pull request #1067 from virajjasani/PHOENIX-6302-master",
+   "body": "PHOENIX-6302 : De-flake ConcurrentUpsertsWithoutIndexedColsIT"
+  },
+  {
+   "project": "phoenix",
+   "sha": "49d586cd9980d669405ad2d4c06f01aae9aee420",
+   "keys_matched": [
+    "PHOENIX-829"
+   ],
+   "subject": "PHOENIX-829 Uppercase file name if none supplied for CSV import (JamesTaylor)",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "4fcd01d6a9c1eec1fec4f872a010f3ec16e5e4d3",
+   "keys_matched": [
+    "PHOENIX-1181"
+   ],
+   "subject": "PHOENIX-1181 client cache fails to update itself after a table was altered from a diff client",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "55134c2a988fa8abe366f61f28ab73e07e657dab",
+   "keys_matched": [
+    "PHOENIX-5444"
+   ],
+   "subject": "PHOENIX-5444 Incorrect Phoenix Client Path in phoenix_utils.py",
+   "body": "Update to use existing pattern in the utility class."
+  },
+  {
+   "project": "phoenix",
+   "sha": "647809057cce90b140bcfeb975454254da979aa0",
+   "keys_matched": [
+    "PHOENIX-2406"
+   ],
+   "subject": "PHOENIX-2406 ClassCastException in isCoercibleTo() of unsigned primitive array types (e.g. PUnsignedIntArray)",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "74fc349066d49b2c2e4fef87a22289162c3d0e9e",
+   "keys_matched": [
+    "PHOENIX-2562"
+   ],
+   "subject": "PHOENIX-2562 Change commit call to send for batched autocommit deletes",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "7a5b5da589372e0d25eec7aa66c5c513e73eab04",
+   "keys_matched": [
+    "PHOENIX-4290"
+   ],
+   "subject": "PHOENIX-4290 Full table scan performed for DELETE with table having immutable indexes",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "a4b4fbebe896e9aebd03c965dd562548f76f07c5",
+   "keys_matched": [
+    "PHOENIX-104"
+   ],
+   "subject": "PHOENIX-104: Remove source files from current phoenix-<version>.tar.gz to phoenix-<version>-source.tar.gz tar ball.",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "bbfb1e31921db6767c003679715ab2dc6a244423",
+   "keys_matched": [
+    "PHOENIX-2931"
+   ],
+   "subject": "PHOENIX-2931 Phoenix client asks users to provide configs in cli that are present on the machine in hbase conf (aliciashu)",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "cf67e5d4a46183ba11c8c0547034f075b57b1ab0",
+   "keys_matched": [
+    "PHOENIX-5724"
+   ],
+   "subject": "PHOENIX-5724 Use exec permission in Phoenix ACLs only when execute check enabled(Rajeshbabu)",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "d35aeb0eba9dcb44939552e37f6b8c31caa7a7d6",
+   "keys_matched": [
+    "PHOENIX-984"
+   ],
+   "subject": "PHOENIX-984 Add support for DECODE built-in function (tzolkincz)",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "d97eb4967c08f2ca1e5c05de2ef970416001f17c",
+   "keys_matched": [
+    "PHOENIX-2791"
+   ],
+   "subject": "PHOENIX-2791 Support append only schema declaration (addendum)",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "e0a47a1e225af06401530b8775bfed8dce1e5815",
+   "keys_matched": [
+    "PHOENIX-1147"
+   ],
+   "subject": "PHOENIX-1147: Add test cases to cover more index update failure scenarios",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "e67582dc2f4ab4e50ee9d26d5c6b3662d29c3e83",
+   "keys_matched": [
+    "PHOENIX-6622"
+   ],
+   "subject": "PHOENIX-6622 Transform monitor",
+   "body": "* Implement TransformMonitor to monitor transform tool result and do orchestration\n\nSigned-off-by: Gokcen Iskender <gokceng@gmail.com>"
+  },
+  {
+   "project": "phoenix",
+   "sha": "ea288c7680ab4551e5a8c25f8ee515fe151d5559",
+   "keys_matched": [
+    "PHOENIX-6733"
+   ],
+   "subject": "PHOENIX-6733 - Fix ref count leaked test failures",
+   "body": ""
+  },
+  {
+   "project": "phoenix",
+   "sha": "f9c8fe8df68bfd3b60b2a9d4ab83ff74b1fbd3de",
+   "keys_matched": [
+    "PHOENIX-2731"
+   ],
+   "subject": "PHOENIX-2731 Ensure upgrade from 4.7.0 RCx to 4.7.0 RC5 works",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "08ba2596bb03b378f9a0ff87b328d8b51fe4b005",
+   "keys_matched": [
+    "RANGER-4066"
+   ],
+   "subject": "RANGER-4066 : Add row draggable feature for audit filter table in service form in Ranger React.",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "24a746b7fa525c635a59b1e7af23e04cb50718ef",
+   "keys_matched": [
+    "RANGER-4258"
+   ],
+   "subject": "RANGER-4258: increased maximum number of service-defs/services/zones listed in UI from 25 to 1000",
+   "body": "Signed-off-by: Madhan Neethiraj <madhan@apache.org>"
+  },
+  {
+   "project": "ranger",
+   "sha": "2b988a83638d36528a4690705435023bc1f9fcef",
+   "keys_matched": [
+    "RANGER-2580"
+   ],
+   "subject": "RANGER-2580: RangerPolicy.getServiceType API should return name of the service-type",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "2c57feaf8b53f719d889f07a21cbdfafe6608dc4",
+   "keys_matched": [
+    "RANGER-1636"
+   ],
+   "subject": "RANGER-1636:Remove the pmd check error",
+   "body": "Signed-off-by: peng.jianhua <peng.jianhua@zte.com.cn>"
+  },
+  {
+   "project": "ranger",
+   "sha": "2e486daa43bc219b430ccf73463d5fd65d3a0c79",
+   "keys_matched": [
+    "RANGER-203"
+   ],
+   "subject": "RANGER-203: 1. Config file renamed to support new service-types:    xasecure-audit.xml    ==> ranger-type-audit.xml (type: hdfs/hive/hbase/knox/storm/yarn/\u2026)    xasecure-security.xml ==> ranger-type-security.xml (type: hdfs/hive/hbase/knox/storm/yarn/\u2026)",
+   "body": "2. Plugin installation script (enable-agent.sh) updated to support plugins whose\n   installation directory is different from the plugin name\n   (for example: yarn plugin needs to be installed under hadoop directory)\n\n3. Replaced old/unused properties in ranger-type-security.xml with new properties.\n\n4. RangerBasePlugin.init() updated to initialize Audit Framework\n\n5. PolicyRefresher updated to store/use policies in local cache."
+  },
+  {
+   "project": "ranger",
+   "sha": "32da93caa79494567043a6ef1eda38e9c50da355",
+   "keys_matched": [
+    "RANGER-3091"
+   ],
+   "subject": "RANGER-3091:Upgrade solr version in Ranger to Solr 8.6.3",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "342a0717bf4c928254b2c5f78d5fe805aee038fe",
+   "keys_matched": [
+    "RANGER-5310"
+   ],
+   "subject": "RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker (#660)",
+   "body": "* RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker\n\nSigned-off-by: Ramesh Mani <rmani@apache.org>\n\n* RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker - Review comments adddress, hadoop and hive ssh issue while startup addressed, removed not need configs\n\n* RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker - changes to use ranger base image for user creation, fix issue with usage of ranger base image in other containers\n\n* RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker - addressed review comment on issue related to base immage\n\n* RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker - address review comment on the switch user statement\n\n* RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker - address review comment\n\n* Update dev-support/ranger-docker/scripts/hive-site-oracle.xml\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\n\n* RANGER-5310:Include Apache Tez as the process framework for ranger-hive docker - fixed Ozone version\n\n---------\n\nSigned-off-by: Ramesh Mani <rmani@apache.org>\nCo-authored-by: Ramesh Mani <rmani@apache.org>\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>"
+  },
+  {
+   "project": "ranger",
+   "sha": "446fb478ee49779271557cca1076db2a777bfaa8",
+   "keys_matched": [
+    "RANGER-2639"
+   ],
+   "subject": "RANGER-2639 : XUserService has duplicate db query in when populateViewBean for XXUser",
+   "body": "Signed-off-by: Mehul Parikh <mehul@apache.org>"
+  },
+  {
+   "project": "ranger",
+   "sha": "84a59fad2a3aa3057c7a47a6ab0cd5e6236a6442",
+   "keys_matched": [
+    "RANGER-2493"
+   ],
+   "subject": "RANGER-2493: Ranger takes long time to delete a service with many policies",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "988b2d7aad34fd3445ab4e70ae7460e3f103d6a0",
+   "keys_matched": [
+    "RANGER-1276"
+   ],
+   "subject": "RANGER-1276 : User/Group search is failing due to encoding issues",
+   "body": "Signed-off-by: Velmurugan Periasamy <vel@apache.org>"
+  },
+  {
+   "project": "ranger",
+   "sha": "a13a01bce0c5b9a9a54685734be571a412bc0fca",
+   "keys_matched": [
+    "RANGER-4413"
+   ],
+   "subject": "RANGER-4413: fix pagination for GDS APIs",
+   "body": "Signed-off-by: Madhan Neethiraj <madhan@apache.org>"
+  },
+  {
+   "project": "ranger",
+   "sha": "a15e49fb53b9a0ea7ae273a26e412e4b065765a1",
+   "keys_matched": [
+    "RANGER-2754"
+   ],
+   "subject": "RANGER-2754: upgrade presto plugin to support row-filtering and column-masking and for changes in 317",
+   "body": "Signed-off-by: Madhan Neethiraj <madhan@apache.org>"
+  },
+  {
+   "project": "ranger",
+   "sha": "a200d82d8dd08d7b562019d57ba9aa681abd185c",
+   "keys_matched": [
+    "RANGER-314"
+   ],
+   "subject": "RANGER-314: Remove custom class loader used by ranger admin for resource lookup",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "b57e6259401b178569dba56ef5a2a0587b14f14b",
+   "keys_matched": [
+    "RANGER-4526"
+   ],
+   "subject": "RANGER-4526: RangerBasePlugin updates to support GDS in disconnected mode",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "d7a3de193d45f00ef20ef8859d025b444b2dba0b",
+   "keys_matched": [
+    "RANGER-3457"
+   ],
+   "subject": "RANGER-3457 : [Session Timeout-Ranger]With multiple tabs if one tab encounters session idle timeout other active tab still continues with old/invalid session cookie.",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "e6b83f34f527313dbfa80ab43fafd444203a0ab1",
+   "keys_matched": [
+    "RANGER-4783"
+   ],
+   "subject": "RANGER-4783: remove duplicate entries of users/groups/roles during in policy (#311)",
+   "body": ""
+  },
+  {
+   "project": "ranger",
+   "sha": "e92b2d38fa513ae9b92644f9cd72e61818dc41b6",
+   "keys_matched": [
+    "RANGER-397"
+   ],
+   "subject": "RANGER-397 Port log4j audit provider to V3 implementation",
+   "body": ""
+  },
+  {
+   "project": "sqoop",
+   "sha": "010042dd47296e0132944cba146c077754b15195",
+   "keys_matched": [
+    "SQOOP-3255"
+   ],
+   "subject": "SQOOP-3255: Sqoop ignores metastore properties defined in sqoop-site.xml",
+   "body": "(Szabolcs Vasas via Boglarka Egyed)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "0c406e783001ee8501a8290dfd2c9cf88e227f4d",
+   "keys_matched": [
+    "SQOOP-487"
+   ],
+   "subject": "SQOOP-487  Log InformationSchemaManager.getPrimaryKeyQuery invocation",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/sqoop/trunk@1345313 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "sqoop",
+   "sha": "0cfbf56713f7574568ea3754f6854e82f5540954",
+   "keys_matched": [
+    "SQOOP-3042"
+   ],
+   "subject": "SQOOP-3042: Sqoop does not clear compile directory under /tmp/sqoop-<username>/compile automatically",
+   "body": "(Eric Lin via Szabolcs Vasas)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "1e310ad9f5608c08d0d1850c6f63aa9aff4c4239",
+   "keys_matched": [
+    "SQOOP-2780"
+   ],
+   "subject": "SQOOP-2780: Sqoop 1 unit tests fail with TestIncrementalImport test",
+   "body": "(Sowmya Ramesh via Jarek Jarcec Cecho)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "334632e92945bf2c4fe061c6293964cabf74a99d",
+   "keys_matched": [
+    "SQOOP-395"
+   ],
+   "subject": "SQOOP-395 Incorrect or missing SVN property settings",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/incubator/sqoop/trunk@1230747 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "sqoop",
+   "sha": "4373a338bace6a38d7d220d04ff60e919fb6c3d7",
+   "keys_matched": [
+    "SQOOP-468"
+   ],
+   "subject": "SQOOP-468. Oracle free form queries fail.",
+   "body": "(Cheolsoo Park via Jarek Jarcec Cecho)\n\n\ngit-svn-id: https://svn.apache.org/repos/asf/sqoop/trunk@1309268 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "sqoop",
+   "sha": "6acded9bb9955c28fabccd25f0e3daaa6594031f",
+   "keys_matched": [
+    "SQOOP-204"
+   ],
+   "subject": "SQOOP-204. Allow connector specific bounds query.",
+   "body": "This change introduces a new method in ConnManager that allows the\nvarious implementations to optionally override it and specify\ncustom bounds query used for calculating splits during free form\nquery based imports.\n\nFrom: Arvind Prabhakar <arvind@cloudera.com>\n\ngit-svn-id: https://svn.apache.org/repos/asf/incubator/sqoop/trunk@1150033 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "sqoop",
+   "sha": "6d8a670d3246ad1d1ab95720f26297d2b4e52d27",
+   "keys_matched": [
+    "SQOOP-3105"
+   ],
+   "subject": "SQOOP-3105: Add cleanup logic for PostgreSQL related test cases",
+   "body": "(Boglarka Egyed via Attila Szabo)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "d8c4b3ccdd06c5e300e4552b962e97c714651797",
+   "keys_matched": [
+    "SQOOP-3138"
+   ],
+   "subject": "SQOOP-3138: Netezza Direct Import does not support --columns options    (Suraj Nayak  via Venkat Ranganathan)",
+   "body": ""
+  },
+  {
+   "project": "sqoop",
+   "sha": "db4a8fc2fe3873a8ff5560c325265f5239ce38ac",
+   "keys_matched": [
+    "SQOOP-2920"
+   ],
+   "subject": "SQOOP-2920: sqoop performance deteriorates significantly on wide datasets; sqoop 100% on cpu",
+   "body": "(Attila Szabo via Jarek Jarcec Cecho)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "db8c2470002563441c376fa75e05ea1eaad51f22",
+   "keys_matched": [
+    "SQOOP-2915"
+   ],
+   "subject": "SQOOP-2915: Fixing Oracle related unit tests",
+   "body": "(Attila Szabo via Jarek Jarcec Cecho)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "dc4a82102ca54c37482852f1a31e365885d3539e",
+   "keys_matched": [
+    "SQOOP-724"
+   ],
+   "subject": "SQOOP-724 Support Table hints in Microsoft SQL Server",
+   "body": "(Jarek Jarcec Cecho via Cheolsoo Park)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "e0fc46e949d878cf52f93b0206facf2db73f4d5c",
+   "keys_matched": [
+    "SQOOP-1309"
+   ],
+   "subject": "SQOOP-1309: Expand the Sqoop to support CUBRID database.",
+   "body": ""
+  },
+  {
+   "project": "sqoop",
+   "sha": "e48b1ec5f64cd3f614e2c5a34f6301e5c58fdfda",
+   "keys_matched": [
+    "SQOOP-2137"
+   ],
+   "subject": "SQOOP-2137: Sqoop tests and documentation refer to as-avrofile (instead of as-avrodatafile)",
+   "body": "(Mark Grover via Jarek Jarcec Cecho)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "f05b4413a4ceae45fbc444aed7cd11ac6abb62ba",
+   "keys_matched": [
+    "SQOOP-1368"
+   ],
+   "subject": "SQOOP-1368: the configuration properties are reset in HBaseImportJob",
+   "body": "(Guodong Wang via Jarek Jarcec Cecho)"
+  },
+  {
+   "project": "sqoop",
+   "sha": "f13e3c7f8bd7c132609bc221ac3d1077a41f5c41",
+   "keys_matched": [
+    "SQOOP-465"
+   ],
+   "subject": "SQOOP-465 BLOB support for Avro import",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/sqoop/trunk@1307132 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "tez",
+   "sha": "21bce958e4174d7fa2e746fd3c474d52234dae1d",
+   "keys_matched": [
+    "TEZ-2017"
+   ],
+   "subject": "TEZ-2017. TEZ UI - Dag view throwing error whild re-displaying additionals in some dags. (Sreenath Somarajapuram via hitesh)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "282eb724009faffb3a4f7a71b7b464f777fe5c3b",
+   "keys_matched": [
+    "TEZ-2449"
+   ],
+   "subject": "TEZ-2449: Add committer sree to the Tez Team List",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "39d76a656216d4843908279ef8eaa29a4cc83104",
+   "keys_matched": [
+    "TEZ-3969"
+   ],
+   "subject": "TEZ-3969. TaskAttemptImpl: static fields initialized in instance ctor (Jaume Marhuenda via jegales)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "3bb954bd9153f1b6b7e394776d9169cd99acde1b",
+   "keys_matched": [
+    "TEZ-137"
+   ],
+   "subject": "TEZ-137 VertexHistoryEvents are using VertexStatus.state instead of VertexImpl.state (bikas)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "51fb3e4cf0213a39e52476127f390639247e089b",
+   "keys_matched": [
+    "TEZ-3297"
+   ],
+   "subject": "TEZ-3297. Deadlock scenario in AM during ShuffleVertexManager auto reduce (rbalamohan)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "5a24e979a8509da48b9e9dabc00e3e24944c6355",
+   "keys_matched": [
+    "TEZ-952"
+   ],
+   "subject": "TEZ-952. Port MAPREDUCE-5209 and MAPREDUCE-5251. (sseth)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "668728f906e434b7c2641b95efd7e18780ddd04f",
+   "keys_matched": [
+    "TEZ-398",
+    "TEZ-442"
+   ],
+   "subject": "TEZ-442. Handle events generated by I/O initialize and close (part of TEZ-398). (sseth)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "72b3e19c44dd625df46d4ad08c1445e118de541f",
+   "keys_matched": [
+    "TEZ-3621"
+   ],
+   "subject": "TEZ-3621. Optimize the Shuffle Handler content length calculation for keep alive (jeagles)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "7d0ae69e2aff1e76faa5c89a3789e35ac254035c",
+   "keys_matched": [
+    "TEZ-2351"
+   ],
+   "subject": "TEZ-2351. Remove GroupByOrderbyMRRTest example from tez-tests (Hitesh via Jeff Zhang)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "81322efc2b8b843008cb3bebe8e5db78af20eb58",
+   "keys_matched": [
+    "TEZ-1698"
+   ],
+   "subject": "TEZ-1698. addendum - fix license template issue. (Rajesh Balamohan)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "9b158ee6815bd8fc96aefe163b903125eaaf8007",
+   "keys_matched": [
+    "TEZ-3592"
+   ],
+   "subject": "TEZ-3592. Tez UI: Search issues (sree)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "b27e5ddfe40fab0fc493e93dd43a22c9d9f3782c",
+   "keys_matched": [
+    "TEZ-3391"
+   ],
+   "subject": "TEZ-3391. Optimize single split MR split reader",
+   "body": "Signed-off-by: Jonathan Eagles <jeagles@apache.org>"
+  },
+  {
+   "project": "tez",
+   "sha": "b747f109d3148562434d0dce9b8d9c4f04ba4055",
+   "keys_matched": [
+    "TEZ-3259"
+   ],
+   "subject": "TEZ-3259. Tez UI: Build issue - File saver package is not working well with bower (sree)",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "ca4ec1896be2121d1694481b18b9c7fedef31eb6",
+   "keys_matched": [
+    "TEZ-1208"
+   ],
+   "subject": "TEZ-1208. Log time taken to connect/getInputStream to a http source in fetcher. Contributed by Rajesh Balamohan.",
+   "body": ""
+  },
+  {
+   "project": "tez",
+   "sha": "e688e58ba49a2dac563f71e4c1b520e92253c65a",
+   "keys_matched": [
+    "TEZ-1",
+    "TEZ-80"
+   ],
+   "subject": "TEZ-80. Better handling of multi-stage config keys. Convert MRR config to Tez stage specific config in YARNRunner. (sseth)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/incubator/tez/branches/TEZ-1@1471779 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "tez",
+   "sha": "f5d4c36cc2fbce8e4075b2f7385faf7a13a862c3",
+   "keys_matched": [
+    "TEZ-3642"
+   ],
+   "subject": "Revert \"TEZ-3642. Remove ShuffleClientMetrics (zhiyuany)\"",
+   "body": "This reverts commit f7f60385cf5d8d66a1ee02e64d1e671bf1ad8771."
+  },
+  {
+   "project": "tez",
+   "sha": "fa72bdc7f53dd9e9d0f74fef6b17af679ae3cc83",
+   "keys_matched": [
+    "TEZ-2318"
+   ],
+   "subject": "TEZ-2318. Tez UI: source and sink page is broken as they are not populated. (Sreenath Somarajapuram via pramachandran)",
+   "body": ""
+  },
+  {
+   "project": "zookeeper",
+   "sha": "14e09d6340d06042e5ba032f268aa068c3bcd09a",
+   "keys_matched": [
+    "ZOOKEEPER-591"
+   ],
+   "subject": "ZOOKEEPER-591. The C Client cannot exit properly in some situation",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hadoop/zookeeper/trunk@924521 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "16187c48a1d9b339866b81e69c522021b031c4c3",
+   "keys_matched": [
+    "ZOOKEEPER-4319"
+   ],
+   "subject": "ZOOKEEPER-4319: Refactored AtomicFileWritingIdiomTest to use TempDir annotation",
+   "body": "This is a test refactoring. No original assertion was changed nor the original code presented any failing steps.\n\n**Problem:**\nTests that manipulate external file resources need to guarantee resource integrity and availability. Test suite design and maintainability may suffer from the addition of assurance steps to guarantee parallel execution scenarios and resource leakage from failed previous executions.\n\n**Solution:**\nThe use of tempdir annotation assures a temporary directory being created and cleaned up for every test method execution, thus simplifying test maintenance steps.\n\nAuthor: Elvys Soares <eas5@cin.ufpe.br>\n\nReviewers: maoling <maoling@apache.org>\n\nCloses #1702 from eas5/test_improvement"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "16227468d64dd7e1744517a2e587099d5501c0c1",
+   "keys_matched": [
+    "ZOOKEEPER-4676"
+   ],
+   "subject": "[ZOOKEEPER-4676] ReadOnlyModeTest doesn't not compile on JDK20 (Thread.suspend has been removed) (#1985)",
+   "body": "* checkstyle"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "27c20471bcef452f4535aa27cce89c94c73dea74",
+   "keys_matched": [
+    "ZOOKEEPER-591"
+   ],
+   "subject": "ZOOKEEPER-591. The C Client cannot exit properly in some situation (mahadev)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hadoop/zookeeper/trunk@924147 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "333c8b89b3f5d30b57e3f21335258181608d0bbc",
+   "keys_matched": [
+    "ZOOKEEPER-4890"
+   ],
+   "subject": "ZOOKEEPER-4890: Update Netty to fix CVE-2024-47535",
+   "body": "Reviewers: anmolnar\nAuthor: robsonselzelin\nCloses #2212 from robsonselzelin/fix-CVE-2024-47535"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "628583a473545b7b3381d011faf0c0209ac0d126",
+   "keys_matched": [
+    "ZOOKEEPER-3411"
+   ],
+   "subject": "ZOOKEEPER-3411 Cleanup more references to removed ls2 and rmr command (#2000)",
+   "body": "This is a follow-up to #1175.\n\nSigned-off-by: tison <wander4096@gmail.com>"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "65016cb1b29f630fa37ff7a3f8cf4a6ab755d26b",
+   "keys_matched": [
+    "ZOOKEEPER-5067"
+   ],
+   "subject": "ZOOKEEPER-5067: Remove older docs picker from the docs page",
+   "body": "Reviewers: anmolnar\nAuthor: yuriipalam\nCloses #2422 from yuriipalam/ZOOKEEPER-5067"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "8a86359b7a814c352c729a63407f604d6241e19f",
+   "keys_matched": [
+    "ZOOKEEPER-4770"
+   ],
+   "subject": "ZOOKEEPER-4770: zkSnapshotRecursiveSummaryToolkit.sh Error: Could not find or load main class",
+   "body": "Reviewers: tisonkun, eolivelli, maoling\nAuthor: nailcui\nCloses #2091 from nailcui/ZOOKEEPER-4770"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "8b4520f77760b2a7d35708f556dd23a05c95c6f7",
+   "keys_matched": [
+    "ZOOKEEPER-1324"
+   ],
+   "subject": "ZOOKEEPER-1324. Remove Duplicate NEWLEADER packets from the Leader to the Follower. (Thawan, fpj via fpj)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/zookeeper/trunk@1482318 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "8cfdbd4406abe8e04e4fd8e399a32125cc28e26c",
+   "keys_matched": [
+    "ZOOKEEPER-279"
+   ],
+   "subject": "ZOOKEEPER-279. Allow specialization of quorum config parsing (e.g. variable expansion in zoo.cfg)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/hadoop/zookeeper/trunk@750599 13f79535-47bb-0310-9956-ffa450edef68"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "908c4480ee6036bc4024309b7b16318671ae416c",
+   "keys_matched": [
+    "ZOOKEEPER-3774"
+   ],
+   "subject": "ZOOKEEPER-3774: Close quorum socket asynchronously on the leader to a\u2026",
+   "body": "\u2026void ping being blocked by long socket closing time\n\nAuthor: Jie Huang <jiehuang@fb.com>\n\nReviewers: ztzg, hanm, eolivelli, symat\n\nCloses #1301 from jhuan31/ZOOKEEPER-3774"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "a89c0942e45bb16e5282eee9d3a56ebbddbaae15",
+   "keys_matched": [
+    "ZOOKEEPER-3320"
+   ],
+   "subject": "Revert \"ZOOKEEPER-3320: Leader election port stop listen when hostname unresolvable for some time\"",
+   "body": "This reverts commit 05ee9413e7a31703395b81fb8d72baf1cb09a46d."
+  },
+  {
+   "project": "zookeeper",
+   "sha": "b5817fbb12b88bc28be72f109c695ebf51bebf3b",
+   "keys_matched": [
+    "ZOOKEEPER-3448"
+   ],
+   "subject": "ZOOKEEPER-3448: Introduce MessageTracker to assist debug leader and leaner connectivity issues.",
+   "body": "We want to have better insight on the state of the world when learners lost connection with leader, so we need capture more information when that happens. We capture more information through MessageTracker which will record the last few sent and received messages at various protocol stage, and these information will be dumped to log files for further analysis.\n\nAuthor: Michael Han <lhan@twitter.com>\nAuthor: Michael Han <hanm@apache.org>\n\nReviewers: Enrico Olivelli <eolivelli@apache.org>, Fangmin Lyu <fangmin@apache.org>\n\nCloses #1007 from hanm/twitter/2765eb0629d2f63f07d112270b582e8e931f734f"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "eb725a0d8ab4430c6ea96d1b4fedc41739aeb62b",
+   "keys_matched": [
+    "ZOOKEEPER-4549"
+   ],
+   "subject": "Revert \"ZOOKEEPER-4549: ProviderRegistry may be repeatedly initialized\"",
+   "body": "This reverts commit 3fd25d4ebc854328ccc3f8d1c42f6e4c63a84fac."
+  },
+  {
+   "project": "zookeeper",
+   "sha": "f644f3d63e3d1efd3a977b2f4621734dfe617f31",
+   "keys_matched": [
+    "ZOOKEEPER-3222"
+   ],
+   "subject": "ZOOKEEPER-3222: Flaky: multiple intermittent segfaults in C++ tests",
+   "body": "1. Removed the failing test case: client cannot be validated after closing.\n2. Explicitly close the client before creating new.\n\nAuthor: Andor Molnar <andor@cloudera.com>\n\nReviewers: fangmin@apache.org, andor@apache.org\n\nCloses #740 from anmolnar/ZOOKEEPER-3222"
+  },
+  {
+   "project": "zookeeper",
+   "sha": "fef1ae2e7b2bf712b315b6907ebef0bf2a988927",
+   "keys_matched": [
+    "ZOOKEEPER-1691"
+   ],
+   "subject": "ZOOKEEPER-1691. Add a flag to disable standalone mode (Helen Hastings via michim)",
+   "body": "git-svn-id: https://svn.apache.org/repos/asf/zookeeper/trunk@1559916 13f79535-47bb-0310-9956-ffa450edef68"
+  }
+ ]
+}

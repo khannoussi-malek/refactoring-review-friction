@@ -1,0 +1,3296 @@
+{
+ "repo": "hadoop",
+ "rm_file": "refminer_all.json",
+ "commits_mined": 8919,
+ "identity_types": [
+  "Move And Rename Class",
+  "Move Class",
+  "Rename Class"
+ ],
+ "counts": {
+  "identity_nested": 173,
+  "births": 361,
+  "identity_top_level": 577,
+  "bulk": 131,
+  "noop": 22,
+  "identity_unparsed": 12,
+  "forks": 4
+ },
+ "unparsed_examples": [
+  [
+   "Rename Class",
+   "Rename Class c_api renamed to syscall"
+  ],
+  [
+   "Move Class",
+   "Move Class configuration_test.hdfs.TempFile moved to temp-file.TestUtils.TempFile"
+  ],
+  [
+   "Move Class",
+   "Move Class configuration_test.hdfs.TempDir moved to temp-dir.TestUtils.TempDir"
+  ],
+  [
+   "Move Class",
+   "Move Class hdfs-tool-test.HdfsToolBasicTest moved to hdfs-tool-test-fixtures.HdfsToolBasicTest"
+  ],
+  [
+   "Rename Class",
+   "Rename Class hdfs-tool-test renamed to hdfs-tool-tests"
+  ],
+  [
+   "Move Class",
+   "Move Class jquery-3.3.1.min.__module__ moved to jquery-3.4.1.min.__module__"
+  ],
+  [
+   "Move Class",
+   "Move Class jquery-3.3.1.min.__module__ moved to jquery-3.4.1.min.__module__"
+  ],
+  [
+   "Move Class",
+   "Move Class jquery.min.__module__ moved to jquery-3.4.1.min.__module__"
+  ],
+  [
+   "Move Class",
+   "Move Class logs.__module__ moved to yarn-jhs-log.__module__"
+  ],
+  [
+   "Rename Class",
+   "Rename Class hdfs renamed to hdfspp"
+  ]
+ ],
+ "rename_threshold": "50%",
+ "coverage_sweep": {
+  "30%": {
+   "git_renames": 1893,
+   "fqn_preserving": 1026,
+   "undecidable_path": 258,
+   "fqn_changing": 609,
+   "explained_by_rm": 514,
+   "coverage": 0.8440065681444991,
+   "unexplained_examples": [
+    {
+     "sha": "81d90fd65b3c0c7ac66ebae78e22dcb240a0547b",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/CopyOutcome.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/AWSCannedACL.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.impl.CopyOutcome",
+     "to_fqn": "org.apache.hadoop.fs.s3a.impl.AWSCannedACL",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "81d90fd65b3c0c7ac66ebae78e22dcb240a0547b",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/MultiObjectDeleteSupport.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/MultiObjectDeleteException.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.impl.MultiObjectDeleteSupport",
+     "to_fqn": "org.apache.hadoop.fs.s3a.impl.MultiObjectDeleteException",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1d0c9ab4330e87c73e8473bee9c1d4b6db2fd5fd",
+     "from": "hadoop-common-project/hadoop-logging/src/test/java/org/apache/hadoop/logging/test/TestSyncLogs.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/PatternMatchingAppender.java",
+     "from_fqn": "org.apache.hadoop.logging.test.TestSyncLogs",
+     "to_fqn": "org.apache.hadoop.hdfs.server.namenode.PatternMatchingAppender",
+     "commit_had_identity_edges": 2,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "1d0c9ab4330e87c73e8473bee9c1d4b6db2fd5fd",
+     "from": "hadoop-common-project/hadoop-logging/src/test/java/org/apache/hadoop/logging/LogCapturer.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/src/main/java/org/apache/hadoop/yarn/applications/distributedshell/Log4jPropertyHelper.java",
+     "from_fqn": "org.apache.hadoop.logging.LogCapturer",
+     "to_fqn": "org.apache.hadoop.yarn.applications.distributedshell.Log4jPropertyHelper",
+     "commit_had_identity_edges": 2,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "03a499821c9676da0896ca864074dfb8fbdefd6e",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/src/main/java/org/apache/hadoop/yarn/applications/distributedshell/Log4jPropertyHelper.java",
+     "to": "hadoop-common-project/hadoop-logging/src/test/java/org/apache/hadoop/logging/LogCapturer.java",
+     "from_fqn": "org.apache.hadoop.yarn.applications.distributedshell.Log4jPropertyHelper",
+     "to_fqn": "org.apache.hadoop.logging.LogCapturer",
+     "commit_had_identity_edges": 2,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "03a499821c9676da0896ca864074dfb8fbdefd6e",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/PatternMatchingAppender.java",
+     "to": "hadoop-common-project/hadoop-logging/src/test/java/org/apache/hadoop/logging/test/TestSyncLogs.java",
+     "from_fqn": "org.apache.hadoop.hdfs.server.namenode.PatternMatchingAppender",
+     "to_fqn": "org.apache.hadoop.logging.test.TestSyncLogs",
+     "commit_had_identity_edges": 2,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "eb749ddd4ddd700d9d6afaefb6d44bc3faecb724",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/scale/ITestS3AHugeFileUploadSinglePut.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/scale/ITestS3AHugeFilesNoMultipart.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.scale.ITestS3AHugeFileUploadSinglePut",
+     "to_fqn": "org.apache.hadoop.fs.s3a.scale.ITestS3AHugeFilesNoMultipart",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1a205cc3adffa568c814a5241e041b08e2fcd3eb",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/TraceAdminProtocol.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/NullTraceScope.java",
+     "from_fqn": "org.apache.hadoop.tracing.TraceAdminProtocol",
+     "to_fqn": "org.apache.hadoop.tracing.NullTraceScope",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1a205cc3adffa568c814a5241e041b08e2fcd3eb",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/SpanReceiverInfoBuilder.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/Span.java",
+     "from_fqn": "org.apache.hadoop.tracing.SpanReceiverInfoBuilder",
+     "to_fqn": "org.apache.hadoop.tracing.Span",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1a205cc3adffa568c814a5241e041b08e2fcd3eb",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/SpanReceiverInfo.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/SpanContext.java",
+     "from_fqn": "org.apache.hadoop.tracing.SpanReceiverInfo",
+     "to_fqn": "org.apache.hadoop.tracing.SpanContext",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1a205cc3adffa568c814a5241e041b08e2fcd3eb",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/TraceAdminProtocolPB.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/TraceScope.java",
+     "from_fqn": "org.apache.hadoop.tracing.TraceAdminProtocolPB",
+     "to_fqn": "org.apache.hadoop.tracing.TraceScope",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1a205cc3adffa568c814a5241e041b08e2fcd3eb",
+     "from": "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/tracing/TestTraceUtils.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/Tracer.java",
+     "from_fqn": "org.apache.hadoop.tracing.TestTraceUtils",
+     "to_fqn": "org.apache.hadoop.tracing.Tracer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "617af28e80774249b0a52006ca70a4bf0b14451b",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/s3guard/InternalIterators.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/statistics/CountersAndGauges.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.s3guard.InternalIterators",
+     "to_fqn": "org.apache.hadoop.fs.s3a.statistics.CountersAndGauges",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "fa773a832652ac6f2a24f93fc2bfc2ae251bfe1d",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/monitor/capacity/ProportionalCapacityPreemptionPolicyMockFramework.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/monitor/capacity/mockframework/MockQueueHierarchy.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.monitor.capacity.ProportionalCapacityPreemptionPolicyMockFramework",
+     "to_fqn": "org.apache.hadoop.yarn.server.resourcemanager.monitor.capacity.mockframework.MockQueueHierarchy",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "b9fa5e0182c19adc4ff4cd2d9265a36ce9913178",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/DFSMultipartUploaderFactory.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/InternalOperations.java",
+     "from_fqn": "org.apache.hadoop.hdfs.DFSMultipartUploaderFactory",
+     "to_fqn": "org.apache.hadoop.fs.InternalOperations",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "b9fa5e0182c19adc4ff4cd2d9265a36ce9913178",
+     "from": "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/contract/localfs/TestLocalFSContractMultipartUploader.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/statistics/S3AMultipartUploaderStatistics.java",
+     "from_fqn": "org.apache.hadoop.fs.contract.localfs.TestLocalFSContractMultipartUploader",
+     "to_fqn": "org.apache.hadoop.fs.s3a.impl.statistics.S3AMultipartUploaderStatistics",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "791270a2e5e31546ff5c1ef4fa8bad6852b906dc",
+     "from": "hadoop-tools/hadoop-azure/src/main/java/org/apache/hadoop/fs/azurebfs/extensions/AbfsAuthorizationException.java",
+     "to": "hadoop-tools/hadoop-azure/src/main/java/org/apache/hadoop/fs/azurebfs/contracts/exceptions/SASTokenProviderException.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.extensions.AbfsAuthorizationException",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.contracts.exceptions.SASTokenProviderException",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "791270a2e5e31546ff5c1ef4fa8bad6852b906dc",
+     "from": "hadoop-tools/hadoop-azure/src/main/java/org/apache/hadoop/fs/azurebfs/extensions/AbfsAuthorizer.java",
+     "to": "hadoop-tools/hadoop-azure/src/main/java/org/apache/hadoop/fs/azurebfs/extensions/SASTokenProvider.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.extensions.AbfsAuthorizer",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.extensions.SASTokenProvider",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "520fe2c99b328a32c62eb5ff2b3d3562fa91f0fe",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/allocationfile/AllocationFileSubQueueBuilder.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/allocationfile/AllocationFileQueuePlacementPolicy.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.allocationfile.AllocationFileSubQueueBuilder",
+     "to_fqn": "org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.allocationfile.AllocationFileQueuePlacementPolicy",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "520fe2c99b328a32c62eb5ff2b3d3562fa91f0fe",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/allocationfile/AllocationFileSimpleQueueBuilder.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/allocationfile/AllocationFileQueuePlacementRule.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.allocationfile.AllocationFileSimpleQueueBuilder",
+     "to_fqn": "org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.allocationfile.AllocationFileQueuePlacementRule",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1d279304079cb898e84c8f37ec40fb0e5cfb92ae",
+     "from": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/scm/ByteStringHelper.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/scm/ByteStringConversion.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.ByteStringHelper",
+     "to_fqn": "org.apache.hadoop.hdds.scm.ByteStringConversion",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "511df1e837b19ccb9271520589452d82d50ac69d",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/InternalConstants.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/ExecutingStoreOperation.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.InternalConstants",
+     "to_fqn": "org.apache.hadoop.fs.s3a.impl.ExecutingStoreOperation",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "dc72782008b2c66970dc3dee47fe12e4850bfefe",
+     "from": "hadoop-ozone/client/src/main/java/org/apache/hadoop/ozone/client/rest/OzoneExceptionMapper.java",
+     "to": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/web/ozShell/TestObjectPrinter.java",
+     "from_fqn": "org.apache.hadoop.ozone.client.rest.OzoneExceptionMapper",
+     "to_fqn": "org.apache.hadoop.ozone.web.ozShell.TestObjectPrinter",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "10b4997b42e64ae33b2e26636f449d3dfee6169f",
+     "from": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestIngClient.java",
+     "to": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestingClient.java",
+     "from_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestIngClient",
+     "to_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestingClient",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "b83eae7bdb9ec908cfe5ab87c8862cc9125c8aed",
+     "from": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/om/response/security/OMDelegationTokenResponse.java",
+     "to": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/om/response/security/OMCancelDelegationTokenResponse.java",
+     "from_fqn": "org.apache.hadoop.ozone.om.response.security.OMDelegationTokenResponse",
+     "to_fqn": "org.apache.hadoop.ozone.om.response.security.OMCancelDelegationTokenResponse",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "36267b6f7c89c2ade05d97606cc5ac8685d22628",
+     "from": "hadoop-submarine/hadoop-submarine-core/src/test/java/org/apache/hadoop/yarn/submarine/client/cli/TestRunJobCliParsing.java",
+     "to": "hadoop-submarine/hadoop-submarine-core/src/test/java/org/apache/hadoop/yarn/submarine/client/cli/runjob/tensorflow/TestRunJobCliParsingTensorFlow.java",
+     "from_fqn": "org.apache.hadoop.yarn.submarine.client.cli.TestRunJobCliParsing",
+     "to_fqn": "org.apache.hadoop.yarn.submarine.client.cli.runjob.tensorflow.TestRunJobCliParsingTensorFlow",
+     "commit_had_identity_edges": 7,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "8ff41d62434266d49fab65abacea5f9a20fe8172",
+     "from": "hadoop-ozone/ozone-recon/src/main/java/org/apache/hadoop/ozone/recon/ReconApplication.java",
+     "to": "hadoop-ozone/ozone-recon/src/main/java/org/apache/hadoop/ozone/recon/ReconGuiceServletContextListener.java",
+     "from_fqn": "org.apache.hadoop.ozone.recon.ReconApplication",
+     "to_fqn": "org.apache.hadoop.ozone.recon.ReconGuiceServletContextListener",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "9f1c017f444d5e57899493dc23207c6b5fc26dae",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITDirectoryCommitMRJob.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITestDirectoryCommitMRJob.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITDirectoryCommitMRJob",
+     "to_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITestDirectoryCommitMRJob",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "9f1c017f444d5e57899493dc23207c6b5fc26dae",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITPartitionCommitMRJob.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITestPartitionCommitMRJob.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITPartitionCommitMRJob",
+     "to_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITestPartitionCommitMRJob",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "90015084850298803d8e165a0f6f9719ba724ea3",
+     "from": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/web/ozShell/s3/S3Commands.java",
+     "to": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/web/ozShell/s3/S3Shell.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.ozShell.s3.S3Commands",
+     "to_fqn": "org.apache.hadoop.ozone.web.ozShell.s3.S3Shell",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7fd890116ab941d51b28cf84b01330b6e33c9b18",
+     "from": "hadoop-ozone/tools/src/main/java/org/apache/hadoop/ozone/genesis/BenchMarkBlockManager.java",
+     "to": "hadoop-ozone/tools/src/main/java/org/apache/hadoop/ozone/genesis/BenchMarkSCM.java",
+     "from_fqn": "org.apache.hadoop.ozone.genesis.BenchMarkBlockManager",
+     "to_fqn": "org.apache.hadoop.ozone.genesis.BenchMarkSCM",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7e2770699ce95235732c4c9c0a564cba8d35d1c9",
+     "from": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/security/x509/exceptions/SCMSecurityException.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/security/token/BlockTokenException.java",
+     "from_fqn": "org.apache.hadoop.hdds.security.x509.exceptions.SCMSecurityException",
+     "to_fqn": "org.apache.hadoop.hdds.security.token.BlockTokenException",
+     "commit_had_identity_edges": 4,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "6d0bffe17eadedd60d4599427248b0db4a7c5502",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSEKMSUserDefinedKeyBlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/AbstractAWSCredentialProvider.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSEKMSUserDefinedKeyBlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.AbstractAWSCredentialProvider",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "6d0bffe17eadedd60d4599427248b0db4a7c5502",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSECBlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/delegation/RoleTokenIdentifier.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSECBlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.RoleTokenIdentifier",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "6d0bffe17eadedd60d4599427248b0db4a7c5502",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSES3BlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/auth/delegation/ILoadTestRoleCredentials.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSES3BlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.ILoadTestRoleCredentials",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7f783970364930cc461d1a73833bc58cdd10553e",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/delegation/RoleTokenIdentifier.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSECBlockOutputStream.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.RoleTokenIdentifier",
+     "to_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSECBlockOutputStream",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7f783970364930cc461d1a73833bc58cdd10553e",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/AbstractAWSCredentialProvider.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSEKMSUserDefinedKeyBlockOutputStream.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.auth.AbstractAWSCredentialProvider",
+     "to_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSEKMSUserDefinedKeyBlockOutputStream",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7f783970364930cc461d1a73833bc58cdd10553e",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/auth/delegation/ILoadTestRoleCredentials.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSES3BlockOutputStream.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.ILoadTestRoleCredentials",
+     "to_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSES3BlockOutputStream",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "d7152332b32a575c3a92e3f4c44b95e58462528d",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSEKMSUserDefinedKeyBlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/AbstractAWSCredentialProvider.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSEKMSUserDefinedKeyBlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.AbstractAWSCredentialProvider",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "d7152332b32a575c3a92e3f4c44b95e58462528d",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSECBlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/delegation/RoleTokenIdentifier.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSECBlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.RoleTokenIdentifier",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "d7152332b32a575c3a92e3f4c44b95e58462528d",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSES3BlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/auth/delegation/ILoadTestRoleCredentials.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSES3BlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.ILoadTestRoleCredentials",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "f4906ac01960c78ff0c91797eaa4b36d80f6826d",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-csi/src/main/java/org/apache/hadoop/yarn/csi/utils/ConfigUtils.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/util/csi/CsiConfigUtils.java",
+     "from_fqn": "org.apache.hadoop.yarn.csi.utils.ConfigUtils",
+     "to_fqn": "org.apache.hadoop.yarn.util.csi.CsiConfigUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "5fb14e0635f850c63e009f954b8539a401d0f90a",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/volume/csi/CsiAdaptorClient.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/api/CsiAdaptorPB.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.volume.csi.CsiAdaptorClient",
+     "to_fqn": "org.apache.hadoop.yarn.api.CsiAdaptorPB",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "5fb14e0635f850c63e009f954b8539a401d0f90a",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-common/src/main/java/org/apache/hadoop/yarn/server/volume/csi/CsiAdaptorClientProtocol.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/api/protocolrecords/GetPluginInfoRequest.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.volume.csi.CsiAdaptorClientProtocol",
+     "to_fqn": "org.apache.hadoop.yarn.api.protocolrecords.GetPluginInfoRequest",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "88ea877ac0edc595f256b4d5475e57a3ce5c3e94",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "41b3603b5bcb74a7d78a314a4a5c177d941af27f",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "0c2914e582587c066db1b2c1530e57d5c078577a",
+     "from": "hadoop-ozone/s3gateway/src/main/java/org/apache/hadoop/ozone/s3/object/PutObject.java",
+     "to": "hadoop-ozone/s3gateway/src/main/java/org/apache/hadoop/ozone/s3/endpoint/ObjectEndpoint.java",
+     "from_fqn": "org.apache.hadoop.ozone.s3.object.PutObject",
+     "to_fqn": "org.apache.hadoop.ozone.s3.endpoint.ObjectEndpoint",
+     "commit_had_identity_edges": 12,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "0c2914e582587c066db1b2c1530e57d5c078577a",
+     "from": "hadoop-ozone/s3gateway/src/test/java/org/apache/hadoop/ozone/s3/bucket/TestHeadBucket.java",
+     "to": "hadoop-ozone/s3gateway/src/test/java/org/apache/hadoop/ozone/s3/endpoint/TestBucketHead.java",
+     "from_fqn": "org.apache.hadoop.ozone.s3.bucket.TestHeadBucket",
+     "to_fqn": "org.apache.hadoop.ozone.s3.endpoint.TestBucketHead",
+     "commit_had_identity_edges": 12,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e5e9d7b595fd44eb36db2c2846792fed82d7757c",
+     "from": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/services/TestOauthFailOverHttp.java",
+     "to": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/ITestOauthOverAbfsScheme.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.services.TestOauthFailOverHttp",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.ITestOauthOverAbfsScheme",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7051bd78b17b2666c2fa0f61823920285a060a76",
+     "from": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/services/TestOauthFailOverHttp.java",
+     "to": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/ITestOauthOverAbfsScheme.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.services.TestOauthFailOverHttp",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.ITestOauthOverAbfsScheme",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "a39296260f8c77f3808e27b43c623a0edebe4a17",
+     "from": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/pipelines/Node2PipelineMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/node/states/Node2PipelineMap.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.pipelines.Node2PipelineMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.node.states.Node2PipelineMap",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "44edcdfd6ad09d2b1375c87706ba7c12e527a574",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/TestRMWebServicesFairScheduler.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/fairscheduler/TestRMWebServicesFairScheduler.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.TestRMWebServicesFairScheduler",
+     "to_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.fairscheduler.TestRMWebServicesFairScheduler",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "7ff00f558713f2f0755193b7d57ebdad8d8f349a",
+     "from": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "a271fd0eca75cef8b8ba940cdac8ad4fd21b4462",
+     "from": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/services/ITestTracingServiceImpl.java",
+     "to": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/utils/CleanUpAbfsTestContainer.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.services.ITestTracingServiceImpl",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.utils.CleanUpAbfsTestContainer",
+     "commit_had_identity_edges": 4,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "ce03a93f78c4d97ccb48a3906fcd77ad0ac756be",
+     "from": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/ITestAzureBlobFileSystemOpen.java",
+     "to": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/AbstractAbfsScaleTest.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.ITestAzureBlobFileSystemOpen",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.AbstractAbfsScaleTest",
+     "commit_had_identity_edges": 4,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "81dc4a995c3837b721a0c1f897698b5ed47b8fb0",
+     "from": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/utils/CleanUpAbfsTestContainer.java",
+     "to": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/utils/AbfsTestUtils.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.utils.CleanUpAbfsTestContainer",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.utils.AbfsTestUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "b9932162e9eb4acc9c790fc3c4938a5057fc1658",
+     "from": "hadoop-ozone/integration-test/src/test/java/org/apache/hadoop/ozone/container/common/statemachine/commandhandler/TestReplicateContainerHandler.java",
+     "to": "hadoop-hdds/container-service/src/main/java/org/apache/hadoop/ozone/container/replication/OnDemandContainerReplicationSource.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.common.statemachine.commandhandler.TestReplicateContainerHandler",
+     "to_fqn": "org.apache.hadoop.ozone.container.replication.OnDemandContainerReplicationSource",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "76bae4ccb1d929260038b1869be8070c2320b617",
+     "from": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/OzoneBaseCLI.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/cli/HddsVersionProvider.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.cli.OzoneBaseCLI",
+     "to_fqn": "org.apache.hadoop.hdds.cli.HddsVersionProvider",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "76bae4ccb1d929260038b1869be8070c2320b617",
+     "from": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/container/CreateContainerHandler.java",
+     "to": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/container/CreateSubcommand.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.cli.container.CreateContainerHandler",
+     "to_fqn": "org.apache.hadoop.hdds.scm.cli.container.CreateSubcommand",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "76bae4ccb1d929260038b1869be8070c2320b617",
+     "from": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/OzoneCommandHandler.java",
+     "to": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/container/DeleteSubcommand.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.cli.OzoneCommandHandler",
+     "to_fqn": "org.apache.hadoop.hdds.scm.cli.container.DeleteSubcommand",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "76bae4ccb1d929260038b1869be8070c2320b617",
+     "from": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/container/InfoContainerHandler.java",
+     "to": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/container/InfoSubcommand.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.cli.container.InfoContainerHandler",
+     "to_fqn": "org.apache.hadoop.hdds.scm.cli.container.InfoSubcommand",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "76bae4ccb1d929260038b1869be8070c2320b617",
+     "from": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/container/ListContainerHandler.java",
+     "to": "hadoop-hdds/tools/src/main/java/org/apache/hadoop/hdds/scm/cli/container/ListSubcommand.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.cli.container.ListContainerHandler",
+     "to_fqn": "org.apache.hadoop.hdds.scm.cli.container.ListSubcommand",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "00eceed233d6e80d5c7137bf5b5286746ec4d5fb",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/BlockStorageMovementInfosBatch.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/protocol/BlocksStorageMoveAttemptFinished.java",
+     "from_fqn": "org.apache.hadoop.hdfs.server.namenode.BlockStorageMovementInfosBatch",
+     "to_fqn": "org.apache.hadoop.hdfs.server.protocol.BlocksStorageMoveAttemptFinished",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "2ec97abb2e93c1a8127e7a146c08e26454b583fa",
+     "from": "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/TestLocalFileSystemMultipartUploader.java",
+     "to": "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/contract/localfs/TestLocalFSContractMultipartUploader.java",
+     "from_fqn": "org.apache.hadoop.fs.TestLocalFileSystemMultipartUploader",
+     "to_fqn": "org.apache.hadoop.fs.contract.localfs.TestLocalFSContractMultipartUploader",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "2ec97abb2e93c1a8127e7a146c08e26454b583fa",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/fs/TestHDFSMultipartUploader.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/fs/contract/hdfs/TestHDFSContractMultipartUploader.java",
+     "from_fqn": "org.apache.hadoop.fs.TestHDFSMultipartUploader",
+     "to_fqn": "org.apache.hadoop.fs.contract.hdfs.TestHDFSContractMultipartUploader",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "dcc21a4f939be587ea2642e44e51ccf53534f2e8",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/jmx/ServiceRuntimeInfoMBean.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/jmx/ServiceRuntimeInfoImpl.java",
+     "from_fqn": "org.apache.hadoop.jmx.ServiceRuntimeInfoMBean",
+     "to_fqn": "org.apache.hadoop.jmx.ServiceRuntimeInfoImpl",
+     "commit_had_identity_edges": 2,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+     "from": "hadoop-hdfs-client/src/main/java/org/apache/hadoop/scm/container/common/helpers/StateMachine/InvalidStateTransitionException.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/common/statemachine/InvalidStateTransitionException.java",
+     "from_fqn": "org.apache.hadoop.scm.container.common.helpers.StateMachine.InvalidStateTransitionException",
+     "to_fqn": "org.apache.hadoop.ozone.common.statemachine.InvalidStateTransitionException",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+     "from": "hadoop-hdfs-client/src/main/java/org/apache/hadoop/scm/container/common/helpers/StateMachine/StateMachine.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/common/statemachine/StateMachine.java",
+     "from_fqn": "org.apache.hadoop.scm.container.common.helpers.StateMachine.StateMachine",
+     "to_fqn": "org.apache.hadoop.ozone.common.statemachine.StateMachine",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "bd33038bf4a80a19e5cbd73566f8ea788a5c6163",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/ratis/RatisManager.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/pipelines/PipelineManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.ratis.RatisManager",
+     "to_fqn": "org.apache.hadoop.ozone.scm.pipelines.PipelineManager",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "77d4b18700cb815610f7775c13145613f7501243",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/client/rpc/OzoneRpcClient.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/client/rpc/RpcClient.java",
+     "from_fqn": "org.apache.hadoop.ozone.client.rpc.OzoneRpcClient",
+     "to_fqn": "org.apache.hadoop.ozone.client.rpc.RpcClient",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/client/OzoneClientUtils.java",
+     "to": "hadoop-hdsl/container-service/src/main/java/org/apache/hadoop/ozone/scm/HdslServerUtil.java",
+     "from_fqn": "org.apache.hadoop.ozone.client.OzoneClientUtils",
+     "to_fqn": "org.apache.hadoop.ozone.scm.HdslServerUtil",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/BlockDeletingServiceTestImpl.java",
+     "to": "hadoop-hdsl/container-service/src/test/java/org/apache/hadoop/ozone/container/testutils/BlockDeletingServiceTestImpl.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.BlockDeletingServiceTestImpl",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.BlockDeletingServiceTestImpl",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationDatanodeStateManager.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationDatanodeStateManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationDatanodeStateManager",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationDatanodeStateManager",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodeManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodeManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodeManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodeManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodePoolManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodePoolManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodePoolManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodePoolManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneHelper.java",
+     "to": "hadoop-ozone/integration-test/src/test/java/org/apache/hadoop/ozone/TestOzoneHelper.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestOzoneHelper",
+     "to_fqn": "org.apache.hadoop.ozone.TestOzoneHelper",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/web/utils/OzoneUtils.java",
+     "to": "hadoop-ozone/objectstore-service/src/main/java/org/apache/hadoop/ozone/OzoneRestUtils.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.utils.OzoneUtils",
+     "to_fqn": "org.apache.hadoop.ozone.OzoneRestUtils",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "6cc765fbb677623fa192832a064e7d3d447781bf",
+     "from": "hadoop-ozone/integration-test/src/test/java/org/apache/hadoop/ozone/scm/container/ContainerStates/BenchmarkContainerStateMap.java",
+     "to": "hadoop-ozone/tools/src/main/java/org/apache/hadoop/ozone/genesis/BenchMarkContainerStateMap.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.BenchmarkContainerStateMap",
+     "to_fqn": "org.apache.hadoop.ozone.genesis.BenchMarkContainerStateMap",
+     "commit_had_identity_edges": 4,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/scm/container/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.ContainerID",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerState.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerState.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerState",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerState",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerStateMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerStateMap.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerStateMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerStateMap",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/scm/container/ContainerStates/TestContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/test/java/org/apache/hadoop/hdds/scm/container/states/TestContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.TestContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.TestContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/BaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/BaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.BaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.BaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServerUtils.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServerUtils.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServerUtils",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServerUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfo.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfo.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfo",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfo",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfoImpl.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfoImpl.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfoImpl",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfoImpl",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdsl/server/TestBaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdds/server/TestBaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.TestBaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.TestBaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "17a6e6262931f63a860c523400b5ebfc631d641f",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/cblock/TestStorageImpl.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/cblock/TestLocalBlockCache.java",
+     "from_fqn": "org.apache.hadoop.cblock.TestStorageImpl",
+     "to_fqn": "org.apache.hadoop.cblock.TestLocalBlockCache",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerPlacementPolicy.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/algorithms/ContainerPlacementPolicy.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerPlacementPolicy",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.algorithms.ContainerPlacementPolicy",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/node/NodeStat.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/metrics/NodeStat.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.node.NodeStat",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.metrics.NodeStat",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "c9e6d4378decfdde9bb8978ca9efc8e8003b43e2",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneVolumes.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneHelper.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestOzoneVolumes",
+     "to_fqn": "org.apache.hadoop.ozone.web.TestOzoneHelper",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "e3aa2b687c8bc61500e0f6ddac5212ba3c28e297",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/storage/TestStorageContainerManager.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/TestStorageContainerManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.storage.TestStorageContainerManager",
+     "to_fqn": "org.apache.hadoop.ozone.TestStorageContainerManager",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    }
+   ]
+  },
+  "50%": {
+   "git_renames": 1825,
+   "fqn_preserving": 1025,
+   "undecidable_path": 255,
+   "fqn_changing": 545,
+   "explained_by_rm": 489,
+   "coverage": 0.8972477064220183,
+   "unexplained_examples": [
+    {
+     "sha": "81d90fd65b3c0c7ac66ebae78e22dcb240a0547b",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/MultiObjectDeleteSupport.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/impl/MultiObjectDeleteException.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.impl.MultiObjectDeleteSupport",
+     "to_fqn": "org.apache.hadoop.fs.s3a.impl.MultiObjectDeleteException",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1a205cc3adffa568c814a5241e041b08e2fcd3eb",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/SpanReceiverInfoBuilder.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/Span.java",
+     "from_fqn": "org.apache.hadoop.tracing.SpanReceiverInfoBuilder",
+     "to_fqn": "org.apache.hadoop.tracing.Span",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "1a205cc3adffa568c814a5241e041b08e2fcd3eb",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/TraceAdminProtocolPB.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/tracing/TraceScope.java",
+     "from_fqn": "org.apache.hadoop.tracing.TraceAdminProtocolPB",
+     "to_fqn": "org.apache.hadoop.tracing.TraceScope",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "b9fa5e0182c19adc4ff4cd2d9265a36ce9913178",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/hdfs/DFSMultipartUploaderFactory.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/InternalOperations.java",
+     "from_fqn": "org.apache.hadoop.hdfs.DFSMultipartUploaderFactory",
+     "to_fqn": "org.apache.hadoop.fs.InternalOperations",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "791270a2e5e31546ff5c1ef4fa8bad6852b906dc",
+     "from": "hadoop-tools/hadoop-azure/src/main/java/org/apache/hadoop/fs/azurebfs/extensions/AbfsAuthorizationException.java",
+     "to": "hadoop-tools/hadoop-azure/src/main/java/org/apache/hadoop/fs/azurebfs/contracts/exceptions/SASTokenProviderException.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.extensions.AbfsAuthorizationException",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.contracts.exceptions.SASTokenProviderException",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "10b4997b42e64ae33b2e26636f449d3dfee6169f",
+     "from": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestIngClient.java",
+     "to": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestingClient.java",
+     "from_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestIngClient",
+     "to_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestingClient",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "b83eae7bdb9ec908cfe5ab87c8862cc9125c8aed",
+     "from": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/om/response/security/OMDelegationTokenResponse.java",
+     "to": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/om/response/security/OMCancelDelegationTokenResponse.java",
+     "from_fqn": "org.apache.hadoop.ozone.om.response.security.OMDelegationTokenResponse",
+     "to_fqn": "org.apache.hadoop.ozone.om.response.security.OMCancelDelegationTokenResponse",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "8ff41d62434266d49fab65abacea5f9a20fe8172",
+     "from": "hadoop-ozone/ozone-recon/src/main/java/org/apache/hadoop/ozone/recon/ReconApplication.java",
+     "to": "hadoop-ozone/ozone-recon/src/main/java/org/apache/hadoop/ozone/recon/ReconGuiceServletContextListener.java",
+     "from_fqn": "org.apache.hadoop.ozone.recon.ReconApplication",
+     "to_fqn": "org.apache.hadoop.ozone.recon.ReconGuiceServletContextListener",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "9f1c017f444d5e57899493dc23207c6b5fc26dae",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITDirectoryCommitMRJob.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITestDirectoryCommitMRJob.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITDirectoryCommitMRJob",
+     "to_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITestDirectoryCommitMRJob",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "9f1c017f444d5e57899493dc23207c6b5fc26dae",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITPartitionCommitMRJob.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/commit/staging/integration/ITestPartitionCommitMRJob.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITPartitionCommitMRJob",
+     "to_fqn": "org.apache.hadoop.fs.s3a.commit.staging.integration.ITestPartitionCommitMRJob",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7fd890116ab941d51b28cf84b01330b6e33c9b18",
+     "from": "hadoop-ozone/tools/src/main/java/org/apache/hadoop/ozone/genesis/BenchMarkBlockManager.java",
+     "to": "hadoop-ozone/tools/src/main/java/org/apache/hadoop/ozone/genesis/BenchMarkSCM.java",
+     "from_fqn": "org.apache.hadoop.ozone.genesis.BenchMarkBlockManager",
+     "to_fqn": "org.apache.hadoop.ozone.genesis.BenchMarkSCM",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7e2770699ce95235732c4c9c0a564cba8d35d1c9",
+     "from": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/security/x509/exceptions/SCMSecurityException.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/security/token/BlockTokenException.java",
+     "from_fqn": "org.apache.hadoop.hdds.security.x509.exceptions.SCMSecurityException",
+     "to_fqn": "org.apache.hadoop.hdds.security.token.BlockTokenException",
+     "commit_had_identity_edges": 4,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "6d0bffe17eadedd60d4599427248b0db4a7c5502",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSECBlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/delegation/RoleTokenIdentifier.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSECBlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.RoleTokenIdentifier",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "6d0bffe17eadedd60d4599427248b0db4a7c5502",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSES3BlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/auth/delegation/ILoadTestRoleCredentials.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSES3BlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.ILoadTestRoleCredentials",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7f783970364930cc461d1a73833bc58cdd10553e",
+     "from": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/delegation/RoleTokenIdentifier.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSECBlockOutputStream.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.RoleTokenIdentifier",
+     "to_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSECBlockOutputStream",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "7f783970364930cc461d1a73833bc58cdd10553e",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/auth/delegation/ILoadTestRoleCredentials.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSES3BlockOutputStream.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.ILoadTestRoleCredentials",
+     "to_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSES3BlockOutputStream",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "d7152332b32a575c3a92e3f4c44b95e58462528d",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSECBlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/main/java/org/apache/hadoop/fs/s3a/auth/delegation/RoleTokenIdentifier.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSECBlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.RoleTokenIdentifier",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "d7152332b32a575c3a92e3f4c44b95e58462528d",
+     "from": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/ITestS3AEncryptionSSES3BlockOutputStream.java",
+     "to": "hadoop-tools/hadoop-aws/src/test/java/org/apache/hadoop/fs/s3a/auth/delegation/ILoadTestRoleCredentials.java",
+     "from_fqn": "org.apache.hadoop.fs.s3a.ITestS3AEncryptionSSES3BlockOutputStream",
+     "to_fqn": "org.apache.hadoop.fs.s3a.auth.delegation.ILoadTestRoleCredentials",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "f4906ac01960c78ff0c91797eaa4b36d80f6826d",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-csi/src/main/java/org/apache/hadoop/yarn/csi/utils/ConfigUtils.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/util/csi/CsiConfigUtils.java",
+     "from_fqn": "org.apache.hadoop.yarn.csi.utils.ConfigUtils",
+     "to_fqn": "org.apache.hadoop.yarn.util.csi.CsiConfigUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "5fb14e0635f850c63e009f954b8539a401d0f90a",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/volume/csi/CsiAdaptorClient.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/api/CsiAdaptorPB.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.volume.csi.CsiAdaptorClient",
+     "to_fqn": "org.apache.hadoop.yarn.api.CsiAdaptorPB",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "5fb14e0635f850c63e009f954b8539a401d0f90a",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-common/src/main/java/org/apache/hadoop/yarn/server/volume/csi/CsiAdaptorClientProtocol.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/api/protocolrecords/GetPluginInfoRequest.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.volume.csi.CsiAdaptorClientProtocol",
+     "to_fqn": "org.apache.hadoop.yarn.api.protocolrecords.GetPluginInfoRequest",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "88ea877ac0edc595f256b4d5475e57a3ce5c3e94",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "41b3603b5bcb74a7d78a314a4a5c177d941af27f",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "0c2914e582587c066db1b2c1530e57d5c078577a",
+     "from": "hadoop-ozone/s3gateway/src/test/java/org/apache/hadoop/ozone/s3/bucket/TestHeadBucket.java",
+     "to": "hadoop-ozone/s3gateway/src/test/java/org/apache/hadoop/ozone/s3/endpoint/TestBucketHead.java",
+     "from_fqn": "org.apache.hadoop.ozone.s3.bucket.TestHeadBucket",
+     "to_fqn": "org.apache.hadoop.ozone.s3.endpoint.TestBucketHead",
+     "commit_had_identity_edges": 12,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "a39296260f8c77f3808e27b43c623a0edebe4a17",
+     "from": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/pipelines/Node2PipelineMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/node/states/Node2PipelineMap.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.pipelines.Node2PipelineMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.node.states.Node2PipelineMap",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "44edcdfd6ad09d2b1375c87706ba7c12e527a574",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/TestRMWebServicesFairScheduler.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/fairscheduler/TestRMWebServicesFairScheduler.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.TestRMWebServicesFairScheduler",
+     "to_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.fairscheduler.TestRMWebServicesFairScheduler",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "7ff00f558713f2f0755193b7d57ebdad8d8f349a",
+     "from": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "81dc4a995c3837b721a0c1f897698b5ed47b8fb0",
+     "from": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/utils/CleanUpAbfsTestContainer.java",
+     "to": "hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/utils/AbfsTestUtils.java",
+     "from_fqn": "org.apache.hadoop.fs.azurebfs.utils.CleanUpAbfsTestContainer",
+     "to_fqn": "org.apache.hadoop.fs.azurebfs.utils.AbfsTestUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "2ec97abb2e93c1a8127e7a146c08e26454b583fa",
+     "from": "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/TestLocalFileSystemMultipartUploader.java",
+     "to": "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/contract/localfs/TestLocalFSContractMultipartUploader.java",
+     "from_fqn": "org.apache.hadoop.fs.TestLocalFileSystemMultipartUploader",
+     "to_fqn": "org.apache.hadoop.fs.contract.localfs.TestLocalFSContractMultipartUploader",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "dcc21a4f939be587ea2642e44e51ccf53534f2e8",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/jmx/ServiceRuntimeInfoMBean.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/jmx/ServiceRuntimeInfoImpl.java",
+     "from_fqn": "org.apache.hadoop.jmx.ServiceRuntimeInfoMBean",
+     "to_fqn": "org.apache.hadoop.jmx.ServiceRuntimeInfoImpl",
+     "commit_had_identity_edges": 2,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+     "from": "hadoop-hdfs-client/src/main/java/org/apache/hadoop/scm/container/common/helpers/StateMachine/InvalidStateTransitionException.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/common/statemachine/InvalidStateTransitionException.java",
+     "from_fqn": "org.apache.hadoop.scm.container.common.helpers.StateMachine.InvalidStateTransitionException",
+     "to_fqn": "org.apache.hadoop.ozone.common.statemachine.InvalidStateTransitionException",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+     "from": "hadoop-hdfs-client/src/main/java/org/apache/hadoop/scm/container/common/helpers/StateMachine/StateMachine.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/common/statemachine/StateMachine.java",
+     "from_fqn": "org.apache.hadoop.scm.container.common.helpers.StateMachine.StateMachine",
+     "to_fqn": "org.apache.hadoop.ozone.common.statemachine.StateMachine",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "77d4b18700cb815610f7775c13145613f7501243",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/client/rpc/OzoneRpcClient.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/client/rpc/RpcClient.java",
+     "from_fqn": "org.apache.hadoop.ozone.client.rpc.OzoneRpcClient",
+     "to_fqn": "org.apache.hadoop.ozone.client.rpc.RpcClient",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/BlockDeletingServiceTestImpl.java",
+     "to": "hadoop-hdsl/container-service/src/test/java/org/apache/hadoop/ozone/container/testutils/BlockDeletingServiceTestImpl.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.BlockDeletingServiceTestImpl",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.BlockDeletingServiceTestImpl",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationDatanodeStateManager.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationDatanodeStateManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationDatanodeStateManager",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationDatanodeStateManager",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodeManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodeManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodeManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodeManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodePoolManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodePoolManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodePoolManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodePoolManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneHelper.java",
+     "to": "hadoop-ozone/integration-test/src/test/java/org/apache/hadoop/ozone/TestOzoneHelper.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestOzoneHelper",
+     "to_fqn": "org.apache.hadoop.ozone.TestOzoneHelper",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/web/utils/OzoneUtils.java",
+     "to": "hadoop-ozone/objectstore-service/src/main/java/org/apache/hadoop/ozone/OzoneRestUtils.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.utils.OzoneUtils",
+     "to_fqn": "org.apache.hadoop.ozone.OzoneRestUtils",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "6cc765fbb677623fa192832a064e7d3d447781bf",
+     "from": "hadoop-ozone/integration-test/src/test/java/org/apache/hadoop/ozone/scm/container/ContainerStates/BenchmarkContainerStateMap.java",
+     "to": "hadoop-ozone/tools/src/main/java/org/apache/hadoop/ozone/genesis/BenchMarkContainerStateMap.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.BenchmarkContainerStateMap",
+     "to_fqn": "org.apache.hadoop.ozone.genesis.BenchMarkContainerStateMap",
+     "commit_had_identity_edges": 4,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/scm/container/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.ContainerID",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerState.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerState.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerState",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerState",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerStateMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerStateMap.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerStateMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerStateMap",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/scm/container/ContainerStates/TestContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/test/java/org/apache/hadoop/hdds/scm/container/states/TestContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.TestContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.TestContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/BaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/BaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.BaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.BaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServerUtils.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServerUtils.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServerUtils",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServerUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfo.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfo.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfo",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfo",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfoImpl.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfoImpl.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfoImpl",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfoImpl",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdsl/server/TestBaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdds/server/TestBaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.TestBaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.TestBaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerPlacementPolicy.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/algorithms/ContainerPlacementPolicy.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerPlacementPolicy",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.algorithms.ContainerPlacementPolicy",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/node/NodeStat.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/metrics/NodeStat.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.node.NodeStat",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.metrics.NodeStat",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "c9e6d4378decfdde9bb8978ca9efc8e8003b43e2",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneVolumes.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneHelper.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestOzoneVolumes",
+     "to_fqn": "org.apache.hadoop.ozone.web.TestOzoneHelper",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "e3aa2b687c8bc61500e0f6ddac5212ba3c28e297",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/storage/TestStorageContainerManager.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/TestStorageContainerManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.storage.TestStorageContainerManager",
+     "to_fqn": "org.apache.hadoop.ozone.TestStorageContainerManager",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    }
+   ]
+  },
+  "70%": {
+   "git_renames": 1747,
+   "fqn_preserving": 1021,
+   "undecidable_path": 253,
+   "fqn_changing": 473,
+   "explained_by_rm": 443,
+   "coverage": 0.9365750528541226,
+   "unexplained_examples": [
+    {
+     "sha": "10b4997b42e64ae33b2e26636f449d3dfee6169f",
+     "from": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestIngClient.java",
+     "to": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestingClient.java",
+     "from_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestIngClient",
+     "to_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestingClient",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "b83eae7bdb9ec908cfe5ab87c8862cc9125c8aed",
+     "from": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/om/response/security/OMDelegationTokenResponse.java",
+     "to": "hadoop-ozone/ozone-manager/src/main/java/org/apache/hadoop/ozone/om/response/security/OMCancelDelegationTokenResponse.java",
+     "from_fqn": "org.apache.hadoop.ozone.om.response.security.OMDelegationTokenResponse",
+     "to_fqn": "org.apache.hadoop.ozone.om.response.security.OMCancelDelegationTokenResponse",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "88ea877ac0edc595f256b4d5475e57a3ce5c3e94",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "41b3603b5bcb74a7d78a314a4a5c177d941af27f",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "a39296260f8c77f3808e27b43c623a0edebe4a17",
+     "from": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/pipelines/Node2PipelineMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/node/states/Node2PipelineMap.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.pipelines.Node2PipelineMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.node.states.Node2PipelineMap",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "44edcdfd6ad09d2b1375c87706ba7c12e527a574",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/TestRMWebServicesFairScheduler.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/fairscheduler/TestRMWebServicesFairScheduler.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.TestRMWebServicesFairScheduler",
+     "to_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.fairscheduler.TestRMWebServicesFairScheduler",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "7ff00f558713f2f0755193b7d57ebdad8d8f349a",
+     "from": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+     "from": "hadoop-hdfs-client/src/main/java/org/apache/hadoop/scm/container/common/helpers/StateMachine/InvalidStateTransitionException.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/common/statemachine/InvalidStateTransitionException.java",
+     "from_fqn": "org.apache.hadoop.scm.container.common.helpers.StateMachine.InvalidStateTransitionException",
+     "to_fqn": "org.apache.hadoop.ozone.common.statemachine.InvalidStateTransitionException",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+     "from": "hadoop-hdfs-client/src/main/java/org/apache/hadoop/scm/container/common/helpers/StateMachine/StateMachine.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/common/statemachine/StateMachine.java",
+     "from_fqn": "org.apache.hadoop.scm.container.common.helpers.StateMachine.StateMachine",
+     "to_fqn": "org.apache.hadoop.ozone.common.statemachine.StateMachine",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/BlockDeletingServiceTestImpl.java",
+     "to": "hadoop-hdsl/container-service/src/test/java/org/apache/hadoop/ozone/container/testutils/BlockDeletingServiceTestImpl.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.BlockDeletingServiceTestImpl",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.BlockDeletingServiceTestImpl",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationDatanodeStateManager.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationDatanodeStateManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationDatanodeStateManager",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationDatanodeStateManager",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodeManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodeManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodeManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodeManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodePoolManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodePoolManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodePoolManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodePoolManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneHelper.java",
+     "to": "hadoop-ozone/integration-test/src/test/java/org/apache/hadoop/ozone/TestOzoneHelper.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestOzoneHelper",
+     "to_fqn": "org.apache.hadoop.ozone.TestOzoneHelper",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/scm/container/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.ContainerID",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerState.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerState.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerState",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerState",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerStateMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerStateMap.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerStateMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerStateMap",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/scm/container/ContainerStates/TestContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/test/java/org/apache/hadoop/hdds/scm/container/states/TestContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.TestContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.TestContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/BaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/BaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.BaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.BaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServerUtils.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServerUtils.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServerUtils",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServerUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfo.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfo.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfo",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfo",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfoImpl.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfoImpl.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfoImpl",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfoImpl",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdsl/server/TestBaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdds/server/TestBaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.TestBaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.TestBaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerPlacementPolicy.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/algorithms/ContainerPlacementPolicy.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerPlacementPolicy",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.algorithms.ContainerPlacementPolicy",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/node/NodeStat.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/metrics/NodeStat.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.node.NodeStat",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.metrics.NodeStat",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "c9e6d4378decfdde9bb8978ca9efc8e8003b43e2",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneVolumes.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneHelper.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestOzoneVolumes",
+     "to_fqn": "org.apache.hadoop.ozone.web.TestOzoneHelper",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "e3aa2b687c8bc61500e0f6ddac5212ba3c28e297",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/storage/TestStorageContainerManager.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/TestStorageContainerManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.storage.TestStorageContainerManager",
+     "to_fqn": "org.apache.hadoop.ozone.TestStorageContainerManager",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    }
+   ]
+  },
+  "90%": {
+   "git_renames": 1566,
+   "fqn_preserving": 981,
+   "undecidable_path": 245,
+   "fqn_changing": 340,
+   "explained_by_rm": 315,
+   "coverage": 0.9264705882352942,
+   "unexplained_examples": [
+    {
+     "sha": "10b4997b42e64ae33b2e26636f449d3dfee6169f",
+     "from": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestIngClient.java",
+     "to": "hadoop-ozone/ozone-manager/src/test/java/org/apache/hadoop/ozone/om/ScmBlockLocationTestingClient.java",
+     "from_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestIngClient",
+     "to_fqn": "org.apache.hadoop.ozone.om.ScmBlockLocationTestingClient",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 0
+    },
+    {
+     "sha": "88ea877ac0edc595f256b4d5475e57a3ce5c3e94",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "41b3603b5bcb74a7d78a314a4a5c177d941af27f",
+     "from": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "to": "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/security/token/DelegationTokenIssuer.java",
+     "from_fqn": "org.apache.hadoop.security.token.org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "to_fqn": "org.apache.hadoop.security.token.DelegationTokenIssuer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "a39296260f8c77f3808e27b43c623a0edebe4a17",
+     "from": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/pipelines/Node2PipelineMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/node/states/Node2PipelineMap.java",
+     "from_fqn": "org.apache.hadoop.hdds.scm.pipelines.Node2PipelineMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.node.states.Node2PipelineMap",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "44edcdfd6ad09d2b1375c87706ba7c12e527a574",
+     "from": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/TestRMWebServicesFairScheduler.java",
+     "to": "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/fairscheduler/TestRMWebServicesFairScheduler.java",
+     "from_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.TestRMWebServicesFairScheduler",
+     "to_fqn": "org.apache.hadoop.yarn.server.resourcemanager.webapp.fairscheduler.TestRMWebServicesFairScheduler",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "7ff00f558713f2f0755193b7d57ebdad8d8f349a",
+     "from": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 1
+    },
+    {
+     "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+     "from": "hadoop-hdfs-client/src/main/java/org/apache/hadoop/scm/container/common/helpers/StateMachine/InvalidStateTransitionException.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/common/statemachine/InvalidStateTransitionException.java",
+     "from_fqn": "org.apache.hadoop.scm.container.common.helpers.StateMachine.InvalidStateTransitionException",
+     "to_fqn": "org.apache.hadoop.ozone.common.statemachine.InvalidStateTransitionException",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs-client/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/BlockDeletingServiceTestImpl.java",
+     "to": "hadoop-hdsl/container-service/src/test/java/org/apache/hadoop/ozone/container/testutils/BlockDeletingServiceTestImpl.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.BlockDeletingServiceTestImpl",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.BlockDeletingServiceTestImpl",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationDatanodeStateManager.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationDatanodeStateManager.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationDatanodeStateManager",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationDatanodeStateManager",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodeManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodeManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodeManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodeManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/container/TestUtils/ReplicationNodePoolManagerMock.java",
+     "to": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/container/testutils/ReplicationNodePoolManagerMock.java",
+     "from_fqn": "org.apache.hadoop.ozone.container.TestUtils.ReplicationNodePoolManagerMock",
+     "to_fqn": "org.apache.hadoop.ozone.container.testutils.ReplicationNodePoolManagerMock",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestOzoneHelper.java",
+     "to": "hadoop-ozone/integration-test/src/test/java/org/apache/hadoop/ozone/TestOzoneHelper.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestOzoneHelper",
+     "to_fqn": "org.apache.hadoop.ozone.TestOzoneHelper",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/ozone/web/TestErrorCode.java",
+     "to": "hadoop-ozone/objectstore-service/src/test/java/org/apache/hadoop/ozone/TestErrorCode.java",
+     "from_fqn": "org.apache.hadoop.ozone.web.TestErrorCode",
+     "to_fqn": "org.apache.hadoop.ozone.TestErrorCode",
+     "commit_had_identity_edges": 3,
+     "commit_had_bulk": 41
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/common/src/main/java/org/apache/hadoop/scm/container/ContainerStates/ContainerID.java",
+     "to": "hadoop-hdds/common/src/main/java/org/apache/hadoop/hdds/scm/container/ContainerID.java",
+     "from_fqn": "org.apache.hadoop.scm.container.ContainerStates.ContainerID",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.ContainerID",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerStates/ContainerStateMap.java",
+     "to": "hadoop-hdds/server-scm/src/main/java/org/apache/hadoop/hdds/scm/container/states/ContainerStateMap.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.ContainerStateMap",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.ContainerStateMap",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+     "from": "hadoop-hdsl/server-scm/src/test/java/org/apache/hadoop/ozone/scm/container/ContainerStates/TestContainerAttribute.java",
+     "to": "hadoop-hdds/server-scm/src/test/java/org/apache/hadoop/hdds/scm/container/states/TestContainerAttribute.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerStates.TestContainerAttribute",
+     "to_fqn": "org.apache.hadoop.hdds.scm.container.states.TestContainerAttribute",
+     "commit_had_identity_edges": 110,
+     "commit_had_bulk": 5
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/BaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/BaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.BaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.BaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServerUtils.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServerUtils.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServerUtils",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServerUtils",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfo.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfo.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfo",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfo",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdsl/server/ServiceRuntimeInfoImpl.java",
+     "to": "hadoop-hdds/framework/src/main/java/org/apache/hadoop/hdds/server/ServiceRuntimeInfoImpl.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.ServiceRuntimeInfoImpl",
+     "to_fqn": "org.apache.hadoop.hdds.server.ServiceRuntimeInfoImpl",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+     "from": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdsl/server/TestBaseHttpServer.java",
+     "to": "hadoop-hdds/framework/src/test/java/org/apache/hadoop/hdds/server/TestBaseHttpServer.java",
+     "from_fqn": "org.apache.hadoop.hdsl.server.TestBaseHttpServer",
+     "to_fqn": "org.apache.hadoop.hdds.server.TestBaseHttpServer",
+     "commit_had_identity_edges": 0,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/ContainerPlacementPolicy.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/algorithms/ContainerPlacementPolicy.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.container.ContainerPlacementPolicy",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.algorithms.ContainerPlacementPolicy",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    },
+    {
+     "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+     "from": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/node/NodeStat.java",
+     "to": "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/ozone/scm/container/placement/metrics/NodeStat.java",
+     "from_fqn": "org.apache.hadoop.ozone.scm.node.NodeStat",
+     "to_fqn": "org.apache.hadoop.ozone.scm.container.placement.metrics.NodeStat",
+     "commit_had_identity_edges": 1,
+     "commit_had_bulk": 2
+    }
+   ]
+  }
+ },
+ "residual_categories": {
+  "rename_in_place_similar_name": 9,
+  "unrelated_names": 14,
+  "move_and_rename_similar_name": 6,
+  "package_only_move": 27
+ },
+ "bulk_move_commits": {
+  "n_commits": 61,
+  "fqn_changing_renames": 248,
+  "explained_by_class_edges": 218,
+  "coverage": 0.8790322580645161,
+  "rows": [
+   {
+    "sha": "6e2b5fa493ff8e8c2bb28e6f6f4c19347bc9b99d",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "08794423e89bce88e09ddc93c2cc27104a3cc24b",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "8dac1094d807d2b9f388ea3d0c26ecb478127966",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "dc335474a6592bac8298702494f78733c234a950",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "53e40bc7189598d42d92f208522f00a224c95719",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "4009b66090ec2db375ca5d857f6164e02e8c0cf1",
+    "bulk": [
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.ozone.container.ozoneimpl",
+      "org.apache.hadoop.ozone.container.common.impl"
+     ]
+    ],
+    "fqn_changing_renames": 12,
+    "explained_by_class_edges": 12,
+    "identity_edges_in_commit": 12
+   },
+   {
+    "sha": "e3aa2b687c8bc61500e0f6ddac5212ba3c28e297",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 1,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "56b0fddfbd0f1c617b35fc07b0d60e0874185617",
+    "bulk": [
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.ozone.container.common.transport.client",
+      "org.apache.hadoop.scm"
+     ]
+    ],
+    "fqn_changing_renames": 5,
+    "explained_by_class_edges": 5,
+    "identity_edges_in_commit": 5
+   },
+   {
+    "sha": "bb410de10c55c2b8b6168311f2771dac6bdc2167",
+    "bulk": [
+     "Rename Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.ozone.storage",
+      "org.apache.hadoop.ozone.scm"
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 1
+   },
+   {
+    "sha": "5984d40b86d297deb6b6f0971bdff1b8aab23d80",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 2,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 1
+   },
+   {
+    "sha": "bacd1188f16721f5d98528e34db7b4a05d774ef0",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 2,
+    "explained_by_class_edges": 2,
+    "identity_edges_in_commit": 2
+   },
+   {
+    "sha": "bb9a4793d329eb9f2f955bd7b2e05b33b400bf0f",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 25,
+    "explained_by_class_edges": 25,
+    "identity_edges_in_commit": 25
+   },
+   {
+    "sha": "795ba1b3b703865373356a390467f774f2c6f66a",
+    "bulk": [
+     "Move Package",
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.scm.container.common.helpers.StateMachine",
+      "org.apache.hadoop.ozone.common.statemachine"
+     ],
+     [
+      "org.apache.hadoop.scm",
+      "org.apache.hadoop.ozone.common"
+     ]
+    ],
+    "fqn_changing_renames": 3,
+    "explained_by_class_edges": 1,
+    "identity_edges_in_commit": 1
+   },
+   {
+    "sha": "4e61bc431e297d93c93ede7b42be25259f3ca835",
+    "bulk": [
+     "Rename Package",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Rename Package",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.ozone.container.TestUtils",
+      "org.apache.hadoop.ozone.container.testutils"
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      "org.apache.hadoop.ozone.client",
+      "org.apache.hadoop.ozone.scm"
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 11,
+    "explained_by_class_edges": 3,
+    "identity_edges_in_commit": 3
+   },
+   {
+    "sha": "4f37ff76165c11069f6c9c58b916e57a275bc00c",
+    "bulk": [
+     "Move Package",
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.ozone.web.util",
+      "org.apache.hadoop.hdsl.server"
+     ],
+     [
+      "org.apache.hadoop.ozone.web",
+      "org.apache.hadoop.hdsl.server"
+     ]
+    ],
+    "fqn_changing_renames": 5,
+    "explained_by_class_edges": 5,
+    "identity_edges_in_commit": 5
+   },
+   {
+    "sha": "6cc765fbb677623fa192832a064e7d3d447781bf",
+    "bulk": [
+     "Rename Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.ozone.tools",
+      "org.apache.hadoop.ozone.freon"
+     ]
+    ],
+    "fqn_changing_renames": 5,
+    "explained_by_class_edges": 4,
+    "identity_edges_in_commit": 4
+   },
+   {
+    "sha": "8b832f3c3556ef3f970bac636ef9c70ee9dd260d",
+    "bulk": [
+     "Move Source Folder",
+     "Rename Package",
+     "Split Package",
+     "Merge Package",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      "org.apache.hadoop.hdsl",
+      "org.apache.hadoop.hdds"
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 108,
+    "explained_by_class_edges": 103,
+    "identity_edges_in_commit": 110
+   },
+   {
+    "sha": "e1470c8e9afe4a3c149870c487a408dcd1d585aa",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 5,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "025058f251a06a9fbe589ff1833d7de85ecd8b3e",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "a23ff8d88001ad8e4ac4c36fc1f7691d193dc1d0",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "901156716990fa00b44515dafcb9916c20556a0e",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "7ff00f558713f2f0755193b7d57ebdad8d8f349a",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 1,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "62f817d32e6304b4cc1f9b909e7b815316b3a021",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "44edcdfd6ad09d2b1375c87706ba7c12e527a574",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 1,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "a39296260f8c77f3808e27b43c623a0edebe4a17",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 1,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "0c2914e582587c066db1b2c1530e57d5c078577a",
+    "bulk": [
+     "Merge Package",
+     "Merge Package"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 13,
+    "explained_by_class_edges": 12,
+    "identity_edges_in_commit": 12
+   },
+   {
+    "sha": "41b3603b5bcb74a7d78a314a4a5c177d941af27f",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 1,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "88ea877ac0edc595f256b4d5475e57a3ce5c3e94",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 1,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "e2a9fa8448e2aac34c318260e425786a6c8ca2ae",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "9b01f039eb9a794ac96c9f4dac0465050c3f7d75",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "ee3355be3cd1cd956296a1b79b264177ff139ce6",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "f994b526a03738fea95583a9fccbac709e8ce47f",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "d4511889fd62907c35fe7323fee166ea21d360ca",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "2ec296e659309d924c11d8aeb0e4e188fbea1fa2",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "9057aa9fc53c76785e3eb3a06421fad4e3569151",
+    "bulk": [
+     "Move Package",
+     "Move Source Folder",
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.yarn.submarine.common.api",
+      "org.apache.hadoop.yarn.submarine.runtimes.yarnservice"
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 2,
+    "explained_by_class_edges": 2,
+    "identity_edges_in_commit": 2
+   },
+   {
+    "sha": "dddcfa4d9f07aa96692a12afd3003ae89ac40b17",
+    "bulk": [
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.yarn.server.nodemanager.containermanager.resourceplugin.nvidia.com",
+      "org.apache.hadoop.yarn.server.nodemanager.containermanager.resourceplugin.com.nvidia"
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 1
+   },
+   {
+    "sha": "dcb0de848d8388fcee425847e52f6361790225c6",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "f10d49332522beca7cb7342e68b2acdbe4c974f8",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "ebbda181e4b79b5da5eaeb1e5b851435575de4b7",
+    "bulk": [
+     "Rename Package",
+     "Rename Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.hdds.scm.chillmode",
+      "org.apache.hadoop.hdds.scm.safemode"
+     ],
+     [
+      "org.apache.hadoop.hdds.scm.chillmode",
+      "org.apache.hadoop.hdds.scm.safemode"
+     ]
+    ],
+    "fqn_changing_renames": 19,
+    "explained_by_class_edges": 19,
+    "identity_edges_in_commit": 19
+   },
+   {
+    "sha": "b5dcf64f979f0225a394b5c928f92cb5f539bc6d",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "e2f0f7267791051b561a6e291a22bbc58c34d068",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "36267b6f7c89c2ade05d97606cc5ac8685d22628",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 6,
+    "explained_by_class_edges": 6,
+    "identity_edges_in_commit": 7
+   },
+   {
+    "sha": "ef1cc725b8c1301f33bcb80b63b12d45dc23bed8",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "baee71551d5a9c39760631de463684d810fa96fa",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "2a97a37d9e313e509ac43fdafd379183fd564d9a",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "f7c77b395f6f01b4e687b9feb2e77b907d8e943f",
+    "bulk": [
+     "Rename Package",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 3
+   },
+   {
+    "sha": "8ca58efeece77dc7b0a2a792c1c29e3567ae02b6",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "004207996c6610d67d1a202da5e51d7bc7890484",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "efb916457fc5af868cb7003ee99e0ce3a050a4d2",
+    "bulk": [
+     "Rename Package"
+    ],
+    "src_dst": [
+     [
+      "test.blockade.blockadeUtils",
+      "test.blockade.ozone"
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 3
+   },
+   {
+    "sha": "bd9246232123416201eb8c257b3cd8ab0ad32664",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "1e13fe63105c846321bc82194f7256d67e935ad7",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "9cbd76cc775b58dfedb943f971b3307ec5702f13",
+    "bulk": [
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.hdfs.procedure",
+      "org.apache.hadoop.tools.fedbalance"
+     ]
+    ],
+    "fqn_changing_renames": 12,
+    "explained_by_class_edges": 12,
+    "identity_edges_in_commit": 12
+   },
+   {
+    "sha": "34aa6137bd890a565ace26be278a50f81b3dda20",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "617af28e80774249b0a52006ca70a4bf0b14451b",
+    "bulk": [
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.fs.s3a.impl.statistics",
+      "org.apache.hadoop.fs.s3a.statistics.impl"
+     ]
+    ],
+    "fqn_changing_renames": 2,
+    "explained_by_class_edges": 2,
+    "identity_edges_in_commit": 3
+   },
+   {
+    "sha": "c8073811b2a7cce9283dbbe0337368eb44267279",
+    "bulk": [
+     "Rename Package"
+    ],
+    "src_dst": [
+     [
+      "org.apache.hadoop.yarn.webapp.hamlet",
+      "org.apache.hadoop.yarn.webapp.hamlet2"
+     ]
+    ],
+    "fqn_changing_renames": 2,
+    "explained_by_class_edges": 2,
+    "identity_edges_in_commit": 3
+   },
+   {
+    "sha": "1d0c9ab4330e87c73e8473bee9c1d4b6db2fd5fd",
+    "bulk": [
+     "Split Package"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 2,
+    "explained_by_class_edges": 2,
+    "identity_edges_in_commit": 2
+   },
+   {
+    "sha": "7d377283f604aad2ca9fa0733787a17b3eda511f",
+    "bulk": [
+     "Move Source Folder",
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ],
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "0dc79ad5d9aa980fe6720e2f9d027f926d4c069a",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "665cbcb6e7c1348312df1c6ebabdcfd4eb89f9a6",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "56b832dfd5796d78f87aeea5a7df4d843f237bad",
+    "bulk": [
+     "Move Source Folder"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 0,
+    "explained_by_class_edges": 0,
+    "identity_edges_in_commit": 0
+   },
+   {
+    "sha": "9d50c6884666e794e45102260a4017bb31802e1b",
+    "bulk": [
+     "Move Package"
+    ],
+    "src_dst": [
+     [
+      null,
+      null
+     ]
+    ],
+    "fqn_changing_renames": 1,
+    "explained_by_class_edges": 1,
+    "identity_edges_in_commit": 1
+   }
+  ],
+  "split": {
+   "package_level_op": {
+    "commits": 19,
+    "fqn_changing_renames": 202,
+    "explained_by_class_edges": 185,
+    "coverage": 0.9158415841584159
+   },
+   "source_folder_only": {
+    "commits": 42,
+    "fqn_changing_renames": 46,
+    "explained_by_class_edges": 33,
+    "coverage": 0.717391304347826
+   }
+  }
+ },
+ "rm_edges_not_seen_by_git": {
+  "rm_top_level_identity_edges": 577,
+  "not_matched_by_a_git_rename": 88,
+  "share": 0.15251299826689774
+ },
+ "chain_terminals": {
+  "terminals": 468,
+  "resolve_at_the_commit_that_produced_them": 445,
+  "resolve_to_a_file_at_head": 135,
+  "head_java_files": 12579
+ },
+ "mined_window": {
+  "mined_commits": 8919,
+  "head_reachable_commits_in_window": 10083,
+  "mined_and_head_reachable": 8376,
+  "window_coverage": 0.8307051472775959
+ },
+ "rm_chains": {
+  "edges": 567,
+  "source_collisions": 10,
+  "length_distribution": {
+   "1": 403,
+   "2": 51,
+   "3": 12,
+   "4": 2
+  }
+ },
+ "git_path_chains": {
+  "1": {
+   "chains": 389,
+   "fully_tracked": 355
+  },
+  "2": {
+   "chains": 47,
+   "fully_tracked": 39
+  },
+  "3": {
+   "chains": 12,
+   "fully_tracked": 10
+  },
+  "4": {
+   "chains": 1,
+   "fully_tracked": 1
+  }
+ }
+}

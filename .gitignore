@@ -7,16 +7,21 @@ hadoop/
 RefactoringMiner/
 RefactoringMiner-src/
 _rm_unzip/
-
+.claude/
 # ── Large / intermediate RefactoringMiner output (re-detect with run_rm_safe.sh) ──
 refminer*.json
 rm_chunks/
 
-# ── Jira caches (re-fetch with pr_review_signal.py / the metadata + changelog fetches) ──
-.jira_cache/
-.jira_meta/
-.jira_changelog/
-.jira_control/
+# ── Jira caches (re-fetchable) — all .jira_* dirs ──
+.jira_*/
+
+# ── Git-derived caches (regenerable; gitignore has no trailing comments, keep bare) ──
+# module_commit_log.json   : social_centrality.py, ~6 MB
+# ticket_first_commit.json : temporal_trend.py
+# ticket_change_size.json  : ci_rework.py
+module_commit_log.json
+ticket_first_commit.json
+ticket_change_size.json
 
 # ── Local config (may hold project-specific choices) ──
 config.env
@@ -27,3 +32,22 @@ config.env
 
 # NOTE: the SMALL derived results ARE committed on purpose — they are the findings:
 #   architectural_episodes*.json  review_signal*.json  episode_outcomes.json  cox_dataset.json
+refminer_sui*.json
+prs_all.json
+pr_review_detail.json
+pr_timeline.json
+
+# multi-project replication corpora (cloned, not vendored)
+corpora/
+
+# deposit archives (manifests are committed; the tarball goes to Zenodo)
+deposit/*.tar.gz
+
+# gate evidence caches (regenerable from the hadoop clone)
+.gate_commit_log.json
+.gate_key_index.json
+
+# LaTeX build intermediates
+paper/preprint/*.blg
+paper/preprint/*.log
+private/
