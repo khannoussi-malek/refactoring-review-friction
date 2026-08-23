@@ -9,6 +9,25 @@
   },
   "source": "https://issues.apache.org/jira (Jira REST API v2), pseudonymized",
   "representation": "one: loose files only, no nested tarball (v1 shipped the same 2,491 files twice -- loose and nested inside jira-caches-v1.tar.gz -- which is why the leak was exposed twice over)",
+  "archives": {
+    "jira_caches": {
+      "name": "jira-caches-v2.zip",
+      "bytes": 3817713,
+      "sha256": "fe67c6607e4ca818c88426a9e23bbdcb4c9c354e4b8da9afca5c9e1da36298f6",
+      "md5": "7425ea95b02fe11e1e5b1247a1b4c0ec",
+      "built_utc": "2026-08-23",
+      "note": "built into deposit/build/ (gitignored); not committed. Upload by hand."
+    },
+    "replication_package": {
+      "name": "replication-package-v2.zip",
+      "bytes": 10357939,
+      "sha256": "97179a960901f1a6b74f2593506657efabd0e8e3e52bd301e63a126c73d6cf41",
+      "md5": "a5946e91ba23600b31e65a2687ae6c51",
+      "built_utc": "2026-08-23",
+      "rebuild_note": "v1 (10.5281/zenodo.21846139) shipped this file with a nested deposit/jira-caches-v1.tar.gz that was byte-identical to the unpseudonymized archive -- a third copy of the same leak within the same record. This rebuild substitutes the pseudonymized tar.gz at the exact same path/filename inside the zip; every other one of its 222 entries is byte-identical to v1 (diff -rq confirmed against the extracted original). One entry changed, none renamed.",
+      "note": "built into deposit/build/ (gitignored); not committed. Upload by hand."
+    }
+  },
   "totals": {
     "file_count": 2491,
     "total_bytes": 35556731
@@ -34,14 +53,6 @@
       "file_count": 400,
       "total_bytes": 916991
     }
-  },
-  "archive": {
-    "name": "jira-caches-v2.zip",
-    "bytes": 3817713,
-    "sha256": "fe67c6607e4ca818c88426a9e23bbdcb4c9c354e4b8da9afca5c9e1da36298f6",
-    "md5": "7425ea95b02fe11e1e5b1247a1b4c0ec",
-    "built_utc": "2026-08-23",
-    "note": "built into deposit/build/ (gitignored); not committed. Upload by hand."
   },
   "files": {
     ".jira_cache/HADOOP-13230.json": {

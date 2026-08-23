@@ -46,9 +46,42 @@ usernames (196 distinct handles, 14,292 occurrences). This archive removes
 the addresses v1's own description promised would be removed. It does not
 remove real names. See `deposit/V2_CORRECTION.md` for that open question.
 
-## Where the built zip actually is
+## Second artifact: `replication-package-v2.zip`
 
-`deposit/build/jira-caches-v2.zip` is **not committed** — `deposit/build/`
-is gitignored. It contains the real pseudonymized data and is meant to be
-uploaded to Zenodo by hand as a new version of the existing record. The
-checksums above were computed directly against that file at build time.
+v1's `replication-package.zip` also carried a nested
+`deposit/jira-caches-v1.tar.gz` — byte-identical (SHA-256 `fcb705b6...`) to
+the unpseudonymized archive, a **third** copy of the same leak inside the
+same record. Rebuilt with exactly one substitution: that nested tar.gz is
+replaced with the pseudonymized version, at the same path and filename.
+Every other one of the package's 222 entries is byte-for-byte identical to
+v1 (`diff -rq` against the extracted original confirms this — one file
+differs, 221 don't).
+
+- **Archive**: `replication-package-v2.zip`
+- **Built**: 2026-08-23, in `deposit/build/` (gitignored, not committed)
+- **SHA-256**: `97179a960901f1a6b74f2593506657efabd0e8e3e52bd301e63a126c73d6cf41`
+- **MD5**: `a5946e91ba23600b31e65a2687ae6c51`
+- **Size**: 10,357,939 bytes; 222 entries
+
+**Pseudonym consistency across both v2 artifacts**: the substituted tar.gz
+came from the same pseudonymization run (same salt, same address→pseudonym
+cache) as `jira-caches-v2.zip`'s loose files — spot-checked directly:
+`stevel@apache.org` maps to `dev-88fa84f2add1@example.invalid` in both.
+Anyone cross-referencing the two files in the v2 deposit sees the same
+person as the same pseudonym throughout.
+
+**Acceptance scan**: JSON-decode-then-scan across every `.json` file in the
+rebuilt package (its own files plus the substituted tar.gz's contents) finds
+1,624 email-shaped matches, all ending in either `@example.invalid` (this
+correction's pseudonyms) or `@pseudonymized.invalid` (a pre-existing,
+unrelated synthetic domain from `scripts/pseudonymize.py`'s own self-check
+fixtures, already present and already-synthetic in v1). Zero real addresses
+remain.
+
+## Where the built zips actually are
+
+`deposit/build/jira-caches-v2.zip` and `deposit/build/replication-package-v2.zip`
+are **not committed** — `deposit/build/` is gitignored. Both contain real
+pseudonymized data and are meant to be uploaded to Zenodo by hand as a new
+version of the existing record. The checksums above were computed directly
+against those files at build time.
