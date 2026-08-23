@@ -1,5 +1,14 @@
 # Jira cache archive — v1
 
+**SUPERSEDED.** This archive's data was published live on Zenodo
+(10.5281/zenodo.21846139) with 1,525 occurrences of 18 real developer email
+addresses, unpseudonymized, despite the record description claiming
+otherwise. See `deposit/PSEUDONYMIZATION_VERIFICATION.md` for the finding and
+`deposit/MANIFEST-v2.md` for the corrected archive. The digests below still
+describe this exact (unpseudonymized) file correctly — nothing here was
+altered — they are kept as the historical record of what v1 actually was,
+not as a recommendation to use it.
+
 - **Archive**: `jira-caches-v1.tar.gz` (2.83 MB)
 - **SHA-256**: `fcb705b664c248d0c4d32f69b854e10fd8b11c907a19c40333322e06d31b9a95`
 - **Files**: 2,491 (32.11 MB uncompressed)
