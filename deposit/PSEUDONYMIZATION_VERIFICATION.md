@@ -18,9 +18,10 @@ false-positive shapes that a naive scan catches:
 - Azure ADLS Gen2 container URIs, `testcontainer@<account>.dfs.core.windows.net`
   (2 occurrences) — ABFS container@account addressing, not an email.
 
-Corrected: **1,525 occurrences of 18 distinct real addresses**, e.g.
-`stevel@apache.org` (1,396 occurrences by itself), plus personal
-Gmail/Yahoo/corporate addresses. The previously-excluded categories (Java
+Corrected: **1,525 occurrences of 18 distinct real addresses** — the single
+most frequent one accounts for 1,396 of those occurrences by itself; the
+rest are personal Gmail/Yahoo/corporate addresses appearing far less often.
+The previously-excluded categories (Java
 `@InterfaceAudience`/`@InterfaceStability` annotation text, GitHub
 `users.noreply.github.com` addresses) still stand as false positives, now
 joined by the two above.
@@ -61,9 +62,10 @@ for each.
 
 ## What was and was not touched (spot-checked)
 
-- `stevel@apache.org` → `dev-88fa84f2add1@example.invalid`, consistently,
-  everywhere it appeared as `assignee`, `reporter`, or a comment author's
-  `name` field (his Jira username happens to equal his email).
+- The single most-frequent real address maps to the same pseudonym
+  consistently everywhere it appears — as `assignee`, `reporter`, and a
+  comment author's `name` field (that developer's Jira username happens to
+  equal their email address).
 - `displayName` ("Steve Loughran") — **untouched**, confirmed identical
   before/after. Pseudonymizing display names was explicitly out of scope for
   this pass — see the scope note below and `deposit/V2_CORRECTION.md`.

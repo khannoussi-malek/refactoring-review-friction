@@ -6,9 +6,10 @@ cache files with deterministic salted pseudonyms.
 Background: the v1 Zenodo deposit (10.5281/zenodo.21846139) shipped
 jira-caches.zip with a description claiming developer email addresses were
 "replaced with salted pseudonyms." That step was never run before upload.
-1,530 occurrences of 22 real addresses (e.g. stevel@apache.org, personal
-Gmail/Yahoo/corporate addresses) were found live in the .jira_assignee and
-.jira_cache JSON. This script is the step that should have run first.
+1,525 occurrences of 18 real addresses (e.g. dev-a1b2c3d4e5f6@example.invalid
+as a stand-in here for the kind of address found — personal Gmail/Yahoo/
+corporate addresses) were found live in the .jira_assignee and .jira_cache
+JSON. This script is the step that should have run first.
 
 Scope: only values that look like email addresses (RFC-5322-ish pattern —
 this covers the flat "assignee"/"reporter" string fields in .jira_assignee,
@@ -141,11 +142,17 @@ def selftest():
     salt = secrets.token_bytes(32)
     cache = {}
 
-    a = pseudonymize_string("stevel@apache.org opened this", salt, cache)
-    b = pseudonymize_string("cc: stevel@apache.org again", salt, cache)
-    pseudonym = cache["stevel@apache.org"]
+    # Note: this must be an address that does NOT already match
+    # ALREADY_PSEUDONYMIZED, or the idempotency guard below would treat it as
+    # already-done and skip transforming it, defeating this check silently.
+    # "dev-a1b2c3d4e5f6@example.invalid" (used elsewhere in this file purely
+    # as illustrative prose) would fail for exactly that reason if used here.
+    real_input = "developer@example.org"
+    a = pseudonymize_string(f"{real_input} opened this", salt, cache)
+    b = pseudonymize_string(f"cc: {real_input} again", salt, cache)
+    pseudonym = cache[real_input]
     assert pseudonym in a and pseudonym in b, "same address must map to the same pseudonym within a run"
-    assert "stevel" not in a and "stevel" not in b, "real address must not survive"
+    assert real_input not in a and real_input not in b, "real address must not survive"
     assert ALREADY_PSEUDONYMIZED.match(pseudonym), "pseudonym must match the declared format"
 
     pseudonymize_string("other@example.org", salt, cache)

@@ -44,7 +44,12 @@ the full text.
 > so every determination remains checkable against the public repositories.
 > Jira display names and usernames (e.g. "Steve Loughran", `stevel`) are
 > unchanged from v1 and are not pseudonymized; these are already public
-> under the same accounts on issues.apache.org.
+> under the same accounts on issues.apache.org. **Display names and
+> usernames are retained deliberately, so that every determination in the
+> paper remains checkable against those same public accounts on the
+> repositories and the tracker** — the same reasoning the original
+> paragraph already gives for leaving commit hashes unmodified, extended
+> here to say so explicitly for names too.
 
 The last sentence is added, not implied by the original — it states plainly
 that names are still real, since (b) only fixes the sentence that was false
